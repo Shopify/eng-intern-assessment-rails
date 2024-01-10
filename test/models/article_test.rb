@@ -74,6 +74,4 @@ RSpec.describe Article, type: :model do
       expect(results).not_to include(article1)
     end
   end
-
-  # Add more tests for other features like categories, tags, authentication, versioning, comments, ratings, sharing, etc.
 end
