@@ -17,8 +17,30 @@ RSpec.describe Article, type: :model do
       expect(article).to be_valid
     end
 
+    it 'does not create a new article if title and content are null' do
+      article = Article.create()
+      article2 = Article.create(title: "Sample Article")
+      article3 = Article.create(content: "Lorem ipsum dolor sit amet.")
+      expect(article).not_to be_valid
+      expect(article2).not_to be_valid
+      expect(article3).not_to be_valid
+    end
+
+    it 'creates the correct amount of articles' do
+      Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+      Article.create(title: 'Sample Article 2', content: 'Lorem ipsum dolor sit amet.')
+      expect(Article.count).to eq(2)
+    end
+
+    it 'creates the correct amount of articles even with duplicate content' do
+      Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+      Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+      expect(Article.count).to eq(2)
+    end
+
     it 'displays the article content accurately' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+      expect(article.title).to eq('Sample Article')
       expect(article.content).to eq('Lorem ipsum dolor sit amet.')
     end
 
@@ -32,8 +54,9 @@ RSpec.describe Article, type: :model do
   describe 'editing and updating articles' do
     it 'edits an existing article' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-      article.update(content: 'Updated content')
+      article.update(content: 'Updated content', title: 'Updated title')
       expect(article.content).to eq('Updated content')
+      expect(article.title).to eq('Updated title')
     end
 
     it 'updates the article metadata' do
@@ -50,6 +73,13 @@ RSpec.describe Article, type: :model do
       article.destroy
       expect(Article.count).to eq(0)
     end
+
+    it 'deletes one article with other articles in the database' do
+        article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+        Article.create(title: 'Sample Article 2', content: 'Lorem ipsum dolor sit amet.')
+        article.destroy
+        expect(Article.count).to eq(1)
+      end
 
     it 'prevents access to deleted articles' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
@@ -71,6 +101,23 @@ RSpec.describe Article, type: :model do
       article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
       results = Article.search('Another')
       expect(results).to include(article2)
+      expect(results).not_to include(article1)
+    end
+
+    it 'displays relevant articles in search results regardless of query case' do
+      article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+      article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+      results = Article.search('AnOtHeR')
+      expect(results).to include(article2)
+      expect(results).not_to include(article1)
+    end
+    it 'displays multiple relevant articles in search results' do
+      article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+      article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+      article3 = Article.create(title: 'Another Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+      results = Article.search('Another')
+      expect(results).to include(article2)
+      expect(results).to include(article3)
       expect(results).not_to include(article1)
     end
   end
