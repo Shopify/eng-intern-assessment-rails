@@ -1,20 +1,21 @@
 # Technical Instructions
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.
-3. Test your work using the provided tests
-4. Create a Pull Request against your local Main branch when you're done and all tests are passing
+3. Create a Pull Request against your Main branch when you're done
+4. The Pull Request will automatically run test files to check requirements
+5. Submit a link to the Pull Request when the tests have passed
 
 # Project Overview
-The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. Be sure to implement basic CRUD actions on articles. Your task is to implement these features as well as write the code that makes the tests pass.
+The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. The initial setup of the application has been completed, and your task is to write the code that makes the tests pass.
 
 # Project Goals
-The main goal of this internship project is to implement the functionality required to make the existing tests pass. The provided tests cover various aspects of the application, including creating and viewing articles, editing and updating articles, deleting articles, and searching for articles. Along with completing the tests, be sure to implement all basic CRUD actions on your articles on a controller and create views to see your work in the app.
+The main goal of this internship project is to implement the functionality required to make the existing tests pass. The provided tests cover various aspects of the application, including creating and viewing articles, editing and updating articles, deleting articles, and searching for articles. Your task is to write the code that fulfills the requirements specified in the tests.
 
 ## Your specific goals for this project are as follows:
 
 1. Review Existing Tests: Start by reviewing the existing tests provided in the article_test.rb file located in the test/models directory. Understand the requirements and expectations of each test.
 
-2. Implement Functionality: Write the code necessary to make the existing tests pass. This involves implementing the required actions and logic in the models, controllers, and views to fulfill the specified requirements. Also be sure to implement basic CRUD actions and demonstrate proper MVC principals.
+2. Implement Functionality: Write the code necessary to make the existing tests pass. This involves implementing the required actions and logic in the models, controllers, and views to fulfill the specified requirements.
 
 3. Ensure Code Quality: Write clean, well-structured, and maintainable code. Follow best practices and adhere to the Ruby on Rails conventions. Pay attention to code readability, modularity, and performance.
 
@@ -35,7 +36,7 @@ To get started with this project, follow these steps:
 
 3. Familiarize yourself with the existing codebase, including the models, controllers, and views.
 
-4. Review the existing tests in the article_test.rb file and understand their purpose and functionality.
+4. Review the existing tests in the article_spec.rb file and understand their purpose and functionality.
 
 5. Run the tests locally using the rspec command to ensure they are passing.
 
@@ -49,6 +50,8 @@ To get started with this project, follow these steps:
 Here are some resources that may be helpful during your internship project:
 
 - [Ruby on Rails Guides](https://guides.rubyonrails.org/) - Comprehensive guides on Ruby on Rails, covering various aspects of web application development.
+
+- [RSpec Documentation](https://rspec.info/documentation/) - Official documentation for RSpec, the testing framework used in this project.
 
 - [Ruby Style Guide](https://rubystyle.guide/) - A community-driven Ruby coding style guide to ensure consistent and readable code.
 
