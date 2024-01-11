@@ -1,9 +1,8 @@
 # Technical Instructions
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.
-3. Create a Pull Request against your Main branch when you're done
-4. The Pull Request will automatically run test files to check requirements
-5. Submit a link to the Pull Request when the tests have passed
+3. Test your work using the provided tests
+4. Create a Pull Request against your local Main branch when you're done and all tests are passing
 
 # Project Overview
 The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. The initial setup of the application has been completed, and your task is to write the code that makes the tests pass.
