@@ -3,10 +3,12 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  # New instantiates new article and is used for new.html.erb view
   def new
     @article = Article.new
   end
 
+  # Creates new article or rerenders form with error on fail
   def create
     @article = Article.new(article_params)
 
@@ -17,10 +19,12 @@ class ArticlesController < ApplicationController
     end
   end
   
+  # Finds article to be used for edit.html.erb
   def edit
     @article = Article.find(params[:id])
   end
 
+  # Updates article or rerenders edit.html.erb with error
   def update
     @article = Article.find(params[:id])
 
@@ -31,6 +35,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Deletes article
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
@@ -38,6 +43,7 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  # Strong parameters
   private
     def article_params
       params.require(:article).permit(:title, :content, :author, :date)
