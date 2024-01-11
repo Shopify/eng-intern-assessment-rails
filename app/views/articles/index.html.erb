@@ -6,7 +6,10 @@
       <h2><%= article.author %><h2>
       <h3><%= article.date %><h3>
       <h4><%= article.content %><h4>
-      <h5><%= link_to "Edit", edit_article_path(article) %><h5>
+      <h5><%= link_to "Edit", edit_article_path(article) %>   <%= link_to "Destroy", article_path(article), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %><h5>
     </li>
   <% end %>
 </ul>
