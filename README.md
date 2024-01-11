@@ -36,7 +36,7 @@ To get started with this project, follow these steps:
 
 3. Familiarize yourself with the existing codebase, including the models, controllers, and views.
 
-4. Review the existing tests in the article_spec.rb file and understand their purpose and functionality.
+4. Review the existing tests in the article_test.rb file and understand their purpose and functionality.
 
 5. Run the tests locally using the rspec command to ensure they are passing.
 
@@ -50,8 +50,6 @@ To get started with this project, follow these steps:
 Here are some resources that may be helpful during your internship project:
 
 - [Ruby on Rails Guides](https://guides.rubyonrails.org/) - Comprehensive guides on Ruby on Rails, covering various aspects of web application development.
-
-- [RSpec Documentation](https://rspec.info/documentation/) - Official documentation for RSpec, the testing framework used in this project.
 
 - [Ruby Style Guide](https://rubystyle.guide/) - A community-driven Ruby coding style guide to ensure consistent and readable code.
 
