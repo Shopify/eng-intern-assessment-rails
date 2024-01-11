@@ -51,8 +51,4 @@ Here are some resources that may be helpful during your internship project:
 
 - [Ruby on Rails Guides](https://guides.rubyonrails.org/) - Comprehensive guides on Ruby on Rails, covering various aspects of web application development.
 
-- [RSpec Documentation](https://rspec.info/documentation/) - Official documentation for RSpec, the testing framework used in this project.
-
-- [Ruby Style Guide](https://rubystyle.guide/) - A community-driven Ruby coding style guide to ensure consistent and readable code.
-
 - [Git Documentation](https://git-scm.com/doc) - Official documentation for Git, the version control system used in this project.
