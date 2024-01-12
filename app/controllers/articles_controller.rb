@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
 
-
   # GET /articles
   # Index page for viewing paginated article list
   def index
