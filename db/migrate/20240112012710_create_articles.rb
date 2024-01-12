@@ -6,7 +6,6 @@ class CreateArticles < ActiveRecord::Migration[7.1]
       t.string :author, null: false, default: 'Anonymous'
       t.date :date
 
-      t.timestamps
     end
   end
 end

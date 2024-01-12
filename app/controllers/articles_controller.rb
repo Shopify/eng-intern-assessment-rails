@@ -61,6 +61,11 @@ class ArticlesController < ApplicationController
   end
 
   # PATCH /articles/:id
+  # Params: article: {
+  # title: string,
+  # content: string,
+  # author: string
+  # }
   # This method edits an existing article from the database
   def update
     @article = Article.find(params[:id])
