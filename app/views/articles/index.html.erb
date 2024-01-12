@@ -1,0 +1,40 @@
+
+<%= render 'layouts/notice' %>
+
+<h1>Articles</h1>
+
+<%= form_tag articles_path, method: :get do %>
+    <p>
+        <%= text_field_tag :query, params[:query], placeholder: "Search Articles" %>
+        <%= submit_tag "Search", name: nil %>
+    </p>
+<% end %>
+
+
+<table>
+    <thead>
+        <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Published At</th>
+        <th></th>
+        <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <% @articles.each do |article| %>
+        <%= render article %>   
+    <% end %>
+    </tbody>
+</table>
+
+<% if @page > 0 %>
+  <%= link_to 'Previous', articles_path(page: @page - 1, query: params[:query]) %>
+<% end %>
+
+<% if @articles.count == 3 %>
+  <%= link_to 'Next', articles_path(page: @page + 1, query: params[:query]) %>
+<% end %>
+
+<%= link_to "New Article", new_article_path %>
