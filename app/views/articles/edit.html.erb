@@ -1,10 +1,9 @@
 <%# app/views/articles/edit.html.erb %>
 
-<h1>Edit Article</h1>
 
-<%= form_with(model: @article, local: true) do |form| %>
+<%= form_with(model: @article, local: true, class: "article-form") do |form| %>
   <% if @article.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="error-messages">
       <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
       <ul>
@@ -16,28 +15,28 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-input' %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.label :content, class: 'form-label' %>
+    <%= form.text_area :content, class: 'form-input' %>
   </div>
 
   <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author %>
+    <%= form.label :author, class: 'form-label' %>
+    <%= form.text_field :author, class: 'form-input' %>
   </div>
 
   <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
+    <%= form.label :date, class: 'form-label' %>
+    <%= form.date_select :date, {}, class: 'form-input' %>
   </div>
 
   <div class="actions">
-    <%= form.submit "Update Article" %>
+    <%= form.submit "Update Article", class: 'form-submit' %>
   </div>
 <% end %>
 
-<%= link_to 'Back to Articles', articles_path %>
+<%= link_to 'Back to Articles', articles_path, class: 'back-link' %>
