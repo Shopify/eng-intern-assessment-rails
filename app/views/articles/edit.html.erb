@@ -1,5 +1,3 @@
-<%= render 'layouts/notice' %>
-
 <h1>Edit Article</h1>
 
 <%= form_for @article do |f| %>
@@ -24,6 +22,6 @@
     </div>
 
     <div>
-        <%= button_to 'Update article', @article, method: :update %></td>
+        <%= f.submit %>
     </div>
 <% end %>
