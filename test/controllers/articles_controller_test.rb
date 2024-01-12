@@ -44,9 +44,9 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to article_url(articles(:first))
 
     # Make sure the article author has changed
-    updatedArticle = Article.where("author = ?", "New author")
-    assert_equal updatedArticle.count, 1
-    assert_equal updatedArticle[0].title, "Book1"
+    updated_article = Article.where("author = ?", "New author")
+    assert_equal updated_article.count, 1
+    assert_equal updated_article[0].title, "Book1"
   end
 
   test "should be able to delete article" do

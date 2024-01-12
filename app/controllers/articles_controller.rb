@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  # GET /articles OR /articles?query
+  # GET /articles OR /articles?query (equivalent to / and /?query)
   # Displays a page that contains a collection of articles based on user input
   #
   # Details:
@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  # PATCH /articles/:id
+  # PATCH OR PUT /articles/:id
   # Params: article: {
   # title: string,
   # content: string,
