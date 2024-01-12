@@ -1,4 +1,3 @@
-
 <%= render 'layouts/notice' %>
 
 <h1>Articles</h1>
@@ -11,11 +10,11 @@
 <% end %>
 
 <% if @showing_all %>
-    <p> Showing all articles (<%= @num_articles %>) </p>
+    <p> Showing all articles </p>
 <% end %>
 
 <% if @showing_all == FALSE %>
-    <p> Showing articles from query "<%= params[:query] %>" (<%= @num_articles %>) </p>
+    <p> Showing articles from query "<%= params[:query] %>" </p>
 <% end %>
 
 <table>
@@ -36,7 +35,7 @@
     </tbody>
 </table>
 
-<p> Show <%= @start_index %> to <%= @end_index %> of <%= @num_articles %> </p>
+<p> Showing <%= @start_index %> to <%= @end_index %> of <%= @num_articles %> articles </p>
 
 <% if @page > 0 %>
   <%= link_to 'Previous', articles_path(page: @page - 1, query: params[:query]) %>
