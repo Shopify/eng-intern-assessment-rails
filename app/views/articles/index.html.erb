@@ -1,5 +1,18 @@
 <h1>Articles</h1>
 
+<p>
+<% if @query_value.present? %>
+Searching for articles that contains "<%= @query_value %>". <%= @articles.size %> article(s) found 
+</p>
+<% else %>
+<%= @articles.size %> article(s) in the database
+<% end %>
+
+<%= form_with(url: articles_path, method: "get") do |form| %>
+    <%= form.label :query %>
+    <%= form.text_field :query %>
+<% end %>
+
 <ul>
     <% @articles.each do |article| %>
     <li>
