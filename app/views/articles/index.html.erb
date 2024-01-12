@@ -13,7 +13,7 @@
     <p> Showing all articles </p>
 <% end %>
 
-<% if @showing_all_articles == FALSE %>
+<% if @showing_all_articles == false %>
     <p> Showing articles from query "<%= params[:query] %>" </p>
     <%= link_to 'Clear search', articles_path %>
 <% end %>
