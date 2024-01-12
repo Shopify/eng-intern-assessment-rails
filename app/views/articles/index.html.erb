@@ -10,8 +10,12 @@
     </p>
 <% end %>
 
-<% if @num_results_from_query.present? %>
-    <p> Found <%= @num_results_from_query %> results from query "<%= params[:query] %>" </p>
+<% if @showing_all %>
+    <p> Showing all articles (<%= @num_articles %>) </p>
+<% end %>
+
+<% if @showing_all == FALSE %>
+    <p> Showing articles from query "<%= params[:query] %>" (<%= @num_articles %>) </p>
 <% end %>
 
 <table>
@@ -32,12 +36,17 @@
     </tbody>
 </table>
 
+<p> Show <%= @start_index %> to <%= @end_index %> of <%= @num_articles %> </p>
+
 <% if @page > 0 %>
   <%= link_to 'Previous', articles_path(page: @page - 1, query: params[:query]) %>
 <% end %>
 
-<% if @articles.count == 3 %>
+<% if @more_results %>
   <%= link_to 'Next', articles_path(page: @page + 1, query: params[:query]) %>
 <% end %>
 
+<br></br>
+<div>
 <%= link_to "New Article", new_article_path %>
+</div>
