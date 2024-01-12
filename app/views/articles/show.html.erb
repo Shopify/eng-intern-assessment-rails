@@ -1,0 +1,6 @@
+<h1> <%= @article.title %></h1>
+<h6> <%= "by #{@article.author} on #{@article.date}"%> </h6>
+
+<p> <%= @article.content %></p>
+
+<%= link_to "Index", articles_path %>
