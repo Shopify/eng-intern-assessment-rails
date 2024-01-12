@@ -30,11 +30,11 @@ class ArticlesController < ApplicationController
     end
 
     # Calculations for the range of articles on the current page
-    @start_index = @num_articles == 0 ? 0 : page_offset + 1
-    @end_index = [page_offset + articles_per_page, @num_articles].min
+    @start_article_index = @num_articles == 0 ? 0 : page_offset + 1
+    @end_article_index = [page_offset + articles_per_page, @num_articles].min
 
     # Flag indicating if there are more articles beyond the current page index
-    @more_results = @end_index < @num_articles
+    @more_results = @end_article_index < @num_articles
   end
     
   # GET /articles/new

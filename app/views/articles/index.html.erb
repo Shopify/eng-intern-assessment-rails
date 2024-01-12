@@ -37,7 +37,7 @@
         </tbody>
     </table>
 
-    <p> Showing <%= @start_index %> to <%= @end_index %> of <%= @num_articles %> articles </p>
+    <p> Showing <%= @start_article_index %> to <%= @end_article_index %> of <%= @num_articles %> articles </p>
 
     <% if @page > 0 %>
     <%= link_to 'Previous', articles_path(page: @page - 1, query: params[:query]) %>
