@@ -1,15 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-  describe 'provided tests' do
+  describe 'initial state tests' do
     it 'starts with no articles' do
       expect(Article.count).to eq(0)
     end
+  end
 
-    it 'has search functionality' do
-      expect(Article).to respond_to(:search)
-    end
-
+  describe 'create tests' do 
     it 'creates a new article' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
       expect(article).to be_valid
@@ -25,7 +23,9 @@ RSpec.describe Article, type: :model do
       expect(article.author).to eq('John Doe')
       expect(article.date).to eq(Date.today)
     end
+  end
 
+  describe 'edit tests' do
     it 'edits an existing article' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
       article.update(content: 'Updated content')
@@ -38,7 +38,9 @@ RSpec.describe Article, type: :model do
       expect(article.author).to eq('Jane Smith')
       expect(article.date).to eq(Date.yesterday)
     end
+  end
 
+  describe 'deletion tests' do
     it 'deletes an article' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
       article.destroy
@@ -50,7 +52,13 @@ RSpec.describe Article, type: :model do
       article.destroy
       expect { Article.find(article.id) }.to raise_error(ActiveRecord::RecordNotFound)
     end
+  end
 
+  describe 'search tests' do
+    it 'has search functionality' do
+      expect(Article).to respond_to(:search)
+    end
+    
     it 'returns accurate search results' do
       article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
       article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
