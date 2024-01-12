@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # Index action to render all articles
   def index
-    @articles = Article.all
+    if params[:search].present?
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/:id
