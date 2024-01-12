@@ -1,5 +1,9 @@
-<h1>Edit Article</h1>
+<% content_for :centered_content do %>
+    <h1>Edit Article</h1>
 
-<%= render 'form', article: @article %>
+    <%= render 'form', article: @article %>
 
-<%= link_to 'Back to articles', articles_path %>
+    <%= link_to 'Back to articles', articles_path %>
+<% end %>
+
+<%= render 'layouts/centered_content', content: content_for(:centered_content) %>
