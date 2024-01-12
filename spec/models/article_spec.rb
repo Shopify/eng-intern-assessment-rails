@@ -74,5 +74,11 @@ RSpec.describe Article, type: :model do
       expect(results).to include(article2)
       expect(results).not_to include(article1)
     end
+
+    it 'search is case-insensitive' do
+      article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+      results = Article.search('sample')
+      expect(results).to include(article)
+    end
   end
 end
