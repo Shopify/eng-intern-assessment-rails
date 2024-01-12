@@ -94,4 +94,9 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # Caching is enabled by default, so no need to set manually.
+
+  # Use memory store since this is a small assessment, if it was a larger project I would use Redis
+  config.cache_store = :memory_store
 end

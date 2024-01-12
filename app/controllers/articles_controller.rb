@@ -1,10 +1,10 @@
 # ArticlesController
 #
-# Handles all CRUD web requests related to Articles.
+# Handles all CRUD web requests related to Articles, caching the indexing (for searching) and the show actions.
 #
 # Actions:
 #   - index: Displays a list of all articles.
-#   - show: Shows a single article, identified by its ID.
+#   - show: Shows a single article, identified by its ID. Checks cache first to see if existing already.
 #   - new: Returns a form for creating a new article.
 #   - create: Handles the creation of a new article.
 #   - edit: Returns a form for editing an existing article.
@@ -21,17 +21,24 @@ class ArticlesController < ApplicationController
   # GET /articles
   # Index action to render all articles
   def index
-    if params[:search].present?
-      @articles = Article.search(params[:search])
-    else
-      @articles = Article.all
+    # Generate a unique cache key for the index action, based on the maximum updated_at timestamp, and article amount.
+    # This ensures that any change to an article will change the cache key, invalidating the old cache.
+    # We don't need to modify any other methods to account for cache, since all cache keys will be unique.
+    @articles = Rails.cache.fetch("articles_index/#{Article.count}-#{Article.maximum(:updated_at)}") do
+      if params[:search].present?
+        Article.search(params[:search])
+      else
+        Article.all
+      end
     end
   end
 
   # GET /articles/:id
-  # Show action to render a specific article. Ruby implicitly understands that it needs to render view
-  # corresponding to action, hence why it is empty. (DRY Principle)
+  # Show action to render a specific article.
   def show
+    @article = Rails.cache.fetch("article_#{params[:id]}", expires_in: 1.hour) do
+      Article.find(params[:id])
+    end
   end
 
   # GET /articles/new
@@ -46,6 +53,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
+      Rails.cache.delete_matched("article_*")
       redirect_to @article, notice: 'Article was successfully created.'
     else
       render :new, status: :unprocessable_entity
@@ -53,7 +61,8 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/:id/edit
-  # Edit action to render the edit form for a specific article
+  # Edit action to render the edit form for a specific article. Ruby implicitly understands that it needs to render
+  # corresponding to action, hence why the rest of it is empty. (DRY Principle)
   def edit
   end
 
@@ -62,6 +71,7 @@ class ArticlesController < ApplicationController
   # Redirects to the article's show page on success or re-renders 'edit' on failure
   def update
     if @article.update(article_params)
+      Rails.cache.delete("article_#{params[:id]}")
       redirect_to @article, notice: 'Article was successfully updated.'
     else
       render :edit
