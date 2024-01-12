@@ -81,11 +81,11 @@ class ArticlesController < ApplicationController
   # Sets the current article using the ID parameter 
   def set_article
     @article = Article.find_by(id: params[:id])
-    # If the requested article is not found, redirects to the articles index page and display a message
+    # If the requested article is not found, redirect to the articles index page and display a message
     redirect_to articles_path, notice: 'The article you requested was not found, it may have been deleted' if @article.nil?
   end
   
-  # Required parameters for creating/updating articles
+  # Permitted parameters for creating/updating articles
   def article_params
     params.require(:article).permit(:title, :content, :author, :date)
   end
