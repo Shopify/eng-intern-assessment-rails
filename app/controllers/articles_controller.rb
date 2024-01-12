@@ -4,13 +4,26 @@ class ArticlesController < ApplicationController
   def index
     @page = params.fetch(:page, 0).to_i
     per_page = 3  # Number of articles per page
+    page_offset = @page * per_page
+
+    @showing_all = TRUE
   
     if params[:query].present?
-      @articles = Article.search(params[:query]).limit(per_page).offset(@page * per_page)
-      @num_results_from_query = @articles.count
+      @articles = Article.search(params[:query]).limit(per_page).offset(page_offset)
+      @showing_all = FALSE
+      @num_articles = Article.search(params[:query]).count
     else
-      @articles = Article.limit(per_page).offset(@page * per_page)
+      @articles = Article.limit(per_page).offset(page_offset)
+      @num_articles = Article.count
     end
+
+    @start_index = page_offset + 1
+    @start_index = 0 if @num_articles == 0
+    @end_index = page_offset + per_page
+    @end_index = @num_articles if @end_index > @num_articles
+
+    # Check if there are more articles beyond this page
+    @more_results = @end_index < @num_articles
   end
       
   def new
