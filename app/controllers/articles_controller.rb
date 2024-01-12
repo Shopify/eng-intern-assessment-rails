@@ -30,9 +30,10 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
+
 
   # GET /articles/:id/edit
   # Edit action to render the edit form for a specific article

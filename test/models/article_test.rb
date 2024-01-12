@@ -17,16 +17,40 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
-  test 'is invalid without a title' do
-    article = Article.create(content: 'Sample content')
-    assert_not article.valid?
-    assert_includes article.errors[:title], "can't be blank"
+  test 'creates a new article with all attributes' do
+    article = Article.create(title: 'Detailed Article', content: 'Detailed content.', author: 'Jane Doe', date: Date.today)
+    assert article.valid?, "Expected article to be valid, got errors: #{article.errors.full_messages.join(', ')}"
+    assert_equal 'Detailed Article', article.title
+    assert_equal 'Detailed content.', article.content
+    assert_equal 'Jane Doe', article.author
+    assert_equal Date.today, article.date
   end
 
-  test 'is invalid without content' do
-    article = Article.create(title: 'Sample Title')
+  test 'is invalid without a title and has correct error message' do
+    article = Article.new(content: 'Content without title')
     assert_not article.valid?
-    assert_includes article.errors[:content], "can't be blank"
+    assert_equal ["can't be blank"], article.errors[:title]
+  end
+
+  test 'title should not be too long' do
+    long_title = 'a' * 51 # 51 characters
+    article = Article.new(title: long_title, content: 'Valid content')
+    assert_not article.valid?
+    assert_includes article.errors[:title], 'is too long (maximum is 50 characters)'
+  end
+
+  test 'content should not be too long' do
+    long_content = 'a' * 501 # 501 characters
+    article = Article.new(title: 'Valid title', content: long_content)
+    assert_not article.valid?
+    assert_includes article.errors[:content], 'is too long (maximum is 500 characters)'
+  end
+
+
+  test 'is invalid without content and has correct error message' do
+    article = Article.new(title: 'Title without content')
+    assert_not article.valid?
+    assert_equal ["can't be blank"], article.errors[:content]
   end
 
   test 'displays the article content accurately' do
@@ -51,6 +75,13 @@ class ArticleTest < ActiveSupport::TestCase
     article.update(author: 'Jane Smith', date: Date.yesterday)
     assert_equal 'Jane Smith', article.author
     assert_equal Date.yesterday, article.date
+  end
+
+  test 'cannot update an article to have no title' do
+    article = Article.create(title: 'Initial Title', content: 'Initial content.')
+    article.update(title: '')
+    assert_not article.valid?
+    assert_includes article.errors[:title], "can't be blank"
   end
 
   test 'deletes an article' do
@@ -86,6 +117,19 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('f')
     assert_not_empty results
   end
+
+  test 'search is case-insensitive' do
+    article = Article.create(title: 'Case Test', content: 'Testing case sensitivity.')
+    results = Article.search('case test')
+    assert_includes results, article
+  end
+
+  test 'search allows partial matches' do
+    article = Article.create(title: 'Partial Match', content: 'Testing partial matches.')
+    results = Article.search('Partial')
+    assert_includes results, article
+  end
+
 
   test 'search with special characters' do
     Article.create(title: 'Special & Article', content: 'Content with special & character')

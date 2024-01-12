@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
-  validates :title, presence: true
-  validates :content, presence: true
+  validates :title, presence: true, length: { maximum: 50 }
+  validates :content, presence: true, length: { maximum: 500 }
 
   # Search Method
   def self.search(search_term)
