@@ -1,12 +1,1 @@
-<h3><%= @article.title %></h3>
-<p><%= @article.content %></p>
-
-<% if @article.author %>
-  <p>Written by: <%= @article.author %></p>
-<% end %>
-
-<hr>
-
-<% if @article.date%>
-  <p>Written on: <%= @article.date %></p>
-<% end %>
+<%= render @article %>
