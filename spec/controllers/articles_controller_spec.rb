@@ -127,6 +127,83 @@ RSpec.describe ArticlesController, type: :controller do
         expect(assigns(:articles)).to eq(sports_articles)
       end
     end
+  end
 
+  describe 'GET #new' do
+    it 'assigns a new article' do
+      get :new
+      expect(assigns(:article)).to be_a_new(Article)
+    end
+  end
+
+  describe 'POST #create' do
+    context 'with valid parameters' do
+      valid_params = { title: 'New Title', content: 'New Content', author: 'Author', date: '2024-01-12' }
+      it 'creates a new article and redirects' do
+        expect {
+          post :create, params: { article: valid_params }
+        }.to change(Article, :count).by(1)
+        expect(response).to redirect_to(Article.last)
+        expect(flash[:notice]).to eq('Article was successfully created.')
+      end
+    end
+
+    invalid_params = { title: nil, content: 'New Content', author: 'Author', date: '2024-01-12' }
+    context 'with invalid parameters' do
+      it 'does not create an article and renders new' do
+        expect {
+          post :create, params: { article: invalid_params }
+        }.to_not change(Article, :count)
+        expect(response).to render_template(:new)
+      end
+    end
+  end
+
+  describe 'POST #update' do
+    let!(:article) { Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.') }
+
+    context 'with valid parameters' do
+      it 'updates the article and redirects' do
+        valid_params = { title: 'Updated Title' }
+        patch :update, params: { id: article.id, article: valid_params }
+        article.reload
+        expect(article.title).to eq('Updated Title')
+        expect(response).to redirect_to(article)
+        expect(flash[:notice]).to eq('Article was successfully updated.')
+      end
+    end
+
+    context 'with invalid parameters' do
+      it 'does not update the article and renders edit' do
+        invalid_params = { title: nil }
+        patch :update, params: { id: article.id, article: invalid_params }
+        article.reload
+        expect(article.title).not_to be_nil
+        expect(response).to render_template(:edit)
+      end
+    end
+
+    context 'with invalid article ID' do 
+      it 'redirects to index and displays error message' do
+        valid_params = { title: 'Updated Title' }
+        invalid_article_id = -1
+        patch :update, params: { id: invalid_article_id, article: valid_params }
+        expect(article.title).not_to be_nil
+        expect(response).to redirect_to(articles_path)
+        expect(flash[:notice]).to eq('The article you requested was not found, it may have been deleted')
+      end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    let!(:article) { Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.') }
+
+    it 'deletes the article' do
+      expect {
+        delete :destroy, params: { id: article.id }
+      }.to change(Article, :count).by(-1)
+      expect(response).to redirect_to(articles_path)
+      expect(flash[:notice]).to eq('Article was successfully deleted.')
+    end
   end
 end
