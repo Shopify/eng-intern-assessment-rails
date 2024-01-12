@@ -1,4 +1,8 @@
 <% @articles.each do |article| %>
   <%= render article %>
+  <br>
+  <%= link_to "View", article %>
   <hr>
 <% end %>
+
+<%= link_to "New article", new_article_path %>

@@ -1,10 +1,16 @@
-<h3><%= article.title %></h3>
-<p><%= article.content %></p>
-
-<% if article.author %>
-  <i>Written by: <%= article.author %></i>
-<% end %>
-
-<% if article.date%>
-  <i>Written on: <%= article.date %></i>
-<% end %>
+<div class="article">
+  <h3><%= article.title %></h3>
+  <p><%= article.content %></p>
+  
+  <div>
+    <% if article.author %>
+      <i>Written by: <%= article.author %></i>
+    <% end %>
+  </div>
+  
+  <div>
+    <% if article.date%>
+      <i>Written on: <%= article.date %></i>
+    <% end %>
+  </div>
+</div>
