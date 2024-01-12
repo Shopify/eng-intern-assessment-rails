@@ -1,0 +1,20 @@
+<h2>Search Results</h2>
+
+<% if @articles.present? %>
+  <% @articles.each do |article| %>
+    <div class="card bg-light mb-3">
+      <div class="card-body">
+        <h3 class="card-title"> <%= article.title %></h3>
+        <div class="d-flex">
+          <h6 class="card-subtitle mb-2 text-muted"> <%= article.author %></h6>
+          <pre> </pre>
+          <h6 class="card-subtitle mb-2 text-muted"> <%= article.date&.strftime("%B %e, %Y") %></h6>
+        </div>
+        <p class="card-text"> <%= truncate(article.content, length: 300) %> </p>  
+        <%= link_to "Read more", article_path(article), class: 'btn btn-dark' %>
+      </div>
+    </div> 
+  <% end %>
+<% else %>
+  <p>No articles found matching the search criteria.</p>
+<% end %>

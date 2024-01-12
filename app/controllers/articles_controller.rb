@@ -43,6 +43,14 @@ class ArticlesController < ApplicationController
         redirect_to articles_path
     end
 
+    def search
+        key = "%#{params[:key]}%"
+        @articles = Article.where("title LIKE ?", key)
+                          .or(Article.where("author LIKE ?", key))
+                          .or(Article.where("content LIKE ?", key))
+    end
+      
+
     private
 
     def article_params
