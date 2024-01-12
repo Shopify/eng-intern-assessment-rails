@@ -206,4 +206,27 @@ RSpec.describe ArticlesController, type: :controller do
       expect(flash[:notice]).to eq('Article was successfully deleted.')
     end
   end
+
+  describe 'GET #show' do
+    context 'when the article ID exists' do
+      let!(:article) { Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.') }
+
+      it 'retrieves article and renders the show template' do
+        get :show, params: { id: article.id }
+
+        expect(assigns(:article)).to eq(article)
+        expect(response).to render_template(:show)
+      end
+    end
+
+    context 'when the article does not exist' do
+      it 'redirects to the articles index and displays an error message' do
+        invalid_article_id = -1
+        get :show, params: { id: invalid_article_id } 
+
+        expect(response).to redirect_to(articles_path)
+        expect(flash[:notice]).to eq('The article you requested was not found, it may have been deleted')
+      end
+    end
+  end
 end
