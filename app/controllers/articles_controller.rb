@@ -1,3 +1,20 @@
+# ArticlesController
+#
+# The ArticlesController is responsible for handling all the CRUD web requests
+# related to Articles in the application.
+#
+# Actions:
+#   - index: Displays a list of all articles.
+#   - show: Shows a single article, identified by its ID.
+#   - new: Returns a form for creating a new article.
+#   - create: Handles the creation of a new article.
+#   - edit: Returns a form for editing an existing article.
+#   - update: Handles the updating of an existing article.
+#   - destroy: Handles the deletion of an existing article.
+#
+# Callbacks:
+#   - set_article (before_action): A private method used as a callback to set
+#     the @article instance variable before actions like show, edit, update, and destroy.
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
 
@@ -12,7 +29,8 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/:id
-  # Show action to render a specific article
+  # Show action to render a specific article. Ruby implicitly understands that it needs to render view
+  # corresponding to action, hence why it is empty. (DRY Principle)
   def show
   end
 
