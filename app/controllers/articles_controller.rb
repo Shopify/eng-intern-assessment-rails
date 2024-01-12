@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
     # Display(Read) indivdual articles
     def show
         @article = Article.find(params[:id])
-
+        puts "Reading article with ID: #{params[:id]}"
     end
 
     def new
@@ -18,8 +18,18 @@ class ArticlesController < ApplicationController
     # Create a new article
     def create
         @article = Article.new(article_params)
-        @article.save
-        redirect_to @article
+        if (@article.save)
+            puts "Creating new article"
+            redirect_to @article
+        else
+            if @article.errors.any?
+                puts "Article save failed with errors:"
+                @article.errors.full_messages.each do |msg|
+                    puts " - #{msg}"
+                end
+            end
+            render 'new'
+        end
     end
 
     def edit 
@@ -29,17 +39,25 @@ class ArticlesController < ApplicationController
     # Update exisiting articles
     def update 
         @article = Article.find(params[:id])
-        @article.update(article_params)
-        redirect_to @article
+        if (@article.update(article_params))
+            puts "Updating article with ID: #{params[:id]}"
+            redirect_to @article
+        else
+            if @article.errors.any?
+                puts "Article edit failed with errors:"
+                @article.errors.full_messages.each do |msg|
+                    puts " - #{msg}"
+                end
+            end
+            render 'edit'
+        end
     end
 
     # Delete articles
     def destroy 
         @article = Article.find(params[:id])
         puts "Deleting article with ID: #{params[:id]}"
-
         @article.destroy
-
         redirect_to articles_path
     end
 

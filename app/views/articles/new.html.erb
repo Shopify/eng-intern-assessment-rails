@@ -1,6 +1,10 @@
 <h3> Create Article </h3>
-<%= form_for :article, url: articles_path do |f| %>
-    
+<%= form_for @article, url: articles_path do |f| %>
+    <% if @article.errors.any? %>
+        <% @article.errors.full_messages.each do |msg| %>
+            <div class="alert alert-danger"><%= msg %></div>
+        <% end %>
+    <% end %>
 <p>
     <%= f.label :title %><br>
     <%= f.text_field(:title, {:class => 'form-control'}) %>

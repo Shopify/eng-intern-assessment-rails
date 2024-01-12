@@ -1,6 +1,10 @@
 <h1> Edit Article </h1>
-<%= form_for :article, url: article_path(@article), method: :patch do |f| %>
-    
+<%= form_for @article, url: article_path(@article), method: :patch do |f| %>
+    <% if @article.errors.any? %>
+        <% @article.errors.full_messages.each do |msg| %>
+            <div class="alert alert-danger"><%= msg %></div>
+        <% end %>
+    <% end %>
 <p>
     <%= f.label :title %><br>
     <%= f.text_field(:title, {:class => 'form-control'}) %>
