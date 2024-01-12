@@ -80,5 +80,12 @@ RSpec.describe Article, type: :model do
       results = Article.search('sample')
       expect(results).to include(article)
     end
+
+    it 'orders results by title alphabetically' do
+      article1 = Article.create(title: 'B article', content: 'a')
+      article2 = Article.create(title: 'A article', content: 'b')
+      results = Article.search('article')
+      expect(results).to eq([article2, article1])
+    end
   end
 end
