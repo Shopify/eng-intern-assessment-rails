@@ -15,13 +15,13 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # GET /article/:id
+  # GET /articles/:id
   # Display details about a specific article
   def show
     @article = Article.find(params[:id])
   end
 
-  # GET /article/new
+  # GET /articles/new
   # Display a page to create new article
   def new
     @article = Article.new
