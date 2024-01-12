@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  # GET /articles/:id
+  # GET /articles/:id/edit
   # Display a page to edit an existing article
   def edit
     @article = Article.find(params[:id])
