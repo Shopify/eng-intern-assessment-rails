@@ -15,7 +15,7 @@
     <% articles.each do |article| %>
         <li>
             <%= link_to article.title, article %>
-            <%= "by #{article.author} on #{article.date}"%>
+            <%= "by #{article.author} #{article.date}"%>
         </h1>      
     <% end %>
 </ul>
