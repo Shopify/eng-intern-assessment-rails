@@ -1,7 +1,8 @@
-import $ from "jquery";
-window.jQuery = $;
-window.$ = $;
+//= require jquery
 //= require rails-ujs
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+
+// Import Turbo and Stimulus controllers
 import "@hotwired/turbo-rails";
 import "controllers";
+
+// = require_tree .

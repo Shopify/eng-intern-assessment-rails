@@ -1,5 +1,5 @@
 <h1> Edit Article </h1>
-<%= form_for @article, url: article_path(@article), method: :patch do |f| %>
+<%= form_for @article, local: true, data: { turbo: false }, url: article_path(@article), method: :patch do |f| %>
     <% if @article.errors.any? %>
         <% @article.errors.full_messages.each do |msg| %>
             <div class="alert alert-danger"><%= msg %></div>
