@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
     end
 
     def new
-    
+        @article = Article.new
     end
 
     # Create a new article
@@ -22,7 +22,27 @@ class ArticlesController < ApplicationController
         redirect_to @article
     end
 
-    
+    def edit 
+        @article = Article.find(params[:id])
+    end
+
+    # Update exisiting articles
+    def update 
+        @article = Article.find(params[:id])
+        @article.update(article_params)
+        redirect_to @article
+    end
+
+    # Delete articles
+    def destroy 
+        @article = Article.find(params[:id])
+        puts "Deleting article with ID: #{params[:id]}"
+
+        @article.destroy
+
+        redirect_to articles_path
+    end
+
     private
 
     def article_params

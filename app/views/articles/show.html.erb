@@ -1,5 +1,10 @@
 <h2> <%= @article.title %> </h2>
 <h3> <%= @article.author %> </h3>
-<h3> <%= @article.date %> </h3>
+<h3><%= @article.date.strftime("%B %e, %Y") %></h3>
 <p> <%= @article.content %></p>
+<hr>
+<%= link_to "Edit", edit_article_path(@article) %>
+<%= link_to "Delete", article_path(@article), method: :delete %>
+
+
 

@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <div >
+      <ul >
+        <li ><%= link_to "Home", home_path %></li>
+      </ul>
+      <ul >
+        <li ><%= link_to "Create Article", new_article_path %></li>
+      </ul>
+    </div>
     <%= yield %>
   </body>
 </html>
