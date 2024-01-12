@@ -1,5 +1,12 @@
 <h1><%= @article.title %></h1>
 <h2>Date of creation:<%= @article.date %></h2>
 <h2>Author: <%= @article.author %></h2>
+
 <br>
 <p><%= @article.content %></p>
+
+<div>
+    <%= button_to "Delete", article_path(@article), method: :delete, data: {
+        turbo_confirm: "Are you sure?"
+    } %>
+</div>
