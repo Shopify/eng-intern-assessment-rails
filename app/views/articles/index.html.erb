@@ -1,17 +1,24 @@
 <h1>Articles</h1>
 
 <p>
+<!-- Information about collections of articles for /articles -->
 <% if @query_value.present? %>
 Searching for articles that contains "<%= @query_value %>". <%= @articles.size %> article(s) found 
 </p>
-<% else %>
+<% else %> <!-- For /articles?query=x -->
 <%= @articles.size %> article(s) in the database
 <% end %>
 
 <%= form_with(url: articles_path, method: "get") do |form| %>
-    <%= form.label :query %>
+    <%= form.label :query do %>
+        Search:
+    <% end %>
     <%= form.text_field :query %>
 <% end %>
+
+<br>
+
+<%= button_to "New article", new_article_path, method: :get %>
 
 <ul>
     <% @articles.each do |article| %>

@@ -6,6 +6,7 @@
 <p><%= @article.content %></p>
 
 <div>
+    <%= button_to "Edit", edit_article_path(@article), method: :get %>
     <%= button_to "Delete", article_path(@article), method: :delete, data: {
         turbo_confirm: "Are you sure?"
     } %>

@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
-  # GET /articles?query OR /articles
-  # Displays page that contains a collection of articles based on user input
+  # GET /articles OR /articles?query
+  # Displays a page that contains a collection of articles based on user input
   #
   # Details:
   #   - View all articles: GET /articles
@@ -72,6 +72,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Allowed params when editing or creating an article
   private
   def article_params
     params.require(:article).permit(:title, :content, :author)
