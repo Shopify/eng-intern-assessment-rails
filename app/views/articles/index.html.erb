@@ -9,12 +9,13 @@
     </p>
 <% end %>
 
-<% if @showing_all %>
+<% if @showing_all_articles %>
     <p> Showing all articles </p>
 <% end %>
 
-<% if @showing_all == FALSE %>
+<% if @showing_all_articles == FALSE %>
     <p> Showing articles from query "<%= params[:query] %>" </p>
+    <%= link_to 'Clear search', articles_path %>
 <% end %>
 
 <table>
