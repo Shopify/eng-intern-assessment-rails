@@ -15,6 +15,7 @@
 # Callbacks:
 #   - set_article (before_action): A private method used as a callback to set
 #     the @article instance variable before actions like show, edit, update, and destroy.
+#
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
 
@@ -51,7 +52,6 @@ class ArticlesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
 
   # GET /articles/:id/edit
   # Edit action to render the edit form for a specific article

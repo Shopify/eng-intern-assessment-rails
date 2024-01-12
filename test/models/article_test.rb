@@ -1,5 +1,11 @@
 require 'test_helper'
 
+# ArticleTest
+#
+# The ArticleTest class is responsible for testing that the model behaves
+# as expected under various conditions including validation, search functionality,
+# and CRUD operations.
+#
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
     assert_equal 0, Article.count
