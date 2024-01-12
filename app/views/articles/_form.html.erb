@@ -1,0 +1,38 @@
+<%= form_with model: article, class: "article-form-container article-form", id: "your_unique_id" do |form| %>
+  <div class="form-group">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-input" %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+      <div class="error-message"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :author, class: "form-label" %>
+    <%= form.text_field :author, class: "form-input" %>
+    <% article.errors.full_messages_for(:author).each do |message| %>
+      <div class="error-message"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :date, class: "form-label" %>
+    <%= form.date_field :date, class: "form-input" %>
+    <% article.errors.full_messages_for(:date).each do |message| %>
+      <div class="error-message"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_area :content, class: "form-content-input" %>
+    <% article.errors.full_messages_for(:content).each do |message| %>
+      <div class="error-message"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Submit", class: "form-submit-button" %>
+  </div>
+<% end %>
+

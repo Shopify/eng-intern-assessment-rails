@@ -1,0 +1,70 @@
+/* app/assets/stylesheets/articles.css */
+
+.article-form {
+    max-width: 400px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .form-content-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none; 
+    height: 200px; 
+  }
+  .error-message {
+    color: #ff0000;
+    margin-top: 5px;
+  }
+  
+  .form-submit-button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block; /* Ensures the button takes up the full width */
+    width: 100%; /* Makes the button span the full width of its container */
+    box-sizing: border-box; /* Includes padding in the button's width */
+  }
+  
+  .form-submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Remove anchor underlines and prevent it from being clickable across the horizontal screen */
+  .back-to-articles-link {
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    width: max-content; /* Keeps the button width as long as its content */
+    margin-top: 10px; /* Adds some space above the button */
+  }
+  
+  .back-to-articles-link:hover {
+    text-decoration: none;
+  }
+  
