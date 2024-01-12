@@ -52,8 +52,8 @@ RSpec.describe ArticlesController, type: :controller do
     end
 
     context 'when no query is provided' do
-      let!(:sports_articles) {create_articles(20, title: "sports article")}
-      let!(:business_articles) {create_articles(20, title: "business article")}
+      let!(:sports_articles) {create_articles(20, title: 'sports article', content: 'the leafs win')}
+      let!(:business_articles) {create_articles(20, title: 'business article', content: 'bitcoin is up')}
 
       it 'sets @showing_all_articles to true' do
         get :index
@@ -91,8 +91,8 @@ RSpec.describe ArticlesController, type: :controller do
     end
 
     context 'when query is provided' do
-      let!(:sports_articles) {create_articles(20, title: "sports article")}
-      let!(:business_articles) {create_articles(20, title: "business article")}
+      let!(:sports_articles) {create_articles(20, title: 'sports article', content: 'the leafs win')}
+      let!(:business_articles) {create_articles(20, title: 'business article', content: 'bitcoin is up')}
 
       before do
         get :index, params: { query: 'sports' }
@@ -125,6 +125,13 @@ RSpec.describe ArticlesController, type: :controller do
 
         expect(assigns(:more_results)).to eq(false)
         expect(assigns(:articles)).to eq(sports_articles)
+      end
+
+      it 'supports querying from content' do
+        get :index, params: { query: 'bitcoin', page: 0 }
+        expect(assigns(:num_articles)).to eq(20)
+        expect(assigns(:more_results)).to eq(false)
+        expect(assigns(:articles)).to eq(business_articles)
       end
     end
   end
@@ -219,7 +226,7 @@ RSpec.describe ArticlesController, type: :controller do
       end
     end
 
-    context 'when the article does not exist' do
+    context 'when the article ID does not exist' do
       it 'redirects to the articles index and displays an error message' do
         invalid_article_id = -1
         get :show, params: { id: invalid_article_id } 
