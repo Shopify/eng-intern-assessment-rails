@@ -11,7 +11,22 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'creates a new article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    unless article.valid?
+      puts article.errors.full_messages
+    end
     assert article.valid?
+  end
+
+  test 'is invalid without a title' do
+    article = Article.create(content: 'Sample content')
+    assert_not article.valid?
+    assert_includes article.errors[:title], "can't be blank"
+  end
+
+  test 'is invalid without content' do
+    article = Article.create(title: 'Sample Title')
+    assert_not article.valid?
+    assert_includes article.errors[:content], "can't be blank"
   end
 
   test 'displays the article content accurately' do
@@ -56,6 +71,32 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Lorem ipsum')
     assert_includes results, article1
     assert_includes results, article2
+  end
+
+  test 'search with empty string returns all articles' do
+    Article.create(title: 'First Article', content: 'Content of the first article')
+    Article.create(title: 'Second Article', content: 'Content of the second article')
+    results = Article.search('')
+    assert_equal 2, results.size
+  end
+
+  test 'search with a single character' do
+    Article.create(title: 'First Article', content: 'Content of the first article')
+    Article.create(title: 'Second Article', content: 'Content of the second article')
+    results = Article.search('f')
+    assert_not_empty results
+  end
+
+  test 'search with special characters' do
+    Article.create(title: 'Special & Article', content: 'Content with special & character')
+    results = Article.search('&')
+    assert_not_empty results
+  end
+
+  test 'search with no matching string returns empty' do
+    Article.create(title: 'First Article', content: 'Content of the first article')
+    results = Article.search('xyz')
+    assert_empty results
   end
 
   test 'displays relevant articles in search results' do
