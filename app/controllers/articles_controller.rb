@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
   
     if params[:query].present?
       @articles = Article.search(params[:query]).limit(per_page).offset(@page * per_page)
+      @num_results_from_query = @articles.count
     else
       @articles = Article.limit(per_page).offset(@page * per_page)
     end

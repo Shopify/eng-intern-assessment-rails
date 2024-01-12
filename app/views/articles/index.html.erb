@@ -10,6 +10,9 @@
     </p>
 <% end %>
 
+<% if @num_results_from_query.present? %>
+    <p> Found <%= @num_results_from_query %> results from query "<%= params[:query] %>" </p>
+<% end %>
 
 <table>
     <thead>
