@@ -1,1 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+first:
+  author: John Doe
+  title: "Book1"
+  content: Lorem ipsum dolor sit amet, consectetur
+
+second:
+  author: Jane Doe
+  title: "Book2"
+  content: Excepteur sint occaecat cupidatat non proident
+
+third:
+  author: Anonymous
+  title: "Book3"
+  content: Excepteur sint
+
+fourth:
+  author: Anonymous
+  title: "BookToBeDeleted"
+  content: Hello World
