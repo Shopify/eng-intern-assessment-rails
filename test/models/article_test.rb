@@ -18,6 +18,11 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
+  test 'Newly created article contains a date' do
+    article = Article.create(title: "New article", content: "Lorem ipsum")
+    assert Date.today, article.date
+  end
+
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content

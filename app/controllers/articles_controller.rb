@@ -1,21 +1,40 @@
 class ArticlesController < ApplicationController
+
+  # GET /articles?query OR /articles
+  # Displays page that contains a collection of articles based on user input
+  #
+  # Details:
+  #   - View all articles: GET /articles
+  #   - Search specific articles: GET /articles?query=search_term
   def index
-    if params[:query]
+    if params[:query] # Contains search
       @query_value = params[:query]
       @articles = Article.search(params[:query])
-    else
+    else # No search
       @articles = Article.all
     end
   end
 
+  # GET /article/:id
+  # Display details about a specific article
   def show
     @article = Article.find(params[:id])
   end
 
+  # GET /article/new
+  # Display a page to create new article
   def new
     @article = Article.new
   end
 
+  # POST /articles
+  # Params: article: {
+  # title: string,
+  # content: string,
+  # author: string
+  # }
+  # This method add a new article to the database.
+  # NOTE: Current date will be added to the article
   def create
     @article = Article.new(article_params)
 
@@ -26,6 +45,8 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # DELETE /articles/:id
+  # This method destroys an existing article from the database
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
@@ -33,10 +54,14 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  # GET /articles/:id
+  # Display a page to edit an existing article
   def edit
     @article = Article.find(params[:id])
   end
 
+  # PATCH /articles/:id
+  # This method edits an existing article from the database
   def update
     @article = Article.find(params[:id])
 
