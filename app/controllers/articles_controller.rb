@@ -1,7 +1,6 @@
 # ArticlesController
 #
-# The ArticlesController is responsible for handling all the CRUD web requests
-# related to Articles in the application.
+# Handles all CRUD web requests related to Articles.
 #
 # Actions:
 #   - index: Displays a list of all articles.
