@@ -50,6 +50,10 @@ class ArticlesController < ApplicationController
         if params[:article][:date].blank?
             params[:article][:date] = Date.today
         end
+
+        if params[:article][:author].blank?
+            params[:article][:author] = "unknown"
+        end
     
         params.require(:article).permit(:title, :content, :author, :date)
     end
