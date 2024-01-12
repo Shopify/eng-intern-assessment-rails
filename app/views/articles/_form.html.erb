@@ -1,0 +1,35 @@
+<%= form_with model: @article do |form| %>
+    <div>
+        <%= form.label :title %>
+        <% @article.errors.full_messages_for(:title).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+        <br>
+        <%= form.text_field :title %>
+    </div>
+
+    <div>
+        <br>
+        <%= form.label :content %>
+        <% @article.errors.full_messages_for(:content).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+        <br>
+        <%= form.text_field :content %>
+    </div>
+
+    <div>
+        <br>
+        <%= form.label :author do %> Author<% end %>
+        <% @article.errors.full_messages_for(:author).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+        <br>
+        <%= form.text_field :author %>
+    </div>
+
+    <div>
+        <br>
+        <%= form.submit %>
+    </div>
+<% end %>
