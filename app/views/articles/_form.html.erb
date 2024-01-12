@@ -1,0 +1,37 @@
+<%= form_with(model: article, data: { turbo: false }) do |form| %>
+    <% if article.errors.any? %>
+        <div id="error_explanation">
+            <h3><%= pluralize(article.errors.count, "error") %> prvented this article from being saved: </h3>
+
+            <ol>
+            <% article.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+            </ol>
+        </div>
+    <% end %>
+
+    <div>
+        <%= form.label :title %>
+        <%= form.text_field :title  %>
+    </div>
+
+    <div>
+        <%= form.label :content %>
+        <%= form.text_area :content %>
+    </div>
+
+    <div>
+        <%= form.label :author %>
+        <%= form.text_field :author %>
+    </div>
+
+    <div>
+        <%= form.label :date %>
+        <%= form.date_field :date %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
