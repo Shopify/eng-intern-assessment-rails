@@ -1,29 +1,5 @@
 <h1>Create Article</h1>
 
-<%= form_with(model: @article) do |form| %>
-    <div>
-        <%= form.label :title %>
-        <%= form.text_field :title, id: :article_title %>
-    </div>
-
-    <div>
-        <%= form.label :content %>
-        <%= form.text_area :content, id: :article_content %>
-    </div>
-
-    <div>
-        <%= form.label :author %>
-        <%= form.text_field :author, id: :article_author %>
-    </div>
-
-    <div>
-        <%= form.label :date %>
-        <%= form.date_select :date, id: :article_date %>
-    </div>
-
-    <div>
-        <%= form.submit %>
-    </div>
-<% end %>
+<%= render 'layouts/article_form' %>
 
 <%= link_to 'Back to articles', articles_path %>

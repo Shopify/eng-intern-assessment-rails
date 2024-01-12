@@ -1,27 +1,5 @@
 <h1>Edit Article</h1>
 
-<%= form_for @article do |f| %>
-    <div>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-    </div>
+<%= render 'layouts/article_form' %>
 
-    <div>
-        <%= f.label :content %>
-        <%= f.text_area :content %>
-    </div>
-
-    <div>
-        <%= f.label :author %>
-        <%= f.text_field :author %>
-    </div>
-
-    <div>
-        <%= f.label :date %>
-        <%= f.date_field :date %>
-    </div>
-
-    <div>
-        <%= f.submit %>
-    </div>
-<% end %>
+<%= link_to 'Back to articles', articles_path %>
