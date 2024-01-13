@@ -1,55 +1,73 @@
-# Technical Instructions
-1. Fork this repo to your local Github account.
-2. Create a new branch to complete all your work in.
-3. Test your work using the provided tests
-4. Create a Pull Request against the Shopify Main branch when you're done and all tests are passing
+# Encyclopedia - Shopify-Summer-2024 Technical Challenge
 
-# Project Overview
-The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. Be sure to implement basic CRUD actions on articles. Your task is to implement these features as well as write the code that makes the tests pass.
+## Deployment link:
+https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/
 
-# Project Goals
-The main goal of this internship project is to implement the functionality required to make the existing tests pass. The provided tests cover various aspects of the application, including creating and viewing articles, editing and updating articles, deleting articles, and searching for articles. Along with completing the tests, be sure to implement all basic CRUD actions on your articles on a controller and create views to see your work in the app.
+This is my submission for Shopfiy's Summer Internship Technical Challenge. This Rails application is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. I have also created a user interface and hosted this app on heroku.
 
-## Your specific goals for this project are as follows:
+## Contents
+1. [Usage](#usage)
+2. [Local Installation](#local-installation)
+3. [Run Test Cases](#run-test-cases)
+4. [Additional features](#additional-features)
+5. [Reflection](#reflection)
 
-1. Review Existing Tests: Start by reviewing the existing tests provided in the article_test.rb file located in the test/models directory. Understand the requirements and expectations of each test.
+## Usage
+To easily test the app, please visit: https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/
 
-2. Implement Functionality: Write the code necessary to make the existing tests pass. This involves implementing the required actions and logic in the models, controllers, and views to fulfill the specified requirements. Also be sure to implement basic CRUD actions and demonstrate proper MVC principals.
+Searching for articles is done by checking for similar search key in all article titles, authors, and content. Appropriate articles are then returned.
 
-3. Ensure Code Quality: Write clean, well-structured, and maintainable code. Follow best practices and adhere to the Ruby on Rails conventions. Pay attention to code readability, modularity, and performance.
+CRUD actions for articles in the encyclopedia: 
+| Action | Description | 
+|----------|----------|
+| Create | Accepts title (string), content (text), author (string), date (Date) parameters to create a new article. Title and content fields are mandatory, and error messages are shown if they are not included. Author uses 'unkown' as default input and date uses today's date as default input. |
+| Read | Returns relevant articles based on search key, list all, or by id. | 
+| Update | Accepts title (string), content (text), author (string), date (Date) parameters to update exisiting an article found by id. Title and content fields are mandatory, and error messages are shown if they are not included. Author uses 'unkown' as default input and date uses today's date as default input. | 
+| Delete | Deletes specified article by id | 
 
-4. Test Your Code: After implementing the functionality, run the tests to ensure that they pass successfully. Fix any failures or errors that occur and retest until all tests pass.
+All of these actions are implemented as methods in the articles controller (`app/controllers/articles_controller.rb`). Each CRUD operation has a corresponding UI component that performs the action.
 
-5. Code Documentation: Document your code by adding comments and explanatory notes where necessary. This will help other developers understand your implementation and make future maintenance easier.
+## Local Installation
+### Prerequisites:
+- Require Ruby 2.7.6
+- Require Ruby 7.1.2
+- Require Bundler 2.1.4
+- clone [eng-intern-assessment-rails](https://github.com/adarsh-swe/eng-intern-assessment-rails)
 
-6. Version Control: Use Git for version control. Commit your changes regularly and push them to a branch in your forked repository.
+### Generate Dev build
+1. run `cd eng-intern-assessment-rails/` to enter the project directory
+2. run `bundle install` to install required gems
+3. run `rails db:migrate` to intialize the database
+4. run `rails db:seed` to generate seed values for articles that I have included
+5. run `rails server` to create a develoepr build of the project
+6. Access the app on http://localhost:3000/
+7. Access RDoc documenation by opening the `./doc/index.html` file in your browser
 
-7. Create a Pull Request: Once you have completed the project goals, create a pull request to merge your changes into the main repository. Provide a clear description of the changes made and any relevant information for the code review.
+## Run Test Cases
+With the same prerequisites for local installation as described [above](#local-installation):
+1. run `rails test` in the root directory of the repo to run provided test cases
 
-## Getting Started
-To get started with this project, follow these steps:
+Validated results from test cases:
 
-1. Clone the repository to your local development environment.
+<img width="500" alt="image" src="https://github.com/adarsh-swe/eng-intern-assessment-rails/assets/59131301/1ba0c32f-2e5f-4310-bc43-66b790f0af5a">
 
-2. Install the necessary dependencies by running bundle install in the project directory.
+## Additional features
+1. Created a clean UI and hosted it (https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/)
+   * added form validation
+   * used bootstrap for styling
+3. Created RDoc documentation using RDoc specific comments in my code (open the `./doc/index.html` file in your browser)
+4. Added rails logging using Rails.logger in my controllers
+5. Included seed data to facilitate easier testing
 
-3. Familiarize yourself with the existing codebase, including the models, controllers, and views.
+## Reflection
+### Biggest Challenges
+1. This was my first time working with ruby on rails and there was a learning curve that had to be overcome
+   * setting up the dev environment was very complicated
+2. Adding the search functionality was tricky, and since I was not familiar with rails built in methods, I had to research a bit to develop a solution
+3. Hosting ruby on rails apps on Heroku requires a postgreSQL database in production but we were given sqlite3.In order to host the website, I had to switch from sqlite3 to postgreSQL since sqlite3 is not compatible with heroku. As such, I have created a seperate `prod` branch with these changes so that it does not interfere with the dev environment of whoever is testing the local version of this app. The local version given in this branch has the original sqllite3 database while the production build is from the new branch and uses prostgreSQL. As a result, I was able to host the app while maintaining the origninal environment for whoever tests the app locally.
 
-4. Review the existing tests in the article_test.rb file and understand their purpose and functionality.
+### Key takeaways
+1. Persistence - I faced many blockers with the project, mostly related to environment setup. Despite some frustrating moments, this app taught me to keep going.
+2. Ruby on Rails - Having never worked with ruby on rails before, this project gave me a reason to learn and use it. I noticed many similarities between rails and node.
 
-5. Run the tests locally using the rspec command to ensure they are passing.
 
-6. Start working on the goals outlined above, making improvements to the existing tests and adding new tests as needed.
-
-7. Commit your changes regularly and push them to a branch in your forked repository.
-
-8. Once you have completed the project goals, create a pull request to merge your changes into the main repository.
-
-## Resources
-Here are some resources that may be helpful during your internship project:
-
-- [Ruby on Rails Guides](https://guides.rubyonrails.org/) - Comprehensive guides on Ruby on Rails, covering various aspects of web application development.
-
-- [Ruby Style Guide](https://rubystyle.guide/) - A community-driven Ruby coding style guide to ensure consistent and readable code.
-
-- [Git Documentation](https://git-scm.com/doc) - Official documentation for Git, the version control system used in this project.

@@ -1,0 +1,13 @@
+<h3> <%= @article.title %> </h3>
+<div class="d-flex ">
+    <h6> <%= @article.author %> </h6>
+    <pre> </pre>
+    <h6><%= @article.date.strftime("%B %e, %Y") %></h6>
+</div>
+<p> <%= @article.content %></p>
+<hr>
+<%= link_to "Edit", edit_article_path(@article), class: 'btn btn-dark' %>
+<%= link_to "Delete", article_path(@article), method: :delete, class: 'btn btn-danger' %>
+
+
+
