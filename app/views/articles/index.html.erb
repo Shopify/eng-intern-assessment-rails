@@ -1,6 +1,8 @@
 <div class="content-container">
-    <h1>Latest Tech Articles</h1>
+    <%= render 'search' %>
 
+    <h1>Latest Tech Articles</h1>
+    
     <%= link_to 'Create', new_article_path, class: 'button' %>
 
     <% @articles.each do |article| %>
@@ -9,6 +11,8 @@
             <p><%= article.content %></p>
             <p><%= article.author %></p>
             <p><%= article.date %></p>
+            <%= link_to 'Edit', edit_article_path(article), class: 'button' %>
+            <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %>
         </div>
     <% end %>
 </div>
