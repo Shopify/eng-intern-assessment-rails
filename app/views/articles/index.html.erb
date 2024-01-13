@@ -1,6 +1,7 @@
 <%= "Welcome to the encyclopedia" %>
 <ul>
 <% @articles.each do |article| %>
-    <li><%= article.title %></li>
+    <li><%= link_to article.title, article_path(article) %></li>
 <% end %>
 </ul>
+<%= link_to "Add a new article", new_article_path %>
