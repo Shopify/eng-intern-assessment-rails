@@ -1,8 +1,9 @@
 # Encyclopedia - Shopify-Summer-2024 Technical Challenge
 
-This is my submission for Shopfiy's Summer Internship Technical Challenge. This Rails application is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. I have also created a user interface and hosted this app on heroku, which can be found here: https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/
+## Deployment link:
+https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/
 
-In order to host the website, I had to switch from sqlite3 to postgreSQL since sqlite3 is not compatible with heroku. As such, I have created a seperate `prod` branch with these changes so that it does not interfere with the dev environment of whoever is testing the local version of this app. The local version given in this branch has the original sqllite3 database while the production build is from the new branch and uses prostgreSQL. As a result, I was able to host the app while maintaining the origninal environment for whoever tests the app locally.
+This is my submission for Shopfiy's Summer Internship Technical Challenge. This Rails application is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. I have also created a user interface and hosted this app on heroku.
 
 ## Contents
 1. [Usage](#usage)
@@ -62,7 +63,7 @@ Validated results from test cases:
 1. This was my first time working with ruby on rails and there was a learning curve that had to be overcome
    * setting up the dev environment was very complicated
 2. Adding the search functionality was tricky, and since I was not familiar with rails built in methods, I had to research a bit to develop a solution
-3. Hosting ruby on rails apps on Heroku requires a postgreSQL database in production but we were given sqlite3. Find my workaround [here](#encyclopedia---shopify-summer-2024-technical-challenge)
+3. Hosting ruby on rails apps on Heroku requires a postgreSQL database in production but we were given sqlite3.In order to host the website, I had to switch from sqlite3 to postgreSQL since sqlite3 is not compatible with heroku. As such, I have created a seperate `prod` branch with these changes so that it does not interfere with the dev environment of whoever is testing the local version of this app. The local version given in this branch has the original sqllite3 database while the production build is from the new branch and uses prostgreSQL. As a result, I was able to host the app while maintaining the origninal environment for whoever tests the app locally.
 
 ### Key takeaways
 1. Persistence - I faced many blockers with the project, mostly related to environment setup. Despite some frustrating moments, this app taught me to keep going.
