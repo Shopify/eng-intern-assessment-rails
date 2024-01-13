@@ -1,0 +1,12 @@
+<h1 class="detailed-article-title header"><%= article.title %></h1>
+<div class="detailed-article-metadata">
+  <span class="detailed-article-author"><%= article.author %></span> |
+  <span class="detailed-article-date"><%= article.date %></span>
+</div>
+<div class="detailed-article-content">
+  <%= simple_format(article.content) %>
+</div>
+<div class="detailed-article-actions">
+  <%= link_to "Edit", edit_article_path(article), method: :get, class: "btn-edit" %>
+  <%= button_to "Delete", article, method: :delete, class: "btn-delete" %>
+</div>

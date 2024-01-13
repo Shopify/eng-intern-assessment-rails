@@ -11,6 +11,24 @@
   </head>
 
   <body>
+    <%= render 'shared/navbar' %>
+    <% if notice.present? %>
+      <div class="notice-container">
+        <p class="notice"><%= notice %></p>
+      </div>
+
+      <%# Remove notice after 3 seconds %>
+      <script type="text/javascript">
+        setTimeout(function() {
+          var container = document.querySelector('.notice-container');
+          if (container) {
+            container.style.opacity = '0';
+            container.style.display = 'none';
+          }
+        }, 3000);
+      </script>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

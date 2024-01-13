@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rate Limit Exceeded</title>
+</head>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.rate-limit-exceeded {
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+}
+
+h1 {
+  color: #e74c3c;
+}
+
+p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+</style>
+<body>
+  <div class="rate-limit-exceeded">
+    <h1>Rate Limit Exceeded</h1>
+    <p>This website is protected by Rack-Attack! You can only perform 20 GET requests per minute. Please come back later!</p>
+  </div>
+</body>
+</html>
