@@ -2,6 +2,12 @@
 
 This is my submission for Shopfiy's Summer Internship Technical Challenge. This Rails application is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. I have also created a user interface that can be used locally to test features.
 
+
+For easy testing and demo, I wanted to host this app on heroku but found that it does not support sqlite3 databases, which is being used in this app. If I wanted to host it I would have to switch the database to postgreSQL which is possible but requires additional local setup. To avoid environment setup trouble for whoever tests this repo, I have not proceeded with this. The procfile that could be used to host the app after migrating to postgreSQL is included in the root directory.
+
+https://github.com/adarsh-swe/eng-intern-assessment-rails/assets/59131301/1f8c5f56-7762-4bbd-b6fe-c1dbefd3f979
+
+
 ## Usage
 
 Searching for articles is done by checking for similar search key in all article titles, authors, and content. Appropriate articles are then returned.
