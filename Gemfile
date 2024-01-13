@@ -67,7 +67,7 @@ group :test do
   gem "webdrivers"
 end
 
-# Gem for enhancing development experience with intelligent code suggestions and autocompletion in Ruby. 
+# Gem for enhancing development experience with intellisense in Ruby. 
 # Must install Ruby Solargraph extension to work and run `yard gems` to generate documentation.
 group :development do
   gem 'solargraph'

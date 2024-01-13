@@ -1,0 +1,10 @@
+<h1>Articles</h1>
+
+<% @articles.each do |article| %>
+    <div class="card">
+        <h2><%= article.title %></h2>
+        <p><%= article.content %></p>
+        <p><%= article.author %></p>
+        <p><%= article.date %></p>
+    </div>
+<% end %>
