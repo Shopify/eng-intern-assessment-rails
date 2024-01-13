@@ -1,11 +1,8 @@
 # Encyclopedia - Shopify-Summer-2024 Technical Challenge
 
-This is my submission for Shopfiy's Summer Internship Technical Challenge. This Rails application is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. I have also created a user interface that can be used locally to test features.
+This is my submission for Shopfiy's Summer Internship Technical Challenge. This Rails application is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. I have also created a user interface and hosted this app on heroku, which can be found here: https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/
 
-
-For easy testing and demo, I hosted this app on heroku, and can be found here: https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/
-
-In order to host the website, I had to switch from sqlite3 to postgreSQL since sqlite3 is not compatible with heroku. As such, I have created a seperate prod branch with these changes so that it does not interfere with the dev environment of whoever is testing the local version of this app. The local version given in this branch has the original sqllite3 database while the production build is from the new branch and uses prostgreSQL. As a result, I was able to host the app while maintaining the origninal environment for whoever tests the app locally.
+In order to host the website, I had to switch from sqlite3 to postgreSQL since sqlite3 is not compatible with heroku. As such, I have created a seperate `prod` branch with these changes so that it does not interfere with the dev environment of whoever is testing the local version of this app. The local version given in this branch has the original sqllite3 database while the production build is from the new branch and uses prostgreSQL. As a result, I was able to host the app while maintaining the origninal environment for whoever tests the app locally.
 
 ## Contents
 1. [Usage](#usage)
@@ -56,7 +53,7 @@ Validated results from test cases:
 1. Created a clean UI and hosted it (https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/)
    * added form validation
    * used bootstrap for styling
-3. Created Rdoc documentation using rdoc specific comments in my code (open the `./doc/index.html` file in your browser)
+3. Created RDoc documentation using RDoc specific comments in my code (open the `./doc/index.html` file in your browser)
 4. Added rails logging using Rails.logger in my controllers
 5. Included seed data to facilitate easier testing
 
