@@ -35,12 +35,13 @@ All of these actions are implemented as methods in the articles controller (`app
 - clone [eng-intern-assessment-rails](https://github.com/adarsh-swe/eng-intern-assessment-rails)
 
 ### Generate Dev build
-1. run `bundle install` to install required gems
-2. run `rails db:migrate` to intialize the database
-3. run `rails db:seed` to generate seed values for articles that I have included
-4. run `rails server` to create a develoepr build of the project
-5. Access the app on http://localhost:3000/
-6. Access RDoc documenation by opening the `./doc/index.html` file in your browser
+1. run `cd eng-intern-assessment-rails/` to enter the project directory
+2. run `bundle install` to install required gems
+3. run `rails db:migrate` to intialize the database
+4. run `rails db:seed` to generate seed values for articles that I have included
+5. run `rails server` to create a develoepr build of the project
+6. Access the app on http://localhost:3000/
+7. Access RDoc documenation by opening the `./doc/index.html` file in your browser
 
 ## Run Test Cases
 With the same prerequisites for local installation as described [above](#local-installation):
