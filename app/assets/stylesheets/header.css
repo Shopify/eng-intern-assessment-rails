@@ -11,6 +11,13 @@
 
 .header__primary {
   padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__icon {
+  width: 10vh;
 }
 
 .header__primary-link {
