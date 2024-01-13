@@ -133,3 +133,16 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     @article1.reload
     assert_not_equal "", @article1.title
   end
+
+  test "should destroy article" do
+    assert_difference("Article.count", -1) do
+      delete article_url(@article1)
+    end
+  end
+
+  test "should not destroy non-existent article" do
+    assert_no_difference('Article.count') do
+      delete article_url(1000)
+    end
+  end
+end
