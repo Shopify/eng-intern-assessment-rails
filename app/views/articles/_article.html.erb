@@ -1,3 +1,4 @@
+<%= link_to article_path(article), class: "article-container-link" do %>
 <div id="<%= dom_id article %>" class="article-container">
   <h1 class="article-title"><%= article.title %></h1>
   <div class="article-metadata">
@@ -12,3 +13,4 @@
     <%= button_to "Delete", article, method: :delete, class: "btn-delete" %>
   </div>
 </div>
+<% end %>

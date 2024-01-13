@@ -46,6 +46,10 @@ body {
   font-family: 'Lobster', cursive;
 }
 
+.article-container-link {
+  text-decoration: none;
+}
+
 .search-form {
   display: flex;
   justify-content: center;
@@ -122,6 +126,10 @@ body {
   max-width: 740px;
   margin: 40px auto;
   line-height: 1.7;
+}
+
+.article-container:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .article-title {

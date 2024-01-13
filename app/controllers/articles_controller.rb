@@ -6,12 +6,18 @@ class ArticlesController < ApplicationController
     if params[:search]
       @articles = Article.search(params[:search]).order(date: :desc)
     else
-      @articles = Article.all.order(date: :desc)
+      @articles = Rails.cache.fetch("articles", expires_in: 10.minute) do
+        Article.all.order(date: :desc)
+      end
     end
   end
 
   # GET /articles/1 or /articles/1.json
   def show
+    puts "Article: #{params[:id]}"
+    @article = Rails.cache.fetch("article_id_#{params[:id]}", expires_in: 10.minutes) do
+      Article.find(params[:id])
+    end
   end
 
   # GET /articles/new
@@ -29,6 +35,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+        merge_add_article_with_cache(@article)
         format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
         format.json { render :show, status: :created, location: @article }
       else
@@ -42,6 +49,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
+        merge_update_article_with_cache(@article)
         format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
         format.json { render :show, status: :ok, location: @article }
       else
@@ -54,6 +62,7 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1 or /articles/1.json
   def destroy
     @article.destroy!
+    merge_delete_article_with_cache(@article)
 
     respond_to do |format|
       format.html { redirect_to articles_url, notice: "Article was successfully deleted." }
@@ -69,5 +78,38 @@ class ArticlesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:title, :content, :author, :date)
+    end
+
+    def merge_update_article_with_cache(article)
+      articles = Rails.cache.read("articles", expires_in: 10.minute) || []
+      articles = articles.map do |a|
+        if a.id == article.id
+          article
+        else
+          a
+        end
+      end
+      Rails.cache.write("articles", articles, expires_in: 10.minute)
+      Rails.cache.write(individual_article_cache_key(article.id), article, expires_in: 10.minute)
+    end
+
+    def merge_add_article_with_cache(article)
+      articles = Rails.cache.read("articles", expires_in: 10.minute) || []
+      articles = articles << article
+      Rails.cache.write("articles", articles, expires_in: 10.minute)
+      Rails.cache.write(individual_article_cache_key(article.id), article, expires_in: 10.minute)
+    end
+
+    def merge_delete_article_with_cache(article)
+      articles = Rails.cache.read("articles", expires_in: 10.minute) || []
+      articles = articles.delete_if do |a|
+        a.id == article.id
+      end
+      Rails.cache.write("articles", articles, expires_in: 10.minute)
+      Rails.cache.delete(individual_article_cache_key(article.id))
+    end
+
+    def individual_article_cache_key(id)
+      "article_id_#{id}"
     end
 end
