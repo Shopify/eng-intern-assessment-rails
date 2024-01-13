@@ -1,4 +1,7 @@
-### Features:
+## Demo:
+[Rails app demo.webm](https://github.com/anhminhtran235/eng-intern-assessment-rails/assets/54651212/cda71b07-298f-4212-bae2-6ae41956853e)
+
+## Features:
 
 ✔️ Support **CRUD Operations & Search functionality**
 
@@ -6,7 +9,7 @@
 
 ✔️ **Cache articles** to improve performance. Update cache when edit/delete an article
 
-### Environment setup
+## Environment setup
 
 ```
 bundle install
@@ -15,7 +18,7 @@ rails db:migrate RAILS_ENV=test
 rails s
 ```
 
-### Run tests
+## Run tests
 
 Make sure you've run db migration with `rails db:migrate RAILS_ENV=test`. Then run
 
