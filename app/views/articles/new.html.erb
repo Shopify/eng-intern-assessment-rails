@@ -1,9 +1,12 @@
-<h1>New article</h1>
+<h1 class="font-bold text-center p-4 text-3xl">Create new article</h1>
 
+<div class="border-black border-2 px-60 py-40">
 <%= render "form", article: @article %>
 
 <br>
 
 <div>
-  <%= link_to "Back to articles", articles_path %>
+  <%= link_to "Back to articles", articles_path, class: "border-2 border-black rounded-2xl text-center bg-blue-300 grid m-2 px-4" %>
+</div>
+
 </div>

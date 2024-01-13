@@ -1,18 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Articles</h1>
+<h1 class="text-3xl font-bold text-center p-4">Articles</h1>
 
-<div id="articles">
-  <%= form_tag(articles_path, method: "get", class: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search articles..." %>
-    <%= submit_tag "Search" %>
+<div id="articles" class="flex justify-center items-center mb-4">
+  <%= form_tag(articles_path, method: "get", class: "border-2 border-black rounded-lg") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search articles...", class: "" %>
+    <%= submit_tag "Search", class: 'rounded-lg bg-gray-200 border-2 boreder-black'  %>
   <% end %>
+</div>
+
+<%= link_to "Create new article", new_article_path, class: 'border-2 border-black rounded-2xl text-center bg-blue-300 p-2 gap-y-4 grid m-2'%>
 
 <%# If the article is present from search, then show, else render "No articles found.%>
   <% if @articles.present? %>
-    <% @articles.each do |article| %>
-      <%= render article %>
-      <p>
+    <% @articles.each do |article|%>
+      <%= render article%>
+      <p class='border-2 border-black rounded-2xl text-center bg-blue-300 p-1 m-2'>
         <%= link_to "Show this article", article %>
       </p>
     <% end %>
@@ -20,6 +23,4 @@
     <p>No articles found.</p>
   <% end %>
 
-</div>
 
-<%= link_to "New article", new_article_path %>

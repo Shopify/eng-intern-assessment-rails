@@ -1,7 +1,32 @@
 <%= form_with(model: article) do |form| %>
+
+  <div class="ont-semibold m-2">
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_area :title, class: "border-2 border-gray-200 rounded-lg" %>
+  </div>
+
+  <div class="font-semibold m-2">
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_area :content, class: "border-2 border-gray-200 rounded-lg" %>
+  </div>
+
+  <div class="font-semibold m-2">
+    <%= form.label :author, style: "display: block" %>
+    <%= form.text_field :author, class: "border-2 border-gray-200 rounded-lg" %>
+  </div>
+
+  <div class="font-semibold m-2">
+    <%= form.label :date, style: "display: block" %>
+    <%= form.datetime_field :date, class: "border-2 border-gray-200 rounded-lg p-2" %>
+  </div>
+
+    <div  class="flex border-2 border-black rounded-2xl text-center bg-blue-300 grid m-2 px-4" >
+    <%= form.submit %>
+  </div>
+
   <% if article.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+    <div class="text-red-400">
+      <h2 class="text-xl"><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
       <ul>
         <% article.errors.each do |error| %>
@@ -10,28 +35,4 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_area :title %>
-  </div>
-
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_field :author %>
-  </div>
-
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.datetime_field :date %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

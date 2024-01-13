@@ -1,10 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @article %>
-
 <div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
+  <%= link_to "Edit this article", edit_article_path(@article), class: "border-2 border-black rounded-2xl text-center bg-blue-300 grid m-2 px-4" %>
+  <%= link_to "Back to articles", articles_path, class: "border-2 border-black rounded-2xl text-center bg-blue-300 grid m-2 px-4" %>
 
-  <%= button_to "Destroy this article", @article, method: :delete %>
 </div>
+
+<%= render @article %>
+<%= button_to "Destroy this article", @article, method: :delete, class: "flex border-2 border-black rounded-2xl text-center bg-red-300 grid m-2 px-4"%>
