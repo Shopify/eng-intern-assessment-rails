@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    if params[:search]
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
 
   def show
@@ -34,6 +38,13 @@ class ArticlesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to root_path, status: :see_other
   end
 
   private
