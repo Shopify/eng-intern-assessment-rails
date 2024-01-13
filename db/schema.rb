@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_13_120906) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_13_122122) do
   create_table "articles", force: :cascade do |t|
-    t.string "name"
+    t.string "author"
     t.string "title"
     t.string "content"
     t.datetime "date", default: "2024-01-13 12:17:26"
