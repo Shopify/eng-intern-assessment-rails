@@ -16,7 +16,7 @@ class ArticlesTest < ApplicationSystemTestCase
 
     fill_in "Content", with: @article.content
     fill_in "Date", with: @article.date
-    fill_in "Name", with: @article.name
+    fill_in "Author", with: @article.author
     fill_in "Title", with: @article.title
     click_on "Create Article"
 
@@ -30,7 +30,7 @@ class ArticlesTest < ApplicationSystemTestCase
 
     fill_in "Content", with: @article.content
     fill_in "Date", with: @article.date
-    fill_in "Name", with: @article.name
+    fill_in "Author", with: @article.author
     fill_in "Title", with: @article.title
     click_on "Update Article"
 
