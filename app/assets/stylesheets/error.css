@@ -1,0 +1,8 @@
+.error__title {
+  color: var(--danger);
+  font-size: 3vh;
+}
+
+.error__description {
+  font-size: 1.75vh;
+}
