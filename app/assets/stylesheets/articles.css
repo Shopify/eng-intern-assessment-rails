@@ -1,3 +1,18 @@
+/* Entire site styles */
+.content-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+}
+
 /* Card styles */
 .card {
   border: 1px solid #ddd;
@@ -16,4 +31,79 @@
 .card p {
   margin-bottom: 10px;
   font-size: 16px;
+}
+
+/* Button styles */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Error text styles*/
+.error {
+  color: red;
+}
+
+/* Create/Edit form styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 250px 25px 250px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #333;
+  margin-left: 10px;
 }

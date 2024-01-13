@@ -1,0 +1,31 @@
+<%= form_with(model: @article, local: true, html: { class: 'content-container' }) do |form| %>
+    <h1>Create New Article</h1>
+
+    <div class="form-group">
+        <%= form.label :title, class: 'form-label' %>
+        <%= form.text_field :title, class: 'form-control' %>
+        <% if @article.errors[:title].any? %>
+            <div class="error"><%= @article.errors[:title].join(", ") %></div>
+        <% end %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :content, class: 'form-label' %>
+        <%= form.text_field :content, class: 'form-control' %>
+        <% if @article.errors[:content].any? %>
+            <div class="error"><%= @article.errors[:content].join(", ") %></div>
+        <% end %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :author, class: 'form-label' %>
+        <%= form.text_field :author, class: 'form-control' %>
+        <% if @article.errors[:author].any? %>
+            <div class="error"><%= @article.errors[:author].join(", ") %></div>
+        <% end %>
+    </div>
+
+    <div class="form-group">
+        <%= form.submit 'Submit', class: 'button' %>
+    </div>
+<% end %>
