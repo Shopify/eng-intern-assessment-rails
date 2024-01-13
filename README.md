@@ -1,4 +1,4 @@
-# Encyclopedia - Shopify-Summer-2024 Technical Challenge
+# Encyclopedia - Shopify Internship Challenge
 
 ## Deployment link:
 https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/
