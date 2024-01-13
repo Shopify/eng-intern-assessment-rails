@@ -22,7 +22,7 @@
 }
 
 .article-table__data-row {
-  height: 3.5vh;
+  height: 4.5vh;
 }
 
 .article-table__data-row:hover {
@@ -100,10 +100,13 @@
   padding: 0 0.2vh;
   height: 3vh;
   border-radius: 0.75vh;
+  font-size: 1.25vh;
+  margin-bottom: 0.5vh;
 }
 
 .article__delete {
   background: var(--danger);
+  margin-bottom: 0;
 }
 
 .article__edit-icon, .article__delete-icon {
@@ -130,4 +133,29 @@
   height: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.article__button, .article__submit {
+  padding: 0.4vh;
+  border-radius: 0.5vh;
+  margin-top: 1vh;
+  margin-right: 1vh;
+  background: black;
+  font-size: 1.5vh;
+  color: white;
+  cursor: pointer;
+}
+
+.article__button:hover {
+  color: white;
+}
+
+.article__submit {
+  background: var(--success);
+}
+
+.article__form input, .article__form textarea {
+  padding: 0.5vh;
+  border: 1px solid var(--grey-scale-2);
+  margin-bottom: 1vh;
 }
