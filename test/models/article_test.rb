@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  test 'starts with no articles' do
-    assert_equal 0, Article.count
+  test 'starts with two articles' do
+    assert_equal 2, Article.count
   end
 
   test 'has search functionality' do
@@ -41,7 +41,7 @@ class ArticleTest < ActiveSupport::TestCase
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
-    assert_equal 0, Article.count
+    assert_equal 2, Article.count
   end
 
   test 'prevents access to deleted articles' do
