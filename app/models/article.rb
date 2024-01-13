@@ -2,7 +2,7 @@ class Article < ApplicationRecord
   # article must have a title and content (assumed based on tests)
   validates :title, presence: true
   validates :content, presence: true
-  # article's date must be the valid type
+  # article date must be the valid type
   validate :validate_date
 
   # search article by text in title or content

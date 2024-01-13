@@ -29,7 +29,12 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'error when creating an article with invalid date type' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: 1234)
+    article = Article.create(
+      title: 'Sample Article',
+      content: 'Lorem ipsum dolor sit amet.',
+      author: 'John Doe',
+      date: 1234
+    )
     assert_not article.valid?
     assert_equal 1, article.errors.full_messages.size
     assert_includes article.errors.full_messages, "Date must be valid type"
@@ -42,7 +47,12 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'displays the article metadata correctly' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.current)
+    article = Article.create(
+      title: 'Sample Article',
+      content: 'Lorem ipsum dolor sit amet.',
+      author: 'John Doe',
+      date: Date.current
+    )
     assert_equal 'John Doe', article.author
     assert_equal Date.current, article.date
   end
@@ -58,7 +68,12 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'updates the article metadata' do
     # note: to avoid timezone issues when comparing, using Date.current
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.current)
+    article = Article.create(
+      title: 'Sample Article',
+      content: 'Lorem ipsum dolor sit amet.',
+      author: 'John Doe',
+      date: Date.current
+    )
     article.update(author: 'Jane Smith', date: Date.yesterday)
 
     assert_equal 'Sample Article', article.title
@@ -68,7 +83,12 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'error when updating the article with invalid date type' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.current)
+    article = Article.create(
+      title: 'Sample Article',
+      content: 'Lorem ipsum dolor sit amet.',
+      author: 'John Doe',
+      date: Date.current
+    )
     article.update(date: 1234)
 
     assert_not article.valid?
@@ -89,32 +109,56 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'returns accurate search results by content' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article1 = Article.create(
+      title: 'Sample Article',
+      content: 'Lorem ipsum dolor sit amet.'
+    )
+    article2 = Article.create(
+      title: 'Another Article',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    )
     results = Article.search('Lorem ipsum')
     assert_includes results, article1
     assert_includes results, article2
   end
 
   test 'returns accurate search results by title' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article1 = Article.create(
+      title: 'Sample Article',
+      content: 'Lorem ipsum dolor sit amet.'
+    )
+    article2 = Article.create(
+      title: 'Another Article',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    )
     results = Article.search('Article')
     assert_includes results, article1
     assert_includes results, article2
   end
 
   test 'displays relevant articles in search results when articles match' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article1 = Article.create(
+      title: 'Sample Article',
+      content: 'Lorem ipsum dolor sit amet.'
+    )
+    article2 = Article.create(
+      title: 'Another Article',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    )
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
   end
 
   test 'displays no search results when no articles match' do
-    Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    Article.create(
+      title: 'Sample Article',
+      content: 'Lorem ipsum dolor sit amet.'
+    )
+    Article.create(
+      title: 'Another Article',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    )
     results = Article.search('othertext')
     assert_empty results
   end
