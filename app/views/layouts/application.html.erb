@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EngInternAssessmentRails</title>
+    <title>Encyclopedia</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,6 +12,10 @@
 
   <body>
     <%= render "layouts/flash" %>
+    <%= form_tag(search_path, method: "get") do %>
+          <%= text_field_tag(:search_key, params[:search_key], placeholder: "Search") %>
+          <%= submit_tag("Search") %>
+      <% end %>
     <%= yield %>
   </body>
 </html>

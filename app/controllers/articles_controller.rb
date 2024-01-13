@@ -39,6 +39,10 @@ class ArticlesController < ApplicationController
         redirect_to articles_url, status: :see_other
     end
 
+    def search
+        @articles = Article.search(params[:search_key])
+    end
+
 
 private 
     def article_params
