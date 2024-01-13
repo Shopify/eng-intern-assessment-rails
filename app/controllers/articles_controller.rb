@@ -1,5 +1,10 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+
+  def render_404
+    render :template => "errors/error_404", :status => 404
+  end
 
   # GET /articles or /articles.json
   def index
