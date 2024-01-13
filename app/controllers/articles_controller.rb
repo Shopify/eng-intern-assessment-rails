@@ -1,20 +1,24 @@
-# Handles HTTP requests related to articles.
+# Handles HTTP requests related to articles with caching.
 
 class ArticlesController < ApplicationController
-  protect_from_forgery unless: -> { request.format.json? }
   # Finds an article based on the ID parameter for the specified actions.
-  before_action :set_article, only: [:show, :update, :destroy]
+  before_action :set_article, only: [:show, :update, :destroy, :edit]
 
   # GET /articles
   # Fetches all articles from the database and assigns them to @articles.
   # Returns: HTML page displaying all articles.
   def index
-    @articles = Article.all
+    @articles = Rails.cache.fetch('articles', expires_in: 5.minutes) do
+      Article.all
+    end
   end
 
   # GET /articles/:id
   # Returns: HTML page displaying the article specified by the ID parameter.
   def show
+    @article = Rails.cache.fetch(["article", params[:id]], expires_in: 5.minutes) do
+      Article.find(params[:id])
+    end
   end
 
   # GET /articles/new
@@ -36,6 +40,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
+      Rails.cache.delete('articles')
       redirect_to @article, notice: 'Article was successfully created.'
     else
       render :new, status: :unprocessable_entity
@@ -47,6 +52,8 @@ class ArticlesController < ApplicationController
   # Returns: Redirects to the article's page if successful, or re-renders the form with errors if unsuccessful.
   def update
     if @article.update(article_params)
+      Rails.cache.delete(['article', @article.id])
+      Rails.cache.delete('articles')
       redirect_to @article, notice: 'Article was successfully updated.'
     else
       render :edit
@@ -58,6 +65,8 @@ class ArticlesController < ApplicationController
   # Returns: Redirects to the articles index page.
   def destroy
     if @article.destroy
+      Rails.cache.delete(['article', @article.id])
+      Rails.cache.delete('articles')
       redirect_to articles_url, notice: 'Article was successfully destroyed.'
     else
       redirect_to articles_url, notice: 'Article could not be destroyed.'
