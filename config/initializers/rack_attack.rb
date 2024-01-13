@@ -5,7 +5,8 @@ class Rack::Attack
     request.ip if request.get?
   end
 
-  Rack::Attack.throttled_response = lambda do |env|
-    [429, {'Content-Type' => 'text/html'}, [File.read(Rails.root.join('public', '429.html'))]]
+  Rack::Attack.throttled_responder = lambda do |env|
+    retry_after = (env['rack.attack.match_data'] || {})[:period]
+    [429, {'Content-Type' => 'text/html', 'Retry-After' => retry_after.to_s}, [File.read(Rails.root.join('public', '429.html'))]]
   end
 end
