@@ -3,10 +3,15 @@
 class ArticlesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-    # Retrieves all articles from the database
+    # If the 'search' parameter is present, it performs a search using the Article model's search method.
+    # Otherwise, it retrieves all articles.
     # GET /articles/
     def index
-        @articles = Article.all
+        if params[:search].present?
+            @articles = Article.search(params[:search])
+        else
+            @articles = Article.all
+        end
     end
 
     # Retrieves the article with the specified ID
