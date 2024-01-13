@@ -2,10 +2,10 @@
 
 <div class="top-bar">
   <form class="search-form" action="/articles" method="get">
-    <input class="search-box" type="text" name="search" placeholder="Search articles...">
+    <input class="search-box" type="text" name="search" placeholder="Search articles..." value="<%= params[:search] %>">
     <input class="search-button" type="submit" value="Search">
   </form>
-
+  
   <%= link_to "Create Article", new_article_path, class: "new-article-button" %>
 </div>
 
