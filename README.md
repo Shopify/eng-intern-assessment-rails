@@ -2,7 +2,19 @@
 
 This is my submission for Shopfiy's Summer Internship Technical Challenge. This Rails application is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. I have also created a user interface that can be used locally to test features.
 
-## CRUD
+## Usage
+
+Searching for articles is done by checking for similar search key in all article titles, authors, and content. Appropriate articles are then returned.
+
+CRUD actions for articles in the encyclopedia: 
+| Action | Description | 
+|----------|----------|
+| Create | Accepts title (string), content (text), author (string), date (Date) parameters to create a new article. Title and content fields are mandatory, and error messages are shown if they are not included. Author uses 'unkown' as default input and date uses today's date as default input. |
+| Read | Returns relevant articles based on search key, list all, or by id. | 
+| Update | Accepts title (string), content (text), author (string), date (Date) parameters to update exisiting an article found by id. Title and content fields are mandatory, and error messages are shown if they are not included. Author uses 'unkown' as default input and date uses today's date as default input. | 
+| Delete | Deletes specified article by id | 
+
+All of these actions are implemented as methods in the articles controller (`app/controllers/articles_controller.rb`). Each CRUD operation has a corresponding UI component that performs the action.
 
 ## Local Installation
 ### Prerequisites:
