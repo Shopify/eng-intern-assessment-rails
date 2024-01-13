@@ -101,6 +101,24 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
   end
 
+  test "should succeed on creation of article with invalid date" do
+    assert_difference("Article.count", 1) do
+      post articles_url, params: { 
+        article: { 
+          title: "Test article",
+          content: "Test content",
+          author: "Test Author",
+          date: "nonsense"
+        } 
+      }
+    end
+
+    created_article = Article.last
+    assert_nil created_article.date
+
+    assert_redirected_to article_url(Article.last)
+  end
+
   test "should get edit" do
     get edit_article_url(@article1)
     assert_response :success
@@ -132,6 +150,44 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
     @article1.reload
     assert_not_equal "", @article1.title
+  end
+
+  test "should succeed on edit of article with invalid date" do
+    patch article_url(@article1), params: { 
+      article: { 
+        title: "Updated Title",
+        content: "Updated Content",
+        author: "Updated Author",
+        date: "invalid" 
+      } 
+    }
+
+    assert_redirected_to article_url(@article1)
+
+    @article1.reload
+    assert_equal "Updated Title", @article1.title
+    assert_equal "Updated Content", @article1.content
+    assert_equal "Updated Author", @article1.author
+    assert_nil @article1.date
+  end
+
+  test "should succeed on edit of article with nil date" do
+    patch article_url(@article2), params: { 
+      article: { 
+        title: "Updated Title",
+        content: "Updated Content",
+        author: "Updated Author",
+        date: Date.today
+      } 
+    }
+
+    assert_redirected_to article_url(@article2)
+
+    @article2.reload
+    assert_equal "Updated Title", @article2.title
+    assert_equal "Updated Content", @article2.content
+    assert_equal "Updated Author", @article2.author
+    assert_equal Date.today, @article2.date
   end
 
   test "should destroy article" do
