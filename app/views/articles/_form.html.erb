@@ -10,6 +10,13 @@
 
     <div>
         <br>
+        <%= form.label :date %>
+        <br>
+        <%= form.date_field :date %>
+    </div>
+
+    <div>
+        <br>
         <%= form.label :content %>
         <% @article.errors.full_messages_for(:content).each do |message| %>
             <div><%= message %></div>

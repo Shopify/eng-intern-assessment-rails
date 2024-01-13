@@ -30,6 +30,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # Params: article: {
   # title: string,
+  # date?: Date,
   # content: string,
   # author: string
   # }
@@ -63,6 +64,7 @@ class ArticlesController < ApplicationController
   # PATCH OR PUT /articles/:id
   # Params: article: {
   # title: string,
+  # date?: Date,
   # content: string,
   # author: string
   # }
@@ -80,6 +82,6 @@ class ArticlesController < ApplicationController
   # Allowed params when editing or creating an article
   private
   def article_params
-    params.require(:article).permit(:title, :content, :author)
+    params.require(:article).permit(:title, :content, :author, :date)
   end
 end
