@@ -1,9 +1,11 @@
 <%= form_with(model: article, html: { class: "article__form" }) do |form| %>
   <% if article.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+    <div class="article__form-error-container">
+      <div class="article__form-error-title">
+        <%= pluralize(article.errors.count, "error") %> prohibited this article from being saved
+      </div>
 
-      <ul>
+      <ul class="article__form-error-list">
         <% article.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>

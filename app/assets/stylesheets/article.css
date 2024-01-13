@@ -159,3 +159,26 @@
   border: 1px solid var(--grey-scale-2);
   margin-bottom: 1vh;
 }
+
+.article__form-error-container {
+  background: var(--danger);
+  width: 60vh;
+  padding: 0.5vh;
+  border-radius: 0.5vh;
+  margin: 1vh 0;
+}
+
+.article__form-error-title {
+  font-size: 2vh;
+  color: white;
+  font-weight: bold;
+}
+
+.article__form-error-list {
+  list-style-type: none;
+}
+
+.article__form-error-list li {
+  font-size: 1.5vh;
+  color: white;
+}
