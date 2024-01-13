@@ -2,7 +2,7 @@
     <h1>Edit Article</h1>
 
     <div class="form-group">
-        <%= form.label :title, class: 'form-label' %>
+        <%= form.label :title, 'Title *', class: 'form-label' %>
         <%= form.text_field :title, class: 'form-control', value: @article.title %>
         <% if @article.errors[:title].any? %>
             <div class="error"><%= @article.errors[:title].join(", ") %></div>
@@ -10,7 +10,7 @@
     </div>
 
     <div class="form-group">
-        <%= form.label :content, class: 'form-label' %>
+        <%= form.label :content, 'Content *', class: 'form-label' %>
         <%= form.text_area :content, class: 'form-control', value: @article.content %>
         <% if @article.errors[:content].any? %>
             <div class="error"><%= @article.errors[:content].join(", ") %></div>
@@ -26,6 +26,8 @@
     </div>
 
     <div class="form-group">
+        <%= link_to "Cancel", articles_path, class: 'button' %>
         <%= form.submit 'Submit', class: 'button' %>
     </div>
+
 <% end %>

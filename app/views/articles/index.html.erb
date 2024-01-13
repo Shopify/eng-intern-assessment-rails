@@ -2,17 +2,17 @@
     <%= render 'search' %>
 
     <h1>Latest Tech Articles</h1>
-    
+
     <%= link_to 'Create', new_article_path, class: 'button' %>
 
     <% @articles.each do |article| %>
-        <div class="card">
-            <h2><%= article.title %></h2>
-            <p><%= article.content %></p>
-            <p><%= article.author %></p>
-            <p><%= article.date %></p>
-            <%= link_to 'Edit', edit_article_path(article), class: 'button' %>
-            <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %>
-        </div>
+        <%= link_to article_path(article), class: 'card-link' do %>
+            <div class="card">
+                <h2><%= article.title %></h2>
+                <p><%= article.content %></p>
+                <p><%= article.author %></p>
+                <p><%= article.date %></p>
+            </div>
+        <% end %>
     <% end %>
 </div>

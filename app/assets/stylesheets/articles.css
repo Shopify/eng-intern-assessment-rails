@@ -33,6 +33,11 @@ body {
   font-size: 16px;
 }
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Button styles */
 .button {
   display: inline-block;
@@ -49,6 +54,12 @@ body {
 
 .button:hover {
   background-color: #0056b3;
+}
+
+.button-group {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
 }
 
 /* Error text styles*/
@@ -69,6 +80,14 @@ body {
 .form-control {
   width: 100%;
   padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.search-bar {
+  width: 80%;
+  padding: 10px;
+  margin-top: 10px;
   border: 1px solid #ced4da;
   border-radius: 4px;
 }
@@ -106,4 +125,21 @@ body {
   text-decoration: none;
   color: #333;
   margin-left: 10px;
+}
+
+/* Alert style */
+.alert {
+  padding: 20px;
+  border-radius: 5px;
+  color: white;
+  opacity: 0.9;
+  width: 100%;
+}
+
+.alert-notice {
+  background-color: green;
+}
+
+.alert-alert {
+  background-color: red;
 }
