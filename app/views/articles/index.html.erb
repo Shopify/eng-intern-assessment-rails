@@ -1,8 +1,19 @@
-<% @articles.each do |article| %>
-  <%= render article %>
-  <br>
-  <%= link_to "View", article %>
-  <hr>
+<%= form_with(url: articles_path, method: :get) do |form| %>
+  <%= form.label :query, "Search in Article title or content: " %>
+  <%= form.text_field :query, value: params[:query] %>
+
+  <%= form.submit "Search" %>
+<% end %>
+
+<% if @articles.empty? %>
+  <p>No articles found for this search.</p>
+<% else %>
+  <% @articles.each do |article| %>
+    <%= render article %>
+    <br>
+    <%= link_to "View", article %>
+    <hr>
+  <% end %>
 <% end %>
 
 <%= link_to "New article", new_article_path %>

@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @articles = Article.all
+    @articles = Article.search(params[:query])
   end
 
   def show; end
@@ -43,6 +43,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :author, :date)
+    params.require(:article).permit(:title, :content, :author, :date, :query)
   end
 end
