@@ -3,12 +3,23 @@
 <h1>Articles</h1>
 
 <div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
+  <%= form_tag(articles_path, method: "get", class: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search articles..." %>
+    <%= submit_tag "Search" %>
   <% end %>
+
+<%# If the article is present from search, then show, else render "No articles found.%>
+  <% if @articles.present? %>
+    <% @articles.each do |article| %>
+      <%= render article %>
+      <p>
+        <%= link_to "Show this article", article %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>No articles found.</p>
+  <% end %>
+
 </div>
 
 <%= link_to "New article", new_article_path %>
