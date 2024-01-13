@@ -57,7 +57,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
   test "should have nil formatted date on existing article without date" do
     get article_url(@article2)
-    assert_equal nil, assigns(:formatted_publish_date)
+    assert_nil assigns(:formatted_publish_date)
   end
 
   test "should return 404 on non-existing article" do
