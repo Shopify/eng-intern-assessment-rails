@@ -27,5 +27,11 @@ rails s
 Make sure you've run db migration with `rails db:migrate RAILS_ENV=test`. Then run
 
 ```
+rspec
+```
+
+OR
+
+```
 rails test ./test/models/article_test.rb
 ```
