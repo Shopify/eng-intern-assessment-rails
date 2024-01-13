@@ -70,3 +70,4 @@ Validated results from test cases:
 1. Persistence - I faced many blockers with the project, mostly related to environment setup. Despite some frustrating moments, this app taught me to keep going.
 2. Ruby on Rails - Having never worked with ruby on rails before, this project gave me a reason to learn and use it. I noticed many similarities between rails and node.
 
+
