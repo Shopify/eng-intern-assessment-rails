@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController
-  # view all articles
+  # view and search articles
   def index
     @articles = Article.all
+
+    if params[:article_search] && params[:article_search] != ""
+      @articles = Article.search(params[:article_search])
+    end
   end
 
   # get article by id
