@@ -3,12 +3,19 @@
 This is my submission for Shopfiy's Summer Internship Technical Challenge. This Rails application is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. I have also created a user interface that can be used locally to test features.
 
 
-For easy testing and demo, I wanted to host this app on heroku but found that it does not support sqlite3 databases, which is being used in this app. If I wanted to host it I would have to switch the database to postgreSQL which is possible but requires additional local setup. To avoid environment setup trouble for whoever tests this repo, I have not proceeded with this. The procfile that could be used to host the app after migrating to postgreSQL is included in the root directory.
+For easy testing and demo, I hosted this app on heroku, and can be found here: https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/
 
-https://github.com/adarsh-swe/eng-intern-assessment-rails/assets/59131301/1f8c5f56-7762-4bbd-b6fe-c1dbefd3f979
+In order to host the website, I had to switch from sqlite3 to postgreSQL since sqlite3 is not compatible with heroku. As such, I have created a seperate prod branch with these changes so that it does not interfere with the dev environment of whoever is testing the local version of this app. The local version given in this branch has the original sqllite3 database while the production build is from the new branch and uses prostgreSQL. As a result, I was able to host the app while maintaining the origninal environment for whoever tests the app locally.
 
+## Contents
+1. [Usage](#usage)
+2. [Local Installation](#local-installation)
+3. [Run Test Cases](#run-test-cases)
+4. [Additional features](#additional-features)
+5. [Reflection](#reflection)
 
 ## Usage
+To easily test the app, please visit: https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/
 
 Searching for articles is done by checking for similar search key in all article titles, authors, and content. Appropriate articles are then returned.
 
@@ -44,4 +51,23 @@ With the same prerequisites for local installation as described [above](#local-i
 Validated results from test cases:
 
 <img width="500" alt="image" src="https://github.com/adarsh-swe/eng-intern-assessment-rails/assets/59131301/1ba0c32f-2e5f-4310-bc43-66b790f0af5a">
+
+## Additional features
+1. Created a clean UI and hosted it (https://adarsh-shopify-challenge-76faef82d109.herokuapp.com/)
+   * added form validation
+   * used bootstrap for styling
+3. Created Rdoc documentation using rdoc specific comments in my code (open the `./doc/index.html` file in your browser)
+4. Added rails logging using Rails.logger in my controllers
+5. Included seed data to facilitate easier testing
+
+## Reflection
+### Biggest Challenges
+1. This was my first time working with ruby on rails and there was a learning curve that had to be overcome
+   * setting up the dev environment was very complicated
+2. Adding the search functionality was tricky, and since I was not familiar with rails built in methods, I had to research a bit to develop a solution
+3. Hosting ruby on rails apps on Heroku requires a postgreSQL database in production but we were given sqlite3. Find my workaround [here](#encyclopedia---shopify-summer-2024-technical-challenge)
+
+### Key takeaways
+1. Persistence - I faced many blockers with the project, mostly related to environment setup. Despite some frustrating moments, this app taught me to keep going.
+2. Ruby on Rails - Having never worked with ruby on rails before, this project gave me a reason to learn and use it. I noticed many similarities between rails and node.
 
