@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EngInternAssessmentRails</title>
+    <title>Encyclopedia</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"%>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <div class="d-flex">
+          <a class="navbar-brand" href="<%= home_path %>">Encyclopedia</a>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="<%= home_path %>"> Home </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="<%= new_article_path %>">Create article</a>
+            </li>
+          </ul>
+        </div>
+        <%= form_tag(search_path, method: :get, class: "form-inline my-2 my-lg-0") do %>
+          <div class="d-flex">
+            <%= text_field_tag(:key, params[:key], class: "form-control mr-sm-2 mx-2", placeholder: "Search") %>
+            <%= submit_tag("Search", class: "btn btn-outline-success my-2 my-sm-0") %>
+          </div>
+        <% end %>
+      </div>
+    </nav>
+
+    <div class="container">
     <%= yield %>
+    </div>
   </body>
 </html>
