@@ -1,8 +1,13 @@
 require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @article = articles(:one)
+  def setup
+    @article = Article.create(
+      title: 'MyText',
+      content: 'MyText',
+      author: 'MyString',
+      date: '2024-01-13 00:06:52'
+    )
   end
 
   test "should get index" do
