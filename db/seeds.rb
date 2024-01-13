@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Article.create!([{author: "Vaktarun", title: "Go App", content: "lorem ipsum", date: Date.yesterday.yesterday},
+                {author: "Vivek", title: "History of C++", content: "lorem ipsum", date: Date.yesterday},
+                {author: "Vivek", title: "Kotlin is Kool", content: "lorem ipsum", date: Date.today},
+    ])
