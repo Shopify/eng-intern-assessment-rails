@@ -1,3 +1,11 @@
+.articles__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: self-start;
+  width: 84vh;
+  padding-bottom: 4vh;
+}
+
 .article-table__table {
   border-collapse: collapse;
   border: none;
@@ -27,4 +35,33 @@
   max-width: 40vh;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.articles__search-container {
+  display: flex;
+  background: black;
+  padding: 0.5vh;
+  border-radius: 2vh;
+}
+
+.articles__search-container input {
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1.5vh;
+  background: none;
+  margin-left: 1vh;
+}
+
+.articles__search-button {
+  padding: 0.2vh;
+  border: none;
+  border-radius: 50%;
+  background: var(--grey-scale-2);
+  cursor: pointer;
+}
+
+.articles__search-icon {
+  width: 1.5vh;
+  transform: translate(0, 0.1vh);
 }

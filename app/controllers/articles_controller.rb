@@ -3,7 +3,13 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @search_term = params[:search_string]
+
+    if @search_term.present?
+      @articles = Article.search(@search_term)
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/1 or /articles/1.json
