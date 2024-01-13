@@ -1,0 +1,27 @@
+<h1>Articles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= link_to article.title, article %></td>
+        <td><%= article.author %></td>
+        <td><%= article.date %></td>
+        <td>
+          <%= button_to 'Edit', edit_article_path(article), method: :get %>
+          <%= button_to 'Delete',  article_path(article),  method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= button_to 'New Article', new_article_path, method: :get %>
