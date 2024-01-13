@@ -64,4 +64,39 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get article_url(id: 1000)
     assert_response :not_found
   end
-end
+
+  test "should get new" do
+    get new_article_url
+    assert_response :success
+  end
+
+  test "should create valid article" do
+    assert_difference("Article.count", 1) do
+      post articles_url, params: { article: { title: "Test article" } }
+    end
+
+    assert_redirected_to article_url(Article.last)
+  end
+
+  test "should create full valid article" do
+    assert_difference("Article.count", 1) do
+      post articles_url, params: { 
+        article: { 
+          title: "Test article",
+          content: "Test content",
+          author: "Test Author",
+          date: Date.today 
+        } 
+      }
+    end
+
+    assert_redirected_to article_url(Article.last)
+  end
+
+  test "should fail on creation of article without title" do
+    assert_no_difference('Article.count') do
+      post articles_url, params: { article: { content: 'Lorem ipsum', author: 'John Doe' } }
+    end
+
+    assert_response :unprocessable_entity
+  end
