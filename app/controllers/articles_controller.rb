@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @formatted_publish_date = @article.date&.strftime("%B %Y")
   end
 
   # GET /articles/new

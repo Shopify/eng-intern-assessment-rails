@@ -1,10 +1,13 @@
 * {
   padding: 0;
   margin: 0;
+  border: none;
   font-family: "Exo 2";
 
   --grey-scale-1: #1B2954;
   --grey-scale-2: #F6F7FB;
+  --success: #55EFC4;
+  --danger: #D63031;
 }
 
 a {
