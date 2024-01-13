@@ -10,8 +10,5 @@
 #
 
 class Article < ActiveRecord::Base
-    def self.search(query)
-        # we check for query in title or content
-        where("title LIKE :query OR content LIKE :query", query: "%#{query}%") 
-    end 
+  primary_abstract_class
 end
