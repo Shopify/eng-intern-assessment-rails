@@ -1,0 +1,14 @@
+<%= stylesheet_link_tag 'header' %>
+
+<div class="header__container">
+  <div class="header__primary">
+    <%= link_to "Encyclopedia", articles_path, class: "header__primary-link" %>
+  </div>
+
+  <%= link_to new_article_path do %>
+    <div class="header__secondary">
+      <div class="header__secondary-icon">+</div>
+      <div class="header__secondary-link">Create</div>
+    </div>
+  <% end %>
+</div>
