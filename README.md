@@ -1,4 +1,5 @@
 ## Demo:
+
 [Rails app demo.webm](https://github.com/anhminhtran235/eng-intern-assessment-rails/assets/54651212/cda71b07-298f-4212-bae2-6ae41956853e)
 
 ## Features:
@@ -9,12 +10,15 @@
 
 ✔️ **Cache articles** to improve performance. Update cache when edit/delete an article
 
+✔️ **Seed data** for ease of development and testing
+
 ## Environment setup
 
 ```
 bundle install
 rails db:migrate
 rails db:migrate RAILS_ENV=test
+rails db:seed
 rails s
 ```
 
