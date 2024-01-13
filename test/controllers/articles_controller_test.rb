@@ -44,4 +44,24 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_empty assigns(:articles)
   end
+
+  test "should show existing article" do
+    get article_url(@article1)
+    assert_response :success
+  end
+
+  test "should format date on existing article" do
+    get article_url(@article1)
+    assert_equal @article1.date.strftime("%B %Y"), assigns(:formatted_publish_date)
+  end
+
+  test "should have nil formatted date on existing article without date" do
+    get article_url(@article2)
+    assert_equal nil, assigns(:formatted_publish_date)
+  end
+
+  test "should return 404 on non-existing article" do
+    get article_url(id: 1000)
+    assert_response :not_found
+  end
 end
