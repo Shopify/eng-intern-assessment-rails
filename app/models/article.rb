@@ -14,6 +14,8 @@ class Article < ApplicationRecord
 
   private
   def set_current_date
-    self.date = Date.current
+    if self.date.nil?
+      self.date = Date.current
+    end
   end
 end
