@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
-    @article = Article.new
+    @article = Article.new(date: Date.today)
   end
 
   # GET /articles/1/edit
@@ -52,13 +52,12 @@ class ArticlesController < ApplicationController
     @article.destroy!
 
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
+      format.html { redirect_to articles_url, notice: "Article was successfully deleted." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
     end

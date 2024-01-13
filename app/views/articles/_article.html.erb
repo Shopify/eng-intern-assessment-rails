@@ -1,22 +1,14 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= article.content %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= article.author %>
-  </p>
-
-  <p>
-    <strong>Date:</strong>
-    <%= article.date %>
-  </p>
-
+<div id="<%= dom_id article %>" class="article-container">
+  <h1 class="article-title"><%= article.title %></h1>
+  <div class="article-metadata">
+    <span class="article-author"><%= article.author %></span> |
+    <span class="article-date"><%= article.date %></span>
+  </div>
+  <div class="article-content">
+    <%= article.content.length > 200 ? article.content[0..299] + '...' : article.content %>
+  </div>
+  <div class="article-actions">
+    <%= link_to "Edit", edit_article_path(article), method: :get, class: "btn-edit" %>
+    <%= button_to "Delete", article, method: :delete, class: "btn-delete" %>
+  </div>
 </div>

@@ -1,15 +1,272 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* Common styling */
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #2C3E50;
+  padding: 10px 20px;
+  text-align: start;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-home {
+  color: #ECF0F1;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-home:hover {
+  text-decoration: none;
+}
+
+/* Home page */
+.header {
+  text-align: center;
+  font-size: 35px;
+  color: #000000;
+  font-family: 'Lobster', cursive;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.search-box {
+  padding: 10px;
+  margin-right: 10px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  width: 400px;
+  transition: border-color 0.3s;
+}
+
+.search-box:focus {
+  border-color: #7a7a7a;
+}
+
+.search-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-form {
+  margin: 0;
+}
+
+.new-article-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.new-article-button:hover {
+  background-color: #0056b3;
+}
+
+
+/* Article styling */
+.article-container {
+  position: relative;
+  font-family: 'Lobster', cursive;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #eaecef;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 740px;
+  margin: 40px auto;
+  line-height: 1.7;
+}
+
+.article-title {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+  margin-top: 0;
+  font-weight: bold;
+}
+
+.article-metadata {
+  font-size: 15px;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.article-author, .article-date {
+  font-style: italic;
+}
+
+.article-content {
+  font-size: 18px;
+  color: #454545;
+  margin-top: 20px;
+  text-align: justify;
+}
+
+.article-content a {
+  color: #007bff;
+  text-decoration: none;
+}
+.article-content a:hover {
+  text-decoration: underline;
+}
+
+.article-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+}
+
+.btn-edit, .btn-delete {
+  text-decoration: none;
+  font-family: 'Arial', sans-serif;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+.btn-edit {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #45a049;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  color: white;
+  margin-left: 10px;
+}
+
+.btn-delete:hover {
+  background-color: #d73833;
+}
+
+
+/* Edit Article */
+.article-form {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.form-errors {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+
+textarea.form-control {
+  height: auto;
+  resize: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Detailed Article */
+
+.detailed-article-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.detailed-article-metadata {
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.detailed-article-content {
+  font-size: 18px;
+  max-width: 700px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.detailed-article-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+}
