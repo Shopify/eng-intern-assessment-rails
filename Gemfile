@@ -44,10 +44,10 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-#add rspec dependency for testing
+# Use RPEC for testing [https://rspec.info/documentation/]
 gem 'rspec'
 
-#add jquery
+#add jquery for rails [https://github.com/rails/jquery-rails]
 gem 'jquery-rails'
 
 group :development, :test do
@@ -71,6 +71,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  #add database cleaner
+  # database cleaner used for test helper [https://github.com/DatabaseCleaner/database_cleaner]
   gem 'database_cleaner'
 end
