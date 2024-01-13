@@ -40,6 +40,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 'Updated content', article.content
   end
 
+  test 'cannot edits an existing article to have empty title' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.update(title: '')
+    assert_not article.valid?
+    assert_equal ["Title can't be blank"], article.errors.full_messages
+
+    assert_equal 'Sample Article', article.reload.title
+    assert_equal 'Lorem ipsum dolor sit amet.', article.reload.content
+  end
+
   test 'updates the article metadata' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
     article.update(author: 'Jane Smith', date: Date.yesterday)

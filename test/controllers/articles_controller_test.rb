@@ -100,3 +100,36 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
   end
+
+  test "should get edit" do
+    get edit_article_url(@article1)
+    assert_response :success
+  end
+  
+  test "should edit on valid PATCH" do
+    patch article_url(@article1), params: { article: { title: "Updated Title" } }
+    assert_redirected_to article_url(@article1)
+    @article1.reload
+    assert_equal "Updated Title", @article1.title
+  end
+
+  test "should edit on valid PUT" do
+    put article_url(@article2), params: { article: { title: "Updated Title" } }
+    assert_redirected_to article_url(@article2)
+    @article2.reload
+    assert_equal "Updated Title", @article2.title
+  end
+
+  test "should not edit on invalid PATCH" do
+    patch article_url(@article1), params: { article: { title: "" } }
+    assert_response :unprocessable_entity
+    @article1.reload
+    assert_not_equal "", @article1.title
+  end
+
+  test "should not edit on invalid PUT" do
+    put article_url(@article1), params: { article: { title: "" } }
+    assert_response :unprocessable_entity
+    @article1.reload
+    assert_not_equal "", @article1.title
+  end
