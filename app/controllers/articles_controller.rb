@@ -78,7 +78,7 @@ class ArticlesController < ApplicationController
     
     # Defines the permitted parameters for an article
     def article_params
-        params.require(:article).permit(:title, :content, :author)
+        params.require(:article).permit(:title, :content, :author, :date)
     end
 
     # Handles the case when an article is not found
