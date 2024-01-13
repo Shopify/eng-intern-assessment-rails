@@ -71,4 +71,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  #add database cleaner
+  gem 'database_cleaner'
 end
