@@ -1,6 +1,6 @@
 ## Demo:
 
-[Rails app demo.webm](https://github.com/anhminhtran235/eng-intern-assessment-rails/assets/54651212/cda71b07-298f-4212-bae2-6ae41956853e)
+[Rails app demo.webm](https://github.com/anhminhtran235/eng-intern-assessment-rails/assets/54651212/1108e850-8158-43e0-a1c1-06046b88e6c7)
 
 ## Features:
 
