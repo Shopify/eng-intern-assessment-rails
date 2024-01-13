@@ -1,4 +1,4 @@
-<h1>Articles</h1>
+<h1>Encyclopedia</h1>
 
 <%= form_tag "/articles", method: "get" do %>
   <%= label_tag "Search by article title or content" %>
@@ -17,3 +17,8 @@
     </li>
   <% end %>
 </ul>
+
+<br>
+<div>
+  <%= link_to "Create Article", new_article_path %>
+</div>
