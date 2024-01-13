@@ -6,9 +6,9 @@ class ArticlesController < ApplicationController
     @search_term = params[:search_string]
 
     if @search_term.present?
-      @articles = Article.search(@search_term)
+      @articles = Article.search(@search_term).order(:title)
     else
-      @articles = Article.all
+      @articles = Article.all.order(:title)
     end
   end
 
