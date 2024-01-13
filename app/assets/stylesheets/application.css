@@ -39,6 +39,69 @@ body {
 }
 
 /* Home page */
+.home-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.home-header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+}
+
+.home-header h1 {
+  margin: 0;
+}
+
+.home-content {
+  padding: 20px;
+}
+
+.home-name {
+  font-size: 24px;
+  color: #333;
+}
+
+.highlight {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.home-functionalities ul {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 20px;
+}
+
+.home-functionalities li {
+  background-color: #f7f7f7;
+  margin-top: 8px;
+  padding: 10px;
+  padding-left: 30px;
+  border-left: 5px solid #5C6AC4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.home-functionalities li::before {
+  content: '\2713';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5C6AC4;
+  font-weight: bold;
+}
+
+/* Articles page */
 .header {
   text-align: center;
   font-size: 35px;
