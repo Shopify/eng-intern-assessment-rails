@@ -1,8 +1,13 @@
 require "application_system_test_case"
 
 class ArticlesTest < ApplicationSystemTestCase
-  setup do
-    @article = articles(:one)
+  def setup
+    @article = Article.create(
+      title: 'MyText',
+      content: 'MyText',
+      author: 'MyString',
+      date: Date.today 
+    )
   end
 
   test "visiting the index" do

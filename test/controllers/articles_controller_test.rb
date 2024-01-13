@@ -6,7 +6,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       title: 'MyText',
       content: 'MyText',
       author: 'MyString',
-      date: '2024-01-13 00:06:52'
+      date: Date.today 
     )
   end
 
