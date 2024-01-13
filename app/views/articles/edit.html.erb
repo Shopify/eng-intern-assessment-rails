@@ -2,7 +2,4 @@
 
 <%= render "form", article: @article %>
 
-<br>
-<div>
-  <%= link_to "Home", root_path %>
-</div>
+<%= render "layouts/navigation", locals: { title: "Home", path: root_path } %>

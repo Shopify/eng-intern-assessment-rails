@@ -10,7 +10,12 @@ class ArticlesController < ApplicationController
 
   # get article by id
   def show
-    @article = Article.find(params[:id])
+    @article = Article.find_by(id: params[:id])
+
+    # handle deleted/non-existent articles
+    if @article.nil?
+      redirect_to root_path, alert: "Article #{params[:id]} not found"
+    end
   end
 
   def new

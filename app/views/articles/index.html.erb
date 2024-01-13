@@ -1,5 +1,7 @@
 <h1>Encyclopedia</h1>
 
+<%= render "layouts/alert" %>
+
 <%= form_tag "/articles", method: "get" do %>
   <%= label_tag "Search by article title or content" %>
   <div>
@@ -18,7 +20,4 @@
   <% end %>
 </ul>
 
-<br>
-<div>
-  <%= link_to "Create Article", new_article_path %>
-</div>
+<%= render "layouts/navigation", locals: { title: "Create Article", path: new_article_path } %>

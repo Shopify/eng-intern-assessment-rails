@@ -46,6 +46,12 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
   end
 
+  test 'displays the article title and content accurately with special characters' do
+    article = Article.create(title: 'ü\n&#174', content: '<script>alert("123")</script>')
+    assert_equal 'ü\n&#174', article.title
+    assert_equal '<script>alert("123")</script>', article.content
+  end
+
   test 'displays the article metadata correctly' do
     article = Article.create(
       title: 'Sample Article',
