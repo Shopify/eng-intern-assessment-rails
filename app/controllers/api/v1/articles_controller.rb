@@ -4,16 +4,18 @@ class Api::V1::ArticlesController < ApplicationController
 
 
   def index
-    if Article.all.empty?
+    @articles = Article.all
+    if @articles.empty?
       render status: :no_content
     else
-    render json: Article.all, status: :ok
+    render :index, status: :ok
     end
   end
 
   def show
-    if Article.exists?(params[:id])
-      render json: Article.find(params[:id]), status: :ok
+    @article = Article.find_by(id: params[:id])
+    if @article
+      render :show, status: :ok
     else
       render json:{error: "Requested article does not exist"}, status: :not_found
     end
