@@ -26,6 +26,18 @@ body {
   text-decoration: none;
 }
 
+/* Messages */
+.notice-container {
+  background-color: #4CAF50; /* Green background color */
+  color: #ffffff; /* White text color */
+  text-align: center; /* Center the text */
+}
+
+.notice {
+  margin: 0; /* Remove default margin */
+  padding: 10px;
+}
+
 /* Home page */
 .header {
   text-align: center;
