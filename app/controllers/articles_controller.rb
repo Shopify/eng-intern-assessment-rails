@@ -45,14 +45,9 @@ class ArticlesController < ApplicationController
   # Attempts to update the article specified by the ID parameter with the parameters from the form submission.
   # Returns: Redirects to the article's page if successful, or re-renders the form with errors if unsuccessful.
   def update
-    begin
-      if @article.update(article_params) 
-        redirect_to @article, notice: 'Article was successfully updated.'
-      else
-        render :edit
-      end
-    rescue => e
-      flash[:error] = "There was an error updating the article: #{e.message}"
+    if @article.update(article_params)
+      redirect_to @article, notice: 'Article was successfully updated.'
+    else
       render :edit
     end
   end
