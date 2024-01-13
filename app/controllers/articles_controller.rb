@@ -1,4 +1,5 @@
 # Handles HTTP requests related to articles.
+
 class ArticlesController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
   # Finds an article based on the ID parameter for the specified actions.
