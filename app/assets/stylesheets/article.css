@@ -1,0 +1,30 @@
+.article-table__table {
+  border-collapse: collapse;
+  border: none;
+}
+
+.article-table__table th, 
+.article-table__data-row td {
+  border: none;
+}
+
+.article-table__header-cell {
+  font-size: 2vh;
+  text-align: start;
+}
+
+.article-table__data-row {
+  height: 3.5vh;
+}
+
+.article-table__data-row:hover {
+  background: var(--grey-scale-2);
+}
+
+.article-table__data-cell {
+  padding-right: 3vh;
+  font-size: 1.5vh;
+  max-width: 40vh;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

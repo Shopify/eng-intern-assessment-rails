@@ -1,22 +1,8 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= article.content %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= article.author %>
-  </p>
-
-  <p>
-    <strong>Date:</strong>
-    <%= article.date %>
-  </p>
-
-</div>
+<tr class="article-table__data-row">
+  <td class="article-table__data-cell">
+    <%= link_to article.title, article %>
+  </td>
+  <td class="article-table__data-cell"><%= article.content %></td>
+  <td class="article-table__data-cell"><%= article.author %></td>
+  <td class="article-table__data-cell"><%= article.date %></td>
+</tr>

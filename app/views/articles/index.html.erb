@@ -3,12 +3,16 @@
 <h1>Articles</h1>
 
 <div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
-</div>
+  <table class="article-table__table">
+    <tr>
+      <th class="article-table__header-cell">Title</th>
+      <th class="article-table__header-cell">Content</th>
+      <th class="article-table__header-cell">Author</th>
+      <th class="article-table__header-cell">Date</th>
+    </tr>
 
-<%= link_to "New article", new_article_path %>
+    <% @articles.each do |article| %>
+      <%= render article %>
+    <% end %>
+  </table>
+</div>
