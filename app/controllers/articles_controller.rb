@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   # if search param is present, search for articles with that param
   # else, return all articles
   def index
-    @articles = Rails.cache.fetch('articles', expires_in: 5.minutes) do
+    @articles = Rails.cache.fetch('articles', expires_in: 10.minutes) do
       if params[:search].present?
         Article.search(params[:search])
       else
@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
   # GET /articles/:id
   # find article with id and render it
   def show
-    @article = Rails.cache.fetch(["article", params[:id]], expires_in: 5.minutes) do
+    @article = Rails.cache.fetch(["article", params[:id]], expires_in: 10.minutes) do
       Article.find(params[:id])
     end
   end
