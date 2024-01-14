@@ -1,17 +1,26 @@
 <h1>New Article</h1>
 
-<%= form_for :article, url: articles_path do |f| %>
+<%= form_for :article, url: articles_path, data: { turbo: false } do |f| %>
+  <% if @article.errors.any? %>
+    <% @article.errors.full_messages.each do |m| %>
+      <div class="alert alert-danger">
+        <%= m %>
+      </div>
+    <% end %>
+  <% end %> 
+
+
   <p>
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field(:title, {:class => 'form-control'}  )%>
   </p>
   <p>
     <%= f.label :author %><br>
-    <%= f.text_field :author %>
+    <%= f.text_field(:author, {:class => 'form-control'}  )%>
   </p>
   <p>
     <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.text_area(:content, {:class => 'form-control'}  )%>
   </p>
   <p>
     <%= f.label :date %><br>
@@ -19,7 +28,9 @@
   </p>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit('Submit', {:class => 'btn btn-success'}  )%>
   </p>
 
 <% end %>
+
+<%= button_to "Back", articles_path, method: :get, type: "button" , class:"btn btn-primary"%>

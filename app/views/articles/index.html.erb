@@ -1,1 +1,10 @@
-<h1>Test</h1>
+<h1>All Articles</h1>
+
+<%= button_to "New Article", "/articles/new", method: :get, type: "button" , class:"btn btn-primary"%>
+
+<% @articles.each do |article| %>
+    <div classname="article_elem">
+        <h3><%= article.title %></h3>
+        <p><%= article.author %></p>
+    </div>
+<% end %>

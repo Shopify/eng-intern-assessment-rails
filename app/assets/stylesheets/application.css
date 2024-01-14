@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+ .article_elem {
+   background-color: blue;
+    border: 1px solid #000;
+ }
