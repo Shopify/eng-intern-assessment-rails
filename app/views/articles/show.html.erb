@@ -4,4 +4,5 @@
   <%= @article.content %>
 </div>
 <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary' %>
+<%# Use turbo method send a DELETE request instead of the default GET request %>
 <%= link_to "Delete", article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger'%>

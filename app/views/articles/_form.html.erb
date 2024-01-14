@@ -1,4 +1,6 @@
+<%# This partial is used for edit/new views and captures the reused form logic %>
 <%= form_with(model: article, class: 'form') do |f| %>
+  <%# Shows errors in the form %>
   <%= render 'errors', object: article %>
     
   <div class="mb-3">

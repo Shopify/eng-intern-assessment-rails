@@ -15,35 +15,32 @@
 <body>
   <!-- app/views/layouts/application.html.erb -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <%= link_to 'Encyclopedia', root_path, class: 'navbar-brand' %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <%= link_to 'Home', root_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Add Article', new_article_path, class: 'nav-link' %>
-        </li>
-      </ul>
-      <%= form_tag(search_path, method: "get", class: "d-flex") do %>
-        <%= text_field_tag(:search_key, params[:search_key], placeholder: "Search", class: "form-control me-2") %>
-        <button class="btn btn-outline-basic" type="submit">
-          <i class="bi bi-search"></i>
-        </button>
-      <% end %>
+    <div class="container-fluid">
+      <%= link_to 'Encyclopedia', root_path, class: 'navbar-brand' %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <%= link_to 'Home', root_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Add Article', new_article_path, class: 'nav-link' %>
+          </li>
+        </ul>
+        <%= form_tag(search_path, method: "get", class: "d-flex") do %>
+          <%= text_field_tag(:search_key, params[:search_key], placeholder: "Search", class: "form-control me-2") %>
+          <button class="btn btn-outline-basic" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        <% end %>
+      </div>
     </div>
-  </div>
-</nav>
-
-
+  </nav>  
 
   <div class="container mt-4">
     <%= render 'layouts/flash' %>
-    
     <%= yield %>
   </div>
 </body>

@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+# Some default data to seed the database with
 Article.create!([{author: "Vaktarun", title: "Go App", content: "lorem ipsum", date: Date.yesterday.yesterday},
                 {author: "Vivek", title: "History of C++", content: "lorem ipsum", date: Date.yesterday},
                 {author: "Vivek", title: "Kotlin is Kool", content: "lorem ipsum", date: Date.today},
