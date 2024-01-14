@@ -11,6 +11,8 @@ body {
   padding: 0;
   margin: 0;
   overflow-y: scroll;
+  font-family: "Arial", sans-serif;
+  background-color: #ededed;
 }
 
 /* Card styles */
@@ -20,6 +22,7 @@ body {
   margin-bottom: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  background-color: white;
 }
 
 .card h2 {
@@ -44,7 +47,6 @@ body {
   padding: 10px 20px;
   margin-bottom: 20px;
   color: #fff;
-  background-color: #007bff;
   border: none;
   border-radius: 4px;
   text-decoration: none;
@@ -53,7 +55,35 @@ body {
 }
 
 .button:hover {
-  background-color: #0056b3;
+  cursor: pointer;
+}
+
+.button-primary {
+  background-color: #5a66c4;
+}
+
+.button-primary:hover {
+  background-color: rgb(0, 75, 155);
+}
+
+.button-warn {
+  background-color: rgb(218, 53, 53);
+  height: 38px;
+  font-size: 16px;
+}
+
+.button-warn:hover {
+  background-color: rgb(138, 34, 34);
+}
+
+.button-submit {
+  background-color: #96be47;
+  height: 38px;
+  font-size: 16px;
+}
+
+.button-submit:hover {
+  background-color: #5f8f3f;
 }
 
 .button-group {
@@ -82,12 +112,14 @@ body {
   padding: 10px;
   border: 1px solid #ced4da;
   border-radius: 4px;
+  font-family: "Arial", sans-serif;
 }
 
 .search-bar {
-  width: 80%;
+  width: 98%;
   padding: 10px;
   margin-top: 10px;
+  margin-bottom: 10px;
   border: 1px solid #ced4da;
   border-radius: 4px;
 }
@@ -98,11 +130,16 @@ body {
 
 /* Navbar styles */
 .navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 250px 25px 250px;
+  padding: 20px 450px 25px 450px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ededed;
 }
 
 .navbar-left,

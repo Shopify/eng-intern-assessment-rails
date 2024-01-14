@@ -1,18 +1,16 @@
-<div class="content-container">
-    <%= render 'search' %>
+<%= render 'search' %>
 
-    <h1>Latest Tech Articles</h1>
+<h1>Latest Tech Articles</h1>
 
-    <%= link_to 'Create', new_article_path, class: 'button' %>
+<%= link_to 'Create', new_article_path, class: 'button button-primary' %>
 
-    <% @articles.each do |article| %>
-        <%= link_to article_path(article), class: 'card-link' do %>
-            <div class="card">
-                <h2><%= article.title %></h2>
-                <p><%= article.content %></p>
-                <p><%= article.author %></p>
-                <p><%= article.date %></p>
-            </div>
-        <% end %>
+<% @articles.each do |article| %>
+    <%= link_to article_path(article), class: 'card-link' do %>
+        <div class="card">
+            <h2><%= article.title %></h2>
+            <p><%= article.content %></p>
+            <p><%= article.author %></p>
+            <p><%= article.date.strftime("%B %d, %Y") %></p>
+        </div>
     <% end %>
-</div>
+<% end %>
