@@ -67,10 +67,21 @@ rails test test/system
 ```
 
 ## Caching
-To use (fragment) caching, you must enable it with the following command:
+To use (fragment) caching in development mode, you must enable it with the following command:
 ```
 rails dev:cache
 ```
-This will enable caching in development mode, but the change will with 
+
+Further, for an easier experience run the follow command to seed mock data into the DB:
+```
+rails db:seed
+```
+If you ever want to reset the data you can modify the seedfile and rerun rails db:seed
+
+To completely clear out the database entries, the follow command can be used:
+```
+rake db:reset
+```
+
 
 
