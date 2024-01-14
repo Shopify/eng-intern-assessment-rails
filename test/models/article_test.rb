@@ -146,5 +146,4 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article1
     assert_includes results, article2
   end
-  
 end
