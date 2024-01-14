@@ -2,6 +2,10 @@
 <p><%= @article.content %></p>
 <p>Author: <%= @article.author %></p>
 <p>Date: <%= @article.date %></p>
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Edit', edit_article_path(@article), class: 'button' %>
+
+<%= form_with url: article_path(@article), method: :delete, class: 'button-inline' do %>
+  <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' }, class: 'button' %>
+<% end %>
+
+<%= link_to 'Back', articles_path, class: 'button' %>
