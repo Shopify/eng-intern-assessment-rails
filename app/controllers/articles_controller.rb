@@ -61,13 +61,20 @@ class ArticlesController < ApplicationController
         @article.destroy!
     
         respond_to do |format|
-          format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
+          format.html { redirect_to articles_url, notice: "Article deleted successfully" }
           format.json { head :no_content }
         end
-      end
+    end
+
+    # SEARCH
+    def search
+      @search_query = params[:search]
+      @articles = Article.search(@search_query)
+  
+      render :index
+    end
   
     private
-      # Use callbacks to share common setup
       def set_article
         @article = Article.find(params[:id])
       end

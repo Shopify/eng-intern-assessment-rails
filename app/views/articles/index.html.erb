@@ -1,14 +1,21 @@
-<p style="color: red"><%= notice %></p>
-
+<!-- app/views/articles/index.html.erb -->
 <h1>Articles</h1>
 
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
-</div>
+<%= form_tag(articles_path, method: "get") do %>
+  <div>
+    <%= text_field_tag(:search, @search_query, placeholder: "Search articles...") %>
+    <%= submit_tag("Search") %>
+  </div>
+<% end %>
 
-<%= link_to "New article", new_article_path %>
+<% @articles.each do |article| %>
+  <div>
+    <h2><%= link_to article.title, article %></h2>
+    <p><strong>Date:</strong> <%= article.date.strftime("%B %d, %Y") %></p>
+    <p><%= article.content %></p>
+    <p>Author: <%= article.author %></p>
+    <%= link_to "Edit", edit_article_path(article) %>
+  </div>
+<% end %>
+
+<%= link_to "New Article", new_article_path %>

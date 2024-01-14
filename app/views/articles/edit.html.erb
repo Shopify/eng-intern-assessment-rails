@@ -1,10 +1,8 @@
-<div class="page-header">
-  <h1>Edit Article</h1>
-</div>
+<!-- app/views/articles/edit.html.erb -->
+<h1>Edit Article</h1>
 
-<%= render "form", article: @article %>
+<%= render 'form' %>
 
-<div class="page-links">
-  <%= link_to "Show this article", @article, class: "custom-link" %> |
-  <%= link_to "Back to articles", articles_path, class: "custom-link" %>
-</div>
+<%= link_to "Show Article", article_path(@article) %>
+<%= link_to "Back to Articles", articles_path %>
+<%= button_to "Destroy this article", @article, method: :delete %>

@@ -1,9 +1,6 @@
-<h1>New article</h1>
+<!-- app/views/articles/new.html.erb -->
+<h1>New Article</h1>
 
-<%= render "form", article: @article %>
+<%= render 'form' %>
 
-<br>
-
-<div>
-  <%= link_to "Back to articles", articles_path %>
-</div>
+<%= link_to "Back to Articles", articles_path %>
