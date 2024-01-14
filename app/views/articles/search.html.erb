@@ -1,0 +1,23 @@
+<div class="container" style="max-width: 960px;">
+  <h1 class="mb-4">Articles</h1>
+
+  <%= form_with(url: search_articles_path, method: "get", class: "search-form") do |form| %>
+      <div class="mb-3">
+        <%= form.text_field :query, class: "form-control", placeholder: "Search articles..." %>
+        <%= form.submit "Search", class: "btn btn-primary mt-2" %>
+      </div>
+    <% end %>
+
+  <div class="list-group">
+    <% @articles.each do |article| %>
+      <div class="list-group-item">
+        <h5 class="mb-1"><%= link_to article.title, article_path(article) %></h5>
+        <p class="mb-1">Author: <%= article.author %></p>
+        <p class="mb-1"><%= truncate(article.content, length: 250) %></p>
+        <small>Posted on: <%= article.created_at.strftime("%B %d, %Y") %></small>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "Back to Home", root_path, class: "btn btn-secondary mt-3" %>
+</div>
