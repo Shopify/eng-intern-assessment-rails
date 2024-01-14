@@ -11,7 +11,7 @@
     <span class="font-semibold mt-2">
     <%= form.label :content %>
     </span>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, class: "h-24 md:h-48 border-2 border-gray-200 rounded-lg" %>
   </div>
 
   <div class="grid w-2/12 mx-auto my-auto h-7/12">
@@ -28,7 +28,7 @@
     <%= form.datetime_field :date, class: "border-2 border-gray-200 rounded-lg p-2" %>
   </div>
 
-    <div class="mt-2 flex border border-black rounded-2xl text-center bg-blue-300 grid w-2/12 mx-auto" >
+    <div class="hover:shadow-xl mt-2 flex border border-black rounded-2xl text-center hover:bg-blue-300 delay-100 transition delay-150 duration-150 ease-in-out grid w-2/12 mx-auto bg-gray-200" >
     <%= form.submit %>
   </div>
 

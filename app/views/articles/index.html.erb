@@ -2,15 +2,17 @@
  <div id="articles" class="flex justify-center items-center mb-4">
   <%= form_tag(articles_path, method: "get", class: "rounded-lg") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search articles...", class: "" %>
-    <%= submit_tag "Search", class: 'rounded-lg bg-gray-200 border-2 boreder-black'  %>
+    <%= submit_tag "Search", class: 'rounded-lg bg-gray-200 border-2 boreder-black hover:shadow-xl hover:bg-blue-300 delay-150 transition delay-100 p-1'  %>
   <% end %>
 </div> 
 
 <%# If the article is present from search, then show, else render "No articles found.%>
   <% if @articles.present? %>
     <% @articles.each do |article|%>
+    <div class="">
       <%= render article%>
-        <%= link_to "Show this article", article, class:"mt-2 flex border border-black rounded-2xl text-center bg-blue-300 grid w-2/12 mx-auto" %>
+        <%= link_to "Show this article", article, class:"hover:shadow-xl mt-2 flex border border-black rounded-2xl text-center hover:bg-blue-300 delay-100 transition delay-150 duration-150 ease-in-out grid w-2/12 mx-auto bg-gray-200" %>
+     </div>
     <% end %>
   <% else %>
     <p>No articles found.</p>
