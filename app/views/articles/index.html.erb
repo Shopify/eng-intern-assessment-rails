@@ -1,0 +1,13 @@
+<h1> Articles indexes </h1>
+<%= link_to "New Article", new_article_path %>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <a href="/articles/<%= article.id %>">
+        <%= article.title %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
