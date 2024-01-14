@@ -65,4 +65,19 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'should not save article without title' do
+    article = Article.new(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.save, 'Saved the article without a title'
+  end
+
+  test 'should not save article without content' do
+    article = Article.new(title: 'Sample Article')
+    assert_not article.save, 'Saved the article without content'
+  end
+
+  test 'should not save article without content and title' do
+    article = Article.new()
+    assert_not article.save, 'Saved the article without content and title'
+  end
 end
