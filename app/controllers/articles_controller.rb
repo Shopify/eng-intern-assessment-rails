@@ -48,7 +48,6 @@ class ArticlesController < ApplicationController
 
   def search
     @search_results = Article.search(params[:query], params[:type])
-    puts(@search_result)
     @articles = Article.all
     render 'index'
   end

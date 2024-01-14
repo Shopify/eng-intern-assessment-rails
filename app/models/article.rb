@@ -31,7 +31,6 @@ class Article < ApplicationRecord
   end
 
   def self.lexical_search(query)
-
     #Searches the database for articles that contain the query in the title or content
     begin
       articles = Article.where("title LIKE ? OR content LIKE ?", "%#{query}%", "%#{query}%").order(title: :asc)
@@ -64,9 +63,7 @@ class Article < ApplicationRecord
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
         http.request(req)
       end
-
       parsed_response = JSON.parse(response.body)
-
       if parsed_response["hits"] && parsed_response["hits"]["hits"]
         search_results = parsed_response["hits"]["hits"].map do |hit|
           if hit["_id"]
