@@ -41,19 +41,6 @@ class ArticlesController < ApplicationController
         end
     end
 
-    # Deletes an article from the database
-    # DELETE /articles/:id
-    def destroy
-        @article = Article.find(params[:id])
-        if @article.destroy
-          flash[:notice] = 'Article was successfully deleted.'    
-          redirect_to articles_path
-        else
-          flash[:alert] = 'Article could not be deleted.'    
-          redirect_to articles_path
-        end
-    end
-
     # Retrieves the article with the specified ID and assigns it to the instance variable @article
     # GET /articles/:id/edit
     def edit
@@ -72,6 +59,19 @@ class ArticlesController < ApplicationController
             render :edit
         end
     end
+
+    # Deletes an article from the database
+    # DELETE /articles/:id
+    def destroy
+        @article = Article.find(params[:id])
+        if @article.destroy
+            flash[:notice] = 'Article was successfully deleted.'
+            redirect_to articles_path
+        else
+            flash[:alert] = 'Article could not be deleted.'    
+            redirect_to articles_path
+        end
+    end
     
     private
     
@@ -82,7 +82,7 @@ class ArticlesController < ApplicationController
 
     # Handles the case when an article is not found
     def record_not_found
-        flash[:alert] = 'Article not found.'
+        flash[:alert] = 'Article could not be found.'
         redirect_to articles_path
     end
 end
