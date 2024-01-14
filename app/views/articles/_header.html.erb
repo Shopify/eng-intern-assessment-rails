@@ -1,0 +1,19 @@
+<div class="mt-10 navbar p-0 bg-base-100">
+  <div class="flex-1">
+    <%= link_to articles_path do %>
+      <h1 class="btn btn-ghost text-2xl text-lime-600 p-0">Shopedia</h1>
+    <% end %>
+  </div>
+  <div class="flex-none gap-6">
+    <div class="form-control">
+      <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+    </div>
+    <div>
+      <%= link_to new_article_path do %>
+        <button class="btn btn-default bg-lime-600 text-white hover:text-white hover:bg-lime-900 font-light w-20">
+          Create
+        </button>
+      <% end %>
+    </div>
+  </div>
+</div>

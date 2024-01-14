@@ -1,7 +1,28 @@
-<p style="color: green"><%= notice %></p>
-<%= render @article %>
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
-  <%= button_to "Destroy this article", @article, method: :delete %>
+<div class="flex justify-center">
+  <div class="mt-16 w-8/12">
+    <p style="color: green"><%= notice %></p>
+    <h1 class="text-4xl font-semibold"><%= @article.title %></h1>
+    <div class="inline-block text-lg">
+      <p class="mt-5 font-light inline-block">by </p>
+      <p class="inline-block text-lime-600"><%= @article.author %></p>
+    </div>
+    <div class="mb-10 mt-8">
+      <p class="text-justify"><%= @article.content %></p>
+    </div>
+    <div class="mb-8 flex gap-5 justify-between">
+      <div class="flex gap-4">
+        <%= link_to edit_article_path(@article) do %>
+          <button class="btn bg-slate-800 text-white">Edit Article</button>
+        <% end %>
+        <%= button_to @article, method: :delete do %>
+          <button class="btn btn-outline btn-error">Delete Article</button>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to articles_path do %>
+          <button class="btn btn-outline">Back to Home</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

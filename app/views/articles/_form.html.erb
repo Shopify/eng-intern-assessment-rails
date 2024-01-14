@@ -9,23 +9,27 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
-  </div>
-  <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_field :author %>
-  </div>
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
-  </div>
-  <div>
-    <%= form.submit %>
+  <div class="flex flex-col w-7/12 gap-4 mt-10">
+    <div>
+      <label for="article_title" style="display: block">Title</label>
+      <input class="input input-bordered w-full max-w-xs" type="text" name="article[title]" id="article_title" value="<%= article.title %>">
+    </div>
+    <div>
+      <label for="article_author" style="display: block">Author</label>
+      <input class="input input-bordered w-full max-w-xs" type="text" name="article[author]" id="article_author" value="<%= article.author %>">
+    </div>
+    <div>
+      <label for="article_content" style="display: block">Content</label>
+      <textarea class="textarea textarea-bordered w-full" name="article[content]" id="article_content"><%= article.content %></textarea>
+    </div>
+    <div>
+      <label for="article_date" style="display: block">Date</label>
+      <input class="input input-bordered w-full max-w-xs" type="date" name="article[date]" id="article_date" value="<%= article.date %>">
+    </div>
+    <div>
+      <div class="mt-4">
+        <button class="btn" type="submit">Submit</button>
+      </div>
+    </div>
   </div>
 <% end %>

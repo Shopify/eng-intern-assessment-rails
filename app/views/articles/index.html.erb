@@ -1,18 +1,22 @@
-<div class="mt-16">
-  <h2 class="text-3xl font-thin mb-8 text-lime-700">Explore Articles</h2>
-  <ul class="flex gap-10">
+<div class="mt-10">
+  <h2 class="text-4xl font-thin mb-10 text-lime-700">Explore Articles</h2>
+  <ul class="flex gap-8 flex-wrap">
     <% @articles.each do |article| %>
-      <div class="card w-52 rounded-md shadow pt-5 px-5">
-        <div>
-          <div class="flex gap-1 font-bold">
-            <li class="card-title text-2xl"><%= article.title %></li>
-          </div>
-          <li class="font-extralight">By <%= article.author %></li>
-          <li class="font-light text-xs italic pt-2">Authored <%= article.date %></li>
-          <div class="mt-5 pb-5">
-            <%= link_to article do %>
-              <button class="btn btn-outline btn-sm btn-neutral w-full">View Article</button>
-            <% end %>
+      <div class="w-8/12">
+        <div class="outline outline-offset-1 outline-slate-100 flex flex-col w-full bg-white rounded-md shadow pt-5 px-5">
+          <div class="">
+            <div class="flex gap-1 font-bold">
+              <li class="card-title text-2xl"><%= article.title %></li>
+            </div>
+            <li class="mt-3 font-extralight flex gap-1">by 
+              <p class="text-lime-600"><%= article.author %></p>
+            </li>
+            <li class="font-light text-xs italic pt-2">Authored <%= article.date %></li>
+            <div class="mt-5 pb-5">
+              <%= link_to article do %>
+                <button class="btn btn-outline btn-sm btn-neutral w-full">View Article</button>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
