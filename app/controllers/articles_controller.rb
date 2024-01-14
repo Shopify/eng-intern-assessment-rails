@@ -54,6 +54,19 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def search_page
+    # This action just renders the search_page view
+  end
+
+  def search
+    if params[:query].present?
+      @articles = Article.search(params[:query])
+    else
+      @articles = Article.all
+    end
+    render :search_page
+  end
+
   private
 
     def set_article

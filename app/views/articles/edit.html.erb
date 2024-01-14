@@ -1,11 +1,13 @@
-<h1 class="font-extralight text-4xl mt-10 text-lime-700">Update the article</h1>
-<%= render "form", article: @article %>
-<br>
-<div class="flex gap-4 mt-5">
-  <%= link_to @article do %>
-    <button class="btn btn-neutral">View Article</button>
-  <% end %>
-  <%= link_to articles_path do %>
-    <button class="btn btn-outline">Back to home</button>
-  <% end %>
+<div class="card shadow-lg p-10 bg-slate-50 mt-10">
+  <h1 class="font-extralight text-4xl text-lime-700">Update the article</h1>
+  <%= render "form", article: @article %>
+  <br>
+  <div class="flex gap-4 mt-5">
+    <%= link_to @article do %>
+      <button class="btn btn-neutral">View Article</button>
+    <% end %>
+    <%= link_to articles_path do %>
+      <button class="btn btn-outline">Back to home</button>
+    <% end %>
+  </div>
 </div>

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :articles
+  get 'articles/search', to: 'articles#search', as: 'search_articles'
+  get 'search_page', to: 'articles#search_page'
+
+  resources :articles do
+  end
+
   root 'articles#index'
 
   get '/articles', to: "articles#index"
