@@ -35,8 +35,11 @@ class ArticlesController < ApplicationController
 
     def destroy
         @article = Article.find(params[:id])
-        @article.destroy
-        redirect_to articles_url, status: :see_other
+        if @article.destroy
+            redirect_to articles_url, status: :see_other
+        else
+            redirect_to @article, notice: 'Deletion unsuccessful.'
+        end
     end
 
     def search
@@ -46,13 +49,13 @@ class ArticlesController < ApplicationController
 
 private 
     def article_params
-        # fill in with default values so that we don't have nil values for those columns
+        # fill in with default values if left empty
         if params[:article][:date].blank?
             params[:article][:date] = Date.today
         end
 
         if params[:article][:author].blank?
-            params[:article][:author] = "anonymous"
+            params[:article][:author] = "Anonymous"
         end
 
         params.require(:article).permit(:author, :title, :content, :date)
