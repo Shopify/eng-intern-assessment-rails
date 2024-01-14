@@ -1,0 +1,11 @@
+<%= form_with model: @article, url: article_path(@article), method: :patch, local: true do |article| %>
+    <%= article.label :author %>
+    <%= article.text_field :author %>
+    <%= article.label :title %>
+    <%= article.text_field :title %>
+    <%= article.label :date %>
+    <%= article.date_field :date %>
+    <%= article.label :content %>
+    <%= article.text_area :content %>
+    <%= article.submit %>
+<% end %>
