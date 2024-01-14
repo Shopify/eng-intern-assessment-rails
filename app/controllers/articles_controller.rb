@@ -13,6 +13,9 @@ class ArticlesController < ApplicationController
 
   def current_article
     @article = Article.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Article not found'
+    redirect_to articles_path
   end
 end
 
