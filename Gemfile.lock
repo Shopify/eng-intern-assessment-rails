@@ -167,6 +167,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.5-aarch64-linux)
       racc (~> 1.4)
+    nokogiri (1.15.5-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
     psych (5.1.1.1)
@@ -235,6 +237,7 @@ GEM
     sqlite3 (1.6.9)
       mini_portile2 (~> 2.8.0)
     sqlite3 (1.6.9-aarch64-linux)
+    sqlite3 (1.6.9-arm64-darwin)
     sqlite3 (1.6.9-x86_64-linux)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
@@ -242,6 +245,8 @@ GEM
     tailwindcss-rails (2.0.31)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.31-aarch64-linux)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.31-arm64-darwin)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.31-x86_64-linux)
       railties (>= 6.0.0)
@@ -273,6 +278,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  arm64-darwin
   ruby
   x86_64-linux
 

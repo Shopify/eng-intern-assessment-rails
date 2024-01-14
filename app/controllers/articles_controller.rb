@@ -67,6 +67,7 @@ class ArticlesController < ApplicationController
     elsif @type=="semantic"
       @search_results = semantic_search(@query)
     end
+    @articles = Article.all
     render 'index'
   end
 
@@ -86,7 +87,7 @@ class ArticlesController < ApplicationController
         @search_result = articles.map do |article|
           {
             article: article,
-            score: 1,
+            score: 10.0,
           }
         end
       rescue => e
