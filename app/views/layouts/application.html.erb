@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>EngInternAssessmentRails</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-
-  <body class="grid">
-
+   <head>
+      <title>EngInternAssessmentRails</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+      <%= javascript_importmap_tags %>
+      <script src="https://cdn.tailwindcss.com"></script>
+   </head>
+   <body class="grid">
       <nav class="flex justify-between w-screen mb-4 rounded-2xl p-2 border-bottom border-b-2">
-        <%= link_to articles_path, class: "text-3xl font-bold text-center p-4 italic" do %>
-          <span class="text-red-300">Cool</span> <span class="text-blue-500">Art</span>icles
-        <% end %>
-        <div class="mt-6">
-        <%= link_to "Back to articles", articles_path, class: "font-bold hover:underline hover:italic decoration-4 decoration-blue-300 rounded-2xl text-center p-2 m-2" %>
-        <%= link_to "Create Article", new_article_path, class: 'font-bold hover:italic hover:underline decoration-4 decoration-blue-300 rounded-2xl text-center p-2 m-2'%>
-        <div>
+         <%= link_to articles_path, class: "text-3xl font-bold text-center p-4 italic" do %>
+         <span class="text-red-300">Cool</span> <span class="text-blue-500">Art</span>icles
+         <% end %>
+         <div class="mt-6">
+         <%= link_to "Back to articles", articles_path, class: "font-bold hover:underline hover:italic decoration-4 decoration-blue-300 rounded-2xl text-center p-2 m-2" %>
+         <%= link_to "Create Article", new_article_path, class: 'font-bold hover:italic hover:underline decoration-4 decoration-blue-300 rounded-2xl text-center p-2 m-2'%>
+         <div>
       </nav>
-
       <%= yield %>
-  </body>
+   </body>
 </html>
