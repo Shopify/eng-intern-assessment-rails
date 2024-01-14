@@ -1,0 +1,10 @@
+<%= form_with model: article do |form| %>
+  <%= render 'form_field', article: article, form: form, attribute: :title, field_type: :text_field %>
+  <%= render 'form_field', article: article, form: form, attribute: :content, field_type: :text_area %>
+  <%= render 'form_field', article: article, form: form, attribute: :author, field_type: :text_field %>
+  <%= render 'form_field', article: article, form: form, attribute: :date, field_type: :date_field %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
