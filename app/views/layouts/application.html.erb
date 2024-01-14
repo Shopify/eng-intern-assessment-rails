@@ -11,9 +11,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body class="flex justify-center">
-    <div>
+  <body class="grid">
+      <nav class="flex justify-between border-2 border-black w-screen mb-4 rounded-2xl p-2">
+      <h1 class="text-3xl font-bold text-center p-4">Articles</h1>
+      <div class="mt-6">
+      <%= link_to "Back to articles", articles_path, class: "hover:underline decoration-2 rounded-2xl text-center p-2 m-2" %>
+      <%= link_to "Create Article", new_article_path, class: 'hover:underline decoration-2 rounded-2xl text-center p-2 m-2'%>
+      <div>
+      </nav>
+      <div>
       <%= yield %>
-    </div>
+      </div>
   </body>
 </html>

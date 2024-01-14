@@ -1,23 +1,16 @@
-<div class="border-black border-2 p-10 rounded-2xl bg-gray-200">
+<div class="hover:shadow-xl p-2">
   <div id="<%= dom_id article %>" class="m-4">
       <p>
-        <strong>Title:</strong>
-        <%= article.title %>
+        <div class="text-xl font-medium"><%= article.title %></div>
       </p>
 
-      <p>
-        <strong>Content:</strong>
+      <p class="text-ellipsis">
         <%= article.content %>
       </p>
 
-      <p>
-        <strong>Author:</strong>
-        <%= article.author %>
-      </p>
-
-      <p>
-        <strong>Date:</strong>
-        <%= article.date %>
+      <p class="flex">
+          <div><span class="font-bold">Author:</span> <%= article.author %>  </div> <span class="font-bold">Created:</span> <%= article.date.strftime('%b %d, %Y') %>
       </p>
     </div>
+    <hr/>
 </div>

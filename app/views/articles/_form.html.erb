@@ -1,26 +1,34 @@
 <%= form_with(model: article) do |form| %>
 
-  <div class="ont-semibold m-2">
-    <%= form.label :title, style: "display: block" %>
+  <div class="grid w-3/12 mx-auto">
+    <span class="font-semibold mt-2">
+      <%= form.label :title %>
+    </span>
     <%= form.text_area :title, class: "border-2 border-gray-200 rounded-lg" %>
   </div>
 
-  <div class="font-semibold m-2">
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content, class: "border-2 border-gray-200 rounded-lg" %>
+  <div class="grid w-5/12 mx-auto my-auto h-7/12">
+    <span class="font-semibold mt-2">
+    <%= form.label :content %>
+    </span>
+    <%= form.text_area :content %>
   </div>
 
-  <div class="font-semibold m-2">
-    <%= form.label :author, style: "display: block" %>
+  <div class="grid w-2/12 mx-auto my-auto h-7/12">
+    <span class="font-semibold mt-2">
+    <%= form.label :author %>
+    </span>
     <%= form.text_field :author, class: "border-2 border-gray-200 rounded-lg" %>
   </div>
 
-  <div class="font-semibold m-2">
-    <%= form.label :date, style: "display: block" %>
+  <div class="grid w-2/12 mx-auto my-auto h-7/12">
+    <span class="font-semibold mt-2">
+    <%= form.label :date %>
+    </span>
     <%= form.datetime_field :date, class: "border-2 border-gray-200 rounded-lg p-2" %>
   </div>
 
-    <div  class="flex border-2 border-black rounded-2xl text-center bg-blue-300 grid m-2 px-4" >
+    <div class="mt-2 flex border border-black rounded-2xl text-center bg-blue-300 grid w-2/12 mx-auto" >
     <%= form.submit %>
   </div>
 
