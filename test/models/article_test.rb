@@ -10,12 +10,12 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'creates a new article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
     assert article.valid?
   end
 
   test 'displays the article content accurately' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
   end
 
