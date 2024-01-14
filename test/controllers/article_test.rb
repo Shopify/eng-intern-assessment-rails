@@ -34,7 +34,7 @@ RSpec.describe Api::V1::ArticlesController, type: :controller do
 
     context 'when the article does not exist' do
       it 'returns a 404 status code with a flash message' do
-        get :show, params: { id: 999_999_999_999 }
+        get :show, params: { id: 999999999 }
         expect(response).to have_http_status(:not_found)
         expect(flash[:alert]).to eq('Article not found')
       end

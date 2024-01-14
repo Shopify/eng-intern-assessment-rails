@@ -7,20 +7,25 @@ module Api
       skip_before_action :verify_authenticity_token
 
       def index
-        @articles = Article.all
-        if @articles.empty?
-          flash[:alert] = 'No articles to show. Create an article to add to the forum.'
-          render :index
-        else
-          render :index, status: :ok
+        begin
+          @articles = Article.all
+          if @articles.empty?
+            flash[:alert] = 'No articles to show. Create an article to add to the forum.'
+            render :index
+          else
+            render :index, status: :ok
+          end
+        rescue => e
+          flash[:alert] = e.message
+          render status: :internal_server_error
         end
       end
 
       def show
-        @article = Article.find_by(id: params[:id])
-        if @article
+        begin
+          @article = Article.find(params[:id])
           render :show, status: :ok
-        else
+        rescue ActiveRecord::RecordNotFound
           flash[:alert] = 'Article not found'
           render status: :not_found
         end
@@ -31,30 +36,36 @@ module Api
       end
 
       def create
-        @article = Article.new(article_params)
-        @article.date = Date.today
-        if @article.author.empty?
-          @article.author = 'Anonymous'
-        end
-        if @article.save
-          redirect_to article_path(@article)
-        else
-          flash[:alert] = @article.errors.full_messages
+        begin
+          @article = Article.new(article_params)
+          @article.date = Date.today
+          if @article.author.blank?
+            @article.author = 'Anonymous'
+          end
+          if @article.save
+            redirect_to article_path(@article)
+          else
+            flash[:alert] = @article.errors.full_messages
+          end
+        rescue => e
+          flash[:alert] = e.message
+          render status: :internal_server_error
         end
       end
 
       def edit
-        @article = Article.find_by(id: params[:id])
-        if @article
+        begin 
+          @article = Article.find(params[:id])
           render :edit, status: :ok
-        else
-          render json: { error: 'Requested article does not exist' }, status: :not_found
+        rescue ActiveRecord::RecordNotFound
+          flash[:alert] = 'Requested article does not exist'
+          redirect_to articles_path
         end
       end
 
       def update
-        @article = Article.find_by(id: params[:id])
         begin
+          @article = Article.find(params[:id])
           if @article.update(article_params)
             redirect_to article_path(@article)
           else
@@ -62,15 +73,21 @@ module Api
             render :edit
           end
         rescue ActiveRecord::RecordNotFound
-          render json: { error: 'Requested article does not exist' }, status: :not_found
+          flash[:alert] = 'Requested article does not exist'
+          redirect_to articles_path
         end
       end
 
       def destroy
-        article = Article.find_by(id: params[:id])
-        if article&.destroy
-          redirect_to articles_path
-        else
+        begin
+          article = Article.find(params[:id])
+          if article&.destroy
+            redirect_to articles_path
+          else
+            render status: :not_found
+          end
+        rescue ActiveRecord::RecordNotFound
+          flash[:alert] = 'Requested article does not exist'
           render status: :not_found
         end
       end
