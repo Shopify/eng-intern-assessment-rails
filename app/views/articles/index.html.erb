@@ -10,7 +10,9 @@
             <h2><%= article.title %></h2>
             <p><%= article.content %></p>
             <p><%= article.author %></p>
-            <p><%= article.date.strftime("%B %d, %Y") %></p>
+            <% if article.date.present? %>
+                <p><%= article.date.strftime("%B %d, %Y") %></p>
+            <% end %>
         </div>
     <% end %>
 <% end %>
