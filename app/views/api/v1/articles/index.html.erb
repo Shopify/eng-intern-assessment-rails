@@ -1,7 +1,29 @@
-<h1>Article List</h1>
-<% @articles.each do |article| %>
-  <h3><%= link_to article.title, article_path(article) %></h3>
-  <p><%= article.author %></p>
-  <p><%= article.content %></p>
-  <p><%= link_to "Update article", update_article_path(article) %></p>
+<%= stylesheet_link_tag 'styles' %>
+
+<div class= "header">
+<h1>Shopify Intern Experience</h1>
+
+<%= link_to "Create new article", new_article_path, class: "create-button" %>
+</div>
+
+<% if @articles.any? %>
+  <% @articles.each do |article| %>
+    <div class="article-div">
+      <%= link_to article_path(article), class: "article-link" do %>
+        <h3 class= "article-title"><%= article.title %></h3>
+        <p class= "article-author"><%= "By: " + article.author %></p>
+        <p class= "article-content"><%= truncate(article.content, length: 500, separator: ' ', omission: '...') %></p>
+      <% end %>
+      <div class="article-action-buttons">
+        <%= link_to "Edit article", edit_article_path(article), class: "edit-button" %>
+        <%= button_to "Delete article", article_path(article), method: :delete, class: "delete-button" %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+
+  <% if flash[:alert] %>
+      <h1><%= flash[:alert] %></h1>
+  <% end %>
 <% end %>
+

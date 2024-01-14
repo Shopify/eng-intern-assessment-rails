@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag 'styles' %>
+<h1> <%= link_to "Home Page", articles_path %></h1>
+<h1 class="edit-title">Edit Article</h1>
+
+<% if flash[:alert] %>
+    <p><%= flash[:alert] %></p>
+<% end %>
+
+<%= form_with(model: @article, url: article_path(@article), method: :patch, html: { class: "edit-form" }) do |form| %>
+    <div class="form-group">
+        <%= form.label "title", class: "form-label" %>
+        <%= form.text_field :title, class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label "content", class: "form-label" %>
+        <%= form.text_area :content, rows: 10, cols: 50, class: "form-input" %>
+    </div>
+
+    <%= form.submit "Update Article", class: "form-submit" %>
+<% end %>
