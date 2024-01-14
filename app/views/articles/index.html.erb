@@ -16,20 +16,21 @@
                 </tr>
                     <th>Author</th>
                     <th>Title</th>
+                    <th>Date Published</th>
                     <th>Content</th>
                     <th>Delete</th>
                 </tr>
-                <tr>
-                    <th> example </th>
-                    <th> example </th>
-                </tr>
-                <tr>
+            
                     <% @articles.each do |article| %>
+                        <tr>
                         <th><%= article.author %></th>
                         <th><%= article.title %></th>
-                        <th><%= link_to "Content", content_article_path(book)  %></th>
+                        <th><%= article.date %></th>
+    
+                         <%# <th><%= link_to "Content", content_article_path(article) %></th> %>
+                        </tr>
                     <% end %>
-                </tr>
+
             </table>
         </div>
 
