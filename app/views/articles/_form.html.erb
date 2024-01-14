@@ -1,5 +1,8 @@
+<%# UI for Article form (Creation, Update...) %>
+
 <%= form_with(model: article) do |form| %>
 
+<%# Render Errors if title and/or content is empty %>
   <% if article.errors.any? %>
   <div class="bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4 w-7/12 mx-auto" role="alert">
       <p class="text-red-400">
