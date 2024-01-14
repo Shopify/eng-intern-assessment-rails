@@ -26,7 +26,7 @@ Article.create(
   Article.create(
     title: Faker::Lorem.sentence(word_count: 5),
     content: Faker::Lorem.sentence(word_count: 250),
-    author: Faker::Lorem.sentence(word_count: 12),
+    author: Faker::Lorem.sentence(word_count: 3),
     date: Faker::Time.forward(days: 23, period: :morning)
   )
 end
