@@ -12,18 +12,19 @@ class ArticlesTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit articles_url
-    assert_selector "h1", text: "Articles"
+    assert_selector "span", text: "Cool"
+    assert_selector "span", text: "Art"
   end
 
   test "should create article" do
     visit articles_url
-    click_on "New article"
+    click_on "Create Article"
 
     fill_in "Author", with: @article.author
     fill_in "Content", with: @article.content
     fill_in "Date", with: @article.date
     fill_in "Title", with: @article.title
-    click_on "Create Article"
+    click_on "Submit"
 
     assert_text "Article was successfully created"
     click_on "Back"
@@ -37,7 +38,7 @@ class ArticlesTest < ApplicationSystemTestCase
     fill_in "Content", with: @article.content
     fill_in "Date", with: @article.date
     fill_in "Title", with: @article.title
-    click_on "Update Article"
+    click_on "Submit"
 
     assert_text "Article was successfully updated"
     click_on "Back"

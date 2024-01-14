@@ -9,10 +9,12 @@
 <%# If the article is present from search, then show, else render "No articles found.%>
   <% if @articles.present? %>
     <% @articles.each do |article|%>
-    <div class="">
+    <div >
       <%= render article%>
-        <%= link_to "Show this article", article, class:"hover:shadow-xl mt-2 flex border border-black rounded-2xl text-center hover:bg-blue-300 delay-100 transition delay-150 duration-150 ease-in-out grid w-2/12 mx-auto bg-gray-200" %>
-     </div>
+        <%= link_to "Show this article", article, class:"hover:shadow-xl mt-2 flex border border-black rounded-2xl text-center hover:bg-blue-300 delay-100 transition delay-150 duration-150 ease-in-out grid w-2/12 mx-auto bg-gray-100" %>
+        <span class="p-2"/>
+        <hr/>
+     </span>
     <% end %>
   <% else %>
     <p>No articles found.</p>
