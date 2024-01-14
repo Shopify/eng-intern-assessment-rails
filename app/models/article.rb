@@ -1,6 +1,6 @@
 #   File: article.rb
 #   Description: This file contains the Article class, which represents the model for articles.
-#                It includes validations for title, content, author, and claps, as well as a search method.
+#                It includes validations for title, content, author, and claps (equivalent to Medium.com claps), as well as a search method.
 
 class Article < ApplicationRecord
   # Validate presence and length constraints for the title.

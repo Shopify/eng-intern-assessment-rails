@@ -3,6 +3,7 @@
 #                for articles, including caching and claps functionality.
 
 class ArticlesController < ApplicationController
+  include ArticlesHelper
   before_action :set_article, only: [:show, :edit, :update, :destroy, :clap]
 
   # Fetch and paginate articles, caching the result for better performance.
@@ -72,26 +73,13 @@ class ArticlesController < ApplicationController
     render :search
   end
   
-  # Increment claps for an article and redirect to the article page.
+  # Increment claps for an article and update the cache, then redirect to the article page.
   def clap
     @article.increment!(:claps)
+
+    # Update the cache for the specific article
+    Rails.cache.write("article_#{params[:id]}", @article, expires_in: 1.hour)
+
     redirect_to article_path(@article), notice: 'You clapped for the article!'
-  end
-
-  private
-
-  # Set the @article instance variable based on the ID parameter.
-  def set_article
-    @article = Article.find(params[:id])
-  end
-
-  # Clear the cache for a given page
-  def clear_paginated_articles_cache(page)
-    # Clear the cache for the specific page, if not provided, then all
-    Rails.cache.delete_matched("paginated_articles_#{page || '*'}")
-  end
-  # Define permitted parameters for article creation and updating.
-  def article_params
-    params.require(:article).permit(:title, :content, :author, :date)
   end
 end
