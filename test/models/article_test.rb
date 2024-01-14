@@ -26,7 +26,7 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'edits an existing article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
     article.update(content: 'Updated content')
     assert_equal 'Updated content', article.content
   end
@@ -39,30 +39,42 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'deletes an article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
     article.destroy
     assert_equal 0, Article.count
   end
 
   test 'prevents access to deleted articles' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
     article.destroy
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
   end
 
   test 'returns accurate search results' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
-    results = Article.search('Lorem ipsum')
-    assert_includes results, article1
-    assert_includes results, article2
+    # Setup
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'John Doe')
+
+    results_lexical = Article.search('Lorem ipsum', 'lexical')
+    found_articles_lexical = results_lexical.map { |result| result[:article] }
+    assert_includes found_articles_lexical, article1, "Article 1 should be in lexical search results"
+    assert_includes found_articles_lexical, article2, "Article 2 should be in lexical search results"
+    # Manually destroy articles to avoid remove in elastic search
+    article1.destroy
+    article2.destroy
   end
 
+
   test 'displays relevant articles in search results' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
-    results = Article.search('Another')
-    assert_includes results, article2
-    assert_not_includes results, article1
+    # Setup
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'John Doe')
+    results_lexical = Article.search('Another', 'lexical')
+    assert_includes results_lexical.map { |result| result[:article] }, article2, "Article 2 should be in lexical search results"
+    assert_not_includes results_lexical.map { |result| result[:article] }, article1, "Article 1 should not be in lexical search results"
+    # Manually destroy articles to avoid remove in elastic search
+    article1.destroy
+    article2.destroy
   end
+
 end

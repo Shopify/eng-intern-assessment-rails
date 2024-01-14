@@ -107,7 +107,6 @@ class Article < ApplicationRecord
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
       http.request(req)
     end
-    puts("response: #{response.inspect}")
   end
 
   def delete_from_elastic_index()
