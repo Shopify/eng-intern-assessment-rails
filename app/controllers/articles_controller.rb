@@ -1,4 +1,3 @@
-# The ArticlesController class handles the logic for managing articles in the application using CRUD operations
 # The ArticlesController class handles the CRUD operations for articles.
 class ArticlesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found

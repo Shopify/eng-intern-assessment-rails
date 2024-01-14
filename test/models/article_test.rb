@@ -94,7 +94,7 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   # Test case for deleting an article that has already been deleted
-  test 'prevent deletion attempt of already deleted articles' do
+  test 'prevents access to deleted articles' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
