@@ -19,3 +19,9 @@
         <%= form.submit %>
     </div>
 <% end %>
+<% if flash[:error].present? %>
+    <div id="error_explanation">
+        <h2>Error:</h2>
+        <p><%= flash[:error] %></p>
+    </div>
+<% end %>
