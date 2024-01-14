@@ -54,4 +54,34 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to articles_url
   end
+
+  test 'should create authors with the name Anonymous' do
+    post articles_url,
+         params: { article: { author: nil, content: @article.content, date: @article.date, title: @article.title } }
+
+    assert_equal 'Anonymous', Article.last.author
+  end
+
+  test 'should update authors with the name Anonymous' do
+    patch article_url(@article),
+          params: { article: { author: nil, content: 'Updated Content', date: Date.today, title: 'Updated Title' } }
+
+    @article.reload
+
+    assert_equal 'Anonymous', @article.author
+  end
+
+  test 'should update date with current date' do
+    patch article_url(@article),
+          params: { article: { author: '', content: '', date: '', title: '' } }
+
+    assert_equal Date.current, @article.reload.date.to_date
+  end
+
+  test 'should create date with current date' do
+    post article_url(@article),
+         params: { article: { author: '', content: '', date: '', title: '' } }
+
+    assert_equal Date.current, @article.reload.date.to_date
+  end
 end

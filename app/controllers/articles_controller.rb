@@ -22,6 +22,9 @@ class ArticlesController < ApplicationController
     # If author field is empty, set it to Anonymous
     params[:article][:author] = 'Anonymous' if params[:article][:author].blank?
 
+    # If date field is empty, set it to the current datetime
+    params[:article][:date] = Date.current if params[:article][:date].blank?
+
     @article = Article.new(article_params)
 
     respond_to do |format|
@@ -39,6 +42,9 @@ class ArticlesController < ApplicationController
   def update
     # If author field is empty, set it to Anonymous
     params[:article][:author] = 'Anonymous' if params[:article][:author].blank?
+
+    # If date field is empty, set it to the current datetime
+    params[:article][:date] = Date.current if params[:article][:date].blank?
 
     respond_to do |format|
       if @article.update(article_params)

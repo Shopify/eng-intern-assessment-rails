@@ -69,4 +69,42 @@ RSpec.describe ArticlesController, type: :controller do
       expect(response).to redirect_to(articles_url)
     end
   end
+
+  describe 'POST #create' do
+    it 'should create authors with the name Anonymous' do
+      post :create,
+           params: { article: { author: nil, content: @article.content, date: @article.date, title: @article.title } }
+
+      expect(Article.last.author).to eq('Anonymous')
+    end
+  end
+
+  describe 'PATCH #update' do
+    it 'should update authors with the name Anonymous' do
+      patch :update,
+            params: { id: @article.to_param,
+                      article: { author: nil, content: 'Updated Content', date: Date.today, title: 'Updated Title' } }
+
+      @article.reload
+
+      expect(@article.author).to eq('Anonymous')
+    end
+  end
+
+  describe 'PATCH #update' do
+    it 'should update date with current date' do
+      patch :update, params: { id: @article.to_param, article: { author: '', content: '', date: '', title: '' } }
+
+      expect(@article.reload.date.to_date).to eq(Date.current)
+    end
+  end
+
+  describe 'POST #create' do
+    it 'should create date with current date' do
+      post :create,
+           params: { article: { author: '', content: '', date: '', title: '' } }
+
+      expect(Article.last.date.to_date).to eq(Date.current)
+    end
+  end
 end
