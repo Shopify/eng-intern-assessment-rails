@@ -1,7 +1,7 @@
 # Overview
 This article application allows for CRUD and search functionality for articles.
 
-A demo video can be found here: [eng-intern-assesment-rails-shahilax.webm](https://github.com/Shopify/eng-intern-assessment-rails/assets/46412618/c146e6b1-a65e-4250-af57-c1327aabfe00)
+A [demo](https://youtu.be/9w4d724Q11U) video.
 
 ## Additional tools/libraries
 - [rspec-rails](https://rspec.info/documentation/6.0/rspec-rails/) for rspec test cases
@@ -10,7 +10,7 @@ A demo video can be found here: [eng-intern-assesment-rails-shahilax.webm](https
 
 
 # Local Startup
-1. Ensure that you have all of the prequsites
+1. Ensure that you have all of the prerequisites
 - Ruby 2.7.6+
 - Rails 7.1.2+
 - SQLite3 3.39.5+
@@ -65,3 +65,12 @@ This will execute all tests except for the tests in the system file. To run thes
 ```
 rails test test/system
 ```
+
+## Caching
+To use (fragment) caching, you must enable it with the following command:
+```
+rails dev:cache
+```
+This will enable caching in development mode, but the change will with 
+
+

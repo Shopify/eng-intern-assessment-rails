@@ -3,7 +3,12 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.search(params[:search])
+    benchmark = Benchmark.measure do
+      @articles = Article.search(params[:search])
+      render
+    end
+
+    logger.info "Benchmark time: #{benchmark.real * 1000}ms"
   end
 
   # GET /articles/1 or /articles/1.json
