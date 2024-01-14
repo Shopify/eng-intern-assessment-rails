@@ -6,7 +6,7 @@
 
 <h1><%= @article.title %></h1>
 
-<% if @article.author %>
+<% if @article.author.present? %>
   <h3>Author: <%= @article.author %></h3>
 <% else %>
   <h3>No author specified</h3>
@@ -21,5 +21,7 @@
 <h2><%= @article.content %></h2>
 
 
-
-<%= link_to 'Back to Articles', articles_path %>
+<ul>
+  <li><%= link_to "Update Article", edit_article_path(@article) %></li>
+  <li><%= link_to 'Back to Articles', articles_path %></li>
+</ul>
