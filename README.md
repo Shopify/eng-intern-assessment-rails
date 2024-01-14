@@ -9,7 +9,7 @@ Addtional tools added include:
 - [tailwindcss](https://tailwindcss.com/) for UI implemenation
 
 # Testing
-Original tests were written in rails default testing framework minitest, but instruction noted that the tests should be locally run using the 'rspec' command. As such the follow steps were taken:
+Original tests were written using default minitest framework, but instruction noted that the tests should be locally run using the 'rspec' command. As such the follow steps were taken:
 - rspec-rails was installed and setup
 - Controller, Model, and System tests were converted into rspec tests
 
