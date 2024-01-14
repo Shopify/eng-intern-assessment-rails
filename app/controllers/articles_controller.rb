@@ -19,6 +19,9 @@ class ArticlesController < ApplicationController
 
   # POST /articles or /articles.json
   def create
+    # If author field is empty, set it to Anonymous
+    params[:article][:author] = 'Anonymous' if params[:article][:author].blank?
+
     @article = Article.new(article_params)
 
     respond_to do |format|
@@ -34,6 +37,9 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
+    # If author field is empty, set it to Anonymous
+    params[:article][:author] = 'Anonymous' if params[:article][:author].blank?
+
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to article_url(@article), notice: 'Article was successfully updated.' }

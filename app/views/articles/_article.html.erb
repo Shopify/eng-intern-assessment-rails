@@ -20,14 +20,14 @@
 <div class="p-2">
    <div id="<%= dom_id article %>" class="m-4">
       <p>
-      <div class="grid place-items-center text-4xl font-medium"><%= article.title %></div>
+      <div class="grid text-4xl font-medium place-items-center"><%= article.title %></div>
       </p>
       <p class="flex">
       <div class="grid place-items-center">
-         <span class="text-gray-700 italic">Written by <%= article.author %></span>
+         <span class="italic text-gray-700">Written by <%= article.author %></span>
       </div>
       <div class="grid place-items-center">
-         <span class="text-gray-700 italic">Posted:<%= article.date.strftime('%b %d, %Y') %></span> 
+         <span class="italic text-gray-700">Posted:<%= article.date.strftime('%b %d, %Y') %></span> 
       </div>
       </p>
       <p class="text-ellipsis mx-96">
