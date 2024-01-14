@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
+    initial_count = Article.count
     assert_equal 0, Article.count
   end
 
@@ -64,5 +65,20 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  # additional test to check if delete functionality is working
+  test 'deletes an article 2' do
+    initial_count = Article.count
+  
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+  
+    count_after_create = Article.count
+  
+    article.destroy
+    count_after_destroy = Article.count
+  
+    assert_equal 1, count_after_create - initial_count
+    assert_equal 0, count_after_destroy - initial_count
   end
 end
