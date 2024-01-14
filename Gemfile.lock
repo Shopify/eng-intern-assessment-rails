@@ -119,6 +119,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -280,6 +282,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   elasticsearch
+  figaro
   importmap-rails
   jbuilder
   puma (>= 5.0)
