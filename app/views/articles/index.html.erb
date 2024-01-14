@@ -6,10 +6,14 @@
 
 <h1>Shopify Encyclopedia</h1>
 
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article %>
-    </li>
-  <% end %>
-</ul>
+<% if @articles.present? %>
+  <ul>
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no articles in the Encyclopedia. Why not be the first to create one?</p>
+<% end %>
