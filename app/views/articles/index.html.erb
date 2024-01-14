@@ -1,0 +1,18 @@
+<%= render 'search' %>
+
+<h1>Latest Tech Articles</h1>
+
+<%= link_to 'Create', new_article_path, class: 'button button-primary' %>
+
+<% @articles.each do |article| %>
+    <%= link_to article_path(article), class: 'card-link' do %>
+        <div class="card">
+            <h2><%= article.title %></h2>
+            <p><%= article.content %></p>
+            <p><%= article.author %></p>
+            <% if article.date.present? %>
+                <p><%= article.date %></p>
+            <% end %>
+        </div>
+    <% end %>
+<% end %>
