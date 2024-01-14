@@ -1,0 +1,10 @@
+<%# Render UI specific article page%>
+
+<% if notice %>
+<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-6 w-7/12 mx-auto" role="alert">
+   <%= notice %>
+</div>
+<% end%>
+<%= button_to "Destroy this article", @article, method: :delete, class: "hover:shadow-xl mt-2 flex border border-black rounded-2xl text-center hover:bg-red-300 delay-100 transition delay-150 duration-300 ease-in-out grid w-2/12 mx-auto"%>
+<%= link_to "Edit this article", edit_article_path(@article), class: "hover:shadow-xl mt-2 flex border border-black rounded-2xl text-center hover:bg-blue-300 delay-100 transition delay-150 duration-300 ease-in-out grid w-2/12 mx-auto" %>
+<%= render @article %>

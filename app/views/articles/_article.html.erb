@@ -1,0 +1,38 @@
+<%# Render UI for article based on page %>
+<%# If on homepage, render dense view of article(s)%>
+<%# else If on specific article's page, render a larger view%>
+<% if action_name == 'index' %>
+<div class="p-2">
+   <div id="<%= dom_id article %>" class="m-4">
+      <p>
+      <div class="text-xl font-medium"><%= article.title %></div>
+      </p>
+      <p class="text-ellipsis">
+         <%= article.content %>
+      </p>
+      <p class="flex">
+      <div><span class="font-bold">Author:</span> <%= article.author %>  </div>
+      <span class="font-bold">Created:</span> <%= article.date.strftime('%b %d, %Y') %>
+      </p>
+   </div>
+</div>
+<% elsif action_name == 'show' %>
+<div class="p-2">
+   <div id="<%= dom_id article %>" class="m-4">
+      <p>
+      <div class="grid text-4xl font-medium place-items-center"><%= article.title %></div>
+      </p>
+      <p class="flex">
+      <div class="grid place-items-center">
+         <span class="italic text-gray-700">Written by <%= article.author %></span>
+      </div>
+      <div class="grid place-items-center">
+         <span class="italic text-gray-700">Posted:<%= article.date.strftime('%b %d, %Y') %></span> 
+      </div>
+      </p>
+      <p class="text-ellipsis mx-96">
+         <%= article.content %>
+      </p>
+   </div>
+</div>
+<% end %>

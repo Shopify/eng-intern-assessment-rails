@@ -1,82 +1,81 @@
-require 'test_helper'
+require 'rails_helper'
 
-class ArticleTest < ActiveSupport::TestCase
-  test 'starts with no articles' do
-    assert_equal 0, Article.count
+RSpec.describe Article, type: :model do
+  it 'starts with no articles' do
+    expect(Article.count).to eq(0)
   end
 
-  test 'has search functionality' do
-    assert_respond_to Article, :search
+  it 'has search functionality' do
+    expect(Article).to respond_to(:search)
   end
 
-  test 'creates a new article' do
+  it 'creates a new article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    assert article.valid?
+    expect(article).to be_valid
   end
 
-  test 'displays the article content accurately' do
+  it 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    assert_equal 'Lorem ipsum dolor sit amet.', article.content
+    expect(article.content).to eq('Lorem ipsum dolor sit amet.')
   end
 
-  test 'displays the article metadata correctly' do
+  it 'displays the article metadata correctly' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe',
                              date: Date.today)
-    assert_equal 'John Doe', article.author
-    assert_equal Date.today, article.date
+    expect(article.author).to eq('John Doe')
+    expect(article.date).to eq(Date.today)
   end
 
-  test 'edits an existing article' do
+  it 'edits an existing article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.update(content: 'Updated content')
-    assert_equal 'Updated content', article.content
+    expect(article.content).to eq('Updated content')
   end
 
-  test 'updates the article metadata' do
+  it 'updates the article metadata' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe',
                              date: Date.today)
     article.update(author: 'Jane Smith', date: Date.yesterday)
-    assert_equal 'Jane Smith', article.author
-    assert_equal Date.yesterday, article.date
+    expect(article.author).to eq('Jane Smith')
+    expect(article.date).to eq(Date.yesterday)
   end
 
-  test 'deletes an article' do
+  it 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
-    assert_equal 0, Article.count
+    expect(Article.count).to eq(0)
   end
 
-  test 'prevents access to deleted articles' do
+  it 'prevents access to deleted articles' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
-    assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
+    expect { Article.find(article.id) }.to raise_error(ActiveRecord::RecordNotFound)
   end
 
-  test 'returns accurate search results' do
+  it 'returns accurate search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article',
                               content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Lorem ipsum')
-    assert_includes results, article1
-    assert_includes results, article2
+    expect(results).to include(article1, article2)
   end
 
-  test 'displays relevant articles in search results' do
+  it 'displays relevant articles in search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article',
                               content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Another')
-    assert_includes results, article2
-    assert_not_includes results, article1
+    expect(results).to include(article2)
+    expect(results).not_to include(article1)
   end
 
-  test 'should not create new article with blank title' do
+  it 'should not create a new article with a blank title' do
     article = Article.create(title: '', content: 'Lorem ipsum dolor sit amet.')
-    assert_not article.save, 'Saved an article with a blank title'
+    expect(article).not_to be_valid
   end
 
-  test 'should not create new article with blank content' do
+  it 'should not create a new article with blank content' do
     article = Article.create(title: 'Hello, I am back.', content: '')
-    assert_not article.save, 'Saved an article with a blank title'
+    expect(article).not_to be_valid
   end
 end
