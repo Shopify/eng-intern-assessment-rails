@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
             flash[:notice] = 'Article was successfully created.'
             redirect_to @article
         else
-            render 'new'
+            render :new
         end
     end
 
@@ -69,7 +69,6 @@ class ArticlesController < ApplicationController
             flash[:notice] = 'Article was successfully updated.'
             redirect_to @article
         else
-            flash.now[:alert] = @article.errors.full_messages.join(", ")
             render :edit
         end
     end

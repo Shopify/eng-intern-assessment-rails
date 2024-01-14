@@ -4,9 +4,13 @@
 
 <p><%= @article.content %></p>
 
-<p>Author: <%= @article.author %></p>
+<% unless @article.author.blank? %>
+  <p>Author: <%= @article.author %></p>
+<% end %>
 
-<p>Published on: <%= @article.created_at.strftime("%B %d, %Y") %></p>
+<% unless @article.date.blank? %>
+  <p>Published on: <%= @article.date %></p>
+<% end %>
 
 <div class="button-group">
     <%= link_to "Back to Articles", articles_path, class: 'button' %>
