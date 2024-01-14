@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   # before_action helps to avoid duplication of code to find the article in each relevant action
-  before_action :current_article, only: [:show, :edit, :update]
+  before_action :current_article, only: [:show, :edit, :update, :destroy]
 
   def index
     # Fetch all articles from the database
@@ -43,6 +43,17 @@ class ArticlesController < ApplicationController
       flash[:alert] = "Failed to update the article."
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  # Delete an existing article
+  def destroy
+    if @article.destroy
+      flash[:notice] = "Article was successfully deleted."
+    else
+      flash[:alert] = "Failed to delete the article."
+    end
+
+    redirect_to root_path, status: :see_other
   end
 
   private

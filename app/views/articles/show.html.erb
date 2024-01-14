@@ -23,5 +23,9 @@
 
 <ul>
   <li><%= link_to "Update Article", edit_article_path(@article) %></li>
+  <li><%= link_to "Delete Article", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure you want to delete this article? This action cannot be undone."
+                  } %></li>
   <li><%= link_to 'Back to Articles', articles_path %></li>
 </ul>
