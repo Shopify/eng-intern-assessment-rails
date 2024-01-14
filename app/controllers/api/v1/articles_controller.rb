@@ -7,16 +7,18 @@ module Api
       skip_before_action :verify_authenticity_token
 
       def index
-        @articles = Article.all
-        if @articles.empty?
-          flash[:alert] = 'No articles to show. Create an article to add to the forum.'
-          render :index
-        else
-          render :index, status: :ok
+        begin
+          @articles = Article.all
+          if @articles.empty?
+            flash[:alert] = 'No articles to show. Create an article to add to the forum.'
+            render :index
+          else
+            render :index, status: :ok
+          end
+        rescue StandardError => e
+          flash[:alert] = e.message
+          render status: :internal_server_error
         end
-      rescue StandardError => e
-        flash[:alert] = e.message
-        render status: :internal_server_error
       end
 
       def show
@@ -67,16 +69,29 @@ module Api
       end
 
       def destroy
-        article = Article.find(params[:id])
-        if article&.destroy
-          redirect_to articles_path
-        else
+        begin
+          article = Article.find(params[:id])
+          if article&.destroy
+            redirect_to articles_path
+          else
+            render status: :not_found
+          end
+        rescue ActiveRecord::RecordNotFound
+          flash[:alert] = 'Requested article does not exist'
           render status: :not_found
         end
-      rescue ActiveRecord::RecordNotFound
-        flash[:alert] = 'Requested article does not exist'
-        render status: :not_found
       end
+      
+
+      def search
+        @articles = Article.search(params[:query])
+        render :index
+      rescue StandardError => e
+        flash[:alert] = e.message
+        render status: :internal_server_error
+      end
+
+
 
       private
 

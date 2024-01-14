@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   get 'api/v1/articles', to: 'api/v1/articles#index', as: :articles
   get 'api/v1/articles/new', to: 'api/v1/articles#new', as: :new_article
+  get 'api/v1/articles/search', to: 'api/v1/articles#search', as: :search_articles
   get 'api/v1/articles/:id', to: 'api/v1/articles#show', as: :article
   get 'api/v1/articles/edit/:id', to: 'api/v1/articles#edit', as: :edit_article
   post 'api/v1/articles', to: 'api/v1/articles#create'
