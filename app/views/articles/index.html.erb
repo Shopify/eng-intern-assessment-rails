@@ -1,10 +1,16 @@
 <h1>All Articles</h1>
 
-<%= button_to "New Article", "/articles/new", method: :get, type: "button" , class:"btn btn-primary"%>
+<%= link_to "New Article", "/articles/new", method: :get, type: "button" , class:"btn btn-primary"%>
+
+<%= form_with url: articles_path, local: true,  method: :get do |form| %>
+    <%= form.text_field :search, value: params[:search], class: 'search-input' %>
+    <%= form.submit "Search" %>
+<% end %>
 
 <% @articles.each do |article| %>
-    <div classname="article_elem">
+    <div class="article_elem">
         <h3><%= article.title %></h3>
         <p><%= article.author %></p>
+        <p>Date: <%= article.date %></p>
     </div>
 <% end %>
