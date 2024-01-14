@@ -12,5 +12,8 @@
         <h3><%= article.title %></h3>
         <p><%= article.author %></p>
         <p>Date: <%= article.date %></p>
+        <p><%= article.content %></p>
+
+        <%= link_to "View", article, :class => 'btn btn-primary'%>
     </div>
 <% end %>
