@@ -14,22 +14,22 @@ My simple rails application allows for the CRUD operations of articles as well a
 ## Home Page
 The home page displays the list of all current articles, with the option to search for articles, create articles, and explore existing articles.
 
-![Home page](/images/home_page.png)
+![Home page](/images/home.png)
 
 
 ## Create Article
 The create option allows users to input a title, content, author, and a date for their new article.
 
-![Create page](/images/new_article.png)
+![Create page](/images/create.png)
 
 
 ## Article Page
 Each article page allows users to view the title, author, date, and buttons to edit and delete articles, as well as a back button to navigate back to the home page.
 
-![Article page](/images/article_page.png)
+![Article page](/images/article.png)
 
 
 ## Edit Page
 Each editing page allows users to edit any of the fields: title, content, author, and date.
 
-![Edit page](/images/edit_page.png)
+![Edit page](/images/edit.png)
