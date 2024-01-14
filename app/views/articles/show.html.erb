@@ -1,0 +1,19 @@
+<h1><%= @article.title %></h1>
+
+<% if @article.author %>
+  <h3>Author: <%= @article.author %></h3>
+<% else %>
+  <h3>No author specified</h3>
+<% end %>
+
+<% if @article.date %>
+  <h3>Date: <%= @article.date.strftime('%B %d, %Y') %></h3>
+<% else %>
+  <h3>No date available</h3>
+<% end %>
+
+<h2><%= @article.content %></h2>
+
+
+
+<%= link_to 'Back to Articles', articles_path %>
