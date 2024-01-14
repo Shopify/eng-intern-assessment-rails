@@ -78,7 +78,7 @@ rails dev:cache
 
 Further, for an easier experience run the following command to seed mock data into the DB:
 ```
-rails db:seed
+rake db:seed
 ```
 If you ever want to reset the data you can modify the seed file and rerun ```rails db:seed```
 
