@@ -12,23 +12,27 @@ class ArticleTest < ActiveSupport::TestCase
   test 'creates a new article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
     assert article.valid?
+    article.destroy
   end
 
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
+    article.destroy
   end
 
   test 'displays the article metadata correctly' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
     assert_equal 'John Doe', article.author
     assert_equal Date.today, article.date
+    article.destroy
   end
 
   test 'edits an existing article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
     article.update(content: 'Updated content')
     assert_equal 'Updated content', article.content
+    article.destroy
   end
 
   test 'updates the article metadata' do
@@ -36,6 +40,7 @@ class ArticleTest < ActiveSupport::TestCase
     article.update(author: 'Jane Smith', date: Date.yesterday)
     assert_equal 'Jane Smith', article.author
     assert_equal Date.yesterday, article.date
+    article.destroy
   end
 
   test 'deletes an article' do
