@@ -20,7 +20,8 @@ RSpec.describe Article, type: :model do
   end
 
   it 'displays the article metadata correctly' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe',
+                             date: Date.today)
     expect(article.author).to eq('John Doe')
     expect(article.date).to eq(Date.today)
   end
@@ -32,7 +33,8 @@ RSpec.describe Article, type: :model do
   end
 
   it 'updates the article metadata' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe',
+                             date: Date.today)
     article.update(author: 'Jane Smith', date: Date.yesterday)
     expect(article.author).to eq('Jane Smith')
     expect(article.date).to eq(Date.yesterday)
@@ -52,25 +54,27 @@ RSpec.describe Article, type: :model do
 
   it 'returns accurate search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article2 = Article.create(title: 'Another Article',
+                              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Lorem ipsum')
     expect(results).to include(article1, article2)
   end
 
   it 'displays relevant articles in search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article2 = Article.create(title: 'Another Article',
+                              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Another')
     expect(results).to include(article2)
     expect(results).not_to include(article1)
   end
 
-  it "should not create a new article with a blank title" do
+  it 'should not create a new article with a blank title' do
     article = Article.create(title: '', content: 'Lorem ipsum dolor sit amet.')
     expect(article).not_to be_valid
   end
 
-  it "should not create a new article with blank content" do
+  it 'should not create a new article with blank content' do
     article = Article.create(title: 'Hello, I am back.', content: '')
     expect(article).not_to be_valid
   end

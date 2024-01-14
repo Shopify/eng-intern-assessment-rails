@@ -26,9 +26,11 @@ RSpec.describe ArticlesController, type: :controller do
 
   describe 'POST #create' do
     it 'should create article' do
-      expect {
-        post :create, params: { article: { author: @article.author, content: @article.content, date: @article.date, title: @article.title } }
-      }.to change(Article, :count).by(1)
+      expect do
+        post :create,
+             params: { article: { author: @article.author, content: @article.content, date: @article.date,
+                                  title: @article.title } }
+      end.to change(Article, :count).by(1)
 
       expect(response).to redirect_to(article_url(Article.last))
     end
@@ -50,16 +52,19 @@ RSpec.describe ArticlesController, type: :controller do
 
   describe 'PATCH #update' do
     it 'should update article' do
-      patch :update, params: { id: @article, article: { author: @article.author, content: @article.content, date: @article.date, title: @article.title } }
+      patch :update,
+            params: { id: @article,
+                      article: { author: @article.author, content: @article.content, date: @article.date,
+                                 title: @article.title } }
       expect(response).to redirect_to(article_url(@article))
     end
   end
 
   describe 'DELETE #destroy' do
     it 'should destroy article' do
-      expect {
+      expect do
         delete :destroy, params: { id: @article }
-      }.to change(Article, :count).by(-1)
+      end.to change(Article, :count).by(-1)
 
       expect(response).to redirect_to(articles_url)
     end
