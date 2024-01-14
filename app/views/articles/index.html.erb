@@ -1,0 +1,35 @@
+<div class="w-screen h-screen flex flex-col ">
+    <nav class=" w-screen flex justify-center items-center h-10 mt-28 ">
+        <h1 class="text-3xl font-semibold">
+        Richipedia - The Free Encyclopedia 
+        </h1>
+    </nav>
+    <div class="flex flex-col justify-center items-center">
+        <div class="mt-28">
+
+        </div>
+    <div>
+    </div>
+        <div>
+            <h1 class="mt-28 text-3xl font-semibold">Or</h1>
+        </div>
+        <div>
+            <p class="flex items-center justify-center font-semibold text-blue-500">
+            <%= link_to "Publish an article", new_article_path %>
+            </p>
+        <div class="w-full flex justify-center items-center">
+            <h1 class="mt-28 text-3xl font-semibold">Or</h1>
+        </div>
+            <h1>View a list of our articles</h1>
+            <br>
+            <ul class="">
+        <%if @articles%>
+            <% @articles.each do |article| %>
+            <li class="text-center flex justify-center items-center text-blue-500">
+            <%= link_to article.title, article %>
+            </li>
+            <% end %>
+        <% end%>
+        </ul>
+    </div>
+</div>
