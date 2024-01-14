@@ -11,7 +11,7 @@
             <p><%= article.content %></p>
             <p><%= article.author %></p>
             <% if article.date.present? %>
-                <p><%= article.date.strftime("%B %d, %Y") %></p>
+                <p><%= article.date %></p>
             <% end %>
         </div>
     <% end %>

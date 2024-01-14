@@ -10,7 +10,7 @@
   <% end %>
 
   <% unless @article.date.blank? %>
-    <p>Published on: <%= @article.date.strftime("%B %d, %Y") %></p>
+    <p>Published on: <%= @article.date %></p>
   <% end %>
 </div>
 

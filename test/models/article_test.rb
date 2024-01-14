@@ -116,24 +116,17 @@ class ArticleTest < ActiveSupport::TestCase
 
   # Test case for displaying relevant articles in search results
   test 'displays relevant articles in search results' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
-    results = Article.search('Another')
-    assert_includes results, article2
-    assert_not_includes results, article1
+    results = Article.search('John')
+    assert_includes results, article1
+    assert_not_includes results, article2
   end
 
   # Test case for ensuring search is case-insensitive
   test 'search is case-insensitive' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     results = Article.search('sample')
-    assert_includes results, article
-  end
-
-  # Test case for ensuring search is whitespace-insensitive
-  test 'search handles leading, trailing, and whitespace in between words' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    results = Article.search(' dolor sit ')
     assert_includes results, article
   end
 

@@ -8,11 +8,12 @@ class Article < ApplicationRecord
 
   # Class methods to search for articles
   def self.search(term)
-    where('title LIKE ? OR content LIKE ?', "%#{term}%", "%#{term}%")
+    where('title LIKE ? OR content LIKE ? OR author LIKE ? OR date LIKE ?', "%#{term}%", "%#{term}%", "%#{term}%", "%#{term}%")
   end
 
   private
 
+  # Assigns author and/or date as nil if input is blank
   def convert_empty_strings_to_nil
     self.author = nil if author.blank?
     self.date = nil if date.blank?
