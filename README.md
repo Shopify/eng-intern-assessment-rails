@@ -1,6 +1,6 @@
 # PR Link and website link
-https://richipedia.onrender.com/
-https://github.com/Shopify/eng-intern-assessment-rails/pull/28
+- https://richipedia.onrender.com/
+- https://github.com/Shopify/eng-intern-assessment-rails/pull/28
 
 
 
