@@ -19,4 +19,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_14_021513) do
     t.string "author"
     t.date "date"
   end
+
 end
