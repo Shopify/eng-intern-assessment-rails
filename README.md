@@ -1,7 +1,11 @@
 # Overview
 This article application allows for CRUD and search functionality for articles.
 
-A [demo](https://youtu.be/9w4d724Q11U) video.
+A [demo](https://youtu.be/9w4d724Q11U) video for the primary functionality.
+
+Additional Features demo:
+- [Caching ](https://youtu.be/wr0_SgexbAA)
+- [Default Value](https://youtu.be/vdr5R92tVRk)
 
 ## Additional tools/libraries
 - [rspec-rails](https://rspec.info/documentation/6.0/rspec-rails/) for rspec test cases
@@ -33,7 +37,7 @@ rails server
 
 
 # Testing
-Original tests were written using the default minutest framework, but instruction noted that the tests should be locally run using the 'rspec' command. As such the following steps were taken:
+Original tests were written using the default Minitest framework, but instruction noted that the tests should be locally run using the 'rspec' command. As such the following steps were taken:
 - rspec-rails was installed and setup
 - Controller, Model, and System tests were converted into rspec tests
 
@@ -72,13 +76,13 @@ To use (fragment) caching in development mode, you must enable it with the follo
 rails dev:cache
 ```
 
-Further, for an easier experience run the follow command to seed mock data into the DB:
+Further, for an easier experience run the following command to seed mock data into the DB:
 ```
 rails db:seed
 ```
-If you ever want to reset the data you can modify the seedfile and rerun rails db:seed
+If you ever want to reset the data you can modify the seed file and rerun ```rails db:seed```
 
-To completely clear out the database entries, the follow command can be used:
+To clean out the database entries, the following command can be used:
 ```
 rake db:reset
 ```
