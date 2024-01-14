@@ -156,7 +156,6 @@ GEM
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol 
       timeout
     net-smtp (0.4.0.1)
       net-protocol
