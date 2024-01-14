@@ -34,6 +34,12 @@ class ArticlesController < ApplicationController
       end
     end
 
+    def destroy
+      @article = Article.find(params[:id])
+      @article.destroy
+      redirect_to root_path, status: :see_other
+    end
+
     private
       def article_params # Strong parameters
         params.require(:article).permit(:title, :content, :author, :date)
