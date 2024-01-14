@@ -97,8 +97,8 @@ class ArticlesController < ApplicationController
     def semantic_search(query)
 
       begin
-        uri = URI("#{ENV['es_url']}/search-shopify-assessment/_search")
-        req = Net::HTTP::Get.new(uri,'Content-Type'=>'application/json', 'Authorization'=> "APIKey #{ENV['api_key']}")
+        uri = URI("#{ENV['ES_URL']}/search-shopify-assessment/_search")
+        req = Net::HTTP::Get.new(uri,'Content-Type'=>'application/json', 'Authorization'=> "APIKey #{ENV['API_KEY']}")
         req.body = {
           "query": {
             "text_expansion":{
@@ -141,8 +141,8 @@ class ArticlesController < ApplicationController
         _run_ml_inference: true
       }
       # Set up the HTTP request
-      uri = URI("#{ENV['es_url']}/search-shopify-assessment/_doc/#{document.id}?pipeline=search-shopify-assessment")
-      req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json', 'Authorization' => "ApiKey #{ENV['api_key']}")
+      uri = URI("#{ENV['ES_URL']}/search-shopify-assessment/_doc/#{document.id}?pipeline=search-shopify-assessment")
+      req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json', 'Authorization' => "ApiKey #{ENV['API_KEY']}")
       req.body = document_data.to_json
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
         http.request(req)
@@ -151,11 +151,10 @@ class ArticlesController < ApplicationController
     end
 
     def delete_from_elastic_index(document)
-      uri = URI("#{ENV['es_url']}/search-shopify-assessment/_doc/#{document.id}")
-      req = Net::HTTP::Delete.new(uri, 'Content-Type' => 'application/json', 'Authorization' => "ApiKey #{ENV['api_key']}")
+      uri = URI("#{ENV['ES_URL']}/search-shopify-assessment/_doc/#{document.id}")
+      req = Net::HTTP::Delete.new(uri, 'Content-Type' => 'application/json', 'Authorization' => "ApiKey #{ENV['API_KEY']}")
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
         http.request(req)
       end
     end
-
 end
