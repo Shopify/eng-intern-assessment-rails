@@ -1,8 +1,11 @@
 <!-- app/views/articles/show.html.erb -->
+<%= stylesheet_link_tag 'show' %>
+
 <h1><%= @article.title %></h1>
 
-<p><%= @article.content %></p>
-<p>Author: <%= @article.author %></p>
+<p class="article-content"><%= @article.content %></p>
+<p class="article-author">Author: <%= @article.author %></p>
+<p class="article-date">Date: <%= @article.date.strftime("%B %d, %Y") %></p>
 
-<%= link_to "Edit Article", edit_article_path(@article) %>
-<%= link_to "Back to Articles", articles_path %>
+<%= link_to "Edit Article", edit_article_path(@article), class: "link" %>
+<%= link_to "Back to Articles", articles_path, class: "link" %>

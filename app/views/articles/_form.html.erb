@@ -1,4 +1,6 @@
 <!-- app/views/articles/_form.html.erb -->
+<%= stylesheet_link_tag 'form' %>
+
 <%= form_with(model: @article, local: true) do |form| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">

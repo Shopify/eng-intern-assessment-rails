@@ -1,0 +1,31 @@
+/* Custom Article Container */
+.custom-article-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Custom Article Title */
+.custom-article-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* Custom Article Content */
+.custom-article-content {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Custom Article Author */
+.custom-article-author {
+    font-style: italic;
+    color: #555;
+}
+
+/* Custom Article Date */
+.custom-article-date {
+    color: #888;
+}
+  
