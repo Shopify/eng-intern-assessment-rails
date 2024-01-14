@@ -13,7 +13,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # Test case for getting the index page with search
+  # Test case for checking search functionality on the index page
   test "should get index with search" do
     get articles_url, params: { search: 'Sample' }
     assert_response :success

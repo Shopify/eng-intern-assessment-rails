@@ -60,7 +60,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 'Updated content', article.content
   end
 
-  # Test case for editing an existing article with metadata
+  # Test case for editing an existing article without the required fields
   test 'fails to update an article without required fields' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.update(title: '')
