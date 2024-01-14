@@ -2,7 +2,7 @@
 <html>
     <body>
         <h1> Hello </h1>
-        <%= form_tag do %>
+        <%= form_tag articles_path, method: :get, local: true do %>
             <%= text_field_tag :search, params[:search] %>
             <%= submit_tag "Search" %>
         <% end %>
@@ -11,10 +11,10 @@
         <h2> Search Results </h2>
         <div>
             <table>
-                 <h3> Table Of Articles   </h2>
+                 <h3> Table Of Articles </h2>
                 </tr>
-                    <th> Author </th>
                     <th> Title </th>
+                    <th> Author </th>
                     <th> Date Published </th>
                     <th> Content </th>
                     <th> Edit </th>
@@ -22,12 +22,12 @@
                 </tr>
                     <% @articles.each do |article| %>
                         <tr>
-                        <th><%= article.author %></th>
-                        <th><%= article.title %></th>
-                        <th><%= article.date %></th>
-                        <th><%= link_to "Content", article_path(article) %></th>
-                        <th><%= link_to "Edit", edit_article_path(article) %></th>
-                        <th><%= link_to "Destroy", article, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></th>
+                            <th><%= article.title %></th>
+                            <th><%= article.author %></th>
+                            <th><%= article.date %></th>
+                            <th><%= link_to "Content", article_path(article) %></th>
+                            <th><%= link_to "Edit", edit_article_path(article) %></th>
+                            <th><%= link_to "Destroy", article, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></th>
                         </tr>
                     <% end %>
             </table>

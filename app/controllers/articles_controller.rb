@@ -1,10 +1,17 @@
 class ArticlesController < ApplicationController
+
   def index
-    @articles = Article.all
+    if params[:search]
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
+
   def new
     render :new
   end
+
   def create
     # parsing the params hash to get the vaules
     title = params.require(:title)
@@ -21,6 +28,7 @@ class ArticlesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
   def show
     # finding the article by id
     @article = Article.find(params[:id])
@@ -40,14 +48,15 @@ class ArticlesController < ApplicationController
     end
   end
 
-  private
-  def article_params
-    params.require(:article).permit(:author, :title, :date, :content)
-  end
-
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
     redirect_to root_path
   end
+
+  private
+  def article_params
+    params.require(:article).permit(:author, :title, :date, :content)
+  end
+  
 end
