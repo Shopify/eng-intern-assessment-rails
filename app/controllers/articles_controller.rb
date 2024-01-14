@@ -2,21 +2,31 @@ class ArticlesController < ApplicationController
   # before_action helps to avoid duplication of code to find the article in each relevant action
   before_action :current_article, only: [:show, :edit, :update, :destroy]
 
+  # GET /articles or GET /
+  # Display a list of articles, optionally filtered by search.
   def index
-    # Fetch all articles from the database
-    # Note: Consider pagination for performance in the future
-    @articles = Article.all
+    if params[:search].present?
+      # If a search param is present, perform the search
+      @articles = Article.search(params[:search])
+    else
+      # If no search param, fetch all articles from the database
+      # Note: Consider pagination for performance in the future
+      @articles = Article.all
+    end
   end
 
+  # GET /articles/:id
   # Show the details of a specific article
   def show
   end
 
+  # GET /articles/new
   # Render a form for creating a new article.
   def new
     @article = Article.new
   end
 
+  # POST /articles
   # Create a new article based on the article form values.
   def create
     @article = Article.new(article_params)
@@ -30,10 +40,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # GET /articles/:id/edit
   # Render a form for editing an existing article.
   def edit
   end
 
+  # PATCH /articles/:id
   # Update an existing article based on the updated article data.
   def update
     if @article.update(article_params)
@@ -45,6 +57,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # DELETE /articles/:id
   # Delete an existing article
   def destroy
     if @article.destroy

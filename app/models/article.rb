@@ -10,4 +10,13 @@ class Article < ApplicationRecord
         errors.add(:date, "cannot be in the future")
       end
     end
+  
+    # Search articles based on title or content
+    # This method uses ActiveRecord parameterized queries to prevent SQL injection.
+    #
+    # @param [String] query - The search query
+    # @return [ActiveRecord::Relation] - The matching articles
+    def self.search(query)
+      where("title LIKE ? OR content LIKE ?", "%#{query}%", "%#{query}%")
+    end
   end
