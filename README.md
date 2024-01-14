@@ -2,7 +2,7 @@
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.
 3. Test your work using the provided tests
-4. Create a Pull Request against your local Main branch when you're done and all tests are passing
+4. Create a Pull Request against the Shopify Main branch when you're done and all tests are passing
 
 # Project Overview
 The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. Be sure to implement basic CRUD actions on articles. Your task is to implement these features as well as write the code that makes the tests pass.
