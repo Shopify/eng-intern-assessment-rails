@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <h1>Hello</h1>
+        <h1> Hello </h1>
         <%= form_tag do %>
             <%= text_field_tag :search, params[:search] %>
             <%= submit_tag "Search" %>
@@ -13,11 +13,12 @@
             <table>
                  <h3> Table Of Articles   </h2>
                 </tr>
-                    <th>Author</th>
-                    <th>Title</th>
-                    <th>Date Published</th>
-                    <th>Content</th>
-                    <th>Delete</th>
+                    <th> Author </th>
+                    <th> Title </th>
+                    <th> Date Published </th>
+                    <th> Content </th>
+                    <th> Edit </th>
+                    <th> Delete </th>
                 </tr>
                     <% @articles.each do |article| %>
                         <tr>
@@ -25,6 +26,8 @@
                         <th><%= article.title %></th>
                         <th><%= article.date %></th>
                         <th><%= link_to "Content", article_path(article) %></th>
+                        <th><%= link_to "Edit", edit_article_path(article) %></th>
+                        <th><%= link_to "Destroy", article, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></th>
                         </tr>
                     <% end %>
             </table>
