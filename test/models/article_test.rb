@@ -65,4 +65,32 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'displays relevant articles in search results with insensitive query' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet Another.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('another')
+    assert_includes results, article1
+    assert_includes results, article2
+
+  end
+
+  test 'prevent creation of Articles with empty title' do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+  end
+
+  test 'prevent creation of Articles with empty content' do
+    article = Article.create(title: 'Sample Article')
+    assert_not article.valid?
+  end
+
+  test 'prevent creation of Articles with empty title and content' do
+    article = Article.create
+    assert_not article.valid?
+  end
+
+
+
+
 end
