@@ -1,5 +1,16 @@
 <%= form_with(model: article, local: true) do |form| %>
 
+  <% if article.errors.any? %>
+  <p>Error(s):</p>
+    <div class="error">
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
