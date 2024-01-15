@@ -65,4 +65,14 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'returns all articles if search query is empty' do
+    results = Article.search('')
+    assert_equal Article.count, results.count
+  end
+
+  test 'prevents deletion of non-existent article' do
+    assert_raises(ActiveRecord::RecordNotFound) { Article.find(999) }
+  end
+  
 end
