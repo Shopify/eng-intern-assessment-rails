@@ -13,3 +13,80 @@
  *= require_tree .
  *= require_self
  */
+
+.error-message {
+  color: red;
+  background-color: #ffd6d6; 
+  border: 1px solid #ff0000; 
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.back-to-list-btn {
+  display: block;
+  width: max-content;
+  margin: 10px auto;
+  background-color: #f8f9fa;
+  color: #007bff;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  border: 1px solid #007bff;
+}
+
+.back-to-list-btn:hover {
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-danger, .btn-danger:focus, .btn-danger:active {
+  border: none; 
+}
+
+.btn-info, .btn-info:focus, .btn-info:active {
+  border: none;
+}
+
+.btn {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.15s;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  margin: 0 5px;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-primary, .btn-info {
+  background-color: #007bff;
+}
+
+.btn-primary:hover, .btn-info:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
