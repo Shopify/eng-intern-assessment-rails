@@ -1,6 +1,6 @@
-#   File: articles_controller.rb
-#   Description: This file contains the ArticlesController class, which manages CRUD operations
-#                for articles, including caching and claps functionality.
+# File: articles_controller.rb
+# Description: This file contains the ArticlesController class, which manages CRUD operations
+#              for articles, including caching and claps functionality.
 
 class ArticlesController < ApplicationController
   include ArticlesHelper
@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
   # Params: page - the page number
   def index
     @articles = Rails.cache.fetch("paginated_articles_#{params[:page]}", expires_in: 1.hour) do
-      Article.paginate(page: params[:page], per_page: 2)
+      Article.paginate(page: params[:page], per_page: 4)
     end
   end
   
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
     @article.date = Date.today # Set the date to the current time
   end
 
-  # Create a new article, clearing cache for specific page
+  # Create a new article, clearing cache for the specific page
   def create
     @article = Article.new(article_params.merge(claps: 0))
 
@@ -42,7 +42,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  
   # Render the edit view for an existing article.
   def edit
   end
@@ -59,20 +58,23 @@ class ArticlesController < ApplicationController
     end
   end
 
-  
   # Delete an article, removing it from the cache before destroying it.
   def destroy
     Rails.cache.delete("article_#{params[:id]}") # Remove the article from the cache before destroying it
     @article.destroy
     redirect_to root_path, notice: 'Article was successfully destroyed.'
   end
-  
-  # Search for articles based on a query.
+
+  # Search for articles based on a query, paginating the results.
   def search
-    @articles = params[:query].present? ? Article.search(params[:query]) : Article.all
+    per_page = 4
+    page = params[:page] || 1
+
+    @articles = params[:query].present? ? Article.search(params[:query]).paginate(page: page, per_page: per_page) : Article.paginate(page: page, per_page: per_page)
+
     render :search
   end
-  
+
   # Increment claps for an article and update the cache, then redirect to the article page.
   def clap
     @article.increment!(:claps)

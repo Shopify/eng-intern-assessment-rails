@@ -71,3 +71,10 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
 end
+
+group :test do
+  gem 'rspec'
+  gem 'simplecov', require: false
+end
+
+gem 'rails-controller-testing'
