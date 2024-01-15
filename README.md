@@ -28,7 +28,7 @@ rails routes
  Searching functionality was mostly logic and simple rail queries. But I did some research on how to make the search bar work in real time, and I found a really good article on how to do it, but I did not have time to implement it. I will leave the link to the article below.
 [Real time search](https://webcrunch.com/posts/turbo-charged-real-time-search-ruby-on-rails-7)
 
- Forms, forms and FORMSSSS!, how to use form and what they do was an important part of this assingment and I learned a lot about them.(P.S. I was very confused about PATCH but I figured it out😅)
+ Forms, forms and FORMSSSS!, how to use form and what they do was an important part of this assingment and I learned a lot about them.(P.S. I was very confused about PATCH but I figured it out)
 
  Safty checks and nets!, I had to make sure that the user does not enter empty strings for the title and content, and I took two differnt approaches, becuase I could not get the instance of the model in the create view. So I used flash messages.
 
