@@ -8,12 +8,13 @@ module ArticlesHelper
     @article = Article.find(params[:id])
   end
 
-  # Method: clear_paginated_articles_cache
-  # Description: Clears the cache for paginated articles based on the provided page.
-  #   If no page is provided (nil), clear the cache for all paginated articles.
-  def clear_paginated_articles_cache(page)
-    Rails.cache.delete_matched("paginated_articles_#{page || '*'}")
+  # Method: clear_specific_article_cache
+  # Description: Clears the cache for a specific article based on the provided article number.
+  #   If no article number is provided (nil), clear the cache for all paginated articles.
+  def clear_specific_article_cache(article_number)
+    Rails.cache.delete_matched("article_#{article_number || '*'}")
   end
+
 
   # Method: article_params
   # Description: Defines strong parameters for article attributes.

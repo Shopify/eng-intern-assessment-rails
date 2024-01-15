@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
 
     if @article.save
       # Clear the cache relevant to the new article creation for the current page
-      clear_paginated_articles_cache(params[:page])
+      clear_specific_article_cache(@article.id)
 
       redirect_to @article, notice: 'Article was successfully created.'
     else
@@ -49,14 +49,15 @@ class ArticlesController < ApplicationController
   # Update an existing article.
   def update
     if @article.update(article_params)
-      # Clear the cache relevant to the updated article for the current page
-      clear_paginated_articles_cache(params[:page])
+      # Clear the cache relevant to the updated article
+      clear_specific_article_cache(@article.id)
 
       redirect_to @article
     else
       render :edit, status: :unprocessable_entity
     end
   end
+
 
   # Delete an article, removing it from the cache before destroying it.
   def destroy

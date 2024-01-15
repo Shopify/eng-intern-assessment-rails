@@ -14,7 +14,7 @@ RSpec.describe ArticlesController, type: :request do
           }
         }
 
-        expect(Rails.cache).to receive(:delete_matched).with("paginated_articles_1")
+        expect(Rails.cache).to receive(:delete_matched).with("article_1")
 
         expect {
           post '/articles', params: valid_params.merge(page: 1)
@@ -155,7 +155,7 @@ end
         }
       }
 
-      expect(Rails.cache).to receive(:delete_matched).with("paginated_articles_1")
+      expect(Rails.cache).to receive(:delete_matched).with("article_1")
 
       patch "/articles/#{article.id}", params: updated_params.merge(page: 1)
 
