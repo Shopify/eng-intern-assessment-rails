@@ -47,6 +47,17 @@ Tasks: TOP => assets:precompile => tailwindcss:build
  Overall this task was hard, challenging, and a steping stone to learn ruby on rails! I had a lot of fun doing it, and I hope you like it too!
 
 ##### Made with ❤️&coffee by Hamid
+
+## resources:
+- [RVM for mac](https://nrogap.medium.com/install-rvm-in-macos-step-by-step-d3b3c236953b)
+- [Made to be read by humans ruby on rails docs](https://human-se.github.io/rails-demos-n-deets-2021/)
+- [Formatting ruby on rails](https://rubocop.org/)
+- [Tailwindcss config](https://tailwindcss.com/docs/guides/ruby-on-rails)
+- [A form porblem I had](https://stackoverflow.com/questions/19365809/form-submit-button-only-works-after-reload)
+- [Ruby syntax](https://www.tutorialspoint.com/ruby/index.htm)
+- [Docs of ruby on rails](https://guides.rubyonrails.org/getting_started.html)
+- [API docs of ruby on rails](https://api.rubyonrails.org/)
+- [A good series on ruby](https://www.youtube.com/watch?v=9pKLGhh5mrM&t=73s)
 ----
 # Technical Instructions
 1. Fork this repo to your local Github account.
