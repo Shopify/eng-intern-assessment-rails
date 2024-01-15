@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'articles/search', to: 'articles#search', as: 'search_articles'
   get 'search_page', to: 'articles#search_page'
 
+  get '/auth/:provider/callback', to: 'sessions#omniauth'
+  delete '/logout', to: 'sessions#destroy', as: :logout
+
   resources :articles do
   end
 
