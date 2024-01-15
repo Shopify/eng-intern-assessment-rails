@@ -78,6 +78,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not_includes results, article1
   end
 
+  test 'search returns articles when queried by author' do
+    article1 = Article.create(title: 'Test Article', content: 'Lorem ipsum dolor sit amet.', author: 'Melissa Jones')
+    article2 = Article.create(title: 'Test Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+    results = Article.search('John Doe')
+    assert_equal 1, results.count
+    assert_includes results, article2
+    assert_not_includes results, article1
+  end
+
+
   test 'search returns unique articles when content and title have similar text' do
     Article.create(title: 'Test Article', content: 'This is a test article content')
     results = Article.search('Test Article')

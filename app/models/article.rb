@@ -7,5 +7,6 @@ class Article < ApplicationRecord
   def self.search(query)
     Article.where('title LIKE ?', "%#{query}%")
            .or(Article.where('content LIKE ?', "%#{query}%"))
+           .or(Article.where('author LIKE ?', "%#{query}%"))
   end
 end

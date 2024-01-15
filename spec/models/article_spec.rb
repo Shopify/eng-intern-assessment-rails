@@ -109,5 +109,14 @@ RSpec.describe Article, type: :model do
       results = Article.search('Test Article')
       expect(results.count).to eq(1)
     end
+
+    it 'search returns articles when queried by author' do
+      article1 = Article.create(title: 'Test Article', content: 'Lorem ipsum dolor sit amet.', author: 'Melissa Jones')
+      article2 = Article.create(title: 'Test Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+      results = Article.search('John Doe')
+      expect(results.count).to eq(1)
+      expect(results).to include(article2)
+      expect(results).not_to include(article1)
+    end
   end
 end
