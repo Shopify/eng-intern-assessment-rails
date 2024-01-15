@@ -26,6 +26,7 @@
           </div>
         </div>
         <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+          <li><%= link_to 'Dashboard', articles_dashboard_path %></li>
           <li><%= link_to 'Logout', logout_path,  data: { "turbo-method": :delete }  %></li>
         </ul>
       </div>

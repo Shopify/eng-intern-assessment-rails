@@ -6,4 +6,5 @@ class Article < ApplicationRecord
       all
     end
   end
+  belongs_to :user, primary_key: 'uid', foreign_key: 'user_id'
 end

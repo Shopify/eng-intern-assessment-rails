@@ -10,14 +10,19 @@
       <p class="text-justify"><%= @article.content %></p>
     </div>
     <div class="mb-8 flex gap-5 justify-between">
-      <div class="flex gap-4">
-        <%= link_to edit_article_path(@article) do %>
-          <button class="btn bg-slate-800 text-white">Edit Article</button>
+      <% if session[:user_id] %>
+        <% user = User.find(session[:user_id]) %>
+        <% if user.uid === @article.user_id %>
+          <div class="flex gap-4">
+            <%= link_to edit_article_path(@article) do %>
+              <button class="btn bg-slate-800 text-white">Edit Article</button>
+            <% end %>
+            <%= button_to @article, method: :delete do %>
+              <button class="btn btn-outline btn-error">Delete Article</button>
+            <% end %>
+          </div>
         <% end %>
-        <%= button_to @article, method: :delete do %>
-          <button class="btn btn-outline btn-error">Delete Article</button>
-        <% end %>
-      </div>
+      <% end %>
       <div>
         <%= link_to articles_path do %>
           <button class="btn btn-outline">Back to Home</button>

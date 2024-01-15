@@ -1,7 +1,9 @@
-<div class="mt-20 flex flex-col justify-center items-center">
-  <h2 class="text-4xl font-thin mb-10 text-lime-700">Explore Latest Articles</h2>
+<% user = User.find(session[:user_id]) %>
+<h2 class="text-4xl mb-10 font-extralight text-lime-700 mt-12 px-5">Hey <%= user.name %>,</h2>
+<div class="mt-20 flex flex-col items-center">
+  <h2 class="text-4xl font-thin mb-8 text-lime-700 px-5">Your Articles</h2>
   <ul class="flex gap-10 flex-wrap justify-center w-8/12">
-    <% @articles.each do |article| %>
+    <% @user_articles.each do |article| %>
       <div class="w-full">
         <div class="outline outline-offset-1 outline-slate-100 flex flex-col w-full bg-white rounded-md shadow pt-5 px-5">
           <div class="">
