@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController
-  # View all available articles
+  # Display articles
   def index
-    @articles = Article.all
+    if params[:article_search_query]
+      @articles = Article.search(params[:article_search_query])
+    else
+      @articles = Article.all
+    end
   end
 
   # Display a certain article
@@ -50,6 +54,7 @@ class ArticlesController < ApplicationController
   end
 
   private
+
   def article_params
     params.require(:article).permit(:title, :content, :author, :date)
   end
