@@ -1,18 +1,18 @@
-<%= render "layouts/nav" %>
+<%= render 'layouts/nav' %>
 
-<div class="container">
+<div class='container'>
   <h2> List of Articles</h2>
-  <div class="text-center">
-    <%= link_to "Add a Article", new_article_path, class: "btn btn-primary" %>
+  <div class='text-center'>
+    <%= link_to 'Add a Article', new_article_path, class: 'btn btn-primary' %>
   </div>
-  <div class="row">
+  <div class='row'>
     <% @articles.each do |article| %>
-      <div class="col-md-4 d-flex">
-        <%= link_to article_path(article), class: "card flex-fill border m-3 text-decoration-none" do %>
-          <div class="card-body">
-            <h5 class="card-title"><%= article.title %></h5>
-            <%= truncate(article.content, length: 90, omission: "...") %>
-            <p class="card-text"><%= article.date %></p>
+      <div class='col-md-4 d-flex'>
+        <%= link_to article_path(article), class: 'card flex-fill border m-3 text-decoration-none' do %>
+          <div class='card-body'>
+            <h5 class='card-title'><%= article.title %></h5>
+            <%= truncate(article.content, length: 90, omission: '...') %>
+            <p class='card-text'><%= article.date %></p>
           </div>
         <% end %>
       </div>
