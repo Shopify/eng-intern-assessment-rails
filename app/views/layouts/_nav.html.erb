@@ -10,9 +10,9 @@
       </li>
     </ul>
     <div class="ms-auto">
-      <%= form_with url: "/articles", method: :get do %>
-        <%= text_field_tag :article_search_query, params[:article_search_query] %>
-        <%= submit_tag "Search", class: "btn btn-outline-primary ms-2"%>
+      <%= form_with url: "/articles", method: :get, class: "d-inline-flex" do %>
+        <%= text_field_tag :article_search_query, params[:article_search_query], class: "form-control" %>
+        <%= submit_tag "Search", class: "btn btn-outline-primary ms-2" %>
       <% end %>
     </div>
   </div>

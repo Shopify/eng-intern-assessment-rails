@@ -1,16 +1,30 @@
 <%= render "layouts/nav" %>
 
-<div class="container">
-  <h2><%= @article.title %></h2>
-  <h3><%= @article.author %></h3>
+<div class="container-fluid mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title"><%= @article.title %></h2>
+          <% if @article.author.present? %>
+            <h6 class="card-subtitle mb-2 text-muted">By: <%= @article.author %></h6>
+          <% end %>
+          <% if @article.date.present? %>
+            <h6 class="card-subtitle mb-2 text-muted">Published on: <%= @article.date %></h6>
+          <% end %>
 
-  <p><%= @article.content %></p>
-
-  <div>
-    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-info" %>
-    <%= link_to "Delete", article_path(@article), class: "btn btn-danger", data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-    } %>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= @article.content %></p>
+        </div>
+        <div class="card-footer">
+          <%= link_to "Edit", edit_article_path(@article), class: "btn btn-info" %>
+          <%= link_to "Delete", article_path(@article), class: "btn btn-danger", data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          } %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -27,11 +27,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # Search for an article through partial matching of title or content
-  def search
-    @results = Article.search(params[:query])
-  end
-
   def edit
     @article = Article.find(params[:id])
   end

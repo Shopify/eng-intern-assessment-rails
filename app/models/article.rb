@@ -7,7 +7,7 @@ class Article < ApplicationRecord
   # The Where query is specifically designed for SQLite
   def self.search(query)
     if query.present?
-      where("lower(title) LIKE ? OR lower(content) LIKE ?", "%#{query}%", "%#{query}%")
+      where("lower(title) LIKE ? OR lower(content) LIKE ?", "%#{sanitize_sql_like(query)}%", "%#{sanitize_sql_like(query)}%")
     else
       all
     end
