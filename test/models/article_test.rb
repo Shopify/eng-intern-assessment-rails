@@ -89,8 +89,4 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.create
     assert_not article.valid?
   end
-
-
-
-
 end
