@@ -41,6 +41,12 @@ gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# Pagination for models
+gem 'will_paginate', '~> 3.3'
+
+# Linter
+gem 'rubocop', '~> 1.59', require: false
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -63,6 +69,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
+  gem 'rspec-rails', '~> 5.0'
   gem "selenium-webdriver"
   gem "webdrivers"
 end
