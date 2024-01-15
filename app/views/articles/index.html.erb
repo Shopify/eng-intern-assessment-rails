@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Articles</title>
-    <!-- Include any other necessary head elements or scripts here -->
-</head>
-<body class="bg-gray-100 p-6">
+
+<body class="bg-gray-100 p-6 flex-wrap">
     <header class="m-6">
         <h1 class="text-4xl font-bold text-center">Search</h1>
     </header>
@@ -16,7 +10,7 @@
             <%= submit_tag "Search", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md" %>
         <% end %>
     </section>
-
+    
     <section class="m-6">
         <h2 class="text-2xl font-semibold mb-3">Search Results</h2>
         <div class="overflow-x-auto">
@@ -39,7 +33,7 @@
                             <td class="px-4 py-3 text-sm"><%= article.date %></td>
                             <td class="px-4 py-3 text-sm"><%= link_to "Content", article_path(article), class: "text-blue-600 hover:text-blue-900" %></td>
                             <td class="px-4 py-3 text-sm"><%= link_to "Edit", edit_article_path(article), class: "text-yellow-600 hover:text-yellow-900" %></td>
-                            <td class="px-4 py-3 text-sm"><%= link_to "Destroy", article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-600 hover:text-red-900" %></td>
+                            <td class="px-4 py-3 text-sm"><%= link_to "Destroy", article, method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-red-600 hover:text-red-900" %></td>
                         </tr>
                     <% end %>
                 </tbody>
@@ -54,4 +48,4 @@
         </div>
     </section>
 </body>
-</html>
+
