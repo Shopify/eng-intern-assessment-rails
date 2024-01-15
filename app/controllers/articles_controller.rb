@@ -7,6 +7,10 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  def search
+    @search_results = Article.search(params[:query])
+  end
+
   def new
     @article = Article.new
   end
@@ -44,6 +48,6 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :body)
+      params.require(:article).permit(:title, :content)
     end
 end
