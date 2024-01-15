@@ -1,0 +1,18 @@
+<!-- FILEPATH: /c:/Users/jdmar/Projects/eng-intern-assessment-rails/app/views/articles/index.html.erb -->
+
+<h1>Article Index</h1>
+<h3><%= link_to 'Create New Article', new_article_path %></h3>
+
+<% @articles.each do |article| %>
+    <div>
+        <h2><%= link_to 'view', article_path(article) %> | <%= article.title %> 
+        <% if article.author? %>
+            | <%= article.author %>
+        <% end %>
+        <% if article.date? %>
+            | <%= article.date %>
+        <% end %>
+        <p></p>
+        </h2>
+    </div>
+<% end %>
