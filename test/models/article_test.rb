@@ -65,4 +65,25 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'search returns unique articles when content and title have similar text' do
+    Article.create(title: 'Test Article', content: 'This is a test article content')
+    results = Article.search('Test Article')
+    assert_equal 1, results.count
+  end
+
+  test 'article title is required' do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+  end
+  
+  test 'article content is required' do
+    article = Article.create(title: 'Sample Article')
+    assert_not article.valid?
+  end
+
+  test 'article content must be at least 1 character' do
+    article = Article.create(title: 'Sample Article', content: '')
+    assert_not article.valid?
+  end
 end
