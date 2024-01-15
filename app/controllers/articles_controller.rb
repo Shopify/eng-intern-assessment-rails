@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 
   # /articles/index or /  GET
+  # default page, shows all atricles and provides search option
   def index
     @articles = Article.all
   end
@@ -24,24 +25,25 @@ class ArticlesController < ApplicationController
     # save the instance, redirect to articles/#{@articles.id} if success
     if @articles.save
       redirect_to @articles
-    else # if fail, render new and log the error 
+    else # if fail, render method/view for new
       render :new, status: :unprocessable_entity
     end
   end
 
   # /articles/:id/edit  GET
-  # Find and store the target article from database
+  # finds article by id, by default form filled with article attributes
   def edit
     @articles = Article.find(params[:id])
   end
 
   # /articles/:id  POST
   def update
-    @articles = Article.find(params[:id])
+    @articles = Article.find(params[:id]) # find target article
 
+    # updates the article info with given info
     if @articles.update(article_params) 
       redirect_to @articles
-    else 
+    else # if fail, render method/view for edit
       render :edit, status: :unprocessable_entity
     end
   end
@@ -55,13 +57,15 @@ class ArticlesController < ApplicationController
   end
 
   # /articles/search?params GET
-  # search if given string is in either title or content
+  # search for all articles with matching content as given string
   def search
     @articles = Article.search(params[:search_term])
     render :search
   end
+
   private
 
+  # restricts parameters to the ones relevent to the task
   def article_params 
     params.require(:article).permit(:title, :content, :author, :date)
   end
