@@ -1,0 +1,19 @@
+<nav class='navbar navbar-expand-lg navbar-light bg-light p-3 mb-3'>
+  <h1 class='navbar-brand'>Articles Encyclopedia</h1>
+  <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+    <span class='navbar-toggler-icon'></span>
+  </button>
+  <div class='collapse navbar-collapse' id='navbarNav'>
+    <ul class='navbar-nav ml-auto'>
+      <li class='nav-item active'>
+        <%= link_to 'Home', root_path, class: 'nav-link' %>
+      </li>
+    </ul>
+    <div class='ms-auto'>
+      <%= form_with url: '/articles', method: :get, class: 'd-inline-flex' do %>
+        <%= text_field_tag :article_search_query, params[:article_search_query], class: 'form-control' %>
+        <%= submit_tag 'Search', class: 'btn btn-outline-primary ms-2' %>
+      <% end %>
+    </div>
+  </div>
+</nav>
