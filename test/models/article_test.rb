@@ -22,6 +22,7 @@ class ArticleTest < ActiveSupport::TestCase
   test 'displays the article metadata correctly' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
     assert_equal 'John Doe', article.author
+    assert_equal 'Sample Article', article.title
     assert_equal Date.today, article.date
   end
 
@@ -29,6 +30,7 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.update(content: 'Updated content')
     assert_equal 'Updated content', article.content
+    assert_equal 'Sample Article', article.title
   end
 
   test 'updates the article metadata' do
@@ -36,12 +38,22 @@ class ArticleTest < ActiveSupport::TestCase
     article.update(author: 'Jane Smith', date: Date.yesterday)
     assert_equal 'Jane Smith', article.author
     assert_equal Date.yesterday, article.date
+    assert_equal 'Sample Article', article.title
+    assert_equal 'Lorem ipsum dolor sit amet.', article.content
   end
 
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
     assert_equal 0, Article.count
+  end
+
+  test 'deletes the correct article' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article1.destroy
+    assert_equal 1, Article.count
+    assert_equal article2, Article.first
   end
 
   test 'prevents access to deleted articles' do

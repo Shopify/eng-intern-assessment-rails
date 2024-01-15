@@ -28,6 +28,7 @@ RSpec.describe Article, type: :model do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
       expect(article.author).to eq('John Doe')
       expect(article.date).to eq(Date.today)
+      expect(article.title).to eq('Sample Article')
     end
   end
 
@@ -53,6 +54,7 @@ RSpec.describe Article, type: :model do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
       article.update(content: 'Updated content')
       expect(article.content).to eq('Updated content')
+      expect(article.title).to eq('Sample Article')
     end
 
     it 'updates the article metadata' do
@@ -60,6 +62,8 @@ RSpec.describe Article, type: :model do
       article.update(author: 'Jane Smith', date: Date.yesterday)
       expect(article.author).to eq('Jane Smith')
       expect(article.date).to eq(Date.yesterday)
+      expect(article.title).to eq('Sample Article')
+      expect(article.content).to eq('Lorem ipsum dolor sit amet.')
     end
   end
 
@@ -74,6 +78,14 @@ RSpec.describe Article, type: :model do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
       article.destroy
       expect { Article.find(article.id) }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it 'deletes the correct article' do
+      article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+      article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+      article1.destroy
+      expect(Article.count).to eq(1)
+      expect(Article.first).to eq(article2)
     end
   end
 
