@@ -1,4 +1,2 @@
 class Article < ApplicationRecord
-    
 end
-  
