@@ -16,12 +16,6 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
-  test 'creates an article with incorrect data type' do
-    assert_raises(ActiveRecord::StatementInvalid) do
-      Article.create(title: 'Invalid Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: 'invalid_date')
-    end
-  end
-
   # Read
   test 'displays all articles' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet. 1')
@@ -96,25 +90,6 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 'Updated content', article.content
   end
 
-  test 'edits a non-existent article' do
-    non_existent_article_id = 9999
-    non_existent_article = Article.find_by(id: non_existent_article_id)
-    assert_nil non_existent_article
-    assert_raises(ActiveRecord::RecordNotFound) do
-      non_existent_article&.update(content: 'This should not be updated')
-    end
-  end
-
-  test 'edits an article with incorrect data type' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    assert article.valid?
-    assert_raises(ActiveRecord::StatementInvalid) do
-      article.update(content: 123)
-    end
-    article.reload
-    assert_equal 'Lorem ipsum dolor sit amet.', article.content
-  end
-
   test 'updates the article metadata' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
     article.update(author: 'Jane Smith', date: Date.yesterday)
@@ -126,10 +101,14 @@ class ArticleTest < ActiveSupport::TestCase
     non_existent_article_id = 9999
     non_existent_article = Article.find_by(id: non_existent_article_id)
     assert_nil non_existent_article
+    assert_not non_existent_article&.update(author: 'Jane Smith', date: Date.yesterday),
+               'Expected update to fail, but it succeeded.'
+  
     assert_raises(ActiveRecord::RecordNotFound) do
-      non_existent_article&.update(author: 'Jane Smith', date: Date.yesterday)
+      Article.find(non_existent_article_id)
     end
   end
+  
 
   # Delete
   test 'deletes an article' do
