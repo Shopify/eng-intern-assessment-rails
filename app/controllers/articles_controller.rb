@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  # Display articles
-  # If article_search query is present, filter the article search otherwise return all articles
+  # Get a list of articles.
+  # If article_search query is present, filter the article search, otherwise return all articles.
   def index
     if params[:article_search_query]
       @articles = Article.search(params[:article_search_query])
@@ -9,16 +9,19 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # Given an ID, Display a certain article
+  # Get article by id.
   def show
     @article = Article.find(params[:id])
   end
 
+  # Create an empty instantiation of a Article object.
+  # Used when creating a Article with a form.
   def new
     @article = Article.new
   end
 
-  # Create a new article
+  # Create a new article object and save it to the database.
+  # Upon successful save, redirect to specified Article, otherwise display error message.
   def create
     @article = Article.new(article_params)
 
@@ -29,11 +32,14 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Find Article with specified id.
+  # Used when editing a Article with a form.
   def edit
     @article = Article.find(params[:id])
   end
 
-  # Update an existing article otherwise redirect to error
+  # Update an existing article.
+  # Upon successful save, redirect to specified Article, otherwise display error message.
   def update
     @article = Article.find(params[:id])
 
@@ -44,6 +50,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Delete an existing article
   def destroy
     @article = Article.find(params[:id])
 
