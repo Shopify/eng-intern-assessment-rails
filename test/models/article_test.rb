@@ -62,7 +62,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
   end
 
-  test 'returns accurate search results' do
+  test 'returns search results queried by content' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Lorem ipsum')
@@ -70,12 +70,18 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
   end
 
-  test 'displays relevant articles in search results' do
+  test 'displays relevant articles in search results queried by title' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'displays no match' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('No match')
+    assert_empty results
   end
 
   test 'search returns articles when queried by author' do

@@ -93,15 +93,20 @@ RSpec.describe Article, type: :model do
     let!(:article1) { Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.') }
     let!(:article2) { Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }
 
-    it 'returns accurate search results' do
+    it 'returns accurate search results when queried by content' do
       results = Article.search('Lorem ipsum')
       expect(results).to include(article1, article2)
     end
 
-    it 'displays relevant articles in search results' do
+    it 'displays relevant articles in search results when queried by title' do
       results = Article.search('Another')
       expect(results).to include(article2)
       expect(results).not_to include(article1)
+    end
+
+    it 'displays no match' do
+      results = Article.search('No match')
+      expect(results).to be_empty
     end
 
     it 'returns unique articles when content and title have similar text' do
