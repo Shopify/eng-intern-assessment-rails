@@ -9,3 +9,9 @@
 .header-title {
   font-weight: bold;
 }
+
+
+.header-title a:link, .header-title a:visited, .header-title a:hover, .header-title a:active { 
+  text-decoration:none;
+  color: black;
+}
