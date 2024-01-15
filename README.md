@@ -13,38 +13,38 @@
 
 ## The journey: 
 
-#### I faced a lot of truble at the begging of projct, becuase the ruby version of my Mac was 3.1.3 and the version used by Shopify was 2.7.6, so I had to use RVM to switch between versions. This task was not simple!, but after many google searches and stackoverflow questions I was able to do it.
+ I faced a lot of truble at the begging of projct, becuase the ruby version of my Mac was 3.1.3 and the version used by Shopify was 2.7.6, so I had to use RVM to switch between versions. This task was not simple!, but after many google searches and stackoverflow questions I was able to do it.
 
-#### As I mentioned above, I had to delete the instances of the model that was created by the generate model command, and I had to do it manually, this is the commond that I used.
+ As I mentioned above, I had to delete the instances of the model that was created by the generate model command, and I had to do it manually, this is the commond that I used.
 ```bash
 rails rake db:reset db:migrate
 ```
-#### After that, tests were straight forward, and I was able to pass them all.
+After that, tests were straight forward, and I was able to pass them all.
 
-#### Making models and controllers was not hard, but the routing was hard so I did a lot of logging to understand what was going on. I also found a really good command to see all the routes in the app, and it was really helpful.
+ Making models and controllers was not hard, but the routing was hard so I did a lot of logging to understand what was going on. I also found a really good command to see all the routes in the app, and it was really helpful.
 ```bash
 rails routes
 ```
-#### Searching functionality was mostly logic and simple rail queries. But I did some research on how to make the search bar work in real time, and I found a really good article on how to do it, but I did not have time to implement it. I will leave the link to the article below.
+ Searching functionality was mostly logic and simple rail queries. But I did some research on how to make the search bar work in real time, and I found a really good article on how to do it, but I did not have time to implement it. I will leave the link to the article below.
 [Real time search](https://webcrunch.com/posts/turbo-charged-real-time-search-ruby-on-rails-7)
 
-#### Forms, forms and FORMSSSS!, how to use form and what they do was an important part of this assingment and I learned a lot about them.(P.S. I was very confused about PATCH but I figured it out😅)
+ Forms, forms and FORMSSSS!, how to use form and what they do was an important part of this assingment and I learned a lot about them.(P.S. I was very confused about PATCH but I figured it out😅)
 
-#### Safty checks and nets!, I had to make sure that the user does not enter empty strings for the title and content, and I took two differnt approaches, becuase I could not get the instance of the model in the create view. So I used flash messages.
+ Safty checks and nets!, I had to make sure that the user does not enter empty strings for the title and content, and I took two differnt approaches, becuase I could not get the instance of the model in the create view. So I used flash messages.
 
-#### Styling was the last thing I did, and I used tailwindcss to do it(I love tailwindCSS). As a person with near to zero design skills, I find tailwindcss a godsend and pure joy to use! Even though the process of adding to the ruby on rails was hell, and I've seen that happen with other frameworks too, like SvelteKit.(but right when you think it is never gonna work, it does, so you just have to push through it)
-#### The error I was getting was this(Still not sure how I fixed it lol):
+ Styling was the last thing I did, and I used tailwindcss to do it(I love tailwindCSS). As a person with near to zero design skills, I find tailwindcss a godsend and pure joy to use! Even though the process of adding to the ruby on rails was hell, and I've seen that happen with other frameworks too, like SvelteKit.(but right when you think it is never gonna work, it does, so you just have to push through it)
+ The error I was getting was this(Still not sure how I fixed it lol):
 ```bash
 Tasks: TOP => assets:precompile => tailwindcss:build
 (See full trace by running task with --trace)
 ```
 
 ## My takeaways:
-#### As a person who has never used ruby on rails, before forking the repo I did a lot of research to get comprehand and get to know the way this framwork works(From what I've seen so far its kinda like a mix of python and php, but I'm not sure).
-#### Pros: Being MVC, databse integration, and short and fun syntax of ruby. I have exprince making backend APIs with python(fastAPI), GO(GOlang), and NodeJS(Express), and I have to say that ruby on rails is like the Java of backend frameworks, Java makes you do OPP and ruby on rails makes you do MVC, and is desigened to be like that.
-#### Cons: I did not like <%%> syntax in erb files, but I know there are other ways of integrating ruby with html. Morever sometimes it was tyring trying to follow the MVC pattern all the times for the routing specificaly.
+ As a person who has never used ruby on rails, before forking the repo I did a lot of research to get comprehand and get to know the way this framwork works(From what I've seen so far its kinda like a mix of python and php, but I'm not sure).
+ Pros: Being MVC, databse integration, and short and fun syntax of ruby. I have exprince making backend APIs with python(fastAPI), GO(GOlang), and NodeJS(Express), and I have to say that ruby on rails is like the Java of backend frameworks, Java makes you do OPP and ruby on rails makes you do MVC, and is desigened to be like that.
+ Cons: I did not like <%%> syntax in erb files, but I know there are other ways of integrating ruby with html. Morever sometimes it was tyring trying to follow the MVC pattern all the times for the routing specificaly.
 
-#### Overall this task was hard, challinging, and a steping stone to learn ruby on rails! I had a lot of fun doing it, and I hope you like it too!
+ Overall this task was hard, challenging, and a steping stone to learn ruby on rails! I had a lot of fun doing it, and I hope you like it too!
 
 ##### Made with ❤️&coffee by Hamid
 ----
