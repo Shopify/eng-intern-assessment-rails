@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Encyclopedia Articles</title>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="main-title">Encyclopedia Articles</h1>
+    </div>
+
+    <%= link_to 'Create New Article', new_article_path, class: "btn btn-primary create-article-btn" %>
+
+    <%= form_tag articles_path, method: :get, class: "search-form" do %>
+      <div class="input-group">
+        <%= text_field_tag :search, params[:search], placeholder: "Search Articles", class: "form-control", id: "search-field" %>
+        <div class="input-group-append">
+          <%= submit_tag "Search", class: "btn btn-info" %>
+          <button type="button" class="btn btn-danger clear-search" onClick="clearSearch()">Clear</button>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @articles.present? %>
+      <ul>
+        <% @articles.each do |article| %>
+          <li class="article-item">
+            <div class="article-title">
+              <%= link_to article.title, article_path(article) %>
+            </div>
+            <div class="article-metadata">
+              <span>Author: <%= article.author.present? ? article.author : "Unknown" %></span>
+              <span>Published on: <%= article.date.present? ? article.date.strftime("%B %d, %Y") : "Unknown" %></span>
+            </div>
+            <div class="article-actions">
+              <%= link_to 'Edit', edit_article_path(article), class: "btn btn-secondary" %>
+              <%= button_to 'Delete', article_path(article), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <%= will_paginate @articles %>
+    <% else %>
+      <p class="no-articles">No articles found.</p>
+    <% end %>
+  </div>
+
+  <script>
+    function clearSearch() {
+      document.getElementById('search-field').value = '';
+      document.querySelector('.search-form').submit();
+    }
+  </script>
+</body>
+</html>
