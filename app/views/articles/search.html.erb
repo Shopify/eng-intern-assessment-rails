@@ -1,0 +1,14 @@
+<!-- Article Search Results View -->
+<h1>Search Results</h1>
+
+<%= render 'search' %>
+
+<% if @results.any? %>
+  <ul>
+    <% @results.each do |result| %>
+      <li><%= link_to result.title, article_path(result) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No results found.</p>
+<% end %>
