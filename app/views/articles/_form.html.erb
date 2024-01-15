@@ -1,33 +1,31 @@
-<%= form_with model: @article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
+<%= form_with model: @article, class: "bootstrap-form" do |form| %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
     <% @article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+      <div class="text-danger"><%= message %></div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :content %><br>
-    <%= form.text_area :content %>
+  <div class="mb-3">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_area :content, class: "form-control" %>
     <% @article.errors.full_messages_for(:content).each do |message| %>
-      <div><%= message %></div>
+      <div class="text-danger"><%= message %></div>
     <% end %>
   </div>
-  <div>
-    <%= form.label :author %><br>
-    <%= form.text_area :author %>
+
+  <div class="mb-3">
+    <%= form.label :author, class: "form-label" %>
+    <%= form.text_area :author, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :date %><br>
-    <%= form.date_field(:date) %>
+  <div class="mb-3">
+    <%= form.label :date, class: "form-label" %>
+    <%= form.date_field :date, value: Date.today, class: "form-control" %>
   </div>
 
-  <div>
-
-  </div>
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit "Save", class: "btn btn-primary" %>
   </div>
 <% end %>

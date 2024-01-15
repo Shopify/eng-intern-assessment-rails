@@ -1,13 +1,16 @@
-<h1><%= @article.title %></h1>
-<h2><%= @article.author %></h2>
-<%= link_to "home", root_path %>
+<%= render "nav" %>
 
-<p><%= @article.content %></p>
+<div class="container">
+  <h2><%= @article.title %></h2>
+  <h3><%= @article.author %></h3>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-  } %></li>
-</ul>
+  <p><%= @article.content %></p>
+
+  <div>
+    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-info" %>
+    <%= link_to "Delete", article_path(@article), class: "btn btn-danger", data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %>
+  </div>
+</div>

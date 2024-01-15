@@ -1,3 +1,7 @@
-<h1>Edit an Article</h1>
-<a href="/articles/<%= @article.id %>"> Go Back</a>
-<%= render "form", article: @article %>
+<%= render "nav" %>
+<div class="container">
+  <h1>Edit an Article</h1>
+  <a href="/articles/<%= @article.id %>" class="btn btn-primary mb-2"> ← Go Back </a>
+  <%= render "form", article: @article %>
+
+</div>

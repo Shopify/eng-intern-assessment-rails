@@ -1,4 +1,6 @@
-<h1>New Article</h1>
-  <%= link_to "home", root_path %>
+<%= render "nav" %>
+<div class="container">
+  <h1>New Article</h1>
 
-<%= render "form", article: @article %>
+  <%= render "form", article: @article %>
+</div>
