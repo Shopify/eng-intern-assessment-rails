@@ -1,0 +1,49 @@
+.article-card-container{
+  width:70%;
+  height: 15%;
+  padding: 1vh;
+  border-bottom: 1px solid rgb(217, 217, 217);
+  display: flex;
+  flex-direction: column;
+}
+
+.article-author{
+  font-style: italic;
+  font-size: 1vh;
+}
+
+.article-author a:link, .article-author a:visited, .article-author a:hover, .article-author a:active { 
+  text-decoration:none;
+  color: black;
+}
+
+.article-title{
+  font-weight: bold;
+  font-size: 2vh;
+}
+
+.article-title a:link, .article-title a:visited, .article-title a:hover, .article-title a:active { 
+  text-decoration:none;
+  color: black;
+}
+
+.article-content{
+  font-size: 1.5vh;
+  height: 100%;
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: wrap;
+  overflow: hidden;
+}
+
+.article-content a:link, .article-content a:visited, .article-content a:hover, .article-content a:active { 
+  text-decoration:none;
+  color: black;
+}
+
+.article-read-time {
+  font-size: 1.5vh;
+  font-style: italic;
+  font-weight: bold;
+}

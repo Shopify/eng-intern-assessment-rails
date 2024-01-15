@@ -1,0 +1,11 @@
+.header-container {
+  width: 100%;
+  display: flex;
+  font-size: 3vh;
+  justify-content: center;
+  margin-bottom: 2vh;
+}
+
+.header-title {
+  font-weight: bold;
+}
