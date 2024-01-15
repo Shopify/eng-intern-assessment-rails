@@ -9,7 +9,7 @@ class Article < ApplicationRecord
     if query.present?
       where("lower(title) LIKE ? OR lower(content) LIKE ?", "%#{query}%", "%#{query}%")
     else
-      none
+      all
     end
   end
 end
