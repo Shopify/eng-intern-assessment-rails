@@ -14,6 +14,7 @@ class ActiveSupport::TestCase
   teardown do
     DatabaseCleaner.clean
   end
+  self.use_transactional_tests = true
 end
 
 module ActiveSupport
