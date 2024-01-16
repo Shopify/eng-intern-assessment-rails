@@ -1,15 +1,5 @@
 class ArticlesController < ApplicationController
   # Existing actions: index, show, new, create
-
-  def search
-    if params[:query].present?
-      @articles = Article.search(params[:query])
-    else
-      @articles = Article.all
-    end
-    render :index
-  end
-
   def index
     @articles = Article.all
   end
@@ -55,7 +45,17 @@ class ArticlesController < ApplicationController
   end
 
   def search
+    Rails.logger.debug "Search query: #{params[:query]}"
+
     @articles = Article.search(params[:query])
+    Rails.logger.debug "Number of articles found: #{@articles.size}"
+
+    if @articles.empty?
+      flash.now[:alert] = 'No articles found'
+    elsif @articles.length == 1
+      redirect_to article_path(@articles.first) and return
+    end
+
     render :index
   end
 

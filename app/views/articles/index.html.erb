@@ -16,10 +16,15 @@
   <% end %>
 </ul>
 
+<% if flash[:alert] %>
+  <p style="color: red;"><%= flash[:alert] %></p>
+<% end %>
+
 <%= form_with url: articles_search_path, method: :get, local: true do |form| %>
   <%= form.label :query, "Search Articles" %>
-  <%= form.text_field :query %>
+  <%= form.text_field :query, name: 'query' %>
   <%= form.submit "Search" %>
 <% end %>
+
 
 <%= link_to 'New Article', new_article_path %>

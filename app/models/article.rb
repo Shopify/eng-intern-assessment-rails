@@ -7,7 +7,11 @@ class Article < ApplicationRecord
 
   # Search functionality
   def self.search(search_term)
-    where("title LIKE ? OR content LIKE ?", "%#{search_term}%", "%#{search_term}%")
+    if search_term
+      where('LOWER(title) LIKE LOWER(:search) OR LOWER(content) LIKE LOWER(:search) OR LOWER(author) LIKE LOWER(:search)', search: "%#{search_term}%")
+    else
+      all
+    end
   end
 
   private
