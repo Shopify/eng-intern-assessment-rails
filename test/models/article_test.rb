@@ -1,17 +1,53 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # Test database record counts
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
 
+  # Article model methods
   test 'has search functionality' do
     assert_respond_to Article, :search
   end
 
+  # Test model validations
   test 'creates a new article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert article.valid?
+  end
+
+  test 'title has maximum length' do
+    article = Article.new(title: 'A' * 256, content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+  end
+
+  test 'author has maximum length' do
+    article = Article.new(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'A' * 81, date: Date.today)
+    assert_not article.valid?
+  end
+
+  test 'author has valid format' do
+    article = Article.new(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'invalid_author', date: Date.today)
+    assert_not article.valid?
+  end
+
+  test 'date has valid format' do
+    article = Article.new(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: 'invalid_date')
+    assert_nil article.date
+  end
+
+  # Test Model Behaviour
+  test 'search with no results' do
+    Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('Nonexistent Query')
+    assert_empty results
+  end
+
+  test 'default values are set' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_equal 'anonymous', article.author
+    assert_equal Date.today, article.date
   end
 
   test 'displays the article content accurately' do
@@ -50,6 +86,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
   end
 
+  # Test model search
   test 'returns accurate search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')

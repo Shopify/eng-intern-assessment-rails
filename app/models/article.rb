@@ -1,9 +1,9 @@
 class Article < ApplicationRecord
   before_validation :set_default_values
 
-  validates :title, presence: true, length: { maximum: 255, message: 'must be less than 255 characters'}
+  validates :title, presence: true, length: { maximum: 255, message: 'must be less than 255 characters' }
   validates :content, presence: true
-  validates :author, format: { with: /\A[a-zA-Z\s]+\z/, allow_nil: false, message: 'must contain only letters and spaces' },
+  validates :author, presence: true, format: { with: /\A[a-zA-Z\s]+\z/, message: 'must contain only letters and spaces' },
                      length: { maximum: 80, message: 'must be less than 80 characters' }
   validates :date, presence: true
 
