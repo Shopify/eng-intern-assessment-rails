@@ -65,4 +65,29 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'searches in all categories' do
+    article1 = Article.create(title: 'keyword Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'another Article', content: 'Lorem keyword ipsum dolor sit amet.')
+    results = Article.search('keyword')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+
+  test 'search is case-insensitive' do
+    article1 = Article.create(title: 'KEYWORD Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'keyword Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('keyword')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+
+  test 'search can have spaces' do
+    article1 = Article.create(title: 'keyword article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'key word article', content: 'Lorem keyword ipsum dolor sit amet.')
+    results = Article.search('key word')
+    assert_includes results, article2
+    assert (not results.include? article1)
+  end
+
 end
