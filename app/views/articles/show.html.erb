@@ -1,20 +1,16 @@
-
-
 <div class="article-page">
-    <div class="article-header">
-        <a class="btn-link-outline" href="/">Back</a>
-  <h1><%= @article.title %></h1>
-         <%= link_to 'Edit', edit_article_path(@article),class:"btn-link-outline"%>
-</div>
-<section class="article-info">
-   <span>By <%= @article.author %></span><span><%= @article.date %></span>
-    
-    </section>
+  <div class="article-header">
+    <a class="btn-link-outline" href="/">Back</a>
+    <h1><%= @article.title %></h1>
+    <%= link_to "Edit", edit_article_path(@article), class: "btn-link-outline" %>
+  </div>
+  <section class="article-info">
+    <span>By
+      <%= @article.author %></span><span><%= @article.date %></span>
+
+  </section>
   <section class="article-content">
     <p><%= @article.content %></p>
-    </section>
-  
- 
+  </section>
 
 </div>
-

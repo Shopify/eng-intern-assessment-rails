@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
 
   def search
     @articles = Article.search(params[:q])
-    render :index
+  render :index
   end
 
   def update
