@@ -24,6 +24,11 @@ class ArticlesController < ApplicationController
   def edit
   end
 
+  def search
+    @articles = Article.search(params[:q])
+    render :index
+  end
+
   def update
     if @article.update(article_params)
       redirect_to @article, notice: 'Article was successfully updated.'

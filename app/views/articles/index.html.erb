@@ -1,0 +1,33 @@
+
+
+<nav>
+    <h1 class="articles-heading">Articles</h1>
+    <a class="btn-link-primary" href="/articles/new">New Article</a>
+</nav>
+
+<ul class="articles">
+  <% @articles.each do |article| %>
+    <li>
+        <div class="article-title-info">
+        <span class="article-title"><%= link_to article.title, article_path(article) %></span>
+        <div class="meta">
+        <span class="article-author"><%= article.author %></span>
+        <span class="article-date"><%= article.date %></span>
+        </div>
+        </div>
+
+        <div class="actions">
+       <%= link_to 'Edit', edit_article_path(article),class:"edit"%>
+<% if article.present? %>
+  <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: "delete" %>
+<% else %>
+  <p>Article is not defined!</p>
+<% end %>
+    </li>
+  <% end %>
+</ul>
+
+<footer>
+    <div class="footer-content">
+        <p>Created by <a href="https://www.linkedin.com/in/armin-talaie/">Armin Talaie</a></p>
+</footer>

@@ -1,0 +1,47 @@
+<div class="article-page">
+    <div class="article-header">
+        <a class="btn-link-outline" href="<%= articles_path %>">Back to Articles</a>
+        <h1>Edit Article</h1>
+        <div></div>
+    </div>
+
+    <div class="article-content form-wrapper">
+        <%= form_with(model: @article, local: true, html: { class: "article-form" }) do |form| %>
+            <% if @article.errors.any? %>
+                <div id="error_explanation" class="error-messages">
+                    <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+                    <ul>
+                        <% @article.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+            <div class="form-group">
+                <%= form.label :title, class: "form-label" %>
+                <%= form.text_field :title, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label :author, class: "form-label" %>
+                <%= form.text_field :author, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label :date, class: "form-label" %>
+                <%= form.date_select :date, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label :content, class: "form-label" %>
+                <%= form.text_area :content, class: "form-control area" %>
+            </div>
+
+            <div class="form-actions">
+                <%= form.submit "Update", class: "btn-main btn-primary" %>
+            </div>
+        <% end %>
+    </div>
+</div>
