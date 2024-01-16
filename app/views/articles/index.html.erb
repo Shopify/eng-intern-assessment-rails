@@ -34,5 +34,8 @@
   <%= form.submit "Search" %>
 <% end %>
 
-<%# Link to create a new article page %>
-<%= link_to 'Create a New Article', new_article_path %>
+<%# Link to create a new article page and refresh search %>
+<%= link_to 'Create a New Article', new_article_path %>&nbsp;&nbsp;&nbsp;
+<%= link_to 'View all articles', articles_path %>
+
+
