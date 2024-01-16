@@ -31,6 +31,7 @@ RSpec.describe "/articles", type: :request do
     end
   end
 
+  # Ensures that the "new" page renders successfully
   describe "GET /new" do
     it "renders a successful response" do
       get new_article_url
@@ -38,6 +39,7 @@ RSpec.describe "/articles", type: :request do
     end
   end
 
+  # Ensures that the "edit" page renders successfully for a specific article
   describe "GET /edit" do
     it "renders a successful response" do
       article = Article.create!(title: 'Sample Title', content: 'Lorem ipsum')
@@ -57,12 +59,14 @@ RSpec.describe "/articles", type: :request do
 
     context "with valid parameters" do
       it "creates a new Article" do
+        # Ensures that a new article is created with valid parameters
         expect {
           post articles_url, params: { article: valid_attributes }
         }.to change(Article, :count).by(1)
       end
 
       it "redirects to the created article" do
+        # Ensures that the user is redirected to the created article after successful creation
         post articles_url, params: { article: valid_attributes }
         expect(response).to redirect_to(article_url(Article.last))
       end
@@ -95,6 +99,7 @@ RSpec.describe "/articles", type: :request do
       }
 
       it "updates the requested article" do
+        # Ensures that the requested article is successfully updated with valid parameters
         article = Article.create!(title: 'Sample Title', content: 'Lorem ipsum')
         patch article_url(article), params: { article: new_attributes }
         article.reload
@@ -103,6 +108,7 @@ RSpec.describe "/articles", type: :request do
       end
 
       it "redirects to the article" do
+        # Ensures that the user is redirected to the updated article after successful update
         article = Article.create!(title: 'Sample Title', content: 'Lorem ipsum')
         patch article_url(article), params: { article: new_attributes }
         article.reload
@@ -112,6 +118,7 @@ RSpec.describe "/articles", type: :request do
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
+        # Ensures that a successful response is rendered when updating an article with invalid parameters
         article = Article.create!(title: 'Sample Title', content: 'Lorem ipsum')
         patch article_url(article), params: { article: invalid_attributes }
         expect(response).to be_successful
@@ -122,12 +129,14 @@ RSpec.describe "/articles", type: :request do
   describe "DELETE /destroy" do
     it "destroys the requested article" do
       article = Article.create!(title: 'Sample Title', content: 'Lorem ipsum')
+      # Ensures that the requested article is successfully destroyed
       expect {
         delete article_url(article)
       }.to change(Article, :count).by(-1)
     end
 
     it "redirects to the articles list" do
+      # Ensures that the user is redirected to the articles list after successful destruction
       article = Article.create!(title: 'Sample Title', content: 'Lorem ipsum')
       delete article_url(article)
       expect(response).to redirect_to(articles_url)
