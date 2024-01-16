@@ -8,7 +8,6 @@ class Article < ApplicationRecord
       result = where("title LIKE ? OR content LIKE ?","%#{search}%",
       "%#{search.strip}%")
     end
-    ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     return result
   end
 end
