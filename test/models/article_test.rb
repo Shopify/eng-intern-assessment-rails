@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
+  #passed
   describe 'initial state' do
     it 'starts with no articles' do
       expect(Article.count).to eq(0)
@@ -11,12 +12,13 @@ RSpec.describe Article, type: :model do
     end
   end
 
+  #passed 
   describe 'creating and viewing articles' do
     it 'creates a new article' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
       expect(article).to be_valid
     end
-
+    #passed
     it 'displays the article content accurately' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
       expect(article.content).to eq('Lorem ipsum dolor sit amet.')
