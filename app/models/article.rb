@@ -7,7 +7,7 @@ class Article < ApplicationRecord
   # Searching for article based on title/content
   def self.search(query)
     if query
-       where("title LIKE ? OR content LIKE ?", "%#{query}", "%#{query}")
+       where("title LIKE ? OR content LIKE ?", "%#{query}%", "%#{query}%")
     else
       # Nothing matches, then return everything
       all
