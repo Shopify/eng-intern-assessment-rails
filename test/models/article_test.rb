@@ -18,12 +18,14 @@ RSpec.describe Article, type: :model do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
       expect(article).to be_valid
     end
+
     #passed
     it 'displays the article content accurately' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
       expect(article.content).to eq('Lorem ipsum dolor sit amet.')
     end
 
+    #passed
     it 'displays the article metadata correctly' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
       expect(article.author).to eq('John Doe')
@@ -31,6 +33,7 @@ RSpec.describe Article, type: :model do
     end
   end
 
+  # passed
   describe 'editing and updating articles' do
     it 'edits an existing article' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
@@ -38,6 +41,7 @@ RSpec.describe Article, type: :model do
       expect(article.content).to eq('Updated content')
     end
 
+    #passed
     it 'updates the article metadata' do
       article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
       article.update(author: 'Jane Smith', date: Date.yesterday)

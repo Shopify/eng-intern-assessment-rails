@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
-  validates :title, presence: true
-  validates :content, presence: true
-  
+    # title and content are mandatory. date and author are not 
+    validates :title, presence: true
+    validates :content, presence: true
+
 end
