@@ -57,6 +57,25 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # GET /article/{search-query}
+  def search
+    @query = params[:query]
+    @results = Article.search(@query)
+
+    puts "Search Query: #{@query}"
+    puts "Search Results:"
+    @results.each do |result|
+      puts result.inspect
+    end
+
+    # Customize the search logic based on your requirements
+
+    respond_to do |format|
+      format.html # You can create a search.html.erb view if needed
+      format.json { render json: @results }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
