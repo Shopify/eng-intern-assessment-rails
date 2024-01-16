@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+    # title and content are mandatory attributes for an article
     validates_presence_of :title
     validates_presence_of :content
 
