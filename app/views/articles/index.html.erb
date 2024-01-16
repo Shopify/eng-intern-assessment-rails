@@ -2,13 +2,29 @@
 
 <h1>Articles</h1>
 
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Author</th>
+      <th>Date</th>
+      <th>Action</th> <!-- Add a new column for actions -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <%= render partial: "article", locals: { article: article } %>
+      <tr>
+        <td colspan="4"></td> <!-- Add empty cells for the first four columns -->
+        <td>
+          <p>
+            <%= link_to "Show this article", article %>
+          </p>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New article", new_article_path %>
