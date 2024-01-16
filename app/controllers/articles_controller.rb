@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
+  helper_method :format_date
 
   # GET /articles or /articles.json
   def index
@@ -64,6 +65,10 @@ class ArticlesController < ApplicationController
   end
 
   private
+    # Format the date to look better
+    def format_date(date)
+      date.strftime('%B %d, %Y')
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
