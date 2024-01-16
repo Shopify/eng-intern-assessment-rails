@@ -1,5 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
+<%= form_for(:article, url: search_articles_path, method: 'get') do %>
+  <%= text_field_tag 'query', params[:query], placeholder: 'Search articles...' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
 <h1>Articles</h1>
 
 <table>
