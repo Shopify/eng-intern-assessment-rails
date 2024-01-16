@@ -1,4 +1,9 @@
 class Article < ApplicationRecord
+  # Validations for Title, Content, and Date
+  validates :title, presence: true
+  validates :content, presence: true
+  validates :date, presence: true
+
   def self.search(query)
     if query
       where('title LIKE ? OR content LIKE ?', "%#{query}%", "%#{query}%")

@@ -57,7 +57,7 @@ class ArticlesController < ApplicationController
   end
 
   def search_page
-    # This action just renders the search_page view
+    # This action renders the search_page view
   end
 
   def search
