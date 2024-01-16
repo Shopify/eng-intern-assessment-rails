@@ -9,7 +9,7 @@ RSpec.describe "articles/index", type: :view do
         author: "Author"
       ),
       Article.create!(
-        title: "Title",
+        title: "Another Title",
         content: "Content",
         author: "Author"
       )
@@ -18,7 +18,8 @@ RSpec.describe "articles/index", type: :view do
 
   it "renders a list of articles" do
     render
-    assert_select "tr>td", text: "Title".to_s, count: 2
+    assert_select "tr>td", text: "Title".to_s, count: 1
+    assert_select "tr>td", text: "Another Title".to_s, count: 1
     assert_select "tr>td", text: "Content".to_s, count: 2
     assert_select "tr>td", text: "Author".to_s, count: 2
   end
