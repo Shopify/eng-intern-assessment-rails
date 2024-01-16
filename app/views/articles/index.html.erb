@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag 'articles' %>
 <p style="color: green"><%= notice %></p>
 
 <h1>Articles</h1>
@@ -10,7 +11,7 @@
 
 <div id="articles">
   <% @articles.each do |article| %>
-    <%= render article %>
+    <%= render article, locals: { class_name: "article" } %>
     <p>
       <%= link_to "Show this article", article %>
     </p>
