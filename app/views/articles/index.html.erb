@@ -1,18 +1,25 @@
-<!-- FILEPATH: /c:/Users/jdmar/Projects/eng-intern-assessment-rails/app/views/articles/index.html.erb -->
+<h1>Wiki Articles</h1>
 
-<h1>Article Index</h1>
+<%= form_with(url: articles_path, method: :get, local: true) do |form| %>
+    <%= form.label :search, "Search Articles" %>
+    <%= form.text_field :search %>
+    <%= form.submit "Search" %>
+<% end %>
+
+<hr>
+
 <h3><%= link_to 'Create New Article', new_article_path %></h3>
 
 <% @articles.each do |article| %>
     <div>
-        <h2><%= link_to 'view', article_path(article) %> | <%= article.title %> 
-        <% if article.author? %>
-            | <%= article.author %>
-        <% end %>
-        <% if article.date? %>
-            | <%= article.date %>
-        <% end %>
-        <p></p>
+        <h2>
+            <%= link_to 'view', article_path(article) %> | <%= article.title %> 
+            <% if article.author? %>
+                <%= article.author %>
+            <% end %>
+            <% if article.date? %>
+                <%= article.date %>
+            <% end %>
         </h2>
     </div>
 <% end %>
