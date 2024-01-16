@@ -1,6 +1,17 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # Setup to create a dummy user for the tests
+  # This is necessary as I implemented oauth2, which requires all articles created to belong to a user (association).
+  setup do
+    @user = User.create!(
+      provider: 'test_provider',  # Placeholder value (ex. Google, GitHub)
+      uid: SecureRandom.uuid,     # Generates a unique identifier
+      name: 'Test User',
+      email: 'test@example.com',  # Placeholder value
+      image: 'test_image_url'     # Placeholder value
+    )
+  end
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -9,58 +20,59 @@ class ArticleTest < ActiveSupport::TestCase
     assert_respond_to Article, :search
   end
 
+  # Title, content, and dates are mandatory fields
   test 'creates a new article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today, user_id: @user.uid)
     assert article.valid?
   end
 
   test 'displays the article content accurately' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today, user_id: @user.uid)
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
   end
 
   test 'displays the article metadata correctly' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today, user_id: @user.uid)
     assert_equal 'John Doe', article.author
     assert_equal Date.today, article.date
   end
 
   test 'edits an existing article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today, user_id: @user.uid)
     article.update(content: 'Updated content')
     assert_equal 'Updated content', article.content
   end
 
   test 'updates the article metadata' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today, user_id: @user.uid)
     article.update(author: 'Jane Smith', date: Date.yesterday)
     assert_equal 'Jane Smith', article.author
     assert_equal Date.yesterday, article.date
   end
 
   test 'deletes an article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today, user_id: @user.uid)
     article.destroy
     assert_equal 0, Article.count
   end
 
   test 'prevents access to deleted articles' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today, user_id: @user.uid)
     article.destroy
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
   end
 
   test 'returns accurate search results' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today, user_id: @user.uid)
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', date: Date.today, user_id: @user.uid)
     results = Article.search('Lorem ipsum')
     assert_includes results, article1
     assert_includes results, article2
   end
 
   test 'displays relevant articles in search results' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today, user_id: @user.uid)
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', date: Date.today, user_id: @user.uid)
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1

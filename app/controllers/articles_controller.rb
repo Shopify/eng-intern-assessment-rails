@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :require_login, only: [:dashboard]
 
+  # Main/Root page
   def index
     @articles = Article.all
   end
@@ -60,6 +61,7 @@ class ArticlesController < ApplicationController
     # This action renders the search_page view
   end
 
+  # Uses Article model's search method to search with given query
   def search
     if params[:query].present?
       @articles = Article.search(params[:query])
@@ -69,6 +71,7 @@ class ArticlesController < ApplicationController
     render :search_page
   end
 
+  # Displays signed-in user's dashboard with their created Articles
   def dashboard
     current_user = User.find(session[:user_id])
     @user_articles = Article.where(user_id: current_user.uid)
@@ -84,6 +87,7 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :content, :author, :date, :user_id)
     end
 
+    # Ensures users are signed-in when accessing dashboard, adds to route security
     def require_login
       unless session[:user_id]
         redirect_to root_path, alert: "You must be logged in to access the dashboard."
