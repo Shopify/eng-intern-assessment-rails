@@ -1,0 +1,40 @@
+// Imports for Bootstrap and Google Fonts fonts
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montaga&display=swap');
+
+
+// Various styling for classes across the app!
+.shopify-title {
+  font-family: 'Lobster', cursive;
+  font-size: 100px;
+  color: black;
+  text-align: center;
+}
+
+.font-styling {
+  font-family: 'Montaga', serif;
+}
+
+.plus-icon {
+  padding-bottom: 2px;
+}
+
+.shopify-name {
+  color: #9ebe59;
+}
+
+.btn {
+  background-color: #9ebe59;
+  color: white;
+  border-color: #9ebe59;
+}
+
+.link {
+  color: #9ebe59;
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
+

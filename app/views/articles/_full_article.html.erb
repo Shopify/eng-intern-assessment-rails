@@ -1,0 +1,11 @@
+<div id="<%= dom_id(article) %>" class="card mb-3">
+    <div class="card-body">
+      <div class="card-title">
+        <h3>
+        <%= article.title %>
+        </h3>
+          <i class="pt-0"> Authored by <%= article.author %>, <%= article.date %></i>
+      </div>
+      "<%= article.content %>"
+    </div> 
+  </div>
