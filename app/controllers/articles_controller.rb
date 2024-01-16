@@ -1,11 +1,17 @@
 class ArticlesController < ApplicationController
+  # Existing actions: index, show, new, create
+
+  def search
+    if params[:query].present?
+      @articles = Article.search(params[:query])
+    else
+      @articles = Article.all
+    end
+    render :index
+  end
 
   def index
     @articles = Article.all
-  end
-
-  def show
-    @article = Article.find(params[:id])
   end
 
   def new
@@ -21,8 +27,16 @@ class ArticlesController < ApplicationController
     end
   end
 
+
   def edit
     @article = Article.find(params[:id])
+  end
+
+  def show
+    @article = Article.find_by(id: params[:id])
+    if @article.nil?
+      redirect_to articles_path, alert: 'Article not found'
+    end
   end
 
   def update
@@ -37,13 +51,17 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to articles_url, notice: 'Article was successfully destroyed.'
+    redirect_to articles_path, notice: 'Article was successfully deleted.'
+  end
+
+  def search
+    @articles = Article.search(params[:query])
+    render :index
   end
 
   private
 
-  # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :content, :author, :date)
+    params.require(:article).permit(:title, :content, :author)
   end
 end

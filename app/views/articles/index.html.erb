@@ -1,0 +1,23 @@
+<h2>All Existing Articles</h2>
+
+<ul>
+  <% if @articles.present? %>
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article_path(article) %> |
+        <%= link_to 'Edit', edit_article_path(article) %> |
+        <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  <% else %>
+    <li>No articles found</li>
+  <% end %>
+</ul>
+
+<%= form_with url: articles_search_path, method: :get, local: true do |form| %>
+  <%= form.label :query, "Search Articles" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<%= link_to 'New Article', new_article_path %>
