@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   def render_404
     render :template => "errors/404", :status => 404
   end
+
   # GET /articles?query=foo (Search for articles containing "foo")
   # GET /articles (List all articles)
   def index
