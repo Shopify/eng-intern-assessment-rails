@@ -1,0 +1,18 @@
+<h1>Articles</h1>
+
+<form method="get" action="<%= search_articles_path %>">
+    <input type="text" name="keyword" placeholder="Filter by title/content" value="<%= params[:keyword] %>"/>
+    <input type="submit" value="Search" data-disable-with="search" >
+</form>
+
+<ul>
+    <% @articles.each do |article| %>
+        <li>
+            <%= link_to article.title, article %>
+        </li>
+    <% end %>
+</ul>
+
+<button>
+    <%= link_to "New", new_article_path() %>
+</button>
