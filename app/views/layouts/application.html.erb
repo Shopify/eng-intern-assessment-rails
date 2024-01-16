@@ -11,9 +11,18 @@
   </head>
 
   <body>
-    HEADER HERE... <br/><br/>
-    <%= yield %>
+    <nav>
+      <ul>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Articles', articles_path %></li>
+      </ul>
+    </nav>
+    
     <br/><br/>
-    Footer here...
+    
+    <%= yield %>
+    
+    <br/><br/>
+    
   </body>
 </html>
