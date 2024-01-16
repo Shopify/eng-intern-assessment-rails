@@ -1,0 +1,40 @@
+<%= form_with model: article do |form| %>
+  <div class="form-group">
+    <%= form.label :title %><br>
+    <%= form.text_field :title, :placeholder => "Enter Title", :required => true %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :author %><br>
+    <%= form.text_field :author, :placeholder => "Enter Author", :required => true %><br>
+    <% article.errors.full_messages_for(:author).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+
+  <div class="form-group">
+    <%= form.label :content %><br>
+    <%= form.text_area :content, :placeholder => "Enter Content" %><br>
+    <% article.errors.full_messages_for(:content).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+
+  <div class="form-group">
+    <%= form.label :date %><br>
+    <%= form.date_select :date, :required => true %>
+    <% article.errors.full_messages_for(:date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+  

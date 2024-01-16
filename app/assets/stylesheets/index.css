@@ -1,0 +1,13 @@
+.menu_actions {
+    display:flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.articles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+

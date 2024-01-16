@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag "index.css" %>
+
+<h1>Articles Encyclopedia</h1>
+
+<%# Display buttons corresponding to the various actions:
+searching for an article, creating a new article, or displaying all articles %>
+<div class="menu_actions">
+  <%= form_with url: "/articles/search", method: :post do |form| %>
+    <div class="input-group">
+      <%= form.text_field :query, :class => "form-control rounded", :placeholder => "Search" %>
+      <%= form.submit "Search", :class => "btn btn-outline-primary" %>
+    </div>
+  <% end %>
+  <%= link_to "New Article", new_article_path, :class => "btn btn-outline-success" %>
+  <%= link_to "All Articles", {:controller => "articles", :action => "index"}, {:class => "btn btn-outline-primary"} %>
+</div>
+
+<%# Display the number of search results found %>
+<% if @articles.length() > 0%>
+  Found <%= @articles.length() %> search result(s):
+<% end %>
+
+<%# Print the articles %>
+<div class="articles">
+  <% @articles.each do |article| %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"> <%= link_to article.title, article %> </h5>
+        <h6 class="card-subtitle mb-2 text-muted">Author: <%= article.author %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Date: <%= article.date %></h6>
+        <p class="card-text"><%= article.content %></p>
+        <div class = "article_actions">
+          <%= link_to "View", article, :class => "btn btn-link" %>
+          <%= link_to "Edit", edit_article_path(article), :class => "btn btn-link" %>
+          <%= button_to "Delete", article, method: :delete, :class => "btn btn-link" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
