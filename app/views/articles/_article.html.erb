@@ -1,0 +1,13 @@
+<div id="<%= dom_id(article) %>" class="card mb-3">
+    <div class="card-body">
+      <div class="card-title">
+        <h3>
+        <%= article.title %>
+        </h3>
+          <i class="pt-0"> Authored by <%= article.author %>, <%= article.date %></i>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= link_to "Read this article", article, class: "view-article-btn link" %>
+    </div>
+  </div>

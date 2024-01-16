@@ -1,0 +1,46 @@
+<%= form_with(model: article) do |form| %>
+  <%# If errors are present, display them %>
+  <% if article.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%# Form field for article title %>
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+<%# Form field for article content %>
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_area :content, class: "form-control" %>
+  </div>
+
+  <div class="row">
+
+    <%# Form field for article author %>
+    <div class="col">
+      <%= form.label :author, style: "display: block" %>
+      <%= form.text_field :author, class: "form-control" %>
+    </div>
+
+    <%# Form field for article date %>
+    <div class="col">
+      <%= form.label :date, style: "display: block" %>
+      <%= form.date_field :date, class: "form-control" %>
+    </div>
+
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

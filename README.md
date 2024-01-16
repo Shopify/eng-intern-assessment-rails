@@ -1,55 +1,44 @@
-# Technical Instructions
-1. Fork this repo to your local Github account.
-2. Create a new branch to complete all your work in.
-3. Test your work using the provided tests
-4. Create a Pull Request against the Shopify Main branch when you're done and all tests are passing
+# The Shopify Encyclopedia
 
-# Project Overview
-The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. Be sure to implement basic CRUD actions on articles. Your task is to implement these features as well as write the code that makes the tests pass.
+[![Home Screen](https://i.postimg.cc/8CqQyhHK/temp-Image-Jvy9-Ky.jpg)](https://postimg.cc/hJb5vQNT)
 
-# Project Goals
-The main goal of this internship project is to implement the functionality required to make the existing tests pass. The provided tests cover various aspects of the application, including creating and viewing articles, editing and updating articles, deleting articles, and searching for articles. Along with completing the tests, be sure to implement all basic CRUD actions on your articles on a controller and create views to see your work in the app.
+## Overview
 
-## Your specific goals for this project are as follows:
+This application serves as a digital encyclopedia for articles, capturing the article content, date published, title, and author. The application also allows for Create, Read, Update, Destroy (CRUD) operations on the articles, as well as a search functionality.
 
-1. Review Existing Tests: Start by reviewing the existing tests provided in the article_test.rb file located in the test/models directory. Understand the requirements and expectations of each test.
+## Added Functionality
 
-2. Implement Functionality: Write the code necessary to make the existing tests pass. This involves implementing the required actions and logic in the models, controllers, and views to fulfill the specified requirements. Also be sure to implement basic CRUD actions and demonstrate proper MVC principals.
+I have added the following functionality to this project:
 
-3. Ensure Code Quality: Write clean, well-structured, and maintainable code. Follow best practices and adhere to the Ruby on Rails conventions. Pay attention to code readability, modularity, and performance.
+ **1. CRUD Operations**
 
-4. Test Your Code: After implementing the functionality, run the tests to ensure that they pass successfully. Fix any failures or errors that occur and retest until all tests pass.
+This application allows for CRUD operations on the articles. The user can create, read, update, and destroy articles. The user can also view all articles in the database.
 
-5. Code Documentation: Document your code by adding comments and explanatory notes where necessary. This will help other developers understand your implementation and make future maintenance easier.
+ **2. Article Search**
+ 
+This application also allows for searching of articles by title. The user can search for articles by title, and the application will return a list of articles that contain the search query in their titles.
 
-6. Version Control: Use Git for version control. Commit your changes regularly and push them to a branch in your forked repository.
+## Starting the Application
 
-7. Create a Pull Request: Once you have completed the project goals, create a pull request to merge your changes into the main repository. Provide a clear description of the changes made and any relevant information for the code review.
+To start the application, run the following commands:
 
-## Getting Started
-To get started with this project, follow these steps:
+```
+bundle install
+rails db:migrate
+rails server
+```
 
-1. Clone the repository to your local development environment.
+## Screenshots
 
-2. Install the necessary dependencies by running bundle install in the project directory.
+[![Home Screen](https://i.postimg.cc/8CqQyhHK/temp-Image-Jvy9-Ky.jpg)](https://postimg.cc/hJb5vQNT)
+[![Add Article Screen](https://i.postimg.cc/5tJ88Gcn/temp-Image1-Hgjq-F.jpg)](https://postimg.cc/ZWf9Sw5d)
+[![Edit Article Screen](https://i.postimg.cc/vH6nkMb0/temp-Image-T1-M0-Ml.jpg)](https://postimg.cc/RN4qJk3t)
 
-3. Familiarize yourself with the existing codebase, including the models, controllers, and views.
+## Possible Project Extensions
 
-4. Review the existing tests in the article_test.rb file and understand their purpose and functionality.
+**1. Image support within articles.**
 
-5. Run the tests locally using the rspec command to ensure they are passing.
+**2. Expansive article sorting and filtering options.**
 
-6. Start working on the goals outlined above, making improvements to the existing tests and adding new tests as needed.
+**3. The ability to comment or post reactions (e.g., likes) on articles.**
 
-7. Commit your changes regularly and push them to a branch in your forked repository.
-
-8. Once you have completed the project goals, create a pull request to merge your changes into the main repository.
-
-## Resources
-Here are some resources that may be helpful during your internship project:
-
-- [Ruby on Rails Guides](https://guides.rubyonrails.org/) - Comprehensive guides on Ruby on Rails, covering various aspects of web application development.
-
-- [Ruby Style Guide](https://rubystyle.guide/) - A community-driven Ruby coding style guide to ensure consistent and readable code.
-
-- [Git Documentation](https://git-scm.com/doc) - Official documentation for Git, the version control system used in this project.
