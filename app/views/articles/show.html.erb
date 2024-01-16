@@ -1,0 +1,30 @@
+<h1><%= @article.title %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Title</th>
+      <td><%= @article.title %></td>
+    </tr>
+    <tr>
+      <th>Author</th>
+      <td><%= @article.author %></td>
+    </tr>
+    <tr>
+      <th>Content</th>
+      <td><%= @article.content %></td>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <td><%= @article.date %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class = "article_actions">
+  <%= link_to "View", @article, :class => "btn btn-link" %>
+  <%= link_to "Edit", edit_article_path(@article), :class => "btn btn-link" %>
+  <%= button_to "Delete", @article, method: :delete, :class => "btn btn-link" %>
+<%= link_to "Return home", "/", :class => "btn btn-link" %>
+
+</div>
