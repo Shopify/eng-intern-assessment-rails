@@ -41,7 +41,11 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-
+  def search 
+    key = "%#{params[:key]}%"
+    @articles = Article.where("title LIKE ? or content LIKE?", key, key)
+  end
+  
   private
     def article_params
       params.require(:article).permit(:title, :content, :author, :date)
