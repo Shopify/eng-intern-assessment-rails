@@ -37,6 +37,8 @@ rails server
 ## Possible Project Extensions
 
 **1. Image support within articles.**
+
 **2. Expansive article sorting and filtering options.**
+
 **3. The ability to comment or post reactions (e.g., likes) on articles.**
 

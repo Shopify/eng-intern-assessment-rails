@@ -3,12 +3,15 @@
 <%= form_with url: articles_path, method: :get, class: "mb-3" do %>
   <%= label_tag :query, "Search Articles", class: "form-label" %>
   <div class="row">
+    <%# Search field for article title %>
     <div class="col">
       <%= text_field_tag :query, params[:query], class: "form-control" %>
     </div>
+    <%# Search button %>
     <div class="col-auto">
       <%= submit_tag "Search", class: "btn btn-info" %>
     </div>
+    <%# Add new article button %>
     <div class="col-auto">
     <%= link_to new_article_path, class: "btn btn-primary" do %>
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle plus-icon" viewBox="0 0 16 16">
@@ -22,7 +25,7 @@
   </div>
 <% end %>
 
-
+<%# For each article, render its content %>
 <div id="articles">
   <% @articles.each do |article| %>
     <%= render article %>
