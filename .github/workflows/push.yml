@@ -23,4 +23,4 @@ jobs:
           bundle install --jobs 4 --retry 3
 
       - name: Run tests
-        run: bundle exec rspec
+        run: bin/rails test
