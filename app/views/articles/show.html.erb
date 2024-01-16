@@ -1,0 +1,11 @@
+<h1><%= @article.title %></h1>
+
+<h2>Created by: <%= @article.author %></h2>
+
+<p><%= @article.content %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+    <li><%= button_to "Destroy", @article, method: :delete %></li>
+    <li><%= link_to "Return Home", root_path %></li>
+</ul>
