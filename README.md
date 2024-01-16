@@ -1,5 +1,7 @@
 # The Shopify Encyclopedia
 
+[![Home Screen](https://i.postimg.cc/8CqQyhHK/temp-Image-Jvy9-Ky.jpg)](https://postimg.cc/hJb5vQNT)
+
 ## Overview
 
 This application serves as a digital encyclopedia for articles, capturing the article content, date published, title, and author. The application also allows for Create, Read, Update, Destroy (CRUD) operations on the articles, as well as a search functionality.
@@ -26,7 +28,15 @@ rails db:migrate
 rails server
 ```
 
-
 ## Screenshots
 
-Coming soon!
+[![Home Screen](https://i.postimg.cc/8CqQyhHK/temp-Image-Jvy9-Ky.jpg)](https://postimg.cc/hJb5vQNT)
+[![Add Article Screen](https://i.postimg.cc/5tJ88Gcn/temp-Image1-Hgjq-F.jpg)](https://postimg.cc/ZWf9Sw5d)
+[![Edit Article Screen](https://i.postimg.cc/vH6nkMb0/temp-Image-T1-M0-Ml.jpg)](https://postimg.cc/RN4qJk3t)
+
+## Possible Project Extensions
+
+**1. Image support within articles.**
+**2. Expansive article sorting and filtering options.**
+**3. The ability to comment or post reactions (e.g., likes) on articles.**
+
