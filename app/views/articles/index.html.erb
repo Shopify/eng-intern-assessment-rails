@@ -1,5 +1,11 @@
 <h1>Articles</h1>
 
+<%= form_with url: "/search", method: :get do |form| %>
+  <%= form.label :search, "Search for:" %>
+  <%= form.text_field :search %>
+  <%= form.submit "Search" %>
+<% end %>
+
 <ul>
   <% @articles.each do |article| %>
     <li>
