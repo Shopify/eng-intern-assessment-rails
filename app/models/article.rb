@@ -1,6 +1,7 @@
+# app/models/article.rb
 class Article < ApplicationRecord
   # Validations
-  validates :title, :content, :author, presence: true
+  validates :title, :content, presence: true  # Removed author from mandatory fields
 
   # Callbacks
   before_create :set_creation_date
@@ -8,7 +9,7 @@ class Article < ApplicationRecord
   # Search functionality
   def self.search(search_term)
     if search_term
-      where('LOWER(title) LIKE LOWER(:search) OR LOWER(content) LIKE LOWER(:search) OR LOWER(author) LIKE LOWER(:search)', search: "%#{search_term}%")
+      where('LOWER(title) LIKE ? OR LOWER(content) LIKE ? OR LOWER(author) LIKE ?', "%#{search_term.downcase}%", "%#{search_term.downcase}%", "%#{search_term.downcase}%")
     else
       all
     end
@@ -18,6 +19,6 @@ class Article < ApplicationRecord
 
   # automatically updates the date as new records are put in
   def set_creation_date
-    self.date = Time.current
+    self.date = Time.current.to_date  # Ensure the date is saved without time
   end
 end

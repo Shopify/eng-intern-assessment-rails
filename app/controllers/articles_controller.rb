@@ -71,9 +71,7 @@ class ArticlesController < ApplicationController
 
   private
 
-  # Ensures that only the permitted form parameters are used for article creation or update.
-  # This is a part of strong parameter feature of Rails to prevent mass assignment vulnerabilities.
   def article_params
-    params.require(:article).permit(:title, :content, :author)
+    params.require(:article).permit(:title, :content, :author, :date)  # Added :date to permitted params
   end
 end
