@@ -1,16 +1,20 @@
 class ArticlesController < ApplicationController
+  # GET /articles
   def index
     @articles = Article.search(params[:article_search_term])
   end
 
+  # GET /articles/:id
   def show
     @article = Article.find(params[:id])
   end
 
+  # GET /articles/new
   def new
     @article = Article.new
   end
 
+  # POST /articles
   def create
       @article = Article.new(article_parameters)
 
@@ -21,10 +25,12 @@ class ArticlesController < ApplicationController
       end
   end
 
+  # GET /articles/:id/edit
   def edit
     @article = Article.find(params[:id])
   end
 
+  # PATCH /articles/:id
   def update
     @article = Article.find(params[:id])
 
@@ -35,6 +41,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # DELETE /articles/:id
   def destroy
       @article = Article.find(params[:id])
       @article.destroy
