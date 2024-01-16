@@ -1,5 +1,6 @@
 <h1>Edit Article</h1>
 
+<%# This form is autopopulated with the current values of the article %>
 <%= form_with model: @article, local: true do |form| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
@@ -12,6 +13,7 @@
     </div>
   <% end %>
 
+  <%# These fields are just like creating a new article but they update it instead %>
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>

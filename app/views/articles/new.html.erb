@@ -1,5 +1,6 @@
 <h1>New Article</h1>
 
+<%# This form creates a new article and every field is required %>
 <%= form_with model: @article, local: true do |form| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">

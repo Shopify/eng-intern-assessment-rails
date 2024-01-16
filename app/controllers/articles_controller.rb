@@ -1,13 +1,16 @@
 class ArticlesController < ApplicationController
-  # Existing actions: index, show, new, create
+  # Retrieves all articles and assigns them to @articles for the view.
   def index
     @articles = Article.all
   end
 
+  # Initializes a new article instance for the form helper in the 'new' view.
   def new
     @article = Article.new
   end
 
+  # Attempts to save a new Article instance from form parameters.
+  # Redirects to the article's show page on success, or renders the 'new' view again on failure.
   def create
     @article = Article.new(article_params)
     if @article.save
@@ -17,18 +20,20 @@ class ArticlesController < ApplicationController
     end
   end
 
-
+  # Retrieves an existing article to edit using the ID from the URL parameters.
   def edit
     @article = Article.find(params[:id])
   end
 
+  # Retrieves an article to display on its show page.
+  # If the article does not exist, redirects to the articles index with an alert.
   def show
     @article = Article.find_by(id: params[:id])
-    if @article.nil?
-      redirect_to articles_path, alert: 'Article not found'
-    end
+    redirect_to articles_path, alert: 'Article not found' if @article.nil?
   end
 
+  # Updates an existing article with form parameters.
+  # Redirects to the article's show page on success, or renders the 'edit' view again on failure.
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)
@@ -38,12 +43,17 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Deletes an article and redirects to the articles index with a success notice.
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
     redirect_to articles_path, notice: 'Article was successfully deleted.'
   end
 
+  # Searches for articles that match a given query.
+  # If no articles are found, sets an alert flash message.
+  # If exactly one article is found, redirects to that article's show page.
+  # Otherwise, displays all matching articles in the index view.
   def search
     Rails.logger.debug "Search query: #{params[:query]}"
 
@@ -61,6 +71,8 @@ class ArticlesController < ApplicationController
 
   private
 
+  # Ensures that only the permitted form parameters are used for article creation or update.
+  # This is a part of strong parameter feature of Rails to prevent mass assignment vulnerabilities.
   def article_params
     params.require(:article).permit(:title, :content, :author)
   end
