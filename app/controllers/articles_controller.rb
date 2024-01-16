@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
   # Retrieves all articles and assigns them to @articles for the view.
   def index
     @articles = Article.all
@@ -70,6 +72,11 @@ class ArticlesController < ApplicationController
   end
 
   private
+  #Helps handle errors
+  def set_article
+    @article = Article.find_by(id: params[:id])
+    redirect_to articles_path, alert: 'Article not found' unless @article
+  end
 
   def article_params
     params.require(:article).permit(:title, :content, :author, :date)  # Added :date to permitted params

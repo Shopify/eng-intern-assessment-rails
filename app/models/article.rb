@@ -9,7 +9,8 @@ class Article < ApplicationRecord
   # Search functionality
   def self.search(search_term)
     if search_term
-      where('LOWER(title) LIKE ? OR LOWER(content) LIKE ? OR LOWER(author) LIKE ?', "%#{search_term.downcase}%", "%#{search_term.downcase}%", "%#{search_term.downcase}%")
+      where('LOWER(title) LIKE ? OR LOWER(content) LIKE ? OR LOWER(author) LIKE ?',
+      "%#{search_term.downcase}%", "%#{search_term.downcase}%", "%#{search_term.downcase}%")
     else
       all
     end
