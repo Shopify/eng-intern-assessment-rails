@@ -6,7 +6,9 @@
       <li>
         <%= link_to article.title, article_path(article) %> |
         <%= link_to 'Edit', edit_article_path(article) %> |
-        <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= form_with url: article_path(article), method: :delete, class: "inline-form" do %>
+          <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' } %>
+        <% end %>
       </li>
     <% end %>
   <% else %>
