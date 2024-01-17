@@ -32,6 +32,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get install -y nodejs \
     && npm install
 
+# Run database migrations
+RUN rails db:migrate
+
 EXPOSE 10000
 
 # Command to run on container start
