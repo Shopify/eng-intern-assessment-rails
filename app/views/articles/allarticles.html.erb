@@ -1,0 +1,14 @@
+<h1>Encyclopedia</h1>
+
+<div class="div-all-articles">
+    <h2>Your Articles</h2>
+    <ul>
+        <% @articles.each do |article| %>
+        <li>
+            <a href="/articles/<%= article.id %>">
+                <%= article.title %>
+            </a>
+        </li>
+        <%end%>
+    </ul>
+</div>

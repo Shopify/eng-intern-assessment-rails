@@ -13,3 +13,49 @@
  *= require_tree .
  *= require_self
  */
+
+h1 {
+    text-align: center;
+    color: midnightblue;
+}
+
+.div-all-articles {
+    background-color: rgba(206, 206, 206, 0.5);
+    border-radius: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px 1px rgba(69, 219, 0, 0.5);
+    color: midnightblue;
+    font-size: 18px;
+    text-align: center;
+    margin: 0 40px;
+}
+
+.div-btn-index {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.btn-index-page {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    padding: 15px 32px; /* Padding around text */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 9px #999; /* Shadow effect */
+    transition-duration: 0.4s; /* Transition effect */
+}
+
+.btn-index-page:hover {
+    background-color: rgb(255, 234, 0); /* Darker shade of green */
+    box-shadow: 0 5px #666; /* Smaller shadow */
+    transform: translateY(4px); /* Moves button up */
+    color: midnightblue;
+}
+
