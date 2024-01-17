@@ -3,12 +3,15 @@
     <p><%= @article.content %></p>
 </div>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+<div class="div-edit-delete-btn">
+  <button style="color:white" class="btn-index-page"><%= link_to "Edit", edit_article_path(@article) %></button>
+  <button class="btn-index-page">
+    <%= link_to "Destroy", article_path(@article), data: {
+        turbo_method: :DELETE,
+        turbo_confirm: "Are you sure you want to delete this article?"
+    } %>
+    </button>
+</div>
+
 
 <%= render "backbtn" %>

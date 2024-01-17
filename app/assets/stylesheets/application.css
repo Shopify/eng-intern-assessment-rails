@@ -24,49 +24,70 @@ a {
 }
 
 .div-all-articles, .div-create-article, .div-show-article {
-    background-color: rgba(206, 206, 206, 0.5);
+    background-color: rgb(226, 229, 231);
     border-radius: 20px;
     padding: 20px;
     border-radius: 20px;
-    box-shadow: 1px 1px 10px 1px rgba(219, 0, 0, 0.5);
+    box-shadow: 1px 1px 10px 1px #017dd0;
     color: midnightblue;
     font-size: 18px;
     text-align: center;
     margin: 0 40px;
 }
 
-.div-create-article {
-    box-shadow: 1px 1px 10px 1px rgba(26, 0, 219, 0.5);
-}
 
 .div-btn-index {
     margin: 20px 0;
     text-align: center;
 }
 
-.btn-index-page {
-    background-color: #4CAF50; /* Green background */
-    border: none;
+.btn-index-page, input[type="submit"] {
+    background-color: #017dd0;
     color: white;
-    padding: 15px 32px; /* Padding around text */
+    border: none;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 9px #999; /* Shadow effect */
-    transition-duration: 0.2s; /* Transition effect */
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 15px; 
+    transition-duration: 0.2s;
 }
 
-.btn-index-page:hover {
-    background-color: rgb(255, 234, 0); /* Darker shade of green */
-    box-shadow: 0 5px #666; /* Smaller shadow */
-    transform: translateY(4px); /* Moves button up */
+.btn-index-page:hover, input[type="submit"]:hover {
+    background-color: rgb(255, 255, 255); 
+    border-width: 1px;
+    border-style: solid;
+    border-color: #017dd0;
     color: midnightblue;
 }
 
 .div-error {
     color: firebrick;
+}
+
+.div-edit-delete-btn {
+    color: white;
+    margin: 20px 0;
+    text-align: center;
+}
+
+input {
+    padding: 8px;
+    margin: 3px 0;
+    border-radius: 10px;
+    border-width: 0px;
+    border-style: none;
+}
+
+textarea {
+    padding: 8px;
+    margin: 3px 0;
+    border-radius: 10px;
+    border-width: 0px;
+    border-style: none;
 }

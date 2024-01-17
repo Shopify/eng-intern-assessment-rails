@@ -39,6 +39,12 @@ class ArticlesController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+  
+  def destroy
+    Article.destroy_by(id: params[:id])
+
+    redirect_to articles_path, status: :see_other, notice: "Article was deleted"
+  end
 
   # To prevent the submission of extra form fields (Strong Parameters)
   private
@@ -46,10 +52,4 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :author, :content)
   end
 
-  def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
-
-    redirect_to root_path, status: :see_other
-  end
 end
