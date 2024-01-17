@@ -1,4 +1,4 @@
-require '/Users/rrk/ruby/eng-intern-assessment-rails/test/test_helper.rb'
+require 'test_helper.rb'
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
