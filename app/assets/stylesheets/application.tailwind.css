@@ -1,44 +1,35 @@
+/* Import external styles */
 @import "shadcn.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
+/* Apply Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
-
-
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
-}
-
-*/
-
+/* Global styling */
 * {
   font-family: "Poppins" !important;
 }
 
+/* Landing page header styling */
 h1.font-bold.text-green-600.mb-10.mt-10 {
   font-size: 60px;
 }
 
+/* Search bar styling */
 #search {
   width: 600px;
   height: 60px;
 }
 
+/* Landing page button group styling */
 .landing-page-button-group {
   margin-top: 20px;
   text-align: center;
 }
 
-.landing-page-button-group>button {
-  height: 50px;
-}
-
+.landing-page-button-group>button,
 .landing-page-button-group>a {
   height: 50px;
 }
@@ -51,43 +42,33 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20vh;
+  margin-top: 10vh;
   padding-bottom: 20%;
 }
 
-/* Add this to your stylesheet or in your HTML file with style tags */
+/* Navigation bar styling */
 .navigation-bar a {
   background-color: white;
   padding: 8px 12px;
-  /* Adjust padding as needed */
   border-radius: 4px;
-  /* Add border-radius for rounded corners */
   color: #000;
-  /* Change link color */
   transition: 0.3s ease;
-  /* Add a smooth transition for color changes */
 }
 
-/* Invert colors on hover */
 .navigation-bar a:hover {
   color: #fff;
-  /* Change text color to white on hover */
   background-color: #000;
-  /* Change background color to black on hover */
 }
 
-/* Invert colors for button icons by default */
 .navigation-bar svg {
   filter: invert(1);
 }
 
-/* Adjust the filter for button icons on hover */
 .navigation-bar a:hover svg {
   filter: invert(0);
-  /* Invert back to original colors on hover */
 }
 
-
+/* Article styling */
 #articles {
   margin-top: 100px;
   width: 40vw;
@@ -97,28 +78,27 @@ button {
   width: auto;
 }
 
-/* Add this to your stylesheet or in your HTML file with style tags */
 h1.font-bold.text-green-600.mb-10.mt-10 {
   font-size: 60px;
   color: #444;
-  /*letter-spacing: 4px;*/
 }
 
-/* Each article view */
-
+/* Article view container styling */
 .article-container {
   max-width: 50vw;
   margin: 0 auto;
   padding: 20px;
 }
 
+/* Article title styling */
 .article-title {
   font-size: 60px;
   font-weight: bold;
   margin-bottom: 10px;
-  text-align: center; /* Center the title */
+  text-align: center;
 }
 
+/* Article image styling */
 .article-image > img {
   border-radius: 20px !important;
   margin-bottom: 50px;
@@ -127,23 +107,26 @@ h1.font-bold.text-green-600.mb-10.mt-10 {
   margin-right: auto;
 }
 
+/* Article content styling */
 .article-content {
   line-height: 2.0;
   margin-bottom: 100px;
   margin-top: 100px;
   font-size: 1.3rem;
   color: #666666;
-  text-align: justify; /* Justify the content */
+  text-align: justify;
 }
 
+/* Article info styling */
 .article-info {
   margin-top: 20px;
   font-size: 1em;
   color: #888;
   margin-bottom: 60px;
-  text-align: center; /* Center the info */
+  text-align: center;
 }
 
+/* Article button group styling */
 .article-button-group {
   display: flex;
   justify-content: space-between;
@@ -151,10 +134,11 @@ h1.font-bold.text-green-600.mb-10.mt-10 {
 }
 
 .article-button-group > button,
-a {
+.article-button-group > a {
   min-width: 150px;
 }
 
+/* Form styling */
 form label {
   font-size: 1rem !important;
   font-weight: 300 !important;
@@ -174,9 +158,69 @@ textarea.w-full.px-3.py-2.border.rounded {
   height: 300px;
 }
 
+/* Footer styling */
 footer {
-  margin-top: auto; /* Push the footer to the bottom */
+  margin-top: auto;
   position: fixed;
   bottom: 0;
   right: 0;
+}
+
+/* Input and textarea styling */
+input.w-full.px-3.py-2.border.rounded,
+textarea.w-full.px-3.py-2.border.rounded {
+  height: 3.5rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 0 0 0 transparent;
+  outline: none;
+}
+
+textarea.w-full.px-3.py-2.border.rounded {
+  height: 10rem;
+}
+
+/* Button styling inside forms */
+form.button_to button,
+form.button_to input[type="submit"],
+form.button_to input[type="reset"],
+form.button_to input[type="button"] {
+  height: 3rem;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin-right: 10px;
+  color: #666666;
+  box-shadow: 0 0 0 0 transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Link styling inside article button group */
+.article-button-group a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin-right: 10px;
+  color: #666666;
+  box-shadow: 0 0 0 0 transparent;
+  outline: none;
+  cursor: pointer;
 }

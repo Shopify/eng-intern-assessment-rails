@@ -3,14 +3,17 @@
 require 'rails_helper'
 
 RSpec.describe ArticlesController, type: :controller do
+  # Define valid attributes for testing
   let(:valid_attributes) do
     { title: 'Sample Title', author: 'Sample Author', content: 'Sample Content', date: Date.today }
   end
 
+  # Define invalid attributes for testing
   let(:invalid_attributes) do
     { title: '', author: '', content: '', date: nil }
   end
 
+  # Test for the 'index' action
   describe 'GET #index' do
     it 'returns a success response' do
       get :index
@@ -18,6 +21,7 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  # Test for the 'new' action
   describe 'GET #new' do
     it 'returns a success response' do
       get :new
@@ -25,6 +29,7 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  # Test for the 'create' action
   describe 'POST #create' do
     context 'with invalid parameters' do
       it 'returns a success response (renders the "new" template)' do
@@ -48,6 +53,7 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  # Test for the 'show' action
   describe 'GET #show' do
     it 'returns a success response' do
       get :show, params: { id: create(:article) }
@@ -55,6 +61,7 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  # Test for the 'edit' action
   describe 'GET #edit' do
     it 'returns a success response' do
       get :edit, params: { id: create(:article) }
@@ -62,6 +69,7 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  # Test for the 'update' action
   describe 'PATCH #update' do
     context 'with valid parameters' do
       let(:new_attributes) do
@@ -83,6 +91,7 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  # Test for the 'destroy' action
   describe 'DELETE #destroy' do
     it 'destroys the requested article' do
       article = create(:article)

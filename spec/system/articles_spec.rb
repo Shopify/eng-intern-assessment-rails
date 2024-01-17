@@ -1,14 +1,19 @@
+# spec/system/articles_spec.rb
+
 require 'rails_helper'
 
 RSpec.describe 'Articles', type: :system do
+  # Test for the 'index' page
   describe 'GET #index' do
     it 'displays "Encyclopedia" in the h1 tag on the index page' do
       visit articles_path
 
+      # Verify that the h1 tag contains the expected text
       expect(page).to have_selector('h1', text: 'Encyclopedia')
     end
   end
 
+  # Test for creating a new article
   describe 'GET #index' do
     before do
       # Assuming you have a FactoryBot factory for Article
@@ -30,10 +35,12 @@ RSpec.describe 'Articles', type: :system do
       # Clicking on the "Create Article" button
       find(:xpath, '//*[@id="create-new-article-submit"]/button/input').click
 
+      # Verify that the success message is displayed
       expect(page).to have_text('Article was successfully created')
     end
   end
 
+  # Test for updating an article
   describe 'PUT #update' do
     before do
       # Assuming you have a FactoryBot factory for Article
@@ -55,8 +62,8 @@ RSpec.describe 'Articles', type: :system do
       # Clicking on the "Update Article" button
       find(:xpath, '//*[@id="create-new-article-submit"]/button/input').click
 
+      # Verify that the success message is displayed
       expect(page).to have_text('Article was successfully updated')
     end
   end
-
 end

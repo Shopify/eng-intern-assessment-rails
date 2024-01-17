@@ -20,8 +20,9 @@
 <footer>
   <% flash.each do |key, value| %>
     <div class="alert-<%#= key %>">
-      <%= render_toast Alert: "Alert!" ,
-      description: value %>
+      <%= render_toast Alert: "Alert!",
+                       description: value,
+                       variant: :destructive %>
     </div>
   <% end %>
 </footer>
