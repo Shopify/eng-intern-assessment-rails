@@ -1,0 +1,34 @@
+.article-show-container {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 1px #e6e6e6;
+  padding: 5vh;
+  border-radius: 5px;
+}
+
+.article-show-title {
+  font-size: 4vh;
+  font-weight: bold;
+}
+
+.article-show-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5vh;
+}
+
+.article-show-edit-container{
+  display: flex;
+  gap: 1vw;
+  margin: 2vh;
+}
+
+.article-show-edit-container button {
+  border-radius: 10px;
+  cursor: pointer;
+}

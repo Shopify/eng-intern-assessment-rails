@@ -1,0 +1,30 @@
+article_title_content:
+  title: "Java vs C#"
+  content: "C# is better"
+
+article_title_content_author:
+  title: "Will AI Take your job SWE?"
+  content: "Expert Software Engineers say: What? No, don't be stupid."
+  author: "Porom Kamal"
+
+article_title_content_author_date:
+  title: "Advice From a Software Engineer With 8 Years of Experience"
+  content: "Please get out of my house"
+  author: "John"
+  date: "2024-01-01"
+
+article_title_long_content:
+  title: "Long Interesting Article"
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  Cras in fermentum nulla. Suspendisse fringilla sem nulla, eu semper ante faucibus eu. 
+  Proin quis arcu eu est imperdiet ullamcorper id sed urna. In euismod magna quis placerat ultricies. 
+  Ut hendrerit nisi quam, non aliquet lacus gravida in. Duis sit amet libero nec sapien congue tincidunt gravida eget odio. 
+  Morbi molestie, metus eget maximus lacinia, ante libero tempus ipsum, at scelerisque eros metus in libero. 
+  In nec auctor elit. Vestibulum ac feugiat metus. Quisque eget pulvinar nulla. Cras quis egestas est, sed tincidunt ipsum. 
+  Fusce commodo lorem libero, eu laoreet orci facilisis at. 
+  Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+  Vestibulum tempus eu risus et faucibus. 
+  Mauris elit massa, euismod vel porttitor ut, 
+  iaculis at urna.'
+
+

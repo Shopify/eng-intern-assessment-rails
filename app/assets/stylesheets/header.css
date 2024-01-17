@@ -1,0 +1,17 @@
+.header-container {
+  width: 100%;
+  display: flex;
+  font-size: 3vh;
+  justify-content: center;
+  margin-bottom: 2vh;
+}
+
+.header-title {
+  font-weight: bold;
+}
+
+
+.header-title a:link, .header-title a:visited, .header-title a:hover, .header-title a:active { 
+  text-decoration:none;
+  color: black;
+}
