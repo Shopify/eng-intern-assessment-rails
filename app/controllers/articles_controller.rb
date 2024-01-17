@@ -12,7 +12,13 @@ class ArticlesController < ApplicationController
 
   def random
     random_article = Article.order('RANDOM()').first
-    redirect_to article_path(random_article)
+
+    if random_article
+      redirect_to article_path(random_article)
+    else
+      redirect_to all_articles_path
+    end
+
   end
 
   # GET /articles/all
