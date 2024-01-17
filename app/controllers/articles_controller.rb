@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :article_by_author_and_title_exists, only: [:create]
+
   def index
     @articles = Article.all
   end
@@ -9,9 +11,6 @@ class ArticlesController < ApplicationController
     if @article.nil?
       redirect_to root_path, alert: "Article not found"
     end
-
-    @created_at_formatted = @article.created_at.strftime('%Y-%m-%d')
-    @updated_at_formatted = @article.updated_at.strftime('%Y-%m-%d')
   end
 
   def new
@@ -23,13 +22,23 @@ class ArticlesController < ApplicationController
 
     if @article.save
       redirect_to @article
+
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   private
+
   def article_params
     params.require(:article).permit(:title, :author, :content)
+  end
+
+  def article_by_author_and_title_exists
+    @article = Article.find_by(author: article_params[:author], title: article_params[:title])
+
+    if @article
+      redirect_to root_path, alert: "Article already exists"
+    end
   end
 end
