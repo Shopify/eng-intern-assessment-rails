@@ -17,10 +17,8 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
-  # Allow requests from any host
-  # Because, we cannot predict the host name of the container
-  config.hosts = []
-
+  # Allow requests from specific hosts
+  config.hosts << "encyclopedia-yvop.onrender.com"
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
