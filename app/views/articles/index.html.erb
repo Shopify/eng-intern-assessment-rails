@@ -1,0 +1,20 @@
+<h1>Welcome to Encyclopedia!</h1>
+
+<h2>Articles:</h2>
+
+<p>
+  <%= link_to "Create a new article", new_article_path %>
+</p>
+
+<%= form_with url: articles_path, method: :get do |form| %>
+  <%= form.label :query, "Search articles by title or content:" %>
+  <%= form.text_field :query, :value => params[:query] %>
+  <%= form.submit "Search", :name => nil %>
+<% end %>
+
+<% @articles.each do |article| %>
+  <p>
+    <%= link_to article.title, article %><br>
+    <%= article.date %>
+  </p>
+<% end %>
