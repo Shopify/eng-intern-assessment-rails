@@ -56,7 +56,17 @@ class ArticlesController < ApplicationController
   # DELETE /articles/:id (Delete article with ID :id)
   def destroy
     @article = Article.find(params[:id])
+    if @article.nil?
+      render :template => "errors/404", :status => 404
+      return
+
     @article.destroy
+
+    # delete entry in cache
+    if ($redis.get(params[:id]) != nil)
+      $redis.del(params[:id])
+    end
+
     redirect_to root_path, status: :see_other
   end
 
@@ -68,11 +78,17 @@ class ArticlesController < ApplicationController
   # PATCH /articles/:id (Update article with ID :id)
   def update
     @article = Article.find(params[:id])
-    if @article.update(article_params)
-      redirect_to @article
-    else
+    updateResult = @article.update(article_params)
+    if !updateResult
       render :edit, status: :unprocessable_entity
     end
+
+    # update cache with new data
+    if ($redis.get(params[:id]) != nil)
+      $redis.set(params[:id], @article.to_json, :ex=> 1.minutes)
+    end
+
+    redirect_to @article
   end
 
   private
