@@ -11,6 +11,9 @@ class Article < ApplicationRecord
   # Validation for presence of date
   validates :date, presence: true
 
+  # Validation for presence of date, ensuring it's not in the future
+  validate :date_cannot_be_in_the_future
+
   # Set default values for date and author
   before_validation :set_default_values
 
@@ -22,8 +25,12 @@ class Article < ApplicationRecord
   private
 
   def set_default_values
+    self.date = Date.parse(date.to_s) rescue nil
     self.date ||= Date.current
     self.author ||= 'Unknown Author'
   end
 
+  def date_cannot_be_in_the_future
+    errors.add(:date, "can't be in the future") if date.present? && date > Date.today
+  end
 end

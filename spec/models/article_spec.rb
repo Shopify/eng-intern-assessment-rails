@@ -67,4 +67,64 @@ RSpec.describe Article, type: :model do
     expect(results).to include(article2)
     expect(results).not_to include(article1)
   end
+
+  it 'cannot create an article without a title' do
+    article = Article.new(content: 'Lorem ipsum dolor sit amet.')
+    expect(article).not_to be_valid
+  end
+
+  it 'cannot create an article without content' do
+    article = Article.new(title: 'Sample Article')
+    expect(article).not_to be_valid
+  end
+
+  it 'search is case insensitive' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('lorem')
+    expect(results).to include(article)
+  end
+
+  it 'search can handle special characters' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem! ipsum dolor sit amet.')
+    results = Article.search('Lorem!')
+    expect(results).to include(article)
+  end
+
+  it 'search returns empty array when no matches are found' do
+    results = Article.search('No matches for this search')
+    expect(results).to be_empty
+  end
+
+  it 'cannot create an article with a future date' do
+    future_article = Article.new(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.tomorrow)
+    expect(future_article).not_to be_valid
+  end
+
+  it 'cannot create an article with a title that is too short' do
+    article = Article.new(title: 'Hi', content: 'Lorem ipsum dolor sit amet.')
+    expect(article).not_to be_valid
+  end
+
+  it 'cannot create an article with a title that is too long' do
+    long_title = 'a' * 101
+    article = Article.new(title: long_title, content: 'Lorem ipsum dolor sit amet.')
+    expect(article).not_to be_valid
+  end
+
+  it 'cannot create an article with content that is too short' do
+    article = Article.new(title: 'Sample Article', content: 'Short')
+    expect(article).not_to be_valid
+  end
+
+  it 'sets author to "Unknown Author" if not provided' do
+    article = Article.new(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.save
+    expect(article.author).to eq('Unknown Author')
+  end
+
+  it 'sets the current date if date is not provided' do
+    article = Article.new(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+    article.save
+    expect(article.date).to eq(Date.current)
+  end
 end
