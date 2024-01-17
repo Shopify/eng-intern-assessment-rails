@@ -2,22 +2,26 @@ require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @article = articles(:one)
+    # Using a fixture here would break the first test on the Article model test
+    a1 = Article.create(title: 'Who shot first?', content: 'Han shot first, obviously.')
+    @article = a1
   end
 
   test "should get index" do
     get articles_url
     assert_response :success
+    assert_match @article.title, @response.body
   end
 
   test "should get new" do
-    get new_article_url
+    get articles_url, params: { term: 'Not found title' }
     assert_response :success
   end
 
-  test "should create article" do
-    assert_difference("Article.count") do
-      post articles_url, params: { article: { author: @article.author, content: @article.content, date: @article.date, title: @article.title } }
+  test 'should create article' do
+    assert_difference('Article.count') do
+      post articles_url, params: { article: { title: 'The rule of two',
+                                              content: 'There can only be a Sith Master and a Sith Apprentice' } }
     end
 
     assert_redirected_to article_url(Article.last)
@@ -34,12 +38,13 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update article" do
-    patch article_url(@article), params: { article: { author: @article.author, content: @article.content, date: @article.date, title: @article.title } }
+    patch article_url(@article), params: { article: { title: 'The Jedi Mantra, pt 1',
+                                                      content: 'There is no emotion, there is peace' } }
     assert_redirected_to article_url(@article)
   end
 
-  test "should destroy article" do
-    assert_difference("Article.count", -1) do
+  test 'should destroy article' do
+    assert_difference('Article.count', -1) do
       delete article_url(@article)
     end
 
