@@ -25,8 +25,14 @@ bundle install
 ```
 3. Run the application
 ```
-bin/rails server
+rails server
 ```
+(Run the DB migration if prompted ```bin/rails db:migrate```)
+
+If you see error of the form ```/usr/bin/env: ‘ruby\r’: No such file or directory```
+
+Run ```find ./ -type f -exec dos2unix {} \;``` in the ```/bin``` folder.
+
 4. Start the Redis server
 ```
 docker run -d --name redis-stack-server -p 6379:6379 redis redis-stack-server:latest
