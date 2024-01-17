@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Article < ApplicationRecord
   # Validate that the required fields: Title and Content, are always supplied to the Model
   validates :title, presence: true

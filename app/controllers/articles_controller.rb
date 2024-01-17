@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ArticlesController < ApplicationController
   # Show articles
   def index
