@@ -1,4 +1,12 @@
-<h1>Articles</h1>
+<h1>Search Articles</h1>
+
+<%= form_with url: root_path, method: :get do |form| %>
+  <%= form.label :search, "Search for articles:" %>
+  <%= form.text_field :search %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<%= link_to "Create New Article", new_article_path %>
 
 <ul>
   <% @articles.each do |article| %>

@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  def index
-    @articles = Article.all
+  def index #index route provides search functionality
+    @articles = Article.search(params[:search])
   end
 
   def show #implement error handling if article not found?
