@@ -3,6 +3,9 @@
 <%if @article.author.present? %>
     <p><%= "Author: " +  @article.author %></p>
 <% end %>
+<%if @article.date.present? %>
+    <p><%= "Date: " + @article.date.strftime("%a, %d %b %Y") %></p>
+<% end %>
 <ul> 
     <li><%= link_to "Edit", edit_article_path(@article) %></li>
     <li><%= link_to "Destroy", article_path(@article), data: {

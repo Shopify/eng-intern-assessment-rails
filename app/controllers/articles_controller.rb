@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
   end
-  #Create attemts to save new article when created, navigates to said article if true, otherwise renders the new page
+  #Create attempts to save new article when created, navigates to said article if true, otherwise renders the new page
   def create
     @article = Article.new(article_params) #Attempt to save article when it is created
     if @article.save

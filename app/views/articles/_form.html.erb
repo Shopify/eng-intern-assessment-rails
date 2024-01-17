@@ -18,10 +18,13 @@
     <%= form.label :author %><br>
     <%= form.text_area :author %><br>
     <% article.errors.full_messages_for(:author).each do |message| %>
-        <div><%= message %><div>
+        <div><%= message %></div>
     <% end %>
-
+    </div>
   <div>
+    <div>
+        <%= form.date_select :date, default: Date.today %>
+    </div>
     <%= form.submit %>
   </div>
 <% end %>
