@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "article_show", "data-turbo-track": "reload" %>
+<div class="article-show-container">
+  <div class="article-show-header">
+    <div class="article-show-edit-container">
+      <%= button_to "✏️ Edit", edit_article_path(@article), method: :get %>
+      <%= button_to "🗑️ Delete", article_path(@article), method: :delete, data: {
+          turbo_confirm: "Are you sure?"
+      } %>
+    </div>
+    <div class="article-show-title">
+    <%= @article.title %>
+    </div>
+
+    <div class="article-show-author">
+      <%= @article.author %>
+    </div>
+
+    <div class="article-show-date">
+      <%= "#{calculate_read_time(@article.content)} min read" %>
+      <% if @article.date.present? %>
+      <%= " | #{@article.date.to_time.strftime('%B %e %Y')}" %>
+      <% end %>
+    </div>
+  </div>
+  
+
+  <div class="article-show-content">
+    <%= simple_format @article.content %>
+  </div>
+</div>

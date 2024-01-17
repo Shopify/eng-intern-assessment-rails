@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "article_card"%>
+
+<div class="article-card-container">
+  <div class="article-title">
+    <%= link_to article.title, article%>
+  </div>
+
+  <%if article.author.present? %>
+    <div class="article-author">
+        by <%= link_to article.author, article%> 
+        <% if article.date.present? %>
+        on <%= article.date.to_time.strftime('%B %e %Y') %>
+        <% end %>
+    </div>
+  <% end %>
+
+  <div class="article-content">
+    <%= link_to article.content, article%>
+  </div>
+
+  <div class="article-read-time">
+    <%= "#{calculate_read_time(article.content)} min read" %>
+  </div>
+</div>

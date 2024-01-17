@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag "article", "data-turbo-track": "reload" %>
+
+<div class="article-index-container">
+  <div class="article-index-header">
+    <%= form_with(url: articles_path, method: "get") do |form| %>
+        <%= form.label :query do %>
+            Search:
+        <% end %>
+        <%= form.text_field :query %>
+    <% end %>
+  
+    <%= button_to "New article", new_article_path, method: :get %>
+  </div>
+
+  <div class="search-results-cont">
+    <p>
+      <!-- Information about collections of articles for /articles -->
+      <% if @query_value.present? %>
+      Results for "<%= @query_value %>".
+      <br/>
+      <%= @articles.size %> article(s) found in <%= @elapsed%> seconds
+    </p>
+    <% else %> <!-- For /articles?query=x -->
+      <%= @articles.size %> article(s) in the database
+    <% end %>
+  </div>
+  <div class="articles-container">
+    <% @articles.each do |article| %>
+      <%= render article %>
+    <% end %>
+  </div>
+</div>
