@@ -23,9 +23,18 @@
   </head>
 
   <body>
-    <%# Navbar %>
+    <!-- Navbar -->
     <%= render 'home/header' %>
 
-    <%= yield %>
+    <!-- Main page -->
+    <div class="container">
+      <!-- Alert banner if any -->
+      <% if notice %>
+        <%= render 'layouts/alerts' %>
+      <% end %>
+
+      <!-- Main content -->
+      <%= yield %>
+    <div>
   </body>
 </html>
