@@ -63,7 +63,8 @@ Rails.application.configure do
   # information to avoid inadvertent exposure of personally identifiable information (PII). If you
   # want to log everything, set the level to "debug".
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
-
+  config.redis_host = ENV["REDIS_HOST"] || "localhost"
+  config.redis_port = 6379
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
