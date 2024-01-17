@@ -1,0 +1,21 @@
+<h1> Found Articles: </h1>
+
+<%= form_with controller: @articles do |form| %>
+    <div>
+        <%= form.label :search %> <br>
+        <%= form.text_field :search %>
+        <%= form.submit "Search" %>
+    </div>
+<% end %>
+
+
+<ul>
+    <% @articles.each do |article| %>
+        <li>
+            <%= link_to article.title, article %> # shows text and renders link with destination using article_path
+        </li>
+    <% end %>
+</ul>
+
+<%= link_to "New Article", new_article_path %>
+

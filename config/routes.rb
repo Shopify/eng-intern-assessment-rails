@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   # get method for c, u, d, index, show, etc
   resources :articles 
+
+  get "/articles/:search", to: "articles#search"
   end
   
 

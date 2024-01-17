@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.all
-    Article.search(params[:search])
   end
   def show
     @article = Article.find(params[:id])
@@ -42,6 +41,9 @@ class ArticlesController < ApplicationController
 
   def search
     @articles = Article.search(params[:search])
+
+    redirect_to 
+
   end
 
 
