@@ -4,14 +4,12 @@ class Article < ApplicationRecord
     validates :content, presence: true
 
     #Returns all articles that contains the key from db
-    def self.search(search)
-        
-        if search
-            key = "%#{search}%"
-            @result = where("title LIKE ? or content LIKE ? or author LIKE?", key, key, key)
-            
-        else 
-            @result = Article.all
-        end 
-    end
+  def self.search(search)
+    if search
+      key = "%#{search}%"
+      @result = where("title LIKE ? or content LIKE ? or author LIKE?", key, key, key)  
+    else 
+      @result = Article.all
+    end 
+  end
 end
