@@ -11,9 +11,18 @@
 </head>
 
 <body class="bg-gray-100">
-  <%= render 'shared/navbar' %>
+<%= render 'shared/navbar' %>
 <main class="container mx-auto px-5 flex justify-center">
   <%= yield %>
 </main>
 </body>
+
+<footer>
+  <% flash.each do |key, value| %>
+    <div class="alert-<%#= key %>">
+      <%= render_toast Alert: "Alert!" ,
+      description: value %>
+    </div>
+  <% end %>
+</footer>
 </html>
