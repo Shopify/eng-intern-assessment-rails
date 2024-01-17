@@ -34,12 +34,13 @@ class ArticlesController < ApplicationController
     end
   end
 
+  #Find article by it's id held in params and destroy it
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
     redirect_to root_path, status: :see_other
   end
-
+  #Holds the articles parameters search parameter is required to be in params for the search function in article model
   private
     def article_params
       params.require(:article).permit(:title, :content, :author, :date, :search)
