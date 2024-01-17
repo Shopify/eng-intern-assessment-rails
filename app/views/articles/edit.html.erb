@@ -1,10 +1,6 @@
-<h1>Editing article</h1>
-
-<%= render "form", article: @article %>
-
-<br>
-
-<div>
-  <%= link_to "Show this article", @article %> |
-  <%= link_to "Back to articles", articles_path %>
+<div class="flex flex-col items-center justify-center mt-10">
+  <div class="flex flex-col mt-10">
+    <h1 class="article-title">Edit article</h1>
+    <%= render "form", article: @article %>
+  </div>
 </div>

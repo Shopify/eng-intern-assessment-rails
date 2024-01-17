@@ -35,11 +35,11 @@ h1.font-bold.text-green-600.mb-10.mt-10 {
   text-align: center;
 }
 
-.landing-page-button-group > button {
+.landing-page-button-group>button {
   height: 50px;
 }
 
-.landing-page-button-group > a {
+.landing-page-button-group>a {
   height: 50px;
 }
 
@@ -58,16 +58,22 @@ button {
 /* Add this to your stylesheet or in your HTML file with style tags */
 .navigation-bar a {
   background-color: white;
-  padding: 8px 12px; /* Adjust padding as needed */
-  border-radius: 4px; /* Add border-radius for rounded corners */
-  color: #000; /* Change link color */
-  transition: 0.3s ease; /* Add a smooth transition for color changes */
+  padding: 8px 12px;
+  /* Adjust padding as needed */
+  border-radius: 4px;
+  /* Add border-radius for rounded corners */
+  color: #000;
+  /* Change link color */
+  transition: 0.3s ease;
+  /* Add a smooth transition for color changes */
 }
 
 /* Invert colors on hover */
 .navigation-bar a:hover {
-  color: #fff; /* Change text color to white on hover */
-  background-color: #000; /* Change background color to black on hover */
+  color: #fff;
+  /* Change text color to white on hover */
+  background-color: #000;
+  /* Change background color to black on hover */
 }
 
 /* Invert colors for button icons by default */
@@ -77,7 +83,8 @@ button {
 
 /* Adjust the filter for button icons on hover */
 .navigation-bar a:hover svg {
-  filter: invert(0); /* Invert back to original colors on hover */
+  filter: invert(0);
+  /* Invert back to original colors on hover */
 }
 
 
@@ -86,7 +93,7 @@ button {
   width: 30vw;
 }
 
-#articles > .mb-6 > div {
+#articles>.mb-6>div {
   width: auto;
 }
 
@@ -110,7 +117,7 @@ h1.font-bold.text-green-600.mb-10.mt-10 {
   margin-bottom: 10px;
 }
 
-.article-image > img {
+.article-image>img {
   margin-bottom: 20px;
   border-radius: 20px !important;
   margin-bottom: 50px;
@@ -137,7 +144,8 @@ h1.font-bold.text-green-600.mb-10.mt-10 {
   color: #6b7280;
 }
 
-.article-button-group > button, a {
+.article-button-group>button,
+a {
   min-width: 150px;
 }
 
@@ -147,8 +155,15 @@ form label {
   color: #888;
 }
 
-#create-new-article-submit > button {
+#create-new-article-submit>button {
   width: 100%;
   margin-top: 40px;
 }
 
+form.max-w-md.mx-auto.p-4.bg-white {
+  width: 40vw;
+}
+
+textarea.w-full.px-3.py-2.border.rounded {
+  height: 300px;
+}
