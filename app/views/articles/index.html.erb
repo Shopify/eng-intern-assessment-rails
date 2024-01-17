@@ -1,4 +1,15 @@
+<%= stylesheet_link_tag "index" %>
+
 <h1>Articles</h1>
+
+<div class="search-bar">
+  <%= form_tag(articles_path, method: :get) do %>
+    <%= text_field_tag :q, params[:q], placeholder: 'Search articles...' %>
+    <%= submit_tag 'Search', class: 'search-button' %>
+  <% end %>
+</div>
+
+<%= link_to 'New Article', new_article_path, class: 'new-article-link' %>
 
 <ul>
   <% @articles.each do |article| %>
@@ -7,8 +18,14 @@
       <p><strong>Author:</strong> <%= article.author %></p>
       <p><strong>Date:</strong> <%= article.date %></p>
       <p><strong>Content:</strong> <%= truncate(article.content, length: 200) %></p>
+
+      <div class="actions-holder">
+        <div class="article-actions">
+          <%= button_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
+          <%= link_to 'Edit', edit_article_path(article), class: 'edit-button' %>
+          <%= link_to 'Show', article_path(article), class: 'show-button' %>
+        </div>
+      </div>
     </li>
   <% end %>
 </ul>
-
-<%= link_to 'New Article', new_article_path, class: 'new-article-link' %>
