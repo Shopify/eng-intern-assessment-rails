@@ -9,6 +9,9 @@ class ArticlesController < ApplicationController
     if @article.nil?
       redirect_to root_path, alert: "Article not found"
     end
+
+    @created_at_formatted = @article.created_at.strftime('%Y-%m-%d')
+    @updated_at_formatted = @article.updated_at.strftime('%Y-%m-%d')
   end
 
   def new
@@ -27,6 +30,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :author, :content, :created_date)
+    params.require(:article).permit(:title, :author, :content)
   end
 end

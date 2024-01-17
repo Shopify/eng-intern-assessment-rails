@@ -1,0 +1,8 @@
+<h1><%= @article.title %></h1>
+<p>Author: <%= @article.author %></p>
+<p>Published: <%= @created_at_formatted %></p>
+<p>Last updated at: <%= @updated_at_formatted %></p>
+<br>
+<p><%= @article.content %></p>
+
+<%= render "layouts/navigation", locals: { title: "Home", path: root_path } %>
