@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :author, :content)
+    params.require(:article).permit(:title, :author, :content, :date)
   end
 
   def article_by_author_and_title_exists
