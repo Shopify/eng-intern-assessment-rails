@@ -1,7 +1,6 @@
 class Article < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
-  validate :validate_date
 
   def self.search(text)
     if query.present?

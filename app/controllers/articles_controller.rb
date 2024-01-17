@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
     @article = Article.find_by(id: params[:id])
 
     if @article.nil?
-      redirect_to root_path, alert: "Article #{params[:id]} not found"
+      redirect_to root_path, alert: "Article not found"
     end
   end
 
