@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.search(params[:search])
   end
 
   def show
@@ -12,9 +12,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    puts "Hello there!"
     @article = Article.new(article_params)
-    puts "Hello there!"
 
     if @article.save
       redirect_to @article
@@ -45,12 +43,12 @@ class ArticlesController < ApplicationController
   end
 
   def search 
-    @result = Article.search(params[:search_key])
+    @result = Article.search(params[:search])
   end
   
   private
   def article_params
-    params.require(:article).permit(:title, :content, :author, :date)
+    params.require(:article).permit(:title, :content, :author, :date, :search)
   end
 
 end
