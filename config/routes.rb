@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
+  # Custom route for all articles
+  get '/all_articles', to: 'articles#all', as: :all_articles
+
   # get 'articles', to: 'articles#index', as: :articles
   get 'random_article', to: 'articles#random', as: :random_article
 
   # Defines the root path route ("/")
   root "articles#index"
-
-  get 'all', to: 'articles#all', as: :all_articles
 end
