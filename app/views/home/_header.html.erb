@@ -1,0 +1,28 @@
+<!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <!-- Link to landing page -->
+    <%= link_to 'Andressa Machado', root_path, class:"navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li>
+          <%= link_to 'Articles published', articles_path, class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Create new Article', new_article_path, class:"nav-link"%>
+        </li>
+        <li class="nav-item" style="display: flex;align-items: center;">
+          <%= form_tag articles_path, :method => "get" do %>
+            <!-- <%= label_tag(:term, "Search:")%> --> 
+            <%= text_field_tag :term, params[:term], placeholder: "Search by title/content"%>
+            <%= submit_tag("Search", :name => nil) %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
