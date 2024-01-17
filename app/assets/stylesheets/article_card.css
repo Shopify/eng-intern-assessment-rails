@@ -1,6 +1,6 @@
 .article-card-container{
   width:70%;
-  height: 15%;
+  max-height: 10vh;
   padding: 1vh;
   border-bottom: 1px solid rgb(217, 217, 217);
   display: flex;

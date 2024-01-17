@@ -5,6 +5,14 @@
   align-items: center;
   margin: 2vh;
 }
+
+.article-edit-container input {
+  border-radius: 5px;
+  border: solid 1px #e6e6e6;
+  padding: 1vh;
+  margin: 1vh;
+}
+
 #article-edit-content {
   width: 70%;
   display: flex;

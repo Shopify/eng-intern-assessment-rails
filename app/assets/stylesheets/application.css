@@ -20,3 +20,11 @@
 html, body {
   height: 100%;
 }
+
+.new-article-title {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2vh;
+}
