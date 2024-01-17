@@ -19,16 +19,24 @@ h1 {
     color: midnightblue;
 }
 
-.div-all-articles {
+a {
+    text-decoration: none;
+}
+
+.div-all-articles, .div-create-article, .div-show-article {
     background-color: rgba(206, 206, 206, 0.5);
     border-radius: 20px;
     padding: 20px;
     border-radius: 20px;
-    box-shadow: 1px 1px 10px 1px rgba(69, 219, 0, 0.5);
+    box-shadow: 1px 1px 10px 1px rgba(219, 0, 0, 0.5);
     color: midnightblue;
     font-size: 18px;
     text-align: center;
     margin: 0 40px;
+}
+
+.div-create-article {
+    box-shadow: 1px 1px 10px 1px rgba(26, 0, 219, 0.5);
 }
 
 .div-btn-index {
@@ -49,7 +57,7 @@ h1 {
     cursor: pointer;
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 9px #999; /* Shadow effect */
-    transition-duration: 0.4s; /* Transition effect */
+    transition-duration: 0.2s; /* Transition effect */
 }
 
 .btn-index-page:hover {
@@ -59,3 +67,6 @@ h1 {
     color: midnightblue;
 }
 
+.div-error {
+    color: firebrick;
+}
