@@ -32,5 +32,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get install -y nodejs \
     && npm install
 
+EXPOSE 10000
+
 # Command to run on container start
-CMD ["rails", "s", "-b", "0.0.0.0", "-p", "3000"]
+CMD ["rails", "s", "-b", "0.0.0.0", "-p", "10000"]
