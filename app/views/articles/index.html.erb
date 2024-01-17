@@ -1,5 +1,11 @@
 <h1>Encyclopedia</h1>
 
+
+<%= form_with model: @article, url: articles_path, method: :get do |form| %>
+  <%= form.label :search, "Search:" %>
+  <%= form.text_field :search %>
+  <%= form.submit "Search" %>
+<% end %>
 <ul>
     <% @articles.each do |article| %>
     <li>
@@ -7,5 +13,7 @@
     </li>
     <% end %>
 </ul>
-
 <%= link_to "New Article", new_article_path %>  
+
+
+

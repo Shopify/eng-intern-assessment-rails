@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   #Define root route for articles
   root "articles#index"
-  resources :articles
+  # get 'search', to: "articles#search"
   get "up" => "rails/health#show", as: :rails_health_check
-
+  resources :articles
 
 end
