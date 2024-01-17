@@ -1,4 +1,4 @@
-# spec/models/article_spec.rb
+# spec/models/articles_model_spec.rb
 
 require 'rails_helper'
 
