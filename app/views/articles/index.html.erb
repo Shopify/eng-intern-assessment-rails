@@ -1,2 +1,11 @@
 <h1>Encyclopedia</h1>
 
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <div>
+        <%= link_to article.title, article %>
+      </div>
+    </li>
+  <% end %>
+</ul>
