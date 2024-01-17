@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   #get 'search/:action', to: 'articles#:search', as: :search
 
-
+  # Default route is index
   root "articles#index"
   get "/articles/index", to: "articles#index"
   resources :articles

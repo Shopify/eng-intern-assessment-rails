@@ -3,7 +3,7 @@ class Article < ApplicationRecord
     validates :title, presence: true
     validates :content, presence: true
 
-    # retuns all articles that contains the key
+    #Returns all articles that contains the key from db
     def self.search(search)
         
         if search
