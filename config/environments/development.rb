@@ -13,7 +13,7 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
-  config.redis_host = "localhost"
+  config.redis_host = ENV["REDIS_HOST"] || "localhost"
   config.redis_port = 6379
   # Enable server timing
   config.server_timing = true

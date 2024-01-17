@@ -1,0 +1,18 @@
+version: "3"
+services:
+  articles-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: articles-app
+    container_name: articles-app
+    ports:
+      - "3000:3000"
+    environment:
+      - REDIS_HOST=redis-stack
+  
+  redis-stack:
+    image: redis/redis-stack-server:latest
+    container_name: redis-stack
+    ports:
+      - "6379:6379"
