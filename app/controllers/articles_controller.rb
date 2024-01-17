@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
   end
+  
   def create
     @article = Article.new(article_params)
 
@@ -37,6 +38,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  #Remove an article
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
@@ -44,6 +46,7 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  #Validate fields submitted to the controller
   private
   def article_params
     params.require(:article).permit(:title, :content, :author, :date)
