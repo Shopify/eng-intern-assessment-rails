@@ -4,9 +4,11 @@ class Article < ApplicationRecord
 
   def self.search(search)
     search = search.strip
+    result = nil
     if search
-      result = where("title LIKE ? OR content LIKE ?","%#{search}%",
-      "%#{search.strip}%")
+      result = where("LOWER(title) LIKE ? OR LOWER(content) LIKE ?",
+      "%#{search.downcase.strip}%",
+      "%#{search.downcase.strip}%")
     end
     return result
   end
