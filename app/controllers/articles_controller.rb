@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :set_cache_headers, only: [:index, :show]
 
   # GET /articles or /articles.json
   def index
@@ -18,10 +19,9 @@ class ArticlesController < ApplicationController
     else
       redirect_to all_articles_path
     end
-
   end
 
-  # GET /articles/all
+  # GET /all_articles
   def all
     if params[:search]
       @articles = Article.search(params[:search])
@@ -82,13 +82,27 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def article_params
-      params.require(:article).permit(:title, :content, :author, :date)
+  # Set cache headers for the response
+  def set_cache_headers
+    expires_in 1.hour, public: true
+  end
+
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "Article not found"
+    respond_to do |format|
+      format.html { redirect_to articles_url }
+      format.json { render json: { error: "Article not found" }, status: :not_found }
     end
+  end
+
+  # Only allow a list of trusted parameters through.
+  def article_params
+    params.require(:article).permit(:title, :content, :author, :date)
+  end
 end
