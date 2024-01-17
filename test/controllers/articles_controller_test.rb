@@ -33,5 +33,10 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to article_url(@article1)
   end
   
-
+  test 'should delete article' do
+    assert_difference('Article.count', -1) do
+      delete article_url(@article1)
+    end
+    assert_redirected_to root_url
+  end
 end
