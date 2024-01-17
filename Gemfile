@@ -67,3 +67,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "shadcn-ui", "~> 0.0.12"
+
+gem "tailwindcss-rails", "~> 2.3"

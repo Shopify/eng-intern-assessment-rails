@@ -1,0 +1,154 @@
+@import "shadcn.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+
+/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
+
+* {
+  font-family: "Poppins" !important;
+}
+
+h1.font-bold.text-green-600.mb-10.mt-10 {
+  font-size: 60px;
+}
+
+#search {
+  width: 600px;
+  height: 60px;
+}
+
+.landing-page-button-group {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.landing-page-button-group > button {
+  height: 50px;
+}
+
+.landing-page-button-group > a {
+  height: 50px;
+}
+
+button {
+  width: 160px;
+}
+
+.flex.flex-col.items-center.justify-center.mt-10 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vh;
+  padding-bottom: 20%;
+}
+
+/* Add this to your stylesheet or in your HTML file with style tags */
+.navigation-bar a {
+  background-color: white;
+  padding: 8px 12px; /* Adjust padding as needed */
+  border-radius: 4px; /* Add border-radius for rounded corners */
+  color: #000; /* Change link color */
+  transition: 0.3s ease; /* Add a smooth transition for color changes */
+}
+
+/* Invert colors on hover */
+.navigation-bar a:hover {
+  color: #fff; /* Change text color to white on hover */
+  background-color: #000; /* Change background color to black on hover */
+}
+
+/* Invert colors for button icons by default */
+.navigation-bar svg {
+  filter: invert(1);
+}
+
+/* Adjust the filter for button icons on hover */
+.navigation-bar a:hover svg {
+  filter: invert(0); /* Invert back to original colors on hover */
+}
+
+
+#articles {
+  margin-top: 100px;
+  width: 30vw;
+}
+
+#articles > .mb-6 > div {
+  width: auto;
+}
+
+/* Add this to your stylesheet or in your HTML file with style tags */
+h1.font-bold.text-green-600.mb-10.mt-10 {
+  font-size: 60px;
+  letter-spacing: 4px;
+}
+
+/* Each article view */
+
+.article-container {
+  max-width: 60vw;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.article-title {
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.article-image > img {
+  margin-bottom: 20px;
+  border-radius: 20px !important;
+  margin-bottom: 50px;
+}
+
+.article-content {
+  line-height: 2.0;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  font-size: 1.3rem;
+  color: #666666;
+}
+
+.article-info {
+  margin-top: 20px;
+  font-size: 1em;
+  color: #888;
+  margin-bottom: 60px;
+}
+
+.article-button-group {
+  display: flex;
+  justify-content: space-between;
+  color: #6b7280;
+}
+
+.article-button-group > button, a {
+  min-width: 150px;
+}
+
+form label {
+  font-size: 1rem !important;
+  font-weight: 300 !important;
+  color: #888;
+}
+
+#create-new-article-submit > button {
+  width: 100%;
+  margin-top: 40px;
+}
+

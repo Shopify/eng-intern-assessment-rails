@@ -1,9 +1,17 @@
-<h1>New article</h1>
+<div class="flex flex-col items-center justify-center mt-10">
 
-<%= render "form", article: @article %>
+  <div class="flex flex-col mt-10">
+      <h1 class="article-title">Create new article</h1>
 
-<br>
 
-<div>
-  <%= link_to "Back to articles", articles_path %>
+    <%= render "form", article: @article %>
+
+    <br>
+
+<!--    <div>-->
+      <%#= link_to "Back to articles", articles_path %>
+<!--    </div>-->
+
+  </div>
+
 </div>

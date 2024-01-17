@@ -1,10 +1,10 @@
-<p style="color: green"><%= notice %></p>
+<div class="flex flex-col items-center justify-center mt-10">
+<!--  <p style="color: green"><%#= notice %></p>-->
 
-<%= render @article %>
+  <%= render @article %>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
-
-  <%= button_to "Destroy this article", @article, method: :delete %>
+  <div class="article-button-group">
+    <%= link_to "Edit this article", edit_article_path(@article) %>
+    <%= button_to "Destroy this article", @article, method: :delete %>
+  </div>
 </div>

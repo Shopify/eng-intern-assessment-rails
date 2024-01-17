@@ -1,22 +1,21 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
+<div id="<%= dom_id(article) %>" class="article-container">
 
-  <p>
-    <strong>Content:</strong>
+  <!-- Title Section -->
+  <h1 class="article-title"><%= article.title %></h1>
+
+  <!-- Additional Information Section -->
+  <div class="article-info">
+    <p><strong>Author:</strong> <%= article.author %></p>
+    <p><strong>Date:</strong> <%= article.date %></p>
+  </div>
+
+  <div class="article-image">
+    <%= image_tag "https://source.unsplash.com/random/2400x1200?landscape", alt: "Random Unsplash Image" %>
+  </div>
+
+  <!-- Content Section -->
+  <div class="article-content">
     <%= article.content %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= article.author %>
-  </p>
-
-  <p>
-    <strong>Date:</strong>
-    <%= article.date %>
-  </p>
+  </div>
 
 </div>

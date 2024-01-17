@@ -10,6 +10,19 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def random
+    random_article = Article.order('RANDOM()').first
+    redirect_to article_path(random_article)
+  end
+
+  # GET /articles/all
+  def all
+    if params[:search]
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
+  end
 
   # GET /articles/1 or /articles/1.json
   def show
