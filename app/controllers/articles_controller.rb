@@ -59,7 +59,7 @@ class ArticlesController < ApplicationController
     if @article.nil?
       render :template => "errors/404", :status => 404
       return
-
+    end
     @article.destroy
 
     # delete entry in cache
