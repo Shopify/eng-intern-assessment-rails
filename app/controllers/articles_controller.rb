@@ -42,8 +42,7 @@ class ArticlesController < ApplicationController
   end
 
   def search 
-    key = "%#{params[:key]}%"
-    @articles = Article.where("title LIKE ? or content LIKE?", key, key)
+    @result = Article.search(params[:search_key])
   end
   
   private
