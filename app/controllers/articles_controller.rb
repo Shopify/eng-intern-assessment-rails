@@ -7,20 +7,35 @@ class ArticlesController < ApplicationController
   # GET /articles?query=foo (Search for articles containing "foo")
   # GET /articles (List all articles)
   def index
-    if params[:query]
-      starting = get_time()
-      @query_value = params[:query]
-      @articles = Article.search(params[:query])
-      ending = get_time()
-      @elapsed = (ending - starting).round(5)
-    else
+    if params[:query].nil?
       @articles = Article.all
+      return
     end
+
+    @query_value = params[:query]
+
+    starting = get_time()
+    if ($redis.get(params[:query]) != nil)
+      cached_data = JSON.parse($redis.get(params[:query]))
+      @articles = deserialize_articles(cached_data)
+    else
+      @articles = Article.search(params[:query])
+      $redis.set(params[:query], @articles.to_json, :ex=> 1.minutes)
+    end
+    ending = get_time()
+
+    @elapsed = (ending - starting).round(5)
   end
 
   # GET /articles/:id (Show article with ID :id)
   def show
-    @article = Article.find(params[:id])
+    if ($redis.get(params[:id]) != nil)
+      cached_data = JSON.parse($redis.get(params[:id]))
+      @article = Article.new(cached_data)
+    else
+      @article = Article.find(params[:id])
+      $redis.set(params[:id], @article.to_json, :ex=> 1.minutes)
+    end
   end
 
   # GET /articles/new (Show form to create a new article)
@@ -42,7 +57,6 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-
     redirect_to root_path, status: :see_other
   end
 
@@ -69,5 +83,9 @@ class ArticlesController < ApplicationController
 
   def get_time
     return Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  end
+
+  def deserialize_articles(data)
+    data.map { |attributes| Article.new(attributes) }
   end
 end
