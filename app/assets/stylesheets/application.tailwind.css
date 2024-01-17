@@ -90,23 +90,24 @@ button {
 
 #articles {
   margin-top: 100px;
-  width: 30vw;
+  width: 40vw;
 }
 
-#articles>.mb-6>div {
+#articles > .mb-6 > div {
   width: auto;
 }
 
 /* Add this to your stylesheet or in your HTML file with style tags */
 h1.font-bold.text-green-600.mb-10.mt-10 {
   font-size: 60px;
-  letter-spacing: 4px;
+  color: #444;
+  /*letter-spacing: 4px;*/
 }
 
 /* Each article view */
 
 .article-container {
-  max-width: 60vw;
+  max-width: 50vw;
   margin: 0 auto;
   padding: 20px;
 }
@@ -115,12 +116,15 @@ h1.font-bold.text-green-600.mb-10.mt-10 {
   font-size: 60px;
   font-weight: bold;
   margin-bottom: 10px;
+  text-align: center; /* Center the title */
 }
 
-.article-image>img {
-  margin-bottom: 20px;
+.article-image > img {
   border-radius: 20px !important;
   margin-bottom: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .article-content {
@@ -129,6 +133,7 @@ h1.font-bold.text-green-600.mb-10.mt-10 {
   margin-top: 100px;
   font-size: 1.3rem;
   color: #666666;
+  text-align: justify; /* Justify the content */
 }
 
 .article-info {
@@ -136,6 +141,7 @@ h1.font-bold.text-green-600.mb-10.mt-10 {
   font-size: 1em;
   color: #888;
   margin-bottom: 60px;
+  text-align: center; /* Center the info */
 }
 
 .article-button-group {
@@ -144,7 +150,7 @@ h1.font-bold.text-green-600.mb-10.mt-10 {
   color: #6b7280;
 }
 
-.article-button-group>button,
+.article-button-group > button,
 a {
   min-width: 150px;
 }
@@ -155,7 +161,7 @@ form label {
   color: #888;
 }
 
-#create-new-article-submit>button {
+#create-new-article-submit > button {
   width: 100%;
   margin-top: 40px;
 }
