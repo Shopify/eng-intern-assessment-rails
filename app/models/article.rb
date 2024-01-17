@@ -14,6 +14,11 @@ class Article < ApplicationRecord
   # Set default values for date and author
   before_validation :set_default_values
 
+  # Search for articles by title or content
+  def self.search(query)
+    where("title LIKE ? OR content LIKE ?", "%#{query}%", "%#{query}%").order("created_at DESC")
+  end
+
   private
 
   def set_default_values
