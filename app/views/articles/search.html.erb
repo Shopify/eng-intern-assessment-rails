@@ -1,15 +1,9 @@
-<!-- app/views/articles/search.html.erb -->
-<% if @articles.present? %>
-  <h2>Search Results</h2>
-  <ul>
-    <% @articles.each do |article| %>
-      <li>
-        <%= link_to article.title, article %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No articles found matching the search criteria.</p>
-<% end %>
-
-<%= link_to 'Back', articles_path %>
+<div class="container">
+  <h1>Search Results</h1>
+  <% if @articles.any? %>
+    <%= render 'article_table' %>
+  <% else %>
+    <p>No articles found.</p>
+  <% end %>
+  <%= link_to 'Back to Articles', articles_path, class: 'btn btn-primary mb-3' %>
+</div>

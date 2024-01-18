@@ -1,18 +1,17 @@
-<!-- app/views/articles/show.html.erb -->
-<h1><%= @article.title %></h1>
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-body">
+      <h1 class="card-title"><%= @article.title %></h1>
 
-<p><%= @article.content %></p>
+      <p><strong>Author:</strong> <%= @article.author %></p>
+      <p><strong>Date:</strong> <%= @article.date %></p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @article.author %>
-</p>
+      <p class="card-text"><%= @article.content %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @article.date %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %> |
-<%= button_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-warning mb-2' %>
+      
+      <%= button_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mb-2' %>
+      <%= link_to 'Back to Articles', articles_path, class: 'btn btn-primary mb-2' %>
+    </div>
+  </div>
+</div>

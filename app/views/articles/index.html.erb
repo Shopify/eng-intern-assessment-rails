@@ -1,20 +1,13 @@
-<!-- app/views/articles/index.html.erb -->
-<h1>Articles</h1>
-
-<%= form_tag(search_articles_path, method: :get, class: "search-form") do %>
-  <div class="field">
-    <%= label_tag :search, "Search Articles:" %>
-    <%= text_field_tag :search, params[:search], placeholder: "Enter keywords" %>
-    <%= submit_tag "Search", class: "btn" %>
-  </div>
-<% end %>
-
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article %>
-    </li>
+<div class="container">
+  <h1>Articles</h1>
+  <%= form_with(url: search_articles_path, method: :get, class: 'mb-3') do |form| %>
+    <div class="input-group">
+      <%= form.text_field :search, class: 'form-control', placeholder: 'Search articles...' %>
+      <div class="input-group-append">
+        <%= form.submit 'Search', class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
   <% end %>
-</ul>
-
-<%= link_to 'New Article', new_article_path %>
+  <%= render 'article_table' %>
+  <%= link_to 'New Article', new_article_path, class: 'btn btn-success mb-3' %>
+</div>
