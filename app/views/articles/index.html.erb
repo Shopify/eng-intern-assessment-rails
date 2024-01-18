@@ -1,4 +1,4 @@
-<h1>Articles<h1>
+<h1>Articles</h1>
 
 <%= form_with url: articles_path, method: :get do |form| %>
   <%= form.label :search, "Search for:" %>
@@ -6,12 +6,15 @@
   <%= form.submit "Search" %>
 <% end %>
 
-<ul>
-    <% @articles.each do |article| %>
-        <li> 
-            <%= link_to article.title, article %>
-        </li>
-    <% end %>
-</ul>
-
 <%= link_to "New Article", new_article_path %>
+
+<div class="container">
+    <% @articles.each do |article| %>
+        <div class = "article"> 
+            <%= link_to article.title, article %>
+            <p><%= article.author %></p>
+            <p><%= article.date.strftime("%-d %B %Y") %></p>
+            <p><%= article.content %></p>
+        </div>
+    <% end %>
+</div>
