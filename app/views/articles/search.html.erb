@@ -5,19 +5,21 @@
   <%= form.submit "Search" %>
 <% end %>
 
+<% if @error.present? %>
+  <p><%= @error %></p><br>
+<% end %>
+
 <% if @articles.present? %>
 <ul>
   <% @articles.each do |article| %>
     <li>
       <h3><%= link_to article.title, article %></h3>
-      <p><%= article.content %> </p>
+      <p><%= article.content %></p>
     </li>
   <% end %>
 </ul>
-<% else %>
-  <% if params[:search_terms].present? %>
-    <p>No articles found for "<%= params[:search_terms] %>".</p>
-  <% end %>
+<% elsif params[:search_term].present? %>
+  <p>No articles found for "<%= params[:search_term] %>".</p>
 <% end %>
 
 

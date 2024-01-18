@@ -43,7 +43,11 @@ class ArticlesController < ApplicationController
   end
   
   def search
-    @articles = Article.search(params[:search_term])
+    if params[:search_term].blank?
+      @error = "Please enter a search term."
+    else
+      @articles = Article.search(params[:search_term])
+    end
   end
 
   private
