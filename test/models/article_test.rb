@@ -65,4 +65,12 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # New test: Validates that a new article without a title and content is not valid.
+  test 'validates presence of title and content' do
+    article = Article.new
+    assert_not article.valid?
+    assert_equal ["can't be blank"], article.errors[:title]
+    assert_equal ["can't be blank"], article.errors[:content]
+  end
 end
