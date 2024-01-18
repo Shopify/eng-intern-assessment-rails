@@ -1,5 +1,10 @@
 <h1>Encyclopedia</h1>
 
+<%= form_with url: articles_path, method: :get do |form| %> 
+  <%= form.text_field :search, value: params[:search], placeholder: "Search articles" %>
+  <%= form.submit "Search" %>
+<% end %>
+
 <ul>
   <% @articles.each do |article| %>
     <li>
