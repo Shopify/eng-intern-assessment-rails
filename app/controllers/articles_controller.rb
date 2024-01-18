@@ -1,16 +1,20 @@
 class ArticlesController < ApplicationController
+  # GET /articles
   def index
     @articles = Article.all.order('created_at DESC')
   end
 
+  # GET /articles/:id
   def show
     set_article
   end
 
+  # GET /articles/new
   def new
     @article = Article.new
   end
 
+  # POST /articles
   def create
     @article = Article.new(article_params)
 
@@ -22,10 +26,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # GET /articles/:id/edit
   def edit
     @article = Article.find(params[:id])
   end
 
+  # PATCH/PUT /articles/:id
   def update
     set_article
 
@@ -36,6 +42,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # DELETE /articles/:id
   def destroy
     set_article
     @article.destroy
@@ -45,6 +52,7 @@ class ArticlesController < ApplicationController
 
   private
 
+  # Strong parameters to permit specific attributes for article creation and update.
   def article_params
     params.require(:article).permit(:title, :content, :author, :date)
   end
