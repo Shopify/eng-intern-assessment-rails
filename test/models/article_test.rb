@@ -65,4 +65,29 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'requires title for article creation' do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+    assert_includes article.errors.full_messages, "Title can't be blank"
+  end
+
+  test 'requires title with minimum length for article creation' do
+    article = Article.create(title: 'Titl', content: 'This is a new article.')
+    assert_not article.valid?
+    assert_includes article.errors.full_messages, "Title is too short (minimum is 5 characters)"
+  end
+
+  test 'requires content for article creation' do
+    article = Article.create(title: 'Sample Article')
+    assert_not article.valid?
+    assert_includes article.errors.full_messages, "Content can't be blank"
+  end
+
+  test 'requires content with minimum length for article creation' do
+    article = Article.create(title: 'Sample Article', content: 'Shor')
+    assert_not article.valid?
+    assert_includes article.errors.full_messages, "Content is too short (minimum is 5 characters)"
+  end
+  
 end

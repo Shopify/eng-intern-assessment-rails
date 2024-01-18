@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
-  
+
   # Validation: Ensures the presence of a title and content.
-  validates :title, presence: true
+  validates :title, presence: true, length: { minimum: 5 }
   validates :content, presence: true, length: { minimum: 5 }
 
   # Performs a search for articles based on the provided query.
