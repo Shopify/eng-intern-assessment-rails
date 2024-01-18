@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController
   # GET /articles
   def index
-    @articles = Article.all # Gets all the articles
+    if !params[:search].blank?
+      @articles = Article.search(params[:search]) # If the request has the parameter search, use the search function
+    else
+      @articles = Article.all # Gets all the articles
+    end
   end
 
   # GET /articles/:id
@@ -22,7 +26,7 @@ class ArticlesController < ApplicationController
     if @article.save # Attempt to save the article
       redirect_to @article # Redirect to the saved article if sucessful
     else
-      render :new, status: :unprocessable_entity # Show errors
+      render :new, status: :unprocessable_entity # If unsuccessful how errors
     end
   end
 
@@ -38,7 +42,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params) # Attempts to update the article with the given parameters
       redirect_to @article # If sucessful redirects to the article
     else
-      render :edit, status: :unprocessable_entity # If unsuccesful show the errors
+      render :edit, status: :unprocessable_entity # If unsuccessful show the errors
     end
   end
 

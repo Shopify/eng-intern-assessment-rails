@@ -17,4 +17,9 @@ class Article < ApplicationRecord
     self.author = "Anonymous" if self.author.blank?
     self.date ||= Date.today
   end
+
+  # Does a case insensitive search to title and content
+  def self.search(search_term)
+    where("UPPER(title) LIKE :search OR UPPER(content) LIKE :search", search: "%#{search_term.upcase}%")
+  end
 end
