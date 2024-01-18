@@ -1,16 +1,13 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Articles</h1>
+<div class="container">
+  <%= render partial: 'layouts/search_form' %>
 
-<%= render partial: 'layouts/search_form' %>
-
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
+  <div id="articles container">
+    <% @articles.each do |article| %>
+      <%= render article %>
+      <p class="container">
+        <%= link_to "View article", article, class:"btn btn-secondary" %>
+      </p>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New article", new_article_path %>

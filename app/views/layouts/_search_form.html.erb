@@ -1,7 +1,17 @@
-<!-- app/views/layouts/_search_form.html.erb -->
-<div class="container">
-  <%= form_with(url: articles_path, method: "get") do %>
-    <%= text_field_tag(:query, params[:query], placeholder: "Search articles...") %>
-    <%= submit_tag("Search") %>
+<div class="container mt-3">
+  <%= form_with(url: articles_path, method: "get", class: "form-inline") do %>
+    <div class="input-group">
+      <%= text_field_tag(:query, params[:query], class: "form-control", placeholder: "Search articles...") %>
+      <div class="input-group-append ml-2">
+
+        <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+          <i class="fas fa-search"></i> Search
+        <% end %>
+
+        <%= link_to new_article_path, class: "btn btn-success ml-2" do %>
+          <i class="fas fa-plus"></i> Add New Article
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </div>

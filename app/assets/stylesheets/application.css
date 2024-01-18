@@ -35,3 +35,12 @@ body {
 .navbar-nav .nav-link:hover {
     color: #17a2b8; /* Hover color */
 }
+
+
+.button-container {
+    margin: 20px;
+}
+
+.button-container a, .button-container button {
+    margin-right: 10px; /* Adjust as needed */
+}
