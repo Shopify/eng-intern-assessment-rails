@@ -53,5 +53,5 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 # Start the server by default
 EXPOSE 3000
 
-# Run test then start the server
-CMD ["sh", "-c", "./bin/rails test && ./bin/rails server -b 0.0.0.0 --port 3000"]
+# start the server
+CMD ["sh", "-c", "./bin/rails db:reset && ./bin/rails db:migrate && ./bin/rails server -b 0.0.0.0 --port 3000"]
