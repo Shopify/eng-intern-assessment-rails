@@ -1,3 +1,5 @@
+<%= link_to "Home", articles_index_url %>
+
 <h1><%= @article.title %></h1>
 <p> <i> Published by <%= @article.author %> on <%= @article.date %> </i> <p>
 <p><%= @article.content %></p>
@@ -9,5 +11,5 @@
                   } %></li>
 </ul>
 
-<%= link_to "Back", articles_index_url %>
+<%= link_to "Home", articles_index_url %>
 
