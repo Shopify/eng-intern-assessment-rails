@@ -1,4 +1,5 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# To test the articles_controller_test.rb
+#  These need to be commented out so that test/models/article_test.rb wouldn't fail
 
 # one:
 #   title: "article 1"

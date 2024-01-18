@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # For this test not to fail, make sure objects are commented out in:
+  # test/fixtures/articles.yml
+  # Those objects are for testing the controllers
+  # Since this test assumes starting with no articles, those should be commented out
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end

@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   # No particular funcionality is required here 
   # Index page is used as a navigator having two buttons
-  #   1. Goes to allarticles (renders allarticles.html.erb)
+  #   1. Goes to all_articles (renders all_articles.html.erb)
   #   2. Goes to new (renders new.html.erb)
   def index
   end
@@ -10,18 +10,22 @@ class ArticlesController < ApplicationController
   # Retrieves the articles from the database.
   # If search param provided, it returns a filtered list of the articles,
   # matching the search term, otherwise it returns all the articles
-  def allarticles
-    if params[:search].present?
-      @articles = Article.search(params[:search])
+  def all_articles
+    @articles = if params[:search].present?
+      Article.search(params[:search])
     else
-      @articles = Article.all
+      Article.all
     end
   end
 
   # Method for show.html.erb
   # Retrieves the article matching the id provided by the id parameter
   def show
-    @article = Article.find(params[:id])
+    begin
+      @article = Article.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_path
+    end
   end
 
   # Method for new.html.erb
@@ -67,7 +71,8 @@ class ArticlesController < ApplicationController
   # Method to destroy/delete article
   # Uses id parameter to access the article
   def destroy
-    Article.destroy_by(id: params[:id])
+    @article = Article.find(params[:id])
+    @article.destroy
 
     redirect_to articles_path, status: :see_other, notice: "Article was deleted"
   end
