@@ -1,25 +1,18 @@
 class ArticlesController < ApplicationController
+  # Make sure to set the article before any action is called that needs it
   before_action :set_article, only: %i[show edit update destroy]
   
-  # GET /articles or /articles.json
   def index
-    if params[:search]
-      @articles = Article.search(params[:search])
-    else
-      @articles = Article.all
-    end
+    @articles = Article.all
   end
 
-  # GET /articles/1 or /articles/1.json
   def show
   end
 
-  # GET /articles/new
   def new
     @article = Article.new
   end
 
-  # GET /articles/1/edit or /articles/1/edit.json
   def create
     @article = Article.new(article_params)
 
@@ -30,12 +23,10 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # POST /articles or /articles.json
   def edit
     redirect_to @article, alert: 'Article has already been deleted.' if @article.nil?
   end
 
-  # PATCH/PUT /articles/1 or /articles/1.json
   def update
     if @article.nil?
       redirect_to @article, alert: 'Article has already been deleted.'
@@ -46,7 +37,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # DELETE /articles/1 or /articles/1.json
   def destroy
     if @article.nil?
       redirect_to @article, alert: 'Article has already been deleted.'
@@ -56,13 +46,12 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # GET /articles/search
   def search
     @articles = Article.search(params[:search])
   end
 
   private
-
+  # Use callbacks to share common setup or constraints between actions.
   def set_article
     @article = Article.find_by(id: params[:id])
   end
