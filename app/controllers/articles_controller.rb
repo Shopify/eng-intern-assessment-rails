@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   def index
   end
 
-  # Method for allarticles.html.erb
+  # Method for all_articles.html.erb
   # Retrieves the articles from the database.
   # If search param provided, it returns a filtered list of the articles,
   # matching the search term, otherwise it returns all the articles
