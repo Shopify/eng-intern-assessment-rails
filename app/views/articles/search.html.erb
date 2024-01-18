@@ -1,0 +1,24 @@
+<h1>Search Articles</h1>
+
+<%= form_with url: search_articles_path, method: :get do |form| %>
+  <%= form.text_field :search_term %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<% if @articles.present? %>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <h3><%= link_to article.title, article %></h3>
+      <p><%= article.content %> </p>
+    </li>
+  <% end %>
+</ul>
+<% else %>
+  <% if params[:search_terms].present? %>
+    <p>No articles found for "<%= params[:search_terms] %>".</p>
+  <% end %>
+<% end %>
+
+
+<%= link_to "Home", root_path %>
