@@ -21,11 +21,7 @@ class ArticlesController < ApplicationController
   # Method for show.html.erb
   # Retrieves the article matching the id provided by the id parameter
   def show
-    begin
-      @article = Article.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to root_path
-    end
+    @article = Article.find(params[:id])
   end
 
   # Method for new.html.erb
