@@ -18,27 +18,34 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    if @article.save
-      redirect_to @article
-    else
-
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @article.save
+        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.json { render :show, status: :created, location: @article }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # GET /articles/:id/edit
   def edit
-    @article = Article.find(params[:id])
+    set_article
   end
 
   # PATCH/PUT /articles/:id
   def update
     set_article
 
-    if @article.update(article_params)
-      redirect_to @article
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @article.update(article_params)
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.json { render :show, status: :ok, location: @article }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -47,7 +54,10 @@ class ArticlesController < ApplicationController
     set_article
     @article.destroy
 
-    redirect_to root_path, status: :see_other
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Article was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -59,5 +69,15 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render_not_found
+  end
+
+  # Renders a 404 Not Found error.
+  def render_not_found
+    respond_to do |format|
+      format.html { render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found }
+      format.json { render json: { error: 'Not Found' }, status: :not_found }
+    end
   end
 end
