@@ -7,10 +7,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # handles the show action of ArticlesController 
   def show
     @article = Article.find(params[:id])
   end
 
+  # handles the new and create action of ArticlesController 
   def new
     @article = Article.new
   end
@@ -25,6 +27,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # handles the edit and update action of ArticlesController 
   def edit
     @article = Article.find(params[:id])
   end
@@ -39,6 +42,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # handles the destroy action of ArticlesController 
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
