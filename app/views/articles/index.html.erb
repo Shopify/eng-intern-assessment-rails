@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Encyclopedia Articles</h1>
+<%= stylesheet_link_tag 'articles', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= form_with(url: articles_path, method: "get", local: true) do |form| %>
+  <%= form.text_field :search, placeholder: "Search articles..." %>
+  <%= form.submit "Search" %>
+<% end %>
+<div id="articles">
+  <% @articles.each do |article| %>
+    <%= render article %>
+    <p>
+      <%= link_to "Show this article", article %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New article", new_article_path %>
