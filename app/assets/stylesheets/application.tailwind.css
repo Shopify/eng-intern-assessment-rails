@@ -224,3 +224,11 @@ form.button_to input[type="button"] {
   outline: none;
   cursor: pointer;
 }
+
+.toast-item {
+  /* Your custom styles go here */
+  background-color: #2E2F30; /* Red background */
+  border: none; /* Remove borders */
+  color: #ffffff; /* White text */
+  /* Add more styles as needed */
+}
