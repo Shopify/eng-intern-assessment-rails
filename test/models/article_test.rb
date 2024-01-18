@@ -66,11 +66,17 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not_includes results, article1
   end
 
-  # New test: Validates that a new article without a title and content is not valid.
   test 'validates presence of title and content' do
     article = Article.new
     assert_not article.valid?
     assert_equal ["can't be blank"], article.errors[:title]
     assert_equal ["can't be blank"], article.errors[:content]
+  end
+
+  test 'raises error when attempting to delete a non-existent article' do
+    non_existent_article_id = Article.maximum(:id).to_i + 1
+    assert_raises(ActiveRecord::RecordNotFound) do
+      Article.find(non_existent_article_id)&.destroy
+    end
   end
 end
