@@ -15,6 +15,12 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_match @article.title, @response.body
   end
 
+  test "should get index with search terms" do
+    get articles_url, params: { term: "Not found title" }
+    assert_response :success
+    assert_no_match @article.title, @response.body
+  end
+
   test "should get new" do
     get articles_url, params: { term: "Not found title" }
     assert_response :success
