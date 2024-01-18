@@ -1,4 +1,6 @@
-<h1>Articles</h1>
+<h1>Encyclopedia</h1>
+
+<h2> List of Articles </h2>
 
 <ul>
   <% @articles.each do |article| %>
@@ -8,5 +10,5 @@
   <% end %>
 </ul>
 
-<%= link_to "New Article", new_article_path %> <br>
-<%= link_to "Search Articles", search_articles_path %>
+<%= button_to "New Article", new_article_path, method: :get %>
+<%= button_to "Search Articles", search_articles_path, method: :get %>
