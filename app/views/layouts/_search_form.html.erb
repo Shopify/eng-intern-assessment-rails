@@ -1,0 +1,7 @@
+<!-- app/views/layouts/_search_form.html.erb -->
+<div class="container">
+  <%= form_with(url: articles_path, method: "get") do %>
+    <%= text_field_tag(:query, params[:query], placeholder: "Search articles...") %>
+    <%= submit_tag("Search") %>
+  <% end %>
+</div>

@@ -2,6 +2,8 @@
 
 <h1>Articles</h1>
 
+<%= render partial: 'layouts/search_form' %>
+
 <div id="articles">
   <% @articles.each do |article| %>
     <%= render article %>
