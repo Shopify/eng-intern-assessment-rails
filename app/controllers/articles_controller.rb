@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.date = Date.current
 
     if @article.save
       redirect_to @article
@@ -28,7 +29,7 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     
-    if article.update(article_params)
+    if @article.update(article_params)
       redirect_to @article
     else
       render :edit, status: :unprocessable_entity
