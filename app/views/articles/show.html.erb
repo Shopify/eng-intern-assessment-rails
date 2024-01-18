@@ -4,5 +4,7 @@
 <br>
 <p><%= @article.content %></p>
 
+<%= render "layouts/navigation", locals: { title: "Edit", path: edit_article_path(@article) } %>
+
 <%= render "layouts/navigation", locals: { title: "Home", path: root_path } %>
 
