@@ -1,15 +1,15 @@
 <%= link_to "Home", articles_index_url %>
 
+
 <h1><%= @article.title %></h1>
-<p> <i> Published by <%= @article.author %> on <%= @article.date %> </i> <p>
-<p><%= @article.content %></p>
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-    <li><%= link_to "Destroy", article_path(@article), data: {
+
+<%= link_to "Edit", edit_article_path(@article) %>
+<%= link_to "Delete", article_path(@article), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+                  } %>
 
+<p> <i> Published by <%= @article.author %> on <%= @article.date %> </i> <p>
+<p><%= @article.content %></p>
 <%= link_to "Home", articles_index_url %>
 
