@@ -74,7 +74,7 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'prevents article creations with no title' do
-    article = Article.create(title: 'Sample title', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: '', content: 'Lorem ipsum dolor sit amet.')
     assert_equal article.valid?, false
   end
 
