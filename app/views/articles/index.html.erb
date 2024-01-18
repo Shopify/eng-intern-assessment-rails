@@ -12,19 +12,21 @@
 <%= link_to 'New Article', new_article_path, class: 'new-article-link' %>
 
 <ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article) %>
-      <p><strong>Author:</strong> <%= article.author %></p>
-      <p><strong>Date:</strong> <%= article.date %></p>
+<% @articles.each do |article| %>
+  <li>
+    <%= link_to article.title, article_path(article) %>
+    <p><strong>Author:</strong> <%= article.author %></p>
+    <p><strong>Date:</strong> <%= article.date %></p>
 
-      <div class="actions-holder">
-        <div class="article-actions">
+    <div class="actions-holder">
+      <div class="article-actions <%= 'single-button' if article == @articles.first %>">
+        <% unless article == @articles.first %>
           <%= button_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
           <%= link_to 'Edit', edit_article_path(article), class: 'edit-button' %>
-          <%= link_to 'Show', article_path(article), class: 'show-button' %>
-        </div>
+        <% end %>
+        <%= link_to 'Show', article_path(article), class: 'show-button' %>
       </div>
-    </li>
-  <% end %>
+    </div>
+  </li>
+<% end %>
 </ul>

@@ -91,6 +91,10 @@ li p {
   margin-top: 10px;
 }
 
+.article-actions.single-button {
+  justify-content: center;
+}
+
 /* Delete Button Styling */
 .delete-button {
   background-color: #f44336;
