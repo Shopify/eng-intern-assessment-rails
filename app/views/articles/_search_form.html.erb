@@ -1,0 +1,9 @@
+<!-- app/views/articles/_search_form.html.erb -->
+
+<%= form_tag articles_path, method: :get do %>
+  <div class="field">
+    <%= label_tag :query, "Search for:" %>
+    <%= text_field_tag :query, params[:query] %>
+  </div>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
