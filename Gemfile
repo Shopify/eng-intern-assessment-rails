@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+# Switched ruby version for a working version compatible with my desktop version
+
 # ruby "2.7.6"
 ruby '3.2.2'
 
