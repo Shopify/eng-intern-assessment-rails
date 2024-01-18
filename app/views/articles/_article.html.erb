@@ -1,3 +1,9 @@
 <li> 
-  <%= link_to article.title, article %>
+
+  <% if article.author %>
+    <%= link_to "#{article.title}, by #{article.author}", article %>
+  <% else %>
+    <%= link_to "#{article.title}", article %>
+  <% end %>
+
 </li>
