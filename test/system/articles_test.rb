@@ -19,13 +19,12 @@ class ArticlesTest < ApplicationSystemTestCase
     click_on "New article"
 
     fill_in "Author", with: @article.author
-    fill_in "Content", with: @article.content
-    fill_in "Date", with: @article.date
-    fill_in "Title", with: @article.title
+    fill_in "Content", with: "A different content"
+    fill_in "Title", with: "A different title"
     click_on "Create Article"
 
     assert_text "Article was successfully created"
-    click_on "Back"
+    click_on "Back", match: :first
   end
 
   test "should update Article" do
@@ -34,12 +33,11 @@ class ArticlesTest < ApplicationSystemTestCase
 
     fill_in "Author", with: @article.author
     fill_in "Content", with: @article.content
-    fill_in "Date", with: @article.date
     fill_in "Title", with: @article.title
     click_on "Update Article"
 
     assert_text "Article was successfully updated"
-    click_on "Back"
+    click_on "Back", match: :first
   end
 
   test "should destroy Article" do
