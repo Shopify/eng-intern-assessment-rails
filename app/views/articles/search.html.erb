@@ -5,13 +5,7 @@
 <% @articles = Article.search(params[:query]) %>
 
 <% if @articles.any? %>
-  <ul>
-    <% @articles.each do |article| %>
-      <li>
-        <%= link_to article.title, article %>
-      </li>
-    <% end %>
-  </ul>
+  <%= render "articlelist", article: @article %>
 <% else %> 
   <p>No articles found.</p>
 <% end %>
