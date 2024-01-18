@@ -14,6 +14,11 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
+  test 'prevents creation of articles without content' do
+    article = Article.create(title: 'Sample Article')
+    refute article.valid?
+  end
+
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
@@ -29,6 +34,19 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.update(content: 'Updated content')
     assert_equal 'Updated content', article.content
+  end
+
+  test 'updating an article does not create a new article' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.update(content: 'Updated content')
+    assert_equal 1, Article.count
+  end
+
+  test 'updating an article does not erase metadata' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article.update(content: 'Updated content')
+    assert_equal 'John Doe', article.author
+    assert_equal Date.today, article.date
   end
 
   test 'updates the article metadata' do
@@ -64,5 +82,37 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'displays accurate search results for partial terms' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('dipiscing')
+    assert_includes results, article2
+    assert_not_includes results, article1
+  end
+
+  test 'displays empty search result for non-existent term' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('Non-existent')
+    assert_empty results
+  end
+
+  test 'displays all articles for empty search term' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+
+  test 'does not search in deleted articles' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article1.destroy
+    results = Article.search('Lorem ipsum')
+    assert_not_includes results, article1
+    assert_includes results, article2
   end
 end
