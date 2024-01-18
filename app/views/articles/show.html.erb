@@ -7,9 +7,18 @@
 <%= link_to "Delete", article_path(@article), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %>
+} 
+%>
 
-<p> <i> Published by <%= @article.author %> on <%= @article.date %> </i> <p>
+<p> 
+  <% if @article.author.present? %>
+    By <%= @article.author %> <br> <br>
+  <% end %> 
+  <i> Published on <%= @article.date %>,
+    Last modified on <%= @article.updated_at %>
+  </i>
+<p>
+
 <p><%= @article.content %></p>
 <%= link_to "Home", articles_index_url %>
 
