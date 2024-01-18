@@ -1,10 +1,6 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  # For this test not to fail, make sure objects are commented out in:
-  # test/fixtures/articles.yml
-  # Those objects are for testing the controllers
-  # Since this test assumes starting with no articles, those should be commented out
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -68,5 +64,14 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  # Added tests
+  test "displays articles either search term exist in title or content" do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Sample ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('Sample')
+    assert_includes results, article2
+    assert_includes results, article1
   end
 end
