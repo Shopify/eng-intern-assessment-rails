@@ -91,3 +91,28 @@ textarea {
     border-width: 0px;
     border-style: none;
 }
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+.flex-item {
+    flex: 1;
+    min-width: 150px;
+    margin: 10px; 
+    padding: 20px 10px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 10px 1px rgb(174, 174, 174);
+    transition-duration: 0.2s;
+  }
+
+.flex-item:hover {
+    background-color: antiquewhite;
+  }
+
+.input-search {
+    border: #017dd0 2px solid;
+}

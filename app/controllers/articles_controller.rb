@@ -1,9 +1,14 @@
 class ArticlesController < ApplicationController
   def index
+
   end
 
   def allarticles
-    @articles = Article.all
+    if params[:search].present?
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
 
   def show
@@ -44,6 +49,10 @@ class ArticlesController < ApplicationController
     Article.destroy_by(id: params[:id])
 
     redirect_to articles_path, status: :see_other, notice: "Article was deleted"
+  end
+
+  def search
+
   end
 
   # To prevent the submission of extra form fields (Strong Parameters)
