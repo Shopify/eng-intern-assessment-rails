@@ -1,0 +1,11 @@
+<h1> <%= @article.title %> </h1>
+
+<% if @article.author %>
+  <div> <%= @article.author %> </div>
+<% end %>
+
+<% if @article.date %>
+  <div> <%= @article.date %> </div>
+<% end %>
+
+<p> <%= @article.content %> </p>
