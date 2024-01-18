@@ -17,7 +17,6 @@
       <%= link_to article.title, article_path(article) %>
       <p><strong>Author:</strong> <%= article.author %></p>
       <p><strong>Date:</strong> <%= article.date %></p>
-      <p><strong>Content:</strong> <%= truncate(article.content, length: 200) %></p>
 
       <div class="actions-holder">
         <div class="article-actions">
