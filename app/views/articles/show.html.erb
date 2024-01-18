@@ -5,4 +5,4 @@
 
 <%= link_to 'Edit Article', edit_article_path(@article) %> 
 <%= link_to 'Back to Home', articles_path %> 
-<%= link_to 'Delete Article', @article, method: :delete %>
+<%= button_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
