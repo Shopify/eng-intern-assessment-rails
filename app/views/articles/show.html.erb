@@ -1,13 +1,8 @@
 <h1><%= @article.title %></h1>
-
-<p><strong>Content:</strong></p>
-<p><%= @article.content %></p>
-
 <p><strong>Author:</strong> <%= @article.author %></p>
+<p><strong>Posted:</strong> <%= @article.date %></p>
+<p class="article-content"><%= @article.content %></p>
 
-<p><strong>Date:</strong> <%= @article.date %></p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %> |
-
-<%= button_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%= link_to 'Edit Article', edit_article_path(@article) %> 
+<%= link_to 'Back to Home', articles_path %> 
+<%= link_to 'Delete Article', @article, method: :delete %>

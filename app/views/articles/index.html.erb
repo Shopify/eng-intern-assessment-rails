@@ -1,14 +1,15 @@
-<h1>The Encyclopdia of Shopify Interns</h1>
+<h1>The Encyclopdia of Shopify</h1>
 
 <%= render 'search_form' %>
+<%= link_to 'Add a New Article', new_article_path, class: 'btn btn-primary btn-container' %>
+
 <% if params[:query].present? %>
-  <%= button_to 'Back to all Articles', { action: :index }, method: :get, class: 'btn btn-secondary' %>
+  <%= button_to 'Back to all Articles', { action: :index }, method: :get, class: 'btn btn-secondary btn-container' %>
 <% end %>
 
-<% @articles.each do |article| %>
-  <h2><%= link_to article.title, article %></h2>
-  <p><%= article.content %></p>
-<% end %>
-
-<%= link_to 'New Article', new_article_path, class: 'btn btn-secondary' %>
-
+<div class="articles-container">
+  <% @articles.each do |article| %>
+    <h2><%= link_to article.title, article %></h2>
+    <p>By <%= article.author %>. Posted <%= article.date.strftime('%B %d, %Y') %>.</p>
+  <% end %>
+</div>
