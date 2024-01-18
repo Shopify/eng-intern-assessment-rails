@@ -1,12 +1,15 @@
 <h1>Encyclopedia</h1>
-Encyclopedia has <%= Article.count %> articles
+Encyclopedia article count: <%= Article.count %>
 
 <%= render "searchbar", article: @article %>
 
-<%= link_to "New Article", new_article_path %>
-
 <h3>Articles</h3>
 
-<%= render "articlelist", article: @article %>
+<%= link_to "Create an Article", new_article_path %>
 
+<% if Article.count.zero? %>
+  <p> The encyclopedia is empty! Help us add an article? </p>
+<% else %>
+  <%= render "articlelist", article: @article %>
+<% end %>
 
