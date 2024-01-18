@@ -44,11 +44,27 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'Updated Article', @article1.title
   end
 
+  test 'should not update article with invalid params' do
+    patch article_url(@article1), params: { article: { title: '' } }
+    assert_response :unprocessable_entity
+    @article1.reload
+    # Ensure the title remains unchanged
+    assert_not_equal '', @article1.title
+  end
+
   test 'should destroy article' do
     assert_difference('Article.count', -1) do
       delete article_url(@article2)
     end
 
     assert_redirected_to root_url
+  end
+
+  test 'should not destroy non-existing article' do
+    assert_no_difference('Article.count') do
+      delete article_url(-1) # Non-existing article ID
+    end
+
+    assert_response :not_found
   end
 end
