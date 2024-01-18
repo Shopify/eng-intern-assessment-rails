@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  # before routes that require finding articles, check if it first exists and handle errors
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index #index route provides search functionality
@@ -40,7 +41,8 @@ class ArticlesController < ApplicationController
 
   private
 
-  def set_article
+  # redirect user to search page if the article doesn't exist instead of throwing error
+  def set_article 
     begin
       @article = Article.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
