@@ -12,10 +12,15 @@ class Article < ApplicationRecord
     terms = search_term.split
 
     # SECURITY: index is an internal constant - not provided by user
-    query = terms.each_with_index.map { |term, index| 
-      "title LIKE :term#{index} OR content LIKE :term#{index}" } 
-      .join(' OR ')
-
+    query = terms.each_with_index.map do |term, index| 
+      [
+        "title LIKE :term#{index}",
+        "content LIKE :term#{index}",
+        "author LIKE :term#{index}",
+        "date LIKE :term#{index}"
+      ].join(' OR ')
+    end.join(' OR ')
+    
     term_bindings = terms.each_with_index.to_h { |term, index| 
       [:"term#{index}", "%#{term}%"]  
     }
