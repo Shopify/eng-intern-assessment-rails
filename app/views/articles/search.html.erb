@@ -2,11 +2,16 @@
 
 <%= render "searchbar", article: @article %>
 
-<ul>
-  <% @articles = Article.search(params[:query])
-  @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article %>
-    </li>
-  <% end %>
-</ul>
+<% @articles = Article.search(params[:query]) %>
+
+<% if @articles.any? %>
+  <ul>
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article %>
+      </li>
+    <% end %>
+  </ul>
+<% else %> 
+  <p>No articles found.</p>
+<% end %>
