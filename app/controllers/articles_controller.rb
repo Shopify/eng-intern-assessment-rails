@@ -1,19 +1,20 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
   def index #index route provides search functionality
     @articles = Article.search(params[:search])
   end
 
-  def show #implement error handling if article not found?
-    @article = Article.find(params[:id])
+  def show #handled by before action
   end
 
-  def new #implement error handling if article not found?
+  def new
     @article = Article.new
   end
 
   def create
     @article = Article.new(article_params)
-    @article.date = Date.today
+    @article.date = Date.today #automatically date stamp articles created through the web app
 
     if @article.save
       redirect_to @article
@@ -22,13 +23,10 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
-    @article = Article.find(params[:id])
+  def edit #handled by before action
   end
 
   def update
-    @article = Article.find(params[:id])
-
     if @article.update(article_params)
       redirect_to @article
     else
@@ -37,13 +35,18 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
-
     redirect_to root_path, status: :see_other
   end
 
   private
+
+  def set_article
+    begin
+      @article = Article.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to root_path
+    end
+  end
 
   def article_params
     params.require(:article).permit(:title, :content, :author)
