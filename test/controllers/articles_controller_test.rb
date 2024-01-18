@@ -139,6 +139,6 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test 'should get index with search by date' do
     get articles_url, params: { q: Date.today.strftime('%Y-%m-%d') }
     assert_response :success
-    assert_select 'li', 1
+    assert_select 'li', 2
   end
 end
