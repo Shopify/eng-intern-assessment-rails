@@ -26,9 +26,17 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article = Article.find(params[:id])
+
+    if @article.update(allowed_params)
+      redirect_to @article
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+
   end
 
   private
