@@ -1,7 +1,17 @@
 class Article < ApplicationRecord
+  # Searches for records that contain the given search terms in their title or content.
+  # The method splits the search term into individual terms, then constructs a query
+  # to find records where the title or content contains ANY of these terms.
+  #
+  # @param search_term [String] The search term(s) to query.
+  # @return [ActiveRecord::Relation] A relation containing records that match the search criteria.
+  # @note SECURITY: index is an internal constant - not provided by user.
+
   def self.search(search_term)
+
     terms = search_term.split
 
+    # SECURITY: index is an internal constant - not provided by user
     query = terms.each_with_index.map { |term, index| 
       "title LIKE :term#{index} OR content LIKE :term#{index}" } 
       .join(' OR ')
@@ -13,6 +23,8 @@ class Article < ApplicationRecord
     where(query, term_bindings)
   end
 
-  validates :title, presence: true
+  validates :title, presence: true 
   validates :content, presence: true, length: { minimum: 10 }
+  validates :author, presence: true
+  validates :date, presence: true
 end
