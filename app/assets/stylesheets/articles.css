@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #bbb 1px solid;
+}
+
+header a, header a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+h1, h2 {
+    padding: 0 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0 20px;
+}
+
+ul li {
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    list-style-type: none; 
+}
+
+button, .button-like {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px 0;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover, .button-like:hover {
+    background-color: #555;
+}
+
+button:disabled, .button-like:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+}
+
+.header-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.search-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.search-input {
+    width: calc(100% - 90px);
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #555;
+}
+
+.articles-list {
+    padding: 0 20px;
+}
+
+.article-item {
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.article-title {
+    color: #333;
+    text-decoration: none;
+}
+
+.article-title:hover {
+    color: #555;
+}
+
+.article-content {
+    color: #666;
+}
+
+.error-message, .no-articles-found {
+    color: red;
+    padding: 0 20px;
+}
+
+.home-link {
+    display: inline-block;
+    margin: 20px 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+.home-link:hover {
+    color: #555;
+}

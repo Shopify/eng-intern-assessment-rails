@@ -1,14 +1,23 @@
-<h1>Encyclopedia</h1>
+<%= stylesheet_link_tag 'articles' %>
 
-<h2> List of Articles </h2>
+<div class="container">
+    <header>
+        <h1>Encyclopedia</h1>
+    </header>
 
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article %>
-    </li>
-  <% end %>
-</ul>
+    <h2>List of Articles</h2>
 
-<%= button_to "New Article", new_article_path, method: :get %>
-<%= button_to "Search Articles", search_articles_path, method: :get %>
+    <ul>
+        <% @articles.each do |article| %>
+            <li>
+                <h4><%= link_to article.title, article %></h4>
+                <p><%= article.content %></p>
+            </li>
+        <% end %>
+    </ul>
+
+    <div class="buttons-container">
+        <%= button_to "Create Article", new_article_path, method: :get, class: "button" %>
+        <%= button_to "Search Articles", search_articles_path, method: :get, class: "button" %>
+    </div>
+</div>
