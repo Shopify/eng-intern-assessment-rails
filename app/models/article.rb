@@ -1,8 +1,11 @@
 class Article < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true, length: { minimum:10 }
+  validates :date, presence: true
+  validates :author, presence: true
   validate :date_cannot_be_in_the_future
 
+  after_initialize :set_defaults
   before_validation :set_defaults
 
 
