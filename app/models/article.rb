@@ -10,8 +10,12 @@ class Article < ApplicationRecord
       term_bindings = terms.each_with_index.to_h { |term, index| 
         [:"term#{index}", "%#{term}%"]  
       }
-      
+
       where(query, term_bindings)
     end
   end
+
+  validates :title, presence: true
+  validates :content, presence: true, length: { minimum: 10 }
+  
 end
