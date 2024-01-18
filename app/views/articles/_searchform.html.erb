@@ -1,0 +1,7 @@
+<div class="div-text-center">
+	<%= form_with(url: articles_url, method: :get, local: true) do |form| %>
+	<%= form.label :search, "Search" %>
+	<%= form.text_field :search, value: params[:search], class:"input-search" %>
+	<%= form.submit "Search" %>
+	<% end %>
+</div>

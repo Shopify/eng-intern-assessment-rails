@@ -8,18 +8,18 @@
   </div>
 
   <div>
-    <%= form.label :author %><br>
-    <%= form.text_field :author %>
-    <% @article.errors.full_messages_for(:author).each do |message| %>
-        <div class="div-error"><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
     <%= form.label :content %><br>
     <%= form.text_area :content %><br>
     <% @article.errors.full_messages_for(:content).each do |message| %>
       <div class="div-error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :author, "Author (Optional)" %><br>
+    <%= form.text_field :author %>
+    <% @article.errors.full_messages_for(:author).each do |message| %>
+        <div class="div-error"><%= message %></div>
     <% end %>
   </div>
 

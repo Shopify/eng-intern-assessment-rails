@@ -1,17 +1,16 @@
 <h1><%= @article.title %></h1>
+
 <div class="div-show-article">
-    <h2>Author: <%= @article.author %></h2>
-    <p><%= @article.content %></p>
+  <h2>Author: <%= @article.author.presence || "Unknown" %></h2>
+  <p><%= @article.content %></p>
 </div>
 
 <div class="div-edit-delete-btn">
-    <%= link_to "Edit",  edit_article_path(@article), class:"btn-index-page" %>
-
-    <%= link_to "Delete", article_path(@article), class:"btn-index-page", data: {
-        turbo_method: :DELETE,
-        turbo_confirm: "Are you sure you want to delete this article?"
-    } %>
-    
+  <%= link_to "Edit",  edit_article_path(@article), class:"btn-index-page" %>
+  <%= link_to "Delete", article_path(@article), class:"btn-index-page", data: {
+    turbo_method: :DELETE,
+    turbo_confirm: "Are you sure you want to delete this article?"
+  } %> 
 </div>
 
 <%= render "backtoallarticlesbtn" %>

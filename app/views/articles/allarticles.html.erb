@@ -1,22 +1,18 @@
 <h1>Encyclopedia</h1>
 
-<%= form_with(url: articles_url, method: :get, local: true) do |form| %>
-  <%= form.label :search, "Search" %>
-  <%= form.text_field :search, value: params[:search], class:"input-search" %>
-  <%= form.submit "Search" %>
-<% end %>
+<%= render "searchform" %>
 
 <div class="div-all-articles">
-        <h2>Your Articles</h2>  
-    <div class="flex-container">
-        <% if @articles.empty? %>
-            <h3>Nothing available!</h3>
-        <% else %>
-            <% @articles.each do |article| %>
-                <%= link_to article.title, article_path(article), class:"flex-item" %>
-            <% end %>
-        <% end %>
-    </div>
+  <h2>Your Articles</h2>  
+  <div class="flex-container">
+    <% if @articles.empty? %>
+      <h3>Nothing available!</h3>
+    <% else %>
+      <% @articles.each do |article| %>
+        <%= link_to article.title, article_path(article), class:"flex-item" %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 <%= render "backhomebtn" %>
