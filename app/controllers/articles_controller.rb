@@ -1,16 +1,20 @@
 class ArticlesController < ApplicationController
+  # GET /articles
   def index
     @articles = Article.all # Gets all the articles
   end
 
+  # GET /articles/:id
   def show
     @article = Article.find(params[:id]) # Gets the article with specific id
   end
 
+  # GET /articles/new
   def new
     @article = Article.new # Creates a new article but doesnt save
   end
 
+  # POST /articles
   def create
     # Initialize a new article with the inputed parameters
     @article = Article.new(article_params)
@@ -20,6 +24,30 @@ class ArticlesController < ApplicationController
     else
       render :new, status: :unprocessable_entity # Show errors
     end
+  end
+
+  # GET /articles/:id/edit
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  # PATCH /articles/:id
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params) # Attempts to update the article with the given parameters
+      redirect_to @article # If sucessful redirects to the article
+    else
+      render :edit, status: :unprocessable_entity # If unsuccesful show the errors
+    end
+  end
+
+  # DELETE /articles/:id
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to root_path, status: :see_other
   end
 
   private
