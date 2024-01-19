@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "articles#index"
 
-  # instead of manually specifying all the routes for a resource,
-  # we can instead use `resources` which'll map all the routes
+  # instead of manually specifying all the routes for a particular resource,
+  # we can instead use the `resources`keyword  which'll map all the routes for us
   resources :articles
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
