@@ -26,8 +26,8 @@ class Article < ApplicationRecord
     where(query, term_bindings)
   end
 
-  validates :title, presence: true 
-  validates :content, presence: true, length: { minimum: 10 }
+  validates :title, presence: true, length: { maximum: 100 }
+  validates :content, presence: true, length: { minimum: 10, maximum: 10000 }
   validates :author, presence: true
   validate :real_date
 
