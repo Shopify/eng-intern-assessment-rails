@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :article_by_author_and_title_exists, only: [:create]
+  before_action :article_exists, only: [:show, :edit, :update, :destroy]
+  before_action :article_by_author_and_title_exists, only: [:create, :update]
 
   def index
     @articles = if params[:article_search].present?
@@ -10,11 +11,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find_by(id: params[:id])
-
-    if @article.nil?
-      redirect_to root_path, alert: "Article not found"
-    end
   end
 
   def new
@@ -25,24 +21,19 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params.merge(date: Date.today))
 
     if @article.save
-      redirect_to @article
-
+      # head means send responses with only headers to the browser
+      redirect_to @article, head: :created
     else
+      # :new means the new.html.erb view
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    @article = Article.find(params[:id])
-
-    if @article.nil?
-      redirect_to root_path, alert: "Article not found"
-    end
   end
 
   def update
-    @article = Article.find(params[:id])
-
+    # the article is from the "before_action" code at the top
     if @article.update(article_params)
       redirect_to @article
     else
@@ -51,15 +42,13 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
-
-    if @article.nil?
-      redirect_to root_path, alert: "Article not found"
-
+    # the article is from the "before_action" code at the top
+    if @article.destroy
+      redirect_to root_path
     else
-      @article.destroy
-
-      redirect_to root_path, status: :ok
+      redirect_to root_path,
+      alert: "Article deletion failed",
+      head: :bad_request
     end
   end
 
@@ -69,11 +58,32 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :author, :content, :date)
   end
 
+  def article_exists
+    @article = Article.find_by(id: params[:id])
+
+    if @article.nil?
+      redirect_to root_path,
+      alert: "Article not found",
+      head: :not_found
+    end
+  end
+
+  # prevents duplicate articles
   def article_by_author_and_title_exists
     @article = Article.find_by(author: article_params[:author], title: article_params[:title])
 
+    template_page = action_name
+
+    case action_name
+    when "create"
+      template_page = :new
+    when "update"
+      template_page = :edit
+    end
+
     if @article
-      redirect_to root_path, alert: "Article already exists"
+      flash[:alert] = 'Article by the same title and author already exists'
+      render template_page, status: :bad_request
     end
   end
 end
