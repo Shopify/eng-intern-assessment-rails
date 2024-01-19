@@ -1,0 +1,10 @@
+<header>
+  <h1>Encyclopedia</h1>
+</header>
+
+<h1 class="header-title">Update Article</h1>
+
+<div class="container">
+  <%= render "form", article: @article %>
+</div>
+<%= button_to "Return Home", root_path, method: :get, class: "button-like home-button" %>
