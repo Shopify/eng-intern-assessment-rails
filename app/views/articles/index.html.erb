@@ -5,8 +5,9 @@
 
 <%= render 'search_bar' %>
 
-<ul>
-  <% @articles.each do |article|%>
+<% if @articles.present? %>
+  <ul>
+  <% @articles.each do |article| %>
     <li>
       <div>
         <%= link_to article.title, article %>
@@ -14,6 +15,10 @@
       </div>
     </li>
   <% end %>
-</ul>
+  </ul>
+<% else %>
+  <p>No articles available.</p>
+<% end %>
+<br>
 
 <%= link_to 'Create New Article', new_article_path, class: 'button' %> 

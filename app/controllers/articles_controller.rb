@@ -21,8 +21,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params.merge(date: Date.today))
 
     if @article.save
-      # head means send responses with only headers to the browser
-      redirect_to @article, head: :created
+      render :show, status: :created
     else
       # :new means the new.html.erb view
       render :new, status: :unprocessable_entity
@@ -44,11 +43,10 @@ class ArticlesController < ApplicationController
   def destroy
     # the article is from the "before_action" code at the top
     if @article.destroy
-      redirect_to root_path
+      render :index, status: :ok
     else
-      redirect_to root_path,
-      alert: "Article deletion failed",
-      head: :bad_request
+      flash[:alert] = "Article deletion failed"
+      render :index, status: :bad_request
     end
   end
 
@@ -62,15 +60,14 @@ class ArticlesController < ApplicationController
     @article = Article.find_by(id: params[:id])
 
     if @article.nil?
-      redirect_to root_path,
-      alert: "Article not found",
-      head: :not_found
+      flash[:alert] = "Article not found"
+      render :index, status: :not_found
     end
   end
 
   # prevents duplicate articles
   def article_by_author_and_title_exists
-    @article = Article.find_by(author: article_params[:author], title: article_params[:title])
+    duplicate_article = Article.find_by(author: article_params[:author], title: article_params[:title])
 
     template_page = action_name
 
@@ -81,7 +78,7 @@ class ArticlesController < ApplicationController
       template_page = :edit
     end
 
-    if @article
+    if duplicate_article
       flash[:alert] = 'Article by the same title and author already exists'
       render template_page, status: :bad_request
     end
