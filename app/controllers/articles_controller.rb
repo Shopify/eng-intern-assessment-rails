@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
+  include ErrorHandler
+
   # GET /articles
   def index
-    @articles = Article.all.order('created_at DESC')
+    @articles = Article.all.order('date DESC')
   end
 
   # GET /articles/:id
@@ -71,13 +73,5 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render_not_found
-  end
-
-  # Renders a 404 Not Found error.
-  def render_not_found
-    respond_to do |format|
-      format.html { render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found }
-      format.json { render json: { error: 'Not Found' }, status: :not_found }
-    end
   end
 end
