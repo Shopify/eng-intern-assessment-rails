@@ -1,0 +1,30 @@
+<%# Homepage to perform any of the CRUD functions %>
+<p style="color: green"><%= notice %></p>
+
+<h1>Articles</h1>
+
+<div id="articles">
+  <% @articles.each do |article| %>
+    <%= render article %>
+    <p>
+      <%= link_to "Show this article", article %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New article", new_article_path %>
+
+<div>
+  <h2>Search Articles</h2>
+  <%= form_with(url: articles_path, method: :get) do |form| %>
+    <%= form.text_field :search, placeholder: "Search articles..." %>
+    <%= form.submit "Search" %>
+  <% end %>
+</div>
+
+<% if @search_results.present? %>
+  <h2>Search Results</h2>
+  <% @search_results.each do |result| %>
+    <%= render result %>
+  <% end %>
+<% end %>
