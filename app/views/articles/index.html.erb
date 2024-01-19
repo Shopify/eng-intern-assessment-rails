@@ -1,0 +1,24 @@
+<h1>All Articles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.author %></td>
+        <td><%= article.date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
