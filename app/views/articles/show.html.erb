@@ -1,13 +1,19 @@
-<h1><%= @article.title %></h1>
+<header>
+  <h1>Encyclopedia</h1>
+</header>
 
-<p><%= @article.content %></p>
+<h1 class="header-title"><%= "Title: " + @article.title %></h1>
+<h3 class="subheader-title"><%= "Author: " + @article.author %></h3> 
+<h3 class="subheader-title"><%= "Date: " + @article.date.strftime("%B %d, %Y") %></h3> 
 
-<ul>
-    <li> <%= link_to "Edit", edit_article_path(@article) %> </li>
-    <li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+<p class="article-content"><%= @article.content %></p>
 
-<%= link_to "Home", root_path %>
+<div class="buttons-container">
+  <%= link_to "Update", edit_article_path(@article), class: "button-like" %>
+  <%= link_to "Delete", article_path(@article), 
+              method: :delete, 
+              data: { confirm: "Are you sure?" }, 
+              class: "button-like" %>
+</div>
+
+<%= link_to "Return Home", root_path, class: "button-like home-button" %>
