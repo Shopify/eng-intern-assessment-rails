@@ -23,7 +23,6 @@ class ArticlesController < ApplicationController
     def create
         @article = Article.new(article_params)
         if @article.save
-            @article = Article.new
             redirect_to @article, notice: 'Article was created.'
         else
             render 'new', status: :unprocessable_entity, notice: 'Article was not created.'
@@ -59,6 +58,3 @@ class ArticlesController < ApplicationController
         params.require(:article).permit(:title, :content, :author, :date)
     end
 end
-
-
-    
