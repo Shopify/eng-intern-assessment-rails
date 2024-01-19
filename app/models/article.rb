@@ -26,6 +26,7 @@ class Article < ApplicationRecord
     where(query, term_bindings)
   end
 
+  # Validate with input bounds so articles are not too large
   validates :title, presence: true, length: { maximum: 100 }
   validates :content, presence: true, length: { minimum: 10, maximum: 10000 }
   validates :author, presence: true
