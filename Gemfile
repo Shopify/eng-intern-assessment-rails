@@ -47,6 +47,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  # Latest stable release for the testing framwork rspec, compatible with Rail 6.1 or 7.x -> https://github.com/rspec/rspec-rails?tab=readme-ov-file
+  gem 'rspec-rails', '~> 6.1.0'
 end
 
 group :development do
