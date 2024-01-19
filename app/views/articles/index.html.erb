@@ -2,7 +2,7 @@
 
 <h1>Articles</h1>
 
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -25,17 +25,6 @@
       <td><%= link_to 'Edit' , edit_article_path(article) %></td>
       <td><%= link_to 'Delete' , article, method: :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>
-   
-
-      
-
-
-
-
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
   <% end %>
 </div>
 
