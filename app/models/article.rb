@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
     # title and content are required fields
-    validates: title, presence: true
-    validates: content, presence: true
+    validates :title, presence: true
+    validates :content, presence: true
 
     # search method
     def self.search(keyword)
