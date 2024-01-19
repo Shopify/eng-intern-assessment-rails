@@ -1,6 +1,5 @@
 class Article < ApplicationRecord
-  validates :title, presence: true
-  validates :content, presence: true, length: { minimum: 3 }
+  validates :title, presence: true, length: { minimum: 1 }
 
   def self.search(query)
     if query.present?
