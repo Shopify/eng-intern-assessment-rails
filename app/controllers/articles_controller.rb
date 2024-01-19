@@ -2,7 +2,11 @@ class ArticlesController < ApplicationController
   before_action :article_by_author_and_title_exists, only: [:create]
 
   def index
-    @articles = Article.all
+    @articles = if params[:article_search].present?
+                    Article.search(params[:article_search])
+                  else
+                    Article.all
+                  end
   end
 
   def show
@@ -18,7 +22,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = Article.new(article_params.merge(date: Date.today))
 
     if @article.save
       redirect_to @article

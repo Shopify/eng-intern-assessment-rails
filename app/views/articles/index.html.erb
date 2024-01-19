@@ -2,11 +2,14 @@
 
 <%= render "layouts/alert" %>
 
+<%= render 'search_bar' %>
+
 <ul>
   <% @articles.each do |article|%>
     <li>
       <div>
         <%= link_to article.title, article %>
+        <%= article.date %>
       </div>
     </li>
   <% end %>
