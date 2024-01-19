@@ -1,5 +1,10 @@
-<h1>Edit Article </h1>
+<header>
+  <h1>Encyclopedia</h1>
+</header>
 
-<%= render "form", article: @article %>
+<h1 class="header-title">Update Article</h1>
 
-<%= link_to "Home", root_path %>
+<div class="container">
+  <%= render "form", article: @article %>
+</div>
+<%= button_to "Return Home", root_path, method: :get, class: "button-like home-button" %>
