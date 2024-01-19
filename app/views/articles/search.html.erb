@@ -1,12 +1,12 @@
 <%= link_to "Home", articles_index_url %>
 <h1> Search Results</h1>
 
-<%= render "searchbar", article: @article %>
+<%= render "search_bar", article: @article %>
 
 <% @articles = Article.search(params[:query]) %>
 
 <% if @articles.any? %>
-  <%= render "articlelist", article: @article %>
+  <%= render "article_list", article: @article %>
 <% else %> 
   <p>No articles found.</p>
 <% end %>
