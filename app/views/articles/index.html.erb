@@ -2,16 +2,16 @@
 <%= render "searchForm" %>
 
 <ul>
-    <% @articles.each do |article| %>
-        <li>
-            <%= link_to article.title, article %>
-        </li>
-    <% end %>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
 </ul>
 
 <%# Added link to create new article %>
 <%# new_article_path is a helper method that returns 
-    the path to the new action 
-    in the articles controller. %>
+  the path to the new action 
+  in the articles controller. %>
 <%= link_to 'New Article', new_article_path %>
 

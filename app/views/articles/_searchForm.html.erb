@@ -1,3 +1,4 @@
+<%# Form for search bar %>
 <%= form_tag(search_articles_path, method: :get) do %>
   <%= text_field_tag :query, params[:query], placeholder: "Search articles..." %>
   <%= submit_tag "Search" %>

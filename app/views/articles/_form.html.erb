@@ -1,35 +1,36 @@
 
 <%= form_with model: article do |form| %>
-    <div>
-        <%= form.label :title %><br>
-        <%= form.text_field :title %>
-        <%# Error message based on validations %>
-        <% article.errors.full_messages_for(:title).each do |msg| %>
-            <p><%= msg %></p>
-        <% end %>
-    </div>
+	<div>
+		<%= form.label :title %><br>
+		<%= form.text_field :title %>
+		<%# Error message based on validations %>
+		<% article.errors.full_messages_for(:title).each do |msg| %>
+			<p><%= msg %></p>
+		<% end %>
+	</div>
 
-    <div><br>
-        <%= form.label :content %><br>
-        <%= form.text_area :content %>
-        <%# Error message based on validations %>
-        <% article.errors.full_messages_for(:content).each do |msg| %>
-            <p><%= msg %></p>
-        <% end %>
-    </div>
+	<div><br>
+		<%= form.label :content %><br>
+		<%= form.text_area :content %>
+		<%# Error message based on validations %>
+		<% article.errors.full_messages_for(:content).each do |msg| %>
+			<p><%= msg %></p>
+		<% end %>
+	</div>
 
-    <div><br>
-        <%= form.label :author %><br>
-        <%= form.text_field :author %>
-    </div>
+	<%# Author Input %>
+	<div><br>
+		<%= form.label :author %><br>
+		<%= form.text_field :author %>
+	</div>
 
-    <div><br>
-        <%= form.label :date%><br>
-        <%= form.date_field :date %>
-    </div>
+	<div><br>
+		<%= form.label :date%><br>
+		<%= form.date_field :date %>
+	</div>
 
-    <div><br>
-        <%= form.submit %>
-    </div>
+	<div><br>
+		<%= form.submit %>
+	</div>
 <% end %>
 

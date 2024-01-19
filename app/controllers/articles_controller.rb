@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   end
 
   # method to save an article
-  def create 
+  def create
     @article = Article.new(article_params)
 
     if @article.save
@@ -47,6 +47,7 @@ class ArticlesController < ApplicationController
     redirect_to root_path status: :see_other
   end
 
+  # method to search for an article
   def search
     @results = Article.search(params[:query])
   end
@@ -57,5 +58,3 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :content, :author, :date)
     end
 end
-
-
