@@ -1,8 +1,12 @@
-<div>
-  <%= form.label header_text %><br>
-  <%= form.text_area header_text %>
+<%# false by default unless explicity stated %>
+<% mandatory_field = local_assigns[:mandatory_field] || false %>
 
-  <% error_messages = model.errors.full_messages_for(header_text) %>
+<div>
+  <% formatted_attribute = mandatory_field ? attribute.to_s + '*' : attribute %>
+  <%= form.label formatted_attribute %><br>
+  <%= form.text_area attribute %>
+
+  <% error_messages = model.errors.full_messages_for(attribute) %>
   <% if error_messages.any? %>
     <%= error_messages.each do |message| %>
       <div><%= message %></div>>
