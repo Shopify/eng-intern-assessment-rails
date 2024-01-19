@@ -3,8 +3,13 @@
 <p>Date: <%= @article.date.strftime('%Y-%m-%d') %></p>
 <br>
 <p><%= @article.content %></p>
+<br>
 
-<%= render "layouts/navigation", locals: { title: "Edit", path: edit_article_path(@article) } %>
+<%= link_to 'Edit', edit_article_path(@article), class: 'button' %> 
+<br>
+
+<%= button_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure you to delete this article?' }, class: 'button' %>
+<br>
 
 <%= render "layouts/navigation", locals: { title: "Home", path: root_path } %>
 

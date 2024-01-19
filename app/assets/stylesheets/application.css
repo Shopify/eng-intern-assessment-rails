@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+.button {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    user-select: none;
+    background-color: #f5f5f5;
+    background-image: none;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    margin-bottom: 10px;
+
+}
+
+.button:hover {
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+/* clicked state */
+.button:active {
+    background-color: #d4d4d4;
+    border-color: #8c8c8c;
+}

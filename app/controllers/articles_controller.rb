@@ -46,6 +46,19 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    @article = Article.find(params[:id])
+
+    if @article.nil?
+      redirect_to root_path, alert: "Article not found"
+
+    else
+      @article.destroy
+
+      redirect_to root_path, status: :ok
+    end
+  end
+
   private
 
   def article_params
