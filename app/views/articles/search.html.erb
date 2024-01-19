@@ -1,9 +1,9 @@
 <%= link_to 'Back', articles_path %>
-<!-- Check if the search matches any current articles -->
+<%# Check if the search matches any current articles %>
 <% if @results.any? %>
 <h2>Search Results:</h2>
   <ul>
-    <!-- Go through and list out each article that the search matches-->
+     <%# Go through and list out each article that the search matches %>
     <% @results.each do |article| %>
       <li><%= link_to article.title, article %></li>
     <% end %>

@@ -1,5 +1,5 @@
-
 <%= form_with model: article do |form| %>
+	<%# Title Input %>
 	<div>
 		<%= form.label :title %><br>
 		<%= form.text_field :title %>
@@ -9,6 +9,7 @@
 		<% end %>
 	</div>
 
+	<%# Content Input %>
 	<div><br>
 		<%= form.label :content %><br>
 		<%= form.text_area :content %>
@@ -24,6 +25,7 @@
 		<%= form.text_field :author %>
 	</div>
 
+	<%# Date Input %>
 	<div><br>
 		<%= form.label :date%><br>
 		<%= form.date_field :date %>

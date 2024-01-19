@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #Adding routes 
+  #Adding routes
   root "articles#index"
 
   # Adding routes for articles
@@ -11,4 +11,3 @@ Rails.application.routes.draw do
     end
   end
 end
- 

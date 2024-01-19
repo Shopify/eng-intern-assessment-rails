@@ -4,7 +4,7 @@
 <p><%= @article.author %></p>
 <p><%= @article.date %></p>
 
-<%#  %>
+<%# Edit and delete buttons %>
 <button><%= link_to 'Edit', edit_article_path(@article) %> </button>
 <button><%= link_to 'Delete', article_path(@article), data: {
     turbo_method: :delete,
