@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "articles#index"
 
   # instead of manually specifying all the routes for a particular resource,
-  # we can instead use the `resources`keyword  which'll map all the routes for us
+  # we can instead use the `resources` keyword  which'll map all the routes for us
   resources :articles
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

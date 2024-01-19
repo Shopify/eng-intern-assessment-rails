@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # prevent bad actors, specifies what values are allowed in an Article upon creation
+    # strong parameters to specify what attributes are permitted
     def article_params
       params.require(:article).permit(:title, :content, :author)
     end

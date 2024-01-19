@@ -1,8 +1,0 @@
-<%= form_with model: article do |form| %>
-  <%= render partial: "text_input", locals: {form: form, model: article, field_text: :title } %>
-  <%= render partial: "text_input", locals: {form: form, model: article, field_text: :content } %>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
