@@ -168,6 +168,7 @@ button:disabled, .button-like:disabled {
 .error-message {
     color: red;
     margin-top: 5px;
+    padding: 0px 0px;
 }
 
 .article-form {
