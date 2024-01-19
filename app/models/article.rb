@@ -32,7 +32,6 @@ class Article < ApplicationRecord
   validates :author, presence: true
   validate :real_date
 
-  # Validates that the date is a real date
   private
     def real_date
       begin
