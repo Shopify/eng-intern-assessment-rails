@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
-  # homepage; 
+  # list of articles that match the search query
   def index
     @articles = Article.search(params[:search])
   end
 
-  # shows the details of a specific article
+  # metadata of a specific article
   def show
     @article = Article.find(params[:id])
   end
@@ -16,10 +16,10 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    # on successful instantiation, redirect to the article's respective page
     if @article.save
-      redirect_to @article # redirect > render since we don't want browser refreshes to make the same call
-    # otherwise, display an error status code
+      # small note: redirect is better than render here since we don't want
+      # browser refreshes to make the same call (and thus duplicating the data)
+      redirect_to @article
     else
       render :new, status: :unprocessable_entity
     end
