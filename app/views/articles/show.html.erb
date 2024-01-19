@@ -10,10 +10,10 @@
 
 <div class="buttons-container">
   <%= link_to "Update", edit_article_path(@article), class: "button-like" %>
-  <%= link_to "Delete", article_path(@article), 
-              method: :delete, 
-              data: { confirm: "Are you sure?" }, 
-              class: "button-like" %>
+  <%= link_to "Delete", article_path(@article), data: { 
+                  turbo_method: :delete, 
+                  turbo_confirm: "Are you sure?" }, 
+                  class: "button-like" %>
 </div>
 
 <%= link_to "Return Home", root_path, class: "button-like home-button" %>
