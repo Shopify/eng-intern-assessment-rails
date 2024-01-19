@@ -1,19 +1,6 @@
 <%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-    <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :content %><br>
-    <%= form.text_area :content %>
-    <% article.errors.full_messages_for(:content).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+  <%= render partial: "text_input", locals: {form: form, model: article, field_text: :title } %>
+  <%= render partial: "text_input", locals: {form: form, model: article, field_text: :content } %>
 
   <div>
     <%= form.submit %>

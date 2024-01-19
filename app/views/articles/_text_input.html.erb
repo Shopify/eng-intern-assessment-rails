@@ -1,0 +1,11 @@
+<div>
+  <%= form.label field_text %><br>
+  <%= form.text_area field_text %>
+
+  <% error_messages = model.errors.full_messages_for(field_text) %>
+  <% if error_messages.any? %>
+    <%= error_messages.each do |message| %>
+      <div><%= message %></div>>
+    <% end %>
+  <% end %>
+</div>

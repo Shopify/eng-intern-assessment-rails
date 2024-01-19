@@ -1,8 +1,10 @@
 class ArticlesController < ApplicationController
+  # homepage; 
   def index
-    @articles = Article.all
+    @articles = Article.search(params[:search])
   end
 
+  # shows the details of a specific article
   def show
     @article = Article.find(params[:id])
   end
@@ -47,6 +49,6 @@ class ArticlesController < ApplicationController
   private
     # prevent bad actors, specifies what values are allowed in an Article upon creation
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title, :content, :author)
     end
 end

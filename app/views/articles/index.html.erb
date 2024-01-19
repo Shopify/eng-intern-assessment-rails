@@ -1,10 +1,13 @@
 <h1>Articles</h1>
 
+<%= form_with url: articles_path, method: :get do |form| %>
+  <%= form.text_field :search, value: params[:search], placeholder: "Search Articles" %>
+  <%= form.submit "Search" %>
+<% end %>
+
 <ul>
   <% @articles.each do |article| %>
     <li>
-      <%# first argument := link's text %>
-      <%# second argument := link's destination (model gets automatically converted) %>
       <%= link_to article.title, article %>
     </li>
   <% end %>
