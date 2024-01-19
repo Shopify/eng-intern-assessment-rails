@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     
     if @article.save
-      redirect_to @article
+      redirect_to @article, notice: 'Article was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     
     if @article.update(article_params)
-      redirect_to @article
+      redirect_to @article, notice: 'Article was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
     
-    redirect_to root_path, status: :see_other
+    redirect_to root_path, notice: 'Article was successfully deleted.'
   end
   
   def search
