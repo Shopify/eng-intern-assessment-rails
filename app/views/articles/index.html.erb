@@ -1,0 +1,18 @@
+<h1>Encyclopedia On Rails</h1>
+
+
+<%= form_tag(articles_path, method: :get) do %>
+    <%= text_field_tag :query, params[:query], placeholder: "Search articles" %>
+    <%= submit_tag "Search" %>
+<% end %>
+
+<ul>
+    <% @articles.each do |article| %>
+        <li>
+            <%= link_to article.title, article_path(article) %>
+        </li>
+    <% end %>
+</ul>
+<p>-----------------------------------------------------</p>
+<%= link_to "Create New Articles", new_article_path %>
+

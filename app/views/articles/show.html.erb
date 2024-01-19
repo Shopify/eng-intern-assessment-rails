@@ -1,0 +1,36 @@
+<h1><%= @article.title %></h1>
+
+<p><%= @article.content %></p>
+<p>-----------------------------------------------------</p>
+
+<h2>Edit Article</h2>
+
+<%= form_with(model: @article, local: true) do |form| %>
+    <div>
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+  
+    <div>
+      <%= form.label :author %>
+      <%= form.text_field :author %>
+    </div>
+  
+    <div>
+      <%= form.label :date %>
+      <%= form.date_field :date %>
+    </div>
+  
+    <div>
+      <%= form.label :content %>
+      <%= form.text_area :content %>
+    </div>
+  
+    <div>
+      <%= form.submit "Edit Article" %>
+    </div>
+  <% end %>
+  <p>-----------------------------------------------------</p>
+  <%= link_to "Delete Article", article_path(@article), data: {turbo_method: :delete,  turbo_confirm: 'Are you sure?' } %>
+  <p>-----------------------------------------------------</p>
+  <%= link_to "Back to Articles", articles_path %>
