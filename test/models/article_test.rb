@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+
+  # clear the database before each test
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -64,5 +70,13 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'displays all articles in search results' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('')
+    assert_includes results, article2
+    assert_includes results, article1
   end
 end
