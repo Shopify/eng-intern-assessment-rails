@@ -1,26 +1,28 @@
-<h1>Search Articles</h1>
+<header>
+  <h1>Encyclopedia</h1>
+</header>
 
-<%= form_with url: search_articles_path, method: :get do |form| %>
-  <%= form.text_field :search_term %>
-  <%= form.submit "Search" %>
+<h1 class="header-title">Search Articles</h1>
+
+<%= form_with url: search_articles_path, method: :get, class: "search-form" do |form| %>
+  <%= form.text_field :search_term, class: "search-input" %>
+  <%= form.submit "Search", class: "search-button" %>
 <% end %>
 
 <% if @error.present? %>
-  <p><%= @error %></p><br>
+  <p class="error-message"><%= @error %></p><br>
 <% end %>
 
 <% if @articles.present? %>
-<ul>
+<ul class="articles-list">
   <% @articles.each do |article| %>
-    <li>
-      <h3><%= link_to article.title, article %></h3>
-      <p><%= article.content %></p>
+    <li class="article-item">
+      <h3><%= link_to article.title, article, class: "article-title" %></h3>
+      <p class="article-content"><%= article.content %></p>
     </li>
   <% end %>
 </ul>
 <% elsif params[:search_term].present? %>
-  <p>No articles found for "<%= params[:search_term] %>".</p>
+  <p class="no-articles-found">No articles found for "<%= params[:search_term] %>".</p>
 <% end %>
-
-
-<%= link_to "Home", root_path %>
+<%= button_to "Return Home", root_path, method: :get, class: "home-button" %>
