@@ -1,0 +1,9 @@
+<h1><%= @article.title %><%= @article.author.present? ? " - " + @article.author : "" %></h1>
+<p style="font-size: smaller;"><em><%= @article.date %></em></p>
+<p><%= @article.content %></p>
+<p>-----------------------------------------------------</p>
+<%= link_to "Edit Article", edit_article_url %>
+<br>
+<%= link_to "Delete Article", article_path(@article), data: {turbo_method: :delete,  turbo_confirm: 'Are you sure?' } %>
+<br>
+<%= link_to "Back to Articles", articles_path %>
