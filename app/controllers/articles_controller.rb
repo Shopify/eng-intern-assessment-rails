@@ -58,6 +58,7 @@ class ArticlesController < ApplicationController
   end
 
 
+  #GET /articles based on params entered in form by user
   def search    
     @articles = Article.where("concat_ws(' ', title, content) LIKE ?", "%" + params[:q].to_s + "%")
   end

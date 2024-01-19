@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  # root to: 'home#index'
+  #homepage route
   get 'home/index'
-  get 'home/about'
 
+  #search page route
   get 'search', to: 'articles#search'
 
   resources :articles
