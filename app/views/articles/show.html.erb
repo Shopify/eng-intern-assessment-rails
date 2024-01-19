@@ -4,4 +4,9 @@
 <p><%= @article.author %></p>
 <p><%= @article.date %></p>
 
-<button><%= link_to 'Edit', edit_article_path(@article) %> </li>
+<%#  %>
+<button><%= link_to 'Edit', edit_article_path(@article) %> </button>
+<button><%= link_to 'Delete', article_path(@article), data: {
+        turbo_method: :delete,
+        turbo_confirm: :"Are you sure you want to delete this item?"
+    } %> </button>
