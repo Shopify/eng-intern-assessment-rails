@@ -47,6 +47,10 @@ class ArticlesController < ApplicationController
     redirect_to root_path status: :see_other
   end
 
+  def search
+    @results = Article.search(params[:query])
+  end
+
   # private method to prevent access to the article params
   private
     def article_params

@@ -1,0 +1,12 @@
+<!-- app/views/articles/search.html.erb -->
+
+<% if @results.any? %>
+  <h2>Search Results:</h2>
+  <ul>
+    <% @results.each do |article| %>
+      <li><%= link_to article.title, article %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No results found.</p>
+<% end %>
