@@ -44,7 +44,7 @@ ul li {
 button, .button-like {
     display: inline-block;
     padding: 10px 20px;
-    margin: 20px 0;
+    margin: 20px ;
     background-color: #333;
     color: white;
     text-decoration: none;
@@ -74,10 +74,17 @@ button:disabled, .button-like:disabled {
     padding: 0 20px;
 }
 
+.subheader-title {
+    font-size: 1em;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
 .search-form {
     width: 100%;
-    max-width: 500px;
-    margin: 20px auto;
+    max-width: 1000px;
+    padding: 0 20px;
+
 }
 
 .search-input {
@@ -90,6 +97,7 @@ button:disabled, .button-like:disabled {
 
 .search-button {
     padding: 10px 20px;
+    margin-top: 1%;
     background-color: #333;
     color: white;
     border: none;
@@ -122,6 +130,8 @@ button:disabled, .button-like:disabled {
 
 .article-content {
     color: #666;
+    padding: 0 20px;
+    margin-bottom: 20px;
 }
 
 .error-message, .no-articles-found {
@@ -129,13 +139,59 @@ button:disabled, .button-like:disabled {
     padding: 0 20px;
 }
 
-.home-link {
-    display: inline-block;
-    margin: 20px 20px;
-    color: #333;
-    text-decoration: none;
+.home-button {
+    padding-left: 20px;
 }
 
-.home-link:hover {
-    color: #555;
+
+.form-group {
+    margin-bottom: 20px;
 }
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.form-control-content {
+    width: 100%;
+    height: 600%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+}
+
+.article-form {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.create-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+  }
