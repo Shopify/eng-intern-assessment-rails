@@ -1,5 +1,14 @@
 <h1>Articles</h1>
 
+<%= link_to 'New Article', new_article_path %>
+<hr>
+
+<%= form_tag(articles_path, method: "get", class: "search-form") do %>
+  <%= text_field_tag(:query, params[:query], placeholder: "Search articles...") %>
+  <%= submit_tag("Search") %>
+<% end %>
+<hr>
+
 <ul>
   <% @articles.each do |article| %>
     <li><%= link_to article.title, article_path(article) %></li>

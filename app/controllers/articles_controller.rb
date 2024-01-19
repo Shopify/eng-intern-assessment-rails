@@ -6,8 +6,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # Returns a JSON representation of all articles.
   def index
-    @articles = Article.all
-    render json: @articles
+    if params[:query].present?
+      @articles = Article.search(params[:query])
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/count
