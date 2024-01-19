@@ -2,45 +2,5 @@
 <%= link_to 'Back', articles_path %>
 <h1> New Article </h1>
 
-<%= form_with model: @article do |form| %>
-    <div>
-        <%= form.label :title %><br>
-        <%= form.text_field :title %>
-        <%# Error message based on validations %>
-        <% @article.errors.full_messages_for(:title).each do |msg| %>
-            <p><%= msg %></p>
-        <% end %>
-    </div>
-
-    <div><br>
-        <%= form.label :body %><br>
-        <%= form.text_area :body %>
-        <%# Error message based on validations %>
-        <% @article.errors.full_messages_for(:content).each do |msg| %>
-            <p><%= msg %></p>
-        <% end %>
-    </div>
-
-    <div><br>
-        <%= form.label :author %><br>
-        <%= form.text_field :author %>
-            <%# Error message based on validations %>
-        <% @article.errors.full_messages_for(:author).each do |msg| %>
-            <p><%= msg %></p>
-        <% end %>
-    </div>
-
-    <div><br>
-        <%= form.label :date%><br>
-        <%= form.date_field :date %>
-        <%# Error message based on validations %>
-        <% @article.errors.full_messages_for(:date).each do |msg| %>
-            <p><%= msg %></p>
-        <% end %>
-    </div>
-
-    <div><br>
-        <%= form.submit %>
-    </div>
-<% end %>
+<%= render "form", article: @article%>
 
