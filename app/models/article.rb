@@ -5,10 +5,8 @@ class Article < ApplicationRecord
   #
   # @param search_term [String] The search term(s) to query.
   # @return [ActiveRecord::Relation] A relation containing records that match the search criteria.
-  # @note SECURITY: index is an internal constant - not provided by user.
 
   def self.search(search_term)
-
     terms = search_term.split
 
     # SECURITY: index is an internal constant - not provided by user
@@ -31,5 +29,15 @@ class Article < ApplicationRecord
   validates :title, presence: true 
   validates :content, presence: true, length: { minimum: 10 }
   validates :author, presence: true
-  validates :date, presence: true
+  validate :real_date
+
+  # Validates that the date is a real date
+  private
+    def real_date
+      begin
+        Date.parse(date.to_s)
+      rescue ArgumentError
+        errors.add(:date, 'is not a valid date')
+    end
+  end
 end
