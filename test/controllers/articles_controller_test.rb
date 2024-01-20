@@ -87,4 +87,28 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to root_path
   end
+
+  test "can upload image as cover photo" do
+    assert_difference("Article.count") do
+      post articles_url, params: {
+        article: {
+          title: "Article Title",
+          content: "This is a sentence about stuff.",
+          cover_photo: file_fixture_upload("test/fixtures/files/toon_link.jpg", "image/jpg")} }
+    end
+
+    assert_redirected_to article_url(Article.last)
+  end
+
+  test "cannot upload PDF as cover photo" do
+    assert_no_difference("Article.count") do
+      post articles_url, params: {
+        article: {
+          title: "Article Title",
+          content: "This is a sentence about stuff.",
+          cover_photo: file_fixture_upload("test/fixtures/files/Lorem_ipsum.pdf")} }
+    end
+
+    assert_response :unprocessable_entity
+  end
 end

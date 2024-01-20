@@ -32,6 +32,14 @@
   </div>
 
   <div>
+    <%= form.label :cover_photo %><br>
+    <%= form.file_field :cover_photo %><br>
+    <% article.errors.full_messages_for(:cover_photo).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

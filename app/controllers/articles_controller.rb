@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   # Implements C in MVC for all articles
+
   def index
     @articles = Article.all
   end
@@ -50,6 +51,6 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :content, :author, :date)
+      params.require(:article).permit(:title, :content, :author, :date, :cover_photo)
     end
 end
