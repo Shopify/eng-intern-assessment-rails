@@ -14,6 +14,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
+  test 'should not create article with empty title' do
+    article = Article.new(title: "", content: "Some content")
+    assert_not article.save, "Saved the article without a title"
+  end
+
+  test 'should not create article with empty content' do 
+    article = Article.new(title: "", content: "Some content")
+    assert_not article.save, "Saved the article without a title"
+  end
+  
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
