@@ -1,9 +1,10 @@
 <h1>Articles</h1>
 
-<%= link_to 'Create New Article', new_article_path, class: 'btn btn-primary' %>
+<%= button_to 'Create New Article', new_article_path, method: :get %>
 
-<ul>
-  <% @articles.each do |article| %>
-    <li><%= article.title %></li>
-  <% end %>
-</ul>
+<% @articles.each do |article| %>
+  <div><%= article.title %></div>
+  <%= button_to 'View Article', article_path(article), method: :get %>
+  <%= button_to 'Update Article', edit_article_path(article), method: :get %>
+  <%= button_to 'Delete Article', article_path(article), method: :delete %>
+<% end %>

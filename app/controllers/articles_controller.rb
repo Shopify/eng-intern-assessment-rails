@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ show edit update ]
+  before_action :set_article, only: %i[ show edit update destroy ]
 
   def index
     @articles = Article.all
@@ -12,6 +12,10 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+  end
+
+  # GET /articles/deleted
+  def deleted
   end
 
   # GET /articles/<:id>/edit
@@ -34,9 +38,25 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
+        print "RAN"
         format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
       else
+        print "DIDNT RUN"
         format.html { render :new, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /articles/<:id> or /articles/<:id>.json
+  def destroy
+    print "DELETING"
+    respond_to do |format|
+      if @article.destroy
+        print "RAN"
+        format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
+      else
+        print "DIDNT RUN"
+        format.html { redirect_to articles_url, alert: "Article could not be destroyed." }
       end
     end
   end
