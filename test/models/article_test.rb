@@ -65,4 +65,39 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'displays all articles when search term is empty' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+
+  test 'displays relevant articles when search term in either of title, content, or author' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+    article2 = Article.create(title: 'Another John Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Jane Smith')
+    article3 = Article.create(title: 'Yet Another Article', content: 'John ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Jane Doe')
+    article4 = Article.create(title: 'Yet Another Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Jane Smith')
+    results = Article.search('John')
+    assert_includes results, article1
+    assert_includes results, article2
+    assert_includes results, article3
+    assert_not_includes results, article4
+  end
+
+  test 'should not save article without title' do
+    article = Article.new(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.save, 'Saved the article without a title'
+  end
+
+  test 'should not save article without content' do
+    article = Article.new(title: 'Sample Article')
+    assert_not article.save, 'Saved the article without content'
+  end
+
+  test 'should not save article without content and title' do
+    article = Article.new()
+    assert_not article.save, 'Saved the article without content and title'
+  end
 end
