@@ -38,7 +38,7 @@ Add the following block comment at the beginning of each Ruby file:
 # Programmer Name: [Your Name]
 # Description: This file contains the implementation of [briefly describe the purpose or functionality of the file].
 #              [You can provide additional details about the file here if necessary].
-# Date: [Current Date]
+# Date: [Current Date (YYYY-MM-DD)]
 #
 # Notes:
 # - [Any additional notes or considerations related to the file can be mentioned here].
@@ -53,7 +53,7 @@ Web Component Documentation follows a similar format:
 <!-- Programmer Name: [Your Name] -->
 <!-- Description: This file contains the HTML and ERB code for [briefly describe the purpose or functionality of the file].
                  [You can provide additional details about the file here if necessary]. -->
-<!-- Date: [Current Date] -->
+<!-- Date: [Current Date (YYYY-MM-DD)] -->
 <!--
 Notes:
 - [Any additional notes or considerations related to the file can be mentioned here].
@@ -62,11 +62,14 @@ Notes:
 ```
 
 ### Rails Generators
-Track used generators in the generator log file in the docs page using the following format:
+Track used generators in the generator `rails_generator_log.md` in the docs page using the following format:
 ```Markdown
-# Programmer Name: [Your Name]
-# Date: [Current Date]
-# Description: [Brief description of the purpose of this generator]
-# Command Used: [Place the generator command you used here]
+Programmer Name: [Your Name]
+Description: [Brief description of the purpose of this generator]
+Date: [Current Date (YYYY-MM-DD)]
+Command Used: [Place the generator command you used here]
+Notes:
+- [Any additional notes or considerations related to the generator can be mentioned here].
+- [You can use this space to provide context, references, or any important information].
 ___
 ```
