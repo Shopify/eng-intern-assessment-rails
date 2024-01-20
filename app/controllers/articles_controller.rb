@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @articles, status: : }
+      format.json { render json: @articles, status: :ok }
     end
   end
 
@@ -75,6 +75,11 @@ class ArticlesController < ApplicationController
     # Use callbacks to share a common setup
     def set_article
       @article = Article.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      respond_to do |format|
+        format.html { redirect_to articles_url }
+        format.json { render json: { error: 'Invalid article ID provided' }, status: :not_found }
+      end
     end
 
     # Only allow a list of trusted parameters through.
