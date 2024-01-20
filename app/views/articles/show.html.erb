@@ -1,6 +1,7 @@
 <h1><%= @article.title %></h1>
 
-<h2>Created by: <%= @article.author %></h2>
+<h2>Author: <%= @article.author %></h2>
+<h3>Last updated: <%= @article.date || @article.updated_at %></h3>
 
 <p><%= @article.content %></p>
 
