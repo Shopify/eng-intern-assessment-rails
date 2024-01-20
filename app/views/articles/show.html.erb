@@ -1,5 +1,5 @@
 <h1><%= @article.title %></h1>
 
-<%= link_to 'All Articles', articles_path, class: 'btn btn-primary' %>
+<%= button_to 'All Articles', articles_path, method: :get %>
 
 <p><%= @article.content %></p>
