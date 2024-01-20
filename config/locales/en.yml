@@ -28,4 +28,7 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  article_controller:
+    created: "Article was successfully created."
+    updated: "Article was successfully updated."
+    destroyed: "Article was successfully destroyed."
