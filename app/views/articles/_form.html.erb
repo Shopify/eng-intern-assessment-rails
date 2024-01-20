@@ -1,63 +1,27 @@
+<% def form_field_with_errors(form, attribute) %>
+    <%= form.label attribute %>
+    <br>
+
+    <% if attribute == :date %>
+      <%= form.date_field attribute %>
+    <% else %>
+      <%= form.text_field attribute %>
+    <% end %>
+
+    <% if form.object.errors[attribute].present? %>
+      <%= form.object.errors[attribute].first.capitalize %>
+    <% end %>
+<% end %>
+
 <%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :title %>
+  <% [:title, :author, :date, :content].each do |attribute| %>
+    <div>
+      <%= form_field_with_errors(form, attribute) %>
+    </div>
     <br>
-
-    <%= form.text_field :title %>
-
-    <% if article.present? %>
-      <% article.errors.full_messages_for(:title).each do |message| %>
-        <p><%= message %></p>
-      <% end %>
-    <% end %>
-  </div>
-  <br>
-
-  <div>
-    <%= form.label :author %>
-    <br>
-
-    <%= form.text_field :author %>
-
-    <% if article.present? %>
-      <% article.errors.full_messages_for(:author).each do |message| %>
-        <p><%= message %></p>
-      <% end %>
-    <% end %>
-  </div>
-  <br>
-
-  <div>
-    <%= form.label :date %>
-    <br>
-
-    <%= form.date_field :date %>
-
-    <% if article.present? %>
-      <% article.errors.full_messages_for(:date).each do |message| %>
-        <p><%= message %></p>
-      <% end %>
-    <% end %>
-  </div>
-  <br>
-  
-  <div>
-    <%= form.label :content %>
-    <br>
-    
-    <%= form.text_field :content %>
-
-    <% if article.present? %>
-      <% article.errors.full_messages_for(:content).each do |message| %>
-        <p><%= message %></p>
-      <% end %>
-    <% end %>
-  </div>
-  <br>
+  <% end %>
 
   <div>
     <%= form.submit 'Submit', class: 'button' %>
   </div>
-  <br>
-  
 <% end %>
