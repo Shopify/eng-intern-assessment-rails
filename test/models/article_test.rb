@@ -25,6 +25,13 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal Date.today, article.date
   end
 
+  test 'does not create article without title and content' do
+    article = Article.new(author: 'John Doe')
+    assert_not article.valid?
+    assert_equal ["can't be blank"], article.errors[:title]
+    assert_equal ["can't be blank"], article.errors[:content]
+  end
+
   test 'edits an existing article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.update(content: 'Updated content')
@@ -42,6 +49,10 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
     assert_equal 0, Article.count
+  end
+
+  test 'does not find article that does not exist' do
+    assert_raises(ActiveRecord::RecordNotFound) { Article.find(100) }
   end
 
   test 'prevents access to deleted articles' do

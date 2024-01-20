@@ -1,0 +1,27 @@
+<% def form_field_with_errors(form, attribute) %>
+    <%= form.label attribute %>
+    <br>
+
+    <% if attribute == :date %>
+      <%= form.date_field attribute %>
+    <% else %>
+      <%= form.text_field attribute %>
+    <% end %>
+
+    <% if form.object.errors[attribute].present? %>
+      <%= form.object.errors[attribute].first.capitalize %>
+    <% end %>
+<% end %>
+
+<%= form_with model: article do |form| %>
+  <% [:title, :author, :date, :content].each do |attribute| %>
+    <div>
+      <%= form_field_with_errors(form, attribute) %>
+    </div>
+    <br>
+  <% end %>
+
+  <div>
+    <%= form.submit 'Submit', class: 'button' %>
+  </div>
+<% end %>

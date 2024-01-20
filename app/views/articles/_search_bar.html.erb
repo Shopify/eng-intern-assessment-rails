@@ -1,0 +1,7 @@
+<%= form_tag "/articles", method: "get" do %>
+  <%= label_tag "Search for article" %>
+  <div>
+    <%= text_field_tag :article_search, params[:article_search] %>
+    <%= submit_tag "Search", class: "button" %>
+  </div>
+<% end %>

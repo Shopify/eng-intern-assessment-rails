@@ -1,0 +1,26 @@
+<h1>Encyclopedia</h1>
+
+<%= render "layouts/alert" %>
+<br>
+
+<%= render 'search_bar' %>
+
+<% if @articles.present? %>
+  <ul>
+  <% @articles.each do |article| %>
+    <li>
+      <div>
+        <%= link_to article.title, article %>
+        <%= article.date %>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>No articles available.</p>
+<% end %>
+<br>
+
+<%= link_to 'Create New Article', new_article_path, class: 'button' %> 
+
+<%= render "layouts/navigation", locals: { title: "Home", path: root_path } %>
