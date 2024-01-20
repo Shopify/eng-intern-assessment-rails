@@ -54,8 +54,9 @@ class ArticlesController < ApplicationController
 
   def search
     if params[:search].blank?
-      redirect_to articles_url and return
+      redirect_to articles_url, status: :permanent_redirect
     else 
+      # Keep parameter formatting logic in controller to maintain isolation of concerns
       @parameter = params[:search].downcase.strip
       @articles = Article.search(@parameter).distinct
     end
