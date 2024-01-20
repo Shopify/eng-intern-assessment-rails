@@ -4,7 +4,17 @@
   <% @articles.each do |article| %>
     <li>
       <%= 'title: ' + article.title %>
-      <%= 'content: ' + article.content %>
+      <ul>
+        <li>
+          <%= 'content: ' + article.content %>
+        </li>
+        <li>
+          <%= 'author: ' + article.author.to_s %>
+        </li>
+        <li>
+          <%= 'date: ' + article.date.to_s %>
+        </li>
+      </ul>
     </li>
   <% end %>
 </ul>

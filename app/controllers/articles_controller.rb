@@ -26,15 +26,15 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :content, :author, :date)
     end
 
-  def search
+  # def search
 
-  end
+  # end
 
-  def update
+  # def update
 
-  end
+  # end
 
-  def destroy
+  # def destroy
 
-  end
+  # end
 end
