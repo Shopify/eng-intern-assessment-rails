@@ -1,0 +1,41 @@
+<%= form_with(model: @article, local: true, data: { turbo: false }) do |form| %>
+    <h1>Edit Article</h1>
+
+    <div class="form-group">
+        <%= form.label :title, 'Title *', class: 'form-label' %>
+        <%= form.text_field :title, class: 'form-control', value: @article.title %>
+        <% if @article.errors[:title].any? %>
+            <div class="error"><%= @article.errors[:title].join(", ") %></div>
+        <% end %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :content, 'Content *', class: 'form-label' %>
+        <%= form.text_area :content, class: 'form-control', value: @article.content %>
+        <% if @article.errors[:content].any? %>
+            <div class="error"><%= @article.errors[:content].join(", ") %></div>
+        <% end %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :author, class: 'form-label' %>
+        <%= form.text_field :author, class: 'form-control', value: @article.author %>
+        <% if @article.errors[:author].any? %>
+            <div class="error"><%= @article.errors[:author].join(", ") %></div>
+        <% end %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :date, 'Date', class: 'form-label' %>
+        <%= form.date_field :date, class: 'form-control', value: @article.date  %>
+        <% if @article.errors[:date].any? %>
+            <div class="error"><%= @article.errors[:date].join(", ") %></div>
+        <% end %>
+    </div>
+
+    <div class="form-group">
+        <%= link_to "Cancel", articles_path, class: 'button button-primary' %>
+        <%= form.submit 'Submit', class: 'button button-submit' %>
+    </div>
+
+<% end %>

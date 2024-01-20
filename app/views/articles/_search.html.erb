@@ -1,0 +1,4 @@
+<%= form_with(url: articles_path, method: :get, local: true, html: { class: 'form-inline my-2 my-lg-0' }) do |form| %>
+    <%= form.text_field :search, placeholder: 'Search articles...', value: params[:search], class: 'search-bar mr-sm-2' %>
+    <%= form.submit 'Search', class: 'button button-primary' %>
+<% end %>
