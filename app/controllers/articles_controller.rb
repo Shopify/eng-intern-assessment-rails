@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
   def destroy
     # the article is from the "before_action" code at the top
     if @article.destroy
-      render :index, status: :ok
+      redirect_to root_path
     else
       flash[:alert] = "Article deletion failed"
       render :index, status: :bad_request
