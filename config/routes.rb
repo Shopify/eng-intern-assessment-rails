@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   # Articles endpoints
   root "articles#index"
-
   
   resources :articles
+
+  get '/search', to: "articles#search"
 
 end

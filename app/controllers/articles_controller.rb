@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  # Setup to reduce redundant preceding actions at each endpoint
   before_action :set_article, only: %i[ show edit update destroy ]
 
   def index
@@ -51,6 +52,18 @@ class ArticlesController < ApplicationController
       format.json { render json: { message: "Article was successfully destroyed.", redirect_url: articles_url }, status: :see_other }
     end
   end
+
+  def search
+    if params[:search].blank?
+      redirect_to articles_url and return
+    else 
+      @parameter = params[:search].downcase
+      @articles = Article.all.where("lower(title) LIKE :search 
+                  OR lower(author) LIKE :search 
+                  OR lower(content) LIKE :search", search: "%#{@parameter}%").distinct
+    end
+  end
+    
 
   private 
     # Strong parameters
