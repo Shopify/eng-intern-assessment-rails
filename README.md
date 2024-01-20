@@ -1,3 +1,12 @@
+# Running the App
+1. Clone the repository to your local development environment.
+2. Install the necessary dependencies by running `bundle install` in the project directory.
+3. Run `rails db:migrate` to create the database.
+4. Run the server with `rails server`.
+5. *Optional* Run the tests with `rails test`.
+
+If ever there are issues, feel free to contact me!
+
 # Technical Instructions
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.

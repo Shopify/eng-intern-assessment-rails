@@ -7,3 +7,17 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+class CreateArticles < ActiveRecord::Migration[6.0]
+    def change
+      create_table :articles do |t|
+        t.string :title
+        t.text :content
+        t.string :author
+        t.date :date
+  
+        t.timestamps
+      end
+    end
+  end
+  

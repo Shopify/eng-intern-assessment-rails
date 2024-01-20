@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>News Site</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="my-4">Articles</h1>
+
+    <%= form_with(url: search_articles_path, method: "get", class: "search-form") do |form| %>
+      <div class="mb-3">
+        <%= form.text_field :query, class: "form-control", placeholder: "Search articles..." %>
+        <%= form.submit "Search", class: "btn btn-primary mt-2" %>
+      </div>
+    <% end %>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @articles.each do |article| %>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to article.title, article_path(article) %></h5>
+              <h6 class="card-subtitle mb-2 text-muted">Author: <%= article.author %></h6>
+              <p class="card-text"><%= truncate(article.content, length: 100) %></p>
+              <p class="card-text"><small class="text-muted">Date: <%= article.date %></small></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="d-flex justify-content-center mt-3">
+      <%= link_to 'New Article', new_article_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</body>
+</html>
