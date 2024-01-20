@@ -1,0 +1,7 @@
+<div>
+  <%= form.label attribute %><br>
+  <%= form.public_send(field_type, attribute) %>
+  <% article.errors.full_messages_for(attribute).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>

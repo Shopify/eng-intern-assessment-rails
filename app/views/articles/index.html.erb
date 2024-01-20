@@ -1,0 +1,28 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<h1>Shopify Encyclopedia</h1>
+
+<%= form_with url: articles_path, method: "get" do |form| %>
+  <%= form.label :search, "Browse Articles:" %>
+  <%= form.text_field :search, value: params[:search], placeholder: "Explore articles" %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<% if @articles.present? %>
+  <ul>
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No articles found.</p>
+<% end %>
+
+<%= link_to "Back to All", articles_path %>
+<%= link_to "New Article", new_article_path %>
