@@ -33,3 +33,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# IDE files
+/.idea
+
+# MacOS files
+.DS_Store
