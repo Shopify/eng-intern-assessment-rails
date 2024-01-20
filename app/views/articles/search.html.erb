@@ -1,0 +1,15 @@
+<h1>Search Results</h1>
+
+<% if @search_results.any? %>
+    <ul>
+    <% @search_results.each do |article| %>
+        <li>
+        <%= link_to article.title, article %>
+        </li>
+    <% end %>
+    </ul>
+<% else %>
+    <p>No results found</p>
+<% end %>
+
+<li><%= link_to "Return Home", root_path %></li>

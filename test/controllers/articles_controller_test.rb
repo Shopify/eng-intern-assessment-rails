@@ -33,6 +33,16 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get search" do
+    get search_url()
+    assert_response :success
+  end
+
+  test "should search article" do
+    get search_url(@article.title)
+    assert_response :success
+  end
+
   test "should update article" do
     patch article_url(@article), params: { article: { title: "Article Title", content: "This is a sentence about stuff." } }
     assert_redirected_to article_url(@article)

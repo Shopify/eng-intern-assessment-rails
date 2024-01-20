@@ -24,6 +24,14 @@
   </div>
 
   <div>
+    <%= form.label :date %><br>
+    <%= form.text_field :date %><br>
+    <% article.errors.full_messages_for(:date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

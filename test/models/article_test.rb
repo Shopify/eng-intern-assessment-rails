@@ -90,4 +90,12 @@ class ArticleTest < ActiveSupport::TestCase
     assert (not results.include? article1)
   end
 
+  test 'empty search shows all' do
+    article1 = Article.create(title: 'keyword article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'key word article', content: 'Lorem keyword ipsum dolor sit amet.')
+    results = Article.search('')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+
 end

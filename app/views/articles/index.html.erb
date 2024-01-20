@@ -11,3 +11,10 @@ Welcome to the Encyclopedia!
 </ul>
 
 <%= link_to "New Article", new_article_path %>
+
+<%= form_with url: "/search", method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
