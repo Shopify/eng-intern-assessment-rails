@@ -1,0 +1,14 @@
+<h1>Edit Article</h1>
+
+<diV class="div-create-article">
+  <h2>Update Article</h2>
+  <%= render "create_article_form", article: @article %>
+</div>
+
+<div class="div-btn-index">
+  <a href="<%= article_path %>">
+  <button class="btn-index-page">Back To <%= @article.title %></button>
+  </a>
+</div>
+
+<%= render "back_home_btn" %>

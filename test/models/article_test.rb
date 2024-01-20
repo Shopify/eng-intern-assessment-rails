@@ -65,4 +65,13 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # Added tests
+  test "displays articles either search term exist in title or content" do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Sample ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('Sample')
+    assert_includes results, article2
+    assert_includes results, article1
+  end
 end
