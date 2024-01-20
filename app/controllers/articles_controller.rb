@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.search(params[:search])
   end
 
   def show
@@ -43,13 +43,10 @@ class ArticlesController < ApplicationController
 
     redirect_to root_path, status: :see_other
   end
-  
+
   private
     def article_params
-      params.require(:article).permit(:title, :content, :author, :date)
+      params.require(:article).permit(:title, :content, :author, :date, :search)
     end
 
-  # def search
-
-  # end
 end
