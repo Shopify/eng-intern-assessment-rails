@@ -1,24 +1,53 @@
-<h1>All Articles</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Encyclopedia</title>
+  <%= stylesheet_link_tag 'styles', media: 'all' %>
+</head>
+<body>
+
+<h1>Encyclopedia</h1>
+
+<%= form_tag articles_path, method: :get do %>
+  <%= text_field_tag :query, params[:query], placeholder: "Search articles" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<br>
+
+<%= link_to 'Create Article', new_article_path %>
 
 <table>
   <thead>
     <tr>
       <th>Title</th>
+      <th>Content</th>
       <th>Author</th>
       <th>Date</th>
-      <th colspan="3"></th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @articles.each do |article| %>
+    <% if @articles.empty? %>
       <tr>
-        <td><%= article.title %></td>
-        <td><%= article.author %></td>
-        <td><%= article.date %></td>
+        <td colspan="7">No articles found.</td>
       </tr>
+    <% else %>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.content %></td>
+          <td><%= article.author %></td>
+          <td><%= article.date %></td>
+          <td><%= link_to 'View', article %></td>
+          <td><%= link_to 'Edit', edit_article_path(article) %></td>
+          <td><%= link_to 'Destroy', article_path(article), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
-<br>
+</body>
+</html>

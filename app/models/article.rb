@@ -3,6 +3,6 @@
 class Article < ApplicationRecord
   # Implement search functionality
   def self.search(query)
-    where('title LIKE ? OR content LIKE ?', "%#{query}%", "%#{query}%")
+    where('title LIKE ? OR content LIKE ?', "%#{query.downcase}%", "%#{query.downcase}%")
   end
 end

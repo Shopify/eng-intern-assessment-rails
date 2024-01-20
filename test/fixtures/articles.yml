@@ -1,0 +1,5 @@
+article1:
+  title: "Getting Started with Rails"
+  content: "This guide covers getting up and running with Ruby on Rails."
+  author: "John Doe"
+  date: "2024-01-18"

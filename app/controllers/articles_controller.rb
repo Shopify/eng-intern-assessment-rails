@@ -3,7 +3,16 @@
 class ArticlesController < ApplicationController
   # Displays a list of all articles.
   def index
-    @articles = Article.all
+    @articles = if params[:query].present?
+                  Article.search(params[:query])
+                else
+                  Article.all
+                end
+  end
+
+  # Show article based on specific parameter
+  def show
+    @article = Article.find(params[:id])
   end
 
   # Initializes a new article for the creation form
@@ -18,7 +27,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article, notice: I18n.t('article_controller.created')
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -34,7 +43,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article, notice: I18n.t('article_controller.updated')
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -42,7 +51,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to articles_url, notice: I18n.t('article_controller.destroyed')
+    redirect_to articles_path, status: :see_other, notice: I18n.t('article_controller.destroyed')
   end
 
   private
