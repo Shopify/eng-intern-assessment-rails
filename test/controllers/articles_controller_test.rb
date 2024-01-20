@@ -23,6 +23,38 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to article_url(Article.last)
   end
 
+  test "empty title fails" do
+    assert_no_difference("Article.count") do
+      post articles_url, params: { article: {content: "This is a sentence about stuff." } }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
+  test "blank title fails" do
+    assert_no_difference("Article.count") do
+      post articles_url, params: { article: {title: "", content: "This is a sentence about stuff." } }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
+  test "empty content fails" do
+    assert_no_difference("Article.count") do
+      post articles_url, params: { article: {title: "The title"} }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
+  test "short content fails" do
+    assert_no_difference("Article.count") do
+      post articles_url, params: { article: {title: "The title", content: "a"} }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
   test "should show article" do
     get article_url(@article)
     assert_response :success

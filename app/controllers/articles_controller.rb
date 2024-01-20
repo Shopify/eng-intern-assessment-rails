@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  # Implements C in MVC for all articles
   def index
     @articles = Article.all
   end
