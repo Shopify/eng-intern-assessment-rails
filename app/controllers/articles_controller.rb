@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    # article is retrieved from "before_action" code at the top
   end
 
   def new
