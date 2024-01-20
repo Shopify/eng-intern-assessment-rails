@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_action :article_exists, only: [:show, :edit, :update, :destroy]
-  before_action :article_by_author_and_title_exists, only: [:create, :update]
 
   def index
     @articles = if params[:article_search].present?
@@ -22,6 +21,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params.merge(date: Date.today))
 
     if @article.save
+      # :show means the show.html.erb view
       render :show, status: :created
     else
       # :new means the new.html.erb view
@@ -37,6 +37,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article
     else
+      # :new means the edit.html.erb view
       render :edit, status: :unprocessable_entity
     end
   end
@@ -63,25 +64,6 @@ class ArticlesController < ApplicationController
     if @article.nil?
       flash[:alert] = "Article not found"
       render :index, status: :not_found
-    end
-  end
-
-  # prevents duplicate articles
-  def article_by_author_and_title_exists
-    duplicate_article = Article.find_by(author: article_params[:author], title: article_params[:title])
-
-    template_page = action_name
-
-    case action_name
-    when "create"
-      template_page = :new
-    when "update"
-      template_page = :edit
-    end
-
-    if duplicate_article
-      flash[:alert] = 'Article by the same title and author already exists'
-      render template_page, status: :bad_request
     end
   end
 end
