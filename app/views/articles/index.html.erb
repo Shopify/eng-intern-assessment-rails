@@ -1,0 +1,52 @@
+<div class="w-screen h-screen flex flex-col ">
+    <nav class=" w-screen flex justify-center items-center h-10 mt-28 ">
+        <h1 class="text-3xl font-semibold">
+        Richipedia - The Free Encyclopedia 
+        <%= @api_key%>
+        </h1>
+    </nav>
+    <div class="flex flex-col justify-center items-center">
+        <div class="mt-28">
+<form action="/articles/search" method="get">
+  <input class="w-96 font-semibold black rounded-md" type="text" name="query" id="search">
+  <select name="type" class="border-2 border-black rounded-md text-blue-500">
+   <option value="semantic">Semantic</option>
+    <option value="lexical">Lexical</option>
+  </select>
+  <input type="submit" value="Search for an article" class="border-2 border-black rounded-md text-blue-500 font-semibold ">
+</form>
+        </div>
+    <div>
+<% if @search_results %>
+  <% @search_results.each do |result| %>
+    <div class="flex justify-center items-center">
+      <h1 class="text-xl font-semibold px-2"><%= link_to result[:article].title, article_path(result[:article]) %></h1>
+      <p>Score: <%= result[:score] %></p>
+      <p>Author: <%= result[:article].author %></p>
+    </div>
+  <% end %>
+<% end %>
+    </div>
+        <div>
+            <h1 class="mt-28 text-3xl font-semibold">Or</h1>
+        </div>
+        <div>
+            <p class="flex items-center justify-center font-semibold text-blue-500">
+            <%= link_to "Publish an article", new_article_path %>
+            </p>
+        <div class="w-full flex justify-center items-center">
+            <h1 class="mt-10 text-3xl font-semibold">Or</h1>
+        </div>
+            <h1>View a list of our articles</h1>
+            <br>
+            <ul class="">
+        <%if @articles%>
+            <% @articles.each do |article| %>
+            <li class="text-center flex justify-center items-center text-blue-500">
+            <%= link_to article.title, article %>
+            </li>
+            <% end %>
+        <% end%>
+        </ul>
+    </div>
+</div>

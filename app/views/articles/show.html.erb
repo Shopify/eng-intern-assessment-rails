@@ -1,0 +1,15 @@
+<div class = "w-screen h-screen flex justify-center items-center flex-col">
+<h1 class="text-3xl font-semibold"><%= @article.title %></h1>
+<br>
+<h1 class = "text-2xl font-semibold"><%= @article.date%> </h1>
+<br>
+<p class="w-auto mx-40"><%= @article.content %></p>
+<br>
+
+<div class="font-semibold text-green-500"><%= link_to "Edit", edit_article_path(@article)%></div>
+<div class="font-semibold text-red-500"  ><%= link_to "Delete", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></div>
+<div class="font-semibold text-blue-500"><%= link_to "Home", articles_path %></div>
+</div>
