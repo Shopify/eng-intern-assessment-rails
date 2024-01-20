@@ -32,18 +32,21 @@
 <h1>Shopify Encyclopedia</h1>
 
 <div class="new-article-link">
-    <%= link_to 'New Article', new_article_path %>
+    
+    
+
 </div>
+
 
 <% @articles.each do |article| %>
     <div class="blog-post">
         <h2><%= article.title %></h2>
-        <p><%= article.body %></p>
+        <p><%= article.content %></p>
         <div class="actions">
             <%= link_to 'Read', article %>
-            <% if current_writer == post.writer %>
-                <%= link_to 'Edit', edit_post_path(post) %>
-                <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% if current_writer == article.writer %>
+                <%= link_to 'Edit', edit_article_path(article) %>
+                <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
         </div>
     </div>

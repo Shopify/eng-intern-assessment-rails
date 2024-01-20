@@ -4,8 +4,13 @@
 </p>
 
 <p>
+  <strong>Author:</strong>
+  <%= @article.writer.email %>
+</p>
+
+<p>
   <strong>Body:</strong>
-  <%= @article.body %>
+  <%= @article.content %>
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |

@@ -11,6 +11,20 @@
   </head>
 
   <body>
+  <nav>
+    <%= link_to 'Home', root_path %>
+    <% if writer_signed_in? %>
+    <%= link_to 'Logout', destroy_writer_session_path, method: :delete %>
+
+      <%= link_to 'New Article', new_article_path %>
+    <% else %>
+      <%= link_to 'Signup', new_writer_registration_path %>
+      <%= link_to 'Login', new_writer_session_path %>
+    <% end %>
+  </nav>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

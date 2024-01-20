@@ -1,0 +1,10 @@
+<%- if controller_name != 'sessions' %>
+  <% resource_name = :writer %>
+  <%= link_to "Log in", new_writer_session_path %><br />
+<% end %>
+
+<%- if controller_name != 'registrations' %>
+  <%= link_to "Sign up", new_writer_registration_path %><br />
+<% end %>
+
+

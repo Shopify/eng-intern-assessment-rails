@@ -1,20 +1,10 @@
-class ArticlesController < ActionController::Base
+class ArticlesController < ApplicationController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
-    before_action : check_writer, only: [:edit, :update, :destroy]
+    before_action :check_writer, only: [:edit, :update, :destroy]
+    before_action :authenticate_writer!, except: [:index, :show]
 
-  
-private
 
-def set_article
-    @article = Article.find(params[:id])
-  end
 
-def check_writer
-    unless current_writer == @article.writer
-      redirect_to posts_path, alert: "You are not authorized to perform this action."
-    end
-  end
-end
   
     def index
     @articles = Article.all
@@ -31,7 +21,7 @@ end
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_writer.articles.build(article_params)
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
     else
@@ -59,6 +49,12 @@ end
     end
 
     def article_params
-      params.require(:article).permit(:title, :body)
+      params.require(:article).permit(:title, :content)
     end
-end
+    def check_writer
+      unless current_writer == @article.writer
+        redirect_to posts_path, alert: "You are not authorized to perform this action."
+      end
+    end
+  end
+
