@@ -1,0 +1,56 @@
+<% content_for :centered_content do %>
+    <%= render 'layouts/notice' %>
+
+    <h1>Articles</h1>
+
+    <%= form_tag articles_path, method: :get do %>
+        <p>
+            <%= text_field_tag :query, params[:query], placeholder: "Search Articles" %>
+            <%= submit_tag "Search", name: nil %>
+        </p>
+    <% end %>
+
+    <% if @showing_all_articles %>
+        <p> Showing all articles </p>
+    <% end %>
+
+    <% if @showing_all_articles == false %>
+        <p> Showing articles from query "<%= params[:query] %>" </p>
+        <%= link_to 'Clear search', articles_path %>
+    <% end %>
+
+    <table>
+        <thead>
+            <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Published At</th>
+            <th></th>
+            <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <% @articles.each do |article| %>
+            <%= render article %>   
+        <% end %>
+        </tbody>
+    </table>
+
+    <p> Showing <%= @start_article_index %> to <%= @end_article_index %> of <%= @num_articles %> articles </p>
+
+    <% if @page > 0 %>
+    <%= link_to 'Previous', articles_path(page: @page - 1, query: params[:query]) %>
+    <% end %>
+
+    <% if @more_results %>
+    <%= link_to 'Next', articles_path(page: @page + 1, query: params[:query]) %>
+    <% end %>
+
+    <br></br>
+    <div>
+    <%= link_to "New Article", new_article_path %>
+    </div>
+<% end %>
+
+<%= render 'layouts/centered_content', content: content_for(:centered_content) %>
