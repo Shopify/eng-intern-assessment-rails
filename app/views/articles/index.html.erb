@@ -4,17 +4,6 @@
   <% @articles.each do |article| %>
     <li>
       <%= link_to article.title, article %>
-      <ul>
-        <li>
-          <%= 'content: ' + article.content %>
-        </li>
-        <li>
-          <%= 'author: ' + article.author.to_s %>
-        </li>
-        <li>
-          <%= 'date: ' + article.date.to_s %>
-        </li>
-      </ul>
     </li>
   <% end %>
 </ul>

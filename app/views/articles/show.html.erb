@@ -1,0 +1,13 @@
+<h1><%= @article.title %></h1>
+
+<p><%= @article.content %></p>
+<ul>
+  <li>
+    <%= 'author: ' + @article.author.to_s %>
+  </li>
+  <li>
+    <%= 'date: ' + @article.date.to_s %>
+  </li>
+</ul>
+
+<%= link_to "Back to Home", articles_path %>
