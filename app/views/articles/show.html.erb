@@ -3,6 +3,13 @@
 <%= render @article %>
 
 <div>
+  <h1> 
+    <%= @article.title %>
+  </h1>
+  <p> 
+    <%= @article.content %>
+  </p>
+
   <%= link_to "Edit this article", edit_article_path(@article) %> |
   <%= link_to "Back to articles", articles_path %>
 
