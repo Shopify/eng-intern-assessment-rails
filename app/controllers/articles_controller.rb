@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = if params[:search]
+                  Article.where("title LIKE ?", "%#{params[:search]}%")
+                else
+                  Article.all
+                end
   end
 
   def show
