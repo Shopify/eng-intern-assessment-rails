@@ -3,6 +3,10 @@
 require "rails_helper"
 
 RSpec.describe(Article, type: :model) do
+  before(:each) do
+    Article.delete_all
+  end
+
   describe "initial state" do
     it "starts with no articles" do
       expect(Article.count).to(eq(0))
