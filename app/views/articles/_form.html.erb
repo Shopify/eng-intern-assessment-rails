@@ -1,0 +1,17 @@
+<%= form_with model: article do |form| %>
+  <div>
+    <%= render partial: "form_field", locals: { attribute: :title, form: form, model: article } %>
+  </div>
+  <div>
+    <%= render partial: "form_field", locals: { attribute: :content, form: form, model: article } %>
+  </div>
+  <div>
+    <%= render partial: "form_field", locals: { attribute: :author, form: form, model: article } %>
+  </div>
+  <div>
+    <%= render partial: "form_field", locals: { attribute: :date, form: form, model: article } %>
+  </div>
+  <div>
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>

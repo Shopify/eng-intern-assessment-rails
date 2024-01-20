@@ -1,0 +1,12 @@
+<div class="label">
+  <%= form.label attribute %>
+</div>
+<div class="input">
+  <% case attribute %>
+    <% when :date %>
+      <%= form.date_field attribute %>
+    <% else %>
+      <%= form.text_field attribute %>
+    <% end %>
+</div>
+<br />
