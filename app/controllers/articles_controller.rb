@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @articles }
+      format.json { render json: @articles, status: : }
     end
   end
 
@@ -37,8 +37,10 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
+        format.json { render json: @article, status: :created}
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,25 +49,24 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        print "RAN"
         format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
+        format.json { render json: @article, status: :ok }
       else
-        print "DIDNT RUN"
         format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /articles/<:id> or /articles/<:id>.json
   def destroy
-    print "DELETING"
     respond_to do |format|
       if @article.destroy
-        print "RAN"
         format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
+        format.json { render json: { message: "Article was successfully destroyed." }, status: :ok }
       else
-        print "DIDNT RUN"
         format.html { redirect_to articles_url, alert: "Article could not be destroyed." }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
