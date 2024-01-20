@@ -57,10 +57,8 @@ class ArticlesController < ApplicationController
     if params[:search].blank?
       redirect_to articles_url and return
     else 
-      @parameter = params[:search].downcase
-      @articles = Article.all.where("lower(title) LIKE :search 
-                  OR lower(author) LIKE :search 
-                  OR lower(content) LIKE :search", search: "%#{@parameter}%").distinct
+      @parameter = params[:search].downcase.strip
+      @articles = Article.search(@parameter).distinct
     end
   end
     
