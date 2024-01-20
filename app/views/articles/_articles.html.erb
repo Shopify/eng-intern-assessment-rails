@@ -1,0 +1,22 @@
+<%= form_tag(search_articles_path, :method => "get") do %>
+    <div class = "input-group">
+        <%= search_field_tag :key, 
+        params[:key], 
+        placeholder: "Article Title", 
+        class: "form-control"
+        %>
+        <div class="input-group-btn">
+            <%= button_tag "Search", :name => nil%>
+        </div>
+    </div>
+<% end %>
+
+<ul>
+    <% articles.each do |article| %>
+        <li>
+            <%= link_to article.title, article %>
+            <%= "by #{article.author} #{article.date}"%>
+        </h1>      
+    <% end %>
+</ul>
+<%= link_to "Create article", new_article_path %>
