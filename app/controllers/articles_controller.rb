@@ -1,3 +1,7 @@
+# File: articles_controller.rb
+# Rails Generated Code
+# Date: 2024-01-18
+
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
