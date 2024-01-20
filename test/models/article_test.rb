@@ -83,4 +83,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'validates presence of title' do
+    article = Article.new(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+    assert_equal ["can't be blank"], article.errors[:title]
+  end
+
+  test 'validates presence of content' do
+    article = Article.new(title: 'Sample Article')
+    assert_not article.valid?
+    assert_equal ["can't be blank"], article.errors[:content]
+  end
 end
