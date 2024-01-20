@@ -45,10 +45,4 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to articles_url
   end
-
-  teardown do
-    # Delete the article created in setup
-    @article.destroy if @article
-
-  end
 end
