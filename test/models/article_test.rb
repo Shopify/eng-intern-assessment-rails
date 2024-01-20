@@ -1,4 +1,4 @@
-require 'test_helper'
+require_relative '../test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
