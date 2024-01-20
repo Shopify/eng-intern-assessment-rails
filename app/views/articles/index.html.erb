@@ -1,0 +1,22 @@
+<h1>Articles</h1>
+<%= form_tag articles_path, method: :get do %>
+  <%= "Search for an article: " %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <h1><%= article.title %><h3>
+      <h2><%= article.author %><h2>
+      <h3><%= article.date %><h3>
+      <h4><%= article.content %><h4>
+      <h5><%= link_to "Edit", edit_article_path(article) %>   <%= link_to "Destroy", article_path(article), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %><h5>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Article", new_article_path %>
