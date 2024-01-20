@@ -1,0 +1,51 @@
+
+<body class="bg-gray-100 p-6 flex-wrap">
+    <header class="mb-2  ">
+        <h1 class="text-4xl mb-2 font-bold text-center">Search</h1>
+    </header>
+
+    <section class="mb-6 pl-10">
+        <%= form_tag articles_path, method: :get, local: true, class: "flex justify-center" do %>
+            <%= text_field_tag :search, params[:search], class: "p-2 border border-gray-300 rounded-l-md" %>
+            <%= submit_tag "Search", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md" %>
+        <% end %>
+    </section>
+     <section class="grid grid-cols-1 gap-4 p-4">
+        <div class="text-center">
+            <h2 class="text-2xl font-semibold">Make a new article</h2>
+            <%= link_to "New Article", new_article_path, class: "mt-3 inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
+        </div>
+    </section>
+    <section class="mb-6">
+        <h2 class="text-2xl font-semibold mb-3">Search Results</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left whitespace-no-wrap">
+                <thead>
+                    <tr class="text-sm font-semibold text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                        <th class="px-4 py-3">Title</th>
+                        <th class="px-4 py-3">Author</th>
+                        <th class="px-4 py-3">Date Published</th>
+                        <th class="px-4 py-3">Content</th>
+                        <th class="px-4 py-3">Edit</th>
+                        <th class="px-4 py-3">Delete</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-300">
+                    <% @articles.each do |article| %>
+                        <tr class="text-gray-700">
+                            <td class="px-4 py-3 text-sm"><%= article.title %></td>
+                            <td class="px-4 py-3 text-sm"><%= article.author %></td>
+                            <td class="px-4 py-3 text-sm"><%= article.date %></td>
+                            <td class="px-4 py-3 text-sm"><%= link_to "Content", article_path(article), class: "text-blue-600 hover:text-blue-900" %></td>
+                            <td class="px-4 py-3 text-sm"><%= link_to "Edit", edit_article_path(article), class: "text-yellow-600 hover:text-yellow-900" %></td>
+                            <td class="px-4 py-3 text-sm"><%= link_to "Destroy", article, method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-red-600 hover:text-red-900" %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+   
+</body>
+

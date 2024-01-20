@@ -1,0 +1,35 @@
+<h1 class="text-2xl font-bold mb-4">Edit Article</h1>
+<div class="p-4 shadow-md rounded bg-white">
+  <%= form_with model: @article, url: article_path(@article), method: :patch, local: true do |article| %>
+    <div class="mb-4">
+      <%= article.label :author, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= article.text_field :author, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="mb-4">
+      <%= article.label :title, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= article.text_field :title, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="mb-4">
+      <%= article.label :date, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= article.date_field :date, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="mb-4">
+      <%= article.label :content, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= article.text_area :content, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <%= article.submit class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  <% end %>
+</div>
+
+<% if @article.errors.any? %>
+    <div id="error_explanation" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-5">
+        <h2 class="font-bold">
+            <%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:
+        </h2>
+        <ul class="list-disc list-inside">
+            <% @article.errors.full_messages.each do |message| %> 
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>

@@ -1,0 +1,28 @@
+<%= form_with model: @article, url: articles_path(@article), local: true, class: "max-w-lg mx-auto my-10" do |form| %>
+    <div class="mb-6">
+        <%= form.label :author, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.text_field :author, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="mb-6">
+        <%= form.label :title, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.text_field :title, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="mb-6">
+        <%= form.label :date, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.date_field :date, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="mb-6">
+        <%= form.label :content, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.text_area :content, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="flex items-center justify-between">
+        <%= form.submit class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    </div>
+<% end %>
+
+<% if flash[:error].present? %>
+    <div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error:</strong>
+        <span class="block sm:inline"><%= flash[:error] %></span>
+    </div>
+<% end %>
