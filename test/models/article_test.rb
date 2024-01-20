@@ -14,6 +14,39 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
+  test 'create valid article' do 
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    assert article.valid?
+    assert_equal 'Sample Article', article.title
+    assert_equal 'Lorem ipsum dolor sit amet.', article.content
+    assert_equal 'John Doe', article.author
+    assert_equal Date.today, article.date
+  end
+
+  test 'invalid if title too long' do
+    article = Article.create(title: 'z' * 101, content: 'Lorem ipsum dolor sit amet.')
+    assert article.invalid?
+    assert_includes article.errors[:title], "is too long (maximum is 100 characters)"
+  end
+
+  test 'invalid if content too long' do
+    article = Article.create(title: 'a', content: 'z' * 1001)
+    assert article.invalid?
+    assert_includes article.errors[:content], "is too long (maximum is 1000 characters)"
+  end
+
+  test 'invalid if no title' do
+    article = Article.create(title: '', content: 'a')
+    assert article.invalid?
+    assert_includes article.errors[:title], "can't be blank"
+  end
+
+  test 'invalid if no content' do
+    article = Article.create(title: 'asdf', content: '')
+    assert article.invalid?
+    assert_includes article.errors[:content], "can't be blank"
+  end
+
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
