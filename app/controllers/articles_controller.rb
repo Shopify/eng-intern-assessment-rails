@@ -17,7 +17,8 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article
     else
-      render file: "public/422.html", layout: false
+      render :new, status: :unprocessable_entity
+      # redirect_to file: "public/422.html", layout: false
     end
   end
 
