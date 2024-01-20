@@ -65,4 +65,41 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'requires title and content for a new article' do
+    article = Article.new
+    assert_not article.valid?
+    assert_equal ["can't be blank"], article.errors[:title]
+    assert_equal ["can't be blank"], article.errors[:content]
+  end
+
+  test 'validates uniqueness of title' do
+    Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.new(title: 'Sample Article', content: 'Different content.')
+    assert_not article.valid?
+    assert_equal ["has already been taken"], article.errors[:title]
+  end
+
+  test 'returns articles in ascending order of creation' do
+    Article.create(title: 'First Article', content: 'Lorem ipsum dolor sit amet.')
+    sleep(1) # Ensure a time difference in creation
+    Article.create(title: 'Second Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_equal ['First Article', 'Second Article'], Article.all.map(&:title)
+  end
+
+  test 'creates a new article without title - invalid' do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+  end
+
+  test 'creates a new article without content - invalid' do
+    article = Article.create(title: 'Sample Article')
+    assert_not article.valid?
+  end
+
+  test 'creates a new article without title and content - invalid' do
+    article = Article.create
+    assert_not article.valid?
+  end
 end
+

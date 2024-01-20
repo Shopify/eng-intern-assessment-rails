@@ -11,6 +11,18 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Articles', articles_path %></li>
+      </ul>
+    </nav>
+    
+    <br/><br/>
+    
     <%= yield %>
+    
+    <br/><br/>
+    
   </body>
 </html>
