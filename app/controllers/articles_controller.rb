@@ -53,7 +53,7 @@ class ArticlesController < ApplicationController
     end
     def check_writer
       unless current_writer == @article.writer
-        redirect_to posts_path, alert: "You are not authorized to perform this action."
+        redirect_to articles_path, alert: "You are not authorized to perform this action."
       end
     end
   end
