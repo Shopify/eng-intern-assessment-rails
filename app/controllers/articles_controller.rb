@@ -1,12 +1,14 @@
 class ArticlesController < ApplicationController
+  # article_exists function at the bottom sets the article data for
+  # controllers in the only: array
   before_action :article_exists, only: [:show, :edit, :update, :destroy]
 
   def index
     @articles = if params[:article_search].present?
-                    Article.search(params[:article_search])
-                  else
-                    Article.all
-                  end
+                  Article.search(params[:article_search])
+                else
+                  Article.all
+                end
   end
 
   def show
@@ -37,7 +39,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article
     else
-      # :new means the edit.html.erb view
+      # :edit means the edit.html.erb view
       render :edit, status: :unprocessable_entity
     end
   end
@@ -48,6 +50,7 @@ class ArticlesController < ApplicationController
       redirect_to root_path
     else
       flash[:alert] = "Article deletion failed"
+      # :index means the index.html.erb view
       render :index, status: :bad_request
     end
   end

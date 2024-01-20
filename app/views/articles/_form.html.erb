@@ -2,6 +2,7 @@
   <div>
     <%= form.label :title %>
     <br>
+
     <%= form.text_field :title %>
 
     <% if article.present? %>
@@ -9,13 +10,13 @@
         <p><%= message %></p>
       <% end %>
     <% end %>
-
   </div>
   <br>
 
   <div>
     <%= form.label :author %>
     <br>
+
     <%= form.text_field :author %>
 
     <% if article.present? %>
@@ -29,6 +30,7 @@
   <div>
     <%= form.label :date %>
     <br>
+
     <%= form.date_field :date %>
 
     <% if article.present? %>
@@ -42,6 +44,7 @@
   <div>
     <%= form.label :content %>
     <br>
+    
     <%= form.text_field :content %>
 
     <% if article.present? %>
