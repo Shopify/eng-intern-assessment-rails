@@ -6,7 +6,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
   end
 
   def new
@@ -31,7 +30,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /articles/1 or /articles/1.json
+ 
   def update
     respond_to do |format|
       if @article.update(article_params)
@@ -45,27 +44,23 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article.destroy!
+    @article.destroy
 
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to articles_url, notice: "Article was successfully destroyed.", status: :see_other }
+      format.json { render json: { message: "Article was successfully destroyed.", redirect_url: articles_url }, status: :see_other }
     end
   end
 
   private 
     # Strong parameters
+    # Only allow a list of trusted parameters through.
     def article_params
-        params.require(:article).permit(:title, :content)
+        params.fetch(:article, {}).permit(:title, :content, :author, :date)
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def article_params
-      params.fetch(:article, {})
     end
 end

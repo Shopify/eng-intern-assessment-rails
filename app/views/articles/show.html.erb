@@ -6,6 +6,7 @@
   <h1> 
     <%= @article.title %>
   </h1>
+  <h3>Author: <%= @article.author ? @article.author : "N/A" %> </h3>
   <p> 
     <%= @article.content %>
   </p>
