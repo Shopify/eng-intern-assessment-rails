@@ -1,0 +1,31 @@
+<div class="flex flex-col items-center justify-center mt-10">
+  <h1 class="font-bold text-green-600 mb-10 mt-10">Encyclopedia.</h1>
+
+  <%= form_tag(all_articles_path, method: "get", class: "search-form") do %>
+    <div class="max-w-md mb-10 mt-10">
+      <%= render_input name: "search", id: "search", placeholder: "Search articles" %>
+    </div>
+
+    <div class="landing-page-button-group">
+      <%= render_button do %>
+        <svg class="h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        Search
+      <% end %>
+
+      <%= render_button as: :link, href: random_article_path, variant: :outline do %>
+        <svg class="h-4 w-4 mr-2 text" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21s-2-3.5-5.5-3.5S5 18 5 18"></path>
+          <path d="M12 21s2-3.5 5.5-3.5S19 18 19 18"></path>
+          <path d="M12 21s-2-4-5.5-4S1 18 1 18"></path>
+          <path d="M12 21s2-4 5.5-4S23 18 23 18"></path>
+          <circle cx="12" cy="12" r="9"></circle>
+        </svg>
+        I'm feeling lucky
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

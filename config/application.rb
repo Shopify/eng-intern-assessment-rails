@@ -16,6 +16,10 @@ module EngInternAssessmentRails
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
+    # Set the default time zone to Eastern Time (US & Canada)
+    config.time_zone = 'Eastern Time (US & Canada)'  # Adjust this to your desired time zone
+
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

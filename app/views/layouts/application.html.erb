@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>EngInternAssessmentRails</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Encyclopedia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<body class="bg-gray-100">
+<%= render 'shared/navbar' %>
+<main class="container mx-auto px-5 flex justify-center">
+  <%= yield %>
+</main>
+</body>
 
-  <body>
-    <%= yield %>
-  </body>
+<footer>
+  <% flash.each do |key, value| %>
+    <div class="alert-<%#= key %>">
+      <%= render_toast Alert: "Alert!",
+                       description: value,
+                       variant: :destructive %>
+    </div>
+  <% end %>
+
+  <!-- Build attribution -->
+  <div style="text-align: center; margin-bottom: 20px; margin-right: 20px; color: #666666">
+    Built with ❤️ by <b><a href="https://github.com/amalrajan">github.com/amalrajan</a></b>
+  </div>
+
+</footer>
 </html>

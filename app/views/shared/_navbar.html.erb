@@ -1,0 +1,28 @@
+<!-- app/views/articles/all.html.erb -->
+<div class="navbar fixed top-0 w-full bg-transparent z-10">
+  <div class="flex items-center justify-between p-4 text-white">
+    <div id="navigation-bar" class="navigation-bar flex items-center">
+      <%= render_button as: :link, href: root_path, class: "text-green-600 mr-4" do %>
+        <svg class="h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 3v18h18V8h-2v10H5V5h9"></path>
+        </svg>
+        Home
+      <% end %>
+
+      <%= render_button as: :link, href: all_articles_path, class: "text-green-600 flex items-center mr-4" do %>
+        <svg class="h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+        View All Articles
+      <% end %>
+
+      <%= render_button as: :link, href: new_article_path, class: "text-green-600 mr-4" do %>
+        <svg class="h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"></circle>
+        </svg>
+        New Article
+      <% end %>
+    </div>
+  </div>
+</div>

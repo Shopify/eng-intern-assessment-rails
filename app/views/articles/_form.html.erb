@@ -1,0 +1,46 @@
+<%= form_with(model: article, html: { class: "max-w-md mx-auto p-4 bg-white" }) do |form| %>
+  <!-- Display error messages if there are any -->
+  <% if article.errors.any? %>
+    <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+      <h2 class="font-bold text-lg mb-2"><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <!-- Iterate through each error and display its full message -->
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <!-- Label and text field for the article title -->
+    <%= form.label :title, class: "block text-sm mb-2" %>
+    <%= form.text_field :title, class: "w-full px-3 py-2 border rounded" %>
+  </div>
+
+  <div class="mb-4">
+    <!-- Label and text area for the article content -->
+    <%= form.label :content, class: "block text-sm mb-2" %>
+    <%= form.text_area :content, class: "w-full px-3 py-2 border rounded" %>
+  </div>
+
+  <div class="mb-4">
+    <!-- Label and text field for the author's name -->
+    <%= form.label :author, class: "block text-sm mb-2" %>
+    <%= form.text_field :author, class: "w-full px-3 py-2 border rounded" %>
+  </div>
+
+  <div class="mb-4">
+    <!-- Label and date field for the article date -->
+    <%= form.label :date, class: "block text-sm mb-2" %>
+    <%= form.date_field :date, class: "w-full px-3 py-2 border rounded" %>
+  </div>
+
+  <div id="create-new-article-submit" class="mb-4">
+    <!-- Render a button to submit the form -->
+    <%= render_button do %>
+      <%= form.submit class: "w-full px-4 py-2 bg-blue-500 rounded cursor-pointer" %>
+    <% end %>
+  </div>
+<% end %>

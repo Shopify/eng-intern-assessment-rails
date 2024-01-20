@@ -1,0 +1,234 @@
+/* Import external styles */
+@import "shadcn.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+/* Apply Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styling */
+* {
+  font-family: "Poppins" !important;
+}
+
+/* Landing page header styling */
+h1.font-bold.text-green-600.mb-10.mt-10 {
+  font-size: 60px;
+}
+
+/* Search bar styling */
+#search {
+  width: 600px;
+  height: 60px;
+}
+
+/* Landing page button group styling */
+.landing-page-button-group {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.landing-page-button-group>button,
+.landing-page-button-group>a {
+  height: 50px;
+}
+
+button {
+  width: 160px;
+}
+
+.flex.flex-col.items-center.justify-center.mt-10 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  padding-bottom: 20%;
+}
+
+/* Navigation bar styling */
+.navigation-bar a {
+  background-color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #000;
+  transition: 0.3s ease;
+}
+
+.navigation-bar a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+.navigation-bar svg {
+  filter: invert(1);
+}
+
+.navigation-bar a:hover svg {
+  filter: invert(0);
+}
+
+/* Article styling */
+#articles {
+  margin-top: 100px;
+  width: 40vw;
+}
+
+#articles > .mb-6 > div {
+  width: auto;
+}
+
+h1.font-bold.text-green-600.mb-10.mt-10 {
+  font-size: 60px;
+  color: #444;
+}
+
+/* Article view container styling */
+.article-container {
+  max-width: 50vw;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Article title styling */
+.article-title {
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Article image styling */
+.article-image > img {
+  border-radius: 20px !important;
+  margin-bottom: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Article content styling */
+.article-content {
+  line-height: 2.0;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  font-size: 1.3rem;
+  color: #666666;
+  text-align: justify;
+}
+
+/* Article info styling */
+.article-info {
+  margin-top: 20px;
+  font-size: 1em;
+  color: #888;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+/* Article button group styling */
+.article-button-group {
+  display: flex;
+  justify-content: space-between;
+  color: #6b7280;
+}
+
+.article-button-group > button,
+.article-button-group > a {
+  min-width: 150px;
+}
+
+/* Form styling */
+form label {
+  font-size: 1rem !important;
+  font-weight: 300 !important;
+  color: #888;
+}
+
+#create-new-article-submit > button {
+  width: 100%;
+  margin-top: 40px;
+}
+
+form.max-w-md.mx-auto.p-4.bg-white {
+  width: 40vw;
+}
+
+textarea.w-full.px-3.py-2.border.rounded {
+  height: 300px;
+}
+
+/* Footer styling */
+footer {
+  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+/* Input and textarea styling */
+input.w-full.px-3.py-2.border.rounded,
+textarea.w-full.px-3.py-2.border.rounded {
+  height: 3.5rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 0 0 0 transparent;
+  outline: none;
+}
+
+textarea.w-full.px-3.py-2.border.rounded {
+  height: 10rem;
+}
+
+/* Button styling inside forms */
+form.button_to button,
+form.button_to input[type="submit"],
+form.button_to input[type="reset"],
+form.button_to input[type="button"] {
+  height: 3rem;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin-right: 10px;
+  color: #666666;
+  box-shadow: 0 0 0 0 transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Link styling inside article button group */
+.article-button-group a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin-right: 10px;
+  color: #666666;
+  box-shadow: 0 0 0 0 transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.toast-item {
+  /* Your custom styles go here */
+  background-color: #2E2F30; /* Red background */
+  border: none; /* Remove borders */
+  color: #ffffff; /* White text */
+  /* Add more styles as needed */
+}

@@ -33,3 +33,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+!/app/assets/builds/.keep
+
+# Ignore node_modules
+/node_modules
