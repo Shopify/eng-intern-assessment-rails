@@ -1,21 +1,18 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
-  # GET /articles or /articles.json
   def index
     @articles = Article.all
   end
 
-  # GET /articles/1 or /articles/1.json
   def show
+    @article = Article.find(params[:id])
   end
 
-  # GET /articles/new
   def new
     @article = Article.new
   end
 
-  # GET /articles/1/edit
   def edit
   end
 
@@ -47,7 +44,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # DELETE /articles/1 or /articles/1.json
   def destroy
     @article.destroy!
 
@@ -57,7 +53,12 @@ class ArticlesController < ApplicationController
     end
   end
 
-  private
+  private 
+    # Strong parameters
+    def article_params
+        params.require(:article).permit(:title, :content)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])

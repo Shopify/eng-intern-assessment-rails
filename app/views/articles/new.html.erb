@@ -1,9 +1,23 @@
-<h1>New article</h1>
+<h1>New Article</h1>
 
-<%= render "form", article: @article %>
+<%= form_with model: @article do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
 
-<br>
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %><br>
+    <% @article.errors.full_messages_for(:content).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
 
-<div>
-  <%= link_to "Back to articles", articles_path %>
-</div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
