@@ -1,0 +1,11 @@
+<h1>Search Results</h1>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Go Back to Home Page", articles_path(@article) %>
