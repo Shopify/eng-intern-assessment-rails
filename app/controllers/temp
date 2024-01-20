@@ -1,0 +1,41 @@
+class ArticlesController < ApplicationController
+    # Strong parameters
+    private 
+        def article_params
+            params.require(:article).permit(:title, :body)
+        end
+    end
+
+    def index 
+        @articles = [{title: "Jamal"}, {title: "Bob"}]
+    end
+
+    def new
+        @article = Article.new
+    end
+
+    def create
+        @article = Article.new(title: "...", body: "...")
+
+        if @article.save
+            redirect_to @article
+        else 
+            render :new, status: :unprocessable_entity
+        end
+    end    
+
+    def show
+        @article = Article.find(params[:id])
+    end
+
+    def edit
+        @article = Article.find(params[:id])
+        
+    def update
+        # update
+    end
+
+    def destroy
+
+    end
+end
