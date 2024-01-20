@@ -64,11 +64,11 @@ Notes:
 ### Rails Generators
 Track used generators in the generator `rails_generator_log.md` in the docs page using the following format:
 ```Markdown
-Programmer Name: [Your Name]
-Description: [Brief description of the purpose of this generator]
-Date: [Current Date (YYYY-MM-DD)]
-Command Used: [Place the generator command you used here]
-Notes:
+##### Programmer Name: [Your Name]
+##### Description: [Brief description of the purpose of this generator]
+##### Date: [Current Date (YYYY-MM-DD)]
+##### Command Used: [Place the generator command you used here]
+##### Notes:
 - [Any additional notes or considerations related to the generator can be mentioned here].
 - [You can use this space to provide context, references, or any important information].
 ___
