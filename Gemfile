@@ -66,3 +66,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'net-http', require: false
+gem 'net-imap', require: false
+gem 'net-protocol', require: false
+gem 'net-smtp', require: false
