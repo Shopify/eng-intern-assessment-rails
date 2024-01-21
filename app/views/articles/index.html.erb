@@ -1,7 +1,17 @@
 <div style="padding: 10px">
   <h1>Articles</h1>
 
-  <%= button_to 'Create New Article', new_article_path, method: :get, class: "btn waves-effect waves-light" %>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+    <!-- Create New Article Button -->
+    <%= button_to 'Create New Article', new_article_path, method: :get, class: "btn waves-effect waves-light" %>
+
+    <!-- Search Bar -->
+    <form action="<%= articles_path %>" method="get" class="search-form" style="display: flex; align-items: center; margin-right: 15px;">
+      <input type="text" name="query" id="query" style="padding-left: 5px; margin-right: 5px; border-radius: 5px; border: 1px solid #000;">
+      <button type="submit" class="waves-effect waves-light btn", style="flex-shrink: 0">Search</button>
+    </form>
+
+  </div>
 
   <% @articles.each do |article| %>
     <div class="article-container z-depth-5 blue lighten-3" style="margin-top: 15px; padding: 10px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between;">
