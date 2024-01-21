@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <title>EngInternAssessmentRails</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-
-  <body>
+  <body class="mx-12 md:max-w-5xl md:mx-auto md:px-6 mb-10">
+    <%= render 'articles/header'%>
     <%= yield %>
+    <footer></footer>
   </body>
 </html>

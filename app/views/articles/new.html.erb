@@ -1,0 +1,8 @@
+<div class="card shadow-lg p-10 bg-slate-50 mt-10">
+  <h2 class="text-4xl font-extralight text-lime-700">Create a new article</h2>
+  <%= render 'form', article: @article %>
+  <br>
+  <div><%= link_to articles_path do %>
+      <button class="btn btn-outline">Back to home</button>  <% end %>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<%= form_with(model: article) do |form| %>
+  <% if article.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="flex flex-col w-8/12 gap-4 mt-10">
+    <% user = User.find(session[:user_id]) %>
+    <div>
+      <label for="article_title" style="display: block" class="py-2">Title</label>
+      <input class="input input-bordered w-full max-w-xs" type="text" name="article[title]" id="article_title" value="<%= article.title %>">
+    </div>
+    <div>
+      <label for="article_author" style="display: block" class="py-2">Author (Read only)</label>
+      <input class="input input-bordered w-full max-w-xs" type="text" name="article[author]" id="article_author" value="<%= user.name %>" readonly>
+    </div>
+    <div class="">
+      <label for="article_content" style="display: block" class="py-2">Content</label>
+      <textarea class="textarea textarea-bordered w-full" name="article[content]" id="article_content"><%= article.content %></textarea>
+    </div>
+    <div>
+      <label for="article_date" style="display: block" class="py-2">Date</label>
+      <input class="input input-bordered w-full max-w-xs" type="date" name="article[date]" id="article_date" value="<%= article.date || Date.today %>">
+    </div>
+    <div hidden>
+      <label for="article_user_id" style="display: block" class="py-2">User ID</label>
+      <input class="input input-bordered w-full max-w-xs" type="text" name="article[user_id]" id="article_user_id" value="<%= user.uid %>">
+    </div>
+    <div>
+      <div class="mt-8">
+        <button class="btn bg-lime-400" type="submit">Submit</button>
+      </div>
+    </div>
+  </div>
+<% end %>
