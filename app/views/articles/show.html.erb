@@ -3,4 +3,9 @@
   <p>Author: <%= @article.author.present? ? @article.author : "Anonymous" %></p>
   <p>Date: <%= @article.date.present? ? @article.date : 'Unknown Time' %></p>
   <p>Content: <%= @article.content %></p>
+
+  <div class="article-buttons">
+    <%= button_to "Edit Article", edit_article_path(@article), method: "get" %>
+    <%= button_to "Delete Article", article_path(@article), method: "delete", form: { data: { turbo_confirm: "Are you sure you want to delete this article?" }} %>
+  </div>
 </div>
