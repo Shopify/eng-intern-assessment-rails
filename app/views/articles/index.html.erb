@@ -1,5 +1,13 @@
 <div>
   <h1>All Posts</h1>
+  <%# Search form %>
+  <%= form_with path: articles_url, method: :get do |form| %>
+    <%= form.label :search, "Search:" %>
+    <%= form.text_field :search, value: params[:search] %>
+    <%= form.submit "Search", name: "" %>
+  <% end %>
+  
+  <%# Article list %>
   <div class="articles-list">
     <% @articles.each do |article| %>
       <%= link_to article_path(article) do %>
