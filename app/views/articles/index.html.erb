@@ -1,11 +1,15 @@
 <div>
   <h1>All Posts</h1>
   <%# Search form %>
-  <%= form_with path: articles_url, method: :get do |form| %>
-    <%= form.label :search, "Search:" %>
-    <%= form.text_field :search, value: params[:search] %>
-    <%= form.submit "Search", name: "" %>
-  <% end %>
+  <div class="header-controls">
+    <%= form_with path: articles_url, method: :get do |form| %>
+      <%= form.label :search, "Search:" %>
+      <%= form.text_field :search, value: params[:search] %>
+      <%= form.submit "Search", name: "" %>
+    <% end %>
+
+    <%= button_to "Create Article", new_article_path, method: "get" %>
+  </div>
   
   <%# Article list %>
   <div class="articles-list">
