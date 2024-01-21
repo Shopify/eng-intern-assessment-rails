@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  font-family: Arial;
+}
+
+.articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.article {
+  background: rgb(239, 239, 239);
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.articles-list .content {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inherit;
+}
