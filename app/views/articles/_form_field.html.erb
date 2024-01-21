@@ -8,5 +8,14 @@
     <% else %>
       <%= form.text_field attribute %>
     <% end %>
+  <% if model.errors[attribute].any? %>
+    <div class="field-errors">
+        <% model.errors.full_messages_for(attribute).each do |error_message| %>
+        <div class="error">
+          <%= error_message %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 <br />
