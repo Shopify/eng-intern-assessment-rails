@@ -1,0 +1,36 @@
+<%= form_with(model: @article, local: true, data: { turbo: false }) do |form| %>
+  <% if @article.errors.any? %>
+    <div>
+      <h2>Please fix the following and try again</h2>
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :author %><br>
+    <%= form.text_field :author %>
+  </div>
+
+  <div>
+    <%= form.label :date %><br>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

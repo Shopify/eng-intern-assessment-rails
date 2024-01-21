@@ -1,0 +1,25 @@
+<h2><%= @article.title %></h2>
+
+<% if @article.author? %>
+  <p>
+    <strong>Author:</strong>
+    <%= @article.author %>
+  </p>
+<% end %>
+
+<% if @article.date? %>
+  <p>
+    <strong>Date:</strong>
+    <%= @article.date %>
+  </p>
+<% end %>
+
+<p>
+  <%= @article.content %>
+</p>
+
+
+
+<%= link_to 'Delete', article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Permanently delete this article?"} %> |
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Article Index', articles_path %>
