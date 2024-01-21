@@ -1,21 +1,23 @@
-<div class="label">
-  <%= form.label attribute %>
-</div>
-<div class="input">
-  <% case attribute %>
-    <% when :date %>
+<div class="form-field">
+  <div class="label">
+    <%= form.label attribute %>
+  </div>
+  <div class="input">
+    <!-- Render the appropriate input based on attribute type -->
+    <% if attribute == :date %>
       <%= form.date_field attribute %>
     <% else %>
       <%= form.text_field attribute %>
     <% end %>
-  <% if model.errors[attribute].any? %>
-    <div class="field-errors">
+    <% if model.errors[attribute].any? %>
+      <div class="field-errors">
         <% model.errors.full_messages_for(attribute).each do |error_message| %>
-        <div class="error">
-          <%= error_message %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+          <div class="error">
+            <%= error_message %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
 <br />

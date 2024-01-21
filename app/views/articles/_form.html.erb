@@ -1,17 +1,15 @@
-<%= form_with model: article do |form| %>
-  <div>
+<div>
+  <%= link_to 'Home', articles_path %>
+</div>
+<br />
+<div class="form">
+  <%= form_with model: article do |form| %>
     <%= render partial: "form_field", locals: { attribute: :title, form: form, model: article } %>
-  </div>
-  <div>
     <%= render partial: "form_field", locals: { attribute: :content, form: form, model: article } %>
-  </div>
-  <div>
     <%= render partial: "form_field", locals: { attribute: :author, form: form, model: article } %>
-  </div>
-  <div>
     <%= render partial: "form_field", locals: { attribute: :date, form: form, model: article } %>
-  </div>
-  <div>
-    <%= form.submit "Submit" %>
-  </div>
-<% end %>
+    <div>
+      <%= form.submit "Submit" %>
+    </div>
+  <% end %>
+</div>
