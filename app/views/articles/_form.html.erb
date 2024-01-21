@@ -1,0 +1,36 @@
+<%= form_with(model: @article, local: true) do |form| %>
+  <!-- Title Field -->
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <!-- Author Field -->
+  <div>
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <!-- Content Field -->
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <!-- Date Field -->
+  <div>
+    <%= form.label :date %>
+    <%= form.datetime_field :date %>
+  </div>
+
+  <!-- Image Field -->
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <!-- Submit Button -->
+  <div>
+    <%= form.submit @article.persisted? ? "Update Article" : "Create Article" %>
+  </div>
+<% end %>
