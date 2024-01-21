@@ -5,7 +5,7 @@ class Article < ApplicationRecord
   def self.search(search)
     if search
       Article.where("title LIKE ?",
-        Article.sanitize_sql_like(search) + "%")
+        "%" + Article.sanitize_sql_like(search) + "%").or(Article.where("content  LIKE ?", "%" + Article.sanitize_sql_like(search) + "%"))
     else
       @articles = Article.all
     end
