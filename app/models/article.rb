@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
   # Validates the fields to ensure valid inputs
-  validates :title, presence: true, blank: false
-  validates :content, presence: true, blank: false
+  validates :title, presence: true
+  validates :content, presence: true
 
   # Performs query searches using a query term against the title and content
   def self.search(term)

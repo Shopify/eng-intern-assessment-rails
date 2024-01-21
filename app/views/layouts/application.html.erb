@@ -14,5 +14,12 @@
 
   <body>
     <%= yield %>
+    <% if flash.any? %>
+      <script>
+        <% flash.each do |type, message| %>
+          alert("<%= j message %>");
+        <% end %>
+      </script>
+    <% end %>
   </body>
 </html>
