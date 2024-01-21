@@ -1,10 +1,20 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
-  # GET /articles or /articles.json
+  # # GET /articles or /articles.json
+  # def index
+  #   @articles = Article.all
+  # end
+
   def index
-    @articles = Article.all
+    if params[:search].present?
+      @articles = Article.where("title LIKE ?", "%#{params[:search]}%")
+    else
+      @articles = Article.all
+    end
   end
+  
+    
 
   # GET /articles/1 or /articles/1.json
   def show
@@ -65,6 +75,7 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title, :content, :author)
     end
+  
 end
