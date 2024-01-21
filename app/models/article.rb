@@ -6,6 +6,8 @@
         validates :title, presence: true
         validates :content, presence: true
 
+
+
         # The self.search method is a class method (indicated by 'self.') used to search for articles.
         # It takes a 'search_term' as an argument to perform the search.
         def self.search(search_term)
@@ -18,5 +20,5 @@
                       # If no search term is given, the method returns all articles.
                 all
             end
-        end           
+        end
     end

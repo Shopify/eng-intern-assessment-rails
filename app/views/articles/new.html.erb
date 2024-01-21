@@ -20,13 +20,13 @@
     
     <p>
       <%= form.label :content %><br>
-      <%= form.text_area :content %>
+      <%= form.text_area :content, class: 'content-text-area' %>
     </p>
     
     <p>
       <%= form.submit %>
     </p>
-    
+
     <%= link_to 'Back to Articles', articles_path, class: 'back-link' %>
 
   <% end %>

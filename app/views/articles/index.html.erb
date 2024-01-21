@@ -1,12 +1,16 @@
 <h1>Articles</h1>
-<ul>
-<%= link_to 'New Article', new_article_path, class: 'new-article-button' %>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article) %>
-      | <%= link_to 'Edit', edit_article_path(article) %>
+<%= link_to 'Home', root_path, class: 'home-button' %>
+<%= button_to 'New Article', new_article_path, method: :get, class: 'new-article-button' %>
 
-      | <%= button_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+<ul>
+  <% @articles.each do |article| %>
+    <li class="article-actions">
+      <span class="article-title"><%= link_to article.title, article_path(article) %></span>
+      <div class="action-links">
+        | <%= link_to 'View', article_path(article), class: 'view-article-link' %>
+        | <%= link_to 'Edit', edit_article_path(article) %>
+        | <%= button_to 'Delete', article_path(article), method: :delete, class: 'delete-button' %>
+      </div>  
     </li>
   <% end %>
 </ul>
