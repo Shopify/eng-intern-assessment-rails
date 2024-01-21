@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -12,6 +16,21 @@ class ArticleTest < ActiveSupport::TestCase
   test 'creates a new article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert article.valid?
+  end
+
+  test 'should not create an article without a title' do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+  end
+
+  test 'should not create an article without content' do
+    article = Article.create(title: 'Sample Article', author: 'John Doe', date: Date.today)
+    assert_not article.valid?
+  end
+
+  test 'should not create an article without a title or content' do
+    article = Article.create
+    assert_not article.valid?
   end
 
   test 'displays the article content accurately' do
