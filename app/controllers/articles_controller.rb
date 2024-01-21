@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-
   # return all Articles in the Encyclopedia if search query not provided. otherwise return only matching articles
   def index
     @articles = if params[:query].present?

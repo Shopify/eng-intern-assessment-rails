@@ -1,5 +1,4 @@
 class Article < ApplicationRecord
-
   # ensure every Article has a title and contents
   validates :title, presence: true
   validates :content, presence: true
