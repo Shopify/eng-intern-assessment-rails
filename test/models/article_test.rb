@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # Ensure db is rolled back to 0 items before each test case
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end

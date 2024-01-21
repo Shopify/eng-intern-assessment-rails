@@ -6,11 +6,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- Link to application stylesheet and JavaScript -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <!-- Display any flash messages -->
+    <% if flash[:notice] %>
+      <p class="flash-notice"><%= flash[:notice] %></p>
+    <% elsif flash[:alert] %>
+      <p class="flash-alert"><%= flash[:alert] %></p>
+    <% elsif flash[:success] %>
+      <p class="flash-success"><%= flash[:success] %></p>
+    <% end %>
+
+    <!-- Main content -->
     <%= yield %>
   </body>
 </html>

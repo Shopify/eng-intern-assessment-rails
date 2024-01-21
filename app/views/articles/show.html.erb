@@ -1,0 +1,23 @@
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @article.content %>
+</p>
+<!-- check if author and date are present to render them-->
+<% if @article.author.present? %>
+  <p><strong>Author:</strong> <%= @article.author %></p>
+<% end %>
+
+<% if @article.date.present? %>
+  <p><strong>Date:</strong> <%= @article.date.strftime("%B %d, %Y") %></p>
+<% end %>
+
+<%= link_to 'Edit Article', edit_article_path(@article) %> |
+<%= link_to 'Back to Articles', articles_path %>
+<%= button_to 'Delete', article_path(@article), 
+              method: :delete, 
+              class: 'delete-article-button' %>

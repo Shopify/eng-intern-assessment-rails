@@ -13,3 +13,142 @@
  *= require_tree .
  *= require_self
  */
+
+
+ /* Add this to your CSS file */
+.new-article-button {
+    display: block; /* Makes the link a block element, so it takes up the full width */
+    margin-bottom: 20px; /* Adjust the value to get the desired spacing */
+    width: fit-content
+  }
+
+  
+  /* Add this to your CSS file */
+.article-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+  
+  .article-title {
+    /* flex: 1; Ensures that the title takes up the available space */
+    /* width: fit-content; */
+    flex-grow: 1; /* Allows the title to grow and fill the space */
+    
+  }
+
+  .action-links {
+    display: flex;
+    gap: 10px; /* Adds space between the action buttons */
+  }
+  
+  .delete-button {
+    /* margin-left: 10px Adds some space between the title and the button */
+  }
+  
+  /* Add this to your CSS file */
+.view-articles-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .view-articles-button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  .home-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .home-button:hover {
+    background-color: #0056b3;
+  }
+
+  .content-text-area {
+    width: 100%; /* Full width of the container */
+    max-width: 450px; /* Maximum width it can expand to */
+    height: auto; /* Height is automatic, but can set a specific height if needed */
+    min-height: 100px; /* Minimum height of the text area */
+    padding: 0.5em; /* Padding inside the text area */
+    border: 1px solid #ced4da; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    resize: vertical; /* Allows vertical resizing only */
+  }
+  
+  form {
+    padding-right: 20px; /* Adjust the value to the desired padding */
+  }
+
+  #error_explanation {
+    color: red;
+    /* Add more styling as needed */
+  }
+
+  .flash-notice {
+    /* Your existing styles for notices */
+    color: black;
+  }
+  
+  .flash-success {
+    color: green;
+    /* Add more styling as needed */
+  }
+  .flash-alert {
+    color: red; /* Red text color for alerts */
+    background-color: #FFD2D2; /* Light red background color */
+    border: 1px solid #FFA8A8; /* Darker red border */
+    padding: 10px; /* Some padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below the alert */
+    text-align: center; /* Centered text */
+  }
+  
+  .delete-article-button {
+    padding: 10px 20px; /* Padding inside the button */
+    background-color: #dc3545; /* Bootstrap's danger color for red */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Allows it to sit inline with other text/elements */
+    margin-top: 10px; /* Margin at the top */
+  }
+  
+  .delete-article-button:hover {
+    background-color: #c82333; /* A slightly darker red for the hover state */
+  }
+
+  .reset-search-button {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 15px;
+    font-size: 18px;
+    background-color: #f8f9fa;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+  }
+  
+  .reset-search-button:hover {
+    background-color: #e2e6ea;
+  }
+  
+  
+  
+  
+  
