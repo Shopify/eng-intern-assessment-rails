@@ -2,12 +2,14 @@
   <h1>All Posts</h1>
   <div class="articles-list">
     <% @articles.each do |article| %>
-      <div class="article">
-        <p><%= article.title %></p>
-        <p>Author: <%= article.author ? article.author : "Anonymous" %></p>
-        <p>Date: <%= article.date ? article.date : 'Unknown Time' %></p>
-        <p class="content">Content: <%= article.content %></p>
-      </div>
+      <%= link_to article_path(article) do %>
+        <div class="article">
+          <p><%= article.title %></p>
+          <p>Author: <%= article.author ? article.author : "Anonymous" %></p>
+          <p>Date: <%= article.date ? article.date : 'Unknown Time' %></p>
+          <p class="content">Content: <%= article.content %></p>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -30,9 +30,15 @@
   border-radius: 5px;
 }
 
-.articles-list .content {
+.articles-list p {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   display: inherit;
+}
+
+.articles-list a {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
 }
