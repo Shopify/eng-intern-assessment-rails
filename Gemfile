@@ -52,6 +52,9 @@ group :development, :test do
 
   # Additional gem for assessment: Use RSpec for testing [https://github.com/rspec/rspec-rails]
   gem "rspec-rails", "~> 6.1.0"
+
+  # Additional gem for assessment: Generate fake seed data for articles [https://github.com/faker-ruby/faker]
+  gem "faker"
 end
 
 group :development do
