@@ -2,12 +2,12 @@
 
 <%= render 'searchbar' %>
 
-<ul>
     <% @articles.each do |article| %>
-        <li> 
-        <%= link_to article.title, article %>
-        </li>
+        <div class=article-link>
+
+        <h3><%= link_to article.title, article %> </h3>
+        <p> Author: <%= article.author.present? ? article.author : "Unknown" %></p>
+        </div>
     <%end%>
-</ul>
 
 <%= link_to "New Article", new_article_path %>
