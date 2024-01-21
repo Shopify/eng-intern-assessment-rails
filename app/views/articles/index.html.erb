@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+<h1>Articles</h1>
+<div id="new_article">
+  <button class="new-article">
+    <%= link_to 'New Article' , new_article_path %>
+  </button>
+</div>
+<div id="articles" data-controller="search">
+  <%= render 'search' %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+        <th>Date</th>
+        <th colspan="2" class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr class="article">
+          <td data-search-target="title" class="title"><%= article.title %></td>
+          <td data-search-target="content" class="content"><%= article.content.truncate(30) %></td>
+          <td data-search-target="author" class="author"><%= article.author %></td>
+          <td data-search-target="date" class="date"><%= article.date %></td>
+          <td class="actions">
+            <button class="view-article">
+              <%= link_to 'View', article_path(article) %>
+            </button>
+            <%= button_to 'Delete', article_path(article),
+              method: :delete,
+              data: { turbo_confirm: "Are you sure you want to delete this article?" },
+              class: "delete-article" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
