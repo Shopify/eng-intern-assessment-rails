@@ -87,4 +87,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test "does not allow creating an article with an empty title" do
+    article = Article.new(title: "", content: "Lorem ipsum dolor sit amet.")
+    refute article.valid?
+    assert_includes article.errors[:title], "can't be blank"
+  end
+
+  test "does not allow creating an article with a title less than 3 characters" do
+    article = Article.new(title: "AB", content: "Lorem ipsum dolor sit amet.")
+    refute article.valid?
+    assert_includes article.errors[:title], "is too short (minimum is 3 characters)"
+  end
 end

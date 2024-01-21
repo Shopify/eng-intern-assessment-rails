@@ -107,4 +107,18 @@ RSpec.describe(Article, type: :model) do
       expect(results).not_to(include(article1))
     end
   end
+
+  describe "title validations" do
+    it "does not allow creating an article with an empty title" do
+      article = Article.new(title: "", content: "Lorem ipsum dolor sit amet.")
+      expect(article.valid?).to(be(false))
+      expect(article.errors[:title]).to(include("can't be blank"))
+    end
+
+    it "does not allow creating an article with a title less than 3 characters" do
+      article = Article.new(title: "AB", content: "Lorem ipsum dolor sit amet.")
+      expect(article.valid?).to(be(false))
+      expect(article.errors[:title]).to(include("is too short (minimum is 3 characters)"))
+    end
+  end
 end
