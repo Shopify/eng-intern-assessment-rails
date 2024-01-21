@@ -9,7 +9,7 @@ class ArticleController < ActionController::Base
 
   def create
     @article = Article.create(title: params[:title], content: params[:content], author: params[:author])
-    @article.date = params[:date] || Date.today
+    @article.date = Date.today
 
     if @article.save
       redirect_to "/article"
@@ -31,7 +31,7 @@ class ArticleController < ActionController::Base
     @article.title = params[:title] if params[:title]
     @article.content = params[:content] if params[:content]
     @article.author = params[:author] if params[:author]
-    @article.date = params[:date] if params[:date]
+    @article.date = Date.today
 
     if @article.save
       redirect_to "/article"
