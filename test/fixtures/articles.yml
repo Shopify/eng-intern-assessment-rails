@@ -1,0 +1,23 @@
+one:
+  id: 1
+  title: "Article one"
+  content: "First content"
+
+two: 
+  id: 2
+  title: "Article two"
+  content: "Second content"
+  author: "Author 2"
+
+three: 
+  id: 3
+  title: "Article three"
+  content: "Third content"
+  date: "2023-01-30"
+  
+four:
+  id: 4
+  title: "Article four"
+  content: "Fourth content"
+  author: "Author 4"
+  date: "2024-01-30"

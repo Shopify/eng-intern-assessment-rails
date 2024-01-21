@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # Clear data genereated by fixture
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -64,5 +69,19 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'requires content and title not nil' do
+    article1 = Article.create(title: 'No content')
+    article2 = Article.create(content: 'No title')
+    assert article1.invalid?
+    assert article2.invalid?
+  end
+
+  test 'requires content and title not empty' do
+    article1 = Article.create(title: 'No content', content: '  ')
+    article2 = Article.create(content: 'No title', title: '   ')
+    assert article1.invalid?
+    assert article2.invalid?
   end
 end

@@ -13,3 +13,59 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  font-family: Arial;
+}
+
+/* Index page */
+.articles-list {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.article {
+  background: rgb(239, 239, 239);
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.articles-list p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inherit;
+}
+
+.article-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Article form */
+.article-form-container {
+  max-width: min(50%, 700px);
+  margin: auto;
+}
+
+.article-form {
+  display: flex;
+  margin: auto;
+  gap: 12px;
+  flex-direction: column;
+}
+
+.article-form label {
+  font-weight: bold;
+}
+
+.article-form input, textarea {
+  width: 100%;
+}
+
+.header-controls {
+  justify-content:space-between;
+  display: flex;
+}
