@@ -1,2 +1,0 @@
-class AddNameToWriter < ApplicationRecord
-end

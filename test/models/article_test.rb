@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -10,7 +11,8 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'creates a new article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    writer = Writer.create(name: 'John Doe', email: 'john@example.com', password: 'password')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet., writer:', writer: writer)
     assert article.valid?
   end
 
@@ -20,10 +22,18 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'displays the article metadata correctly' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
-    assert_equal 'John Doe', article.author
+    writer = Writer.create(name: 'John Doe', email: 'john@example.com', password: 'password')
+    article = Article.create(
+      title: 'Sample Article',
+      content: 'Lorem ipsum dolor sit amet.',
+      writer: writer, # Assign the writer fixture to the article
+      date: Date.today
+    )
+
+    assert_equal writer, article.writer
     assert_equal Date.today, article.date
   end
+
 
   test 'edits an existing article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
@@ -32,9 +42,11 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'updates the article metadata' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
-    article.update(author: 'Jane Smith', date: Date.yesterday)
-    assert_equal 'Jane Smith', article.author
+    writer = Writer.create(name: 'John Doe', email: 'john@example.com', password: 'password')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', writer: writer, date: Date.today)
+    writer.update(name: 'Jane Smith')
+    article.update(date: Date.yesterday)
+    assert_equal 'Jane Smith', article.writer.name
     assert_equal Date.yesterday, article.date
   end
 
@@ -51,16 +63,23 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'returns accurate search results' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    writer = Writer.create(name: 'John Doe', email: 'john@example.com', password: 'password')
+
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', writer: writer, date: Date.today)
+    article2 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', writer: writer, date: Date.today)
+
+  
     results = Article.search('Lorem ipsum')
+
     assert_includes results, article1
     assert_includes results, article2
   end
 
   test 'displays relevant articles in search results' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    writer = Writer.create(name: 'John Doe', email: 'john@example.com', password: 'password')
+
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', writer:writer)
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', writer:writer)
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1

@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   
     def index
     if params[:search]
-      @articles = Article.joins(:writer).where('articles.title LIKE :search OR writers.name LIKE :search OR writers.email LIKE :search', search: "%#{params[:search]}%")
+      @articles = Article.joins(:writer).where('articles.title LIKE :search OR articles.content LIKE :search OR writers.name LIKE :search OR writers.email LIKE :search', search: "%#{params[:search]}%")
     else
       @articles = Article.all.order(created_at: :desc)
     end
@@ -34,8 +34,9 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    if @article.update(article_params)
-      redirect_to @article, notice: 'Article was successfully updated.'
+    @article = Article.find(params[:id])
+    if @article.update(article_params) && @article.writer.update(name: params[:article][:writer_name])
+      redirect_to @article, notice: 'Article and writer was successfully updated.'
     else
       render :edit
     end
@@ -54,11 +55,11 @@ class ArticlesController < ApplicationController
   private
 
     def set_article
-      @article = Article.find(params[:id])
+      @article = Article.includes(:writer).find(params[:id])
     end
 
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title, :content, writer_attributes: [:name])
     end
     def check_writer
       unless current_writer == @article.writer

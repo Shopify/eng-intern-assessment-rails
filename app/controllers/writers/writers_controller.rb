@@ -12,5 +12,16 @@ class WritersController < ApplicationController
     def set_writer
       @writer = Writer.find(params[:id])
     end
+
+    def update
+        @writer = Writer.find(params[:id])
+        if @writer.update(writer_params)
+          redirect_to @writer, notice: 'Profile was successfully updated.'
+        else
+          render :edit
+        end
+    end
+    def writer_params
+        params.require(:writer).permit(:name)
+    end
   end
-  
