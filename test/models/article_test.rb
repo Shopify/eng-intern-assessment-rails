@@ -65,4 +65,22 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+#   Extra Test Cases:
+
+  test 'should not update non-existent article' do
+    assert_raises(ActiveRecord::RecordNotFound) do
+      Article.find(-1).update(title: 'Non-existent')
+    end
+  end
+
+  test 'should not delete non-existent article' do
+    assert_raises(ActiveRecord::RecordNotFound) do
+      Article.find(-1).destroy
+    end
+  end
+
+  test 'search returns nil when no query provided' do
+    assert_nil Article.search(nil), "Search did not return nil when no query was provided"
+  end
 end
