@@ -22,6 +22,11 @@
   margin-bottom: 20px; /* Adjust the value as needed */
 }
 
+button a {
+  text-decoration: none;
+  color: inherit;
+}
+
 th {
   text-align: left;
   padding-right: 15px;

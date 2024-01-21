@@ -1,3 +1,13 @@
 <div id="search-bar">
-  <input type="text" id="search" placeholder="Search articles..." data-action="input->search#filterArticles" />
-</div>
+  <!-- Hidden input to disable Chrome's autocomplete -->
+  <input type="text" name="fake" style="display: none" aria-hidden="true">
+  <!-- Visible input for searching articles -->
+  <input
+    type="text"
+    id="search"
+    placeholder="Search articles..."
+    data-action="input->search#filterArticles"
+    autocomplete="off"
+    aria-label="Search articles"
+    />
+  </div>

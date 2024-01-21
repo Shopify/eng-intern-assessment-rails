@@ -1,7 +1,9 @@
 <p style="color: green"><%= notice %></p>
 <h1>Articles</h1>
 <div id="new_article">
-  <%= link_to 'New Article' , new_article_path %>
+  <button class="new-article">
+    <%= link_to 'New Article' , new_article_path %>
+  </button>
 </div>
 <div id="articles" data-controller="search">
   <%= render 'search' %>
