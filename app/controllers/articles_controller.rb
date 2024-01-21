@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+
+  # return all Articles in the Encyclopedia if search query not provided. otherwise return only matching articles
   def index
     @articles = if params[:query].present?
       Article.search(params[:query])
@@ -7,14 +9,17 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # return a particular article given its id
   def show
     @article = Article.find(params[:id])
   end
 
+  # create a new Article, no validation
   def new
     @article = Article.new
   end
 
+  # create and save a new Article with validation
   def create
     @article = Article.new(article_params)
 
@@ -25,10 +30,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # edit an Article, no validation
   def edit
     @article = Article.find(params[:id])
   end
 
+  # update and save an Article with validation
   def update
     @article = Article.find(params[:id])
 
@@ -39,6 +46,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # delete an Article
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
