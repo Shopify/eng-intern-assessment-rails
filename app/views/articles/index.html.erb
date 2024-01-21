@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Articles</h1>
+
+<%= form_tag(articles_path, method: :get) do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search articles..." %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<div id="articles">
+  <% if @articles.present? %>
+    <% @articles.each do |article| %>
+      <%= render article %>
+      <p>
+        <%= link_to "Show this article", article %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>No articles found</p>
+  <% end %>
+</div>
+
+<%= link_to "New article", new_article_path %>
