@@ -1,7 +1,8 @@
+<%= link_to "Home", root_path %>
 <h1><%= @article.title %></h1>
 <p><%= @article.content %></p>
-<p><%= @article.author %></p>
-<p><%= @article.date %></p>
+<p>By: <%= @article.author %></p>
+<p>Published On: <%= @article.date %></p>
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <li><%= link_to "Destroy", article_path(@article), data: {
