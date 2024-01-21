@@ -17,11 +17,11 @@
     </thead>
     <tbody>
       <% @articles.each do |article| %>
-        <tr>
-          <td data-search-target="title"><%= article.title %></td>
-          <td data-search-target="content"><%= article.content.truncate(30) %></td>
-          <td data-search-target="author"><%= article.author %></td>
-          <td><%= article.date %></td>
+        <tr class="article">
+          <td data-search-target="title" class="title"><%= article.title %></td>
+          <td data-search-target="content" class="content"><%= article.content.truncate(30) %></td>
+          <td data-search-target="author" class="author"><%= article.author %></td>
+          <td data-search-target="date" class="date"><%= article.date %></td>
           <td class="actions">
             <button class="view-article">
               <%= link_to 'View', article_path(article) %>

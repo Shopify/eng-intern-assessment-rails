@@ -17,7 +17,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
     if @article.save
       redirect_to(@article, notice: "Article was successfully created.")
     else
@@ -39,8 +38,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-
-    redirect_to(articles_url, notice: "Article was successfully destroyed.")
+    redirect_to(articles_url, notice: "Article was successfully deleted.")
   end
 
   private

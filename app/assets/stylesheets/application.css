@@ -43,7 +43,12 @@ table td.actions button {
 table td.actions button.view-article {
   margin-right: 10px;
 }
+
 table td.actions button.view-article a {
   text-decoration: none;
   color: inherit;
+}
+
+.hide {
+  display: none;
 }

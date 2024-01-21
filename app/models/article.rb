@@ -7,7 +7,7 @@ class Article < ApplicationRecord
     def search(search_term)
       if search_term.present?
         where(
-          "title LIKE :query OR content LIKE :query OR author LIKE :query",
+          "title LIKE :query OR content LIKE :query OR author LIKE :query OR date LIKE :query",
           query: "%#{search_term}%",
         )
       else
