@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show]
+  before_action :set_article, only: [:show, :edit, :update]
 
   def index
     # Allow searching 
@@ -24,6 +24,17 @@ class ArticlesController < ApplicationController
       redirect_to @article
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

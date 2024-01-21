@@ -39,10 +39,9 @@
   display: inherit;
 }
 
-.articles-list a {
-  color: inherit;
-  cursor: pointer;
-  text-decoration: none;
+.article-buttons {
+  display: flex;
+  gap: 8px;
 }
 
 /* Article form */

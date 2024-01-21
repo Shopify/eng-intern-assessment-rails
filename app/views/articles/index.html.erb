@@ -14,14 +14,16 @@
   <%# Article list %>
   <div class="articles-list">
     <% @articles.each do |article| %>
-      <%= link_to article_path(article) do %>
-        <div class="article">
-          <p><%= article.title %></p>
-          <p>Author: <%= article.author ? article.author : "Anonymous" %></p>
-          <p>Date: <%= article.date ? article.date : 'Unknown Time' %></p>
-          <p class="content">Content: <%= article.content %></p>
+      <div class="article">
+        <p><%= article.title %></p>
+        <p>Author: <%= article.author ? article.author : "Anonymous" %></p>
+        <p>Date: <%= article.date ? article.date : 'Unknown Time' %></p>
+        <p class="content">Content: <%= article.content %></p>
+        <div class="article-buttons">
+          <%= button_to "View Article", article_path(article), method: "get" %>
+          <%= button_to "Edit Article", edit_article_path(article), method: "get" %>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
