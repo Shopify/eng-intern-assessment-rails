@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # Ensure db is rolled back to 0 items before each test case
   setup do
     Article.delete_all
   end

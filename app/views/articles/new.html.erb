@@ -1,0 +1,33 @@
+<% if @article.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<%= form_with(model: @article, local: true) do |form| %>
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </p>
+    
+    <p>
+      <%= form.label :content %><br>
+      <%= form.text_area :content %>
+    </p>
+    
+    <p>
+      <%= form.submit %>
+    </p>
+    
+    <%= link_to 'Back to Articles', articles_path, class: 'back-link' %>
+
+  <% end %>
+  
