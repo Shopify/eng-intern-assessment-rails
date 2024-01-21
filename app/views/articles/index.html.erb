@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag 'articles.css' %>
+
+<h1>Articles</h1>
+
+<table>
+  <tr>
+    <th> ID
+    <th> Title
+    <th> Content
+    <th> Author
+    <th> Date
+  </tr>
+  <% @articles.each do |article| %>
+  <tr>
+    <td>
+      <%= article.id %>
+    </td>
+    <td>
+      <%= article.title %>
+    </td>
+    <td>
+      <%= article.content %>
+    </td>
+    <td>
+      <%= article.author %>
+    </td>
+    <td>
+      <%= article.date %>
+    </td>
+  </tr>
+  <% end %>
+</ul>
