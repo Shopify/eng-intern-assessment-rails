@@ -70,4 +70,18 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'requires content and title not nil' do
+    article1 = Article.create(title: 'No content')
+    article2 = Article.create(content: 'No title')
+    assert article1.invalid?
+    assert article2.invalid?
+  end
+
+  test 'requires content and title not empty' do
+    article1 = Article.create(title: 'No content', content: '  ')
+    article2 = Article.create(content: 'No title', title: '   ')
+    assert article1.invalid?
+    assert article2.invalid?
+  end
 end
