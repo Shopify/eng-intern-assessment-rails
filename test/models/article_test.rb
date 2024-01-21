@@ -88,6 +88,18 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not_includes results, article1
   end
 
+  test "displays relevant articles in search results for an author term" do
+    article1 = Article.create(title: "Sample Article", content: "Sample Content", author: "John Doe")
+    article2 = Article.create(
+      title: "Another Article",
+      content: "More Sample Content",
+      author: "Jane Smith",
+    )
+    results = Article.search("Smith")
+    assert_includes results, article2
+    assert_not_includes results, article1
+  end
+
   test "does not allow creating an article with an empty title" do
     article = Article.new(title: "", content: "Lorem ipsum dolor sit amet.")
     refute article.valid?
@@ -98,5 +110,19 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.new(title: "AB", content: "Lorem ipsum dolor sit amet.")
     refute article.valid?
     assert_includes article.errors[:title], "is too short (minimum is 3 characters)"
+  end
+
+  test "does not allow creating an article with more than 100 characters" do
+    long_title = "a" * 101
+    article = Article.new(title: long_title, content: "Lorem ipsum dolor sit amet.")
+    refute article.valid?
+    assert_includes article.errors[:title], "is too long (maximum is 100 characters)"
+  end
+
+  test "does not allow duplicate titles" do
+    Article.create(title: "Sample Article", content: "Sample Content 1")
+    duplicate_article = Article.new(title: "Sample Article", content: "Sample Content 2")
+    refute duplicate_article.valid?
+    assert_includes duplicate_article.errors[:title], "has already been taken"
   end
 end
