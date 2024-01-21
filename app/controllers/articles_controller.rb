@@ -40,10 +40,6 @@ class ArticlesController < ApplicationController
     render json: { error: "Article not found" }, status: :not_found
   end
 
-  def article_params
-    params.require(:article).permit(:title, :content, :author)
-  end
-
   def search
     if params[:query].present?
       articles = Article.search(params[:query])
@@ -53,4 +49,26 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def search_by_title
+    if params[:query].present?
+      articles = Article.title(params[:query])
+      render json: articles
+    else
+      render json: { error: "No such query found" }, status: :bad_request
+    end
+  end
+
+  def search_by_author
+    if params[:query].present?
+      articles = Article.author(params[:query])
+      render json: articles
+    else
+      render json: { error: "No such query found" }, status: :bad_request
+    end
+  end
+
+  private
+  def article_params
+    params.require(:article).permit(:title, :content, :author)
+  end
 end
