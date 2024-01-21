@@ -2,10 +2,6 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
   # # GET /articles or /articles.json
-  # def index
-  #   @articles = Article.all
-  # end
-
   def index
     if params[:search].present?
       @articles = Article.where("title LIKE ?", "%#{params[:search]}%")
