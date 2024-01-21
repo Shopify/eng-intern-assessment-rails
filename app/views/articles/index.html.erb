@@ -3,9 +3,9 @@
 <div id="new_article">
   <%= link_to 'New Article' , new_article_path %>
 </div>
-<%= render 'search' %>
-<div id="articles">
-  <table data-controller="search">
+<div id="articles" data-controller="search">
+  <%= render 'search' %>
+  <table>
     <thead>
       <tr>
         <th>Title</th>
@@ -21,7 +21,7 @@
           <td data-search-target="title"><%= article.title %></td>
           <td data-search-target="content"><%= article.content.truncate(30) %></td>
           <td data-search-target="author"><%= article.author %></td>
-          <td data-search-target="date"><%= article.date %></td>
+          <td><%= article.date %></td>
           <td class="actions">
             <button class="view-article">
               <%= link_to 'View', article_path(article) %>
