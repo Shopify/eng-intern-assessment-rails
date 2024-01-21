@@ -1,0 +1,16 @@
+<h1><%= @article.title %></h1>
+
+<h2>Author: <%=  @article.author.present? ? @article.author : "Anonymous"%></h2>
+<h3>Last updated: <%= @article.date || @article.updated_at %></h3>
+
+<% if @article.cover_photo.present? && @article.cover_photo.representable? %>
+  <%= image_tag @article.cover_photo.representation(resize_to_limit: [400, 400]) %>
+<% end %>
+
+<p><%= @article.content %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+    <li><%= button_to "Destroy", @article, method: :delete %></li>
+    <li><%= link_to "Return Home", root_path %></li>
+</ul>
