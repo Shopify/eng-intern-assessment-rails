@@ -3,6 +3,7 @@
   <head>
     <title>EngInternAssessmentRails</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,7 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="mx-auto max-w-7xl sm:px-6 lg:px-8">
     <%= yield %>
   </body>
 </html>
