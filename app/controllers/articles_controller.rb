@@ -10,6 +10,14 @@ class ArticlesController < ApplicationController
   def show
   end
 
+  #GET /articles?search=keyword
+  def index
+    @articles = if params[:search].present?
+                  Article.search(params[:search])
+                else
+                  Article.all
+                end
+  end
   # GET /articles/new
   def new
     @article = Article.new
