@@ -1,5 +1,10 @@
 <h1>Articles</h1>
 
+<%= form_tag(articles_path, method: :get, class: "form-inline my-2 my-lg-0") do %>
+  <%= text_field_tag :query, params[:query], class: "form-control mr-sm-2", placeholder: "Search" %>
+  <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+<% end %>
+
 <ul>
   <% @articles.each do |article| %>
     <li>

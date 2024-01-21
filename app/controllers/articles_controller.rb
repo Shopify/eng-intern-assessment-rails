@@ -1,6 +1,12 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    if params[:query].present?
+      puts 'line 4'
+      @articles = Article.search(params[:query])
+    else
+      puts 'line 7'
+      @articles = Article.all
+    end
   end
 
   def show
@@ -41,6 +47,10 @@ class ArticlesController < ApplicationController
 
     redirect_to root_path, status: :see_other
   end
+
+  # def search
+  #   @articles = Article.search(params[:query])
+  # end
 
   private
   def article_params
