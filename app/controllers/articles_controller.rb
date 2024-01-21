@@ -7,11 +7,10 @@ class ArticlesController < ApplicationController
 
   
     def index
-    @articles = Article.all
     if params[:search]
       @articles = Article.joins(:writer).where('articles.title LIKE :search OR writers.name LIKE :search OR writers.email LIKE :search', search: "%#{params[:search]}%")
     else
-      @articles = Article.all
+      @articles = Article.all.order(created_at: :desc)
     end
   end
 

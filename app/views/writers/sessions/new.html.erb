@@ -1,26 +1,93 @@
-<h2>Log in</h2>
+<style>
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .login-form {
+    width: 100%;
+    max-width: 320px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .login-form h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .login-form .field {
+    margin-bottom: 16px;
+  }
+  .login-form .field label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .login-form .field input[type="email"],
+  .login-form .field input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; 
+  }
+  .login-form .field input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  .login-form .field label.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-top: -8px; /* Adjust this value as needed */
+  }
+  .login-form .actions {
+    margin-top: 24px;
+  }
+  .login-form .actions input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .login-form .actions input[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+</style>
 
-<%= form_with scope: :writer, url: new_writer_session_path, local: true do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="login-container">
+  <div class="login-form">
+    <h2>Log in</h2>
+    <%= form_with scope: :writer, url: new_writer_session_path, local: true do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.label :remember_me, class: 'checkbox-label' do %>
+            <%= f.check_box :remember_me %>
+            Remember me
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
