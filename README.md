@@ -42,12 +42,6 @@ I primarily followed the style used in the different tutorials at https://guides
 
 Here are some resources that may be helpful during your internship project:
 
-- [Ruby on Rails Guides](https://guides.rubyonrails.org/) - Comprehensive guides on Ruby on Rails, covering various aspects of web application development.
-
-- [Ruby Style Guide](https://rubystyle.guide/) - A community-driven Ruby coding style guide to ensure consistent and readable code.
-
-- [Git Documentation](https://git-scm.com/doc) - Official documentation for Git, the version control system used in this project.
-
 # What I would improve/change for the future
 
 Currently, the project is relatively barebones in that it merely implements basic CRUD operations and a straightforward search query. How I would improve/extend this project for the future is to:
