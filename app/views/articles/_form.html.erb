@@ -1,6 +1,7 @@
 <!-- app/views/articles/_form.html.erb -->
 
 <%= form_with(model: @article, local: true) do |form| %>
+  <!-- Fields in forms plus mandatory plus optional-->
     <p>
       <%= form.label :title %><br>
       <%= form.text_field :title %>
@@ -9,6 +10,16 @@
     <p>
       <%= form.label :content %><br>
       <%= form.text_area :content, class: 'content-text-area' %>
+    </p>
+
+    <p>
+      <%= form.label :author %><br>
+      <%= form.text_field :author %>
+    </p>
+
+    <p>
+      <%= form.label :date %><br>
+      <%= form.date_field :date %>
     </p>
     
     <p>

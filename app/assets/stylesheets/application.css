@@ -29,7 +29,6 @@
     align-items: center;
     justify-content: space-between;
     
-    /* width: 80% */
   }
   
   .article-title {
@@ -92,6 +91,64 @@
   form {
     padding-right: 20px; /* Adjust the value to the desired padding */
   }
+
+  #error_explanation {
+    color: red;
+    /* Add more styling as needed */
+  }
+
+  .flash-notice {
+    /* Your existing styles for notices */
+    color: black;
+  }
+  
+  .flash-success {
+    color: green;
+    /* Add more styling as needed */
+  }
+  .flash-alert {
+    color: red; /* Red text color for alerts */
+    background-color: #FFD2D2; /* Light red background color */
+    border: 1px solid #FFA8A8; /* Darker red border */
+    padding: 10px; /* Some padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below the alert */
+    text-align: center; /* Centered text */
+  }
+  
+  .delete-article-button {
+    padding: 10px 20px; /* Padding inside the button */
+    background-color: #dc3545; /* Bootstrap's danger color for red */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Allows it to sit inline with other text/elements */
+    margin-top: 10px; /* Margin at the top */
+  }
+  
+  .delete-article-button:hover {
+    background-color: #c82333; /* A slightly darker red for the hover state */
+  }
+
+  .reset-search-button {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 15px;
+    font-size: 18px;
+    background-color: #f8f9fa;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+  }
+  
+  .reset-search-button:hover {
+    background-color: #e2e6ea;
+  }
+  
+  
   
   
   
