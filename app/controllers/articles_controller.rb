@@ -23,10 +23,6 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  # GET /articles/deleted
-  def deleted
-  end
-
   # GET /articles/<:id>/edit
   def edit
   end
@@ -39,7 +35,7 @@ class ArticlesController < ApplicationController
         format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
         format.json { render json: @article, status: :created}
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to articles_url, status: :unprocessable_entity }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
@@ -52,7 +48,7 @@ class ArticlesController < ApplicationController
         format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
         format.json { render json: @article, status: :ok }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :show, status: :unprocessable_entity, alert: "Article could not be updated." }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
