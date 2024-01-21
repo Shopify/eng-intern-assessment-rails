@@ -22,6 +22,7 @@
         <div class="article-buttons">
           <%= button_to "View Article", article_path(article), method: "get" %>
           <%= button_to "Edit Article", edit_article_path(article), method: "get" %>
+          <%= button_to "Delete Article", article_path(article), method: "delete", form: { data: { turbo_confirm: "Are you sure you want to delete this article?" }} %>
         </div>
       </div>
     <% end %>

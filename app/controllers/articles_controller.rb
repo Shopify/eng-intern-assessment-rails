@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
     # Allow searching 
@@ -37,6 +37,13 @@ class ArticlesController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @article.destroy
+
+    redirect_to root_path, status: :see_other
+  end
+
 
   # Private methods
   private

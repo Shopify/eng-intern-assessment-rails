@@ -80,4 +80,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :not_found
   end
+
+  # delete
+  test "deletes article" do
+    assert_difference("Article.count", -1) do
+      delete article_path(1)
+    end
+  end
 end
