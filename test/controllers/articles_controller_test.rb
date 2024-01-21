@@ -50,4 +50,20 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
   end
+
+  test "should return not found for non-existent article" do
+    get article_url(id: -1) # assuming -1 is an invalid ID
+    assert_response :not_found
+  end
+
+  test "should return not found for updating non-existent article" do
+    patch article_url(id: -1), params: { article: { title: 'Non-existent Title' } }
+    assert_response :not_found
+  end
+
+  test "should return not found for destroying non-existent article" do
+    delete article_url(id: -1) # assuming -1 is an invalid ID
+    assert_response :not_found
+  end
+
 end

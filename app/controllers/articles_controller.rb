@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
 
+  # Need this to test with Postman
+  # REMOVE when done testing with Postman
+  skip_before_action :verify_authenticity_token
+
   # GET /articles
   # Returns a list of all articles.
   def index
@@ -23,6 +27,7 @@ class ArticlesController < ApplicationController
   # If creation fails, returns the error message and a 422 Unprocessable Entity status.
   def create
     article = Article.new(article_params)
+    article.date ||= Date.today
     if article.save
       render json: article, status: :created
     else
