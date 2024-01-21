@@ -8,6 +8,11 @@ class ArticlesController < ApplicationController
   
     def index
     @articles = Article.all
+    if params[:search]
+      @articles = Article.joins(:writer).where('articles.title LIKE :search OR writers.name LIKE :search OR writers.email LIKE :search', search: "%#{params[:search]}%")
+    else
+      @articles = Article.all
+    end
   end
 
   def show
@@ -42,6 +47,10 @@ class ArticlesController < ApplicationController
     @article.destroy
     redirect_to articles_url, notice: 'Article was successfully deleted.'
   end
+
+  # def index
+    
+  # end
 
   private
 

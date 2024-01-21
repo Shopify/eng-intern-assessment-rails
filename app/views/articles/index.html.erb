@@ -44,6 +44,13 @@
 </head>
 <body>
 <h1>Shopify Encyclopedia</h1>
+<%= form_tag(articles_path, method: :get) do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", name: nil %>
+  <% end %>
+  
+  # existing code to display articles...
+  
 <%= form_tag(new_article_path, method: :get, style: 'display: inline-block;') do %>
     <%= submit_tag 'Create New Article', style: 'background-color: green; color: white; border: none;' %>
 <% end %>
