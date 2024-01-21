@@ -1,6 +1,3 @@
-<div class="search">
-  <%= form_with url: articles_path, method: :get do |form| %>
-    <%= form.text_field :search, value: params[:search], placeholder: "Search Articles..." %>
-    <%= form.submit "Search" %>
-  <% end %>
+<div id="search-bar">
+  <input type="text" id="search" placeholder="Search articles..." data-action="filter#search" />
 </div>

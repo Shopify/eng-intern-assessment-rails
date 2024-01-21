@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+#new_article {
+  margin-bottom: 20px; /* Adjust the value as needed */
+}
+
+#search-bar {
+  margin-bottom: 20px; /* Adjust the value as needed */
+}
+
+th {
+  text-align: left;
+  padding-right: 15px;
+}
+
+td {
+  padding-right: 10px;
+}
+
+table .actions {
+  padding-left: 20px;
+}

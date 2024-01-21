@@ -1,14 +1,34 @@
-<h1>Encyclopedia</h1>
-<p>
+<p style="color: green"><%= notice %></p>
+<h1>Articles</h1>
+<div id="new_article">
   <%= link_to 'New Article' , new_article_path %>
-</p>
-<br />
+</div>
 <%= render 'search' %>
-<h2>Articles</h2>
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article) %>
-    </li>
-  <% end %>
-</ul>
+<div id="articles">
+  <table data-controller="search">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Date</th>
+        <th colspan="3" class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.author %></td>
+          <td><%= article.date %></td>
+          <td class="actions">
+            <%= link_to 'View', article_path(article) %> |
+            <%= link_to 'Edit', edit_article_path(article) %> |
+            <%= link_to 'Delete', article_path(article), 
+                method: :delete, 
+                data: { confirm: 'Are you sure you want to delete this article?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
