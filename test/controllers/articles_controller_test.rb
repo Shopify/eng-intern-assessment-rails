@@ -47,4 +47,9 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to articles_url
   end
+
+  test "should return error for invalid article number" do
+    get article_url(999)
+    assert_response :missing
+  end
 end
