@@ -71,19 +71,26 @@
   </head>
 
   <body>
-  <nav>
-    <%= link_to 'Home', root_path %>
-    <% if writer_signed_in? %>
-    <%= form_tag(destroy_writer_session_path, method: :delete) do %>
-      <%= submit_tag('Logout') %>
-    <% end %>
 
-      <%= link_to 'New Article', new_article_path %>
+  <nav style="text-align: center;">
+    <%= link_to 'Home', root_path, style: 'display: inline-block; margin-right: 10px;' %>
+    <% if writer_signed_in? %>
+      <%= form_tag(destroy_writer_session_path, method: :delete, style: 'display: inline-block;') do %>
+        <%= submit_tag('Logout', style: 'display: inline-block;') %>
+      <% end %>
+      
     <% else %>
-      <%= link_to 'Signup', new_writer_registration_path %>
-      <%= link_to 'Login', new_writer_session_path %>
-    <% end %>
+      <%= form_tag(new_writer_registration_path, method: :get, style: 'display: inline-block; margin-right: 10px;') do %>
+        <%= submit_tag 'Signup', class: 'btn btn-default' %>
+      <% end %>
+      
+      <%= form_tag(new_writer_session_path, method: :get, style: 'display: inline-block;') do %>
+        <%= submit_tag 'Login', class: 'btn btn-default' %>
+      <% end %>
+      
+      <% end %>
   </nav>
+
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>

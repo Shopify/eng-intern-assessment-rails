@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%= csrf_meta_tags %>
+
     <title>Simple Blog</title>
     <style>
         body {
@@ -27,11 +29,25 @@
             margin-bottom: 20px;
         }
     </style>
+    <style>
+        .btn-danger {
+            background-color: red; /* Red background */
+            color: white; /* White text */
+            border: none; /* No border */
+        }
+
+        /* Add :hover for hover effect */
+        .btn-danger:hover {
+            background-color: darkred; /* Darker red when hovering */
+        }
+    </style>
 </head>
 <body>
 <h1>Shopify Encyclopedia</h1>
-<%= link_to 'Create New Article', new_article_path %>
-
+<%= form_tag(new_article_path, method: :get, style: 'display: inline-block;') do %>
+    <%= submit_tag 'Create New Article', style: 'background-color: green; color: white; border: none;' %>
+<% end %>
+  
 
 <div class="new-article-link">
     
@@ -44,11 +60,14 @@
         <h2><%= article.title %></h2>
         <p><%= article.content %></p>
         <div class="actions">
-            <%= link_to 'Read', article %>
-            <% if current_writer == article.writer %>
-                <%= link_to 'Edit', edit_article_path(article) %>
-                <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Read', article, style: 'display: inline-block; margin-right: 10px;' %>
+        <% if current_writer == article.writer %>
+            <%= link_to 'Edit', edit_article_path(article), style: 'display: inline-block; margin-right: 10px;' %>
+            <%= form_tag(article, method: :delete, data: { confirm: 'Are you sure?' }, style: 'display: inline-block;') do %>
+                <%= submit_tag 'Delete', class: 'btn btn-danger', style: 'background-color: red; color: white;' %>
+
             <% end %>
+        <% end %>
         </div>
     </div>
 <% end %>
