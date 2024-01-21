@@ -13,18 +13,22 @@
   
   <%# Article list %>
   <div class="articles-list">
-    <% @articles.each do |article| %>
-      <div class="article">
-        <p><%= article.title %></p>
-        <p>Author: <%= article.author.present? ? article.author : "Anonymous" %></p>
-        <p>Date: <%= article.date.present? ? article.date : 'Unknown Time' %></p>
-        <p class="content">Content: <%= article.content %></p>
-        <div class="article-buttons">
-          <%= button_to "View Article", article_path(article), method: "get" %>
-          <%= button_to "Edit Article", edit_article_path(article), method: "get" %>
-          <%= button_to "Delete Article", article_path(article), method: "delete", form: { data: { turbo_confirm: "Are you sure you want to delete this article?" }} %>
+    <% if @articles.length > 0%>
+      <% @articles.each do |article| %>
+        <div class="article">
+          <p><%= article.title %></p>
+          <p>Author: <%= article.author.present? ? article.author : "Anonymous" %></p>
+          <p>Date: <%= article.date.present? ? article.date : 'Unknown Time' %></p>
+          <p class="content">Content: <%= article.content %></p>
+          <div class="article-buttons">
+            <%= button_to "View Article", article_path(article), method: "get" %>
+            <%= button_to "Edit Article", edit_article_path(article), method: "get" %>
+            <%= button_to "Delete Article", article_path(article), method: "delete", form: { data: { turbo_confirm: "Are you sure you want to delete this article?" }} %>
+          </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p>No Articles Found...</p>
     <% end %>
   </div>
 </div>
