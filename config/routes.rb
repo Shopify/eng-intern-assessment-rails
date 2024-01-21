@@ -9,4 +9,18 @@ Rails.application.routes.draw do
   root "article#index"
 
   get "/article" => "article#index"
+
+  get "/article/new" => "article#new"
+
+  post "/article/new" => "article#create"
+
+  get "/article/search" => "article#search"
+
+  get "/article/:id" => "article#read"
+
+  get "/article/:id/edit" => "article#edit"
+
+  post "/article/:id/edit" => "article#update"
+
+  delete "/article/:id" => "article#delete"
 end
