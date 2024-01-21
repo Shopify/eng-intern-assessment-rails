@@ -14,8 +14,8 @@
 # NOTE: Date::MONTHNAMES is an array where the first element is nil, so compact removes it.
 20.times do |i|
   Article.create(
-    title: Faker::Lorem.sentence(word_count: 3),
-    content: Faker::Lorem.paragraph(sentence_count: 5),
+    title: Faker::Lorem.sentence(word_count: 2),
+    content: Faker::Lorem.paragraph(sentence_count: 3),
     author: Faker::Name.name,
     date: Date.today - i.days,
   )
