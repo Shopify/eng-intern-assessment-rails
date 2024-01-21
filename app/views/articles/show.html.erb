@@ -1,0 +1,8 @@
+<h1> <%= @article.title %> </h1>
+<h4> <%= @article.author.present? ? @article.author : "Unknown" %> </h4>
+<h4> <%= @article.date.present? ? @article.date: "Unknown" %> </h4>
+<p> <%= @article.content %>  </p>
+<%= button_to 'Delete',@article, method: :delete, form:{
+    data: {turbo_confirm: "Are you sure you want to delete this article?"}}
+ %>
+<%= link_to 'Edit', edit_article_path(@article) %>
