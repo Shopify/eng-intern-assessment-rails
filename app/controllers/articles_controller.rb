@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
   def index
-    if params[:query].present?
-      @articles = Article.search(params[:query])
+    @articles = if params[:query].present?
+      Article.search(params[:query])
     else
-      @articles = Article.all
+      Article.all
     end
   end
 
@@ -46,11 +46,8 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  # def search
-  #   @articles = Article.search(params[:query])
-  # end
-
   private
+
   def article_params
     params.require(:article).permit(:title, :content, :author, :date)
   end
