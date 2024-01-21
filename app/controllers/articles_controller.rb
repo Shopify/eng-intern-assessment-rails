@@ -1,10 +1,8 @@
 class ArticlesController < ApplicationController
   def index
     if params[:query].present?
-      puts 'line 4'
       @articles = Article.search(params[:query])
     else
-      puts 'line 7'
       @articles = Article.all
     end
   end
