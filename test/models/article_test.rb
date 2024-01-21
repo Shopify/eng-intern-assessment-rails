@@ -1,4 +1,4 @@
-require 'test_helper'
+require '/Users/morgansun/Documents/GitHub/eng-intern-assessment-rails/test/test_helper.rb'
 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do

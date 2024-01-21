@@ -80,7 +80,7 @@ GEM
     base64 (0.2.0)
     bigdecimal (3.1.5)
     bindex (0.8.1)
-    bootsnap (1.17.0)
+    bootsnap (1.17.1)
       msgpack (~> 1.2)
     builder (3.2.4)
     capybara (3.39.2)
@@ -92,11 +92,11 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
-    debug (1.9.0)
+    debug (1.9.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
     drb (2.2.0)
@@ -106,14 +106,14 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    importmap-rails (1.2.3)
+    importmap-rails (2.0.1)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.7.1)
-    irb (1.10.1)
+    irb (1.11.1)
       rdoc
-      reline (>= 0.3.8)
+      reline (>= 0.4.2)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -128,31 +128,27 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.5)
-    minitest (5.20.0)
+    minitest (5.21.1)
     msgpack (1.7.2)
     mutex_m (0.2.0)
-    net-imap (0.4.8)
+    net-imap (0.4.9.1)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0)
+    net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.15.5)
-      mini_portile2 (~> 2.8.2)
+    nokogiri (1.16.0-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.5-aarch64-linux)
+    nokogiri (1.16.0-x64-mingw-ucrt)
       racc (~> 1.4)
-    nokogiri (1.15.5-x86_64-linux)
-      racc (~> 1.4)
-    psych (5.1.1.1)
+    psych (5.1.2)
       stringio
     public_suffix (5.0.4)
-    puma (6.4.0)
+    puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (3.0.8)
@@ -195,13 +191,13 @@ GEM
     rake (13.1.0)
     rdoc (6.6.2)
       psych (>= 4.0.0)
-    regexp_parser (2.8.3)
-    reline (0.4.1)
+    regexp_parser (2.9.0)
+    reline (0.4.2)
       io-console (~> 0.5)
     rexml (3.2.6)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    selenium-webdriver (4.9.0)
+    selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -212,11 +208,9 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.9)
-      mini_portile2 (~> 2.8.0)
-    sqlite3 (1.6.9-aarch64-linux)
-    sqlite3 (1.6.9-x86_64-linux)
-    stimulus-rails (1.3.0)
+    sqlite3 (1.7.0-arm64-darwin)
+    sqlite3 (1.7.0-x64-mingw-ucrt)
+    stimulus-rails (1.3.3)
       railties (>= 6.0.0)
     stringio (3.1.0)
     thor (1.3.0)
@@ -227,6 +221,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2023.4)
+      tzinfo (>= 1.0.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -246,9 +242,8 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
-  aarch64-linux
-  ruby
-  x86_64-linux
+  arm64-darwin-21
+  x64-mingw-ucrt
 
 DEPENDENCIES
   bootsnap
@@ -268,7 +263,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 2.7.6p219
+   ruby 3.3.0p0
 
 BUNDLED WITH
-   2.1.4
+   2.5.3
