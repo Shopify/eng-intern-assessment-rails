@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_19_223043) do
     t.string "title"
     t.text "content"
     t.string "author"
-    t.date "date", default: "2024-01-19"
+    t.date "date", default: "2024-01-21"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

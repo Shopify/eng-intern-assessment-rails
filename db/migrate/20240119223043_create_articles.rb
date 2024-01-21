@@ -4,7 +4,7 @@ class CreateArticles < ActiveRecord::Migration[7.1]
       t.string :title
       t.text :content
       t.string :author
-      t.date :date, default: Date.today
+      t.date :date, default: Date.current
 
       t.timestamps
     end
