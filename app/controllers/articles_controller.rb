@@ -31,6 +31,25 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  # Update article & check for empty content(s)
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to action: "index"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  # Destroy article
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to articles_path, notice: "Article was successfully destroyed."
+  end
+
   # Strong param
   private
     def article_params

@@ -1,36 +1,3 @@
 <h1>Create Article</h1>
 
-<%= form_with model: @article do |f| %>
-        <div>
-        <h2>Please fix these <%= pluralize(@article.errors.count, "error") %></h2>
-        <ul>
-            <% @article.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-        </ul>
-        </div>
-
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-
-  <div>
-    <%= f.label :author %>
-    <%= f.text_field :author %>
-  </div>
-
-  <div>
-    <%= f.label :date %>
-    <%= f.date_field :date %>
-  </div>
-
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= render "form", article: @article %>
