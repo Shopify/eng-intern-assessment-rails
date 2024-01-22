@@ -1,2 +1,11 @@
-<div id="<%= dom_id article %>">
+<div class="space-y-4" id="<%= dom_id article %>">
+    <h2 class="text-4xl"><%= article.title %></h2>
+    <p>Overview: <%= article.content %></p>
+    <% if article.author.present? %>
+        <p>Written By: <%= article.author %></p>
+    <% end %>
+
+    <% if article.date.present? %>
+        <p>Date Created: <%= article.date.strftime("%B %d, %Y") %></p>
+    <% end %>
 </div>
