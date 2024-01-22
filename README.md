@@ -8,6 +8,7 @@
 The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. Be sure to implement basic CRUD actions on articles. Your task is to implement these features as well as write the code that makes the tests pass.
 
 Outside of Ruby on Rails, Materialize.css was used to make the UI look better.
+Additionally, the backend here works for both CURL commands, as well as the HTML pages
 
 # Demo Gifs
 
