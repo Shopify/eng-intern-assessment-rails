@@ -1,0 +1,21 @@
+<h1>Encyclopedia Entries</h1>
+
+<%# Main page, create search field to find articles based on parameter %>
+<%= form_tag articles_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<%# Render all articles and allow for selecting article to navigate to it alone %>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
+
+<%# Links to path to create a new article  %>
+<%= link_to "New Article", new_article_path %>

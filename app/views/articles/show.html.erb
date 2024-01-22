@@ -1,0 +1,18 @@
+<h1><%= @article.title %></h1>
+
+<p><%= @article.content %></p>
+<p><%= @article.date %></p>
+
+<%# 
+  Create links to edit current article or delete (destroy) current article. 
+  Confirm method enabled for destroy in case of accidental user click. Added
+  ability to return to home page.
+%>
+<ul>
+  <li><a href= "/">Return to Entries</a></li>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>

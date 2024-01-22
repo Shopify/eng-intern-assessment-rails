@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# Two test database entries, commented out to ensure database starts with no entries when running
+# tests.
+
+# one:
+#   title: MyString
+#   content: MyText
+#   author: MyString
+#   date: 2024-01-14
+
+# two:
+#   title: MyString
+#   content: MyText
+#   author: MyString
+#   date: 2024-01-14
