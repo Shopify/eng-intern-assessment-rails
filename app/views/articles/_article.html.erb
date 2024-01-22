@@ -1,22 +1,11 @@
 <div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= article.content %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= article.author %>
-  </p>
-
-  <p>
-    <strong>Date:</strong>
-    <%= article.date %>
-  </p>
-
+  <tr>
+    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= article.title %></td>
+    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= article.author %></td>
+    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= article.content %></td>
+    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= article.date %></td>
+    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+      <%= link_to "Edit", edit_article_path(article), class: "text-slate-600 hover:text-slate-900" %>
+    </td>
+  </tr>
 </div>
