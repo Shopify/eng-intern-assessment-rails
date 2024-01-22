@@ -1,0 +1,27 @@
+<h1>Edit an article</h1>
+
+<%= form_with(model: @article, local:true, data: { turbo: false }) do |f| %>
+<p>
+    <%= f.label :title, "Title"%><br/>
+    <%= f.text_field :title%>
+</p>
+
+<p>
+    <%= f.label :content, "Content"%><br/>
+    <%= f.text_area :content%>
+</p>
+
+<p>
+    <%= f.label :author, "Author"%><br/>
+    <%= f.text_field :author%>
+</p>
+
+<p>
+    <%= f.label :date, "Date"%><br/>
+    <%= f.text_field :date%>
+</p>
+
+<p>
+    <%= f.submit%>
+</p>
+<% end %>
