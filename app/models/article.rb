@@ -8,6 +8,8 @@ class Article < ApplicationRecord
   # check to make sure all values exist
   validates :title, presence: true
   validates :content, presence: true
+  validates :author, presence: true
+  validates :date, presence: true
 
   # Set default values
   after_initialize :set_defaults
