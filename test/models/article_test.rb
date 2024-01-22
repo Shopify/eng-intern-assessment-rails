@@ -1,5 +1,17 @@
 require 'test_helper'
 
+
+# CHANGES MADE IN TESTS:
+# - There are no major changes in tests, just a few minor ones to make them work the way I strucutred my code. 
+    # It was my first time using Ruby on Rails.
+
+# - I am not using fixtures and directly creating writers and articles in tests, 
+    # as with fixtures it was not clearing up test_database automatically after the tests were completed.
+
+# - I've added authentication to create writers. 
+    # So, in tests I am creating writers first then passing them 
+    # under 'writer' when an article is created instead of pass the name (string) dirctly.
+
 class ArticleTest < ActiveSupport::TestCase
   
   test 'starts with no articles' do
@@ -26,7 +38,7 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.create(
       title: 'Sample Article',
       content: 'Lorem ipsum dolor sit amet.',
-      writer: writer, # Assign the writer fixture to the article
+      writer: writer,
       date: Date.today
     )
 
