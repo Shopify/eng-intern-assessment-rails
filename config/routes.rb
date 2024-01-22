@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "articles#index"
+
+  # Creates articles as resources, which will be make CRUD routes
+  resources :articles
+
 end
