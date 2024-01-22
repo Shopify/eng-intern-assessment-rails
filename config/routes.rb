@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/index'
   resources :articles
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -8,4 +9,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "articles#index"
+
+  # Search results for a given query
+  get 'search/index', to: 'search#index', as: 'search_results'
 end

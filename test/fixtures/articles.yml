@@ -1,13 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  content: MyText
-  author: MyString
-  date: 2024-01-21
+  title: "Sample Article"
+  content: "Lorem ipsum dolor sit amet."
+  # author: "Walton Reilly"
+  # date: "2024-01-08"
 
 two:
-  title: MyString
-  content: MyText
-  author: MyString
-  date: 2024-01-21
+  title: "Vilis Altus Amaritudo Colo"
+  content: "Et vel explicabo. Exercitationem in sint. Voluptatem rerum esse. Reiciendis consequatur et. Tenetur et similique. Aut quia velit. Nam nobis porro. Ipsum asperiores tenetur. Adipisci esse eius. Voluptatem delectus fuga. Similique voluptatem id. Ratione fuga odit."
+  author: "Merrilee McGlynn"
+  date: "2023-12-31"
+
+three:
+  title: "Another Article"
+  content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  # author: "Shanna DuBuque"
+  # date: "2024-01-19"
