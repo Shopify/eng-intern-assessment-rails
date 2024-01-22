@@ -36,4 +36,4 @@ Most of the effort was put into the backend development:
 |PATCH   | /articles/:id  | Update the information of the target article specified by the id   |
 |DELETE   |  /articles/:id | Delete the target article specified by the id |
 |GET   |  /articles?search=:string | Display articles that has either "title" or "content" matching the search bar input |
-|GET   |  /articles?clear=Clear| Clear the input in the search bar and return full listing of the articles|
+|GET   |  /articles?clear=Clear| Clear the search bar input and return full listing of the articles|
