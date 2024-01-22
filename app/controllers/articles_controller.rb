@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
   # GET /articles (index page)
   def index
-    @articles = Article.all
+    @query = params[:query]
+    @articles = Article.search(params[:query])
   end
 
   # GET /articles/:id (Show article page)
