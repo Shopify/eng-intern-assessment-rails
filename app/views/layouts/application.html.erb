@@ -12,8 +12,11 @@
   </head>
 
   <body>
-    <main class="container mx-auto flex">
-      <%= yield %>
+    <main class="container mx-auto flex flex-col">
+      <%= render "shared/navbar" %>
+      <section class="p-8">
+        <%= yield %>
+      </section>
     </main>
   </body>
 </html>
