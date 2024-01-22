@@ -1,0 +1,45 @@
+
+<div class="Landing_container min-h-screen w-full bg-slate-300 py-20 px-5 md:px-10">
+<div class="Landing_inner_container flex justify-center items-center flex-col max-w-5xl mx-auto bg-white p-8 shadow-md">
+<%# Showcases all information about the article %>
+<%# Title %>
+<h1 data-test-id="show_article_title" class="text-4xl font-semibold mb-4"><%= @article.title %></h1>
+
+<div class="flex flex-col w-full space-y-5">
+
+    <div class="w-full flex justify-start ">
+        <%# Navigates back to index page %>
+        <%= link_to '<-', articles_path, data:{test_id: "back"}, class:"text-lg black bg" %>
+    </div>
+    <div class="w-full flex flex-col space-y-4">
+        <div class="w-full space-y-2 ">
+            <%# Content %>
+            <h4 class="font-semibold">Description: </h4>
+            <p data-test-id="show_article_content"><%= @article.content %></p>
+        </div>
+
+        <div class="w-full space-y-2">
+            <%# Author %>
+            <h4 class="font-semibold">Author: </h4>
+            <p data-test-id="show_article_author"><%= @article.author.present? ? @article.author : "N/A" %></p>
+        </div>
+
+        <div class="w-full space-y-2">
+            <%# Date Created %>
+            <h4 class="font-semibold">Date Created: </h4>
+            <p data-test-id="show_article_date"> <%= @article.date.present? ? @article.date : "Unknown" %></p>
+        </div>
+    </div>
+
+
+    <div class="w-full flex flex-col md:flex-row space-y-4 md:space-y-0">
+        <%# Buttons for extra actions on article %>
+        <%# Navigate to edit page %>
+        <%= link_to 'Edit', edit_article_path(@article), data: { test_id: "edit_#{@article.id}" }, class:"text-white bg-orange-400 py-4 px-3 text-center w-full" %>
+        <%# Deletes article and navigates to index page %>
+        <%= link_to "Delete", @article, data: { test_id: "delete_#{@article.id}", turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"text-white bg-red-400 py-4 px-3 text-center w-full"%>
+    </div>
+
+</div>
+</div>
+</div>

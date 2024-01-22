@@ -1,0 +1,37 @@
+<%= form_with(model: @article, local: true, class:"w-full space-y-4") do |form| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field flex flex-col justify-start w-full">
+    <%= form.label :title %>
+    <%= form.text_field :title%>
+  </div>
+
+  <div class="field flex flex-col justify-start w-full">
+    <%= form.label :content %>
+    <%= form.text_area :content%>
+  </div>
+
+  <div class="field flex flex-col justify-start w-full">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="field flex flex-col justify-start w-full">
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="actions w-full bg-green-500 text-white py-5 px-4 text-center cursor-pointer">
+    <%= form.submit data: { test_id: "submit" } %>
+  </div>
+<% end %>
