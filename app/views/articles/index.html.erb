@@ -1,5 +1,14 @@
 <h1>Articles</h1>
 
+<p>
+<%= form_for "", url: articles_path, role: "search", method: :get do %>
+  <%= text_field_tag :q, @search_term, placeholder: "Seach..." %>
+  <%= submit_tag "Search" %>
+  <%= link_to "Reset", articles_path %>
+<% end %>
+</p>
+
+
 <ul>
   <% @articles.each do |article| %>
     <li>
