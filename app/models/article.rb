@@ -7,12 +7,8 @@ class Article < ApplicationRecord
         end
     end
 
-
     # validate text fields
-    validates :title, presence: true
-    validates :title, uniqueness: true
-    validates :title, length: { minimum: 5 }
+    validates :title, presence: true, uniqueness: true, length: { minimum: 5 }
 
-    validates :content, length: { minimum: 10 }
-    validates :content, presence: true
+    validates :content, presence: true, length: { minimum: 10 }
 end

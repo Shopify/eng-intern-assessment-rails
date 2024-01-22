@@ -1,37 +1,9 @@
-<!-- Custom Styles for Shopify Color Scheme -->
-<style>
-  .navbar-shopify {
-    background-color: #96bf48; /* Shopify green color */
-  }
-  .navbar-shopify .navbar-brand,
-  .navbar-shopify .nav-link {
-    color: white;
-  }
-  .navbar-shopify .btn-outline-success {
-    border-color: white;
-    color: white;
-  }
-  .navbar-shopify .btn-outline-success:hover {
-    background-color: white;
-    color: #96bf48;
-  }
-</style>
-
-<nav class="navbar navbar-expand-lg navbar-shopify">
-   
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
     <%= link_to 'Encyclopedia', articles_path, class:'navbar-brand'%>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    
-      </ul>
-      <form class="d-flex" role="search" action="<%= articles_path %>" method="get">
+    <form class="d-flex" role="search" action="<%= articles_path %>" method="get">
         <input class="form-control me-2" type="search" placeholder="Search Articles" aria-label="Search" name="search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-    </div>
   </div>
 </nav>
