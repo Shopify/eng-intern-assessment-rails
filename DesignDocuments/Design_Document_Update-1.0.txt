@@ -1,0 +1,95 @@
+Project Name : ENGINEERING INTERN ASSESSMENT RAILS
+Author : Kshithij Malebennur
+Date : January 21st, 2024
+
+1 INTRODUCTION
+
+1.1 description
+
+This document provides a full update on the most current updates and upgrades to the engineering
+intern assessment for Shopify's backend engineering position. It strives to offer a clear and
+simple explanation of the changes, improvements, and additions made since the prior iteration.
+This update should keep all viewers, aware on the project's status and future direction.
+
+1.2 scope
+
+In this update, upgrades have been made to existing files. Along with this, new files
+have been introduced.
+
+    MODIFICATIONS TO EXISTING FILES:
+
+    Gemfile: Updates were made to the 'Gemfile' file.
+
+    Gemfile.lock: With the update of Gemfile, there is an automatic update to Gemfile.lock.
+
+    Database Schema: The 'schema.rb' file has been updated automatically as it tries
+                     to reflect the latest database schema (ex. new migrations).
+
+    test_helper: A new helper method has been added.
+
+    NEW ADDITIONS:
+
+    Model File (app/models/article.rb): A new model file was implemented in the directory mentioned.
+                                        This file defines the 'Article' model.
+
+    Migration Files: A migration directory and migration file has been added under the
+                     db directory. These migrations allows for quick changes in the database
+                     schema, concerning to the new 'Article' model.
+
+
+2 PROBLEMS & SOLUTIONS
+
+    Problem 1: With the implementation of Article.rb, the file has to be tested
+             to determine if it's functional or has problems associated with it.
+             running any test command (ex. rails test) resulted in errors pertaining
+             to the gem net-protocol version 0.2.2. This prevented the model from being
+             tested.
+
+    Solution: To ensure this problem does not occur, the gem's 'net-http' and 'uri'
+              version 0.10.0 were added to the Gemfile. to solved the problem of
+              net-protocol preventing the test.
+
+              This solution was implemented with the use of "https://stackoverflow.com/questions/70443856/ruby-2-7-4-net-constant-warnings"
+
+    Problem 2: Though net-protocol no longer prevented the test from occurring,
+               another problem arose. Running the 'rails test' statement returned
+               "Migrations are pending. To resolve this issue, run: bin/rails db:migrate"
+               Running this made no difference as the problem still arose.
+               This problem also prevented the tests from running.
+
+    Solution: To fix this problem the commands "bundle exec rake prepare" and then
+              "bundle exec rake db:migrate" were ran in the command terminal. The problem
+              no longer occurred and the tests ran smoothly.
+
+              This solution was implemented with the use of "https://stackoverflow.com/questions/20082002/migrations-are-pending-run-bin-rake-dbmigrate-rails-env-development-to-resol?rq=1"
+
+
+3 FEATURES & IMPLEMENTATION
+
+3.1 Functionalities
+
+    'Article' Model:  - Like the project goals requests, basic CRUD (CREATE, READ, UPDATE & DELETE)
+                        actions were implemented in the model.
+                      - Along with implementation of CRUD actions, a search feature was added using
+                        Arel. Arel allows for a safer method of searching unlike "LIKE" or "ILIKE".
+                      - This model also determines if an article is recent (published in the last seven days).
+                      - The model orders the articles in descending order of the date.
+
+4 NEXT STEPS
+
+To progress this project, the next step would be to develop the controller associated
+with the 'Article' model.
+    - The primary task is to implement all necessary functionalities in the controller.
+        - including defining actions for the CRUD operations.
+            - This will allow for interactions between the UI(user interface) and the database.
+    - the controller actions should be tested according to the test cases provided to determine
+      if the controller and model work together handle requests.
+
+
+5 CONCLUSION
+
+This document provides a detailed overview of the recent updates made to the Engineering Intern Assessment for Shopify's
+Backend engineering position. Areas that were focused on during this update include:
+    - including new dependencies in the Gemfile
+    - Article model file has been added
+    - Resolving problems that arose
