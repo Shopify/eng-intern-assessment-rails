@@ -28,16 +28,12 @@
         .new-article-link {
             margin-bottom: 20px;
         }
-        
-        
-        
     </style>
     
 </head>
 <body>
-
 <h1 style="text-align: center; margin-bottom: 0;">Shopify Encyclopedia</h1>
-<%= form_tag(articles_path, method: :get, style: "text-align: center; margin-top: 20px; margin-bottom: 20px") do %>
+<%= form_tag(articles_path, method: :get, style: "text-align: center; margin-top: 20px; margin-bottom: 20px;") do %>
     <%= text_field_tag :search, params[:search], style: "padding: 10px; width: 70%; border: 2px solid #007bff; border-right: none; border-top-left-radius: 20px; border-bottom-left-radius: 20px; outline: none; box-sizing: border-box;" %>
     <%= submit_tag "Search", name: nil, style: "padding: 10px; background-color: #007bff; color: white; border: 2px solid #007bff; border-left: none; border-top-right-radius: 20px; border-bottom-right-radius: 20px; cursor: pointer; box-sizing: border-box;" %>
 <% end %>
@@ -48,13 +44,6 @@
 <%= form_tag(new_article_path, method: :get, style: 'display: inline-block;') do %>
     <%= submit_tag 'Create New Article', style: 'background-color: green; color: white; border: none;' %>
 <% end %>
-  
-
-<div class="new-article-link">
-    
-
-</div>
-
 
 <% @articles.each do |article| %>
     <div class="blog-post">
