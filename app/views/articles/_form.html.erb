@@ -11,25 +11,14 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+  <%= render partial: 'text_field', locals: { form: form, field: :title, placeholder: "Enter Title", resizable: false } %> 
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_field :content %>
-  </div>
+  <%= render partial: 'text_field', locals: { form: form, field: :content, placeholder: "Enter Content", resizable: true, rows: 3 } %>
 
-  <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_field :author %>
-  </div>
+  <%= render partial: 'text_field', locals: { form: form, field: :author, placeholder: "John Doe", resizable: false } %>
 
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.text_field :date %>
-  </div>
+  <%= render partial: 'text_field', locals: { form: form, field: :date, placeholder: "YYYY-MM-DD", resizable: false } %>
+
 
   <div>
     <%= form.submit %>

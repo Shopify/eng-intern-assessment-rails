@@ -6,4 +6,17 @@ class Article < ApplicationRecord
           all
         end
     end
+
+
+    # validate text fields
+    validates :title, presence: true
+    validates :title, uniqueness: true
+    validates :title, length: { minimum: 5 }
+
+    validates :content, length: { minimum: 10 }
+    validates :content, presence: true
+    
+    validates :author, presence: true
+    validates :date, presence: true
+
 end

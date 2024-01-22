@@ -1,22 +1,16 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= article.content %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= article.author %>
-  </p>
-
-  <p>
-    <strong>Date:</strong>
-    <%= article.date %>
-  </p>
-
+<div id="<%= dom_id article %>" class="container my-4">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1 class="mb-3"><%= article.title %></h1>
+      <p class="text-muted">
+        <strong>Author:</strong> <%= article.author %>
+      </p>
+      <p class="text-muted">
+        <strong>Date:</strong> <%= article.date %>
+      </p>
+      <div class="article-content mt-4">
+        <%= article.content %>
+      </div>
+    </div>
+  </div>
 </div>

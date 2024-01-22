@@ -1,0 +1,8 @@
+<div class="mb-3">
+  <%= form.label field, class: "form-label" %>
+  <% if resizable %>
+    <%= form.text_area field, class: "form-control", placeholder: placeholder, rows: rows %>
+  <% else %>
+    <%= form.text_field field, class: "form-control", placeholder: placeholder %>
+  <% end %>
+</div>
