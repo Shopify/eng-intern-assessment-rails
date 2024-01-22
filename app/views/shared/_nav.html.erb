@@ -1,0 +1,24 @@
+<div class="md:flex md:items-center md:justify-between">
+  <div class="min-w-0 flex-1 my-4">
+    <h1 class="text-xl font-bold leading-7 text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight">
+      <%= link_to "Encyclofy", root_path, class: "text-gray-900 hover:text-gray-500" %>
+    </h1>
+  </div>
+  <div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
+    <%= render partial: "shared/search" %>
+  </div>
+  <div class="mt-4 flex md:ml-4 md:mt-0">
+    <%= link_to new_article_path, class: "ml-3 inline-flex items-center rounded-md bg-emerald-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600" do %>
+      New Article
+    <% end if current_page?(root_path) || current_page?(articles_path) %>
+    <%= link_to articles_path, class: "ml-3 inline-flex items-center rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600" do %>
+      Back to Articles
+    <% end if (@article.present? && (current_page?(new_article_path) || current_page?(article_path(article)))) || current_page?(search_index_path) %>
+    <%= link_to edit_article_path(@article), class: "ml-3 inline-flex items-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600" do %>
+      Edit
+    <% end if (@article.present? && !params[:id].nil?) && (!@article.nil? && current_page?(article_path(article))) %>
+    <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "ml-3 inline-flex items-center rounded-md bg-rose-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600" do %>
+      Delete
+    <% end if (@article.present? && !params[:id].nil?) && current_page?(article_path(article)) %>
+  </div>
+</div>

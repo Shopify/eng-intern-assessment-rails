@@ -1,30 +1,9 @@
 <div id="<%= dom_id article %>">
-  <% if current_page?(articles_path) %>
-  <tr>
-    <!-- <td class="whitespace-nowrap px-3 py-4 text-sm text-left text-gray-500"><%= article.id %></td> -->
-    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-      <%= link_to article_path(article), class: "text-slate-600 hover:text-slate-900 font-semibold" do %>
-        <%= truncate(article.title, length: 30, separator: " ") %>
-      <% end %>
-    </td>
-    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= article.author.present? ? article.author : "-" %></td>
-    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= article.date.present? ? article.date.strftime("%b %d, %Y") : "-" %></td>
-    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= truncate(article.content, length: 60, separator: " ") %></td>
-    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-      <%= link_to "Show", article_path(article), class: "text-slate-600 hover:text-slate-900" %>
-    </td>
-    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-      <%= link_to "Edit", edit_article_path(article), class: "text-sky-600 hover:text-sky-900" %>
-    </td>
-    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-      <%= link_to "Delete", article_path(article), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-rose-600 hover:text-rose-900" %>
-    </td>
-  </tr>
-  <% else %>
   <div class="my-4 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
     <div class="font-semibold text-lg px-4 py-3 sm:px-6">
       <%= link_to article_path(article), class: "text-slate-700 hover:text-slate-900 font-semibold" do %>
-        <%= truncate(article.title, length: 30, separator: " ") %>
+        <%#= truncate(article.title, length: 30, separator: " ") %>
+        <%= article.title %>
       <% end %>
     </div>
     <div class="px-4 py-3 sm:p-6">
@@ -42,6 +21,4 @@
       </div>
     </div>
   </div>
-  
-  <% end %>
 </div>

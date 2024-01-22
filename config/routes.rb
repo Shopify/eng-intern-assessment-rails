@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'search/index'
-  resources :articles
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,5 +9,8 @@ Rails.application.routes.draw do
   root "articles#index"
 
   # Search results for a given query
-  get 'search/index', to: 'search#index', as: 'search_results'
+  get 'search/index', to: 'search#index'
+
+  # All routes for Article scaffold
+  resources :articles
 end

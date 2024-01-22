@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
 
   # POST /articles or /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = Article.new(article_params.merge(date: Date.today))
 
     respond_to do |format|
       if @article.save
