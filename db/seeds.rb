@@ -10,7 +10,7 @@
 
 15.times do
   article = Article.create(
-    title: Faker::Lorem.words(number: 3..12, supplemental: true).join(" ").titleize,
+    title: Faker::Lorem.words(number: 2..8, supplemental: true).join(" ").titleize,
     content: Faker::Lorem.paragraphs(number: 2..6).join("\n\n"),
     author: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
     date: Faker::Date.between(from: '2023-09-01', to: '2024-01-29')
