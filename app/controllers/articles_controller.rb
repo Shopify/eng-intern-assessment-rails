@@ -2,21 +2,22 @@ class ArticlesController < ApplicationController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
   
     def index
-        # Trigger search method if a parameter is provided
-        if params[:search]
-          @articles = Article.search(params[:search])
-        # Default to search all
-        else
-          @articles = Article.all
-        end
+      # Trigger search method if a parameter is provided
+      if params[:search]
+        @articles = Article.search(params[:search])
+      # Default to search all
+      else
+        @articles = Article.all
       end
+    end
   
     def show
     end
-  
+
     def new
       @article = Article.new
     end
+    
   
     def create
       @article = Article.new(article_params)
