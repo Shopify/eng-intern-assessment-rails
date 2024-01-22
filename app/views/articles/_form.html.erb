@@ -6,8 +6,10 @@
 
 <%= form_with(model: article, class: 'mt-4') do |form| %>
   <% if article.errors.any? %>
-    <div class="alert alert-danger">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <h2>System Can not save Articles with blank fields!</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
       <ul>
         <% article.errors.each do |error| %>
