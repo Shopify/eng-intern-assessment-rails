@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
+    puts Article.all
     assert_equal 0, Article.count
   end
 
@@ -64,5 +65,15 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'prevents creating an article without a title and content' do
+    assert_raises(ActiveRecord::RecordInvalid) { Article.create! }
+  end
+
+  test 'prevent creating an article with author or date but no title and content' do
+    assert_raises(ActiveRecord::RecordInvalid) { Article.create!(author: 'Test Author') }
+    assert_raises(ActiveRecord::RecordInvalid) { Article.create!(date: Date.today) }
+    assert_raises(ActiveRecord::RecordInvalid) { Article.create!(author: 'Test Author', date: Date.today) }
   end
 end

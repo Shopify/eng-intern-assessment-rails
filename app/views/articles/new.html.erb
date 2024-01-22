@@ -1,0 +1,15 @@
+
+<div class="Landing_container min-h-screen w-full bg-slate-300 py-20 px-5 md:px-10">
+<div class="Landing_inner_container flex justify-center items-center flex-col max-w-5xl mx-auto bg-white p-8 shadow-md">
+<h1 class="text-4xl font-semibold mb-4">New Article</h1>
+
+<div class="w-full flex justify-start">
+<%# Back button to return to the index page %>
+<%= link_to '<-', articles_path, data: {test_id: "back"}, class:"text-lg black bg" %>
+</div>
+
+<%# Form component for creating a new form. Form is initially empty %>
+<%= render 'form' %>
+
+</div>
+</div>

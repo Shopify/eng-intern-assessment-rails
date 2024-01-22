@@ -1,0 +1,38 @@
+
+<div class="Landing_container min-h-screen w-full bg-slate-300 py-20 px-5 md:px-10">
+<div class="Landing_inner_container flex justify-center items-center flex-col max-w-5xl mx-auto bg-white p-8 shadow-md">
+
+<h1 class="text-4xl font-semibold">Articles Repository</h1>
+
+<%# Search form to query articles based on title and content %>
+<%= form_with(url: articles_path, method: "get", class: "my-4 border-[1px] border-gray rounded-md overflow-clip flex flex-row") do |form| %>
+  <%= form.text_field :query, placeholder: "Search articles", value: params[:query], class:"rounded-md border-none"%>
+  <%= form.submit "Search", data: {test_id: "search"}, class:"bg-blue-400 w-full text-white px-4" %>
+<% end %>
+
+<%# Button to navigate to the create article page %>
+<div class="Landing_new_article_container flex w-full justify-end items-center">
+    <%= link_to 'New Article +', new_article_path, data: {test_id: "new_article"}, class:"Landing_new_article px-2 py-1 bg-green-500 text-white rounded-md" %>
+</div>
+
+<div class="space-y-6 w-full mt-4">
+
+<%# List of all articles in the repository %>
+<%@articles.each do |article|%>
+    <div class="Landing_article w-full px-5 py-4 w-full space-y-3 border-[1px] border-gray-400 rounded-sm" data-test-id="article_<%= article.id%>">
+        <h2 class="Landing_article_title text-3xl"> <%= article.title%></h2>
+        <div class="Landing_sub_info text-base flex flex-col md:flex-row md:justify-between  text-gray-600 ">
+            <h4 class="Landing_article_author">Author: <%= article.author.present? ? article.author : "N/A" %></h4>
+            <h4 class="Landing_article_date">Date: <%= article.date.present? ? article.date : "Unknown"%></h4>
+        </div>
+        <div class="Landing_article_actions text-sm flex flex-row space-x-2 justify-end items-end">
+            <%= link_to 'Read More', article_path(article), data: {test_id: "show_#{article.id}"}, class:"text-blue-500" %>
+            <%= link_to 'Edit', edit_article_path(article), data: {test_id: "edit_#{article.id}"}, class:"text-orange-500" %>
+            <%= link_to "Delete", article_path(article, query: params[:query]), data: {test_id: "delete_#{article.id}" , turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"text-red-500"%>
+        </div>
+    </div>
+<%end%>
+</div>
+</div>
+
+</div>
