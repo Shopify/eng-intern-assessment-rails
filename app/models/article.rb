@@ -6,5 +6,8 @@ class Article < ApplicationRecord
           all
         end
     end
+
+    validates :title, :content, presence: true
+
     
 end

@@ -8,12 +8,19 @@
     <%= submit_tag "Search" %>
   <% end %>
 
+  <% if params[:search].present? %>
+    <p>Search results for: <%= params[:search] %></p>
+  <% end %>
+
+
   <% @articles.each do |article| %>
     <%= render article %>
     <p>
       <%= link_to "Show this article", article %>
+      
     </p>
   <% end %>
 </div>
 
 <%= link_to "New article", new_article_path %>
+<%= link_to "Back to articles", articles_path %>
