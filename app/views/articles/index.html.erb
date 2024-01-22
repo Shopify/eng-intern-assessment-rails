@@ -23,8 +23,6 @@
       <td><%= article.author.present? ? article.author : 'N/A' %></td>
       <td><%= article.date.present? ? article.date.to_formatted_s(:long) : 'N/A' %></td>
       <td><%= link_to "View", article_path(article), class: "link" %></td>
-      <td><%= link_to "Edit", edit_article_path(article), class: "link" %></td>
-      <td><%= button_to "Delete", article_path(article), method: :delete, class: "btn-primary bg-red-500 hover:bg-red-700 py-1" %></td>
     </tr>
   <% end %>
   </tbody>
