@@ -6,11 +6,27 @@
         <div><%= message %></div>
       <% end %>
     </div>
-  
+    
     <div>
-      <%= form.label :body %><br>
-      <%= form.text_area :body %><br>
-      <% article.errors.full_messages_for(:body).each do |message| %>
+      <%= form.label :content %><br>
+      <%= form.text_area :content %><br>
+      <% article.errors.full_messages_for(:content).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    
+    <div>
+      <%= form.label :author %><br>
+      <%= form.text_field :author %><br>
+      <% article.errors.full_messages_for(:author).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    
+    <div>
+      <%= form.label :date %><br>
+      <%= form.date_field :date %><br>
+      <% article.errors.full_messages_for(:date).each do |message| %>
         <div><%= message %></div>
       <% end %>
     </div>

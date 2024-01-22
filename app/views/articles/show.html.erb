@@ -1,6 +1,9 @@
 <h1><%= @article.title %></h1>
 
-<p><%= @article.body %></p>
+<p><%= @article.content %></p>
+<hr>
+<p>Author: <%= @article.author %></p>
+<p>Date: <%= @article.date %></p>
 
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
