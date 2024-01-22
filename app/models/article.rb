@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
-  validates :title, presence: true, length: {minimum:3}
-  validates :content, presence: true, length: {minimum:10}
+  TITLE_MINIMUM_LENGTH = 3;
+  CONTENT_MINIMUM_LENGTH = 10;
+  validates :title, presence: true, length: {minimum: TITLE_MINIMUM_LENGTH}
+  validates :content, presence: true, length: {minimum: CONTENT_MINIMUM_LENGTH}
 
   before_create :set_date
 
