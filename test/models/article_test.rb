@@ -82,4 +82,12 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 0, Article.count
   end
 
+  test 'test common word in both the title and content' do
+    article1 = Article.create(title: 'Sample Article', content: 'Test Desc')
+    article2 = Article.create(title: 'Another Article', content: 'Sample')
+    results = Article.search('Sample')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+
 end
