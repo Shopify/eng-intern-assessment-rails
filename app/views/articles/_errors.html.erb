@@ -1,0 +1,17 @@
+<%# This partial is used to show any errors in the form %>
+<% if object.errors.any? %>
+  <section class="errors">
+    <h6>
+      Oops! Your form could not be saved.
+    </h6>
+    <h6>
+      Please correct the following
+      <%= pluralize(object.errors.size, "error") %>:
+    </h6>
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>

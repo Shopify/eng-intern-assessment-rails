@@ -1,0 +1,17 @@
+<h2>Search Results</h2>
+<br/>
+<% if @articles.size > 0 %>
+  <div class="list-group">
+    <% @articles.each do |article| %>
+      <a href="<%= article_path(article) %>" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><%= article.title %></h5>
+          <small><%= article.date %></small>
+        </div>
+        <p class="mb-1"><%= truncate(article.content, length: 100) %></p>
+      </a>
+    <% end %>
+  </div>
+<% else %>
+  <p>No articles were found for "<%= params[:search_key] %>"</p>
+<% end %>

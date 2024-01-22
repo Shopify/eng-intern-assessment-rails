@@ -1,0 +1,16 @@
+<h1>Welcome to the Encyclopedia</h1>
+<br/>
+<div class="row">
+  <% @articles.each do |article| %>
+    <div class="col-md-4 mb-3">
+      <div class="card h-100 article-card" onclick="location.href='<%= article_path(article) %>'" style="cursor: pointer;">
+        <div class="card-body">
+          <h5 class="card-title"><%= article.title %></h5>
+          <p class="card-text"><%= truncate(article.content, length: 100) %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'Add a new article', new_article_path, class: 'btn btn-success mt-3' %>

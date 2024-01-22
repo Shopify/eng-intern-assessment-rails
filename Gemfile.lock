@@ -77,11 +77,17 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    autoprefixer-rails (10.4.16.0)
+      execjs (~> 2)
     base64 (0.2.0)
     bigdecimal (3.1.5)
     bindex (0.8.1)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
+    bootstrap (5.1.3)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 2.9.3, < 3)
+      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -102,6 +108,9 @@ GEM
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
+    execjs (2.9.1)
+    ffi (1.16.3)
+    ffi (1.16.3-x64-mingw32)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -147,8 +156,11 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.5-aarch64-linux)
       racc (~> 1.4)
+    nokogiri (1.15.5-x64-mingw32)
+      racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
+    popper_js (2.11.8)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.4)
@@ -201,6 +213,16 @@ GEM
     rexml (3.2.6)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc (2.4.0-x64-mingw32)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     selenium-webdriver (4.9.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -215,11 +237,13 @@ GEM
     sqlite3 (1.6.9)
       mini_portile2 (~> 2.8.0)
     sqlite3 (1.6.9-aarch64-linux)
+    sqlite3 (1.6.9-x64-mingw32)
     sqlite3 (1.6.9-x86_64-linux)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
     stringio (3.1.0)
     thor (1.3.0)
+    tilt (2.3.0)
     timeout (0.4.1)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
@@ -227,6 +251,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2023.4)
+      tzinfo (>= 1.0.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -248,10 +274,12 @@ GEM
 PLATFORMS
   aarch64-linux
   ruby
+  x64-mingw32
   x86_64-linux
 
 DEPENDENCIES
   bootsnap
+  bootstrap (~> 5.1.3)
   capybara
   debug
   importmap-rails
