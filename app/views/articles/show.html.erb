@@ -2,11 +2,6 @@
 
 <%= render partial: "shared/nav", locals: { article: @article } %>
 
-<h4 class="text-lg font-semibold leading-7 text-gray-900 sm:truncate sm:text-lg sm:font-semibold sm:tracking-tight">
-  <!-- <%= @article.author.present? ? @article.author : "-" %> -->
-  <!-- <%= @article.date.present? ? @article.date.strftime("%b %d, %Y") : "-" %> -->
-</h4>
-
 <div class="max-w-5xl mx-auto">
   <%= render @article %>
 </div>

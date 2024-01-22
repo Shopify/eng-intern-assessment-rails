@@ -2,7 +2,6 @@
   <div class="my-4 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
     <div class="font-semibold text-lg px-4 py-3 sm:px-6">
       <%= link_to article_path(article), class: "text-slate-700 hover:text-slate-900 font-semibold" do %>
-        <%#= truncate(article.title, length: 30, separator: " ") %>
         <%= article.title %>
       <% end %>
     </div>
@@ -13,7 +12,6 @@
       <div class="md:flex md:items-center md:justify-between">
         <div class="min-w-0 flex-1">
           <%= article.author.present? ? article.author : "-" %>
-          <!-- <h5 class="text-gray-900 sm:truncate sm:text-medium sm:tracking-tight"><%= article.author.present? ? article.author : "-" %></h5> -->
         </div>
         <div class="flex md:ml-4 md:mt-0 italic">
           <%= article.date.present? ? "Posted on #{article.date.strftime("%B %d, %Y")}" : "-" %>
