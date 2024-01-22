@@ -16,8 +16,7 @@ class ArticleSystemTest < ApplicationSystemTestCase
     visit articles_path
 
     assert_selector 'h1', text: 'Articles Repository'
-    article_count = page.all('[data-test-id^="article_"]').count
-    assert_equal article_count, count
+    assert_selector '[data-test-id^="article_"]', count: count, wait: 10
   end
 
   test 'search functionality gives accurate search' do
@@ -32,9 +31,8 @@ class ArticleSystemTest < ApplicationSystemTestCase
     # visit the index page
     visit articles_path
 
-    article_count = page.all('[data-test-id^="article_"]').count
     # Make sure the number of articles are accurate
-    assert_equal article_count, count * 2
+    assert_selector '[data-test-id^="article_"]', count: 10, wait: 10
 
     # search term
     search = 3
@@ -42,9 +40,7 @@ class ArticleSystemTest < ApplicationSystemTestCase
     fill_in 'query', with: search.to_s
     find("[data-test-id='search']").click
 
-    article_count = page.all('[data-test-id^="article_"]').count
-
-    assert_equal article_count, 2
+    assert_selector '[data-test-id^="article_"]', count: 2, wait: 10
     assert_text articles[search + 1 * 2].title
     assert_text articles[search + 1 * 2].author
   end
