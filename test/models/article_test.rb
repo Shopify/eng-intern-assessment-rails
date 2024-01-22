@@ -65,4 +65,21 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'ensures valid article creation' do
+    article1 = Article.create(title: 'Sample Article')
+    article2 = Article.create(content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    assert_equal 0, Article.count
+  end
+
+  test 'ensures non-blank titles' do
+    article1 = Article.create(title: '', content: 'Lorem ipsum dolor sit amet.')
+    assert_equal 0, Article.count
+  end
+
+  test 'ensures non-blank content' do
+    article1 = Article.create(title: 'Sample Article', content: '')
+    assert_equal 0, Article.count
+  end
+
 end
