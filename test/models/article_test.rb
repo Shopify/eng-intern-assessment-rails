@@ -65,4 +65,6 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # TODO (Enhancement): Add tests (and functionality) to search by author (and date? YYYY/MM/DD)
 end

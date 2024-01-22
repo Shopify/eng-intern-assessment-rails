@@ -2,8 +2,8 @@
 
 <p><%= @article.content %></p>
 <hr>
-<p>Author: <%= @article.author %></p>
-<p>Date: <%= @article.date %></p>
+<p>Author: <%= @article.author %></p> <!-- FIXME: This field may not exist -->
+<p>Date: <%= @article.date %></p>  <!-- FIXME: This field may not exist -->
 
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
