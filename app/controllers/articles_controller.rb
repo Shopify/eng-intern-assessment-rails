@@ -1,6 +1,11 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    if params[:search].blank?
+      @articles = Article.all
+    else
+      @articles = Article.search(params[:search])
+    end
+
   end
 
   def show
