@@ -23,12 +23,6 @@
     <%= form.datetime_field :date %>
   </div>
 
-  <!-- Image Field -->
-  <div>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-
   <!-- Submit Button -->
   <div>
     <%= form.submit @article.persisted? ? "Update Article" : "Create Article" %>
