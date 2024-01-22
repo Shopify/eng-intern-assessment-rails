@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.update-delete-article-container{
+  display: flex;
+}
+
 .article-date{
   text-align: right;
   margin-left: auto;
