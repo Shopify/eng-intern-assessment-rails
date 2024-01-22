@@ -15,8 +15,4 @@ class Article < ApplicationRecord
 
     validates :content, length: { minimum: 10 }
     validates :content, presence: true
-    
-    validates :author, presence: true
-    validates :date, presence: true
-
 end

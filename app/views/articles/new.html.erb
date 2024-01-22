@@ -2,8 +2,4 @@
 
 <%= render "form", article: @article %>
 
-<br>
-
-<div>
-  <%= link_to "Back to articles", articles_path %>
-</div>
+<%= render 'action_buttons', article: @article, show_edit_button: false %>

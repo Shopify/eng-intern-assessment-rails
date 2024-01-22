@@ -1,15 +1,15 @@
 <%= form_with(model: article) do |form| %>
   <% if article.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading"><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h4>
+    <ul>
+      <% article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-      <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <%= render partial: 'text_field', locals: { form: form, field: :title, placeholder: "Enter Title", resizable: false } %> 
 
@@ -21,6 +21,7 @@
 
 
   <div>
-    <%= form.submit %>
+    <br>
+    <%= form.submit class: 'btn btn-primary btn-lg'%>
   </div>
 <% end %>
