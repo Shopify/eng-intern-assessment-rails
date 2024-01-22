@@ -1,0 +1,35 @@
+<h1>Articles</h1>
+
+<div>
+  <div>
+      <% @articles.each do |article| %>
+        <h3>
+          <a href="<%= article_path(article) %>">
+          <%= article.title %>
+          </a>
+        </h3>
+        <div>
+          <%= article.content %>
+        </div>
+        <div>
+          Author: <%= article.author.blank? ? "Unknown" : article.author %>
+        </div>
+        <div>
+          Date: <%= article.date.blank? ? "Unknown" : article.date %>
+        </div>
+        <button>
+          <%= link_to "Delete", article_path(article), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          } %>
+        </button>
+        <button>
+          <%= link_to "Edit", edit_article_path(article) %>
+        </button>
+      <% end %>
+  </div>
+</div>
+<br>
+<button>
+  <%= link_to "New Article", new_article_path %>
+</button>
