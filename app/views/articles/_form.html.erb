@@ -1,27 +1,33 @@
+<%# Form for creating or editing articles %>
 <%= form_with(model: article) do |form| %>
+  
+  <%# Display validation errors, if any %>
   <% if article.errors.any? %>
-  <div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading"><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h4>
-    <ul>
-      <% article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">
+        <%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:
+      </h4>
+      <ul>
+        <% article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= render partial: 'text_field', 
+             locals: { form: form, field: :title, placeholder: "Enter Title" } %> 
 
+  <%= render partial: 'text_field', 
+             locals: { form: form, field: :content, placeholder: "Enter Content", resizable: true, rows: 3 } %>
 
-  <%= render partial: 'text_field', locals: { form: form, field: :title, placeholder: "Enter Title", resizable: false } %> 
+  <%= render partial: 'text_field', 
+             locals: { form: form, field: :author, placeholder: "John Doe" } %>
 
-  <%= render partial: 'text_field', locals: { form: form, field: :content, placeholder: "Enter Content", resizable: true, rows: 3 } %>
+  <%= render partial: 'text_field', 
+             locals: { form: form, field: :date } %>
 
-  <%= render partial: 'text_field', locals: { form: form, field: :author, placeholder: "John Doe", resizable: false } %>
-
-  <%= render partial: 'text_field', locals: { form: form, field: :date, placeholder: "YYYY-MM-DD", resizable: false } %>
-
-
-  <div>
-    <br>
-    <%= form.submit class: 'btn btn-primary btn-lg'%>
+  <div class="mt-3">
+    <%= form.submit class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>
