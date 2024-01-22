@@ -1,3 +1,30 @@
-table, th, td {
-  border: 1px solid black;
+.author-and-date-container{
+  display: flex;
+}
+
+.article-date{
+  text-align: right;
+  margin-left: auto;
+}
+
+.articles-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-container{
+  margin: 10px;
+  border: 1px black solid;
+  padding: 10px;
+  width: 500px;
+}
+
+.article-title{
+  text-decoration-line: underline;
+}
+
+table{
+  margin: auto;
 }

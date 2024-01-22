@@ -1,34 +1,27 @@
 <%= stylesheet_link_tag 'articles.css' %>
 
-<h1>Articles</h1>
+<h1 class='page-title'>Articles</h1>
 
-<table>
-  <tr>
-    <th> ID
-    <th> Title
-    <th> Content
-    <th> Author
-    <th> Date
-  </tr>
+<div class='articles-container'>
+  <%= button_to "Create New Article", new_article_path, method: :get %>
+
   <% @articles.each do |article| %>
-  <tr>
-    <td>
-      <%= article.id %>
-    </td>
-    <td>
-      <%= article.title %>
-    </td>
-    <td>
-      <%= article.content %>
-    </td>
-    <td>
-      <%= article.author %>
-    </td>
-    <td>
-      <%= article.date %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+  
+  <div class='article-container'>
+    <div class='update-delete-article-container'>
+    <%= button_to "Edit Article", edit_article_path(article), method: :get %>
+    </div>
 
-<%= button_to "Create New Article", "/articles/new", method: :get %>
+    <div class='author-and-date-container'>
+      <p class='article-author'>Author: <%= article.author%><p>
+      <p class='article-date'>Date: <%= article.date%><p>
+    </div>
+
+    <h3 class='article-title'><%= article.title%></h3>
+    <p class='article-content'><%= article.content%></p>
+  </div>
+
+  <% end %>
+
+</div>
+
