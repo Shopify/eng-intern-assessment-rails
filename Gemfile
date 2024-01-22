@@ -60,6 +60,8 @@ group :development do
   # gem "spring"
 
   gem 'faker', '~> 3.2', '>= 3.2.3'
+  gem 'better_errors', '~> 2.10', '>= 2.10.1'
+  gem 'binding_of_caller', '~> 1.0'
 end
 
 group :test do

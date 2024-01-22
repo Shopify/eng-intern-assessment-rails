@@ -1,8 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: "Sample Article"
-  content: "Lorem ipsum dolor sit amet."
+  title: "Test Article"
+  content: "Ratione fuga odit."
   # author: "Walton Reilly"
   # date: "2024-01-08"
 
@@ -13,7 +13,13 @@ two:
   date: "2023-12-31"
 
 three:
-  title: "Another Article"
-  content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  title: "Second Test Article"
+  content: "Similique voluptatem id. Ratione fuga odit."
   # author: "Shanna DuBuque"
   # date: "2024-01-19"
+
+four:
+  title: "Itaque Damno Calcar Conculco Curvus Aro Vigor Sortitus"
+  content: "Exercitationem voluptatem velit. Doloremque est ratione. Rem libero omnis. Et nihil velit. Corrupti sint nisi. Ipsum est deleniti. Iusto sunt animi. Id autem at. Ea beatae deleniti. Libero error quos. Animi molestiae iure. Id eveniet veritatis. Est hic et. Repellendus qui cupiditate. Est sit eum. Iusto voluptatem consequuntur. Aut ex inventore. Aliquid consectetur rerum."
+  author: "Augustine Stoltenberg"
+  date: "2023-12-15"

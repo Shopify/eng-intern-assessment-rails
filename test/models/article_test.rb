@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  test 'starts with no articles' do
-    assert_equal 3, Article.count # Changed from 0 to 3 to reflect the 3 test fixtures added
+  test 'starts with 0 articles' do
+    assert_equal 4, Article.count # Changed from 0 to 4 to reflect the 4 test fixtures added
   end
 
   test 'has search functionality' do
@@ -41,7 +41,7 @@ class ArticleTest < ActiveSupport::TestCase
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
-    assert_equal 3, Article.count # Changed from 0 to 3 to reflect the 3 test fixtures added
+    assert_equal 4, Article.count # Changed from 0 to 4 to reflect the 4 test fixtures added
   end
 
   test 'prevents access to deleted articles' do
