@@ -1,0 +1,16 @@
+<div class="article-container">
+  <h1 class="article-title"><%= @article.title %></h1>
+
+  <div class="article-metadata">
+    <p class="article-author">
+      Author: <%= @article.author.present? ? @article.author : "Unknown" %>
+    </p>
+    <p class="article-date">
+      Date: <%= @article.date.present? ? @article.date.strftime("%B %d, %Y") : "Unknown" %>
+    </p>
+  </div>
+
+  <div class="article-content">
+    <%= simple_format(@article.content) %>
+  </div>
+</div>
