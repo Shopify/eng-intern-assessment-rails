@@ -33,17 +33,20 @@ This Article Management System is a web application built with Ruby on Rails. It
     bundle install
 
 4. **Setup the database:**
-    ```rails db:create
+    ```bash
+    rails db:create
     rails db:migrate
 
 5. **Start the rails server:**
-    ```rails server
+    ```bash
+    rails server
 
 5. **Visit the application:**
     Open http://localhost:3000 in your web browser.
 
 6. **Test the Application:**
-    ```rails test
+    ```bash
+    rails test
 ## Usage Instructions
 
 - Access the homepage to view all articles.
