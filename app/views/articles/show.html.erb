@@ -1,7 +1,13 @@
 <h1><%= @article.title %></h1>
 
-<p>Author: <%= @article.author %></p>
-<p>Date: <%= @article.date %></p>
+<% if @article.author.present? %>
+  <p>Author: <%= @article.author %></p>
+<% end %>
+
+<% if @article.date.present? %>
+  <p>Date: <%= @article.date %></p>
+<% end %>
+
 <p><%= @article.content %></p>
 
 <ul>
