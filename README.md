@@ -12,7 +12,8 @@ The Shopify Encyclopedia was developed using Ruby on Rails (Version. 2.7.6), fol
 
 Most of the effort was put into the backend development:
 
-- Understandable and matainable code
+- Reusable and matainable code
+- Comment and documentation to aid understanding
 - Robust error handling
 - Comprehensive unit tests to ensure high code coverage
 
