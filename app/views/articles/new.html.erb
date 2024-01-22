@@ -1,9 +1,44 @@
-<h1>New article</h1>
-
-<%= render "form", article: @article %>
-
-<br>
-
 <div>
-  <%= link_to "Back to articles", articles_path %>
-</div>
+<h1 class="text-2xl font-bold mb-4">New Article</h1>
+
+<%= form_with(model: @article, url: articles_path, method: :post) do |form| %>
+
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> with creating your article:</h2>
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="space-y-5">
+    <div>
+      <%= form.label :title, class: "block text-gray-700 text-md font-bold mb-2" %>
+      <%= form.text_field :title, class: "shadow appearance-none border rounded w-72 py-2 px-3 text-gray-700 leading-tight" %>
+    </div>
+
+    <div>
+      <%= form.label :content, class: "block text-gray-700 text-md font-bold mb-2" %>
+      <%= form.text_area :content, class: "shadow appearance-none border rounded w-72 py-2 px-3 text-gray-700 leading-tight" %>
+    </div>
+
+    <div>
+      <%= form.label :author, class: "block text-gray-700 text-md font-bold mb-2" %>
+      <%= form.text_field :author, class: "shadow appearance-none border rounded w-72 py-2 px-3 text-gray-700 leading-tight" %>
+    </div>
+
+    <div>
+      <%= form.label :date, class: "block text-gray-700 text-md font-bold mb-2" %>
+      <%= form.date_field :date, class: "shadow appearance-none border rounded w-72 py-2 px-3 text-gray-700 leading-tight" %>
+    </div>
+
+    <%= form.submit 'Create Article', class: "btn-primary" %>
+
+    <div>
+      <%= link_to 'Back to Articles', articles_path, class: "link" %>
+    </div>
+  </div>
+<% end %>
