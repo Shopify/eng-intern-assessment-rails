@@ -65,4 +65,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'get second page in search' do
+    article1 = Article.create(title: 'First Article', content: 'This is article one.')
+    article2 = Article.create(title: 'Second Article', content: 'This is article two.')
+    article3 = Article.create(title: 'Third Article', content: 'This is article three.')
+    article4 = Article.create(title: 'Fourth Article', content: 'This is article four.')
+
+    results = Article.search('', 2, 2)
+
+    assert_includes results, article3, article4
+    assert_not_includes results, article1, article2
+  end
 end

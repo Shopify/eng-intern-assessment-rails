@@ -1,9 +1,14 @@
 <h1>Encyclopedia Articles</h1>
 
+<% if @query.present? %>
+  <p>Search results for "<%=  @query  %>"</p>
+<%  end %>
+
 <%= form_with url: "/", method: :get do |form| %>
   <%= form.text_field :query, value: @query %>
   <%= form.submit "Search" %>
 <% end %>
+
 <% if @articles.empty? %>
   <p>No articles found.</p>
 <% else %>
@@ -16,4 +21,13 @@
   </ul>
 <% end %>
 
-<%= link_to "New Article", new_article_path %>
+<%= link_to "New Article", new_article_path %><br>
+<p>Page <%= @page %></p>
+
+<% if @page != 1 %>
+  <%= link_to "Previous page", articles_path(query: @query, page: @page - 1) %><br>
+<% end %>
+
+<% if @page * @per_page < @total_count %>
+  <%= link_to "Next page", articles_path(query: @query, page: @page + 1) %>
+<% end %>

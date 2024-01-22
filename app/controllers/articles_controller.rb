@@ -2,7 +2,10 @@ class ArticlesController < ApplicationController
   # GET /articles (index page)
   def index
     @query = params[:query]
-    @articles = Article.search(params[:query])
+    @page = params[:page] ? params[:page].to_i : 1
+    @per_page = 5
+    @total_count = Article.search_by_query(params[:query]).count
+    @articles = Article.search(params[:query], @page, @per_page)
   end
 
   # GET /articles/:id (Show article page)
