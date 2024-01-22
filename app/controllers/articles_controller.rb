@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = if params[:search]
+      Article.search(params[:search])
+    else
+      Article.all
+    end
   end
 
   # GET /articles/1 or /articles/1.json
@@ -65,6 +69,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.fetch(:article, {})
+      params.fetch(:article, {}).permit(:title, :content, :author, :date)
     end
 end
