@@ -1,17 +1,120 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
+/* app/assets/stylesheets/application.css */
 
- */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
+#header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+#header h1 {
+  margin: 0;
+  color: #ddd;
+}
+
+#header form {
+  margin-top: 10px;
+}
+
+#content {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+#content h2 {
+  color: #333;
+}
+
+#content ul {
+  list-style: none;
+  padding: 0;
+}
+
+#content li {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+#content h3 {
+  color: #333;
+}
+
+#content strong {
+  color: #333;
+}
+
+.action-buttons {
+  display: flex;
+  margin-top: 10px;
+}
+
+.action-button, .edit-button, .destroy-button {
+  border: none;
+  padding: 5px 10px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.action-button {
+  background-color: #333;
+  color: white;
+}
+
+.edit-button,
+.destroy-button {
+  background-color: #333;
+  color: white;
+  font-size: 14px;
+}
+
+.action-button:hover,
+.edit-button:hover,
+.destroy-button:hover {
+  background-color: #555;
+}
+
+hr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #333; /* 변경: Form 입력 필드 테두리 색상 */
+  border-radius: 0; /* 변경: 둥근 테두리 제거 */
+}
+
+.btn {
+  background-color: #333;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 0;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #555;
+}

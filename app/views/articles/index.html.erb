@@ -1,32 +1,48 @@
-<!-- Page Title and Search Form -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Encyclopedia</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
 
-<h1>Articles</h1>
+<div id="header">
+  <h1>Encyclopedia</h1>
+  <%= form_with url: "/search", method: :get do |form| %>
+    <%= form.label :query, "Search for:" %>
+    <%= form.text_field :query %>
+    <%= form.submit "Search" %>
+  <% end %>
+</div>
 
-<%= form_with url: "/search", method: :get do |form| %>
-  <%= form.label :query, "Search for:" %>
-  <%= form.text_field :query %>
-  <%= form.submit "Search" %>
-<% end %>
+<div id="content">
+  <h2>Articles</h2>
 
-<% if @articles.any? %>
-  <ul>
-    <% @articles.each do |article| %>
-      <li>
-        <h2><%= article.title %></h2>
-        <p><%= article.author %></p>
-        <p><%= article.content %></p>
-        <p><%= article.date %></p>
+  <% if @articles.any? %>
+    <ul>
+      <% @articles.each do |article| %>
+        <li>
+          <h3><%= article.title %></h3>
+          <p><strong>Author:</strong> <%= article.author %></p>
+          <p><strong>Content:</strong> <%= article.content %></p>
+          <p><strong>Date:</strong> <%= article.date %></p>
 
-        <%= link_to 'Edit', edit_article_path(article), class: 'action-button' %>
-        <%= button_to 'Destroy', article, method: :delete, onclick: "return confirm('Are you sure?');", class: 'action-button' %>
+          <div class="action-buttons">
+            <%= link_to 'Edit', edit_article_path(article), class: 'action-button edit-button' %>
+            <%= button_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'action-button destroy-button' %>
+          </div>
 
+          <hr>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No articles found</p>
+    <%= link_to "Back to articles", articles_path %>
+  <% end %>
 
-        <hr>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No articles found</p>
-<% end %>
+  <%= link_to 'New Article', new_article_path %>
+</div>
 
-<%= link_to 'New Article', new_article_path %>
+</body>
+</html>

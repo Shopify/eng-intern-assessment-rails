@@ -1,30 +1,46 @@
+<!-- app/views/articles/_form.html.erb -->
+
+<h1><%= @article.persisted? ? "Edit Article" : "New Article" %></h1>
+
 <%= form_with(model: @article, local: true) do |form| %>
   <!-- Title Field -->
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <!-- Author Field -->
-  <div>
-    <%= form.label :author %>
-    <%= form.text_field :author %>
+  <div class="form-group">
+    <%= form.label :author, class: "form-label" %>
+    <%= form.text_field :author, class: "form-control" %>
   </div>
 
   <!-- Content Field -->
-  <div>
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+  <div class="form-group">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_area :content, class: "form-control" %>
   </div>
 
   <!-- Date Field -->
-  <div>
-    <%= form.label :date %>
-    <%= form.datetime_field :date %>
+  <div class="form-group">
+    <%= form.label :date, class: "form-label" %>
+    <%= form.datetime_field :date, class: "form-control" %>
+  </div>
+
+  <!-- Image Field -->
+  <div class="form-group">
+    <%= form.label :image, class: "form-label" %>
+    <%= form.file_field :image, class: "form-control" %>
   </div>
 
   <!-- Submit Button -->
-  <div>
-    <%= form.submit @article.persisted? ? "Update Article" : "Create Article" %>
+  <div class="form-group">
+    <%= form.submit @article.persisted? ? "Update Article" : "Create Article", class: "btn" %>
   </div>
 <% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to articles", articles_path %>
+</div>
