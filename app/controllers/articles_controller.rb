@@ -22,9 +22,9 @@ class ArticlesController < ApplicationController
     def create
       @article = Article.new(article_params)
       if @article.save
-        redirect_to @article, notice: 'Article created successfully.'
+        redirect_to @article, notice: 'Article was successfully created.'
       else
-        render :new
+        render turbo_stream: turbo_stream.replace('article_form', partial: 'form', locals: { article: @article })
       end
     end
   
