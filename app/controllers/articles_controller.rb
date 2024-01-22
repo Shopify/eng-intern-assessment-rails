@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
       # show the created article if inputs were valid
       redirect_to @article
     else
-      # produce an error if title or content is empty
+      # produce an error if some inputs were empty
       render :new, status: :unprocessable_entity
     end
   end
@@ -35,8 +35,10 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
+      # show the updated article if inputs were valid
       redirect_to @article
     else
+      # produce an error if some inputs were empty
       render :edit, status: :unprocessable_entity
     end
   end
