@@ -1,6 +1,14 @@
 <h1>Welcome to Shopify Encyclopedia</h1>
 <h2>All Articles: </h2>
 
+<!-- Search Bar with clear button-->
+<%= form_tag(articles_path, method: :get, class:'search-bar', id: 'search-bar') do %>
+    <%= text_field_tag(:search, params[:search], placeholder: 'Article Title or Content...')%>
+    <%= submit_tag('Search') %>
+    <%= submit_tag('Clear', name: 'clear', onclick: 'clearSearchBar()') %>
+<% end %>
+
+<!-- Article Listing -->
 <table>
     <thead>
         <tr>

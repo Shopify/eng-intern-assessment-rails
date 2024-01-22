@@ -5,7 +5,13 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all()
+    if params[:clear]
+      redirect_to articles_path
+    elsif params[:search]
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all()
+    end
   end
 
   def new

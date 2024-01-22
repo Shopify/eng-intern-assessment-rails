@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= javascript_include_tag :application %>
     <% flash.each do |name, message| %>
     <%= message %>
     <% end %>
