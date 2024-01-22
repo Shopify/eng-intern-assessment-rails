@@ -1,8 +1,7 @@
 class ArticlesController < ApplicationController
   def index
     if params[:search].present?
-      search_term = params[:search]
-      @articles = Article.where("title LIKE :search OR content LIKE :search", search: "%#{search_term}%")
+      @articles = Article.search(params[:search])
     else
       @articles = Article.all
     end
