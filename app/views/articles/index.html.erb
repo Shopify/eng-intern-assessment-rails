@@ -1,2 +1,16 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+<h1>Welcome to The Hidden Article Library</h1>
+
+<%= form_with url: articles_path, method: "get" do |form| %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search articles" %>
+  <input type="submit" value="Search">
+<% end %>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to %{#{article.title}, by #{article.author.name} (#{article.date})}, article %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to '<button type="button">New Article</button>'.html_safe, new_article_path %>
