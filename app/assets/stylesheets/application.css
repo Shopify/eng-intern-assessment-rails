@@ -1,14 +1,17 @@
+/* Styles for article content */
 .article-content {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #333333; 
+  font-size: 1.1rem;       /* Increased font size for better readability */
+  line-height: 1.6;        /* Optimal line height for readability */
+  color: #333333;          /* Dark grey color for text */
 }
 
+/* Styling for all h1 headers */
 h1 {
-  font-weight: bold;
-  margin-bottom: 0.5em;
+  font-weight: bold;       /* Bold font for emphasis */
+  margin-bottom: 0.5em;    /* Spacing below the header */
 }
 
+/* Styles for the navbar logo */
 .navbar-logo {
-  height: 30px;
+  height: 30px;            /* Fixed height for logo consistency */
 }
