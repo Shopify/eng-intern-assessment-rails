@@ -17,6 +17,22 @@ FileUtils.chdir APP_ROOT do
   system! "gem install bundler --conservative"
   system("bundle check") || system!("bundle install")
 
+  ### BEGIN - Custom Tailwind CSS setup via cssbundling-rails gem ###
+  # Install foreman system wide
+  system! "gem install foreman"
+
+  # Install yarn system wide
+  system! "npm install -g yarn" unless command_available?("yarn")
+
+  # Install JavaScript dependencies if using Yarn
+  system("bin/yarn")
+
+  # Build CSS & JS via yarn
+  puts "\n== Compiling CSS & JS =="
+  system! "bin/yarn run build"
+  system! "bin/yarn run build:css"
+  ### END - Custom Tailwind CSS setup via cssbundling-rails gem ###
+
   # puts "\n== Copying sample files =="
   # unless File.exist?("config/database.yml")
   #   FileUtils.cp "config/database.yml.sample", "config/database.yml"
