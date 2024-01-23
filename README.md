@@ -35,4 +35,4 @@ The search action searches for articles based on the provided query, rendering t
 
 <img width="925" alt="Screenshot 2024-01-23 at 9 58 03 PM" src="https://github.com/sonhayoni/eng-intern-assessment-rails/assets/122762105/931cfa5d-af58-489b-98f8-3c86146725cd">
 
-<img width="925" alt="Screenshot 2024-01-23 at 9 57 16 PM" src="https://github.com/sonhayoni/eng-intern-assessment-rails/assets/122762105/419ff28b-c530-4702-a326-e3884ecd4864">
+
