@@ -1,6 +1,9 @@
 QUICK DEMO:
 Link : https://youtu.be/SFYj37dsuUY
 
+RAN ALL THE TESTS:
+![Alt text](tests.jpg)
+
 CHANGES MADE IN TESTS:
 - There are no major changes in tests, just a few minor ones to make them work the way I strucutred my code. It was my first time using Ruby on Rails.
 
