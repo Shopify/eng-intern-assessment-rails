@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  # GET /articles
+  # GET /articles or GET /articles?search_term:{some search term}
   def index
     unsorted_articles = if params[:search_term]
       Article.search(params[:search_term])
@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  # PATCH/PUT /articles/:id
+  # PUT /articles/:id or PATCH /articles/:id
   def update
     @article = Article.find(params[:id])
 
