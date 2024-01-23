@@ -1,11 +1,13 @@
-<%= stylesheet_link_tag "articles.css" %>
+<%= stylesheet_link_tag "index.css" %>
 
 <h1 class="page-title">All Articles</h1>
 
 <div class="search-bar-container">
   <%= form_with url: articles_path, method: "get" do |form| %>
     <div>
-        <%= form.text_field :search_term %>
+        <%= form.text_field :search_term, placeholder: "Search for title/content key words",
+         class: "search-bar-text-input" %>
+
         <%= form.submit :search %>
     </div>
   <% end %>
