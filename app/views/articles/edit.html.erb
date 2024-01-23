@@ -3,5 +3,5 @@
 <%= render "form", article: @article %>
 
 <div style="margin-top: 1rem">
-<%= link_to "Destroy", article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this article?" }%>
+<%= button_to "Destroy", @article, method: :delete, onclick: "return confirm('Are you sure you want to permanently delete this article?');" %>
 </div>

@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
 
-    redirect_to articles_path, notice: "Article was successfully destroyed."
+    redirect_to root_path, status: :see_other, notice: "Article was successfully destroyed."
   end
 
   # Strong param
