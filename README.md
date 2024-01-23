@@ -21,8 +21,7 @@
    This will use [`foreman` (see blog post)](http://blog.daviddollar.org/2011/05/06/introducing-foreman.html) to run and manage all the processes listed in `Procfile.dev`.
 
 ## Features
-- Styled using Tailwind CSS via [Play CDN](https://tailwindcss.com/docs/installation/play-cdn)
-    - *Note: The Play CDN is designed for development purposes only, and is not the best choice for production.*
+- Styled using Tailwind CSS
 - Added `faker` gem to generate data in `seeds.rb` during development
 - Added `better_errors` and `binding_of_caller` gems to improve debugging in development environment
 
@@ -31,22 +30,27 @@
 Outlined below are key insights into my learning experiences, the challenges I faced, and the strategies I employed to address them:
 
 1) Re-experienced how to set up Tailwind CSS 3 different ways:
-   1) Since the Rails app was already created for us, I was not able to add Tailwind CSS using the `--css=tailwind` flog with the `rails new` command. Therefore, I tried following the steps listed on the docs for [installing Tailwind CSS with Ruby on Rails](https://tailwindcss.com/docs/guides/ruby-on-rails).
-      - However, I kept running into errors when trying to start my build process with the `bin/dev` command.
-      - This error had something to do with running either the [`overmind` package](https://github.com/DarthSim/overmind) or the [`foreman` gem](https://rubygems.org/gems/foreman).
-   2) To expedite development and save time, I opted to [add Tailwind CSS via the Play CDN](https://tailwindcss.com/docs/installation/play-cdn), which satisfied the majority of my development needs throughout this project. However, there are some caveats consider:
+   1) Since the Rails app was already created for us, I was not able to add Tailwind CSS using the `--css=tailwind` flag with the `rails new` command. Therefore, I tried following the [steps listed on the docs](https://tailwindcss.com/docs/guides/ruby-on-rails). However, I kept running into errors when trying to start my build process with the `bin/dev` command.
+      - The errors were related to the process managers I tried using: [`overmind` package](https://github.com/DarthSim/overmind) or the [`foreman` gem](https://rubygems.org/gems/foreman) directly.
+   2) To expedite development and save time, I opted to [add Tailwind CSS via the Play CDN](https://tailwindcss.com/docs/installation/play-cdn), which satisfied the majority of my development needs throughout this project. However, there are some caveats I considered when making this decision:
       - As stated *just before the first step* in the documentation:
         > The Play CDN is designed for development purposes only, and is not the best choice for production.
 
         Although we do not need to deploy this app to production, I find it beneficial to operate under the assumption that we will. After all, the ultimate goal of developing any web app, regardless of the tech stack, is to prepare it for production :wink:
       - There were technical difficulties when I attempted to add more robust solutions. For example, adding the [`pagy` gem](https://github.com/ddnexus/pagy) for paginating all records listed from the `articles` table when viewing `http://localhost:3000/articles/index`. Specifically, I was not able to easily style the contents rendered from [the `pagy_nav` helpers](https://ddnexus.github.io/pagy/docs/extras/tailwind/#style-2).
    3) Towards the end of my project, I remembered from past experience that there was *another* way to install Tailwind CSS! After a quick search, I found [the solution using the `cssbundling-rails` gem](https://stackoverflow.com/questions/71640507/how-to-import-tailwind-plugin-in-rails-7). This solution worked perfectly :thumbsup:
-2) While adding Tailwind CSS was my goal, **I would *only* proceed doing so** if I could augment the `bin/setup` script to easily install *all* additional dependencies. My decision for this came primarily out of respect and consideration for the individual(s) reviewing my application and technical assessment; providing a streamlined and pain-free way to setup my project on their development machines is something anyone would appreciate :innocent:
-3) Used `asdf` to add `.tool-versions` file to project directory, which allowed me to set the ***`local`*** `ruby` version to `2.7.6` while retaining the ***`global`*** version to `3.3.0`.
-4) 
-
+2) While adding Tailwind CSS was my goal, it was contingent on my ability to augment the `bin/setup` Bash script for seamless installation of all newly added project dependencies. My decision stemmed out of respect and consideration for the individual(s) reviewing this project and the rest of my application. Offering a streamlined and pain-free setup process for my project ***on their*** development machines is a gesture that I believe anyone would appreciate :innocent:
+3) Given my constant use of search engines in my other web development projects, like [Meilisearch](https://www.meilisearch.com/) or [ElasticSearch](https://www.elastic.co/elasticsearch)/[OpenSearch](https://opensearch.org/platform/search/index.html) (via the [`searchkick` gem](https://rubygems.org/gems/searchkick)), it was refreshing to implement a simple search method with such a simple raw SQL statement.
+4) I noticed from the very beginning that the project was using Ruby 2.x instead of Ruby 3.x. Because I already had `asdf` setup on my Mac, I just had to run the following command:
+   ```bash
+   asdf install ruby 2.7.6
+   ```
+   Afterwards, I added a `.tool-versions` file to the root directory of the newly cloned project. Now, I was able to set the ***`local`*** version used in developing this *specific* project to `ruby 2.7.6` ***without*** changing the versions used in my other projects, which is `ruby 3.3.0`.
 
 ## Screenshots
+
+For your convenience, I have provided several screenshots to facilitate the evaluation of my project:
+
 
 
 
