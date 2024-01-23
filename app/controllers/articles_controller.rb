@@ -54,7 +54,11 @@ class ArticlesController < ApplicationController
 
   private
     def set_article
-      @article = Article.find(params[:id])
+      begin
+        @article = Article.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to articles_url, notice: "Article not found"
+      end
     end
 
     def article_params
