@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-    @article.build_author
+    build_author
   end
 
   def create
@@ -22,15 +22,14 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article
     else
+      build_author
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
     @article = Article.find(params[:id])
-    unless @article.author.present?
-      @article.build_author
-    end
+    build_author
   end
 
   def update
@@ -39,6 +38,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article
     else
+      build_author
       render :edit, status: :unprocessable_entity
     end
   end
@@ -53,5 +53,11 @@ class ArticlesController < ApplicationController
   private
     def article_params
       params.require(:article).permit(:title, :content, :date, author_attributes: [:name])
+    end
+
+    def build_author
+      unless @article.author.present?
+        @article.build_author
+      end
     end
 end

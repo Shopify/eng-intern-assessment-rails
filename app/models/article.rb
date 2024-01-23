@@ -13,8 +13,10 @@ class Article < ApplicationRecord
 
   private
     def find_or_create_author
-      if self.author
-        author_name = self.author.name
+      author_name = self.author&.name
+      if author_name.nil? or author_name.empty?
+        self.author = nil
+      else
         self.author = Author.find_or_create_by(name: author_name)
       end
     end

@@ -1,16 +1,21 @@
-<h1>Welcome to The Hidden Article Library</h1>
-
-<%= form_with url: articles_path, method: "get" do |form| %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search articles" %>
-  <input type="submit" value="Search">
-<% end %>
-
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to %{#{article.title}, by #{article.author&.name} (#{article.date})}, article %>
-    </li>
+<div class="container">
+  <h1>Welcome to The Hidden Encyclopedia</h1>
+  <%= form_with url: articles_path, method: "get" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search articles" %>
+    <%= submit_tag "Search", name: "" %>
   <% end %>
-</ul>
 
-<%= link_to '<button type="button">New Article</button>'.html_safe, new_article_path %>
+  <% if @articles.empty? %>
+    <div class="not-found">No articles found.</div>
+  <% else %>
+    <ul>
+      <% @articles.each do |article| %>
+        <li>
+          <%= link_to %{#{article.title}, by #{article.author&.name || 'Anonymous'} (#{article.date || 'n.d.'})}, article %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= link_to '<button type="button">New Article</button>'.html_safe, new_article_path %>
+</div>

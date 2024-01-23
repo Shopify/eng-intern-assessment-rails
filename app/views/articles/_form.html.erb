@@ -1,39 +1,40 @@
 <%= form_with model: article do |form| %>
-  <div>
+  <div class="form-block">
     <%= form.label :title %><br>
     <%= form.text_field :title %>
     <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+      <div class="error-message"><%= message %></div>
     <% end %>
   </div>
 
-  <div>
+  <div class="form-block">
     <%= form.label :content %><br>
     <%= form.text_area :content %>
     <% article.errors.full_messages_for(:content).each do |message| %>
-      <div><%= message %></div>
+      <div class="error-message"><%= message %></div>
     <% end %>
   </div>
 
   <%= form.fields_for :author do |author_form| %>
-    <div>
+    <div class="form-block">
       <%= author_form.label Author %><br>
       <%= author_form.text_field :name %>
       <% article.author.errors.full_messages_for(:name).each do |message| %>
-        <div><%= message %></div>
+        <div class="error-message"><%= message %></div>
       <% end %>
     </div>
   <% end %>
 
-  <div>
+  <div class="form-block">
     <%= form.label :date %><br>
     <%= form.date_field :date %>
     <% article.errors.full_messages_for(:date).each do |message| %>
-      <div><%= message %></div>
+      <div class="error-message"><%= message %></div>
     <% end %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <br><%= form.submit %>
+    <%= link_to '<button type="button" class="neutral-button"> Cancel </button>'.html_safe, begin article_path rescue articles_path end %>
   </div>
 <% end %>
