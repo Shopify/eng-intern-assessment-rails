@@ -14,10 +14,27 @@
           <%=link_to "Create" , new_article_path,class: 'nav-link'%>
         </li>
       </ul>
-      <form class="d-flex">
+      <%= form_with(url: articles_path, method: :get, local: true, class: "d-flex") do |form|%>
+  <%= form.text_field :search, class: "form-control me-2"%>
+  <%= form.submit 'Search', class:"btn btn-outline-success" %>
+<% end %>
+      <%
+=begin%>
+ <ul>
+      <% @articles.each do |article|%>
+      <li><%= link_to article.title, article_path(article) %></li>
+      <% end %>
+      </ul> 
+<%
+=end%>
+      <%
+=begin%>
+ <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> 
+<%
+=end%>
     </div>
   </div>
 </nav>
