@@ -9,3 +9,7 @@
 <% @articles.each do |article| %>
   <%= render partial: "articles/article", locals: { article: article } %>
 <% end %>
+
+<div class="text-center">
+  <%== pagy_nav(@pagy) %>
+</div>

@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @pagy, @articles = pagy(Article.all)
   end
 
   # GET /articles/1 or /articles/1.json
