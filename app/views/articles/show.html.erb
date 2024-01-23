@@ -4,7 +4,11 @@
 <br>
 Created at: <%= @article.date %></p>
 
-<p><%= link_to "Edit article", edit_article_path(@article) %></p>
-
+<p><%= link_to "Edit article", edit_article_path(@article) %>
+<br/>
+<%= link_to "Delete article", article_path(@article), data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+                } %></p>
 
 <p><%= @article.content %></p>
