@@ -8,12 +8,16 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+
+# Custom function to generate paragraphs of various sizes (default paragraph size: 2)
 def generate_random_paragraphs(random_num = 2)
   full_content = []
   random_num.times { full_content << Faker::Lorem.paragraph_by_chars(number: 700, supplemental: false) }
+
   return full_content.join("\n\n")
 end
 
+# Specific first article
 first_article = Article.new(
   title: "First Article",
   content: "Quo doloribus illum.",
@@ -23,7 +27,9 @@ first_article = Article.new(
 
 puts "Created first article '#{first_article.title}' by #{first_article.author}!\n\n" if first_article.save!
 
-25.times do
+
+# Modify # to seed that number of articles to the database
+50.times do
   article = Article.new(
     title: Faker::Lorem.words(number: 2..8, supplemental: true).join(" ").titleize,
     content: generate_random_paragraphs(Faker::Number.within(range: 2..6)),
@@ -34,6 +40,8 @@ puts "Created first article '#{first_article.title}' by #{first_article.author}!
   puts "Created article '#{article.title}' by #{article.author}!" if article.save!
 end
 
+
+# Specific last article
 last_article = Article.create!(
   title: "Last Article",
   content: "Quo doloribus illum. Illum provident aut. Exercitationem beatae quos.",
