@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
+# Controller for managing and displaying articles in the virtual encyclopedia.
 class ArticlesController < ApplicationController
   def index
-    if params[:search].present?
-      @articles = Article.search(params[:search])
-    else
-      @articles = Article.all
-    end
+    @articles = if params[:search].present?
+                  Article.search(params[:search])
+                else
+                  Article.all
+                end
   end
 
   def show
@@ -51,13 +54,14 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def article_params
-      params.require(:article).permit(:title, :content, :date, author_attributes: [:name])
-    end
 
-    def build_author
-      unless @article.author.present?
-        @article.build_author
-      end
-    end
+  def article_params
+    params.require(:article).permit(:title, :content, :date, author_attributes: [:name])
+  end
+
+  def build_author
+    return if @article.author.present?
+
+    @article.build_author
+  end
 end
