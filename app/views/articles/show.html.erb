@@ -1,0 +1,15 @@
+<div class="container">
+  <h1><%= @article.title %></h1>
+  <h4 class="literal">By <%= @article.author&.name || 'Anonymous' %>  |  <%= @article.date || 'n.d.' %></h4>
+
+  <div class="article-body">
+    <p><%= simple_format @article.content %></p>
+  </div>
+
+  <%= link_to '<button type="button">Edit Article</button>'.html_safe, edit_article_path(@article) %>
+  <%= link_to '<button type="button">Delete Article</button>'.html_safe, article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure you want to delete this Article?"
+    } %>
+  <%= link_to '<button type="button" class="neutral-button">Home</button>'.html_safe, articles_path %>
+</div>

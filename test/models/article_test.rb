@@ -1,6 +1,12 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -20,8 +26,9 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'displays the article metadata correctly' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
-    assert_equal 'John Doe', article.author
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.',
+                             author_attributes: { name: 'John Doe' }, date: Date.today)
+    assert_equal 'John Doe', article.author.name
     assert_equal Date.today, article.date
   end
 
@@ -32,9 +39,10 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'updates the article metadata' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
-    article.update(author: 'Jane Smith', date: Date.yesterday)
-    assert_equal 'Jane Smith', article.author
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.',
+                             author_attributes: { name: 'John Doe' }, date: Date.today)
+    article.update(author_attributes: { name: 'Jane Smith' }, date: Date.yesterday)
+    assert_equal 'Jane Smith', article.author.name
     assert_equal Date.yesterday, article.date
   end
 
@@ -52,7 +60,8 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'returns accurate search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article2 = Article.create(title: 'Another Article',
+                              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Lorem ipsum')
     assert_includes results, article1
     assert_includes results, article2
@@ -60,7 +69,8 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'displays relevant articles in search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article2 = Article.create(title: 'Another Article',
+                              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
