@@ -1,0 +1,42 @@
+<!-- app/views/articles/show.html.erb -->
+<div id="header">
+  <h1>Encyclopedia</h1>
+  <%= form_with url: "/search", method: :get do |form| %>
+    <%= form.label :query, "Search for:" %>
+    <%= form.text_field :query %>
+    <%= form.submit "Search" %>
+  <% end %>
+</div>
+
+<%= link_to 'Back to Articles', articles_path, class: "link" %>
+
+<div id="content">
+  <div class="form-details">
+    <h1><%= @article.title %></h1>
+
+    <div class="section">
+      <div class="section-title">Author</div>
+      <div class="section-content"><%= @article.author %></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Content</div>
+      <div class="section-content"><%= @article.content %></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Date</div>
+      <div class="section-content"><%= @article.date %></div>
+    </div>
+  </div>
+
+  <div class="action-buttons">
+    <%= link_to 'Edit', edit_article_path(@article), class: 'action-button' %>
+    <%= button_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'action-button' %>
+  </div>
+</div>
+
+
+<!--
+Ruby on Rails view for displaying individual articles with search functionality, details, and edit/delete buttons.
+-->

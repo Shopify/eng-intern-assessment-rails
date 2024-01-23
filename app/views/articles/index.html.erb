@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Encyclopedia</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+
+
+<div id="header">
+  <h1>Encyclopedia</h1>
+  <%= form_with url: "/search", method: :get do |form| %>
+    <%= form.label :query, "Search for:" %>
+    <%= form.text_field :query %>
+    <%= form.submit "Search" %>
+  <% end %>
+</div>
+
+<div id="content">
+  <h2>Articles</h2>
+
+  <% if @articles.any? %>
+    <table id="articles" class="table-auto w-full text-left">
+      <thead class="border font-medium border-neutral-300">
+        <tr>
+          <th class="px-6 py-4">Author</th>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Creation Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @articles.each do |article| %>
+        <tr class="border border-neutral-300 transition duration-300 ease-in-out hover:bg-neutral-100">
+          <td class="whitespace-nowrap px-6 py-4"><%= article.author.present? ? article.author : 'N/A' %></td>
+          <td><%= article.title %></td>
+          <td><%= article.content %></td>
+          <td><%= article.date.present? ? article.date.to_formatted_s(:long) : 'N/A' %></td>
+          <td><%= link_to "View", article_path(article), class: "link" %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No articles found</p>
+    <%= link_to "Back to articles", articles_path %>
+  <% end %>
+
+  <%= link_to 'New Article', new_article_path, class: "link" %>
+</div>
+
+</body>
+</html>
