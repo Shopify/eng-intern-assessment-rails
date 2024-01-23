@@ -4,11 +4,11 @@ class Article < ApplicationRecord
   validates :content, presence: true, length: { minimum: 10 }
   validates :author, presence: true
   validates :date, presence: true
-  validate :date_must_be_before_specific_date
+  validate :date_must_be_before_today
 
   private
 
-  def date_must_be_before_specific_date
+  def date_must_be_before_today
     return if date.blank?
 
     if date > Date.today
