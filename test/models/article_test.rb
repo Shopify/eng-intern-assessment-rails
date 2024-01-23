@@ -20,8 +20,8 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'displays the article metadata correctly' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
-    assert_equal 'John Doe', article.author
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author_attributes: {name: 'John Doe'}, date: Date.today)
+    assert_equal 'John Doe', article.author.name
     assert_equal Date.today, article.date
   end
 
@@ -32,9 +32,9 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'updates the article metadata' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
-    article.update(author: 'Jane Smith', date: Date.yesterday)
-    assert_equal 'Jane Smith', article.author
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author_attributes: {name: 'John Doe'}, date: Date.today)
+    article.update(author_attributes: {name: 'Jane Smith'}, date: Date.yesterday)
+    assert_equal 'Jane Smith', article.author.name
     assert_equal Date.yesterday, article.date
   end
 

@@ -8,7 +8,7 @@
 <ul>
   <% @articles.each do |article| %>
     <li>
-      <%= link_to %{#{article.title}, by #{article.author.name} (#{article.date})}, article %>
+      <%= link_to %{#{article.title}, by #{article.author&.name} (#{article.date})}, article %>
     </li>
   <% end %>
 </ul>
