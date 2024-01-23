@@ -1,0 +1,20 @@
+<!-- app/views/articles/new.html.erb -->
+<h1>New Article</h1>
+
+<%= form_with(model: @article, url: articles_path, method: :post) do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.label :content %>
+  <%= form.text_area :content %>
+
+  <%= form.label :author %>
+  <%= form.text_field :author %>
+
+  <%= form.label :date %>
+  <%= form.date_field :date %>
+
+  <%= form.submit 'Create Article' %>
+<% end %>
+
+<%= link_to 'Back', articles_path %>

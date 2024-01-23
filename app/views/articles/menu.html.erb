@@ -1,0 +1,13 @@
+<!-- app/views/articles/menu.html.erb -->
+<div class="article-menu">
+  <h2>Article Menu</h2>
+
+  <ul>
+    <li><%= link_to 'Create Article', new_article_path %></li>
+    <li><%= link_to 'Search Articles', search_articles_path %></li>
+    <li><%= link_to 'Update Article', edit_article_path(@article) %></li>
+    <li><%= link_to 'List All Articles', articles_path %></li>
+    <li><%= link_to 'Delete Article', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
+  </ul>
+</div>
