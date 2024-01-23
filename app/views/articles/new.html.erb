@@ -1,0 +1,9 @@
+<h1>New article</h1>
+
+<%# Render the shared form partial for creating an article %>
+<%= render "form", article: @article %>
+
+<%= render 'action_buttons', 
+           article: @article, 
+           show_edit_button: false,
+           show_delete_button: false %>

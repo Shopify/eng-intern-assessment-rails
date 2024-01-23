@@ -1,0 +1,24 @@
+<%# app/views/articles/_action_buttons.html.erb %>
+<div class="container">
+  <div class="row fixed-bottom mb-3">
+    <div class="col d-flex justify-content-start">
+      <%# Conditionally render 'Edit' button %>
+      <% if local_assigns.fetch(:show_edit_button, true) %>
+        <%= link_to 'Edit', edit_article_path(@article), 
+                    class: "btn btn-primary me-2" %>
+      <% end %>
+
+      <%# Back button %>
+      <%= link_to 'Back', articles_path, class: "btn btn-secondary" %>
+    </div>
+
+    <div class="col d-flex justify-content-end">
+      <%# Conditionally render 'Delete' button %>
+      <% if local_assigns.fetch(:show_delete_button, true) %>
+        <%= button_to 'Delete', @article, method: :delete, 
+                      data: { confirm: 'Are you sure?' }, 
+                      class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>

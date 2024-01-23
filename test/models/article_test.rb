@@ -65,4 +65,22 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'article must have a title' do
+    article = Article.new(content: 'Valid Content', author: 'Valid Author', date: Date.today)
+    assert_not article.save, 'Saved the article without a title'
+    assert_not_nil article.errors[:title], 'Validation error for title not present'
+  end
+
+  test 'article title must be unique' do
+    Article.create!(title: 'Unique Title', content: 'Valid Content', author: 'Valid Author', date: Date.today)
+    article = Article.new(title: 'Unique Title', content: 'Valid Content', author: 'Valid Author', date: Date.today)
+    assert_not article.save, 'Does not save an article with a non-unique title'
+  end
+
+  test 'article content must be present' do
+    article = Article.new(title: 'Valid Title', author: 'Valid Author', date: Date.today)
+    assert_not article.save, 'Saved the article without content'
+    assert_not_nil article.errors[:content], 'Validation error for content not present'
+  end
 end
