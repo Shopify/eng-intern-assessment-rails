@@ -7,9 +7,20 @@
 - Added `better_errors` and `binding_of_caller` gems to improve debugging in development environment
 
 ## Learning Experience & Accomplishments
-1) Used `asdf` to add local `.tool-versions` file to set `ruby` version to `2.7.6`.
-  - Global version on my Mac is still `3.3.0`.
-2) 
+1) Learned how to set up Tailwind CSS 3 different ways:
+   1) Initially, I tried [installing Tailwind CSS with Ruby on Rails as suggested in the docs](https://tailwindcss.com/docs/guides/ruby-on-rails).
+      - However, I kept running into errors when trying to start my build process with the `bin/dev` command.
+      - This error had something to do with running either the [`overmind` package](https://github.com/DarthSim/overmind) or the [`foreman` gem](https://rubygems.org/gems/foreman).
+   2) To get the development process underway quickly, I just [added Tailwind CSS via Play CDN](https://tailwindcss.com/docs/installation/play-cdn), which worked for the majority of my development needs for this project. However, there are some caveats consider:
+      - As stated ***just before the first step*** in the documentation:
+        > The Play CDN is designed for development purposes only, and is not the best choice for production.
+        
+        While we aren't deploying this project to production, I wanted to assume that we would. After all, that is the ultimate goal of developing *any* web app, regardless of the tech stack being used.
+      - There were technical difficulties when I attempted to add more robust solutions. For example, adding the [`pagy` gem](https://github.com/ddnexus/pagy) for paginating all records listed from the `articles` table. Specifically, I was not able to easily style the contents rendered from [the `pagy_nav` helpers](https://ddnexus.github.io/pagy/docs/extras/tailwind/#style-2).
+   3) Towards the end of my project, I remembered from past experience that there was *another* way to install Tailwind CSS! After a quick search, I found [the solution using the `cssbundling-rails` gem](https://stackoverflow.com/questions/71640507/how-to-import-tailwind-plugin-in-rails-7). This solution worked perfectly :thumbsup:
+2) While adding Tailwind CSS was my goal, **I would *only* proceed doing so** if I could augment the `bin/setup` script to easily install *all* additional dependencies. My decision for this came primarily out of respect and consideration for the individual(s) reviewing my application and technical assessment; providing a streamlined and pain-free way to setup my project on their development machines is something anyone would appreciate :innocent:
+3) Used `asdf` to add `.tool-versions` file to project directory, which allowed me to set the ***`local`*** `ruby` version to `2.7.6` while retaining the ***`global`*** version to `3.3.0`.
+4) 
 
 ## Technical Challenges
 
