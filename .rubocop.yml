@@ -1,0 +1,4 @@
+require: rubocop-rails
+
+inherit_gem:
+  rubocop-shopify: rubocop.yml
