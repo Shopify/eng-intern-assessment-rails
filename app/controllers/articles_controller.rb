@@ -3,7 +3,12 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    # If the user has entered a search query, display the results
+    if params[:keyword]
+      @articles = Article.search(params[:keyword])
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/1 or /articles/1.json

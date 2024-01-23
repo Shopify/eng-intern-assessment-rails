@@ -2,12 +2,18 @@
 
 <h1>Articles</h1>
 
+<%= render "search" %>
+
 <div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
+  <% if @articles.any? %>
+    <% @articles.each do |article| %>
+      <%= render article %>
+      <p>
+        <%= link_to "Show this article", article %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>No articles found</p>
   <% end %>
 </div>
 
