@@ -4,7 +4,7 @@
   <%= @article.content %>
 </p>
 
-<% if @article.author %>
+<% if not @article.author.empty? %>
   <p>
     Author: <%= @article.author %>
   </p>
