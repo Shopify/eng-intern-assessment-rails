@@ -160,6 +160,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
+    pagy (6.4.3)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.4)
@@ -272,6 +273,7 @@ DEPENDENCIES
   faker (~> 3.2, >= 3.2.3)
   importmap-rails
   jbuilder
+  pagy (~> 6.4, >= 6.4.3)
   puma (>= 5.0)
   rails (~> 7.1.2)
   selenium-webdriver

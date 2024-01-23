@@ -72,3 +72,4 @@ group :test do
 end
 
 gem 'cssbundling-rails', '~> 1.4'
+gem 'pagy', '~> 6.4', '>= 6.4.3'
