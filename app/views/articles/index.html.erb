@@ -1,0 +1,6 @@
+<%= link_to "Create new Article", new_article_path %>
+
+<h1>Encyclopedia</h1>
+<% @articles.each do |article| %>
+    <div> <%= link_to article.title, article %> </div>
+<% end %>
