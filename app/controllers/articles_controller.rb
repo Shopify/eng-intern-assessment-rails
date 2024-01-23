@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    all_articles = Article.all
+
+    # Sort comments by descending date because we want newest articles at the top of the page
+    @articles = all_articles.sort_by{|article| article[:date]}.reverse
   end
 
   def new
@@ -36,6 +39,18 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     redirect_to articles_path, status: :see_other
+  end
+
+  def search
+    if params[:search_term].empty?
+      redirect_to articles_path
+    else
+      @search_term = params[:search_term]
+      filtered_articles = Article.search(@search_term)
+
+      # Sort comments by descending date because we want newest articles at the top of the page
+      @articles = filtered_articles.sort_by{|article| article[:date]}.reverse
+    end
   end
 
   private

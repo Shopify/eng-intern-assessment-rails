@@ -2,7 +2,7 @@
   display: flex;
 }
 
-.update-delete-article-container{
+.update-delete-article-buttons-container{
   display: flex;
 }
 
@@ -27,8 +27,4 @@
 
 .article-title{
   text-decoration-line: underline;
-}
-
-table{
-  margin: auto;
 }

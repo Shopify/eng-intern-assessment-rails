@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag '_form.css' %>
+<%= stylesheet_link_tag "_form.css" %>
 
 <%= form_with model: @article do |form| %>
   <div>
@@ -15,7 +15,7 @@
     <%= form.label :title %><br>
     <%= form.text_field :title %>
     <% @article.errors.full_messages_for(:title).each do |message| %>
-      <p class='error-message'><%= message %></p>
+      <p class="error-message"><%= message %></p>
     <% end %>
   </div>
 
@@ -23,7 +23,7 @@
     <%= form.label :content %><br>
     <%= form.text_area :content %>
     <% @article.errors.full_messages_for(:content).each do |message| %>
-      <p class='error-message'><%= message %></p>
+      <p class="error-message"><%= message %></p>
     <% end %>
   </div>
 
