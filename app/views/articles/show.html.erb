@@ -1,0 +1,24 @@
+<h1><%= @article.title %></h1>
+
+<p>
+  <%= @article.content %>
+</p>
+
+<% if @article.author %>
+  <p>
+    Author: <%= @article.author %>
+  </p>
+<% end %>
+
+<% if @article.date %>
+  <p>
+    Date: <%= @article.date %>
+  </p>
+<% end %>
+
+<%= link_to "Edit", edit_article_path(@article) %>
+<%= link_to "Delete", article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  }
+%>
