@@ -1,14 +1,17 @@
+
 <p style="color: green"><%= notice %></p>
+<div class="columns mt-6 is-centered">
+  <div class="column is-half">
+    <%= form_with url: "/articles", method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+  </div>
 
-<h1>Articles</h1>
-
-<div id="articles">
+</div>
+<div class="columns mt-6 is-centered" id="articles">
   <% @articles.each do |article| %>
     <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
   <% end %>
 </div>
-
-<%= link_to "New article", new_article_path %>

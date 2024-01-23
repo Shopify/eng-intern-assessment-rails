@@ -1,6 +1,6 @@
 <%= form_with(model: article) do |form| %>
   <% if article.errors.any? %>
-    <div style="color: red">
+    <div class="message is-danger">
       <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
       <ul>
@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="field">
+    <%= form.label :title,class: "label" %>
+    <%= form.text_field :title, class: "input"  %>
   </div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+  <div class="field">
+    <%= form.label :content, class: "label" %>
+    <%= form.text_area :content , class: "input" %>
   </div>
 
-  <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_field :author %>
+  <div class="field">
+    <%= form.label :author,class: "label" %>
+    <%= form.text_field :author, class: "input"  %>
   </div>
 
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
+  <div class="field">
+    <%= form.label :date,class: "label" %>
+    <%= form.date_field :date, class: "input"  %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="actions">
+    <%= form.submit class: "button is-success" %>
   </div>
 <% end %>

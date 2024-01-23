@@ -1,22 +1,20 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= article.content %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= article.author %>
-  </p>
-
-  <p>
-    <strong>Date:</strong>
-    <%= article.date %>
-  </p>
-
+<div class="column is-one-quarter">
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+        <%= article.title %>
+      </p>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        <p><span class="has-text-weight-bold">Content: </span><%= article.content %></p>
+        <p><span class="has-text-weight-bold">Author: </span><%= article.author %></p>
+        <p><span class="has-text-weight-bold">Date: </span><%= article.date %></p>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <%= link_to "Edit", edit_article_path(article), class: "card-footer-item" %>
+      <%= link_to "Delete", article, method: :delete, data: { confirm: 'Are you sure?' },  class: "card-footer-item" %>
+    </footer>
+  </div>
 </div>

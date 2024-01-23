@@ -1,9 +1,9 @@
-<h1>New article</h1>
+<% content_for :title do %>
+  New Article
+<% end %>
 
-<%= render "form", article: @article %>
-
-<br>
-
-<div>
-  <%= link_to "Back to articles", articles_path %>
+<div class="columns is-centered mt-6">
+  <div class="column is-one-third">
+    <%= render "form", article: @article %>
+  </div>
 </div>

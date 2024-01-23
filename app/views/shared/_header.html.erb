@@ -1,0 +1,37 @@
+<section class="hero is-link is-small">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <%= link_to root_path, class: "navbar-item" do %>
+            <h1 class="has-text-weight-bold">Shopify - Intern Assessment Rails</h1>
+          <% end %>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+            <div class="navbar-end">
+                <span class="navbar-item">
+                    <%= link_to "Create New Article", new_article_path, class: "button is-success" %>
+                </span>
+            </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title">
+        <% if content_for(:title) %>
+          <%= yield :title %>
+        <% else %>
+          Articles
+        <% end %>
+      </p>
+      <p class="subtitle">
+        Mohammed Omer Munam
+      </p>
+    </div>
+  </div>
+</section>
