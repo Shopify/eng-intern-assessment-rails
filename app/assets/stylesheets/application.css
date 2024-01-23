@@ -1,11 +1,11 @@
-/* app/assets/stylesheets/application.css */
-
+/* Global styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
+/* Header styles */
 #header {
   background-color: #333;
   color: white;
@@ -22,99 +22,99 @@ body {
   margin-top: 10px;
 }
 
+/* Content styles */
 #content {
   max-width: 800px;
   margin: 20px auto;
+  text-align: center;
 }
 
-#content h2 {
-  color: #333;
+/* Articles table styles */
+#articles {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-#content ul {
-  list-style: none;
-  padding: 0;
-}
-
-#content li {
+#articles th, #articles td {
   border: 1px solid #ddd;
-  margin-bottom: 10px;
   padding: 10px;
 }
 
-#content h3 {
+#articles th {
+  background-color: #f0f0f0;
   color: #333;
+  text-align: center;
 }
 
-#content strong {
-  color: #333;
+#articles tr:hover {
+  background-color: #f5f5f5;
 }
 
+/* Article details styles */
+.article-details h1 {
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 15px;
+}
+
+.section-title {
+  background-color: #ddd;
+  padding: 5px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.section-content {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Action buttons styles */
 .action-buttons {
   display: flex;
-  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.action-button, .edit-button, .destroy-button {
-  border: none;
-  padding: 5px 10px;
+.action-button {
+  background-color: #fff;
+  color: #333;
+  padding: 10px 15px;
   text-decoration: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
   cursor: pointer;
   margin-right: 10px;
 }
 
-.action-button {
-  background-color: #333;
-  color: white;
+.action-button:hover {
+  background-color: #ddd;
 }
 
-.edit-button,
-.destroy-button {
-  background-color: #333;
-  color: white;
-  font-size: 14px;
-}
-
-.action-button:hover,
-.edit-button:hover,
-.destroy-button:hover {
-  background-color: #555;
-}
-
-hr {
-  margin: 10px 0;
-  border: none;
-  border-top: 1px solid #ddd;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.form-control {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #333; /* 변경: Form 입력 필드 테두리 색상 */
-  border-radius: 0; /* 변경: 둥근 테두리 제거 */
-}
-
-.btn {
-  background-color: #333;
-  color: white;
-  padding: 10px 15px;
+/* Link styles */
+.link {
   text-decoration: none;
-  border-radius: 0;
-  display: inline-block;
-  cursor: pointer;
+  color: #333;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  text-align: center;
 }
 
-.btn:hover {
-  background-color: #555;
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Form details styles */
+.form-details {
+  margin-top: 50px;
 }

@@ -1,46 +1,62 @@
 <!-- app/views/articles/_form.html.erb -->
+<div id="header">
+  <h1><%= @article.persisted? ? "Edit Article" : "New Article" %></h1>
+  <%= form_with url: "/search", method: :get do |form| %>
+    <%= form.label :query, "Search for:" %>
+    <%= form.text_field :query %>
+    <%= form.submit "Search" %>
+  <% end %>
+</div>
 
-<h1><%= @article.persisted? ? "Edit Article" : "New Article" %></h1>
+<%= link_to 'Back to Articles', articles_path, class: "link" %>
 
-<%= form_with(model: @article, local: true) do |form| %>
-  <!-- Title Field -->
-  <div class="form-group">
-    <%= form.label :title, class: "form-label" %>
-    <%= form.text_field :title, class: "form-control" %>
-  </div>
+<div class= "form-details">
+  <%= form_with(model: @article, local: true) do |form| %>
+    <div class="section">
+      <div class="section-title">
+        <%= form.label :title, class: "form-label" %>
+      </div>
+      <div >
+        <%= form.text_area :title, class: "form-control", rows: 1, cols: 80 %>
+      </div>
+    </div>
 
-  <!-- Author Field -->
-  <div class="form-group">
-    <%= form.label :author, class: "form-label" %>
-    <%= form.text_field :author, class: "form-control" %>
-  </div>
+    <div class="section">
+      <div class="section-title">
+        <%= form.label :author, class: "form-label" %>
+      </div>
+      <div>
+        <%= form.text_area :author, class: "form-control", rows: 1, cols: 80 %>
+      </div>
+    </div>
 
-  <!-- Content Field -->
-  <div class="form-group">
-    <%= form.label :content, class: "form-label" %>
-    <%= form.text_area :content, class: "form-control" %>
-  </div>
+    <div class="section">
+      <div class="section-title">
+        <%= form.label :content, class: "form-label" %>
+      </div>
+      <div>
+        <%= form.text_area :content, class: "form-control", rows: 7, cols: 80 %>
+      </div>
+    </div>
 
-  <!-- Date Field -->
-  <div class="form-group">
-    <%= form.label :date, class: "form-label" %>
-    <%= form.datetime_field :date, class: "form-control" %>
-  </div>
 
-  <!-- Image Field -->
-  <div class="form-group">
-    <%= form.label :image, class: "form-label" %>
-    <%= form.file_field :image, class: "form-control" %>
-  </div>
+    <!--
+    Ruby on Rails partial view for creating/editing articles with dynamic header and article form.
+    -->
 
-  <!-- Submit Button -->
-  <div class="form-group">
-    <%= form.submit @article.persisted? ? "Update Article" : "Create Article", class: "btn" %>
-  </div>
-<% end %>
+    <div class="section">
+      <div class="section-title">
+        <%= form.label :date, class: "form-label" %>
+      </div>
+      <div>
+        <%= form.datetime_field :date, class: "form-control" %>
+      </div>
+    </div>
 
-<br>
+    <div class="action-buttons">
+      <%= form.submit @article.persisted? ? "Update Article" : "Create Article", class: "action-button" %>
+    </div>
+  <% end %>
 
-<div>
-  <%= link_to "Back to articles", articles_path %>
+  <br>
 </div>
