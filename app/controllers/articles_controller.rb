@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
     @articles = all_articles.sort_by{|article| article[:date]}.reverse
   end
 
+  # Instantiates article to be used in form responsible for creating articles (does not actually save article to db)
   def new
     @article = Article.new
   end
@@ -20,6 +21,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Grabs article to be used in form responsible for editing articles (does not actually update article in db)
   def edit
     @article = Article.find(params[:id])
   end
