@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag "index.css" %>
+
+<h1 class="page-title">All Articles</h1>
+
+<div class="search-bar-container">
+  <%= form_with url: articles_path, method: "get" do |form| %>
+    <div>
+        <%= form.text_field :search_term, placeholder: "Search for title/content key words",
+         class: "search-bar-text-input" %>
+
+        <%= form.submit :search %>
+    </div>
+  <% end %>
+</div>
+
+<div class="articles-container">
+  <%= button_to "Create New Article", new_article_path, method: :get %>
+
+  <% @articles.each do |article| %>
+
+  <div class="article-container">
+    <div class="update-delete-article-buttons-container">
+    <%= button_to "Edit Article", edit_article_path(article), method: :get %>
+    <%= button_to "Delete Article", article, method: :delete %>
+    </div>
+
+    <div class="author-and-date-container">
+      <p class="article-author">Author: <%= article.author%><p>
+      <p class="article-date">Date: <%= article.date%><p>
+    </div>
+
+    <h3 class="article-title"><%= article.title%></h3>
+    <p class="article-content"><%= article.content%></p>
+  </div>
+
+  <% end %>
+
+</div>
