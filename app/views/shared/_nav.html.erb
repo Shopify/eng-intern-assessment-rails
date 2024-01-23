@@ -18,7 +18,7 @@
     <% end if current_page?(root_path) || current_page?(articles_path) %>
     <%= link_to articles_path, class: "ml-3 inline-flex items-center rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600" do %>
       Back to Articles
-    <% end if (@article.present? && (current_page?(new_article_path) || current_page?(article_path(article)))) || current_page?(search_index_path) %>
+    <% end unless current_page?(root_path) || current_page?(articles_path) %>
     <%= link_to edit_article_path(@article), class: "ml-3 inline-flex items-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600" do %>
       Edit
     <% end if (@article.present? && !params[:id].nil?) && (!@article.nil? && current_page?(article_path(article))) %>
@@ -27,3 +27,7 @@
     <% end if (@article.present? && !params[:id].nil?) && current_page?(article_path(article)) %>
   </div>
 </div>
+
+<% if flash[:success].present? || flash[:warning].present? %>
+  <%= render partial: "shared/flash_message" %>
+<% end %>

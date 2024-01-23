@@ -1,7 +1,7 @@
 <%= render partial: "shared/nav", locals: { articles: @results } %>
 
 <div class="min-w-0 flex-1 my-4">
-  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Searching for <span class="italic"><%= params[:query] %></span> found <%= pluralize(@results.count, 'result') %></h2>
+  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Searching for <span class="italic"><%= @query %></span> found <%= pluralize(@results.count, 'result') %></h2>
 </div>
 
 <% @results.each do |result| %>
