@@ -1,15 +1,15 @@
 
 <p style="color: green"><%= notice %></p>
-<div class="columns mt-6 is-centered">
-  <div class="column is-half">
-    <%= form_with url: "/articles", method: :get do |form| %>
-  <%= form.label :query, "Search for:" %>
-  <%= form.text_field :query %>
-  <%= form.submit "Search" %>
-<% end %>
+<%= form_tag(articles_path, method: :get, class: 'control') do %>
+  <div class="columns mt-6 is-centered">
+    <div class="column is-half">
+      <%= text_field_tag :search, nil, class: 'input is-link', placeholder: 'Search' %>
+    </div>
+    <div class="column is-1">
+      <%= submit_tag 'Search', class: 'button is-success' %>
+    </div>
   </div>
-
-</div>
+<% end %>
 <div class="columns mt-6 is-centered" id="articles">
   <% @articles.each do |article| %>
     <%= render article %>
