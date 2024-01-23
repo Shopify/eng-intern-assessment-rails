@@ -8,31 +8,37 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-sample_article = Article.create!(
-  title: "Sample Article",
-  content: "Lorem ipsum dolor sit amet.",
-  author: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
-  date: Faker::Date.between(from: '2024-01-01', to: '2024-01-29')
-)
-
-puts "Created sample article '#{sample_article.title}' by #{sample_article.author}!\n\n"
-
-25.times do
-  article = Article.create!(
-    title: Faker::Lorem.words(number: 2..8, supplemental: true).join(" ").titleize,
-    content: Faker::Lorem.paragraphs(number: 2..6).join("\n\n"),
-    author: ["#{Faker::Name.first_name} #{Faker::Name.last_name}", nil].sample,
-    date: [Faker::Date.between(from: '2023-09-01', to: '2024-01-29'), nil].sample
-  )
-
-  puts "Created article '#{article.title}' by #{article.author}!"
+def generate_random_paragraphs(random_num = 2)
+  full_content = []
+  random_num.times { full_content << Faker::Lorem.paragraph_by_chars(number: 700, supplemental: false) }
+  return full_content.join("\n\n")
 end
 
-another_article = Article.create!(
-  title: "Another Article",
-  content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  author: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
+first_article = Article.new(
+  title: "First Article",
+  content: "Quo doloribus illum.",
+  author: ["#{Faker::Name.male_first_name} #{Faker::Name.last_name}", "#{Faker::Name.female_first_name} #{Faker::Name.last_name}"].sample,
   date: Faker::Date.between(from: '2024-01-01', to: '2024-01-29')
 )
 
-puts "\nCreated another article '#{another_article.title}' by #{another_article.author}!\n"
+puts "Created first article '#{first_article.title}' by #{first_article.author}!\n\n" if first_article.save!
+
+25.times do
+  article = Article.new(
+    title: Faker::Lorem.words(number: 2..8, supplemental: true).join(" ").titleize,
+    content: generate_random_paragraphs(Faker::Number.within(range: 2..6)),
+    author: ["#{Faker::Name.male_first_name} #{Faker::Name.last_name}", "#{Faker::Name.female_first_name} #{Faker::Name.last_name}", nil].sample,
+    date: Faker::Date.between(from: '2023-09-01', to: '2024-01-29')
+  )
+
+  puts "Created article '#{article.title}' by #{article.author}!" if article.save!
+end
+
+last_article = Article.create!(
+  title: "Last Article",
+  content: "Quo doloribus illum. Illum provident aut. Exercitationem beatae quos.",
+  author: ["#{Faker::Name.male_first_name} #{Faker::Name.last_name}", "#{Faker::Name.female_first_name} #{Faker::Name.last_name}"].sample,
+  date: Faker::Date.between(from: '2024-01-01', to: '2024-01-29')
+)
+
+puts "\nCreated last article '#{last_article.title}' by #{last_article.author}!\n"

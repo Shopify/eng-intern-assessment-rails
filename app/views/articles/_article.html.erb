@@ -1,22 +1,21 @@
-<div id="<%= dom_id article %>">
-  <div class="my-4 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
-    <div class="font-semibold text-lg px-4 py-3 sm:px-6">
-      <%= link_to article_path(article), class: "text-slate-700 hover:text-slate-900 font-semibold" do %>
-        <%= article.title %>
-      <% end %>
-    </div>
-    <div class="px-4 py-3 sm:p-6">
-      <%= article.content %>
-    </div>
-    <div class="px-4 py-3 sm:px-6">
-      <div class="md:flex md:items-center md:justify-between">
-        <div class="min-w-0 flex-1">
-          <%= article.author.present? ? article.author : "-" %>
-        </div>
-        <div class="flex md:ml-4 md:mt-0 italic">
-          <%= article.date.present? ? "Posted on #{article.date.strftime("%B %d, %Y")}" : "-" %>
-        </div>
+<div id="<%= dom_id article %>" class="my-4 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+  <div class="font-semibold text-lg px-4 py-3 sm:px-6">
+    <%= link_to article_path(article), class: "text-slate-700 hover:text-slate-900 font-semibold" do %>
+      <%= article.title %>
+    <% end %>
+  </div>
+  <div class="px-4 py-3 sm:p-6">
+    <%= current_page?(articles_path) || current_page?(root_path) ? truncate(article.content, length: 300, separator: " ") : simple_format(article.content) %>
+  </div>
+  <div class="px-4 py-3 sm:px-6">
+    <div class="md:flex md:items-center md:justify-between">
+      <div class="min-w-0 flex-1">
+        <%= article.author.present? ? article.author : "-" %>
+      </div>
+      <div class="flex md:ml-4 md:mt-0 italic">
+        <%= article.date.present? ? "Posted on #{article.date.strftime("%B %d, %Y")}" : "-" %>
       </div>
     </div>
   </div>
 </div>
+
