@@ -14,10 +14,10 @@ class ArticlesTest < ApplicationSystemTestCase
     visit articles_url
     click_on "New article"
 
-    fill_in "Author", with: @article.author
-    fill_in "Content", with: @article.content
-    fill_in "Date", with: @article.date
     fill_in "Title", with: @article.title
+    fill_in "Content", with: @article.content
+    fill_in "Author", with: @article.author
+    fill_in "Date", with: @article.date
     click_on "Create Article"
 
     assert_text "Article was successfully created"
@@ -28,10 +28,10 @@ class ArticlesTest < ApplicationSystemTestCase
     visit article_url(@article)
     click_on "Edit this article", match: :first
 
-    fill_in "Author", with: @article.author
-    fill_in "Content", with: @article.content
-    fill_in "Date", with: @article.date
     fill_in "Title", with: @article.title
+    fill_in "Content", with: @article.content
+    fill_in "Author", with: @article.author
+    fill_in "Date", with: @article.date
     click_on "Update Article"
 
     assert_text "Article was successfully updated"
