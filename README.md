@@ -1,4 +1,24 @@
-# Technical Instructions
+# Encyclofy - Neema Sadry
+
+## Features
+- Styled using Tailwind CSS via [Play CDN](https://tailwindcss.com/docs/installation/play-cdn)
+    - *Note: The Play CDN is designed for development purposes only, and is not the best choice for production.*
+- Added `faker` gem to generate data in `seeds.rb` during development
+- Added `better_errors` and `binding_of_caller` gems to improve debugging in development environment
+
+## Learning Experience & Accomplishments
+1) Used `asdf` to add local `.tool-versions` file to set `ruby` version to `2.7.6`.
+  - Global version on my Mac is still `3.3.0`.
+2) 
+
+## Technical Challenges
+
+
+## Screenshots
+
+
+
+# Technical Instructions - Shopify
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.
 3. Test your work using the provided tests
