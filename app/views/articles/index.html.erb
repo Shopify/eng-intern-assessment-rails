@@ -1,2 +1,13 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+<h1>Encyclopedia</h1>
+<br/>
+<h2>Articles</h2>
+<ul>
+    <% @articles.each do |article| %>
+        <li>
+            <a href="<%= article_path(article) %>">
+                <%= article.title %>
+            </a>
+            by <%= article.author %> created at:<%= article.date %>
+        </li>
+    <% end %>
+</ul>
