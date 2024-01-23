@@ -1,0 +1,13 @@
+<h1><%= @article.title %></h1>
+<p>Author: <%= @article.author %></p>
+<p>Author: <%= @article.date %></p>
+<p><%= @article.content %></p>
+
+<br>
+
+<p><%= link_to "Edit", edit_article_path(@article) %></p>
+<p><%= link_to "Destroy", article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+} %></p>
+<p><%= link_to "Back", articles_path %></p>
