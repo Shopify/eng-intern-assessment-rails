@@ -3,17 +3,18 @@ require "test_helper"
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @article = articles(:one)
-    @last_article = articles(:five)
   end
 
   test "should get index" do
     get articles_url
     assert_response :success
+    assert_select "h2", "5 Articles"
   end
 
   test "should get root" do
     get root_url
     assert_response :success
+    assert_select "h2", "5 Articles"
   end
 
   test "should get new" do
@@ -27,6 +28,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to article_url(Article.last)
+    follow_redirect!
+    assert_select "h3", "Success"
   end
 
   test "should create article with empty author and date" do
@@ -35,19 +38,26 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to article_url(Article.last)
+    follow_redirect!
+    assert_select "h3", "Success"
   end
 
   test "should not create article with missing title and content" do
     assert_no_difference("Article.count") do
       post articles_url, params: { article: { author: @article.author, content: nil, date: @article.date, title: nil } }
     end
-
+    
     assert_response :unprocessable_entity
   end
 
   test "should show article" do
     get article_url(@article)
     assert_response :success
+  end
+
+  test 'does not show article that does not exist' do
+    get article_url(12)
+    assert_response :not_found
   end
 
   test "should show first article content accurately" do
@@ -68,16 +78,21 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test "should update article" do
     patch article_url(@article), params: { article: { author: @article.author, content: @article.content, date: @article.date, title: @article.title } }
     assert_redirected_to article_url(@article)
+    follow_redirect!
+    assert_select "h3", "Success"
   end
 
   test "should update article with empty author and date" do
     patch article_url(@article), params: { article: { author: nil, date: nil } }
     assert_redirected_to article_url(@article)
+    follow_redirect!
+    assert_select "h3", "Success"
   end
 
   test "should not update article with empty title and content" do
     patch article_url(@article), params: { article: { title: nil, content: nil } }
     assert_response :unprocessable_entity
+    assert_select "h3", "There were 2 errors with your submission:"
   end
 
   test "should destroy article" do
@@ -86,5 +101,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to articles_url
+    follow_redirect!
+    assert_select "h3", "Success"
   end
 end

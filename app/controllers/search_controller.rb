@@ -2,7 +2,7 @@ class SearchController < ApplicationController
   before_action :set_query, only: :index
 
   def index
-    if !@query.nil? && @query.empty?
+    if !@query.nil? && @query.blank?
       redirect_to root_path, flash: { warning: "Please enter valid search term(s) in the search field." }
     else
       @results = Article.search(@query)

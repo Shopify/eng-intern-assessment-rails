@@ -15,6 +15,13 @@ class SearchControllerTest < ActionDispatch::IntegrationTest
     assert_select "a", href: /articles\/1/, text: "First Article"
   end
 
+  test "should return zero articles for unmatched search terms" do
+    get search_index_url, params: { query: "invalid_search_term" }
+    assert_response :success
+    assert_select "h2", "Searching for invalid_search_term found 0 results"
+    assert_recognizes({ controller: 'search', action: 'index', query: 'invalid_search_term' }, @request.url, { query: 'invalid_search_term' })
+  end
+
   test "should return anonymous user name" do
     get search_index_url, params: { query: "Third" }
     assert_response :success
@@ -33,10 +40,17 @@ class SearchControllerTest < ActionDispatch::IntegrationTest
     assert_recognizes({ controller: 'search', action: 'index', query: 'Article' }, @request.url, { query: 'Article' })
   end
 
-  test "should redirect to root url if no search terms given" do
+  test "should redirect to root if no search terms given" do
     get search_index_url, params: { query: "" }
     assert_response :redirect
     follow_redirect!
-    assert_select "h2", "5 Articles"
+    assert_select "h3", "Warning"
+  end
+
+  test "should redirect to root if space chars given" do
+    get search_index_url, params: { query: "   " }
+    assert_response :redirect
+    follow_redirect!
+    assert_select "h3", "Warning"
   end
 end
