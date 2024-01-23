@@ -1,10 +1,8 @@
 class ArticlesController < ApplicationController
   # GET /articles
   def index
-    @search_term = params[:search_term]
-
-    unsorted_articles = if @search_term
-      Article.search(@search_term)
+    unsorted_articles = if params[:search_term]
+      Article.search(params[:search_term])
     else
       Article.all
     end
