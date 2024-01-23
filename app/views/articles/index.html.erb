@@ -18,8 +18,14 @@
           <td><%= article.title %></td>
           <td><%= article.author %></td>
           <td><%= article.date %></td>
-          <td><%= link_to "Show this Article", article, class:"btn btn-primary btn-sm" %></td>
-          <td><%= button_to 'Delete', article, method: :delete, class: "btn btn-danger" %></td>
+          <td>
+            <%= link_to "Show this Article", article, 
+                        class: "btn btn-primary btn-sm" %>
+          </td>
+          <td>
+            <%= button_to 'Delete', article, method: :delete, 
+                          class: "btn btn-danger" %>
+          </td>
         </tr>
       <% end %>
     </tbody>

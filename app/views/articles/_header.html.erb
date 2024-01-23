@@ -1,18 +1,19 @@
 <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
     <%= link_to articles_path, class: 'navbar-brand' do %>
-      <%= image_tag 'logo.png', alt: 'Logo', class: 'navbar-logo d-inline-block align-top' %> Encyclopedia
+      <%= image_tag 'logo.png', alt: 'Logo', 
+                    class: 'navbar-logo d-inline-block align-top' %> 
+      Encyclopedia
     <% end %>
 
     <%# Search form %>
-    <form class="d-flex" role="search" action="<%= articles_path %>" method="get">
-      <input 
-        class="form-control me-2" 
-        type="search" 
-        placeholder="Search Articles" 
-        aria-label="Search" 
-        name="search"
-      >
+    <form class="d-flex" role="search" action="<%= articles_path %>" 
+          method="get">
+      <input class="form-control me-2" 
+             type="search" 
+             placeholder="Search Articles" 
+             aria-label="Search" 
+             name="search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>

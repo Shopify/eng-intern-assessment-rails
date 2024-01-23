@@ -1,11 +1,12 @@
 <%# Form for creating or editing articles %>
 <%= form_with(model: article) do |form| %>
-  
+
   <%# Display validation errors, if any %>
   <% if article.errors.any? %>
     <div class="alert alert-danger" role="alert">
       <h4 class="alert-heading">
-        <%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:
+        <%= pluralize(article.errors.count, "error") %>
+        prohibited this article from being saved:
       </h4>
       <ul>
         <% article.errors.full_messages.each do |message| %>
@@ -14,19 +15,28 @@
       </ul>
     </div>
   <% end %>
-  
-  <%= render partial: 'text_field', 
-             locals: { form: form, field: :title, placeholder: "Enter Title" } %> 
 
+  <%# Title field %>
   <%= render partial: 'text_field', 
-             locals: { form: form, field: :content, placeholder: "Enter Content", resizable: true, rows: 3 } %>
+             locals: { form: form, field: :title, 
+                       placeholder: "Enter Title" } %>
 
+  <%# Content field (resizable) %>
   <%= render partial: 'text_field', 
-             locals: { form: form, field: :author, placeholder: "John Doe" } %>
+             locals: { form: form, field: :content,
+                       placeholder: "Enter Content", 
+                       resizable: true, rows: 3 } %>
 
+  <%# Author field %>
   <%= render partial: 'text_field', 
+             locals: { form: form, field: :author,
+                       placeholder: "John Doe" } %>
+
+  <%# Date field %>
+  <%= render partial: 'text_field',
              locals: { form: form, field: :date } %>
 
+  <%# Submit button for the form %>
   <div class="mt-3">
     <%= form.submit class: 'btn btn-primary btn-lg' %>
   </div>

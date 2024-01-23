@@ -2,16 +2,23 @@
 <div class="mb-3">
   <%= form.label field, class: "form-label" %>
 
-  <%# resizable defaults to false %>
+  <%# Resizable defaults to false %>
   <% resizable = local_assigns.fetch(:resizable, false) %>
 
   <% if field == :date %>
-    <%= form.date_field field, class: "form-control", placeholder: "YYYY-MM-DD" %>
-
+    <%= form.date_field field, 
+                        class: "form-control", 
+                        placeholder: "YYYY-MM-DD" %>
+  
   <% elsif resizable %>
-    <%= form.text_area field, class: "form-control", placeholder: placeholder, rows: rows %>
+    <%= form.text_area field, 
+                       class: "form-control", 
+                       placeholder: placeholder, 
+                       rows: rows %>
 
   <% else %>
-    <%= form.text_field field, class: "form-control", placeholder: placeholder %>
+    <%= form.text_field field, 
+                        class: "form-control", 
+                        placeholder: placeholder %>
   <% end %>
 </div>

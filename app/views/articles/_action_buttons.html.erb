@@ -1,15 +1,21 @@
 <div class="container">
   <div class="row fixed-bottom mb-3">
+    
+    <%# Start column for 'Edit' and 'Back' buttons %>
     <div class="col d-flex justify-content-start">
-      <%# Render 'Edit' button only if show_edit_button is true (default to true if not specified) %>
+      <%# Conditional rendering of 'Edit' button %>
       <% if local_assigns.fetch(:show_edit_button, true) %>
-        <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary me-2" %>
+        <%= link_to 'Edit', edit_article_path(@article), 
+                    class: "btn btn-primary me-2" %>
       <% end %>
       <%= link_to 'Back', articles_path, class: "btn btn-secondary" %>
     </div>
+    
+    <%# Column for 'Delete' button %>
     <div class="col d-flex justify-content-end">
-      <%= button_to 'Delete', @article, method: :delete,
+      <%= button_to 'Delete', @article, method: :delete, 
                     class: "btn btn-danger" %>
     </div>
+
   </div>
 </div>
