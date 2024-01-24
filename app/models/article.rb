@@ -6,6 +6,14 @@ class Article < ApplicationRecord
   validates :date, presence: true
   validate :date_must_be_before_today
 
+  def self.search(search_term)
+    if search_term.present?
+      where('title LIKE ? OR content LIKE ?', "%#{search_term}%", "%#{search_term}%")
+    else
+      all
+    end
+  end
+
   private
 
   def date_must_be_before_today
