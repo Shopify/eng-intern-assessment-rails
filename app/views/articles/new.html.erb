@@ -1,9 +1,10 @@
-<h1>New article</h1>
+<h2>New article</h2>
 
 <%= render "form", article: @article %>
 
-<br>
-
 <div>
-  <%= link_to "Back to articles", articles_path %>
+  <hr>
+  <div class="" style="display:flex; flex-direction:row; justify-content:space-between;">
+    <%= link_to "Back", articles_path , class:'btn btn-outline-dark'%>
+   </div>
 </div>
