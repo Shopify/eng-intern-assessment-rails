@@ -10,4 +10,9 @@ Added article/:id to route
 added show to controller for individual article
 added console article 1 with some dummy data
 added new article view, validates in model and form page
-https://guides.rubyonrails.org/getting_started.html stopped at Updating article 7.4
+https://guides.rubyonrails.org/getting_started.html 
+-stopped at Updating article 7.4
+Added edit CRUD feature
+-used _form.html.erb partial to be shared by New.html and show.html
+Added delete function in controller
+-changed "see all" link to get back to main page
