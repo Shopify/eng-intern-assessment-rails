@@ -1,8 +1,9 @@
 <%= render @article %>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
-
-  <%= button_to "Destroy this article", @article, method: :delete, class:"btn btn-danger" %>
+<div class="d-flex justify-content-between">
+  <%= button_to "Edit this article", edit_article_path(@article), method: :get, class:"btn btn-success"%>
+  <div class="d-flex justify-content-between">
+    <%= link_to "Back to articles", articles_path, method: :get, class:"text-decoration-none d-flex align-items-center link-secondary ms-4"%>
+    <%= button_to "Destroy this article", @article, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}}  , class:"btn btn-danger" %>
+  </div>
 </div>
