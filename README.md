@@ -61,31 +61,40 @@ Outlined below are key insights into my learning experiences, the challenges I f
 For your convenience, I have provided several screenshots to facilitate the evaluation of my project:
 
 ### Article Actions - Encyclofy - Google Chrome
-![Root page of Encyclofy app running with bin-dev - Google Chrome - Neema Sadry](https://share.cleanshot.com/fYgKV9ZrTL4Kvp2dJkz8)
+[Root page of Encyclofy app running with bin-dev - Google Chrome - Neema Sadry](https://share.cleanshot.com/fYgKV9ZrTL4Kvp2dJkz8)
+![Root page of Encyclofy app running with bin-dev - Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/c25c096b-ae35-4623-aa3b-e68114c379dc)
 *Root page of Encyclofy app running with bin-dev*
 
-![Show Article - Encyclofy Google Chrome - Neema Sadry](<Show Article - Encyclofy Google Chrome - Neema Sadry.png>)
+[Show Article - Encyclofy Google Chrome - Neema Sadry](<Show Article - Encyclofy Google Chrome - Neema Sadry.png>)
+![Show Article - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/5172e190-b14e-44fc-b67d-205ab4159e6a)
 *Show Article*
 
-![New Article - Encyclofy Google Chrome - Neema Sadry](<New Article - Encyclofy Google Chrome - Neema Sadry.png>)
+[New Article - Encyclofy Google Chrome - Neema Sadry](<New Article - Encyclofy Google Chrome - Neema Sadry.png>)
+![New Article - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/2c5d2bea-6ba8-4d4d-ab5c-58b1f55a201f)
 *New Article*
 
-![Create Article - Encyclofy Google Chrome - Neema Sadry](<Create Article - Encyclofy Google Chrome - Neema Sadry.png>)
+[Create Article - Encyclofy Google Chrome - Neema Sadry](<Create Article - Encyclofy Google Chrome - Neema Sadry.png>)
+![Create Article - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/20c21c0e-d707-4386-8c22-2b413f22e17b)
 *Create Article*
 
-![Edit Article - Encyclofy Google Chrome - Neema Sadry](<Edit Article - Encyclofy Google Chrome - Neema Sadry.png>)
+[Edit Article - Encyclofy Google Chrome - Neema Sadry](<Edit Article - Encyclofy Google Chrome - Neema Sadry.png>)
+![Edit Article - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/79040bac-c0b1-47a1-9cf5-be71ad8a587c)
 *Edit Article*
 
-![Update Article - Encyclofy Google Chrome - Neema Sadry](<Update Article - Encyclofy Google Chrome - Neema Sadry.png>)
+[Update Article - Encyclofy Google Chrome - Neema Sadry](<Update Article - Encyclofy Google Chrome - Neema Sadry.png>)
+![Update Article - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/c8d7a7d3-e4e1-4188-99e6-4aaefc06ac8a)
 *Update Article*
 
-![Last Page with Latest Article - Encyclofy Google Chrome - Neema Sadry](<Last Page with Latest Article - Encyclofy Google Chrome - Neema Sadry.png>)
+[Last Page with Latest Article - Encyclofy Google Chrome - Neema Sadry](<Last Page with Latest Article - Encyclofy Google Chrome - Neema Sadry.png>)
+![Last Page with Latest Article - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/9bea068f-5dd7-444c-90c4-52066b6f6ffe)
 *Last Page with Latest Article*
 
-![Delete Modal - Encyclofy Google Chrome - Neema Sadry](<Delete Modal - Encyclofy Google Chrome - Neema Sadry.png>)
+[Delete Modal - Encyclofy Google Chrome - Neema Sadry](<Delete Modal - Encyclofy Google Chrome - Neema Sadry.png>)
+![Delete Modal - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/65afda2d-664d-410c-b875-dc2f57442b55)
 *Delete Modal*
 
-![Delete Article - Encyclofy Google Chrome - Neema Sadry](<Delete Article - Encyclofy Google Chrome - Neema Sadry.png>)
+[Delete Article - Encyclofy Google Chrome - Neema Sadry](<Delete Article - Encyclofy Google Chrome - Neema Sadry.png>)
+![Delete Article - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/7c755993-0c44-43bf-9c6c-0125a7b609d7)
 *Delete Article*
 
 ### Search Results Index - Encyclofy - Google Chrome
