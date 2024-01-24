@@ -89,10 +89,12 @@ For your convenience, I have provided several screenshots to facilitate the eval
 *Delete Article*
 
 ### Search Results Index - Encyclofy - Google Chrome
-![Index of Search Results for _Article_ - Encyclofy Google Chrome - Neema Sadry](<Index of Search Results for _Article_ - Encyclofy Google Chrome - Neema Sadry.png>)
+[Index of Search Results for _Article_ - Encyclofy Google Chrome - Neema Sadry](<Index of Search Results for _Article_ - Encyclofy Google Chrome - Neema Sadry.png>)
+![Index of Search Results for _Article_ - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/bae57ab4-7b82-44db-abaf-a82cd7138b9b)
 *Index of Search Results for **Article** Term*
 
-![Redirecting Invalid Search - Encyclofy Google Chrome - Neema Sadry](<Redirecting Invalid Search - Encyclofy Google Chrome - Neema Sadry.png>)
+[Redirecting Invalid Search - Encyclofy Google Chrome - Neema Sadry](<Redirecting Invalid Search - Encyclofy Google Chrome - Neema Sadry.png>)
+![Redirecting Invalid Search - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/3af03bd0-0c87-4cbb-baee-fc8d1521e569)
 *Redirecting Invalid Search*
 
 ### Process Logs & Output - iTerm2
