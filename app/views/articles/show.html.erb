@@ -1,17 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-
 <br/>
 <%#Displays the title, author and date%>
 <div class="header">
-<center><h3 class="title"><%= @article.title%></h5></center>
-<h6 class="subtitle mb-2 text-muted">
-<i><%= @article.author%>, <%= @article.date%></i>
-</h6>
-<hr>
+  <center>
+    <h3 class="title">
+      <%= @article.title%>
+    </h3>
+  </center>
+  <h6 class="subtitle mb-2 text-muted">
+    <i><%= @article.author%>, <%= @article.date%></i>
+  </h6>
+  <hr>
 </div>
 <%= @article.content%>
-
 <div>
   <hr>
   <div class="" style="display:flex; flex-direction:row; justify-content:space-between;">

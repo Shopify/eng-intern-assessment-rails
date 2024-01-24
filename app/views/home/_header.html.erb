@@ -4,20 +4,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <%=link_to "Encyclopedia", root_path, class:'navbar-brand'%>
-     
+      <%=link_to "Encyclopedia", root_path, class:'navbar-brand'%>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <%= link_to 'Articles', articles_path, class: 'nav-link' %>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
           <%=link_to "Create" , new_article_path,class: 'nav-link'%>
         </li>
       </ul>
       <%= form_with(url: articles_path, method: :get, local: true, class: "d-flex") do |form|%>
-  <%= form.text_field :search, class: "form-control me-2"%>
-  <%= form.submit 'Search', class:"btn btn-outline-success" %>
-<% end %>
+      <%= form.text_field :search, class: "form-control me-2"%>
+      <%= form.submit 'Search', class:"btn btn-outline-success" %>
+      <% end %>
     </div>
   </div>
 </nav>
