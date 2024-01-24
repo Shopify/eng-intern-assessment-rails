@@ -1,0 +1,24 @@
+<!-- View for the search action -->
+<h1>Search for Articles</h1>
+
+<%= form_tag(search_articles_path, method: :get) do %>
+  <p>
+    <%= text_field_tag :query, params[:query], placeholder: 'Enter search parameters' %>
+    <%= submit_tag 'Search Articles' %>
+  </p>
+<% end %>
+
+<% if @results.any? %>
+  <h2>Search Results:</h2>
+  <% @results.each do |article| %>
+    <h3><%= link_to article.title, article %></h3>
+    <p><%= article.content %></p>
+    <p><strong>Author:</strong> <%= article.author %></p>
+    <p><strong>Published Date:</strong> <%= article.date%></p>
+    <hr>
+  <% end %>
+<% else %>
+  <p>No results have been found.</p>
+<% end %>
+
+<%= link_to 'Back to Articles', articles_path %>

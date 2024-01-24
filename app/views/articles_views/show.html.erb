@@ -1,0 +1,10 @@
+<!-- View for the show action -->
+<h1>Display Article</h1>
+
+<p><%= @article.title %></p>
+<p><%= @article.content %></p>
+<p><strong>Author:</strong> <%= @article.author %></p>
+<p><strong>Published Date:</strong> <%= @article.date %></p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
