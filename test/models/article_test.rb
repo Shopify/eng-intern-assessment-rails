@@ -65,4 +65,14 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'searches articles by author' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Jane Smith')
+  
+    results = Article.search('John Doe')
+    assert_includes results, article1
+    assert_not_includes results, article2
+  end
+  
 end
