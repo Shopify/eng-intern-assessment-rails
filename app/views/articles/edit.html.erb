@@ -2,9 +2,7 @@
 
 <%= render "form", article: @article %>
 
-<br>
-
-<div>
-  <%= link_to "Show this article", @article %> |
-  <%= link_to "Back to articles", articles_path %>
-</div>
+<div class="d-flex justify-content-end mt-4">
+  <%= link_to "Back to articles", articles_path, class:"text-decoration-none link-secondary d-flex align-items-center ms-4" %>
+  <%= button_to "Show this article", @article, method: :get, class:"btn btn-secondary flex-fill" %>
+  </div>
