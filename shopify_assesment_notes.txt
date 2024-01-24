@@ -1,0 +1,36 @@
+# Author: Justin Bishop
+# Date: January 2024
+# Purpose: Shopify Internship Application
+
+shopify assesment notes:
+
+how to run project:
+bundle install
+rails db:migrate
+rails db:seed
+rails server
+
+rough list of actions that I did during this project
+
+rails generate controller Articles index --skip-routes
+-made index routes and controller
+rails generate model Article title:string content:text author:string date:date
+-rails db:migrate
+Added articles view to GET list of articles (none in there yet)
+Added article/:id to route
+added show to controller for individual article
+added console article 1 with some dummy data
+added new article view, validates in model and form page
+https://guides.rubyonrails.org/getting_started.html 
+-stopped at Updating article 7.4
+Added edit CRUD feature
+-used _form.html.erb partial to be shared by New.html and show.html
+Added delete function in controller
+-changed "see all" link to get back to main page
+Added search bar
+errors on rails test command. so i ran rails db:test:prepare then the tests ran.
+Passed all tests that weree included in the application
+wrote 5 more useful tests and passed them
+Commented Code
+Run tests one last time
+Submit Pull request

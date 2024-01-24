@@ -1,6 +1,15 @@
+# Author of Edits: Justin Bishop
+# Date: January 2024
+# Purpose: Shopify Internship Application
+
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -10,7 +19,8 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'creates a new article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    puts "Article errors: #{article.errors.full_messages}" unless article.valid?
     assert article.valid?
   end
 
@@ -51,18 +61,67 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'returns accurate search results' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article2 = Article.create(title: 'Sample Article2', content: 'Lorem ipsum dolor sit amet blah.', author: 'John Dublin', date: Date.today)
+  
+    puts "Before search: #{Article.pluck(:title).join(', ')}" # Debugging output
+  
+    puts "Search query: 'Lorem ipsum'"
     results = Article.search('Lorem ipsum')
+  
+    puts "After search: #{results.pluck(:title).join(', ')}" # Debugging output
+  
     assert_includes results, article1
     assert_includes results, article2
   end
 
   test 'displays relevant articles in search results' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet blah.', author: 'John Dublin', date: Date.today)
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # more tests that can help the CRUD blog application
+
+  setup do
+    Article.delete_all
+  end
+
+
+  test 'validates presence of title' do
+    article = Article.new(content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    assert_not article.valid?, 'Article should be invalid without a title'
+    assert_includes article.errors[:title], "can't be blank"
+  end
+  
+  
+
+  test 'validates uniqueness of title' do
+    existing_article = Article.create(title: 'Existing Article', content: 'Some content', author: 'John Doe', date: Date.today)
+    new_article = Article.new(title: 'Existing Article', content: 'Different content', author: 'Jane Smith', date: Date.today)
+    assert_not new_article.valid?, 'Article should be invalid with a non-unique title'
+    assert_includes new_article.errors[:title], 'has already been taken'
+  end
+
+  test 'validates minimum content length' do
+    article = Article.new(title: 'Sample Article', content: 'Short', author: 'John Doe', date: Date.today)
+    assert_not article.valid?, 'Article should be invalid with short content'
+    assert_includes article.errors[:content], 'is too short (minimum is 10 characters)'
+  end
+
+  test 'validates presence of author' do
+    article = Article.new(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today)
+    assert_not article.valid?, 'Article should be invalid without an author'
+    assert_includes article.errors[:author], "can't be blank"
+  end
+
+  test 'validates presence of date' do
+    article = Article.new(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+    assert_not article.valid?, 'Article should be invalid without a date'
+    assert_includes article.errors[:date], "can't be blank"
+  end
+
+
 end

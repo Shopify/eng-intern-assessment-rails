@@ -5,6 +5,9 @@ ruby "2.7.6"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
 
+# faker so that you can generate fake data for your articles
+gem 'faker'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
