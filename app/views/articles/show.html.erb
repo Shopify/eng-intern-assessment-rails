@@ -1,10 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @article %>
+
+<br/>
+<div class="header">
+<center><h3 class="title"><%= @article.title%></h5></center>
+<h6 class="subtitle mb-2 text-muted"><i><%= @article.author%>, <%= @article.date%></i></h6>
+<hr>
+</div>
+<%= @article.content%>
 
 <div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
 
-  <%= button_to "Destroy this article", @article, method: :delete %>
+
+
+  <hr>
+
+  <div class="" style="display:flex; flex-direction:row; justify-content:space-between;">
+      <%= link_to "Back", articles_path , class:'btn btn-outline-dark'%>
+  <%= link_to "Edit", edit_article_path(@article), class:'btn btn-outline-primary'%>
+  <%= button_to "Delete", @article, method: :delete, class:'btn btn-outline-danger'%>
+</div>
+
 </div>
