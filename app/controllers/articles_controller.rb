@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
-  # GET /articles or /articles.json
+  # Searchs all articles
+  def search 
+  end 
+
+  # Shows a list of all the articles
   def index
     @articles = Article.all
   end
@@ -21,8 +25,10 @@ class ArticlesController < ApplicationController
 
   # POST /articles or /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = Article.new(article_params) # new creates a new article but doesn't save
 
+    # redirect_to makes a new request
+    # render - renders specified view for the current request
     respond_to do |format|
       if @article.save
         format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
@@ -57,6 +63,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
