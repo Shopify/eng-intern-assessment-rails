@@ -40,6 +40,7 @@ Accessible on the UI at `/articles/:id/edit` or `/articles/:id`
 
 Article titles must be greater than 1 character and less than 255 characters. This is to ensure article names have a reasonable length.
 
+These scenarios are covered by additional tests.
 # Technical Instructions
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.

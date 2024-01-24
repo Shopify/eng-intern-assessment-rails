@@ -2,6 +2,7 @@
 
 class Article < ApplicationRecord
   scope :search, ->(name) {
+    # provides full-text search for the article
     where("title like ? or content like ?", "%#{name}%", "%#{name}%")
   }
   # Ensure title is always present, as we use it for routing
