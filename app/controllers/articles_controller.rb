@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  # filters params used to create or update an article
+  # Uses strong parameters to create or update an article
   private
     def article_params
       params.require(:article).permit(:title, :content, :author)
