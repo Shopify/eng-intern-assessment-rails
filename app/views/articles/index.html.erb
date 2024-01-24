@@ -1,0 +1,10 @@
+<h1>Encyclopedia</h1>
+
+<h2>Articles</h2>
+<% @articles.each do |article| %>
+  <ul><%= link_to article.title, article %></ul>
+
+
+<% end %>
+<p><%= link_to "new", new_article_url %></p>
+
