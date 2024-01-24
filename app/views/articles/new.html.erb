@@ -1,15 +1,3 @@
-<%= form_with model: @article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </div>
+<h1>New</h1>
 
-  <div>
-    <%= form.label :content %><br>
-    <%= form.text_area :content %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render "form", article: @article %>
