@@ -9,41 +9,101 @@ class ArticlesTest < ApplicationSystemTestCase
     @article = a1
   end
 
-  test "visiting the index" do
-    visit articles_url
-    assert_selector "h1", text: "Articles"
+  # Testing overall navigation
+
+  test "visit home#index" do
+    visit root_url
+    assert_selector "h1", text: "Andressa Machado"
   end
 
-  test "should create article" do
+  test "visit home#index from header link" do
     visit articles_url
-    click_on "New article"
+    click_on "andressa machado"
+    assert_selector "h1", text: "Andressa Machado"
+  end
 
-    fill_in "Author", with: @article.author
-    fill_in "Content", with: "A different content"
-    fill_in "Title", with: "A different title"
+  test "visit article#new from header link" do
+      visit root_url
+      click_on "Create new Article"
+      assert_selector "h1", text: "New article"
+  end
+
+  test "visit article#new from Articles index" do
+      visit articles_url
+      click_on "New article"
+      assert_selector "h1", text: "New article"
+  end
+
+  test "visit articles#index from header link" do
+      visit root_url
+      click_on "Articles published"
+      assert_selector "h1", text: "Articles"
+  end
+
+  # Testing action flow (Create, Read, Update, Delete)
+
+  test "should create an article and redirect to article#show" do
+    visit new_article_url
+    fill_in "Author", with: "Finn the Human"
+    fill_in "Content", with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
+    fill_in "Title", with: "Living life"
     click_on "Create Article"
-
-    assert_text "Article was successfully created"
-    click_on "Back", match: :first
+    assert_text @article.title
   end
 
-  test "should update Article" do
-    visit article_url(@article)
-    click_on "Edit this article", match: :first
+  test "should create an article and display a warning banner" do
+    visit new_article_url
+    fill_in "Author", with: "Finn the Human"
+    fill_in "Content", with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
+    fill_in "Title", with: "Living life"
+    click_on "Create Article"
+    assert_text "Article was successfully created."
+  end
 
-    fill_in "Author", with: @article.author
-    fill_in "Content", with: @article.content
-    fill_in "Title", with: @article.title
+  test "should show article from articles#index" do
+    visit articles_url
+    click_on "Show", match: :first
+    assert_text "Who shot first?"
+  end
+
+  test "should edit an article from article#index and redirect to article#show " do
+    visit articles_url
+    click_on "Edit", match: :first
+
+    fill_in "Author", with: "Jake the Dog"
+    fill_in "Content", with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
+    fill_in "Title", with: "Living life"
+    click_on "Update Article"
+
+    assert_text "Living life"
+  end
+
+  test "should edit an article and display a warning banner" do
+    visit articles_url
+    click_on "Edit", match: :first
+
+    fill_in "Author", with: "Jake the Dog"
+    fill_in "Content", with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
+    fill_in "Title", with: "Living life"
     click_on "Update Article"
 
     assert_text "Article was successfully updated"
-    click_on "Back", match: :first
   end
 
-  test "should destroy Article" do
-    visit article_url(@article)
-    click_on "Destroy this article", match: :first
+  test "should destroy Article from articles#index and redirect to articles#index" do
+    visit articles_url
+    click_on "Destroy", match: :first
+    click_on "Destroy this article"
+    page.accept_alert
+    assert_text "Articles"
+  end
 
+  test "should destroy Article from articles#index and display a warning message" do
+    visit articles_url
+    click_on "Destroy", match: :first
+    click_on "Destroy this article"
+    page.accept_alert
     assert_text "Article was successfully destroyed"
   end
+
 end
