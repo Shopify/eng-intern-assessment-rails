@@ -49,6 +49,10 @@ p.navbar {
     margin: 0;
     padding: 0;
 }
+span.title {
+    padding: 0 64px 0 6px;
+    font-weight: bold;
+}
 
 span.links {
     padding: 0 6px 0 6px;
