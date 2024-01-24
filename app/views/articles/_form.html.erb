@@ -1,17 +1,8 @@
 <%= form_with model: @article do |form| %>
   <div>
     <%= form.label :title %><br>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class:'custom-textfield' %>
     <% @article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-  <br>
-
-  <div>
-    <%= form.label :content %><br>
-    <%= form.text_area :content %><br>
-    <% @article.errors.full_messages_for(:content).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -28,8 +19,17 @@
 
   <div>
     <%= form.label :date %><br>
-    <%= form.date_field :date %>
+    <%= form.date_field :date, value: @article.date || Date.today %>
     <% @article.errors.full_messages_for(:date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <br>
+
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :content, class:'custom-textarea' %><br>
+    <% @article.errors.full_messages_for(:content).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>

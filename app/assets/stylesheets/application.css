@@ -13,3 +13,112 @@
  *= require_tree .
  *= require_self
  */
+
+/* General Design for all pages */
+div.centre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+div.container {
+    width: 720px;
+}
+
+div.home-articles,
+div.blog-post {
+    margin: 0 20px 0 20px;
+    padding: 0 20px 0 20px;
+}
+
+/* Random */
+.no-decoration {
+    text-decoration: none;
+    color: black;
+}
+
+/* navbar */
+nav.navbar {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 20px 0 20px;
+    padding: 0 20px 0 20px;
+    border-style: groove;
+}
+
+p.navbar {
+    margin: 0;
+    padding: 0;
+}
+
+span.links {
+    padding: 0 6px 0 6px;
+}
+
+/* view articles */
+p.article-info {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+h1.header-text {
+    font-size:xx-large;
+    margin-bottom: 0;
+}
+
+/* form */
+input.custom-textfield {
+    width: 300px;
+}
+
+textarea.custom-textarea {
+    width: 300px;
+    height: 150px;
+}
+
+
+
+/* Responsive Designs */
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    div.container {
+        width: 720px;
+        margin: auto;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    div.container {
+        width: 720px;
+    }
+
+    div.blog-post,
+    div.home-articles {
+        margin: 20px auto;
+        width: 80%;
+    }
+
+    nav.navbar {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0 auto;
+        width: 80%;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    div.container {
+        width: 720px;
+    }
+
+    div.blog-post,
+    div.home-articles {
+        margin: 20px auto;
+        width: 80%;
+    }
+
+    nav.navbar {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0 auto;
+        width: 80%;
+    }
+}

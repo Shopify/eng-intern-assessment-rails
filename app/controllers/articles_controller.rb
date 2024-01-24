@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+  def home
+    @articles = Article.all
+  end
+
   def index
     @articles = Article.all
   end

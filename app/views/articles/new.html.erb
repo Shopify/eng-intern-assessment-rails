@@ -1,3 +1,17 @@
-<h1>New Article</h1>
 
-<%= render "form", article: @article %>
+
+<div class="centre">
+  <div class="container">
+    <nav class="navbar">
+      <p>
+        <span class="links"><%= link_to 'Home', root_path, class:'no-decoration' %></span>
+        <span class="links"><%= link_to 'Articles', articles_path, class:'no-decoration' %></span>
+      </p>
+    </nav>
+    <div class="home-articles">
+      <h2>New Article</h2>
+
+      <%= render "form", article: @article %>
+    </div>
+  </div>
+</div>
