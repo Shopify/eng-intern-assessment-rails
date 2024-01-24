@@ -2,6 +2,12 @@
 <br/>
 <h2>Articles</h2>
 <%= link_to "New Article", new_article_path %>
+<%= form_tag articles_path, :method => "get" do %>
+  <%= label_tag(:search, "Search article information") %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag("Search", :name => nil)%>
+<% end %>
+
 <ul>
   <% @articles.each do |article| %>
     <li>
