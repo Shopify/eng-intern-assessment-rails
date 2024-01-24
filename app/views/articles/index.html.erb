@@ -2,8 +2,10 @@
 
 <h1>Articles</h1>
 
+<%= link_to "Search Articles", search_articles_path %>
+
 <div id="articles">
-  <% @articles.each do |article| %>
+  <% @articles.order(publication_date: :desc).each do |article| %>
     <%= render article %>
     <p>
       <%= link_to "Show this article", article %>

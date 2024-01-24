@@ -1,0 +1,18 @@
+<%= link_to "See All Articles", articles_path %>
+<%= form_tag(search_articles_path, method: :get) do %>
+  <%= text_field_tag :query, params[:query], placeholder: "Search articles..." %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<div id="articles">
+  <% if @results.present? %>
+    <% @results.order(publication_date: :desc).each do |article| %>
+      <%= render article %>
+      <p>
+        <%= link_to "Show this article", article %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>No matching articles found.</p>
+  <% end %>
+</div>
