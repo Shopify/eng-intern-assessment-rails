@@ -96,18 +96,17 @@ For your convenience, I have provided several screenshots to facilitate the eval
 *Redirecting Invalid Search*
 
 ### Process Logs & Output - iTerm2
-[Passing Expanded Test Suite - iTerm2 - Neema Sadry](<Passing Expanded Test Suite - iTerm2 - Neema Sadry.png>)
-![Passing Expanded Test Suite - iTerm2 - Neema Sadry](https://private-user-images.githubusercontent.com/6279194/299158458-6eb81803-54a6-4ac2-9b95-b4a31022431a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDYwNjM4NzIsIm5iZiI6MTcwNjA2MzU3MiwicGF0aCI6Ii82Mjc5MTk0LzI5OTE1ODQ1OC02ZWI4MTgwMy01NGE2LTRhYzItOWI5NS1iNGEzMTAyMjQzMWEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI0MDEyNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNDAxMjRUMDIzMjUyWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9OWRmYTY4NTE5ODk0ODQ4Mzg4MmM2MWVlNmFkNTNiN2M4MWJmMjNkMmE3ZDAwY2ZmMGU4YjUwOWQwMmM2YzcyNiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmYWN0b3JfaWQ9MCZrZXlfaWQ9MCZyZXBvX2lkPTAifQ.nuWo8YMBG2tvfLtH2nWgfwCcc-y0PZKrFfPf8HYiPOg)
-*Passing Expanded Test Suite Successfully*
-
-
 [Working bin-setup command on iTerm2 - Neema Sadry](<Working binsetup Command - iTerm2 - Neema Sadry.png>)
-![Working bin-setup command on iTerm2 - Neema Sadry](https://private-user-images.githubusercontent.com/6279194/299158469-eb2df106-8728-49bf-8a8f-cf1eacb99025.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDYwNjM5OTYsIm5iZiI6MTcwNjA2MzY5NiwicGF0aCI6Ii82Mjc5MTk0LzI5OTE1ODQ2OS1lYjJkZjEwNi04NzI4LTQ5YmYtOGE4Zi1jZjFlYWNiOTkwMjUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI0MDEyNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNDAxMjRUMDIzNDU2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9OWZlY2U4ZGRkZDk2N2JhMmU4NWRjZTA3ZjFjODc2Mzk3MWE1MzIyYTlmZjFiZjg0ODUwZjBiNTg3ZTlkYTIxMiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmYWN0b3JfaWQ9MCZrZXlfaWQ9MCZyZXBvX2lkPTAifQ.Ww_RG1EaTa_BQaBHEq6meATsos0rERc0lHxLLiyLBs8)
+![Working bin-setup command on iTerm2 - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/8cb242e7-a80b-4829-849e-296f7208f63a)
 *Working **bin/setup** command on iTerm2*
 
 [Rails app running with bin-dev command - iTerm2 - Neema Sadry](<Rails app running with bin-dev command - iTerm2 - Neema Sadry.png>)
-![Rails app running with bin-dev command - iTerm2 - Neema Sadry](https://private-user-images.githubusercontent.com/6279194/299158464-af7178e0-f4f2-4a8e-9b16-1f810d56a581.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDYwNjM5OTYsIm5iZiI6MTcwNjA2MzY5NiwicGF0aCI6Ii82Mjc5MTk0LzI5OTE1ODQ2NC1hZjcxNzhlMC1mNGYyLTRhOGUtOWIxNi0xZjgxMGQ1NmE1ODEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI0MDEyNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNDAxMjRUMDIzNDU2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NDdjOWU4OTkwMDIzZTYzY2JkNTY1MjUwZjhjZjZkNzBlOThmNDNhYzcwYWI0YWI2ZjRkNzliZmEyMDk1NmFmNyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmYWN0b3JfaWQ9MCZrZXlfaWQ9MCZyZXBvX2lkPTAifQ.pnj7MSPXSmhzvlYk4kaWH_984D7aoAEayHRB7SmtEaQ)
+![Rails app running with bin-dev command - iTerm2 - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/eba8608b-d8d8-43dd-9819-8d83abce948d)
 *Rails app running with **bin/dev** command*
+
+[Passing Expanded Test Suite - iTerm2 - Neema Sadry](<Passing Expanded Test Suite - iTerm2 - Neema Sadry.png>)
+![Passing Expanded Test Suite - iTerm2 - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/66d7f669-5bd5-40b1-b76a-73845842fe12)
+*Passing Expanded Test Suite Successfully*
 
 
 # Technical Instructions - Shopify
