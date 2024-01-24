@@ -1,13 +1,21 @@
 <h1>Encyclopedia</h1>
 <br/>
 <h2>Articles</h2>
+<%= link_to "New Article", new_article_path %>
 <ul>
-    <% @articles.each do |article| %>
-        <li>
-            <a href="<%= article_path(article) %>">
-                <%= article.title %>
-            </a>
-            by <%= article.author %> created at:<%= article.date %>
-        </li>
+  <% @articles.each do |article| %>
+    <li>
+      <a href="<%= article_path(article) %>">
+        <%= article.title %>
+      </a>
+      by <%= article.author %> created at:<%= article.date %>
+      <ul>
+        <li><%= link_to "Edit", edit_article_path(article) %></li>
+        <li><%= link_to "Destroy", article_path(article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+      </ul>
+    </li>
     <% end %>
 </ul>
