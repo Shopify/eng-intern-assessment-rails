@@ -2,6 +2,11 @@ class ArticlesController < ApplicationController
 
   before_action :set_article, only: [:show, :edit, :update]
 
+  #
+  #
+  #
+  #
+  #
   def index
     @articles = Article.all
   end
@@ -30,6 +35,8 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article = Article.find(params[:id])
+
     if @article.update(article_params)
       redirect_to @article, notice: 'Article was successfully updated.'
     else

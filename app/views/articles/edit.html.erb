@@ -3,6 +3,7 @@
   <h1>Edit Article</h1>
 
   <%= form_with(model: @article, url: article_path(@article), method: :patch, class: 'article-form') do |form| %>
+
     <div class="form-group">
       <%= form.label :title, class: 'form-label' %>
       <%= form.text_field :title, class: 'form-control' %>
