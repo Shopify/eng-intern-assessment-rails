@@ -1,5 +1,15 @@
 <h1>Articles</h1>
 
+
+
+<%= form_tag(articles_path, method: :get) do %>
+  <%= text_field_tag(:search, params[:search], placeholder: "Search by title or author") %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+
+
+<h2>All Articles List</h2>
 <ul>
   <% @articles.each do |article| %>
     <li>
