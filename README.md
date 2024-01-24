@@ -71,7 +71,10 @@ I noticed from the beginning that the project used Ruby 2.x (**not** Ruby 3.x). 
    ```
    Afterwards, I added a `.tool-versions` file to the project's root directory, and set the version to `ruby 2.7.6`. This way, I could still use `ruby 3.3.0` everywhere else on my machine :grin:
 
-### :heavy_exclamation_mark: Embracing *Self-Awareness* and *Honesty* to Identify Areas for Improvement :hammer_and_wrench:
+### :star: Embracing *Self-Awareness* and *Honesty* to Identify Areas for Improvement :hammer_and_wrench: :star: 
+ 
+ #### Saved the best and *most important* for last
+ 
  Given how I often feel the lack of discipline when I try to incorporate [Test-Driven Development (TDD)](https://wiki.c2.com/?TestDrivenDevelopment) principles into my workflow, I took it upon myself to reinforce and expand upon the fundamentals I already possessed for [testing rails applications](https://edgeguides.rubyonrails.org/testing.html) by reading [interesting](https://thoughtbot.com/blog/how-we-test-rails-applications) [blog](https://www.mintbit.com/blog/best-practices-for-testing-ruby-on-rails-applications-unit-testing-integration-testing-and-more) [posts](https://blog.railwaymen.org/rails-tests-ruby-on-rails-apps), and watching screencasts on [GoRails](https://gorails.com/), [Drifting Ruby](https://www.driftingruby.com/episodes), or YouTube.
 
    Ironically, despite having the best intentions, this put me in a *self-imposed **time crunch***; I had to write the majority of my tests *after* completing substantial portions of the application. 
@@ -131,6 +134,34 @@ For your convenience, I have provided several screenshots to facilitate the eval
 
 ![Passing Expanded Test Suite - iTerm2 - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/66d7f669-5bd5-40b1-b76a-73845842fe12)
 *Passing Expanded Test Suite Successfully*
+
+## Troubleshooting
+
+Tips on troubleshooting the application, espeically if Tailwind CSS isn't working.
+
+1) **Start the project using `bin/dev` (i.e., *not* `rails s`)**
+> [!CAUTION]
+> `bin/dev` starts processes for listed in `Procfile.dev`. Tailwind CSS will ***not*** work, especially if it hasn't undergone compilation (i.e., `build`) yet.
+2) Run `bin/setup` especially if you are running `macOS`, use [Homebrew](https://brew.sh/), and [`asdf` version manager](https://asdf-vm.com/)
+3) Check that your `ruby`, `yarn`, `node`, and `npm` versions match with the versions listed in:
+   - `.ruby-version` and `.tool-versions` files
+   - `package.json` file under `engines: {...}`   
+4) Ensure all `gems` in `Gemfile` and `node_modules` in `package.json` are installed by running:
+   ```bash
+   bundle install
+   yarn install
+   ```
+   There is a possibility that certain `gems` in `Gemfile` and/or `packages` in `package.json` may need to be updated by running:
+   ```bash
+   bundle update
+   yarn upgrade
+   ```
+5) Check `app/assets/builds` to see if it contains `application.css`. If this is missing, then Tailwind CSS failed the `build` process at some point.
+
+If nothing works, try the following alternate solution:
+
+> [!TIP]
+> [Enable Tailwind CSS via the **Play CDN**](https://tailwindcss.com/docs/installation/play-cdn) in the Rails app by uncommenting the designated line found in **`application.html.erb`** under `app/views/layouts/`. The `pagy` navigation may not render correctly, but the rest of the app should!
 
 <br>
 <br>
