@@ -1,0 +1,52 @@
+/* stylesheet table elements to view articles */
+table{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-top: 1px solid black;
+}
+caption{
+    text-align: left;
+    font-size: small;
+    color: grey;
+    margin-bottom: 0.5rem;
+}
+th, tr, td{
+    text-align: left;
+    height: 2rem;
+}
+tr:nth-child(even){
+    background: #F9EFDB;
+}
+tr:hover{
+    cursor: pointer;
+    background: var(--hoverColor);
+}
+thead{
+    background: #EBD9B4;
+}
+.actionDiv{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+}
+.actionItem{
+    font-size: medium;
+    text-decoration: none;
+    background:none;
+    border-radius: 1rem;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+.actionItem:hover{
+    color: var(--hoverActionColor);
+}
+.actionItem:active{
+    color: var(--primaryColor);
+}
+.noDataText{
+    height: 20rem;
+    text-align: center;
+}

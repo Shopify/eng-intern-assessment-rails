@@ -1,0 +1,6 @@
+<%= form_tag(search_articles_path, method: :get) do %>
+    <div class="searchDiv">
+        <%= text_field_tag(:keyword, params[:keyword], class: 'inputText', placeholder: 'Search text', value: @search_text)%>
+        <%= submit_tag ("Search"), class: 'btn btnPrimary' %>
+    </div>
+<% end %>

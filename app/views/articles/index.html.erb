@@ -1,0 +1,31 @@
+<% unless not notice %>
+  <div class="responseMessage">
+    <span><%= notice %></span>
+    <span class="btnClose" onclick="this.parentElement.style.display='none';">&times;</span>
+  </div>
+<% end %>
+<table>
+  <caption>
+  Showing: <%= @table_title %>
+  </caption>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Author</th>
+      <th>Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% unless @articles.count != 0 %>
+      <tr><td class="noDataText" colspan='5'>No Data</td></tr>
+    <% else %>
+      <% @articles.each do |article| %>
+        <tr>
+          <%= render partial: 'article_row', locals: {article: article} %>
+        </tr>
+      <% end %>
+    <% end %>   
+  </tbody>
+</table>
