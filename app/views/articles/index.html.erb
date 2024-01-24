@@ -2,39 +2,43 @@
 
 <turbo-frame id="error_messages"></turbo-frame>
 
-<%= form_with model: Article.new, local: false do |form| %>
-  <%= form.label :title %>
-  <div class="input-container">
-    <%= form.text_field :title %>
-  </div>
-  
+<div id="new-article-toggle" style="cursor: pointer;">
+  <h3>Create a new article <span id="arrow">&#9660;</span></h3>
+</div>
 
-  <%= form.label :content %>
-  <div class="input-container">
-    <%= form.text_area :content %>
-  </div>
+<div id="new-article-form" style="display: none;">
+  <%= form_with model: Article.new, local: false do |form| %>
+    <%= form.label :title %>
+    <div class="input-container">
+      <%= form.text_field :title %>
+    </div>
 
-  <%= form.label :author %>
-  <div class="input-container">
-    <%= form.text_field :author %>
-  </div>
+    <%= form.label :content %>
+    <div class="input-container">
+      <%= form.text_area :content %>
+    </div>
 
-  <%= form.label :date %>
-  <div class="input-container">
-    <%= form.date_select :date %>
-  </div>
+    <%= form.label :author %>
+    <div class="input-container">
+      <%= form.text_field :author %>
+    </div>
 
-  <%= form.submit %>
-<% end %>
+    <%= form.label :date %>
+    <div class="input-container">
+      <%= form.date_select :date %>
+    </div>
+      <%= form.submit %>
+  <% end %>
+</div>
 
 <%= form_with url: articles_path, method: :get, local: false, id: "search-form" do |form| %>
-  <%= form.label :search, "Search Articles" %>
+  <h3>Search articles</h3>
   <div class="input-container">
-    <%= form.text_field :search, id: "search-field" %>
+    <%= form.text_field :search, id: "search-field", value: params[:search] %>
   </div>
-
   <%= form.submit "Search", class: "search-btn" %>
-  <%= form.button "Clear", type: "submit", name: "clear_search", value: "true", class: "clear-btn" %>
+  
+  <%= button_tag "Clear", type: 'button', class: "clear-btn", onclick: "clearSearchField();" %>
 <% end %>
 
 <table>
