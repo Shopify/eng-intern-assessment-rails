@@ -78,4 +78,46 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # more tests that can help the CRUD blog application
+
+  setup do
+    Article.delete_all
+  end
+
+
+  test 'validates presence of title' do
+    article = Article.new(content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    assert_not article.valid?, 'Article should be invalid without a title'
+    assert_includes article.errors[:title], "can't be blank"
+  end
+  
+  
+
+  test 'validates uniqueness of title' do
+    existing_article = Article.create(title: 'Existing Article', content: 'Some content', author: 'John Doe', date: Date.today)
+    new_article = Article.new(title: 'Existing Article', content: 'Different content', author: 'Jane Smith', date: Date.today)
+    assert_not new_article.valid?, 'Article should be invalid with a non-unique title'
+    assert_includes new_article.errors[:title], 'has already been taken'
+  end
+
+  test 'validates minimum content length' do
+    article = Article.new(title: 'Sample Article', content: 'Short', author: 'John Doe', date: Date.today)
+    assert_not article.valid?, 'Article should be invalid with short content'
+    assert_includes article.errors[:content], 'is too short (minimum is 10 characters)'
+  end
+
+  test 'validates presence of author' do
+    article = Article.new(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today)
+    assert_not article.valid?, 'Article should be invalid without an author'
+    assert_includes article.errors[:author], "can't be blank"
+  end
+
+  test 'validates presence of date' do
+    article = Article.new(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+    assert_not article.valid?, 'Article should be invalid without a date'
+    assert_includes article.errors[:date], "can't be blank"
+  end
+
+
 end
