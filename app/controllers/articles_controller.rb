@@ -2,81 +2,42 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:update, :destroy]
 
   def index
-    if params[:clear_search]
-      @articles = Article.all
-    else
-      @articles = params[:search].present? ? Article.search(params[:search]) : Article.all
-    end
-    
-    respond_to do |format|
-      format.html
-      format.turbo_stream
-    end
+    @articles = params[:clear_search] ? Article.all : Article.search(params[:search].presence || '')
   end
 
   def show
     @article = Article.find(params[:id])
-    respond_to do |format|
-      format.html 
-      format.turbo_stream { render turbo_stream: turbo_stream.replace(@article, partial: "article", locals: { article: @article }) }
-    end
   end
 
   def create
     @article = Article.new(article_params)
-  
+    @article.date = nil unless params[:include_date] == '1'
+
     if @article.save
-      respond_to do |format|
-        format.turbo_stream {
-          render turbo_stream: turbo_stream.append('articles', partial: 'article', locals: { article: @article })
-        }
-        format.html { redirect_to articles_url }
-      end
+      redirect_to articles_url, notice: 'Article was successfully created.'
     else
-      respond_to do |format|
-        format.turbo_stream {
-          render turbo_stream: turbo_stream.update('error_messages', partial: 'shared/error_messages', locals: { errors: @article.errors.full_messages })
-        }
-        format.html {
-          @articles = Article.all
-          render :index, status: :unprocessable_entity 
-        }
-      end
+      handle_error_response(:new)
     end
   end
 
   def update
+    @article.assign_attributes(article_params)
+    @article.date = nil unless params[:include_date] == '1'
+
     if @article.update(article_params)
-      respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(@article, partial: "article", locals: { article: @article }) }
-        format.html { redirect_to articles_url }
-      end
+      redirect_to articles_url, notice: 'Article was successfully updated.'
     else
-      respond_to do |format|
-        format.turbo_stream {
-          render turbo_stream: turbo_stream.update('error_messages', partial: 'shared/error_messages', locals: { errors: @article.errors.full_messages })
-        }
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+      handle_error_response(:edit)
     end
   end
-  
 
   def edit
     @article = Article.find(params[:id])
-    respond_to do |format|
-      format.html { render :edit, layout: false } 
-    end
-  end  
+  end
 
   def destroy
     @article.destroy
-    respond_to do |format|
-      format.turbo_stream {
-        render turbo_stream: turbo_stream.remove(@article)
-      }
-      format.html { redirect_to articles_url }
-    end
+    redirect_to articles_url, notice: 'Article was successfully destroyed.'
   end
 
   private
@@ -87,5 +48,12 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :content, :author, :date)
+  end
+
+  def handle_error_response(action)
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.update('error_messages', partial: 'shared/error_messages', locals: { errors: @article.errors.full_messages }) }
+      format.html { render action, status: :unprocessable_entity }
+    end
   end
 end

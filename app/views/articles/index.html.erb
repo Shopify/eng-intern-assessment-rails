@@ -24,10 +24,12 @@
     </div>
 
     <%= form.label :date %>
+    <%= check_box_tag 'include_date', '1', true, id: 'new-article-date-checkbox' %>
     <div class="input-container">
-      <%= form.date_select :date %>
+      <%= form.date_select :date, id: 'article_date' %>
     </div>
-      <%= form.submit %>
+  
+    <%= form.submit %>
   <% end %>
 </div>
 
@@ -52,6 +54,10 @@
     </tr>
   </thead>
   <tbody id="articles">
-    <%= render @articles %>
+    <% if @articles.present? %>
+      <%= render @articles %>
+    <% else %>
+      <tr><td colspan="5">No articles found.</td></tr>
+    <% end %>
   </tbody>
 </table>

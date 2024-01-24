@@ -18,6 +18,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  margin-bottom: 20px;
   background-color: #fff;
 }
 
@@ -77,13 +78,13 @@ select {
 }
 
 .edit-form {
-  max-width: 350px;
+  max-width: 370px;
   margin: auto;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
 
 .edit-container {
-  max-width: 380px;
+  max-width: 400px;
 }
 
 input[type="submit"] {
@@ -119,12 +120,20 @@ a:hover {
   margin-left: 5px;
 }
 
+.link-button-container {
+  cursor: pointer;
+  margin-right: 5px;
+  max-width: 50px;
+  display: inline-block;
+}
+
 .clear-btn {
   background-color: #6c757d;
 }
 
 .search-btn:hover,
-.clear-btn:hover {
+.clear-btn:hover,
+.cancel-button {
   opacity: 0.9;
 }
 
