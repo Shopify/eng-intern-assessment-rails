@@ -1,0 +1,35 @@
+
+
+<div class="centre">
+  <div class="container">
+
+    <nav class="navbar">
+      <p>
+        <span class="title"><%= link_to 'Encyclopedia', root_path, class:'no-decoration' %></span>
+        <span class="links"><%= link_to 'Articles', articles_path, class:'no-decoration' %></span>
+        <span class="links"><%= link_to 'Search', search_articles_path, class:'no-decoration' %></span>
+      </p>
+    </nav>
+
+
+    <div class="home-articles">
+      <h1>Article Search</h1>
+        <%= form_with url: search_articles_path, method: :get, local: true do |form| %>
+          <%= form.label :query, 'Search Articles' %>
+          <%= form.text_field :query %>
+          <%= form.submit 'Search' %>
+        <% end %>
+        <hr/>
+
+        <% @articles.each do |article| %>
+          <div class="search-item-box">
+            <h3><%= article.title %></h3>
+            <p><%= article.content %></p>
+          </div>
+          <br/>
+        <% end %>
+    </div>
+
+    
+  </div>
+</div>

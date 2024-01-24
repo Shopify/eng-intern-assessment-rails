@@ -1,0 +1,35 @@
+
+
+<div class="centre">
+  <div class="container">
+
+    <nav class="navbar">
+      <p>
+        <span class="title"><%= link_to 'Encyclopedia', root_path, class:'no-decoration' %></span>
+        <span class="links"><%= link_to 'Articles', articles_path, class:'no-decoration' %></span>
+        <span class="links"><%= link_to 'Search', search_articles_path, class:'no-decoration' %></span>
+      </p>
+    </nav>
+
+
+    <div class="blog-post">
+      <h1 class="header-text"><%= @article.title %></h1>
+
+      <p class="article-info">
+        Author: <%= @article.author %>
+        <br/>
+        Created on: <%= @article.date %>
+        <br/>
+        Last Updated: <%= @article.updated_at %>
+      </p>
+
+      <p><%= link_to "Edit article", edit_article_path(@article) %></p>
+      <br/>
+
+      <hr/>
+      <p><%= @article.content %></p>
+    </div>
+
+    
+  </div>
+</div>

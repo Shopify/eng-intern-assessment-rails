@@ -1,56 +1,65 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  test 'starts with no articles' do
+  test '01. starts with no articles' do
     assert_equal 0, Article.count
   end
 
-  test 'has search functionality' do
+  test '02. add five articles' do
+    article = Article.create(title: 'Sample Article 4', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article 5', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article = Article.create(title: 'Sample Article 6', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article 7', content: 'Lorem ipsum dolor sit amet.', author: 'Jane Doe', date: Date.today)
+    article = Article.create(title: 'Sample Article 8', content: 'Lorem ipsum dolor sit amet.')
+    assert_equal 5, Article.count
+  end
+
+  test '03. has search functionality' do
     assert_respond_to Article, :search
   end
 
-  test 'creates a new article' do
+  test '04. creates a new article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert article.valid?
   end
 
-  test 'displays the article content accurately' do
+  test '05. displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
   end
 
-  test 'displays the article metadata correctly' do
+  test '06. displays the article metadata correctly' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
     assert_equal 'John Doe', article.author
     assert_equal Date.today, article.date
   end
 
-  test 'edits an existing article' do
+  test '07. edits an existing article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.update(content: 'Updated content')
     assert_equal 'Updated content', article.content
   end
 
-  test 'updates the article metadata' do
+  test '08. updates the article metadata' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
     article.update(author: 'Jane Smith', date: Date.yesterday)
     assert_equal 'Jane Smith', article.author
     assert_equal Date.yesterday, article.date
   end
 
-  test 'deletes an article' do
+  test '09. deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
     assert_equal 0, Article.count
   end
 
-  test 'prevents access to deleted articles' do
+  test '10. prevents access to deleted articles' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
   end
 
-  test 'returns accurate search results' do
+  test '11. returns accurate search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Lorem ipsum')
@@ -58,11 +67,21 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
   end
 
-  test 'displays relevant articles in search results' do
+  test '12. displays relevant articles in search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test '13. should not save article without a title and content' do
+    article = Article.new
+    assert_not article.save
+  end
+
+  test '14. should not save article with content less than 10 characters' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ips')
+    assert_not article.save
   end
 end
