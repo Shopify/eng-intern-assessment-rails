@@ -1,0 +1,33 @@
+Project Name : ENGINEERING INTERN ASSESSMENT RAILS
+Author : Kshithij Malebennur
+Date : January 21st, 2024
+
+OVERVIEW
+
+This document's purpose is to outline the implementation of new files that has
+been added since the last update. Implementations such as the article controller
+and routing changes to support article searches.
+
+COMPONENTS
+
+1. Routes Configuration
+    - Addition of a custom route that helps and supports searching of articles
+      within the collection of articles.
+
+2. Article Controller
+    - This file has the definitions of the actions needed to perform CRUD operations
+      on article records
+
+
+IMPLEMENTATION STEPS
+
+1. Create the Article controller file which includes the necessary CRUD actions
+2. Update the routes.rb file with a new search route
+3. Implementation of the search action logic to handle search queries
+
+
+FUTURE IMPLEMENTATIONS
+
+1. Build the 'view' part of the MVC implementations wanted.
+2. Test the search function, delete function and creation function.
+3. Using CSS and Javascript, build the environment so that it is asthetically
