@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render partial: 'articles/article', locals: {article: @article} %>
+
+<div>
+  <%= link_to "Edit this article", edit_article_path(@article.id) %> |
+  <%= link_to "Back to articles", articles_path %>
+  <%= button_to "Destroy this article", article_path(@article.id), method: :delete %>
+</div>
