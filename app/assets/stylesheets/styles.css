@@ -1,0 +1,37 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 20px;
+}
+
+.input-group {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #2164b7;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: circle;
+}
+
+div {
+    margin: 5px;
+}
+
+#author, #date {
+    font-size: 12px;
+    color: gray;
+}
