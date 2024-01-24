@@ -2,6 +2,7 @@
 
 <div class="centre">
   <div class="container">
+
     <nav class="navbar">
       <p>
         <span class="title"><%= link_to 'Encylopedia', root_path, class:'no-decoration' %></span>
@@ -9,6 +10,8 @@
         <span class="links"><%= link_to 'Search', search_articles_path, class:'no-decoration' %></span>
       </p>
     </nav>
+
+
     <div class="home-articles">
       <h1>Articles</h1>
       <%= link_to "Create an article", new_article_path %>
@@ -17,10 +20,15 @@
         <% @articles.each do |article| %>
           <li>
             <%= link_to article.title, article %>
+            <br/>
+            <%= link_to article.date, article %>
           </li>
+          <br/>
         <% end %>
       </ul>
 
     </div>
+
+    
   </div>
 </div>

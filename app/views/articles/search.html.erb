@@ -2,6 +2,7 @@
 
 <div class="centre">
   <div class="container">
+
     <nav class="navbar">
       <p>
         <span class="title"><%= link_to 'Encylopedia', root_path, class:'no-decoration' %></span>
@@ -9,6 +10,8 @@
         <span class="links"><%= link_to 'Search', search_articles_path, class:'no-decoration' %></span>
       </p>
     </nav>
+
+
     <div class="home-articles">
       <h1>Article Search</h1>
         <%= form_with url: search_articles_path, method: :get, local: true do |form| %>
@@ -26,5 +29,7 @@
           <br/>
         <% end %>
     </div>
+
+    
   </div>
 </div>

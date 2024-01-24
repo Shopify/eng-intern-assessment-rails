@@ -2,6 +2,7 @@
 
 <div class="centre">
   <div class="container">
+
     <nav class="navbar">
       <p>
         <span class="title"><%= link_to 'Encylopedia', root_path, class:'no-decoration' %></span>
@@ -9,18 +10,26 @@
         <span class="links"><%= link_to 'Search', search_articles_path, class:'no-decoration' %></span>
       </p>
     </nav>
-    <div class="home-articles">
-      <h1>Article Settings</h1>
 
-      <h3>Edit Article</h3>
-      <%= render "form", article: @article %>
+
+    <div class="home-articles">
+      <div>
+        <h1>Article Settings</h1>
+
+        <h3>Edit Article</h3>
+        <%= render "form", article: @article %>
+      </div>
 
       <hr/>
-      <h3>Remove Article</h3>
-      <%= link_to "Remove article from library", article_path(@article), data: {
-                turbo_method: :delete,
-                turbo_confirm: "Are you sure you want to remove this article from the library?"
-                } %></p>
+      <div>
+        <h3>Remove Article</h3>
+        <%= link_to "Remove article from library", article_path(@article), data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure you want to remove this article from the library?"
+                  } %></p>
+      </div>
     </div>
+
+
   </div>
 </div>
