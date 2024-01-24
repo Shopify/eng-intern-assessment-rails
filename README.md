@@ -61,19 +61,21 @@ Outlined below are key insights into my learning experiences, the challenges I f
 
    Ironically, despite having the best intentions, this put me in a *self-imposed **time crunch***; I had to write the majority of my tests *after* completing substantial portions of the application. 
    
-   > [!IMPORTANT]
-   > This is an aspect of myself that I am *eager to improve upon* during my time at Shopify as a Backend Engineering Intern.
-   
    Additionally, I am optimistic and confident abilities to swiftly integrate TDD principles into my development workflow considering the notable progress I achieved during [my previous internship experience at InfluxData](https://www.influxdata.com/blog/meet-influxdata-summer-2022-interns/#heading4). Furthermore, I would welcome the opportunity to discuss these experiences in greater detail during subsequent interviews!
 
-## Screenshots
+> [!IMPORTANT]
+> **I am *eager to optimize and refine every facet* of my existing development workflow** through my role as a Backend Engineering Intern at Shopify. One of my primary objectives is to foster strong engineering habits and practices, particularly by integrating Test-Driven Development (TDD) and/or Behavior-Driven Development (BDD).
+   
+<br>
 
-For your convenience, I have provided several screenshots to facilitate the evaluation of my project. Furthermore, all screenshots can viewed in the [3 open Issues](https://github.com/neemasadry/eng-intern-assessment-rails/issues) if they are not displaying here for any reason.
+# Screenshots
+
+For your convenience, I have provided several screenshots to facilitate the evaluation of my project. Furthermore, all screenshots can viewed in the [three open Issues](https://github.com/neemasadry/eng-intern-assessment-rails/issues) if they are not displaying here for any reason.
 
 ### Article Actions - Encyclofy - Google Chrome
 <!-- [Root page of Encyclofy app running with bin-dev - Google Chrome - Neema Sadry](https://share.cleanshot.com/fYgKV9ZrTL4Kvp2dJkz8) -->
 ![Root page of Encyclofy app running with bin-dev - Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/c25c096b-ae35-4623-aa3b-e68114c379dc)
-*Root page of Encyclofy app running with bin-dev*
+*Root page of Encyclofy app running with **`bin/dev`***
 
 <!-- [Show Article - Encyclofy Google Chrome - Neema Sadry](<Show Article - Encyclofy Google Chrome - Neema Sadry.png>) -->
 ![Show Article - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/5172e190-b14e-44fc-b67d-205ab4159e6a)
@@ -114,26 +116,27 @@ For your convenience, I have provided several screenshots to facilitate the eval
 
 <!-- [Redirecting Invalid Search - Encyclofy Google Chrome - Neema Sadry](<Redirecting Invalid Search - Encyclofy Google Chrome - Neema Sadry.png>) -->
 ![Redirecting Invalid Search - Encyclofy Google Chrome - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/3af03bd0-0c87-4cbb-baee-fc8d1521e569)
-*Redirecting Invalid Search*
+*Redirecting Invalid Search Term(s)*
 
 ### Process Logs & Output - iTerm2
 <!-- [Working bin-setup command on iTerm2 - Neema Sadry](<Working binsetup Command - iTerm2 - Neema Sadry.png>) -->
 ![Working bin-setup command on iTerm2 - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/8cb242e7-a80b-4829-849e-296f7208f63a)
-*Working **bin/setup** command on iTerm2*
+*Working **`bin/setup`** command on iTerm2*
 
 <!-- [Rails app running with bin-dev command - iTerm2 - Neema Sadry](<Rails app running with bin-dev command - iTerm2 - Neema Sadry.png>) -->
 ![Rails app running with bin-dev command - iTerm2 - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/eba8608b-d8d8-43dd-9819-8d83abce948d)
-*Rails app running with **bin/dev** command*
+*Rails app running with **`bin/dev`** command*
 
 <!-- [Passing Expanded Test Suite - iTerm2 - Neema Sadry](<Passing Expanded Test Suite - iTerm2 - Neema Sadry.png>) -->
 ![Passing Expanded Test Suite - iTerm2 - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/66d7f669-5bd5-40b1-b76a-73845842fe12)
 *Passing Expanded Test Suite Successfully*
 
-<br><br><br>
+<br>
+<br>
 
 # Shopify
 
-#### Technical Assessment - Backend Engineering Internship Application (Summer 2024)
+#### Technical Assessment for *Backend* Engineering Internship Application at Shopify over Summer 2024.
 
 ## Technical Instructions
 1. Fork this repo to your local Github account.
