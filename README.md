@@ -18,12 +18,18 @@
    ```bash
    bin/dev
    ```
-   This will use [`foreman` (see blog post)](http://blog.daviddollar.org/2011/05/06/introducing-foreman.html) to run and manage all the processes listed in `Procfile.dev`.
+   This will use [`foreman` (see *Introducing Foreman* blog post)](http://blog.daviddollar.org/2011/05/06/introducing-foreman.html) to run and manage all the processes listed in `Procfile.dev`.
+4) Optionally, you can run the following command to run all tests:
+   ```bash
+   rails test
+   ```
 
 ## Features
-- Styled using Tailwind CSS
-- Added `faker` gem to generate data in `seeds.rb` during development
-- Added `better_errors` and `binding_of_caller` gems to improve debugging in development environment
+- Styled using [Tailwind CSS](https://tailwindcss.com/)
+- Pagination via [Pagy](https://github.com/ddnexus/pagy)
+- Generate seed data randomly with [Faker](https://github.com/faker-ruby/faker)
+- Added [`better_errors` gem](https://github.com/BetterErrors/better_errors) to improve debugging in `development` env
+- Expanded test suite
 
 ## Learning Experience & Technical Challenges
 
@@ -46,12 +52,58 @@ Outlined below are key insights into my learning experiences, the challenges I f
    asdf install ruby 2.7.6
    ```
    Afterwards, I added a `.tool-versions` file to the root directory of the newly cloned project. Now, I was able to set the ***`local`*** version used in developing this *specific* project to `ruby 2.7.6` ***without*** changing the versions used in my other projects, which is `ruby 3.3.0`.
+5) Given how I often feel the lack of experience and discipline when I try to incorporate [Test-Driven Development (TDD)](https://wiki.c2.com/?TestDrivenDevelopment) into my workflow, I took it upon myself to reinforce and expand upon the fundamentals I already possessed for [testing rails applications](https://edgeguides.rubyonrails.org/testing.html) by reading [interesting](https://thoughtbot.com/blog/how-we-test-rails-applications) [blog](https://www.mintbit.com/blog/best-practices-for-testing-ruby-on-rails-applications-unit-testing-integration-testing-and-more) [posts](https://blog.railwaymen.org/rails-tests-ruby-on-rails-apps), and watching screencasts on [GoRails](https://gorails.com/), [Drifting Ruby](https://www.driftingruby.com/episodes), or YouTube.
+
+   Frankly, though I successfully wrote numerous tests, and have them ***all*** pass, I noticed a tendency to compose the majority of my tests *after* completing substantial portions of the application. This is an aspect I am eager to improve upon during my time as a Backend Engineering Intern at Shopify this summer. My confidence in this stems from seeing great progress in using TDD during my [previous internship experience at InfluxData](https://www.influxdata.com/blog/meet-influxdata-summer-2022-interns/#heading4).
 
 ## Screenshots
 
 For your convenience, I have provided several screenshots to facilitate the evaluation of my project:
 
+### Article Actions - Encyclofy - Google Chrome
+![Root page of Encyclofy app running with bin-dev - Google Chrome - Neema Sadry](<Encyclofy app running with bin-dev - Google Chrome - Neema Sadry.png>)
+*Root page of Encyclofy app running with bin-dev*
 
+![Show Article - Encyclofy Google Chrome - Neema Sadry](<Show Article - Encyclofy Google Chrome - Neema Sadry.png>)
+*Show Article*
+
+![New Article - Encyclofy Google Chrome - Neema Sadry](<New Article - Encyclofy Google Chrome - Neema Sadry.png>)
+*New Article*
+
+![Create Article - Encyclofy Google Chrome - Neema Sadry](<Create Article - Encyclofy Google Chrome - Neema Sadry.png>)
+*Create Article*
+
+![Edit Article - Encyclofy Google Chrome - Neema Sadry](<Edit Article - Encyclofy Google Chrome - Neema Sadry.png>)
+*Edit Article*
+
+![Update Article - Encyclofy Google Chrome - Neema Sadry](<Update Article - Encyclofy Google Chrome - Neema Sadry.png>)
+*Update Article*
+
+![Last Page with Latest Article - Encyclofy Google Chrome - Neema Sadry](<Last Page with Latest Article - Encyclofy Google Chrome - Neema Sadry.png>)
+*Last Page with Latest Article*
+
+![Delete Modal - Encyclofy Google Chrome - Neema Sadry](<Delete Modal - Encyclofy Google Chrome - Neema Sadry.png>)
+*Delete Modal*
+
+![Delete Article - Encyclofy Google Chrome - Neema Sadry](<Delete Article - Encyclofy Google Chrome - Neema Sadry.png>)
+*Delete Article*
+
+### Search Results Index - Encyclofy - Google Chrome
+![Index of Search Results for _Article_ - Encyclofy Google Chrome - Neema Sadry](<Index of Search Results for _Article_ - Encyclofy Google Chrome - Neema Sadry.png>)
+*Index of Search Results for **Article** Term*
+
+![Redirecting Invalid Search - Encyclofy Google Chrome - Neema Sadry](<Redirecting Invalid Search - Encyclofy Google Chrome - Neema Sadry.png>)
+*Redirecting Invalid Search*
+
+### Process Logs & Output - iTerm2
+![Passing Expanded Test Suite - iTerm2 - Neema Sadry](<Passing Expanded Test Suite - iTerm2 - Neema Sadry.png>)
+*Passing Expanded Test Suite Successfully*
+
+![Working bin-setup command on iTerm2 - Neema Sadry](<Working binsetup Command - iTerm2 - Neema Sadry.png>)
+*Working **bin/setup** command on iTerm2*
+
+![Rails app running with bin-dev command - iTerm2 - Neema Sadry](<Rails app running with bin-dev command - iTerm2 - Neema Sadry.png>)
+*Rails app running with **bin/dev** command*
 
 
 # Technical Instructions - Shopify

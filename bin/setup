@@ -8,10 +8,19 @@ def system!(*args)
   system(*args, exception: true)
 end
 
+def command_available?(command)
+  system("command -v #{command} >/dev/null 2>&1")
+end
+
 FileUtils.chdir APP_ROOT do
   # This script is a way to set up or update your development environment automatically.
   # This script is idempotent, so that you can run it at any time and get an expectable outcome.
   # Add necessary setup steps to this file.
+
+  # Install system dependencies if Homebrew is installed
+  if command_available?("brew")
+    system("brew bundle check --no-lock --no-upgrade") || system!("brew bundle --no-upgrade --no-lock")
+  end
 
   puts "== Installing dependencies =="
   system! "gem install bundler --conservative"
@@ -25,12 +34,7 @@ FileUtils.chdir APP_ROOT do
   system! "npm install -g yarn" unless command_available?("yarn")
 
   # Install JavaScript dependencies if using Yarn
-  system("bin/yarn")
-
-  # Build CSS & JS via yarn
-  puts "\n== Compiling CSS & JS =="
-  system! "bin/yarn run build"
-  system! "bin/yarn run build:css"
+  system("yarn")
   ### END - Custom Tailwind CSS setup via cssbundling-rails gem ###
 
   # puts "\n== Copying sample files =="
