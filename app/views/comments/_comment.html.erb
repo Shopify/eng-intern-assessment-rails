@@ -1,0 +1,9 @@
+<div id="comment-<%= comment.id %>">
+  [<%= comment.created_at.strftime("%I:%M %p")%>] 
+  <%= comment.username %>: 
+  <%= comment.body %>
+
+  <div class="d-flex justify-content-between">
+    <%= button_to 'Delete', article_comment_path(@article, comment), method: :delete, remote: true,  form: {data: {turbo_confirm: 'Are you sure?'}}  , class:"btn btn-danger"%>
+  </div>
+</div>

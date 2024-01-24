@@ -2,6 +2,8 @@
 
 # Article model
 class Article < ApplicationRecord
+  has_many :comments, dependent: :destroy
+
   # Ensure Title and Content fields are present.
   validates :title, :content, :author, :date, presence: true
   # Ensure Content is unique.

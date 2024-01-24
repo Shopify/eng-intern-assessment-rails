@@ -7,3 +7,19 @@
     <%= button_to "Destroy this article", @article, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}}  , class:"btn btn-danger" %>
   </div>
 </div>
+
+<%= form_with(model: [@article, @comment]) do |form| %>
+  <%= form.text_field :username %>
+  <%= form.text_field :body %>
+  <%= form.submit "Comment"%>
+<% end %>
+
+<div id="comment_pane">
+  <p> <%= pluralize(@comments.count, "comment") %> </p>
+  
+  <% @comments.each do |comment| %>
+    <%= render 'comments/comment', comment: comment%>
+  <%end%>
+</div>
+
+
