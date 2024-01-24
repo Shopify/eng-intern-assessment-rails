@@ -8,11 +8,12 @@ class ArticlesController < ApplicationController
   end
   
   def new
-    @article = Article.new
+    @article = Article.new(date: Date.current)
   end
 
   def create
-    @article = Article.new(article_params)
+    # merges the current date into article_params as date is not apart of the form
+    @article = Article.new(article_params.merge(:date => Date.current))
 
     if @article.save
       redirect_to @article
@@ -50,6 +51,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :content, :author)
   end
 end

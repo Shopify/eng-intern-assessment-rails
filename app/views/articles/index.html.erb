@@ -10,6 +10,8 @@
 <% @articles.each do |article| %>
   <ul>
     <%= link_to article.title, article %>
+    <%= article.date %>
+    <%= article.author %>
     <%= link_to "Delete", 
         article_path(article), 
         data: {turbo_method: :delete, turbo_confirm: "Woudld you like to delete this article?"} %> 
