@@ -8,3 +8,5 @@ rails generate model Article title:string content:text author:string date:date
 Added articles view to GET list of articles (none in there yet)
 Added article/:id to route
 added show to controller for individual article
+added console article 1 with some dummy data
+added new article view, validates in model and form page
