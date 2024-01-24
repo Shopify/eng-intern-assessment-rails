@@ -2,19 +2,18 @@
 
 
 <br/>
+<%#Displays the title, author and date%>
 <div class="header">
 <center><h3 class="title"><%= @article.title%></h5></center>
-<h6 class="subtitle mb-2 text-muted"><i><%= @article.author%>, <%= @article.date%></i></h6>
+<h6 class="subtitle mb-2 text-muted">
+<i><%= @article.author%>, <%= @article.date%></i>
+</h6>
 <hr>
 </div>
 <%= @article.content%>
 
 <div>
-
-
-
   <hr>
-
   <div class="" style="display:flex; flex-direction:row; justify-content:space-between;">
   <%= link_to "Back", articles_path , class:'btn btn-outline-dark'%>
   <%= link_to "Edit", edit_article_path(@article), class:'btn btn-outline-primary'%>
