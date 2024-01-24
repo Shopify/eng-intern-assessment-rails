@@ -38,7 +38,6 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    
     redirect_to root_path, status: :see_other
   end
 
