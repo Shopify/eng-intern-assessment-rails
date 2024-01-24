@@ -35,30 +35,40 @@
 
 Outlined below are key insights into my learning experiences, the challenges I faced, and the strategies I employed to address them:
 
-1) Re-experienced how to set up Tailwind CSS 3 different ways:
-   1) Since the Rails app was already created for us, I was not able to add Tailwind CSS using the `--css=tailwind` flag with the `rails new` command. Therefore, I tried following the [steps listed on the docs](https://tailwindcss.com/docs/guides/ruby-on-rails). However, I kept running into errors when trying to start my build process with the `bin/dev` command.
-      - The errors were related to the process managers I tried using: [`overmind` package](https://github.com/DarthSim/overmind) or the [`foreman` gem](https://rubygems.org/gems/foreman) directly.
+1) Learned how to install Tailwind CSS comprehensively using *three* different methods:
+   1) Since the Rails app was already created for us, I was not able to add Tailwind CSS using the `--css=tailwind` flag with the `rails new` command. Therefore, I followed [the installation steps outlined for Ruby on Rails projects](https://tailwindcss.com/docs/guides/ruby-on-rails). However, I kept running into errors when trying to start my `build` process with the `bin/dev` command.
+      - *Note: The errors were somehow related to the [`foreman`](https://rubygems.org/gems/foreman) process manager itself.*
    2) To expedite development and save time, I opted to [add Tailwind CSS via the Play CDN](https://tailwindcss.com/docs/installation/play-cdn), which satisfied the majority of my development needs throughout this project. However, there are some caveats I considered when making this decision:
       - As stated *just before the first step* in the documentation:
         > The Play CDN is designed for development purposes only, and is not the best choice for production.
 
         Although we do not need to deploy this app to production, I find it beneficial to operate under the assumption that we will. After all, the ultimate goal of developing any web app, regardless of the tech stack, is to prepare it for production :wink:
-      - There were technical difficulties when I attempted to add more robust solutions. For example, adding the [`pagy` gem](https://github.com/ddnexus/pagy) for paginating all records listed from the `articles` table when viewing `http://localhost:3000/articles/index`. Specifically, I was not able to easily style the contents rendered from [the `pagy_nav` helpers](https://ddnexus.github.io/pagy/docs/extras/tailwind/#style-2).
-   3) Towards the end of my project, I remembered from past experience that there was *another* way to install Tailwind CSS! After a quick search, I found [the solution using the `cssbundling-rails` gem](https://stackoverflow.com/questions/71640507/how-to-import-tailwind-plugin-in-rails-7). This solution worked perfectly :thumbsup:
-2) While adding Tailwind CSS was my goal, it was contingent on my ability to augment the `bin/setup` Bash script for seamless installation of all newly added project dependencies. My decision stemmed out of respect and consideration for the individual(s) reviewing this project and the rest of my application. Offering a streamlined and pain-free setup process for my project ***on their*** development machines is a gesture that I believe anyone would appreciate :innocent:
-3) Given my constant use of search engines in my other web development projects, like [Meilisearch](https://www.meilisearch.com/) or [ElasticSearch](https://www.elastic.co/elasticsearch)/[OpenSearch](https://opensearch.org/platform/search/index.html) (via the [`searchkick` gem](https://rubygems.org/gems/searchkick)), it was refreshing to implement a simple search method with such a simple raw SQL statement.
-4) I noticed from the very beginning that the project was using Ruby 2.x instead of Ruby 3.x. Because I already had `asdf` setup on my Mac, I just had to run the following command:
+      - Technical difficulties arised when I attempted to add more robust solutions. For example, adding the [`pagy` gem](https://github.com/ddnexus/pagy) for paginating results on the `articles#index` and `search#index` views. 
+        - *Note:  It was difficult to style the pagination nav bar rendered from [the `pagy_nav` helpers](https://ddnexus.github.io/pagy/docs/extras/tailwind/#style-2).*
+   3) Towards the end of my project, I remembered from past experience that there was *another* way to install Tailwind CSS! After a quick search, I found my previous solution, which utilized the [`cssbundling-rails` gem](https://stackoverflow.com/questions/71640507/how-to-import-tailwind-plugin-in-rails-7). Fortunately, this solution worked perfectly! :thumbsup:
+2) While adding Tailwind CSS was my goal, it was contingent on at least *two* factors: 
+   1) Provide the reviewer with a simple fallback solution by [using the `Play CDN`](https://tailwindcss.com/docs/installation/play-cdn).
+   2) My capability to augment the existing Bash script, `bin/setup`; automate the setup process for reviewer(s) who need to install newly added project dependencies.
+
+   My decisions were driven by a genuine sense of respect and consideration for those reviewing my technical assessment. Offering both a friction-free setup process and alternate solution for my reviewer(s) so they can run my project on *their* computer is a gesture that *any* developer would undoubtedly appreciate :innocent:
+3) Given my constant use of search engines in my other web development projects, (ex. [Meilisearch](https://www.meilisearch.com/) via the [`meilisearch-rails` gem](https://github.com/meilisearch/meilisearch-rails) or [ElasticSearch](https://www.elastic.co/elasticsearch)/[OpenSearch](https://opensearch.org/platform/search/index.html) via the [`searchkick` gem](https://rubygems.org/gems/searchkick)), it was refreshing to implement a simple search method using just a raw SQL statement.
+4) I noticed from the beginning that the project used Ruby 2.x (**not** Ruby 3.x). Because I already had `asdf` setup on my Mac, I just had to run the following command:
    ```bash
    asdf install ruby 2.7.6
    ```
-   Afterwards, I added a `.tool-versions` file to the root directory of the newly cloned project. Now, I was able to set the ***`local`*** version used in developing this *specific* project to `ruby 2.7.6` ***without*** changing the versions used in my other projects, which is `ruby 3.3.0`.
-5) Given how I often feel the lack of experience and discipline when I try to incorporate [Test-Driven Development (TDD)](https://wiki.c2.com/?TestDrivenDevelopment) into my workflow, I took it upon myself to reinforce and expand upon the fundamentals I already possessed for [testing rails applications](https://edgeguides.rubyonrails.org/testing.html) by reading [interesting](https://thoughtbot.com/blog/how-we-test-rails-applications) [blog](https://www.mintbit.com/blog/best-practices-for-testing-ruby-on-rails-applications-unit-testing-integration-testing-and-more) [posts](https://blog.railwaymen.org/rails-tests-ruby-on-rails-apps), and watching screencasts on [GoRails](https://gorails.com/), [Drifting Ruby](https://www.driftingruby.com/episodes), or YouTube.
+   Afterwards, I added a `.tool-versions` file to the project's root directory, and set the version to `ruby 2.7.6`. This way, I could still use `ruby 3.3.0` everywhere else on my machine :grin:
+5) Given how I often feel the lack of discipline when I try to incorporate [Test-Driven Development (TDD)](https://wiki.c2.com/?TestDrivenDevelopment) principles into my workflow, I took it upon myself to reinforce and expand upon the fundamentals I already possessed for [testing rails applications](https://edgeguides.rubyonrails.org/testing.html) by reading [interesting](https://thoughtbot.com/blog/how-we-test-rails-applications) [blog](https://www.mintbit.com/blog/best-practices-for-testing-ruby-on-rails-applications-unit-testing-integration-testing-and-more) [posts](https://blog.railwaymen.org/rails-tests-ruby-on-rails-apps), and watching screencasts on [GoRails](https://gorails.com/), [Drifting Ruby](https://www.driftingruby.com/episodes), or YouTube.
 
-   Frankly, though I successfully wrote numerous tests, and have them ***all*** pass, I noticed a tendency to compose the majority of my tests *after* completing substantial portions of the application. This is an aspect I am eager to improve upon during my time as a Backend Engineering Intern at Shopify this summer. My confidence in this stems from seeing great progress in using TDD during my [previous internship experience at InfluxData](https://www.influxdata.com/blog/meet-influxdata-summer-2022-interns/#heading4).
+   Ironically, despite having the best intentions, this put me in a *self-imposed **time crunch***; I had to write the majority of my tests *after* completing substantial portions of the application. 
+   
+   > [!IMPORTANT]
+   > This is an aspect of myself that I am *eager to improve upon* during my time at Shopify as a Backend Engineering Intern.
+   
+   Additionally, I am optimistic and confident abilities to swiftly integrate TDD principles into my development workflow considering the notable progress I achieved during [my previous internship experience at InfluxData](https://www.influxdata.com/blog/meet-influxdata-summer-2022-interns/#heading4). Furthermore, I would welcome the opportunity to discuss these experiences in greater detail during subsequent interviews!
 
 ## Screenshots
 
-For your convenience, I have provided several screenshots to facilitate the evaluation of my project:
+For your convenience, I have provided several screenshots to facilitate the evaluation of my project. Furthermore, all screenshots can viewed in the [3 open Issues](https://github.com/neemasadry/eng-intern-assessment-rails/issues) if they are not displaying here for any reason.
 
 ### Article Actions - Encyclofy - Google Chrome
 <!-- [Root page of Encyclofy app running with bin-dev - Google Chrome - Neema Sadry](https://share.cleanshot.com/fYgKV9ZrTL4Kvp2dJkz8) -->
@@ -119,22 +129,27 @@ For your convenience, I have provided several screenshots to facilitate the eval
 ![Passing Expanded Test Suite - iTerm2 - Neema Sadry](https://github.com/neemasadry/eng-intern-assessment-rails/assets/78980520/66d7f669-5bd5-40b1-b76a-73845842fe12)
 *Passing Expanded Test Suite Successfully*
 
+<br><br><br>
 
-# Technical Instructions - Shopify
+# Shopify
+
+#### Technical Assessment - Backend Engineering Internship Application (Summer 2024)
+
+## Technical Instructions
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.
 3. Test your work using the provided tests
 4. Create a Pull Request against the Shopify Main branch when you're done and all tests are passing
 
-# Project Overview
+## Project Overview
 The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. Be sure to implement basic CRUD actions on articles. Your task is to implement these features as well as write the code that makes the tests pass.
 
-# Project Goals
+## Project Goals
 The main goal of this internship project is to implement the functionality required to make the existing tests pass. The provided tests cover various aspects of the application, including creating and viewing articles, editing and updating articles, deleting articles, and searching for articles. Along with completing the tests, be sure to implement all basic CRUD actions on your articles on a controller and create views to see your work in the app.
 
-## Your specific goals for this project are as follows:
+### Your specific goals for this project are as follows:
 
-1. Review Existing Tests: Start by reviewing the existing tests provided in the article_test.rb file located in the test/models directory. Understand the requirements and expectations of each test.
+1. Review Existing Tests: Start by reviewing the existing tests provided in the `article_test.rb` file located in the `test/models` directory. Understand the requirements and expectations of each test.
 
 2. Implement Functionality: Write the code necessary to make the existing tests pass. This involves implementing the required actions and logic in the models, controllers, and views to fulfill the specified requirements. Also be sure to implement basic CRUD actions and demonstrate proper MVC principals.
 
@@ -146,7 +161,7 @@ The main goal of this internship project is to implement the functionality requi
 
 6. Version Control: Use Git for version control. Commit your changes regularly and push them to a branch in your forked repository.
 
-7. Create a Pull Request: Once you have completed the project goals, create a pull request to merge your changes into the main repository. Provide a clear description of the changes made and any relevant information for the code review.
+7. Create a Pull Request: Once you have completed the project goals, create a **pull request** to merge your changes into the `main` repository. Provide a clear description of the changes made and any relevant information for the code review.
 
 ## Getting Started
 To get started with this project, follow these steps:
@@ -157,7 +172,7 @@ To get started with this project, follow these steps:
 
 3. Familiarize yourself with the existing codebase, including the models, controllers, and views.
 
-4. Review the existing tests in the article_test.rb file and understand their purpose and functionality.
+4. Review the existing tests in the `article_test.rb` file and understand their purpose and functionality.
 
 5. Run the tests locally to ensure they are passing.
 
