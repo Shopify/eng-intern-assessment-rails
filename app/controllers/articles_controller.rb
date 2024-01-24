@@ -19,6 +19,11 @@ class ArticlesController < ApplicationController
   def edit
   end
 
+  # GET /count
+  def count
+    @count = Article.count
+  end
+
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
