@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
 
   # Searchs all articles
   def search 
+    @articles = Article.find(params[:id])
   end 
 
   # Shows a list of all the articles
