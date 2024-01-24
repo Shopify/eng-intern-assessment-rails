@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   root "articles#home"
+  get 'articles/search', to: 'articles#search', as: 'search_articles'
 
   resources :articles
 

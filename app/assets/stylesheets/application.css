@@ -78,6 +78,11 @@ textarea.custom-textarea {
     height: 150px;
 }
 
+/* Search */
+div.search-item-box {
+    border: 1px solid #ccc;
+}
+
 
 
 /* Responsive Designs */

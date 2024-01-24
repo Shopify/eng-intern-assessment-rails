@@ -10,17 +10,21 @@
       </p>
     </nav>
     <div class="home-articles">
-      <h1>Encylopedia</h1>
-
-      <h2>Articles</h2>
-      <ul>
-        <% @articles.each do |article| %>
-          <li>
-            <%= link_to article.title, article %>
-          </li>
+      <h1>Article Search</h1>
+        <%= form_with url: search_articles_path, method: :get, local: true do |form| %>
+          <%= form.label :query, 'Search Articles' %>
+          <%= form.text_field :query %>
+          <%= form.submit 'Search' %>
         <% end %>
-      </ul>
+        <hr/>
 
+        <% @articles.each do |article| %>
+          <div class="search-item-box">
+            <h3><%= article.title %></h3>
+            <p><%= article.content %></p>
+          </div>
+          <br/>
+        <% end %>
     </div>
   </div>
 </div>
