@@ -1,5 +1,11 @@
-<h1>New Article</h1>
+<div class="article-container">
 
-<%= render 'form', article: @article %>
+    <h1>New Article</h1>
 
-<%= link_to 'Back', articles_path %>
+    <%= render 'form', article: @article %>
+
+    <div class="article-actions">
+        <%= link_to 'Back', articles_path %>
+    </div>
+
+</div>
