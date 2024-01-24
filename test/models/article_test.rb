@@ -1,3 +1,7 @@
+# Author of Edits: Justin Bishop
+# Date: January 2024
+# Purpose: Shopify Internship Application
+
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase

@@ -1,3 +1,7 @@
+# Author: Justin Bishop
+# Date: January 2024
+# Purpose: Shopify Internship Application
+
 Rails.application.routes.draw do
   root "articles#index"
   resources :articles

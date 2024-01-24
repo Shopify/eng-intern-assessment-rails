@@ -1,3 +1,7 @@
+# Author: Justin Bishop
+# Date: January 2024
+# Purpose: Shopify Internship Application
+
 shopify assesment notes:
 
 how to run project:
@@ -6,6 +10,7 @@ rails db:migrate
 rails db:seed
 rails server
 
+rough list of actions that I did during this project
 
 rails generate controller Articles index --skip-routes
 -made index routes and controller
@@ -24,3 +29,8 @@ Added delete function in controller
 -changed "see all" link to get back to main page
 Added search bar
 errors on rails test command. so i ran rails db:test:prepare then the tests ran.
+Passed all tests that weree included in the application
+wrote 5 more useful tests and passed them
+Commented Code
+Run tests one last time
+Submit Pull request

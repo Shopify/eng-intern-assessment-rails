@@ -1,4 +1,10 @@
+# Author: Justin Bishop
+# Date: January 2024
+# Purpose: Shopify Internship Application
+
 class ArticlesController < ApplicationController
+
+  # basic CRUD actions for our beautiful rails application
   def index
     if params[:search]
       @articles = Article.search(params[:search])

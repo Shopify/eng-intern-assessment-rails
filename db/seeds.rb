@@ -1,3 +1,7 @@
+# Author: Justin Bishop
+# Date: January 2024
+# Purpose: Shopify Internship Application
+
 require 'faker'
 
 5.times do
