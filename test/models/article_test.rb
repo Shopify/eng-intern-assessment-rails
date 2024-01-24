@@ -65,4 +65,20 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # Created three new test cases to ensure obselete articles are not able to be created
+  test 'prevent creating untitled article' do
+    article = Article.create(title: '', content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+  end
+
+  test 'prevent creating contentless article' do
+    article = Article.create(title: 'Sample Article', content: '')
+    assert_not article.valid?
+  end
+
+  test 'prevent creating small content article' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem.')
+    assert_not article.valid?
+  end
 end
