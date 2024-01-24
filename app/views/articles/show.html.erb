@@ -1,0 +1,15 @@
+<% unless not notice %>
+  <div class="responseMessage">
+    <span><%= notice %></span>
+    <span class="btnClose" onclick="this.parentElement.style.display='none';">&times;</span>
+  </div>
+<% end %>
+
+<%= link_to "Back to articles", articles_path, class: 'actionItem'%>
+
+<%= render @article %>
+
+<div class="actionDiv">
+  <%= link_to "Edit", edit_article_path(@article), class: 'actionItem'%> |
+  <%= button_to "Delete", @article, method: :delete, class: 'actionItem' %>
+</div>

@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EngInternAssessmentRails</title>
+    <title>Articles</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "article", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "article_table", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "article_form", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <div class="navDiv">
+      <%= link_to "Articles", articles_path, class: 'navTitle'%>
+      <div class="navMenu">
+        <%= render "search_article" %>
+        <%= link_to "ADD ARTICLE", new_article_path, class: 'btn btnSecondary addBtn'%>
+      </div>
+      
+    </div>    
     <%= yield %>
   </body>
 </html>

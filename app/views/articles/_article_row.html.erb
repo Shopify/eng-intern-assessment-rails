@@ -1,0 +1,19 @@
+<td>
+  <%= article.title %>
+</td>
+<td>
+  <%= article.content %>
+</td>
+<td>
+  <%= article.author %>
+</td>
+<td>
+  <%= article.date %>
+</td>
+<td>
+  <div class="actionDiv">
+    <%= link_to "Show", article_path(article), class: 'actionItem' %>
+    <%= link_to "Edit", edit_article_path(article), class: 'actionItem' %>
+    <%= button_to "Delete", article, method: :delete, class: 'actionItem' %>
+  </div>
+</td>

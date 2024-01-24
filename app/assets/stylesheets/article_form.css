@@ -1,0 +1,26 @@
+/* stylesheet for Article Model form */
+
+.articleFrom{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.articleFormItemDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.formInput{
+    box-sizing: border-box;
+    padding: 3%;
+    width: 12rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--primaryColor);
+}
+.contentInput{
+    min-height: 4rem;
+}

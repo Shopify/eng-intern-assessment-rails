@@ -1,0 +1,18 @@
+.articleContainer{
+    display: flex;
+    flex-direction:column;
+    justify-content: baseline;
+    align-items: start;
+}
+.articleTitle{
+    font-size: x-large;
+    font-weight: bold;
+}
+.articleDetails{
+    font-size: smaller;
+    display: flex;
+    gap: 0.5rem;
+}
+.artcleContent{
+    min-height: 50%;
+}

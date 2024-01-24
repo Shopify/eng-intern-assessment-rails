@@ -104,6 +104,10 @@ GEM
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    haml (6.3.0)
+      temple (>= 0.8.2)
+      thor
+      tilt
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.3)
@@ -147,8 +151,15 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.5-aarch64-linux)
       racc (~> 1.4)
+    nokogiri (1.15.5-x64-mingw32)
+      racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
+    prettier (4.0.4)
+      syntax_tree (>= 4.0.1)
+      syntax_tree-haml (>= 2.0.0)
+      syntax_tree-rbs (>= 0.2.0)
+    prettier_print (1.2.1)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.4)
@@ -193,6 +204,7 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.1.0)
+    rbs (3.1.3)
     rdoc (6.6.2)
       psych (>= 4.0.0)
     regexp_parser (2.8.3)
@@ -215,11 +227,24 @@ GEM
     sqlite3 (1.6.9)
       mini_portile2 (~> 2.8.0)
     sqlite3 (1.6.9-aarch64-linux)
+    sqlite3 (1.6.9-x64-mingw32)
     sqlite3 (1.6.9-x86_64-linux)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
     stringio (3.1.0)
+    syntax_tree (6.2.0)
+      prettier_print (>= 1.2.0)
+    syntax_tree-haml (4.0.3)
+      haml (>= 5.2)
+      prettier_print (>= 1.2.1)
+      syntax_tree (>= 6.0.0)
+    syntax_tree-rbs (1.0.0)
+      prettier_print
+      rbs
+      syntax_tree (>= 2.0.1)
+    temple (0.10.3)
     thor (1.3.0)
+    tilt (2.3.0)
     timeout (0.4.1)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
@@ -227,6 +252,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2023.4)
+      tzinfo (>= 1.0.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -248,6 +275,7 @@ GEM
 PLATFORMS
   aarch64-linux
   ruby
+  x64-mingw32
   x86_64-linux
 
 DEPENDENCIES
@@ -256,6 +284,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  prettier (~> 4.0)
   puma (>= 5.0)
   rails (~> 7.1.2)
   selenium-webdriver

@@ -1,15 +1,114 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* stylesheet for general app */
+:root{
+    --primaryColor: #638889;
+    --secondaryColor: #9DBC98;
+    --hoverColor: #EBD9B4;
+    --hoverActionColor: #76453B;
+    --titleColor: #000;
+}
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 110%;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+/* style tags for navigation bar */
+.navDiv{
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items:end;
+}
+.navTitle{
+    color: var(--titleColor);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.12rem;
+    text-decoration: none;
+}
+.navMenu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+.searchDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+.btn{
+    height: 1.5rem;
+    width: 100%;
+    text-decoration: none;
+    font-size: smaller;
+    border-radius: 0.4rem;
+    border: 1px solid var(--primaryColor);
+    display: block;
+    text-align: center;
+}
+.btnPrimary{
+    background: var(--primaryColor);
+    color: white;
+}
+.btnSecondary{
+    background: var(--secondaryColor);
+    color: black;
+}
+.btn:hover{
+    background: var(--hoverColor);
+    color: black;
+}
+.addBtn{
+    line-height: 1.5rem;
+    font-size: x-small;
+    width: 6rem;
+}
+
+.newContainer{
+    width: 26.0625rem;
+    height: 26.6875rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.inputText{
+    box-sizing: border-box;
+    font-size: smaller;
+    padding-left: 3%;
+    height: 1.5rem;
+    width: 12rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--primaryColor);
+}
+.responseMessage{
+    position: absolute;
+    bottom: 3rem;
+    left: 30%;
+    width: 40%;
+    height: 3rem;
+    text-align: center;
+    line-height: 3rem;
+    background:var(--primaryColor);
+    color: white;
+    border-radius: 1rem;
+}
+.btnClose{
+    position:absolute;
+    right: 2rem;
+    cursor: pointer;
+}
