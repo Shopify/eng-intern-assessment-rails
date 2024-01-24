@@ -15,6 +15,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should clear search" do
+    get articles_url, params: { clear_search: true }
+    assert_response :success
+  end
+
   test "should create article" do
     assert_difference('Article.count', 1) do
       post articles_url, params: { article: { title: 'New Article', content: 'New content', author: 'New Author', date: Date.today } }
@@ -26,7 +31,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Article.count') do
       post articles_url, params: { article: { content: 'Invalid content' } } 
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test "should update article" do
@@ -37,8 +42,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not update article with invalid params" do
-    patch article_url(@article), params: { article: { title: '' } } 
-    assert_response :success
+    patch article_url(@article), params: { article: { title: '' } }
+    assert_response :unprocessable_entity
   end
 
   test "should destroy article" do
@@ -46,5 +51,15 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       delete article_url(@article)
     end
     assert_redirected_to articles_url
+  end
+
+  test "should get edit" do
+    get edit_article_url(@article)
+    assert_response :success
+  end
+
+  test "should get show" do
+    get article_url(@article)
+    assert_response :success
   end
 end
