@@ -1,5 +1,7 @@
 <h1>Articles</h1>
 
+<turbo-frame id="error_messages"></turbo-frame>
+
 <%= form_with model: Article.new, local: false do |form| %>
   <%= form.label :title %>
   <div class="input-container">

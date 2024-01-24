@@ -24,6 +24,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+  
     if @article.save
       respond_to do |format|
         format.turbo_stream {
@@ -32,12 +33,14 @@ class ArticlesController < ApplicationController
         format.html { redirect_to articles_url }
       end
     else
-      @articles = Article.all # Set this to ensure the index view has the required data
       respond_to do |format|
         format.turbo_stream {
-          render turbo_stream: turbo_stream.update('articles', partial: 'articles/articles', locals: { articles: @articles })
+          render turbo_stream: turbo_stream.update('error_messages', partial: 'shared/error_messages', locals: { errors: @article.errors.full_messages })
         }
-        format.html { render :index, status: :unprocessable_entity }
+        format.html {
+          @articles = Article.all
+          render :index, status: :unprocessable_entity 
+        }
       end
     end
   end
@@ -49,9 +52,15 @@ class ArticlesController < ApplicationController
         format.html { redirect_to articles_url }
       end
     else
-      render :edit, status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream {
+          render turbo_stream: turbo_stream.update('error_messages', partial: 'shared/error_messages', locals: { errors: @article.errors.full_messages })
+        }
+        format.html { render :edit, status: :unprocessable_entity }
+      end
     end
   end
+  
 
   def edit
     @article = Article.find(params[:id])

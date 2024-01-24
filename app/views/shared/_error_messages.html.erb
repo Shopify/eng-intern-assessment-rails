@@ -1,0 +1,18 @@
+<% if errors.any? %>
+  <div id="error-messages" style="display: none;">
+    <% errors.each do |message| %>
+      <div class="error-message"><%= message %></div>
+    <% end %>
+  </div>
+
+  <script>
+    var errorMessages = document.querySelectorAll('#error-messages .error-message');
+    var alertText = '';
+    errorMessages.forEach(function(messageElement) {
+      alertText += (alertText ? '\n' : '') + messageElement.textContent;
+    });
+    if (alertText) {
+      alert(alertText);
+    }
+  </script>
+<% end %>
