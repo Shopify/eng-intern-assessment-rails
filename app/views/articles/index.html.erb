@@ -1,5 +1,11 @@
 <h1>Encyclopedia</h1>
 
+<%= form_with url: "/search", method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
 <h2>Articles</h2>
 <% @articles.each do |article| %>
   <ul>
@@ -12,4 +18,3 @@
 
 <% end %>
 <p><%= link_to "new", new_article_path %></p>
-

@@ -42,6 +42,11 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def search
+    query_string = params[:query]
+    @articles = Article.where("title LIKE ? ", query_string)
+  end
+
   private
 
   def article_params
