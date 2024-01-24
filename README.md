@@ -1,3 +1,45 @@
+# Adam Chen's Submission Details:
+
+## `Endpoint`
+
+The root endpoint is at `/articles`.
+
+Note: The endpoints for CREATE, UPDATE, and DELETE are secured by authenticity tokens, and can only be accessed using the UI.
+
+### CREATE
+
+Accessible on the UI at `/articles/new`
+
+### READ
+
+#### List all articles (1)
+
+A listing of all articles is at `/articles`, a json version is available at `/articles.json`
+
+#### Querying
+
+A query parameter `query` can be passed like `/articles.json?query=cool+topics` or `/articles?query=cool+topics`
+
+This will filter the articles and return them like **(1)**
+
+#### Accessing one article
+
+Accessing one article can be done at the endpoint `/articles/:id`. Likewise, a json version is available at `/articles/:id.json`
+
+### UPDATE
+
+Accessible on the UI at `/articles/:id/edit`
+
+### DELETE
+
+Accessible on the UI at `/articles/:id/edit` or `/articles/:id`
+
+## Other Notes
+
+### Validation
+
+Article titles must be greater than 1 character and less than 255 characters. This is to ensure article names have a reasonable length.
+
 # Technical Instructions
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.
