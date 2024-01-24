@@ -10,6 +10,7 @@
   <% end %>
   <table>
     <tr>
+      <th>Id</th>
       <th>Title</th>
       <th>Author</th>
       <th>Modified</th>
@@ -18,6 +19,7 @@
     </tr>
   <% @articles.each do |article| %>
     <tr>
+      <td><%= article.id %></td>
       <td><%= article.title %></td>
       <td><%= article.author %></td>
       <td><%= article.updated_at %></td>
