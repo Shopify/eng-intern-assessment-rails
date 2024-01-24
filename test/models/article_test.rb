@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -10,7 +15,8 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'creates a new article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    puts "Article errors: #{article.errors.full_messages}" unless article.valid?
     assert article.valid?
   end
 
@@ -51,16 +57,23 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'returns accurate search results' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article2 = Article.create(title: 'Sample Article2', content: 'Lorem ipsum dolor sit amet blah.', author: 'John Dublin', date: Date.today)
+  
+    puts "Before search: #{Article.pluck(:title).join(', ')}" # Debugging output
+  
+    puts "Search query: 'Lorem ipsum'"
     results = Article.search('Lorem ipsum')
+  
+    puts "After search: #{results.pluck(:title).join(', ')}" # Debugging output
+  
     assert_includes results, article1
     assert_includes results, article2
   end
 
   test 'displays relevant articles in search results' do
-    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet blah.', author: 'John Dublin', date: Date.today)
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
