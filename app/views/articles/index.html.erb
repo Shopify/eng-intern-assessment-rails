@@ -6,16 +6,17 @@
   <%= form.submit "Search" %>
 <% end %>
 
+<p><%= link_to "Create New Article", new_article_path %></p>
+
 <h2>Articles</h2>
 <% @articles.each do |article| %>
-  <ul>
-    <%= link_to article.title, article %>
-    <%= article.date %>
-    <%= article.author %>
+  <p>
+    Title: <%= link_to article.title, article %> |
+    Created by: <%= article.author %> |
+    Last updated at: <%= article.date %> | 
     <%= link_to "Delete", 
         article_path(article), 
         data: {turbo_method: :delete, turbo_confirm: "Woudld you like to delete this article?"} %> 
-  </ul>
+  </p>
 
 <% end %>
-<p><%= link_to "new", new_article_path %></p>

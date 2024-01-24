@@ -1,9 +1,11 @@
-<h1><%= @article.title %></h1>
-<p><%= @article.content %></p>
+<h1> Viewing: <%= @article.title %></h1>
+<h3>Written by: <%= @article.author %></h3>
 
-<p><%= link_to "edit article", edit_article_path(@article) %></p>
-<p><%= link_to "return to home", root_path %></p>
+<p>Content: <%= @article.content %></p>
 
-<%= link_to "Delete article", 
+<p><%= link_to "Edit Article", edit_article_path(@article) %></p>
+<p><%= link_to "Return to Home", root_path %></p>
+
+<%= link_to "Delete Article", 
     article_path(@article), 
     data: {turbo_method: :delete, turbo_confirm: "Woudld you like to delete this article?"} %>

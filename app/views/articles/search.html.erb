@@ -1,10 +1,14 @@
 <h1>Search results</h1>
 
 <% @articles.each do |article| %>
-  <ul>
-    <%= link_to article.title, article %>
+  <p>
+    Title: <%= link_to article.title, article %> |
+    Created by: <%= article.author %> |
+    Last updated at: <%= article.date %> |
     <%= link_to "Delete", 
         article_path(article), 
         data: {turbo_method: :delete, turbo_confirm: "Woudld you like to delete this article?"} %> 
-  </ul>
+  </p>
 <% end %>
+
+<p><%= link_to "Return to Home", root_path %></p>

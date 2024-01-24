@@ -12,8 +12,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # merges the current date into article_params as date is not apart of the form
-    @article = Article.new(article_params.merge(:date => Date.current))
+    @article = Article.new(article_params)
 
     if @article.save
       redirect_to @article
@@ -45,12 +44,12 @@ class ArticlesController < ApplicationController
 
   def search
     query_string = params[:query]
-    @articles = Article.where("title LIKE ? ", query_string)
+    @articles = Article.where("title LIKE ? or content LIKE ?", query_string, query_string)
   end
 
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :author)
+    params.require(:article).permit(:title, :content, :author, :date)
   end
 end

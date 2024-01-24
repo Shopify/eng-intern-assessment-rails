@@ -15,6 +15,13 @@
   </div>
 
   <div>
+    <%= form.label :date %><br>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+<p><%= link_to "Return to Home", root_path %></p>
