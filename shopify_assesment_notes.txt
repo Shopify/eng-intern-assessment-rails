@@ -6,4 +6,5 @@ rails generate controller Articles index --skip-routes
 rails generate model Article title:string content:text author:string date:date
 -rails db:migrate
 Added articles view to GET list of articles (none in there yet)
-
+Added article/:id to route
+added show to controller for individual article
