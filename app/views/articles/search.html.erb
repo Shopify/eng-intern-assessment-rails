@@ -1,0 +1,9 @@
+<h3>Search Results</h3>
+<ul>
+<% @articles.each do |article| %>
+  <li>
+    <%= link_to article.title, article %>
+  </li>
+</ul>
+    
+<% end %>

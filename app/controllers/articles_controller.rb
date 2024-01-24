@@ -3,6 +3,12 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  def search
+    # @article = Article.where("? LIKE CONCAT('%', title, '%')", params[:title])
+    @parameter = params[:search].downcase
+    @articles = Article.all.where("title LIKE :search OR content LIKE :search", search: "%#{@parameter}%")
+  end
+
   def show
     @article = Article.find(params[:id])
   end
