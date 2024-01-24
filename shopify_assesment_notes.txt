@@ -23,3 +23,4 @@ Added edit CRUD feature
 Added delete function in controller
 -changed "see all" link to get back to main page
 Added search bar
+errors on rails test command. so i ran rails db:test:prepare then the tests ran.
