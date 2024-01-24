@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   def index
+    # Only want to display filtered results if there is a search query, otherwise show all articles.
     if params[:search]
       @articles = Article.search(params[:search])
     else
