@@ -1,11 +1,20 @@
 class ArticlesController < ApplicationController
+  #set_article is a method that is called before the show, edit, update and destroy actions for readability and time saving purposes.
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
+  #if there is a search parameter, the search method is called, else all articles are shown.
   def index
-    @articles = Article.all
+    if params[:search]
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
 
   def show
+    if @article.nil?
+      redirect_to articles_path, notice: 'Article not found'
+    end
   end
 
   def edit
