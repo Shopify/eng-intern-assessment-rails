@@ -66,7 +66,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not_includes results, article1
   end
 
-  test 'Article equals method works properly' do
+  test 'Article equals method makes accurate comparisons' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     assert article1 != article2
