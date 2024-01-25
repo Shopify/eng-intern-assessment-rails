@@ -6,4 +6,8 @@
 	<%= @article.date %><br/>
 </div>
 
-<%= link_to "Edit New Article", edit_article_path %>
+<%= link_to "Edit Article", edit_article_path %>
+<%= link_to "Delete Article", article_path(@article), data: {
+	turbo_method: :delete,
+	turbo_confirm: "Are you sure you want to delete this article?"
+} %>
