@@ -4,6 +4,7 @@
     <div>
       <%= comment.created_at.strftime("%I:%M %p")%>
       <%= link_to image_tag("delete-icon.png"), article_comment_path(@article, comment), remote: true,  form: {data: {turbo_confirm: 'Are you sure?'}}, data: {"turbo-method": :delete}%>
+      <%= link_to image_tag("edit.png"), edit_article_comment_path(@article, comment), remote: true%>
     </div>
   </div>
  
