@@ -30,6 +30,11 @@ class ArticlesController < ApplicationController
   def authors
     @authors = Article.all_authors
   end
+  # Page to search for articles
+  def search
+    @query = params[:query]
+    @articles = Article.search(@query)
+  end
 
   # GET /articles/author/
   # allows the user to view all articles by a single author

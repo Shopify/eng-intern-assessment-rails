@@ -3,6 +3,7 @@ class Article < ApplicationRecord
   # search based on title or content
   def self.search(query)
     if query
+      #puts "hello"
       where("title LIKE :query OR content LIKE :query", query: "%#{query}%")
     else
       all
