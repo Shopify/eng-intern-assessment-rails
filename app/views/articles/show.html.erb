@@ -1,0 +1,9 @@
+
+<%# I seem to recall a helper tag being available for headers, but couldn't find anything on it %>
+<h1 style="text-align:center; font-weight:bold;"> <%=@article.title%> </h1>
+<p style="text-align:center;"> By <%=@article.author%> </p>
+<p><%=@article.date%> </p>
+<br>
+<p> <%=@article.content%> </p>
+
+<%= link_to "Edit article", edit_article_path(@article)%>

@@ -1,0 +1,10 @@
+<h1 style="text-align:center; ">WIKI</h1>
+<%= link_to "Post a new article", new_article_path%>
+
+<h1>All Articles:</h1>
+<ul style="list-style-type:none;">
+<%@articles.each do |article|%>
+    <li> <%= link_to article.title, article%> </li>
+<%end%>
+<ul>
+
