@@ -1,0 +1,12 @@
+<h1>Articles</h1>
+
+<% @articles.each do |article| %>
+  <div>
+    <h2><%= article.title %></h2>
+    <p><%= article.content %></p>
+    <p><strong>Author:</strong> <%= article.author %></p>
+    <p><strong>Date:</strong> <%= article.date %></p>
+  </div>
+<% end %>
+
+<%= link_to "New Article", new_article_path %>
