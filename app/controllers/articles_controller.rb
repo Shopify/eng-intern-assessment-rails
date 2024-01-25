@@ -21,7 +21,17 @@ class ArticlesController < ApplicationController
   def create
     # filter non-permitted params, attempt to create and save article, return success if valid
     begin
-      @article = Article.new(article_params)
+      article_data = article_params
+
+      # allow frontend to pass custom dates, replace with today if not valid
+      begin
+        passed_date = Date.parse(article_data[:date])
+        article_data[:date] = passed_date
+      rescue
+        article_data[:date] = Date.today
+      end
+
+      @article = Article.new(article_data)
       @article.save
       render json: {
         status: "success",
