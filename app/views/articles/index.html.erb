@@ -1,10 +1,9 @@
-<%= render "header" %>
-<h1>Articles#index</h1>
-
+<h1>Home page</h1>
 <ul>
   <% @articles.each do |article| %>
-    <li> 
+    <li>
       <%= link_to article.title, article%>
     </li>
   <% end %>
 </ul>
+<%= link_to "New Article", new_article_path %>

@@ -1,7 +1,10 @@
-<%= render "header" %>
-
 <h1><%= @article.title%></h1>
-
 <p><%= @article.content%></p>
-
-
+<p><%=  published_date(@article.date) %></p>
+<p>Published by: <%= published_author(@article.author) %></p>
+<p>
+  <%= link_to "Destroy", article_path(@article), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+    } %>
+</p>
