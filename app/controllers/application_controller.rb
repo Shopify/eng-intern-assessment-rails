@@ -43,8 +43,14 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # DELETE /articles
+  # DELETE /articles/:id
   def destroy
+    @article.destroy
+    redirect_to articles_url, notice: 'Article was successfully destroyed.'
+  end
+
+  # DELETE /articles
+  def destroy_all
     Article.destroy_all
     redirect_to articles_url, notice: 'All articles were successfully destroyed.'
   end
@@ -56,9 +62,9 @@ class ArticlesController < ApplicationController
 
   private
 
-  # Use a before_action to set @articles (not implemented here)
+  # Use a before_action to set @articles
   def set_articles
-    @articles = nil
+    @articles = Article.all
   end
 
   # Use a before_action to set @article based on :id parameter
