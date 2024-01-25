@@ -17,7 +17,7 @@ def generate_random_paragraphs(random_num = 2)
   return full_content.join("\n\n")
 end
 
-# Specific first article
+# Create specific first article
 first_article = Article.new(
   title: "First Article",
   content: "Quo doloribus illum.",
@@ -28,7 +28,7 @@ first_article = Article.new(
 puts "Created first article '#{first_article.title}' by #{first_article.author}!\n\n" if first_article.save!
 
 
-# Modify # to seed that number of articles to the database
+# Modify integer to seed that many articles (default: 50)
 50.times do
   article = Article.new(
     title: Faker::Lorem.words(number: 2..8, supplemental: true).join(" ").titleize,
@@ -41,7 +41,7 @@ puts "Created first article '#{first_article.title}' by #{first_article.author}!
 end
 
 
-# Specific last article
+# Create specific last article
 last_article = Article.create!(
   title: "Last Article",
   content: "Quo doloribus illum. Illum provident aut. Exercitationem beatae quos.",

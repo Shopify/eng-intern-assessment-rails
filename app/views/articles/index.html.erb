@@ -2,14 +2,15 @@
 
 <%= render partial: "shared/nav", locals: { articles: @articles } %>
 
-<div class="min-w-0 flex-1 my-4">
+<!-- Display heading section -->
+<div class="flex-1 min-w-0 my-4">
   <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= pluralize(@articles.count, 'Article') %></h2>
 </div>
 
-<% @articles.each do |article| %>
-  <%= render partial: "articles/article", locals: { article: article } %>
-<% end %>
+<!-- Render cached collection of articles -->
+<%= render partial: "articles/article", collection: @articles, cached: true %>
 
+<!-- Render pagy navigation -->
 <div class="text-center">
   <%== pagy_nav(@pagy) %>
 </div>

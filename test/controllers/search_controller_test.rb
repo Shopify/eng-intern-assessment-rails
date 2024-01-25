@@ -6,7 +6,7 @@ class SearchControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # First article in fixtures/articles.yml is titled: "Test Article"
+  # First article in fixtures/articles.yml is titled: "First Article"
   test "should return first article" do
     get search_index_url, params: { query: "First" }
     assert_response :success

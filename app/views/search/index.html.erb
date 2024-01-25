@@ -1,13 +1,13 @@
 <%= render partial: "shared/nav", locals: { articles: @results } %>
 
-<div class="min-w-0 flex-1 my-4">
+<div class="flex-1 min-w-0 my-4">
   <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Searching for <span class="italic"><%= @query %></span> found <%= pluralize(@results.count, 'result') %></h2>
 </div>
 
-<% @results.each do |result| %>
-  <%= render partial: "articles/article", locals: { article: result } %>
-<% end %>
+<!-- Render cached collection of results -->
+<%= render partial: "articles/article", collection: @results, as: :article, cached: true %>
 
+<!-- Render pagy navigation -->
 <div class="text-center">
   <%== pagy_nav(@pagy) %>
 </div>

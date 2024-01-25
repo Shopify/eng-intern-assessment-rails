@@ -34,6 +34,7 @@
 - Styled using [Tailwind CSS](https://tailwindcss.com/)
 - Pagination via [Pagy](https://github.com/ddnexus/pagy)
 - Generate seed data randomly with [Faker](https://github.com/faker-ruby/faker)
+- [Collection caching](https://guides.rubyonrails.org/caching_with_rails.html#collection-caching) used in `render` methods for `articles` and `results` collections
 - Added [`better_errors` gem](https://github.com/BetterErrors/better_errors) and [`binding_of_caller` gem](https://github.com/banister/binding_of_caller) to improve debugging in `development` environment
 - Comprehensive test suite
 

@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "articles#index"
 
-  # Search results for a given query
+  # Creates single resource for search#index
   get 'search/index', to: 'search#index'
 
-  # All routes for Article scaffold
+  # Creates all common routes for articles controller
   resources :articles
 end
