@@ -1,17 +1,14 @@
 <h1 style="text-align: center;">Encyclopedia</h1>
 
-# Search bar
 <%= form_tag articles_path, method: :get, style: "text-align: center; margin-bottom: 20px;" do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search titles, content, or author", style: "margin-right: 10px; width: 300px;" %>
   <%= submit_tag "Search", name: nil, style: "padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px;" %>
 <% end %>
 
-# Create new article button
 <p style="text-align: center; margin-bottom: 20px;">
   <%= link_to 'Create New Article', new_article_path, style: 'padding: 10px 15px; text-decoration: none; background-color: #28a745; color: white; border-radius: 5px;' %>
 </p>
 
-# Table of articles
 <table style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
 <thead>
   <tr>
