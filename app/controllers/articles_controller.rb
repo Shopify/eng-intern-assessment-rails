@@ -103,6 +103,22 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def search_by_content
+    # Find articles using query and search method
+    begin
+      @articles = Article.search(params[:query])
+      render json: {
+        status: "success",
+        message: "Articles found",
+        data: { article: @articles}
+      }, status: :ok
+
+    # return standard 500 error message if error occurs
+    rescue StandardError => e
+      return_standard_error(e)
+    end
+  end
+
   # param filtering stops danger from blind passing params to crud methods
   private
   def article_params
