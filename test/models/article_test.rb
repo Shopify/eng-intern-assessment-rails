@@ -73,4 +73,10 @@ class ArticleTest < ActiveSupport::TestCase
     assert article1 == article1
     assert article2 == article2
   end
+
+  test 'Articles properly linked to an id' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    result = Article.find_by_id(article1.id)
+    assert article1 == result
+  end
 end
