@@ -4,10 +4,11 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     if params[:search]
-      @articles = Article.where("content LIKE ?", "%#{params[:search]}%")
+      @articles = Article.search(params[:search])
     else
       @articles = Article.all
     end
+    @article_count = Article.count
   end
 
   # GET /articles/1 or /articles/1.json
@@ -53,7 +54,7 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
-    @article.destroy!
+    @article.destroy
 
     respond_to do |format|
       format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
