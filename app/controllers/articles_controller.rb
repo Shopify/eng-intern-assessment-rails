@@ -20,16 +20,19 @@ class ArticlesController < ApplicationController
   end
 
   # GET /count
+  # returns a count of all the articles
   def count
     @count = Article.count
   end
 
   # GET /authors
+    # this returns a page listing the authors with links to view all the articles they authored
   def authors
     @authors = Article.all_authors
   end
 
   # GET /articles/author/
+  # allows the user to view all articles by a single author
   def by_author
     @articles = Article.where(author: params[:author])
   end  

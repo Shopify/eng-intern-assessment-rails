@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # ensure we have a clean slate for the test by deleting all Articles
   setup do
     Article.delete_all
   end
@@ -69,7 +70,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
-
+# ensure only the correct authors show up
   test 'displays correct article by author' do
     article1 = Article.create(title: '10 Tip for a Successful food fight', content: 'Throw the food', author: 'Keifer D Wiseman')
     article2 = Article.create(title: 'DIY pumpkin spice latte', content: '1.Coffee 2.Pumpkin 3.Spice', author: 'Keifer D Wiseman')
@@ -81,7 +82,8 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not_includes results, article3
   end
 
-    test 'displays distinct authors' do
+# ensure the authors all show up
+  test 'displays distinct authors' do
     article1 = Article.create(title: '10 Tip for a Successful food fight', content: 'Throw the food', author: 'Keifer D Wiseman')
     article2 = Article.create(title: 'DIY pumpkin spice latte', content: '1.Coffee 2.Pumpkin 3.Spice', author: 'Xing Bake')
     article3 = Article.create(title: 'How to make the best drink', content: '1.Tea 2.Earl Grey 3.Hot', author: 'Jean-Luc Picard')
