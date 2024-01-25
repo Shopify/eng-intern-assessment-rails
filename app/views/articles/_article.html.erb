@@ -8,7 +8,6 @@
       <div class="link-button-container">
         <%= link_to 'Edit', edit_article_path(article), data: { turbo_frame: dom_id(article) } %>
       </div>
-
       <div class="link-button-container">
         <%= link_to 'Delete', article, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this article?' } %>
       </div>

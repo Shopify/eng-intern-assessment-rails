@@ -5,6 +5,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     @article = Article.create(title: 'Initial Title', content: 'Initial content', author: 'Initial Author', date: Date.today)
   end
 
+  # Index Tests
   test "should get index" do
     get articles_url
     assert_response :success
@@ -15,11 +16,23 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get index with empty search" do
+    get articles_url, params: { search: '' }
+    assert_response :success
+  end
+
   test "should clear search" do
     get articles_url, params: { clear_search: true }
     assert_response :success
   end
 
+  # New Action Test
+  test "should get new" do
+    get new_article_url
+    assert_response :success
+  end  
+
+  # Create Action Tests
   test "should create article" do
     assert_difference('Article.count', 1) do
       post articles_url, params: { article: { title: 'New Article', content: 'New content', author: 'New Author', date: Date.today } }
@@ -29,11 +42,24 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
   test "should not create article with invalid params" do
     assert_no_difference('Article.count') do
-      post articles_url, params: { article: { content: 'Invalid content' } } 
+      post articles_url, params: { article: { content: 'Invalid content' } }
     end
     assert_response :unprocessable_entity
   end
 
+  # Show Action Test
+  test "should show article" do
+    get article_url(@article)
+    assert_response :success
+  end
+
+  # Edit Action Test
+  test "should get edit" do
+    get edit_article_url(@article)
+    assert_response :success
+  end
+
+  # Update Action Tests
   test "should update article" do
     patch article_url(@article), params: { article: { title: 'Updated Title' } }
     assert_redirected_to articles_url
@@ -46,20 +72,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
   end
 
+  # Destroy Action Test
   test "should destroy article" do
     assert_difference('Article.count', -1) do
       delete article_url(@article)
     end
     assert_redirected_to articles_url
-  end
-
-  test "should get edit" do
-    get edit_article_url(@article)
-    assert_response :success
-  end
-
-  test "should get show" do
-    get article_url(@article)
-    assert_response :success
   end
 end

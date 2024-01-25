@@ -1,3 +1,4 @@
+/* Base styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -6,6 +7,16 @@ body {
   padding: 0;
 }
 
+a {
+  color: #006400;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Headings */
 h1 {
   background-color: #333;
   color: #fff;
@@ -14,11 +25,11 @@ h1 {
   margin-top: 0;
 }
 
+/* Table styles */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   background-color: #fff;
 }
 
@@ -39,12 +50,29 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
+/* Form styles */
 form {
-  margin-bottom: 20px;
-  padding: 10px 20px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  width: 95%;
+  margin: 5px 0;
+}
+
+#search-form {
+  margin-top: 20px;
+}
+
+.edit-form,
+.edit-container {
+  max-width: 400px;
+  margin: auto;
+  box-shadow: none;
 }
 
 input[type="text"],
@@ -68,73 +96,46 @@ select {
   max-width: 110px;
 }
 
-#search-form {
-  margin-top: 20px;
-}
-
-.input-container {
-  margin: 5px 0;
-  width: 95%;
-}
-
-.edit-form {
-  max-width: 370px;
-  margin: auto;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-}
-
-.edit-container {
-  max-width: 400px;
-}
-
-input[type="submit"] {
-  background-color: #006400;
+/* Button styles */
+input[type="submit"],
+.search-btn,
+.clear-btn {
   color: #fff;
   border: none;
   padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+input[type="submit"] {
+  background-color: #006400;
 }
 
 input[type="submit"]:hover {
   background-color: #004d00;
 }
 
-a {
-  color: #006400;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
 .search-btn,
 .clear-btn {
   background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
   margin-left: 5px;
 }
 
-.link-button-container {
-  cursor: pointer;
-  margin-right: 5px;
-  max-width: 50px;
-  display: inline-block;
+.search-btn:hover,
+.clear-btn:hover {
+  opacity: 0.9;
 }
 
 .clear-btn {
   background-color: #6c757d;
 }
 
-.search-btn:hover,
-.clear-btn:hover,
-.cancel-button {
-  opacity: 0.9;
+/* Additional styles */
+.link-button-container {
+  cursor: pointer;
+  margin-right: 5px;
+  max-width: 50px;
+  display: inline-block;
 }
 
 #new-article-toggle {
