@@ -1,23 +1,29 @@
+<%# Form for creating or updating an article. %>
 <%= form_with(model: article, local: true, html: { class: 'article-form' }) do |form| %>
+    <%# Article title input. %>
     <div class="form-group">
       <%= form.label :title, class: 'form-label' %>
       <%= form.text_field :title, class: 'form-input' %>
     </div>
-  
+    
+    <%# Article content input. %>
     <div class="form-group">
       <%= form.label :content, class: 'form-label' %>
       <%= form.text_area :content, class: 'form-input' %>
     </div>
-  
+    
+    <%# Article author input. %>
     <div class="form-group">
       <%= form.label :author, class: 'form-label' %>
       <%= form.text_field :author, class: 'form-input' %>
     </div>
-  
+    
+    <%# Article date input. %>
     <div class="form-group">
       <%= form.label :date, class: 'form-label' %>
       <%= form.date_select :date, {}, class: 'form-input' %>
     </div>
-  
+    
+    <%# Submit button for the form %>
     <%= form.submit %>
   <% end %>

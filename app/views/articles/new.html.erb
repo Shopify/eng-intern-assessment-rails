@@ -2,8 +2,10 @@
 
     <h1>New Article</h1>
 
+    <%# Displays the shared form for creating articles. %>
     <%= render 'form', article: @article %>
-
+    
+    <%# Link to go back to the Articles page. %>
     <div class="article-actions">
         <%= link_to 'Back', articles_path %>
     </div>
