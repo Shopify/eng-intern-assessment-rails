@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# Commented out to fulfill test `starts with no articles` in models/article_test.rb
+
+# one:
+#   title: MyString
+#   content: MyString
+#   author: MyString
+#   date: 2024-01-25
+
+# two:
+#   title: MyString
+#   content: MyString
+#   author: MyString
+#   date: 2024-01-25
