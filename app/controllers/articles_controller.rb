@@ -29,6 +29,11 @@ class ArticlesController < ApplicationController
     @authors = Article.all_authors
   end
 
+  # GET /articles/author/
+  def by_author
+    @articles = Article.where(author: params[:author])
+  end  
+
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
