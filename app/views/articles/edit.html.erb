@@ -17,7 +17,7 @@
 
     <%= form.label :date %>
     <div class="input-container">
-      <%= form.date_select :date, { include_blank: true }, id: 'edit_article_date' %>
+      <%= form.date_select :date, { include_blank: true, start_year: 1900, end_year: Time.now.year + 5 }, id: 'article_date' %>
     </div>
   
     <div class="link-button-container">
