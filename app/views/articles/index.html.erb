@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Encyclopedia</h1>
+
+<%# Search Bar %>
+<%= form_tag(articles_path, method: :get) do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Articles" %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+
+<%# Displays Articles %>
+<div id="articles">
+  <% @articles.each do |article| %>
+    <%= render article %>
+    <p>
+      <%= link_to "Show this article", article %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New article", new_article_path %>
