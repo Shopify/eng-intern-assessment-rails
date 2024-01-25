@@ -1,0 +1,44 @@
+<div style="text-align: center;">
+  <h1>New Article</h1>
+
+  <% if @article.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+    <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <%= form_with(model: @article, url: articles_path, local: true, html: { style: 'display: inline-block; text-align: left; max-width: 500px;' }) do |form| %>
+    <div class="field" style="margin-bottom: 15px;">
+      <%= form.label :title, style: 'display: block; margin-bottom: 5px;' %>
+      <%= form.text_field :title, style: 'width: 100%;' %>
+    </div>
+
+    <div class="field" style="margin-bottom: 15px;">
+      <%= form.label :content, style: 'display: block; margin-bottom: 5px;' %>
+      <%= form.text_area :content, style: 'width: 100%;' %>
+    </div>
+
+    <div class="field" style="margin-bottom: 15px;">
+      <%= form.label :author, style: 'display: block; margin-bottom: 5px;' %>
+      <%= form.text_field :author, style: 'width: 100%;' %>
+    </div>
+
+    <div class="field" style="margin-bottom: 15px;">
+      <%= form.label :date, style: 'display: block; margin-bottom: 5px;' %>
+      <%= form.date_field :date, style: 'width: 100%;' %>
+    </div>
+
+    <div class="actions" style="margin-top: 20px;">
+      <%= form.submit 'Create Article', style: 'width: 100%; padding: 10px 0; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;' %>
+    </div>
+  <% end %>
+
+  <p style="margin-top: 20px;">
+    <%= link_to 'Back to Articles', articles_path, style: 'padding: 10px 15px; text-decoration: none; background-color: #6c757d; color: white; border-radius: 5px;' %>
+  </p>
+</div>
