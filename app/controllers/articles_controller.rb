@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  
+
   def index
     @articles = Article.search(params[:search])
   end
@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  # instantiate new article 
+  # instantiate new article
   def new
     @article = Article.new
   end
@@ -21,13 +21,13 @@ class ArticlesController < ApplicationController
     # if save is successful redirect to the article's page
     if @article.save
       redirect_to @article
-    else 
+    else
       render :new, status: :unprocessable_entity
     end
-  end 
+  end
 
   # fetch article from the database
-  def edit 
+  def edit
     @article = Article.find(params[:id])
   end
 
@@ -37,10 +37,10 @@ class ArticlesController < ApplicationController
 
     if @article.update(article_params)
       redirect_to @article
-    else 
+    else
       render :edit, status: :unprocessable_entity
     end
-  end 
+  end
 
   def destroy
     @article = Article.find(params[:id])
@@ -49,9 +49,8 @@ class ArticlesController < ApplicationController
     redirect_to root_path
   end
 
-  private 
-    def article_params 
+  private
+    def article_params
       params.require(:article).permit(:title, :author, :content, :date, :search)
     end
-
 end

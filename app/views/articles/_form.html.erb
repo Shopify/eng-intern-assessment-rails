@@ -10,7 +10,7 @@
 
 	<div>
 		<%= form.label :author %><br>
-		<%= form.text_area :author %>
+		<%= form.text_field :author %>
 		<% article.errors.full_messages_for(:author).each do |message| %>
 		
 		<div><%= message %></div>
@@ -19,7 +19,7 @@
 
 	<div>
 		<%= form.label :date %><br>
-		<%= form.text_area :date %>
+		<%= form.date_field :date %>
 	</div>
 
 	<div>
