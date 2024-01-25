@@ -25,13 +25,13 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       post articles_path, params: { article: { title: 'New Article', content: 'newly created article' } }
     end
   
-    assert_redirected_to article_path(@test_article)
+    assert_redirected_to article_path(Article.last)
   end
 
   test "successfully updates existing article" do
     patch article_path(@test_article), params: { article: { title: 'Edited Article', content: 'edited' } }, xhr: true
   
-    assert @test_article.last.title == 'Edited Article'
+    assert Article.last.title == 'Edited Article'
     assert_redirected_to article_path(@test_article)
   end
 
