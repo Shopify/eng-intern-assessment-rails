@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
       redirect_to @article, notice:"Article created successfully!"
     else
       flash.now[:alert] = "Error creating article: " + @article.errors.full_messages.to_sentence
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
       redirect_to @article, notice:"Article updated successfully!"
     else
       flash.now[:alert] = "Error updating article: " + @article.errors.full_messages.to_sentence
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
