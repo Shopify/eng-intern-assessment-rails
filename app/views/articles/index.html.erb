@@ -1,0 +1,22 @@
+<h1>Encyclopedia</h1>
+
+<%= form_with url: "/search", method: :get do |form| %>
+  <%= form.label :search, "Search for:" %>
+  <%= form.text_field :search %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<p><%= link_to "Create New Article", new_article_path %></p>
+
+<h2>Articles</h2>
+<% @articles.each do |article| %>
+  <p>
+    Title: <%= link_to article.title, article %> |
+    Created by: <%= article.author %> |
+    Last updated at: <%= article.date %> | 
+    <%= link_to "Delete", 
+        article_path(article), 
+        data: {turbo_method: :delete, turbo_confirm: "Woudld you like to delete this article?"} %> 
+  </p>
+
+<% end %>
