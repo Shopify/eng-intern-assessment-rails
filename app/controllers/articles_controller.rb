@@ -43,8 +43,8 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    query_string = params[:query]
-    @articles = Article.where("title LIKE ? or content LIKE ?", query_string, query_string)
+    search = params[:search]
+    @articles = Article.search(search)
   end
 
   private

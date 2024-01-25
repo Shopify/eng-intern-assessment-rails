@@ -65,4 +65,8 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # add test if deleted articles dont show up on searhc
+  # add test for each type of search query
+  # 
 end

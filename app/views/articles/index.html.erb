@@ -1,8 +1,8 @@
 <h1>Encyclopedia</h1>
 
 <%= form_with url: "/search", method: :get do |form| %>
-  <%= form.label :query, "Search for:" %>
-  <%= form.text_field :query %>
+  <%= form.label :search, "Search for:" %>
+  <%= form.text_field :search %>
   <%= form.submit "Search" %>
 <% end %>
 
