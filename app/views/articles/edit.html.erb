@@ -1,6 +1,7 @@
 <div style="text-align: center;">
   <h1>Edit Article</h1>
 
+  # Displays error messages from the mode. The only error implemented is invalid date (date in the future).
   <% if @article.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -12,6 +13,7 @@
   </div>
 <% end %>
 
+  # Form to edit an article. The form is styled with inline CSS.
   <%= form_with(model: @article, url: article_path(@article), method: :patch, html: { style: 'display: inline-block; text-align: left; max-width: 500px;' }) do |form| %>
     <div class="field" style="margin-bottom: 15px;">
       <%= form.label :title, style: 'display: block; margin-bottom: 5px;' %>
@@ -33,11 +35,13 @@
       <%= form.date_field :date, style: 'width: 100%;' %>
     </div>
 
+    # Submit button
     <div class="actions" style="margin-bottom: 20px;">
       <%= form.submit 'Update Article', style: 'width: 100%; padding: 10px 0; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;' %>
     </div>
   <% end %>
 
+  # Back button
   <p>
     <%= link_to 'Back', articles_path, style: 'padding: 10px 15px; text-decoration: none; background-color: #007bff; color: white; border-radius: 5px;' %>
   </p>

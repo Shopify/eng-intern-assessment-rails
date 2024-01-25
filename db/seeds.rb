@@ -1,7 +1,7 @@
 # Clear existing data
 Article.delete_all
 
-# Add new dummy data related to basketball
+# Dummy data
 Article.create!(
   title: 'Michael Jordan: The Greatest of All Time',
   content: 'A look into Michael Jordan\'s legendary career and impact on basketball.',

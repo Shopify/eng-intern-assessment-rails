@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     # GET /articles
-    # This action will show all articles or search for articles if search parameters are given.
+    # This action will show a list of all articles, applying any sorting filters or search terms if necessary.
     def index
       sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
       @articles = Article.all
@@ -69,6 +69,7 @@ class ArticlesController < ApplicationController
         params.require(:article).permit(:title, :content, :author, :date)
       end
 
+      # Helper method to generate the appropriate sorting link for a given column
       def sort(column)
         direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
         sort_link(column, column, direction: direction)
