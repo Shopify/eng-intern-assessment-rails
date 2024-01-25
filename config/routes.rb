@@ -7,17 +7,13 @@ Rails.application.routes.draw do
 
   root 'articles#menu'
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "posts#index"
 
   resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
-  resources :articles do
-    collection do
-      get 'search'
-    end
-  end
 
- 
+  get '/articles/search', to: 'articles#search', as: 'search_articles'
+
 
 
 end

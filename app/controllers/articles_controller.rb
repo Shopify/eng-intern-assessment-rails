@@ -49,6 +49,12 @@ class ArticlesController < ApplicationController
     redirect_to articles_path, notice: 'Article was successfully deleted.'
   end
 
+  def search
+    @search_term = params[:search_term]
+    @articles = Article.search(@search_term)
+    render 'search'
+  end
+
 
   def article_params
     params.require(:article).permit(:title, :author, :content, :date)

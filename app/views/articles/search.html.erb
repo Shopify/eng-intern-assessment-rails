@@ -1,26 +1,20 @@
 <!-- app/views/articles/search.html.erb -->
-<div class="article-search">
-  <h2>Search Articles</h2>
 
-  <%= form_tag(search_articles_path, method: :get) do %>
-    <div class="form-group">
-      <%= label_tag :query, 'Search Query' %>
-      <%= text_field_tag :query, params[:query], class: 'form-control' %>
+<h1>Search Results</h1>
+
+<%= form_tag(search_articles_path, method: :get) do %>
+  <label for="search_term">Search Articles:</label>
+  <%= text_field_tag :search_term, @search_term, placeholder: 'Enter search term' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<% if @articles.present? %>
+  <% @articles.each do |article| %>
+    <div>
+      <h3><%= link_to article.title, article_path(article) %></h3>
+      <p><%= article.content %></p>
     </div>
-
-    <%= submit_tag 'Search', class: 'btn btn-primary' %>
   <% end %>
-
-  <% if @articles.present? %>
-    <h3>Search Results:</h3>
-    <ul>
-      <% @articles.each do |article| %>
-        <li><%= link_to article.title, article_path(article) %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No articles found.</p>
-  <% end %>
-
-  <%= link_to 'Back to Menu', articles_path %>
-</div>
+<% else %>
+  <p>No articles found for "<%= @search_term %>"</p>
+<% end %>

@@ -4,12 +4,5 @@ class Article < ApplicationRecord
   validates :author, presence: false
   validates :date, presence: false
 
-  def self.search(query)
-    if query.present?
-      where('title LIKE ? OR content LIKE ?', "%#{query}%", "%#{query}%")
-    else
-      all
-    end
-  end
 
 end
