@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.date = Date.today
 
     if @article.save
       redirect_to @article
@@ -42,13 +43,13 @@ class ArticlesController < ApplicationController
 
     @article.destroy
 
-    redirect_to :article_path, status: :see_other
+    redirect_to root_path, status: :see_other
 
   end
 
 
   private
     def article_params
-      params.require(:article).permit(:title, :content, :author, :date)
+      params.require(:article).permit(:title, :content, :author)
     end
 end

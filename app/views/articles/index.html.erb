@@ -3,8 +3,15 @@
 
 <h1>All Articles:</h1>
 <ul style="list-style-type:none;">
+
+
+<%if @articles.any? %>
 <%@articles.each do |article|%>
     <li> <%= link_to article.title, article%> </li>
 <%end%>
+<% else %>
+<p>There are no articles posted yet. Post one today!</p>
+<%end%>
+
 <ul>
 
