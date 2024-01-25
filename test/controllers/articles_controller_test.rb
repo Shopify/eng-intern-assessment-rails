@@ -100,5 +100,105 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     # Add specific assertions to check for the presence of a message indicating no results were found
   end
+
+  test 'date cannot be in the future' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.tomorrow)
+    assert_not article.valid?
+  end
+
+  test 'date can be today' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today)
+    assert article.valid?
+  end
+
+  test 'date can be in the past' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.yesterday)
+    assert article.valid?
+  end
+
+  test 'date can be blank' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: nil)
+    assert article.valid?
+  end
+
+  test 'author can be blank' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: nil)
+    assert article.valid?
+  end
+
+  test 'author can be present' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+    assert article.valid?
+  end
+
+  test 'title cannot be blank' do
+    article = Article.create(title: nil, content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+  end
+
+  test 'content cannot be blank' do
+    article = Article.create(title: 'Sample Article', content: nil)
+    assert_not article.valid?
+  end
+
+  test 'sorts articles by date' do
+    # Arrange: Create a few articles with different dates
+    oldest_article = Article.create!(title: 'Oldest', content: 'Content', author: 'Author', date: 3.days.ago)
+    newest_article = Article.create!(title: 'Newest', content: 'Content', author: 'Author', date: 1.day.ago)
+    middle_article = Article.create!(title: 'Middle', content: 'Content', author: 'Author', date: 2.days.ago)
+
+    # Act: Make a request to index with sorting by date in ascending order
+    get articles_path(sort: 'date', direction: 'asc')
+
+    # Assert: Check if articles are sorted by date in ascending order
+    assert_response :success
+    sorted_articles = assigns(:articles)
+    assert_equal [@basketball_article, oldest_article, middle_article, newest_article], sorted_articles
+  end
+
+  test 'sorts articles by author' do
+    # Arrange: Create a few articles with different authors
+    article1 = Article.create!(title: 'Article 1', content: 'Content', author: 'Author 1', date: 1.day.ago)
+    article2 = Article.create!(title: 'Article 2', content: 'Content', author: 'Author 2', date: 2.days.ago)
+    article3 = Article.create!(title: 'Article 3', content: 'Content', author: 'Author 3', date: 3.days.ago)
+
+    # Act: Make a request to index with sorting by author in ascending order
+    get articles_path(sort: 'author', direction: 'asc')
+
+    # Assert: Check if articles are sorted by author in ascending order
+    assert_response :success
+    sorted_articles = assigns(:articles)
+    assert_equal [article1, article2, article3, @basketball_article], sorted_articles
+  end
+
+  test 'sorts articles by title' do
+    # Arrange: Create a few articles with different titles
+    article1 = Article.create!(title: 'Article 1', content: 'Content', author: 'Author', date: 1.day.ago)
+    article2 = Article.create!(title: 'Article 2', content: 'Content', author: 'Author', date: 2.days.ago)
+    article3 = Article.create!(title: 'Article 3', content: 'Content', author: 'Author', date: 3.days.ago)
+
+    # Act: Make a request to index with sorting by title in ascending order
+    get articles_path(sort: 'title', direction: 'asc')
+
+    # Assert: Check if articles are sorted by title in ascending order
+    assert_response :success
+    sorted_articles = assigns(:articles)
+    assert_equal [article1, article2, article3, @basketball_article], sorted_articles
+  end
+
+  test 'sorts articles by content' do
+    # Arrange: Create a few articles with different content
+    article1 = Article.create!(title: 'Article 1', content: 'Content 1', author: 'Author', date: 1.day.ago)
+    article2 = Article.create!(title: 'Article 2', content: 'Content 2', author: 'Author', date: 2.days.ago)
+    article3 = Article.create!(title: 'Article 3', content: 'Content 3', author: 'Author', date: 3.days.ago)
+
+    # Act: Make a request to index with sorting by content in ascending order
+    get articles_path(sort: 'content', direction: 'asc')
+
+    # Assert: Check if articles are sorted by content in ascending order
+    assert_response :success
+    sorted_articles = assigns(:articles)
+    assert_equal [article1, article2, article3, @basketball_article], sorted_articles
+  end
 end
 

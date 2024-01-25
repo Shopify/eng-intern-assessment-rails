@@ -2,12 +2,12 @@ class ArticlesController < ApplicationController
     # GET /articles
     # This action will show all articles or search for articles if search parameters are given.
     def index
-      if params[:search]
-        @articles = Article.search(params[:search])
-      else
-        @articles = Article.all
-      end
+      sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+      @articles = Article.all
+      @articles = @articles.order("#{params[:sort]} #{sort_direction}") if params[:sort].present?
+      @articles = @articles.search(params[:search]) if params[:search]
     end
+      
   
     # GET /articles/:id
     # This action will show a single article. If the article is not found, it will redirect to the articles index.
@@ -67,6 +67,11 @@ class ArticlesController < ApplicationController
       # Only allow a list of trusted parameters through.
       def article_params
         params.require(:article).permit(:title, :content, :author, :date)
+      end
+
+      def sort(column)
+        direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+        sort_link(column, column, direction: direction)
       end
   end
   
