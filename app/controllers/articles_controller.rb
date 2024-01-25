@@ -11,11 +11,13 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/new
+  #make a new article
   def new
     @article = Article.new
   end
 
   # GET /articles/1/edit
+  # edit an article
   def edit
   end
 
@@ -30,7 +32,7 @@ class ArticlesController < ApplicationController
   def authors
     @authors = Article.all_authors
   end
-  # Page to search for articles
+  # controller for Page to search for articles 
   def search
     @query = params[:query]
     @articles = Article.search(@query)
