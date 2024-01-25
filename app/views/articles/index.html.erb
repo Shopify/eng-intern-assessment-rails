@@ -1,0 +1,28 @@
+<div class="articles-index">
+    <h1>Articles</h1>
+
+    <%# Search bar for finding articles by user input %>
+    <%= form_with(url: articles_path, method: "get") do %>
+        <%= text_field_tag :query, params[:query] %>
+        <%= submit_tag "Search" %>
+    <% end %>
+
+    <%# Link to create a new article. %>
+    <div class="new-article-link">
+        <%= link_to 'Create New Article', new_article_path %>
+    </div>
+
+    <%# List of all articles. %>
+    <ul class="articles-list">
+        <% @articles.each do |article| %>
+        <li>
+            <%= link_to article.title, article_path(article) %>
+            <%= button_to 'Edit', edit_article_path(article), method: :get, form_class: "inline-form", class: "inline-button" %>
+            
+            <%= form_with url: article_path(article), method: :delete, local: true, class: "inline-form" do %>
+            <%= submit_tag 'Delete', class: "inline-button" %>
+            <% end %>
+        </li>
+        <% end %>
+    </ul>
+</div>

@@ -1,0 +1,20 @@
+<h1><%= @article.title %></h1>
+
+<p>
+  <strong>Date:</strong>
+  <%= @article.date %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @article.author %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @article.content %>
+</p>
+
+<%# Link to edit the present article or go back to the Articles page.%>
+<%= link_to 'Edit', edit_article_path(@article) %>
+<%= link_to 'Back to Articles', articles_path %>

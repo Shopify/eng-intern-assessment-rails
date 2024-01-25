@@ -1,0 +1,12 @@
+<div class="article-container">
+    <h1>Editing Article</h1>
+
+    <%# Generates form componenet for editing article.%>
+    <%= render 'form', article: @article %>
+
+    <%# Action links for viewing the current article and returning to article list.%>
+    <div class="article-actions">
+        <%= link_to 'View', @article %> 
+        <%= link_to 'Back', articles_path %>
+    </div>
+</div>
