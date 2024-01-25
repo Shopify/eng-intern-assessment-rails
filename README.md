@@ -3,18 +3,24 @@
 [Troubleshooting tips](https://github.com/neemasadry/eng-intern-assessment-rails#troubleshooting-rotating_light) and [screenshots](https://github.com/neemasadry/eng-intern-assessment-rails#screenshots-camera_flash) are provided further down the README.
 
 ## Setup :gear:
+
+> [!IMPORTANT]
+> Note: This Bash script was developed and tested on macOS only and checks for the presence of the `brew` command.
+
 1) Clone the repo from GitHub on to your local machine
 2) Setup the project's dependencies by running the following command from the project's *root* directory:
+   
    ```bash
    bin/setup
    ```
+
    Outlined below are all the tasks the should happen ***in order***: 
     1) Installs the following: 
        1) All gems listed in `Gemfile`
        2) The `foreman` gem ***globally***
        3) `Yarn` package manager (via `npm`)
        4) Packages listed in `package.json`
-    5) Compiles (i.e., `build`) CSS & JS files
+    5) Compiles (`build`) CSS & JS files
     6) Runs the following commands:
        1) [`rails db:prepare`](https://edgeguides.rubyonrails.org/active_record_migrations.html#preparing-the-database)
        2) `rails log:clear` - Truncates all/specified *.log files in log/ to zero bytes
@@ -25,28 +31,33 @@
    bin/dev
    ```
    This will use [`foreman` (see *Introducing Foreman* blog post)](http://blog.daviddollar.org/2011/05/06/introducing-foreman.html) to run and manage all the processes listed in `Procfile.dev`.
-4) Optionally, you can run the following command to run ***all*** tests:
+4) Optionally, you can run the following command to run ***all*** tests after stopping the server:
    ```bash
    rails test
    ```
+
+<br>
 
 ## Features :star2:
 - Styled using [Tailwind CSS](https://tailwindcss.com/)
 - Pagination via [Pagy](https://github.com/ddnexus/pagy)
 - Generate seed data randomly with [Faker](https://github.com/faker-ruby/faker)
-- [Collection caching](https://guides.rubyonrails.org/caching_with_rails.html#collection-caching) used in `render` methods for `articles` and `results` collections
+- [Collection caching](https://guides.rubyonrails.org/caching_with_rails.html#collection-caching) used to boost performance
 - Added [`better_errors` gem](https://github.com/BetterErrors/better_errors) and [`binding_of_caller` gem](https://github.com/banister/binding_of_caller) to improve debugging in `development` environment
 - Comprehensive test suite
 
+<br>
+
 ## Troubleshooting :rotating_light:
 
-Tips on troubleshooting the application, espeically if Tailwind CSS isn't working.
+Tips on troubleshooting the application are provided below, especially if Tailwind CSS isn't working.
+
+> [!WARNING]
+> `bin/dev` starts all processes listed in `Procfile.dev`. Tailwind CSS may not work, especially if it hasn't undergone the `build` process yet.
 
 1) **Start the project using `bin/dev` (i.e., *not* `rails s`)**
-> [!CAUTION]
-> `bin/dev` starts processes for listed in `Procfile.dev`. Tailwind CSS will ***not*** work, especially if it hasn't undergone compilation (i.e., `build`) yet.
-2) Run `bin/setup` especially if you are running `macOS`, use [Homebrew](https://brew.sh/), and [`asdf` version manager](https://asdf-vm.com/)
-3) Check that your `ruby`, `yarn`, `node`, and `npm` versions match with the versions listed in:
+2) Run `bin/setup`, especially if you are running `macOS` and use [Homebrew](https://brew.sh/).
+3) Check that your `ruby`, `yarn`, `node`, and `npm` versions match against the versions listed in:
    - `.ruby-version` and `.tool-versions` files
    - `package.json` file under `engines: {...}`   
 4) Ensure all `gems` in `Gemfile` and `node_modules` in `package.json` are installed by running:
@@ -54,25 +65,22 @@ Tips on troubleshooting the application, espeically if Tailwind CSS isn't workin
    bundle install
    yarn install
    ```
-   There is a possibility that certain `gems` in `Gemfile` and/or `packages` in `package.json` may need to be updated by running:
-   ```bash
-   bundle update
-   yarn upgrade
-   ```
 5) Check `app/assets/builds` to see if it contains `application.css`. If this is missing, then Tailwind CSS failed the `build` process at some point.
 
 #### Last Resort
 
-If none of the suggestions listed above work, try the following alternate solution:
+If the listed suggestions above do not address the reviewer's technical issues, a workaround solution is provided as an alternative.
 
 > [!TIP]
 > [Enable Tailwind CSS via the **Play CDN**](https://tailwindcss.com/docs/installation/play-cdn) in the Rails app by uncommenting the designated line found in **`application.html.erb`** under `app/views/layouts/`. The `pagy` navigation may not render correctly, but the rest of the app should!
 
-## Learning Experiences :open_book: and Technical Challenges :man_technologist:
+<br>
+
+## Learning Experiences and Technical Challenges :man_technologist:
 
 Outlined below are key insights into my learning experiences, technical challenges, and the strategies I used to overcome them:
 
-### Tailwind CSS is great but not necessary :thinking:
+### Tailwind CSS is great but not necessary
   I would only consider adding Tailwind CSS if I was able to:
   1) Provide the reviewer with a simple fallback solution by [using the `Play CDN`](https://tailwindcss.com/docs/installation/play-cdn).
   2) My capability to augment the existing Bash script, `bin/setup`; automate the setup process for reviewer(s) who need to install newly added project dependencies.
@@ -81,15 +89,13 @@ My decisions were driven by a genuine sense of respect and consideration for tho
 
 ### Installed Tailwind CSS via *Multiple* Methods :arrows_clockwise:
 
-1) Since the Rails app was already created for us, I was not able to add Tailwind CSS using the `--css=tailwind` flag with the `rails new` command. Therefore, I followed [the installation steps outlined for Ruby on Rails projects](https://tailwindcss.com/docs/guides/ruby-on-rails). However, I kept running into errors when trying to start my `build` process with the `bin/dev` command.
-    > *Note: The errors were somehow related to the [`foreman`](https://rubygems.org/gems/foreman) process manager itself.*
+1) Since the Rails app was already created for us, I was not able to add Tailwind CSS using the `--css=tailwind` flag with the `rails new` command. Therefore, I followed [the installation steps outlined for Ruby on Rails projects](https://tailwindcss.com/docs/guides/ruby-on-rails). However, I kept running into errors (primarily stemming from the [`foreman` gem](https://rubygems.org/gems/foreman)) when attempting to start my `build` process with the `bin/dev` command.
 2) To expedite development and save time, I opted to [add Tailwind CSS via the Play CDN](https://tailwindcss.com/docs/installation/play-cdn), which satisfied the majority of my development needs throughout this project. However, there are some caveats I considered when making this decision:
-  - As stated *just before the first step* in the documentation:
-    > The Play CDN is designed for development purposes only, and is not the best choice for production.
+   - As stated *just before the first step* in the documentation:
+      > The Play CDN is designed for development purposes only, and is not the best choice for production.
 
-    Despite not having to deploy to production, I find it beneficial to operate under the assumption that we will. After all, the ultimate goal of developing any web app, regardless of the tech stack, is to prepare it for production :wink:
-  - Technical difficulties arised when I attempted to add more robust solutions. For example, adding the [`pagy` gem](https://github.com/ddnexus/pagy) for paginating results on the `articles#index` and `search#index` views. 
-    - *Note:  It was difficult to style the pagination nav bar rendered from [the `pagy_nav` helpers](https://ddnexus.github.io/pagy/docs/extras/tailwind/#style-2).*
+      Despite not having to deploy to production, I find it beneficial to operate under the assumption that we will. After all, the ultimate goal of developing any web app, regardless of the tech stack, is to prepare it for production :wink:
+   - Technical difficulties arose when I attempted to implement more robust solutions. For example, I was unable to style the pagination nav bar rendered from the [`pagy_nav` helpers](https://ddnexus.github.io/pagy/docs/extras/tailwind/#style-2) used on the `articles#index` and `search#index` view templates. 
 
 3) Towards the end of my project, ***I remembered from past experience*** that there was ***anothe**r* way to install Tailwind CSS! After a quick search, I found my [previous solution](https://stackoverflow.com/questions/71640507/how-to-import-tailwind-plugin-in-rails-7), which utilized the [`cssbundling-rails` gem](https://github.com/rails/cssbundling-rails). Fortunately, this solution worked perfectly! :partying_face:
 
@@ -104,7 +110,7 @@ I noticed from the beginning that the project used Ruby 2.x (**not** Ruby 3.x). 
    ```
    Afterwards, I added a `.tool-versions` file to the project's root directory, and set the version to `ruby 2.7.6`. This way, I could still use `ruby 3.3.0` everywhere else on my machine :grin:
 
-### :star: Embracing *Self-Awareness* and *Honesty* to Identify Areas for Improvement :hammer_and_wrench: :star: 
+### :star: Embracing *Self-Awareness* and *Honesty* to Identify Areas for Improvement :star: 
  
  #### Saved the best and *most important* for last!
  
@@ -112,7 +118,7 @@ I noticed from the beginning that the project used Ruby 2.x (**not** Ruby 3.x). 
 
    Paradoxically, with the *best intentions*, I subjected myself to a ***self-imposed*** *time constraint*. The majority of my tests were written *after* completing significant sections unique to my project — essentially, *following* the fulfillment of all the default project tests we were required to satisfy.
    
-   Additionally, I am optimistic and confident abilities to swiftly integrate TDD principles into my development workflow considering the notable progress I achieved during [my previous internship experience at InfluxData](https://www.influxdata.com/blog/meet-influxdata-summer-2022-interns/#heading4). Furthermore, I would welcome the opportunity to discuss these experiences in greater detail during subsequent interviews!
+   With that said, I am optimistic and confident in my ability to seamlessly integrate TDD principles into my development workflow, given the significant progress I achieved during [my previous internship experience at InfluxData](https://www.influxdata.com/blog/meet-influxdata-summer-2022-interns/#heading4). Furthermore, I would welcome the opportunity to discuss these experiences in greater detail during my technical interviews!
 
 > [!IMPORTANT]
 > **I am *eager to optimize and refine every facet* of my existing development workflow** through my role as a Backend Engineering Intern at Shopify. One of my primary objectives is to foster strong engineering habits and practices, particularly by integrating Test-Driven Development (TDD) and/or Behavior-Driven Development (BDD).
