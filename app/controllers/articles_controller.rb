@@ -63,6 +63,46 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    # find article by id in params, then destroy and return success if ok
+    begin
+      @article = Article.find(params[:id])
+      @article.destroy
+      render json: {
+        status: "success",
+        message: "Article successfully deleted"
+      }, status: :ok
+
+    # if no article with passed id return 404 message
+    rescue ActiveRecord::RecordNotFound => e
+      return_404_error(e)
+
+    # otherwise return standard 500 error
+    rescue StandardError => e
+      return_standard_error(e)
+    end
+  end
+
+  def show
+    # find article by id and return it if ok
+    begin
+      @article = Article.find(params[:id])
+      render json: {
+        status: "success",
+        message: "Article found",
+        data: { article: @article }
+      }, status: :ok
+
+    # if no article with passed id return 404 message
+    rescue ActiveRecord::RecordNotFound => e
+      return_404_error(e)
+
+    # otherwise return standard 500 error message
+    rescue StandardError => e
+      return_standard_error(e)
+    end
+  end
+
   # param filtering stops danger from blind passing params to crud methods
   private
   def article_params
