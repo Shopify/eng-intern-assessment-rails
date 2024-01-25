@@ -1,8 +1,9 @@
+# Controller for the Article model. It contains the CRUD actions for the Article model.
 class ArticlesController < ApplicationController
-  #set_article is a method that is called before the show, edit, update and destroy actions for readability and time saving purposes.
+  #Set up @article before certain actions are called for DRY purposes and efficiency.
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
-  #if there is a search parameter, the search method is called, else all articles are shown.
+  # Display all articles or filter articles by search query.
   def index
     if params[:search]
       @articles = Article.search(params[:search])
@@ -11,6 +12,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Show a specific article; redirect to index if article is not found.
   def show
     if @article.nil?
       redirect_to articles_path, notice: 'Article not found'
@@ -20,6 +22,7 @@ class ArticlesController < ApplicationController
   def edit
   end
 
+  # Update an existing article; redirect to edit if article is not updated successfully.
   def update
     if @article.update(article_params)
       redirect_to @article, notice: 'Article was successfully updated.'
@@ -32,6 +35,7 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  # Create a new article; redirect to new if article is not created successfully.
   def create
     @article = Article.new(article_params)
     if @article.save
@@ -41,6 +45,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Delete an existing article; redirect to index if article is deleted successfully.
   def destroy
     @article.destroy
     redirect_to articles_url, notice: 'Article was successfully destroyed.'
@@ -48,10 +53,12 @@ class ArticlesController < ApplicationController
 
   private
 
+  # Set @article based on the provided ID.
   def set_article
     @article = Article.find(params[:id])
   end
 
+  # Set the permitted parameters for an article.
   def article_params
     params.require(:article).permit(:title, :content)
   end
