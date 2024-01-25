@@ -1,0 +1,35 @@
+<h1 style="text-align: center;">Encyclopedia</h1>
+
+
+
+<table style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid black; padding: 8px;">Date</th>
+      <th style="border: 1px solid black; padding: 8px;">Title</th>
+      <th style="border: 1px solid black; padding: 8px;">Author</th>
+      <th style="border: 1px solid black; padding: 8px;">Content</th>
+      <th style="border: 1px solid black; padding: 8px;">Actions</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+      <td style="border: 1px solid black; padding: 8px;"><%= article.date %></td>
+      <td style="border: 1px solid black; padding: 8px;"><%= article.title %></td>
+      <td style="border: 1px solid black; padding: 8px;"><%= article.author %></td>
+      <td style="border: 1px solid black; padding: 8px;"><%= article.content %></td>
+        <td style="border: 1px solid black; padding: 8px;">
+          <%= link_to "Read more", article_path(article), style: "padding: 5px 10px; text-decoration: none; background-color: #007bff; color: white; border-radius: 5px;" %> |
+          <%= link_to "Edit", edit_article_path(article), style: "padding: 5px 10px; text-decoration: none; background-color: #28a745; color: white; border-radius: 5px;" %> |
+          <%= button_to "Delete", article_path(article), method: :delete, data: { confirm: "Are you sure?" }, form: { style: "display: inline" }, style: "padding: 5px 10px; background-color: #dc3545; color: white; border: none; border-radius: 5px;" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p style="text-align: center; margin-bottom: 20px;">
+  <%= link_to 'Create New Article', new_article_path, style: 'padding: 10px 15px; text-decoration: none; background-color: #28a745; color: white; border-radius: 5px;' %>
+</p>
