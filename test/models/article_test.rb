@@ -1,7 +1,12 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # ensure we have a clean slate for the test by deleting all Articles
+  setup do
+    Article.delete_all
+  end
   test 'starts with no articles' do
+    Article.delete_all
     assert_equal 0, Article.count
   end
 
@@ -32,7 +37,7 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'updates the article metadata' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article = Article.create(title: 'Sample Article', content: 'Lorem gypsum dolor sit amet.', author: 'John Doe', date: Date.today)
     article.update(author: 'Jane Smith', date: Date.yesterday)
     assert_equal 'Jane Smith', article.author
     assert_equal Date.yesterday, article.date
@@ -65,4 +70,29 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+# ensure only the correct authors show up
+  test 'displays correct article by author' do
+    article1 = Article.create(title: '10 Tip for a Successful food fight', content: 'Throw the food', author: 'Keifer D Wiseman')
+    article2 = Article.create(title: 'DIY pumpkin spice latte', content: '1.Coffee 2.Pumpkin 3.Spice', author: 'Keifer D Wiseman')
+    article3 = Article.create(title: 'How to make the best drink', content: '1.Tea 2.Earl Grey 3.Hot', author: 'Jean-Luc Picard')
+
+    results = Article.search_by_author('Keifer')
+    assert_includes results, article2
+    assert_includes results, article1
+    assert_not_includes results, article3
+  end
+
+# ensure the authors all show up
+  test 'displays distinct authors' do
+    article1 = Article.create(title: '10 Tip for a Successful food fight', content: 'Throw the food', author: 'Keifer D Wiseman')
+    article2 = Article.create(title: 'DIY pumpkin spice latte', content: '1.Coffee 2.Pumpkin 3.Spice', author: 'Xing Bake')
+    article3 = Article.create(title: 'How to make the best drink', content: '1.Tea 2.Earl Grey 3.Hot', author: 'Jean-Luc Picard')
+
+    results = Article.all_authors
+    assert_includes results, 'Keifer D Wiseman'
+    assert_includes results, 'Xing Bake'
+    assert_includes results, 'Jean-Luc Picard'
+  end
+
+
 end

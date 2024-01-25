@@ -1,0 +1,11 @@
+<h1>Search for an Article</h1>
+
+<%= form_with(url: search_path, method: :get) do |form| %>
+  <%= form.text_field :query, placeholder: "Enter your search query" %>
+  <%= form.submit "Search" %>
+<% end %>
+<% if @articles.present? %>
+  <%= render "shared/articles" %>
+<% else %>
+  <p>Try Searching for an article</p>
+<% end %>

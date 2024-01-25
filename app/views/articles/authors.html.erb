@@ -1,0 +1,17 @@
+<h1>Authors</h1>
+
+<% if @authors.present? %>
+  <div id="authors">
+    <% @authors.each do |author| %>
+      
+      <p>
+        <%= author %>
+      </p>
+          <p>
+      <%= link_to "Show articles", author_articles_path(author: author) %>
+    </p>
+    <% end %>
+  </div>
+<% else %>
+  <p>No found.</p>
+<% end %>
