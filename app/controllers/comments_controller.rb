@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_article
 
@@ -7,13 +9,32 @@ class CommentsController < ApplicationController
     @comment.body = comment_params[:body]
     @comment.save
 
-    redirect_to article_path(@article), notice: 'Comment added!'
+    redirect_to(article_path(@article), notice: "Comment added!")
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+    @article = Article.find(params[:article_id])
   end
 
   def destroy
-    @comment = @article.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
     @comment.destroy!
-    redirect_to article_path(@article), notice: 'Comment deleted!'
+    redirect_to(article_path(@article), notice: "Comment deleted!")
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html { redirect_to(article_url(@article), notice: "comment successfully updated!") }
+        # format.json { render(:show, status: :ok, location: @article) }
+      else
+        format.html { render(:edit, status: :unprocessable_entity) }
+        format.json { render(json: @article.errors, status: :unprocessable_entity) }
+      end
+    end
   end
 
   private
