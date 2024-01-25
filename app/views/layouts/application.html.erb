@@ -1,8 +1,9 @@
+<!-- app/views/layouts/application.html.erb -->
 <!DOCTYPE html>
 <html>
   <head>
     <title>EngInternAssessmentRails</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,5 +13,9 @@
 
   <body>
     <%= yield %>
+
+    <% if content_for?(:articles) %>
+      <%= render 'articles/index', articles: @articles %>
+    <% end %>
   </body>
 </html>
