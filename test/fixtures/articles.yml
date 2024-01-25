@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  content: MyString
-  author: MyString
-  date: 2024-01-25
+# I am removing these fixtures because they are not adding value to the test, and can make tests harder to understand and cause unintended side effects
 
-two:
-  title: MyString
-  content: MyString
-  author: MyString
-  date: 2024-01-25
+# one:
+#   title: MyString
+#   content: MyString
+#   author: MyString
+#   date: 2024-01-25
+
+# two:
+#   title: MyString
+#   content: MyString
+#   author: MyString
+#   date: 2024-01-25
