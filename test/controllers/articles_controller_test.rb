@@ -21,22 +21,20 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_no_match @article.title, @response.body
   end
 
-  test "should get new" do
-    get articles_url, params: { term: "Not found title" }
-    assert_response :success
-  end
-
   test "should create article" do
-    assert_difference("Article.count") do
-      post articles_url, params: {
-        article: {
-          title: "The rule of two",
-          content: "There can only be a Sith Master and a Sith Apprentice",
-        },
-      }
-    end
+    article_params = {
+      article: {
+        author: "Darth Bane",
+        title: "The rule of two",
+        content: "There can only be a Sith Master and a Sith Apprentice",
+      },
+    }
 
-    assert_redirected_to article_url(Article.last)
+    post articles_path, params: article_params
+
+    assert Article.exists?(title: "The rule of two", content: "There can only be a Sith Master and a Sith Apprentice")
+    assert_response :redirect
+    assert_redirected_to article_path(Article.last)
   end
 
   test "should show article" do
