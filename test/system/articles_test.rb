@@ -23,21 +23,21 @@ class ArticlesTest < ApplicationSystemTestCase
   end
 
   test "visit article#new from header link" do
-      visit root_url
-      click_on "Create new Article"
-      assert_selector "h1", text: "New article"
+    visit root_url
+    click_on "Create new Article"
+    assert_selector "h1", text: "New article"
   end
 
   test "visit article#new from Articles index" do
-      visit articles_url
-      click_on "New article"
-      assert_selector "h1", text: "New article"
+    visit articles_url
+    click_on "New article"
+    assert_selector "h1", text: "New article"
   end
 
   test "visit articles#index from header link" do
-      visit root_url
-      click_on "Articles published"
-      assert_selector "h1", text: "Articles"
+    visit root_url
+    click_on "Articles published"
+    assert_selector "h1", text: "Articles"
   end
 
   # Testing action flow (Create, Read, Update, Delete)
@@ -45,16 +45,18 @@ class ArticlesTest < ApplicationSystemTestCase
   test "should create an article and redirect to article#show" do
     visit new_article_url
     fill_in "Author", with: "Finn the Human"
-    fill_in "Content", with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
+    fill_in "Content",
+      with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
     fill_in "Title", with: "Living life"
     click_on "Create Article"
-    assert_text @article.title
+    assert_text "Finn the Human"
   end
 
   test "should create an article and display a warning banner" do
     visit new_article_url
     fill_in "Author", with: "Finn the Human"
-    fill_in "Content", with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
+    fill_in "Content",
+      with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
     fill_in "Title", with: "Living life"
     click_on "Create Article"
     assert_text "Article was successfully created."
@@ -71,7 +73,8 @@ class ArticlesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Author", with: "Jake the Dog"
-    fill_in "Content", with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
+    fill_in "Content",
+      with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
     fill_in "Title", with: "Living life"
     click_on "Update Article"
 
@@ -83,7 +86,8 @@ class ArticlesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Author", with: "Jake the Dog"
-    fill_in "Content", with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
+    fill_in "Content",
+      with: "To live life, you need problems. If you get what you want the minute you want it, then what's the point of living?"
     fill_in "Title", with: "Living life"
     click_on "Update Article"
 
@@ -105,5 +109,4 @@ class ArticlesTest < ApplicationSystemTestCase
     page.accept_alert
     assert_text "Article was successfully destroyed"
   end
-
 end
