@@ -4,7 +4,7 @@ Date : January 21st, 2024
 
 OVERVIEW
 
-This document's purpose is to outline the implementation of new files that has
+This document's purpose is to outline the implementation of new files that have
 been added since the last update. Implementations such as the article controller
 and routing changes to support article searches.
 
@@ -30,4 +30,4 @@ FUTURE IMPLEMENTATIONS
 
 1. Build the 'view' part of the MVC implementations wanted.
 2. Test the search function, delete function and creation function.
-3. Using CSS and Javascript, build the environment so that it is asthetically
+3. Using CSS and Javascript, build the environment so that it is aesthetically

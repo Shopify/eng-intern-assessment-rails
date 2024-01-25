@@ -13,3 +13,52 @@
  *= require_tree .
  *= require_self
  */
+
+/* Sets the background color along with the layout for the page*/
+body {
+    background-color : #f8f9fa;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styles the header container and spaces/aligns content*/
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Centers the main header text and allows it to grow within the flex container*/
+.Header {
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Limits the maximum width of the search bar*/
+.search-form {
+    max-width: 500px;
+    margin: 0;
+}
+
+/* Sets the width of the articles section and allows it to grow in the flex container*/
+.articles {
+    width: 100%;
+    flex-grow: 1;
+}
+
+/* Changes the background color of table rows when hovered over*/
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Styles the links in the articles */
+.article-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Adds an underline to the article link when hovered over */
+.article-link:hover {
+    text-decoration: underline;
+}

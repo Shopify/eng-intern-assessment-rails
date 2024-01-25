@@ -20,7 +20,8 @@ class Article < ApplicationRecord
     # Use of arel for a safer search method
     # First implementation idea was to use "LIKE" or "ILIKE" which was found out to not be as portable and creates problems with case sensitive searches
     # Arel solves these problems
-
+    # Returns the recent articles if the query is not present in any articles
+    return recent unless query.present?
     # Obtain Arel table from articles
     articles_table = self.arel_table
     # First condition to check if any title matches the query string
@@ -28,8 +29,11 @@ class Article < ApplicationRecord
     # Second condition to check if any content matches the query string
     content_matches = articles_table[:content].matches("%#{query}%")
 
-    # Utilize the where clause, along with the Arel conditions to search
-    where(title_matches.or(content_matches))
+    # Query for getting the articles that match the search query in the title or content
+    matching_articles = where(title_matches.or(content_matches))
+    # Order the results by relevance: first title matches, then content matches
+    matching_articles.order(Arel.sql("CASE WHEN title LIKE'%#{sanitize_sql_like(query)}%' THEN 1 WHEN content LIKE '%#{sanitize_sql_like(query)}%' THEN 2 ELSE 3 END"))
+
   end
 
   # Instance method "recent?"

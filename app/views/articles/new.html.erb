@@ -1,0 +1,7 @@
+<!-- Stylesheet link tag to include CSS -->
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<!-- header for the new article page -->
+<h1 class="Header">New Article</h1>
+<!-- Rendering a partial named 'form' -->
+<%= render 'form', article: @article %>

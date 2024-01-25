@@ -1,0 +1,43 @@
+<!-- Stylesheet link tag to include CSS -->
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<!-- Form for creating or editing an article -->
+<%= form_with model: article, local: true do |form| %>
+
+  <!-- Display errors if there are any form validation failures -->
+  <% if article.errors.any? %>
+    <div id="error_explanation">
+      <!-- Shows the number of errors -->
+      <h2><%= pluralize(article.errors.count, "error") %></h2>
+      <ul>
+        <!-- List each error message -->
+        <%= article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Field for article title -->
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :article_title %>
+  </div>
+
+  <!-- Field for article content -->
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_field :content, id: :article_title %>
+  </div>
+
+  <!-- Field for article date -->
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.text_field :date, id: :article_title %>
+  </div>
+
+  <!-- Submit button for the form -->
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

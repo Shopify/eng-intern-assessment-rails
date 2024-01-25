@@ -1,0 +1,55 @@
+Project Name : ENGINEERING INTERN ASSESSMENT RAILS
+Author : Kshithij Malebennur
+Date : January 21st, 2024
+
+OVERVIEW
+
+This document's purpose is to outline the implementation of new files that have
+been added since the last update. Implementations such as the view model that allows for a
+responsive webpage for the articles.
+
+COMPONENTS
+
+1. Index Page
+    - This page is a landing page for the 'Articles' section of the application. It provides
+      an accessible overview of any and all articles stored in the database.
+    - This page includes a search action that allows for users to filter out articles using
+      any key words in the title or content.
+    - Each article displays the title, which is a link to the actual content of the page. along
+      with the date of publication.
+    - Each article has their own 'Edit' and 'Delete' buttons. the Edit button allows for users to
+      edit the title, date or content of the article.
+
+2. Edit Page
+    - This page is a simple implementation of a webpage that allows users to edit the contents of the
+      article.
+
+3. Show Page
+    - This page displays the full details of an individual article. When the title link is clicked on the index
+      page, this is the page that opens.
+    - The page allows for users to view the date of the publication along with the title and the content. Another
+      section called Recent, allows the users to know if the article is recently posted. This is true if the article
+      is posted 7 days prior or earlier.
+
+4. New Page
+    - This page allows for users to input their own article.
+    - This page has sections that allows the user to input their title for the article, the content they want to present
+      when the article is clicked on, and the date of the publication. If no date is provided, the webpage will take the
+      present date.
+
+5. application.css
+    - This css file, as of right now, holds basic styling for the webpage.
+
+IMPLEMENTATION STEPS
+
+1. Build the different html.erb files. This includes _form.html.erb, edit.html.erb, index.html.erb, new.html.erb, and
+   show.html.erb.
+2. Implemented the CSS file that gives a basic style to all the parts of the different HTML stated above.
+3. Changes made to the search function in the article model which allows the search form to order the search results from,
+   closes to the query, to farthest from the query.
+
+FUTURE IMPLEMENTATIONS
+
+1. Make the CSS styling more appealing and aesthetically pleasing.
+2. Make sure there are no loop holes or fault in the code.
+3. Debug everything and make sure the final product is one worthy of the project.
