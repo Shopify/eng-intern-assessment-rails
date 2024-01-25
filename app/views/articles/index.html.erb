@@ -1,0 +1,33 @@
+<h1>Articles</h1>
+
+<div id="articles">
+  <table class="table table-hover">
+    <thead class="table">
+      <tr>
+        <th class="pt-4 pb-1">Article title</th>
+        <th class="pt-4 pb-1">Author</th>
+        <th class="pt-4 pb-1">Content</th>
+        <th class="pt-4 pb-1">Last updated</th> 
+        <th class="pt-4 pb-1" colspan="3">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody class="table-group-divider">
+      <% @articles.each do |article| %>
+        <tr class="table-light">
+          <td class="pt-3"><%= article.title %></td>
+          <td class="pt-3"><%= article.author %></td>
+          <td class="pt-3"><%= article.content %></td>
+          <td class="pt-3"><%= article.updated_at.strftime("%d.%b.%Y at %H:%M%p") %></td>
+          <td class="pt-3"><%= link_to 'Show', article_path(article), class:"text-decoration-none"%></td>
+          <td class="pt-3"><%= link_to 'Edit', edit_article_path(article), class:"text-decoration-none"%></td>
+          <td class="pt-3"><%= link_to 'Destroy', article_path(article), class:"text-decoration-none link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover",
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "New article", new_article_path, class:"btn btn-success d-flex justify-content-center mt-5" %> 

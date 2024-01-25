@@ -1,0 +1,9 @@
+  <%= form_with(model: [@article, @comment]) do |form| %>
+    <label for="username" class="form-label">Username</label>
+    <%= form.text_field :username, class:"form-control", id:"username" %>
+    <label for="comment-area" class="form-label">Comment</label>
+    <%= form.text_area :body, class:"form-control", id:"comment-area"%>
+    
+
+    <%= form.submit (action_name === "edit" ? "Update" : "Comment"), class:"d-flex mt-3 flex-fill" %>
+  <% end %>
