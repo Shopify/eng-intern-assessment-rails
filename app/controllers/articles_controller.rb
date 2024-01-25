@@ -11,7 +11,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.date = nil unless params[:include_date] == '1'
 
     if @article.save
       redirect_to articles_url, notice: 'Article was successfully created.'
@@ -22,10 +21,12 @@ class ArticlesController < ApplicationController
 
   def update
     @article.assign_attributes(article_params)
-    @article.date = nil unless params[:include_date] == '1'
 
     if @article.update(article_params)
-      redirect_to articles_url, notice: 'Article was successfully updated.'
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@article, partial: "article", locals: { article: @article }) }
+        format.html { redirect_to articles_url }
+      end
     else
       handle_error_response(:edit)
     end

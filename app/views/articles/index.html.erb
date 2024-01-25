@@ -24,9 +24,8 @@
     </div>
 
     <%= form.label :date %>
-    <%= check_box_tag 'include_date', '1', true, id: 'new-article-date-checkbox' %>
     <div class="input-container">
-      <%= form.date_select :date, id: 'article_date' %>
+      <%= form.date_select :date, { include_blank: true }, id: 'article_date' %>
     </div>
   
     <%= form.submit %>

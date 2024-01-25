@@ -1,6 +1,6 @@
 <turbo-frame id="<%= dom_id(@article) %>" html: { class: 'edit-container' }>
   <%= form_with model: @article, local: false, html: { class: 'edit-form' } do |form| %>
-  <%= form.label :title %>
+    <%= form.label :title %>
     <div class="input-container">
       <%= form.text_field :title %>
     </div>
@@ -16,15 +16,13 @@
     </div>
 
     <%= form.label :date %>
-    <%= check_box_tag 'include_date', '1', @article.date.present?, id: "edit-article-#{dom_id(@article)}-date-checkbox", onclick: 'handleDateCheckboxClick(this, "edit_article_date")' %>
     <div class="input-container">
-      <%= form.date_select :date, id: 'edit_article_date'%>
+      <%= form.date_select :date, { include_blank: true }, id: 'edit_article_date' %>
     </div>
   
     <div class="link-button-container">
-      <%= link_to 'Cancel', articles_path, data: { turbo_frame: dom_id(@article) }%>
+      <%= link_to 'Cancel', articles_path, data: { turbo_frame: dom_id(@article) } %>
     </div>
     <%= form.submit "Save" %>
   <% end %>
 </turbo-frame>
-

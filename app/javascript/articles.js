@@ -1,7 +1,6 @@
 document.addEventListener("turbo:load", function () {
   setupCollapsibleForm();
   setupClearButton();
-  setupDateToggle("new-article-date-checkbox", "article_date");
 });
 
 function setupCollapsibleForm() {
@@ -32,22 +31,4 @@ function setupClearButton() {
       searchForm.submit();
     });
   }
-}
-
-function setupDateToggle(checkboxId, dateFieldPrefix) {
-  var checkbox = document.getElementById(checkboxId);
-  if (!checkbox) return;
-
-  var dateFields = document.querySelectorAll(
-    `select[id^='${dateFieldPrefix}']`
-  );
-  checkbox.addEventListener("change", function () {
-    dateFields.forEach(function (field) {
-      field.disabled = !checkbox.checked;
-    });
-  });
-
-  dateFields.forEach(function (field) {
-    field.disabled = !checkbox.checked;
-  });
 }
