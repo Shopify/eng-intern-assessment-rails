@@ -26,6 +26,10 @@ module Services
       @article_repository.find(id)
     end
 
+    def search_articles(query)
+      @article_repository.search(query)
+    end
+
     private
 
     attr_reader :article_repository

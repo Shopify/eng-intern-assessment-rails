@@ -30,6 +30,10 @@ module Repositories
         article_record.destroy if article_record
       end
 
+      def search(query)
+        results = AR::Article.search(query)
+      end
+
       private
 
       def build_domain_model(record)

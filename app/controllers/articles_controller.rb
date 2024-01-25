@@ -1,6 +1,6 @@
 # app/controllers/articles_controller.rb
 class ArticlesController < ApplicationController
-  before_action :set_article_service, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :set_article_service, only: [:index, :show, :new, :create, :edit, :update, :destroy, :search]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -34,6 +34,10 @@ class ArticlesController < ApplicationController
   def destroy
     @article_service.destroy_article(@article)
     redirect_to articles_path, notice: "Article was successfully destroyed."
+  end
+
+  def search
+    @articles = @article_service.search_articles(params[:query])
   end
 
   private

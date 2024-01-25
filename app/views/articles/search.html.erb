@@ -1,0 +1,12 @@
+<%= form_tag(search_articles_path, method: :get) do %>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag "search" %>
+<% end %>
+
+<% if @articles.any? %>
+  <% @articles.each do |article| %>
+    <%= render partial: "articles/article", locals: { article: article } %>
+  <% end %>
+<% else %>
+  <p>No articles found</p>
+<% end %>
