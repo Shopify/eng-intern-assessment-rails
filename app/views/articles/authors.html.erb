@@ -1,0 +1,14 @@
+<h1>Authors</h1>
+
+<% if @authors.present? %>
+  <div id="authors">
+    <% @authors.each do |author| %>
+      
+      <p>
+        <%= author %>
+      </p>
+    <% end %>
+  </div>
+<% else %>
+  <p>No found.</p>
+<% end %>

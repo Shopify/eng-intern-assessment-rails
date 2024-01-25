@@ -24,6 +24,11 @@ class ArticlesController < ApplicationController
     @count = Article.count
   end
 
+  # GET /authors
+  def authors
+    @authors = Article.all_authors
+  end
+
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
