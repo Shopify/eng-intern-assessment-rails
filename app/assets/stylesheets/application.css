@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+.grid-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-item {
+  flex: 1 0 auto;
+  box-sizing: border-box;
+  padding: 8px;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.card-p {
+  padding: 25px;
+}
