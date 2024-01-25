@@ -9,9 +9,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert_respond_to Article, :search
   end
 
-  test 'creates a new article' do
+  test 'creates a new article with title and content' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert article.valid?
+  end
+
+  test 'fails to create a new article if title or content is missing' do
+    article_without_content = Article.create(title: 'Sample Article')
+    aritcle_without_title = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article_without_content.valid?
+    assert_not aritcle_without_title.valid?
   end
 
   test 'displays the article content accurately' do
@@ -50,7 +57,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
   end
 
-  test 'returns accurate search results' do
+  test 'returns accurate search results when searching by context' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Lorem ipsum')
@@ -58,15 +65,19 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
   end
 
-  test 'displays relevant articles in search results' do
+  test 'returns accurate search results when searching by title' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
   end
-
-  # add test if deleted articles dont show up on searhc
-  # add test for each type of search query
-  # 
+  
+  test 'returns accurate search results when searching by author' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'J.K. Rowling')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Steven Son')
+    results = Article.search('Rowling')
+    assert_includes results, article1
+    assert_not_includes results, article2
+  end
 end
