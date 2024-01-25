@@ -21,7 +21,7 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "ensures comment has username and body" do
-    comment = Comment.create(username: "", body: "")
+    comment = Comment.create(username: "", body: "", article_id: @article.id)
     assert comment.invalid?
   end
 
