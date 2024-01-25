@@ -1,9 +1,14 @@
-<div id="comment-<%= comment.id %>">
-  [<%= comment.created_at.strftime("%I:%M %p")%>] 
-  <%= comment.username %>: 
-  <%= comment.body %>
-
-  <div class="d-flex justify-content-between">
-    <%= button_to 'Delete', article_comment_path(@article, comment), method: :delete, remote: true,  form: {data: {turbo_confirm: 'Are you sure?'}}  , class:"btn btn-danger"%>
+<div id="comment-<%= comment.id %>" class="mt-3 pe-3 border-end  border-3">
+  <div class="d-flex justify-content-between fw-lighter">
+    <p  class="fw-bold mb-1"><%= comment.username %>:</p>
+    <div>
+      <%= comment.created_at.strftime("%I:%M %p")%>
+      <%= link_to image_tag("delete-icon.png"), article_comment_path(@article, comment), remote: true,  form: {data: {turbo_confirm: 'Are you sure?'}}, data: {"turbo-method": :delete}%>
+    </div>
   </div>
+ 
+  <p> <%= comment.body %> </p>
+  
+
+
 </div>

@@ -6,11 +6,13 @@ class CommentsController < ApplicationController
     @comment.username = comment_params[:username]
     @comment.body = comment_params[:body]
     @comment.save
+
+    redirect_to article_path(@article), notice: 'Comment added!'
   end
 
   def destroy
     @comment = @article.comments.find(params[:id])
-    @comment.destroy
+    @comment.destroy!
     redirect_to article_path(@article), notice: 'Comment deleted!'
   end
 
