@@ -67,7 +67,6 @@ class ArticlesController < ApplicationController
     @article = Article.find_by(id: params[:id])
     rescue ActiveRecord::RecordNotFound
       redirect_to articles_path, alert: "Article does not exist."
-    end
   end
 
   # Strong parameter validation for all article fields
