@@ -1,0 +1,32 @@
+<%# This form is used to creat a new article and to update a existing article%>
+<%= form_with model: article do |form| %>
+    <div style="padding: 10px">
+    <%= form.label :title %> <br>
+    <%= form.text_field :title %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+        <div style="color:red"><%= message %></div>
+    <% end %>
+    </div>
+
+    <div style="padding: 10px">
+    <%= form.label :content %> <br>
+    <%= form.text_area :content %>
+    <% article.errors.full_messages_for(:content).each do |message| %>
+        <div style="color:red"><%= message %></div>
+    <% end %>
+    </div>
+
+    <div style="padding: 10px">
+    <%= form.label :author %> <br>
+    <%= form.text_area :author %>
+    </div>
+
+    <div style="padding: 10px">
+    <%= form.label :date %> <br>
+    <%= date_field("article", "date") %>
+    </div>
+
+    <div style="padding: 10px">
+    <%= form.submit %>
+    </div>
+<% end %>
