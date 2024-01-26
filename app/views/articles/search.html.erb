@@ -1,0 +1,9 @@
+<%= link_to "< Back", search_path %>
+
+<h1> Search Results: </h1>
+
+<% @results.each do |result| %>
+  <li>
+    <%= link_to result.title, result %>
+  </li>
+<% end %>

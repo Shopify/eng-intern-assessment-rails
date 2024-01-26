@@ -49,6 +49,11 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other, notice: 'Deleted article successfully'
   end
 
+  # Return search results
+  def search
+    @results = Article.search(params[:query])
+  end
+
   private
 
   # Filter for strong article paramaters

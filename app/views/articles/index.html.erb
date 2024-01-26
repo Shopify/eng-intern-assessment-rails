@@ -1,7 +1,14 @@
 <h1>Articles</h1>
 
-<p>Encyclobedia currently has <%= Article.count %> articles</p>
+<p>Encyclopedia currently has <%= Article.count %> articles</p>
+<%= form_with url: "/search", method: :get do |form| %>
+  <%= form.label :query, "Look for titles or content with:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
 
+
+<h2> List of Available Articles </h2>
 <ul>
   <% @articles.each do |article| %>
     <li>
@@ -10,4 +17,4 @@
   <% end %>
 </ul>
 
-<%= link_to "Create New Article", new_article_path %>
+<%= link_to "Create new article", new_article_path %>
