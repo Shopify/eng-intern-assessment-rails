@@ -1,0 +1,15 @@
+<!-- View for the index, shows all articles in an unordered list and provides a input for searching articles -->
+<h1>Encyclopedia Lofus</h1>
+<label>
+  Search
+  <input >
+</label>
+<ul>
+  <% @articles.each do |article| %>
+  <li>
+    <a href="<%= article_path(article) %>">
+      <%= article.title %>
+    </a>
+  </li>
+  <% end %>
+</ul>
