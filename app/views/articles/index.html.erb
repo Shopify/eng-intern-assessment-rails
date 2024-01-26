@@ -1,37 +1,33 @@
-<h1>Articles</h1>
-
-<%= form_tag(root_path, method: "get") do %>
-  <%= label_tag(:search, "Search for:") %>
-  <%= text_field_tag(:search) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<%= render 'header' %>
 
 <div>
   <div>
       <% @articles.each do |article| %>
-        <h3>
+      <div class="article-card">
+        <div class="article-header">
           <a href="<%= article_path(article) %>">
           <%= article.title %>
           </a>
-        </h3>
-        <div>
-          <%= article.content %>
         </div>
-        <div>
-          Author: <%= article.author.blank? ? "Unknown" : article.author %>
+        <div class="article-content">
+          <p><%= article.content %></p>
         </div>
-        <div>
-          Date: <%= article.date.blank? ? "Unknown" : article.date %>
+        <div class="article-meta">
+          <span>Author: <%= article.author.blank? ? "Unknown" : article.author %></span> |
+          <span>Date: <%= article.date.blank? ? "Unknown" : article.date %></span>
         </div>
-        <button>
-          <%= link_to "Delete", article_path(article), data: {
+        <div class="article-buttons">
+          <button class="edit-button">
+            <%= link_to "Edit", edit_article_path(article) %>
+          </button>
+          <button class="delete-button">
+            <%= link_to "Delete", article_path(article), data: {
             turbo_method: :delete,
             turbo_confirm: "Are you sure?"
           } %>
-        </button>
-        <button>
-          <%= link_to "Edit", edit_article_path(article) %>
-        </button>
+          </button>
+        </div>
+      </div>
       <% end %>
   </div>
 </div>

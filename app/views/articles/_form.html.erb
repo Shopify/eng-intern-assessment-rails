@@ -1,8 +1,9 @@
-<%= form_with model: @article do |form| %>
+<%= form_with model: article do |form| %>
+  <h3 class="form-title"><%= title %></h3>
   <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %><br>
-    <% @article.errors.full_messages_for(:title).each do |message| %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -10,7 +11,7 @@
   <div>
     <%= form.label :content %><br>
     <%= form.text_area :content %>
-    <% @article.errors.full_messages_for(:content).each do |message| %>
+    <% article.errors.full_messages_for(:content).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>

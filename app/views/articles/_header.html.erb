@@ -1,0 +1,10 @@
+<header>
+  <h1><%= link_to "Encyclopedia", root_path, id: "header" %></h1>
+
+  <%= form_tag(root_path, method: "get", class: "search-bar") do %>
+
+    <%#= label_tag(:search, "Search for:") %>
+    <%= text_field_tag :search, nil, placeholder: 'Search for...', id: "search-input" %>
+    <%= submit_tag("Search", class: "search-button") %>
+  <% end %>
+</header>
