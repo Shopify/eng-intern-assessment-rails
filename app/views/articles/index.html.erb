@@ -1,0 +1,13 @@
+<h1>The Encyclopedia</h1>
+
+<%= render 'searchbar' %>
+
+    <% @articles.each do |article| %>
+        <div class=article-link>
+
+        <h3><%= link_to article.title, article %> </h3>
+        <p> Author: <%= article.author.present? ? article.author : "Unknown" %></p>
+        </div>
+    <%end%>
+
+<%= link_to "New Article", new_article_path %>
