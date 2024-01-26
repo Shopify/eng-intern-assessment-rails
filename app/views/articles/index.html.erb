@@ -1,14 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Content</th>
+      <th>Date Added</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.author %></td>
+        <td><%= article.content %></td>
+        <td><%= article.date %></td>
+        <td>
+          <%= link_to 'Show', article, class: 'btn btn-info btn-sm' %>
+          <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-primary btn-sm' %>
+          <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<h1>Articles</h1>
-
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New article", new_article_path %>
+<%= link_to 'New Article', new_article_path, class: 'btn btn-success' %>
