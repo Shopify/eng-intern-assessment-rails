@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag 'styles' %>
+<h1 class="home-link"> <%= link_to "Home Page", articles_path %></h1>
+
+<% if @article %>
+  <div class="current-article">
+    <h1 class="current-article-title"><%= @article.title %></h1>
+    <p class="current-article-author"><%="By: " +  @article.author %></p>
+    <p class="current-article-date"><%= @article.date.strftime("%Y-%m-%d") %></p>
+    <p class="current-article-content"><%= @article.content %></p>
+  </div>
+<% else %>
+  <% if flash[:alert] %>
+      <h1 class="alert"><%= flash[:alert] %></h1>
+  <% end %>
+<% end %>

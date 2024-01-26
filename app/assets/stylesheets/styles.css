@@ -1,0 +1,184 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-button {
+  display: flex;
+  padding: 10px 20px;
+  background-color: #95c047;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: none;
+  align-items: center;
+}
+
+.create-button:hover {
+  background-color: black;
+  color: #95c047;
+}
+
+.article-div {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.article-div:hover {
+  outline: black solid 2px;
+}
+
+.article-title {
+  font-size: xx-large;
+  text-decoration: none;
+  color: black;
+}
+
+.article-link {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+}
+
+.article-action-buttons {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 5px;
+}
+
+.edit-button {
+  display: flex;
+  padding: 10px 20px;
+  background-color: lightskyblue;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: none;
+  align-items: center;
+}
+
+.edit-button:hover {
+  background-color: black;
+  color: lightskyblue;
+}
+
+.delete-button {
+  display: flex;
+  padding: 10px 20px;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: none;
+  align-items: center;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: black;
+  color: red;
+}
+
+.edit-title {
+  font-size: xx-large;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: x-large;
+}
+
+.form-input {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.home-link {
+  margin: 20px;
+}
+
+.current-article {
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.current-article-title {
+  margin-bottom: 10px;
+  font-size: xxx-large;
+}
+
+.acurrent-article-author,
+.current-article-date {
+  color: #888;
+  font-size: 1rem;
+}
+
+.current-article-content {
+  margin-top: 50px;
+  line-height: 1.6;
+  font-size: 1.2rem;
+  text-indent: 2rem;
+}
+
+.current-alert {
+  color: red;
+}
+
+.form-submit {
+  padding: 10px 20px;
+  background-color: #95c047;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: none;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
