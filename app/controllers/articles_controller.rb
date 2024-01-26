@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @article, notice: 'Article created.'
+      redirect_to @article
     else
       render :new
     end
@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
   def update
     if @article.update(article_params)
       p article_params
-      redirect_to @article, notice: 'Article updated.'
+      redirect_to @article
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
 
-    redirect_to articles_path, notice: 'Article deleted.'
+    redirect_to articles_path
   end
 
   private
