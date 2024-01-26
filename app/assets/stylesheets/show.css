@@ -1,0 +1,44 @@
+/* app/assets/stylesheets/show.css */
+/* Apply styles to the show page */
+
+/* Show container */
+.show-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Article details */
+.show-details {
+  margin-bottom: 20px;
+}
+
+/* Style labels */
+.show-details strong {
+  display: block;
+  font-weight: bold;
+}
+
+/* Style content values */
+.show-details span {
+  display: block;
+  margin-top: 5px;
+}
+
+/* Style action links */
+.actions {
+  margin-top: 20px;
+}
+
+.actions a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff;
+  background-color:#007bff;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.actions a:hover {
+  background-color: #0056b3;
+}
