@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # Index action which shows all articles
   def index
-    @articles = Article.all
+    @articles = Article.search(params[:search])
   end
 
   # GET /articles/:id
