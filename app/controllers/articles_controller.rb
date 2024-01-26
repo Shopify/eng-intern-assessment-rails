@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.search(params[:search])
+    @articles = Article.search(params[:search], params[:date])
   end
 
   def destroy

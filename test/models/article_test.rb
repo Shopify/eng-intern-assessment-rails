@@ -53,7 +53,7 @@ class ArticleTest < ActiveSupport::TestCase
   test 'returns accurate search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
-    results = Article.search('Lorem ipsum')
+    results = Article.search('Lorem ipsum', nil)
     assert_includes results, article1
     assert_includes results, article2
   end
@@ -61,10 +61,47 @@ class ArticleTest < ActiveSupport::TestCase
   test 'displays relevant articles in search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
-    results = Article.search('Another')
+    results = Article.search('Another', nil)
     assert_includes results, article2
     assert_not_includes results, article1
   end
 
-  # TODO (Enhancement): Add tests (and functionality) to search by author (and date? YYYY/MM/DD)
+  #The following are extra tests to check for edge cases :)
+
+  test 'does not create article without title' do
+    article = Article.new(content: 'Content without title.')
+    assert_not article.save, 'Saved the article without a title'
+  end
+
+  test 'does not create article without content' do
+    article = Article.new(title: 'title without content.')
+    assert_not article.save, 'Saved the article without content'
+  end
+
+  test 'returns search results by author' do
+    Article.create([
+      { title: 'Tech Article', content: 'Content about technology.', author: 'Techer' },
+      { title: 'Cooking Article', content: 'Content about cooking.', author: 'Chef' }
+    ])
+    results = Article.search('Techer', nil)
+    assert_equal 1, results.count
+    assert_equal 'Techer', results.first.author
+  end
+
+  test 'returns search results by date' do
+    Article.create([
+      { title: 'Old Article', content: 'Old news.', date: Date.new(2020, 1, 1) },
+      { title: 'New Article', content: 'Breaking news.', date: Date.today }
+    ])
+    results = Article.search('', Date.today)
+    assert_equal 1, results.count
+    assert_equal Date.today, results.first.date
+  end
+
+  test 'search is case insensitive' do
+    article = Article.create(title: 'Case Test', content: 'This is a test for case insensitive search.')
+    results = Article.search('case test', nil)
+    assert_includes results, article
+  end
+  
 end

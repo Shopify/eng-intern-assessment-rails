@@ -1,13 +1,40 @@
-<%= form_with url: search_articles_path, method: :get do |form| %>
-   <%= form.label :search, 'Search Articles:' %>
-   <%= form.text_field :search %>
+  <%= form_with url: search_articles_path, method: :get do |form| %>
+    <%= form.label :search, 'Search by Author/Title/Content:' %>
+    <%= form.text_field :search %><br>
+
+    <br>
+    <%= form.label :date, 'Search by date' %>
+    <%= form.date_field :date %>
+  
     <%= form.submit 'Search' %>
   <% end %>
-  
-  <% @articles.each do |article| %>
-    <!-- Display search result for each article -->
-    <p><%= article.title %></p>
-    <p><%= article.date %></p>
-  <% end %>
 
+
+
+
+  <% if @articles.present? %>
+  <h3>Results:</h3>
+  <ul>
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article_path(article) %>
+        <br> 
+        <% if article.author.present? %>
+          Author: <%= article.author %><br>
+        <% end %>
+        <% if article.date.present? %>
+          Date: <%= article.date %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No articles found.</p>
+<% end %>
+  
+  
+ 
+
+
+<hr>
   <%= link_to 'Back to Articles List', articles_path %>
