@@ -1,31 +1,50 @@
-<h1>Articles</h1>
+<!-- app/views/articles/index.html.erb -->
 
-<%= form_tag(articles_path, method: :get) do %>
+<%= stylesheet_link_tag 'application', 'articles', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<div class="page-header">
+  <h1>Articles</h1>
+</div>
+
+<%= form_tag(articles_path, method: :get, class: 'search-form') do %>
   <%= text_field_tag :search, params[:search], placeholder: 'Search by title' %>
   <%= submit_tag 'Search' %>
 <% end %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>Author</th>
-    <th>Date</th>
-    <th colspan="3"></th>
-  </tr>
-
-  <% @articles.each do |article| %>
+<% if @articles.any? %>
+  <table class="articles-table">
     <tr>
-      <td><%= article.title %></td>
-      <td><%= article.content %></td>
-      <td><%= article.author %></td>
-      <td><%= article.date %></td>
-      <td><%= link_to 'Show', article %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to "Destroy", article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Date</th>
+      <th>Actions</th>
     </tr>
-  <% end %>
-</table>
+
+    <% @articles.each do |article| %>
+      <tr class="article-row">
+        <td><%= article.title %></td>
+        <td><%= article.author %></td>
+        <td><%= article.date %></td>
+        <td class="actions-cell">
+          <%= link_to 'Show', article %> |
+          <%= link_to 'Edit', edit_article_path(article) %> |
+          <%= link_to "Destroy", article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+      <tr class="article-row">
+        <td colspan="4">
+          <%= article.content %>
+        </td>
+      </tr>
+      <!-- Add an empty row after each article's content -->
+      <tr class="empty-row">
+        <td colspan="4"></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No articles found.</p>
+<% end %>
 
 <br>
 

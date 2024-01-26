@@ -1,24 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag 'application', 'show', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<!-- Your show page HTML -->
+<div class="show-container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
+  <div class="show-details">
+    <p>
+      <strong>Title:</strong>
+      <span><%= @article.title %></span>
+    </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @article.author %>
-</p>
+    <p>
+      <strong>Author:</strong>
+      <span><%= @article.author %></span>
+    </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @article.date %>
-</p>
+    <p>
+      <strong>Date:</strong>
+      <span><%= @article.date %></span>
+    </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+    <p>
+      <strong>Content:</strong>
+      <span><%= @article.content %></span>
+    </p>
+
+  </div>
+
+  <div class="actions">
+    <%= link_to 'Edit', edit_article_path(@article) %>
+    <%= link_to 'Back', articles_path %>
+  </div>
+</div>
