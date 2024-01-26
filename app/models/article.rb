@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
-  validates :title, presence: { message: "Title can not be blank!"}
-  validates :content, presence: { message: "Content can not be blank!"}
+  validates :title, presence: { message: "Title can not be blank!"}, uniqueness: true
+  validates :content, presence: { message: "Content can not be blank!"}, length: { minimum: 5, message: "Content must have at least 5 characters" }
 
   def self.search(query)
     if query.present?
