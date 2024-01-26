@@ -1,5 +1,7 @@
-<%= @article.title %>
-<div><%= @article.author%> | <%=@article.date%> </div>
-<div><%= @article.content%> </div>
-<%= link_to "Edit", edit_article_path(@article) %>
-<%= link_to "Delete", article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+<h3><%= @article.title %></h3>
+<p class="text-muted"><%= @article.author %> | <%= @article.date %></p>
+<div class="mb-3">
+  <%= @article.content %>
+</div>
+<%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary' %>
+<%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EngInternAssessmentRails</title>
+    <title>Encyclopedia</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
   </head>
 
   <body>
-    <%= render "layouts/flash" %>
-    <%= form_tag(search_path, method: "get") do %>
-      <%= text_field_tag(:search_key, params[:search_key], placeholder: "Search") %>
-      <%= submit_tag("Search") %>
-    <% end %>
-    <%= yield %>
+    <!-- app/views/layouts/application.html.erb -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <%= link_to 'Encyclopedia', root_path, class: 'navbar-brand' %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <%= link_to 'Home', root_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Add Article', new_article_path, class: 'nav-link' %>
+            </li>
+          </ul>
+          <%= form_tag(search_path, method: "get", class: "d-flex") do %>
+            <%= text_field_tag(:search_key, params[:search_key], placeholder: "Search", class: "form-control me-2") %>
+            <button class="btn btn-outline-basic" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <%= render 'layouts/flash' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

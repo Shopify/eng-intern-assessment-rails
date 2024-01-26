@@ -1,17 +1,28 @@
-<%= form_with(model: article, local:true) do |form| %>
+<%= form_with(model: article, class: 'form') do |form| %>
+  <%= render 'errors', object: article %>
+    
+  <div class="mb-3">
+    <%= form.label :author, class: 'form-label' %>
+    <%= form.text_field :author, class: 'form-control' %>
+  </div>
 
-<%= render "errors", object: article %>
+  <div class="mb-3">
+    <%= form.label "Title *", class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
 
-<%= form.label :author %>
-<%= form.text_field :author %>
+  <div class="mb-3">
+    <%= form.label "Content *", class: 'form-label' %>
+    <%= form.text_area :content, rows: 5, class: 'form-control', placeholder: "Your content here..." %>
+  </div>
 
-<%= form.label :title %>
-<%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :date, class: 'form-label' %>
+    <%= form.date_field :date, class: 'form-control' %>
+  </div>
 
-<%= form.label :content %>
-<%= form.text_area :content, rows: 5, placeholder: "Your content here..."%>
-
-<%= form.date_field :date %>
-
-<%= form.submit %>
+  <%= form.submit class: 'btn btn-primary' %>
 <% end %>
+
+<br/>
+<br/>
