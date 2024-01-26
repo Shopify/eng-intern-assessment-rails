@@ -1,7 +1,19 @@
+<% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<% if flash[:alert] %>
+  <p class="alert"><%= flash[:alert] %></p>
+<% end %>
+
 <h1><%= @article.title %></h1>
 <p><%= @article.content %></p>
 <p><%= @article.author %></p>
 <p><%= @article.date %></p>
 
-<%= link_to 'Back', articles_path %> |
-<%= link_to 'Edit', edit_article_path(@article) %>
+
+<div class="buttons-container">
+  <%= link_to 'Back', articles_path, class: "button button-empty" %>
+  <%= link_to 'Edit', edit_article_path(@article), class: "button button-green" %>
+  <%= button_to 'Delete', article_path(@article), method: :delete, data: { turbo_confirm: 'Are you sure?'}, class: "button button-red" %>
+</div>

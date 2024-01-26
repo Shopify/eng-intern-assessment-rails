@@ -1,17 +1,25 @@
-<h1>Articles</h1>
+<h1>Encylopedia Articles</h1>
+
+<% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<% if flash[:alert] %>
+  <p class="alert"><%= flash[:alert] %></p>
+<% end %>
 
 <%= form_with(url: articles_path, method: :get) do |form| %>
   <%= form.label :search, 'Search Articles' %>
-  <%= form.text_field :search %>
+  <%= form.text_field :search, class: 'input-box' %>
   <%= form.submit 'Search' %>
 <% end %>
 
-<%= link_to 'New Article', new_article_path %>
+<%= link_to 'Create Article', new_article_path, class: "button button-green" %>
 
 <ul>
   <% @articles.each do |article| %>
     <li>
-      <%= link_to article.title, article_path(article) %>
+      <%= link_to article.title, article_path(article), class: "full-width-link" %>
     </li>
   <% end %>
 </ul>
