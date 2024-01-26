@@ -64,7 +64,7 @@ class ArticlesController < ApplicationController
 
   # Set the @article instance variable for all methods that find an article by its ID
   def set_article
-    @article = Article.find_by(id: params[:id])
+    @article = Article.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       redirect_to articles_path, alert: "Article does not exist."
   end
