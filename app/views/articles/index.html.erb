@@ -1,0 +1,20 @@
+<div id="articles" class="main-container">
+  <div class="article-header">
+    <div class="header"><h2>Articles</h2></div>
+    <div class="actions">
+      <%= link_to "New", new_article_path, class: "form-submit-btn" %>
+
+      <div class="search-bar">
+        <%= form_tag(articles_path, method: :get) do %>
+          <%= text_field_tag(:search, params[:search], class: "search-term", placeholder: "Search...") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% @articles.each do |article| %>
+    <a href="<%= article_path(article) %>" class="inner-container">
+      <%= render article %>
+    </a>
+  <% end %>
+</div>
