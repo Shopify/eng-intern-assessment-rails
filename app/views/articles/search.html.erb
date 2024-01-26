@@ -1,0 +1,21 @@
+<div class="container">
+  <%= form_tag(search_articles_path, method: :get) do %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "search" %>
+  <% end %>
+  <div class="grid-container">
+    <% if @articles.any? %>
+    <% @articles.each do |article| %>
+      <article class="grid-item ">
+        <%= render partial: "articles/article", locals: { article: article } %>
+        <p>
+          <%= link_to "Show article", article_path(article.id) %>
+        </p>
+      </article>
+      <% end %>
+
+    <% else %>
+      <p>No articles found</p>
+    <% end %>
+  </div>
+</div>

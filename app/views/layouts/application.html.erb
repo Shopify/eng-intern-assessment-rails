@@ -6,11 +6,34 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+   <body>
+    <div class="container-fluid">
+    <nav>
+      <ul>
+        <li><strong>Encyclopedia</strong></li>
+      </ul>
+      <ul>
+
+        <li>
+          <%= link_to "All Articles", articles_path %>
+        </li>
+        <li>
+          <%= link_to "Create New", new_article_path %>
+        </li>
+        <li>
+          <%= link_to "Search", search_articles_path %>
+        </li>
+      </ul>
+    </nav>
     <%= yield %>
+    </div>
+
   </body>
+
 </html>
