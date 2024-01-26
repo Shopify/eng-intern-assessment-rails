@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.7.6"
+ruby "3.2.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
@@ -26,6 +26,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'psych', '3.3.0'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
