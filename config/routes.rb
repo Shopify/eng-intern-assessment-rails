@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "articles#index"
+  
+    # This route directs a GET request to a search action in the ArticlesController and names the path helper search_articles_path.
+    get 'articles/search', to: 'articles#search', as: 'search_articles'
 
   resources :articles
 
@@ -10,4 +13,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+
+
 end

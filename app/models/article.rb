@@ -7,12 +7,25 @@ class Article < ApplicationRecord
     # validates :author, presence: true
     # validates :date, presence: true
 
+    #def self.search(search)
+      #if search
+        #where('title LIKE ? OR content LIKE ? OR author LIKE ? OR DATE(date) = ?', 
+       #       "%#{search}%", "%#{search}%", "%#{search}%", search)
+      #else
+      #  all
+     # end
+    #end
+
+
     def self.search(search)
-      if search
-        self.where('title LIKE ? OR content LIKE ?', "%#{search}%", "%#{search}%")
+      if search.present? #ensures that search term is not empty
+        where('title LIKE ? OR content LIKE ? OR author LIKE ? OR DATE(created_at) = ?', 
+              "%#{search}%", "%#{search}%", "%#{search}%", search)
       else
-        all
+        none #to ensure that no results are returned if the search bar is blank
       end
     end
+
   end
+    
   
