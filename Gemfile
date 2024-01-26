@@ -2,8 +2,12 @@ source "https://rubygems.org"
 
 ruby "2.7.6"
 
+gem "rspec"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
+
+# Added to fix  "NoMethodError"
+gem 'rails-controller-testing'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

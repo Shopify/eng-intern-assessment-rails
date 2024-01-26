@@ -13,3 +13,123 @@
  *= require_tree .
  *= require_self
  */
+
+ .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
+}
+
+.form-submit-btn {
+    text-decoration: none;
+    background-color: #4caf50;
+    color: white;
+    padding: 8px 15px ;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.form-submit-btn:hover {
+    background-color: #45a049;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e9f5fe;
+    color: #333;
+}
+
+.article-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding-bottom: 1rem;
+    margin-bottom: 20px;
+}
+
+.header{
+    position: relative;
+    justify-content: flex-start;
+}
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar{
+    width: 100%; /* Set to 'auto' or adjust as needed */
+    box-sizing: border-box; /* Include padding and border in the width */
+    position: relative;
+    justify-content: flex-end;
+    overflow: visible;
+    display: flex;
+}
+
+.search-term{
+    width: 100%;
+    border: 2px solid #00B4CC;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 5px 5px 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-container {
+    text-decoration: none; /* Remove default underline */
+    color: #606060; /* Set link color */
+    background-color: #e6e6ff;
+    display: flex;
+    padding: 1rem;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: inherit;
+    border-radius: 8px;
+    border: 1px solid #8dc6ff;
+    margin-bottom: 10px;
+}
+
+.article-view {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
