@@ -18,10 +18,11 @@
             <%= link_to 'Add new article', new_article_path,class:"nav-link" %>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex" action="<%= articles_path %>" method="get" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
         <button class="btn btn-outline-light" type="submit">Search</button>
-      </form>
+        </form>
+
     </div>
   </div>
 </nav>
