@@ -1,0 +1,24 @@
+<%= form_with model:article do |form| %>
+
+<%= form.label :title%>
+<%= form.text_field :title%>
+<% article.errors.full_messages_for(:title).each do |message| %>
+    <div><%= message %></div>
+<% end %>
+
+<br>
+<%= form.label :content%>
+<%= form.text_field :content%>
+<% article.errors.full_messages_for(:content).each do |message| %>
+    <div><%= message %></div>
+<% end %>
+
+<br>
+<%= form.label :author%>
+<%= form.text_field :author%>
+<% article.errors.full_messages_for(:author).each do |message| %>
+    <div><%= message %></div>
+<% end %>
+
+<%= form.submit "Submit" %>
+<% end %>
