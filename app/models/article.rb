@@ -6,7 +6,7 @@
 # Article model represents an instance of an article
 class Article < ApplicationRecord
   # Title and content cannot be empty and set maximum lengths for data integrity
-  validates :title, presence: true, length: { maximum: 100}
+  validates :title, presence: true, length: { maximum: 100 }
   validates :content, presence: true, length: { maximum: 1000 }
 
   # Search database for titles and content with query

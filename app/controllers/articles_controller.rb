@@ -1,3 +1,4 @@
+# Control Article Model and Views
 class ArticlesController < ApplicationController
   # Redirect to articles for ActiveRecord::RecordNotFound exception
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
@@ -40,7 +41,7 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
 
-    if @article.update(article_params)
+    if @article.update(arti_params)
       redirect_to @article, notice: 'Updated article successfully'
     else
       render :edit, status: :unprocessable_entity
