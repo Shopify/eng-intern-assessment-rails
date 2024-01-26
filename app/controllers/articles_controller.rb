@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    # @article is already set by the before_action
   end
 
   def new
