@@ -127,6 +127,7 @@ ul li a:hover {
   gap: 10px;
 }
 
+/* target form inside buttons-container because "button_to" tag wraps a form around the button */
 .buttons-container form {
   padding: 0px;
   border-radius: 0px;
