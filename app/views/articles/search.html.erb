@@ -1,0 +1,16 @@
+<h1>Search page</h1>
+
+<%=form_with url: articles_search_path, method: :get do %>
+  <%= label_tag(:query, "Search input")%>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag("search")%>
+<% end %>
+<ul>
+  <% if @articles.present? %>
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article%>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

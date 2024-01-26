@@ -34,6 +34,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def search
+    if params[:query].present?
+      @articles = Article.search(params[:query])
+    end
+  end
+
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
@@ -44,6 +50,6 @@ class ArticlesController < ApplicationController
   ##Strong parameters
   private
     def article_params
-      params.require(:article).permit(:title, :content, :author, :date)
+      params.require(:article).permit(:title, :content, :author, :date, :query)
     end
 end
