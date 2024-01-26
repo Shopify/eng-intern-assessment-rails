@@ -9,12 +9,12 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  # instantiate new article
+  # instantiates new article
   def new
     @article = Article.new
   end
 
-  # add values to a new instance of article and save it
+  # adds values to a new instance of article and saves it
   def create
     @article = Article.new(article_params)
 
@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # fetch article from the database
+  # fetches article from the database
   def edit
     @article = Article.find(params[:id])
   end

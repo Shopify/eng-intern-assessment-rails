@@ -7,6 +7,8 @@ module ActiveSupport
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
 
-    # Add more helper methods to be used by all tests here...
+    # I removed fixtures from the file so they don't apply globally
+    # If fixtures are needed we can add methods here so that tests
+    # can create them on as needed basis
   end
 end

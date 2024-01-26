@@ -2,7 +2,7 @@ require "test_helper"
 
 class ArticleFlowTest < ActionDispatch::IntegrationTest
   # test homepage
-  test "can see the home page adn display articles there" do
+  test "can see the home page and display articles there" do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'Jon Snow')
     get "/"
     assert_select "h1", "Articles"
@@ -22,7 +22,7 @@ class ArticleFlowTest < ActionDispatch::IntegrationTest
       assert_select "h1", "Article1"
   end
 
-  # edit an article
+  # test edit an article
   test "can update an article" do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'Jon Snow')
     get "/articles/#{article.id}/edit"
@@ -36,7 +36,7 @@ class ArticleFlowTest < ActionDispatch::IntegrationTest
       assert_select "h1", "Article1"
   end
 
-  # delete an article
+  # test delete an article
   test "can delete an article" do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'Jon Snow')
     get "/articles/#{article.id}"
@@ -46,5 +46,21 @@ class ArticleFlowTest < ActionDispatch::IntegrationTest
       assert_response :redirect
       follow_redirect!
       assert_response :success
+  end
+
+  # test search an article
+  test "can search an article" do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'Jon Snow')
+    article2 = Article.create(title: 'Article2', content: 'Lorem ipsum dolor sit amet.', author: 'Jane Snow')
+    get "/articles"
+    assert_response :success
+
+    get "/articles",
+      params: {search: "Sample"}
+      assert_response :success
+      assert_select "h1", "Articles"
+      assert_select "strong", article1.title
+      assert_not_includes "strong", article2.title
+
   end
 end
