@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  rescue_from ActiveRecord::RecordNotFound, with: :article_does_not_exist
 
   # GET /articles
   # Index action which shows all articles
@@ -66,7 +65,7 @@ class ArticlesController < ApplicationController
   # Set the @article instance variable for all methods that find an article by its ID
   def set_article
     @article = Article.find_by(id: params[:id])
-    if @article.nil?
+    rescue ActiveRecord::RecordNotFound
       redirect_to articles_path, alert: "Article does not exist."
     end
   end
@@ -75,9 +74,4 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :content, :author, :date)
   end    
-
-  # Redirects to articles index page if article does not exist
-  def article_does_not_exist
-    redirect_to articles_path, alert: "Article does not exist."
-  end
 end
