@@ -18,11 +18,20 @@
 - need to make a model class
     - article
         - methods (search, update, valid, find)
+            - update, valid, find are all OOTB. 
         - properties (id, content, date, title, author)
     - created model
     - need to create some methods
         - search
             - should search the title AND the content
+- Implement basic CRUD actions on articles in a controller
+- Create view to see work in the app
+
+# Probs
+- the route to add a new article doesn't seem to work for some reason. 
+    - routes shows POST /articles(.:format)     articles#create
+        - seems like it exists in the controller and is registered okay through routes
+        - found some stuff the tutorial was missing and added in on the view. (scope, url, local)
 
 # References
 ## Ruby
