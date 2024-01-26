@@ -5,12 +5,4 @@
   <%= text_field_tag :query, params[:query] %>
   <%= submit_tag("search")%>
 <% end %>
-<ul>
-  <% if @articles.present? %>
-    <% @articles.each do |article| %>
-      <li>
-        <%= link_to article.title, article%>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
+<%= render "article_list", article: @article %>
