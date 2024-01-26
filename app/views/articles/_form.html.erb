@@ -1,0 +1,17 @@
+<%= form_with(model: article, local:true) do |form| %>
+
+<%= render "errors", object: article %>
+
+<%= form.label :author %>
+<%= form.text_field :author %>
+
+<%= form.label :title %>
+<%= form.text_field :title %>
+
+<%= form.label :content %>
+<%= form.text_area :content, rows: 5, placeholder: "Your content here..."%>
+
+<%= form.date_field :date %>
+
+<%= form.submit %>
+<% end %>
