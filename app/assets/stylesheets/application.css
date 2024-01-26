@@ -15,7 +15,7 @@
  */
 
 .form-container {
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -109,7 +109,6 @@ body {
 
 .main-container {
     display: flex;
-    /*overflow-y: scroll;*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -129,4 +128,8 @@ body {
     margin-bottom: 10px;
 }
 
-
+.article-view {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
