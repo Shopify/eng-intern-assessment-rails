@@ -6,7 +6,7 @@
 
 <div id="articles">
   <% if @results.present? %>
-    <% @results.order(publication_date: :desc).each do |article| %>
+    <% @results.order(date: :desc).each do |article| %>
       <%= render article %>
       <p>
         <%= link_to "Show this article", article %>

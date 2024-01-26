@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/search
   def search 
-    @results = Article.query(params[:query])
+    @results = Article.search(params[:query])
   end
 
   private
@@ -71,6 +71,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content, :author, :publication_date, :categories)
+      params.require(:article).permit(:title, :content, :author, :date, :categories)
     end
 end
