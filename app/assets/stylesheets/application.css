@@ -47,13 +47,15 @@
 }
 
 .form-submit-btn {
+    text-decoration: none;
     background-color: #4caf50;
     color: white;
-    padding: 10px 15px;
+    padding: 8px 15px ;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    margin: 10px;
 }
 
 .form-submit-btn:hover {
@@ -84,23 +86,6 @@ body {
 .actions {
     display: flex;
     align-items: center;
-}
-
-.new-article-button{
-    text-decoration: none;
-    width: 150px;
-    height: 32px;
-    background: #e6e6ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #606060;
-    border: 1px solid #8dc6ff;
-
-    border-radius: 10px 10px 10px 10px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-right: 10px;
 }
 
 .search-bar{
