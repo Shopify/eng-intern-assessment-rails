@@ -1,0 +1,9 @@
+<h2>Search Results</h2>
+
+<% if @articles.size > 0 %>
+  <% @articles.each do |article| %>
+    <div><%= article.title %></div>
+  <% end %>
+<% else %>
+  <p>No articles were found for "<%= params[:search_key] %>"</p>
+<% end %>

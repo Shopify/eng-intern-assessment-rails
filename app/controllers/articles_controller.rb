@@ -45,6 +45,10 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def search
+    @articles = Article.search(params[:search_key])
+  end
+
   private 
     def article_params
       # if date is left empty
