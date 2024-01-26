@@ -1,5 +1,4 @@
 <h1>Search page</h1>
-
 <%=form_with url: articles_search_path, method: :get do %>
   <%= label_tag(:query, "Search input")%>
   <%= text_field_tag :query, params[:query] %>
