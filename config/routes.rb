@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :articles
-  root 'home#index'
+  # Make the page which lists all articles the root path ("/")
+  root "articles#index"
   get 'home/about'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

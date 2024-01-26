@@ -15,11 +15,11 @@
         <td><%= article.author %></td>
         <td><%= article.content %></td>
         <td><%= article.date %></td>
-        <td>
-          <%= link_to 'Show', article, class: 'btn btn-info btn-sm' %>
-          <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-primary btn-sm' %>
-          <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
-        </td>
+        <td><%= link_to 'Show', article_path(article), class:"text-decoration-none"%></td>
+        <td><%= link_to 'Edit', edit_article_path(article), class:"text-decoration-none"%></td>
+        <td><%= link_to 'Destroy', article_path(article), class:"text-decoration-none link-danger",
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
