@@ -57,7 +57,7 @@ class ArticlesController < ApplicationController
     if @article.destroy
       redirect_to articles_path, notice: "Article deleted successfully!"
     else
-      redirect_to @article, alert: "Error deleting article."
+      redirect_to @article, alert: "Error deleting article: " + @article.errors.full_messages.to_sentence
     end
   end
 
