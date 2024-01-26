@@ -1,0 +1,64 @@
+/* Apply styles to form elements */
+
+/* Form container */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Form title */
+.form-title {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+/* Error messages */
+#error_explanation {
+  color: #d9534f;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+#error_explanation h2 {
+  color: #d9534f;
+}
+
+/* Form fields */
+.field {
+  margin-bottom: 20px;
+}
+
+/* Style labels */
+.field label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Style text inputs and textareas */
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* Style the submit button */
+.actions input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions input[type="submit"]:hover {
+  background-color: #0056b3;
+}
