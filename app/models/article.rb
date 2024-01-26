@@ -1,6 +1,5 @@
 class Article < ApplicationRecord
     validates :title, presence: true
-    validates :author, presence: true
     validates :content, presence: true
 
   #@description a function which returns all articles which match the parameters with the table attributes
