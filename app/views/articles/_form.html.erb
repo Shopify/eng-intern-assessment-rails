@@ -15,6 +15,10 @@
       <%= form.label :title, class: "form-label" %>
       <%= form.text_field :title, class: "form-input" %>
     </div>
+    <div class="field">
+      <%= form.label :author, class: "form-label" %>
+      <%= form.text_field :author, class: "form-input" %>
+    </div>
 
     <div class="field">
       <%= form.label :content, class: "form-label" %>
@@ -22,7 +26,19 @@
     </div>
 
     <div class="actions">
-      <%= form.submit "Submit", class: "form-submit-btn" %>
+      <%= form.submit "Submit", class: "form-submit-btn" , onclick:"validateForm()"%>
     </div>
   </div>
 <% end %>
+
+<script>
+    function validateForm() {
+        const title = document.getElementById('article_title').value;
+        const content = document.getElementById('article_content').value;
+
+        if (title.trim() === '' || content.trim() === '') {
+            alert('Title and Content cannot be empty');
+        }
+    }
+</script>
+
