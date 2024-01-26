@@ -13,7 +13,15 @@
 
 
   <% if @articles.present? %>
+
   <h3>Results:</h3>
+
+  <% if @search_time %>
+  <!-- Adding the time it took to find results to the search view -->
+  <!-- number_with_precision is just used to format the time in a nice way -->
+  <p>Search completed in <%= number_with_precision(@search_time, precision: 2) %> milliseconds.</p>
+  <% end %>
+
   <ul>
     <% @articles.each do |article| %>
       <li>
@@ -28,6 +36,7 @@
       </li>
     <% end %>
   </ul>
+  
 <% else %>
   <p>No articles found.</p>
 <% end %>

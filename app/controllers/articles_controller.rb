@@ -36,11 +36,16 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.search(params[:search], params[:date])
+    # Store the search time in an instance variable to make it available in the view
+    @search_time = Benchmark.ms do
+      @articles = Article.search(params[:search], params[:date])
+    end
   end
+
 
   def destroy
     @article = Article.find(params[:id])
+
     @article.destroy
 
     redirect_to root_path, status: :see_other
