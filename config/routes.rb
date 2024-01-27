@@ -8,5 +8,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "articles#index"
 
-  resources :articles
+  resources :articles do 
+    collection do 
+      get 'search'
+    end 
+  end 
+
+  # Route errors to ErrorsController
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_server_error'
+
+  # Catch-all route 
+  get '*path', to: 'errors#not_found'
 end
