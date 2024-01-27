@@ -1,0 +1,7 @@
+<%= form_tag articles_path, method: :get, class: "form-container" do %>
+  <div class="field">
+    <%= label_tag :query, "Search:" %>
+    <%= text_field_tag :query, params[:query], class: "form-control" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  </div>
+<% end %>
