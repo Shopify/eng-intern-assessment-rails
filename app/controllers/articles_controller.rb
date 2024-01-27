@@ -18,12 +18,13 @@ class ArticlesController < ApplicationController
 
   # Instantiate a new article
   def new
-    @article = Article.new
+    @article = Article.new(date: Date.current)
   end
 
   # Save new model instance to db
   def create
     @article = Article.new(arti_params)
+
 
     if @article.save
       redirect_to @article, notice: 'Saved article successfully'
