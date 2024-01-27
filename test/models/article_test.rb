@@ -65,4 +65,24 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # added some new tests
+  test 'validates presence of title and content' do
+    article = Article.new
+    assert_not article.valid?
+    assert_includes article.errors[:title], "can't be blank"
+    assert_includes article.errors[:content], "can't be blank"
+  end
+
+  test 'search is case insensitive' do
+    Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('sample article')
+    assert_not_empty results
+  end
+
+  test 'search returns no results for unmatched query' do
+    Article.create(title: 'Existing Article', content: 'Content')
+    results = Article.search('Nonexistent')
+    assert_empty results
+  end
 end
