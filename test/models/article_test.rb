@@ -1,3 +1,5 @@
+$LOAD_PATH << 'test'
+
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
@@ -43,7 +45,7 @@ class ArticleTest < ActiveSupport::TestCase
     article.destroy
     assert_equal 0, Article.count
   end
-
+  
   test 'prevents access to deleted articles' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
@@ -65,4 +67,6 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  
 end
