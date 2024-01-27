@@ -1,21 +1,27 @@
+<%# This partial template is used to show the form used in the edit/new view %>
 <%= form_with(model: article, class: 'form') do |form| %>
+  <%# Shows errors in the form when not filled in properly %>
   <%= render 'errors', object: article %>
     
+  <%# This creates the author field in the form %>
   <div class="mb-3">
     <%= form.label :author, class: 'form-label' %>
     <%= form.text_field :author, class: 'form-control' %>
   </div>
 
+  <%# This creates the title field in the form, the star besides the title shows this field is mandatory %>
   <div class="mb-3">
     <%= form.label "Title *", class: 'form-label' %>
     <%= form.text_field :title, class: 'form-control' %>
   </div>
 
+  <%# This creates the content field in the form, the star besides the content shows this field is mandatory %>
   <div class="mb-3">
     <%= form.label "Content *", class: 'form-label' %>
     <%= form.text_area :content, rows: 5, class: 'form-control', placeholder: "Your content here..." %>
   </div>
 
+  <%# This creates the date field in the form %>
   <div class="mb-3">
     <%= form.label :date, class: 'form-label' %>
     <%= form.date_field :date, class: 'form-control' %>

@@ -1,7 +1,9 @@
+<%# This is the page that the user sees once they click on the article %>
 <h3><%= @article.title %></h3>
 <p class="text-muted"><%= @article.author %> | <%= @article.date %></p>
 <div class="mb-3">
   <%= @article.content %>
 </div>
 <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary' %>
+<%# Uses a turbo method to send a DELETE request %>
 <%= link_to 'Delete', article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger'%>
