@@ -1,0 +1,9 @@
+<%# View used to reprsent articles in list %>
+
+<li>
+    <%= link_to article.title, article %>
+    <ul>
+        <li>Author: <%= article.author %></li>
+        <li>Date Posted: <%= article.date %></li>
+    </ul>
+</li>

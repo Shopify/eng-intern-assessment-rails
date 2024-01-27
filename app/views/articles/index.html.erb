@@ -1,0 +1,12 @@
+<h1>Encyclopedia Articles</h1>
+
+<%= render "searchform" %>
+
+<%# Display a list of all articles to be rendered using articleview view %>
+<ul>
+    <% @articles.each do |article| %>   
+        <%= render "articleview", article: article %>
+    <% end %>
+</ul>
+
+<%= link_to "Create a New Article", new_article_path %>
