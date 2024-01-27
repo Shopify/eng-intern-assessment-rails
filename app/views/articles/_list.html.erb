@@ -1,0 +1,8 @@
+<%# This list is used to display articles in the index view and the search view %>
+<ol>
+  <% articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ol>

@@ -1,0 +1,15 @@
+<h1>Articles</h1>
+
+<%# This form will make a request to search_articles_path %>
+<%= form_with url: search_articles_path, method: :get do |f|%>
+    <p>
+    <%= f.label :search, "Search for:" %>
+    <%= f.text_field :search %>
+    <%= f.submit "Search"%>
+    </p>
+<% end %>
+
+<%# Render a partial (_list) and pass the articles (@articles) to the partial as a local variable%>
+<%= render 'list', articles: @articles %>
+
+<%= link_to "Add a New Article", new_article_path %>
