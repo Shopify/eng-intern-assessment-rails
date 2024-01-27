@@ -1,13 +1,14 @@
-<h1>Editing article</h1>
-
-<%= render "form", article: @article %>
+<div class="container text-center">
+  <h1>Editing Article</h1>
+</div>
+<%= render "editform", article: @article %>
 
 <br>
 
-<div class="mt-1 text-center">
+<div class="text-center">
     <%= link_to "Back to Articles", articles_path, class: 'btn btn-secondary' %>
 </div>
 
-  <div class="mt-1 text-center">
+  <div class="mt-2 text-center">
     <%= link_to "Show Article", @article, class: 'btn btn-info' %>
   </div>
