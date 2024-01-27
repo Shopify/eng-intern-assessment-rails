@@ -1,2 +1,6 @@
 class ApplicationController < ActionController::Base
-end
+    def index
+      @articles = Article.all 
+    end
+  end
+  
