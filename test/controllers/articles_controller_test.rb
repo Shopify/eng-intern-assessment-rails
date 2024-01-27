@@ -39,4 +39,9 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   
     assert_redirected_to root_path
   end
+
+  test "should search articles with a query" do
+    get articles_url, params: { query: "Rails" }
+    assert_response :success
+  end
 end

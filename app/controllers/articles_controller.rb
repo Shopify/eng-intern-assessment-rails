@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   def index
+    if params[:query]
+      @articles = Article.search(params[:query])
+    else
     @articles = Article.all
+    end
   end
 
   def show
@@ -21,26 +25,26 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
-      @article = Article.find(params[:id])
-  end
-
-  def update
+def edit
     @article = Article.find(params[:id])
+end
 
-    if @article.update(article_params)
-      redirect_to @article
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
+def update
+  @article = Article.find(params[:id])
 
-  def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
-  
-    redirect_to root_path, status: :see_other
+  if @article.update(article_params)
+    redirect_to @article
+  else
+    render :edit, status: :unprocessable_entity
   end
+end
+
+def destroy
+  @article = Article.find(params[:id])
+  @article.destroy
+
+  redirect_to root_path, status: :see_other
+end
 
 
   private
