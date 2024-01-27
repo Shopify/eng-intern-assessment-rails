@@ -54,11 +54,11 @@ Here are some resources that may be helpful during your internship project:
 
 - [Git Documentation](https://git-scm.com/doc) - Official documentation for Git, the version control system used in this project.
 
-## References
+## References Used
 The resources and references I have used to build this project are:
 
 - [Ruby on Rails Guides](https://guides.rubyonrails.org/) - For the main CRUD application
 
-- [Rename column in the database](https://www.writesoftwarewell.com/how-to-rename-a-column-with-rails-migration/) - To renmae column from 'body' to 'content' in the application after following the main guide.
+- [Rename column in the database](https://www.writesoftwarewell.com/how-to-rename-a-column-with-rails-migration/) - To rename column from 'body' to 'content' in the application after following the main guide.
 
 - [Add search functionality](https://dev.to/mwong068/adding-a-basic-search-form-in-rails-5hnl) - To add search functionality to the application
