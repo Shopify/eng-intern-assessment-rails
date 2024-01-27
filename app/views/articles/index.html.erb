@@ -1,20 +1,28 @@
-<div id="articles" class="main-container">
-  <div class="article-header">
-    <div class="header"><h2>Articles</h2></div>
-    <div class="actions">
-      <%= link_to "New", new_article_path, class: "form-submit-btn" %>
+<h1>Articles</h1>
 
-      <div class="search-bar">
-        <%= form_tag(articles_path, method: :get) do %>
-          <%= text_field_tag(:search, params[:search], class: "search-term", placeholder: "Search...") %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-  <% @articles.each do |article| %>
-    <a href="<%= article_path(article) %>" class="inner-container">
-      <%= render article %>
-    </a>
+<h2>Search</h2>
+<%= form_tag articles_path, method: :get do %>
+    <%= "Search for an article by title or content: " %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
   <% end %>
-</div>
+
+<br>
+<hr>
+
+<h2>All Articles</h2>
+  <% @articles.each do |article| %>
+    <h3>
+      <%= link_to article.title, article_path(article) %> by <%= article.author%>
+    </h3>
+    <p>
+      <%= truncate(article.content, length: 100, omission: '...') %>
+    </p>
+  <% end %>
+
+<br>
+<h2>Add a New Article </h2>
+<%= link_to 'Create new article', new_article_path %>
+
+<br><br>
+<%= link_to 'Back to all articles', articles_path%>
