@@ -1,0 +1,16 @@
+<%-# displays the article content -%>
+<h1><%= @article.title %></h1>
+<p><%= @article.content %></p>
+<p>Created by: <%= @article.author %></p>
+<p>Created at: <%= @article.date %></p>
+<p>Content: <%= @article.content %></p>
+
+<%-# links to edit, delete, and return to home page -%>
+<%= link_to "Edit", edit_article_path(@article) %>
+<%= link_to "Delete", article_path(@article), data:{
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+            }%>
+<%= link_to "Home",root_path %>
+
+
