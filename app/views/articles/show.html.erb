@@ -1,24 +1,77 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-<p>
-  <strong>Author:</strong>
-  <%= @article.user.name %>
-</p>
-<p>
-  <strong>Author Email:</strong>
-  <%= @article.user.email %>
-</p>
-<p>
-  <strong>Published on:</strong>
-  <%= @article.created_at.strftime("%B %d, %Y at %I:%M%p") %>
-</p>
-<p>
-  <strong>Body:</strong>
-  <%= @article.content %>
-</p>
+<style>
+.article-container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
+.article-container h2 {
+  color: #e0e0e0;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
 
-<%= link_to 'Back', articles_path %>
+.article-details p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.article-body {
+  margin-top: 20px;
+  padding: 20px;
+  background: #1f1f1f;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.article-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.btn-edit {
+  background-color: #4CAF50;
+}
+
+.btn-back {
+  background-color: #555;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+</style>
+<div class="article-container">
+  <h2><%= @article.title %></h2>
+  
+  <div class="article-details">
+    <p><strong>Author:</strong> <%= @article.user.name %></p>
+    <p><strong>Author Email:</strong> <%= @article.user.email %></p>
+    <p><strong>Published on:</strong> <%= @article.created_at.strftime("%B %d, %Y at %I:%M%p") %></p>
+  </div>
+  
+  <div class="article-body">
+    <p><%= @article.content %></p>
+  </div>
+  
+  <div class="article-actions">
+    <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-edit' %>
+    <%= link_to 'Back', articles_path, class: 'btn btn-back' %>
+  </div>
+</div>

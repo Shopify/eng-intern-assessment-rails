@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  validates :title, presence: true
+  validates :content, presence: true
   # association where each article belongs to a user.
   belongs_to :user
 

@@ -1,21 +1,111 @@
+<style>
+.article-container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-container h2 {
+  color: #e0e0e0;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.article-details p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.article-body {
+  margin-top: 20px;
+  padding: 20px;
+  background: #1f1f1f;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.article-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.btn-edit {
+  background-color: #4CAF50;
+}
+
+.btn-back {
+  background-color: #555;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+.article-name {
+  margin: 10px 0;
+}
+
+.read-only-input {
+
+  padding: 8px;
+  margin-bottom: 10px; /* Space below the field */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f5f5f5; /* Light gray background to indicate non-editability */
+  color: #666; /* Dimmed text color */
+}
+
+.read-only-input[readonly] {
+  cursor: not-allowed; /* Shows a 'no entry' cursor on hover */
+}
+
+/* Styles for the label of read-only fields */
+.read-only-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+  font-weight: bold;
+}
+</style>
 <%= form_for @article do |f| %>
-    <!-- Existing article fields with added style -->
-    <div class="field" style="margin-bottom: 10px;">
-      <%= f.label :title %><br>
-      <%= f.text_field :title, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" %>
+<div class="article-container">
+  <h2><%= @article.title %></h2>
+  
+  <div class="article-details">
+    <p><strong>Author:</strong> <%= @article.user.name %></p>
+    <p><strong>Author Email:</strong> <%= @article.user.email %></p>
+    <p><strong>Published on:</strong> <%= @article.created_at.strftime("%B %d, %Y at %I:%M%p") %></p>
+  </div>
+  
+   <div class="field" style="margin-bottom: 10px;">
+  <label class="read-only-label" for="content">Content</label>
+  <%= f.text_area :content, style: "width: 70%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical;" %>
+</div>
+   <div class="article-name">
+      <label class="read-only-label" for="user_name">Author</label>
+      <%= f.text_field :user_name, value: @article.user.name, readonly: true, id: "user_name", class: "read-only-input" %>
     </div>
-    <div class="field" style="margin-bottom: 10px;">
-      <%= f.label :content %><br>
-      <%= f.text_area :content, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" %>
-    </div>
-
-    <!-- Field for editing user name with added style -->
-    <div class="field" style="margin-bottom: 10px;">
-      <%= f.label :user_name, "Author" %><br>
-      <%= f.text_field :user_name, value: @article.user.name, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" %>
-    </div>
-
-    <div class="actions">
+  
+   <div class="actions">
       <%= f.submit 'Update', style: "background-color: green; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;" %>
     </div>
+</div>
 <% end %>
+
+
+   

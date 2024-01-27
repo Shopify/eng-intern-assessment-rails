@@ -11,31 +11,50 @@
   }
 
   input[type="text"], textarea {
-    width: 100%;
+    width: 70%;
     padding: 8px;
     margin-top: 5px;
   }
 
-  input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+  .form-container {
+  background-color: #1f1f1f; /* Light gray background */
+  padding: 20px;
+  border-radius: 8px;
+  width: 40%; /* Or your preferred width */
+  margin: auto; /* Center the form container */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
 
-  input[type="submit"]:hover {
-    background-color: #45a049;
-  }
+
+  .field label {
+  display: block; /* Make labels block-level for better control */
+  margin-bottom: 5px; /* Space between label and input field */
+  font-weight: bold; /* Optional: Make labels bold */
+}
+
+
+textarea {
+  resize: vertical; /* Allow only vertical resizing */
+}
 </style>
 
 <%= form_with(model: article, local: true) do |form| %>
   <!-- content form -->
 <% end %>
-
+<div class="form-container">
 <%= form_with(model: article,url: articles_path, local: true) do |form| %>
 
+   <% if article.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+        <ul>
+          <% article.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="field">
       <%= form.label :title %>
       <%= form.text_field :title %>
@@ -47,6 +66,7 @@
     </div>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit "Submit" %>
     </div>
 <% end %>
+</div>
