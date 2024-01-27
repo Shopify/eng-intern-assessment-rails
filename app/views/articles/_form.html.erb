@@ -1,0 +1,46 @@
+<!-- File: _form.html.erb -->
+<!-- Programmer Name: Ali Rahbar -->
+<!-- Description: This block of code is in charge of the forms used in the code -->
+<!-- Date: 2024-01-18 -->
+
+
+<%= form_with(model: article, class: 'mt-4') do |form| %>
+  <% if article.errors.any? %>
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <h2>System can not save Articles with blank fields!</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_area :content, class: "form-control", rows: 8 %>
+    <!-- Adjust the 'rows' attribute value to control the height -->
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :author, class: "form-label" %>
+    <%= form.text_field :author, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :date, class: "form-label" %>
+    <%= form.date_field :date, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

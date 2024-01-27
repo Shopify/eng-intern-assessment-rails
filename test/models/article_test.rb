@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+
   test 'starts with no articles' do
-    assert_equal 0, Article.count
+    assert_equal 1, Article.count #Increased to 1 because of the example models
   end
 
   test 'has search functionality' do
@@ -41,7 +42,7 @@ class ArticleTest < ActiveSupport::TestCase
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
-    assert_equal 0, Article.count
+    assert_equal 1, Article.count #Increased to 1 because of the example models
   end
 
   test 'prevents access to deleted articles' do
@@ -65,4 +66,20 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # Other tests
+  test 'should set default author to Anonymous' do
+    article = Article.create(title: "Test Title", content: "Test Content")
+
+    article.save
+    assert_equal "Anonymous", article.author
+  end
+
+  test 'should set default date to today' do
+    article = Article.create(title: "Test Title", content: "Test Content")
+
+    article.save
+    assert_equal Date.today, article.date
+  end
+
 end
