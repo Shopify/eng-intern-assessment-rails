@@ -1,0 +1,15 @@
+article1:
+  title: "Ruby on Rails"
+  content: "Basics to Rails"
+  author: "John Doe"
+  date: "2024-01-01"
+
+article2:
+  title: "React.js Basics"
+  content: "Getting started with React.js"
+  author: "Jane Smith"
+
+article3:
+  title: "Vue.js Fundamentals"
+  content: "Learning Vue.js essentials"
+  author: "Bob Johnson"

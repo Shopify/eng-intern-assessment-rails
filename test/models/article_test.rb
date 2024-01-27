@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  setup do
+    Article.delete_all
+  end
+  
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -12,6 +16,11 @@ class ArticleTest < ActiveSupport::TestCase
   test 'creates a new article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert article.valid?
+  end
+
+  test "cannot create a article with empty title" do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert !article.valid?
   end
 
   test 'displays the article content accurately' do
@@ -29,6 +38,16 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.update(content: 'Updated content')
     assert_equal 'Updated content', article.content
+  end
+
+  test 'cannot edits an existing article to have empty title' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.update(title: '')
+    assert_not article.valid?
+    assert_equal ["Title can't be blank"], article.errors.full_messages
+
+    assert_equal 'Sample Article', article.reload.title
+    assert_equal 'Lorem ipsum dolor sit amet.', article.reload.content
   end
 
   test 'updates the article metadata' do
