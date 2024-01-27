@@ -1,3 +1,19 @@
-<h1><%= @article.title %></h1>
+<!-- Show Article View -->
 
-<p><%= @article.content %></p>
+<% if @article %>
+  <!-- Display the Article's Title -->
+  <h1 class="article-title"><%= @article.title %></h1>
+
+  <!-- Display the Article's Content -->
+  <div class="article-content">
+    <%= simple_format(@article.content) %>
+  </div>
+
+  <!-- Action Links for the Article -->
+  <div class="article-actions">
+    <%= link_to "Edit", edit_article_path(@article), class: "edit-link" %>
+    <%= link_to 'Home', root_path, class: 'home-button' %>
+  </div>
+<% else %>
+  <p>Article not found.</p>
+<% end %>
