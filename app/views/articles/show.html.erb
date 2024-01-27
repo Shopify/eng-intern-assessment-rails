@@ -1,0 +1,34 @@
+<p>
+    <strong>Title:</strong>
+    <%= @article.title %>
+</p>
+
+<p>
+    <strong>Content:</strong>
+    <%= @article.content %>
+</p>
+
+<p>
+    <strong>Author:</strong>
+    <%= @article.author %>
+</p>
+
+<p>
+    <strong>Date:</strong>
+    <%= @article.date %>
+</p>
+
+<p>
+    <strong>Last updated:</strong>
+    <%= @article.updated_at%>
+</p>
+
+<p>
+    <%= link_to 'Edit', edit_article_path(@article) %>
+    <%= link_to 'All Articles', articles_path %>
+</p>
+
+<!--Separating the button with a horizontal rule so it's more distinct from the Edit and All Articles links-->
+<hr>
+
+<%= button_to "Delete this article", @article, method: :delete %>
