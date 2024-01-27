@@ -1,5 +1,8 @@
 <h1>Shopedia</h1>
 
+<!-- Link to Create New Article -->
+<%= link_to 'Create New Article', new_article_path, class: 'create-article-button' %>
+
 <!-- Styled list of articles -->
 <div class="articles-list">
   <% @articles.each do |article| %>

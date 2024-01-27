@@ -11,8 +11,9 @@
 
   <!-- Action Links for the Article -->
   <div class="article-actions">
-    <%= link_to "Edit", edit_article_path(@article), class: "edit-link" %>
-    <%= link_to 'Home', root_path, class: 'home-button' %>
+    <%= link_to "Edit", edit_article_path(@article), class: "btn edit-link" %>
+    <%= link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn destroy-link" %>
+    <%= link_to 'Home', root_path, class: 'btn home-button' %>
   </div>
 <% else %>
   <p>Article not found.</p>
