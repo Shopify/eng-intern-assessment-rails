@@ -1,5 +1,14 @@
 <h1>Articles</h1>
 
+<%= link_to "New Article", new_article_path %>
+
+
+<%= form_tag articles_path, method: :get do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search articles" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+
 <ul>
   <% @articles.each do |article| %>
     <li>
@@ -8,4 +17,3 @@
   <% end %>
 </ul>
 
-<%= link_to "New Article", new_article_path %>
