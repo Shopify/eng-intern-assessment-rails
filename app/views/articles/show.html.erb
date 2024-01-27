@@ -1,0 +1,32 @@
+<%# article %>
+
+<h1><%= @article.title %></h1>
+
+<%# if author and/or date information is available, display it nicely. %>
+<h4>
+<% if @article.author.present? %>
+    by <%= @article.author %>
+<% end %>
+<% if @article.date.present? %>
+    on <%= @article.date %>
+<% end %>
+    </h4>
+
+<h2><%= @article.content %></h2>
+
+<%# perform actions on article %>
+<h4>
+    <span><%= link_to "UPDATE", edit_article_path(@article) %></span>
+   or
+<span>
+<%= link_to "DELETE", article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "This operation can't be undone. Click OK to proceed."
+} %>
+    </span>
+    this article
+</h4>
+
+<%# site navigation %>
+<p>If you enjoyed READing this article, please consider donating to EncyCRUDpedia.</p>
+<h4><%= link_to "Go Home", root_path %></>
