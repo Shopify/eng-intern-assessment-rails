@@ -1,0 +1,31 @@
+<nav> <!-- Navigation Bar-->
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Search', search_articles_path %></li>
+  </ul>
+</nav>
+<h1>Search Articles</h1>
+
+<!-- Form to search for articles -->
+<%= form_with(url: search_articles_path, method: :get, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :query, "Search for:" %>
+    <%= form.text_field :query %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Search" %>
+  </div>
+<% end %>
+
+<!-- Display search results -->
+<% if @articles.present? %>
+  <h2>Search Results:</h2>
+  <ul>
+    <% @articles.each do |article| %>
+      <li><%= link_to article.title, article %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No articles found</p>
+<% end %>

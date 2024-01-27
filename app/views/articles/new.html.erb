@@ -1,0 +1,11 @@
+<nav>
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Search', search_articles_path %></li>
+  </ul>
+</nav>
+<h1>New Article</h1>
+<!-- render the form partial -->
+<%= render 'form', article: @article %>
+
+<%= link_to 'Back', articles_path %>
