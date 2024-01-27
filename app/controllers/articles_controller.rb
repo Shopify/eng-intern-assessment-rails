@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   # Redirect to articles for ActiveRecord::RecordNotFound exception
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   def record_not_found
-    redirect_to articles_path, alert: 'Article not found'
+    redirect_to root_path, alert: 'Article not found'
   end
 
   # Display all articles
