@@ -1,8 +1,8 @@
 class ArticlesController < ApplicationController
     before_action :find_by_id, only: [:show, :edit, :update, :destroy]
     def index
-        if params[:search]
-            @articles = Article.search(params[:search])
+        if params[:query]
+            @articles = Article.search(params[:query])
           else
             @articles = Article.all
           end

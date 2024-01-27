@@ -3,7 +3,7 @@
 <h2>Search</h2>
   <%= form_tag articles_path, method: :get do %>
     <%= "Search for an article by title or content: " %>
-      <%= text_field_tag :search, params[:search] %>
+      <%= text_field_tag :query, params[:query] %>
       <%= submit_tag "Search" %>
   <% end %>
 
