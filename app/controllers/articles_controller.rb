@@ -1,5 +1,5 @@
+# Controlls all article routes
 class ArticlesController < ApplicationController
-
   def index
     @articles = Article.all
   end
@@ -35,21 +35,19 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    if params[:query].present?
-      @articles = Article.search(params[:query])
-    end
+    @articles = Article.search(params[:query]) if params[:query].present?
   end
 
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-
     redirect_to root_path, status: :see_other
   end
 
-  ##Strong parameters
+  # Strong parameters
   private
-    def article_params
-      params.require(:article).permit(:title, :content, :author, :date, :query)
-    end
+
+  def article_params
+    params.require(:article).permit(:title, :content, :author, :date, :query)
+  end
 end
