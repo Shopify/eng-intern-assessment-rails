@@ -11,7 +11,7 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
-
+    setup { DatabaseCleaner.strategy = :truncation }
     setup {DatabaseCleaner.start}
     teardown {DatabaseCleaner.clean}
   end

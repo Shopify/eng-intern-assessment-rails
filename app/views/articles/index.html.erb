@@ -1,0 +1,8 @@
+<%# div to render new article form #%>
+<div>
+    <%= link_to "New Article", new_article_path %>
+</div>
+<%# div to render articel records #%>
+<% @articles.each do |article| %>
+    <%= render 'article', article: article %>
+<% end %>
