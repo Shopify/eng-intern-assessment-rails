@@ -1,13 +1,24 @@
-<h1><%= @article.title %></h1>
-<p><%= @article.content %></p>
-<p><%= @article.author %></p>
-<p><%= @article.date %></p>
+<section>
+  <header>
+    <h1><%= @article.title %></h1>
+    <p><strong>Author:</strong> <%= @article.author %></p>
+    <p><strong>Date:</strong> <%= @article.date %></p>
+  </header>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+  <main>
+    <p><%= @article.content %></p> 
+    <ul>
+      <li><%= link_to "Edit", edit_article_path(@article) %></li>
+      <li>
+        <%= link_to "Destroy", article_path(@article), data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+            } %>
+      </li>
+    </ul>    
+  </main>
 
+  <footer>
+    <%= link_to "Back to Articles", articles_path %>
+  </footer>
+</section>

@@ -1,3 +1,13 @@
-<h1>New Article</h1>
+<section>
+  <header>
+    <h1>New Article</h1>
+  </header>
 
-<%= render "form", article: @article %>
+  <main>
+    <%= render "form", article: @article %>
+  </main>
+
+  <footer>
+    <%= link_to "Back to Articles", articles_path %>
+  </footer>
+</section>
