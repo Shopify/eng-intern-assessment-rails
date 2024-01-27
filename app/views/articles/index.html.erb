@@ -11,7 +11,13 @@
 <ul>
     <% @articles.each do |article| %>
         <li>
-        <%= link_to article.title, article %>
+        <p><%= link_to article.title, article %> |
+        <%= link_to "Edit", edit_article_path(article) %> |
+        <%= link_to "Delete", article_path(article), data:{
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+            }%>
+        </p>
         </li>
     <% end %>
 </ul>
