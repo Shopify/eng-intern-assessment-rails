@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   root to: "articles#index"
 
   resources :articles
-  get "articles/search/:text", to: "articles#search"
 end

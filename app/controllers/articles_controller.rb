@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.search(params[:query])
   end
 
   def show
@@ -28,7 +28,8 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-
+    
+    # Update article date to the date it was last edited.
     @article.date = Date.today if @article.update(article_params)
       
     if @article.save
@@ -45,12 +46,9 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  def search
-  end
-
   private
     def article_params
-      params.require(:article).permit(:title, :content, :author)
+      params.require(:article).permit(:title, :content, :author, :query)
     end
 
 end
