@@ -30,5 +30,13 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to article_path(@article)
     @article.reload
     assert_equal "updated", @article.title
+  end
+
+  test "should destroy article" do
+    assert_difference("Article.count", -1) do
+      delete article_url(@article)
     end
+  
+    assert_redirected_to root_path
+  end
 end
