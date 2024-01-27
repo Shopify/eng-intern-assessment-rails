@@ -1,20 +1,21 @@
 class Article < ApplicationRecord
-before_validation :set_date, on: create
-
- # We want to validate that articles have all fields completed before saving them to ensure the traceability of articles within our Encyclopedia
- validates :title, presence: true
- validates :content, presence: true
- validates :date, presence:true
- validates :author, presence:true
+before_save :set_timestamp
  
  def self.search(query)
     sanitized_query = sanitize_sql_like(query)
     where("title LIKE :query OR content LIKE :query", query: "%#{sanitized_query}%")
  end
 
+ validates :title, :content, :date, :author, presence: true, if: :should_validate?
+
  private
- 
- def set_date
-    self.date ||= Date.current
+
+ # This is to avoid performing validation when deleting articles, which would prevent us from deleting articles that are in a bad state
+ def should_validate?
+    new_record? || changed?
+ end
+
+ def set_timestamp
+    self.updated_at = Time.now
  end
 end
