@@ -1,10 +1,10 @@
 <h1>Articles</h1>
 
 <h2>Search</h2>
-<%= form_tag articles_path, method: :get do %>
+  <%= form_tag articles_path, method: :get do %>
     <%= "Search for an article by title or content: " %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search" %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search" %>
   <% end %>
 
 <br>
@@ -22,7 +22,7 @@
 
 <br>
 <h2>Add a New Article </h2>
-<%= link_to 'Create new article', new_article_path %>
+  <%= link_to 'Create new article', new_article_path %>
 
 <br><br>
 <%= link_to 'Back to all articles', articles_path%>

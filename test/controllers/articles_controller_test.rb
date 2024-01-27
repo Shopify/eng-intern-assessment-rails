@@ -1,7 +1,7 @@
-require_relative '../test_helper'
+require 'test_helper'
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
- setup do
+setup do
     @article = Article.create(title: 'Example Article', content: 'This is an example article.', author: 'Author Name', date: Date.today)
  end
 
