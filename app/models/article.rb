@@ -6,7 +6,7 @@ before_save :set_timestamp
     where("title LIKE :query OR content LIKE :query", query: "%#{sanitized_query}%")
  end
 
- validates :title, :content, :date, :author, presence: true, if: :should_validate?
+ validates :title, :content, presence: true, if: :should_validate?
 
  private
 
