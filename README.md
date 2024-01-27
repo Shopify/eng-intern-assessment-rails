@@ -19,7 +19,7 @@ My submission to the Shopify Backend Engineering Technical Challenge. The challe
 
 #### Description: New article
 #### route: `GET /articles/new`
-***INSERT SCREENSHOT HERE***
+![Screenshot](./repo_pictures/Screenshot 2024-01-26 at 21.48.19.jpg)
 The implemented functionality here allows you to create an article. The model requires you to have a title and content. This route uses another route in the controller to create the entry in the database by calling the `POST /articles/new`.
 
 #### Description: Create a new article
@@ -31,19 +31,19 @@ Route in the controller which creates the entry into the database. Called in the
 
 #### Description: Get all articles
 #### route: `GET /`
-***INSERT SCREENSHOT HERE***
+![Screenshot](./repo_pictures/Screenshot 2024-01-26 at 21.05.27.jpg)
 The implemented functionality here allows you to explore each entry into the database along with searching and filtering using the search bar near the top. You can click the title to get more info on the article, along with editing or deleting the entry.
 
 #### Description: Get an article by id
 #### route: `GET /articles/:id`
-***INSERT SCREENSHOT HERE***
+![Screenshot](./repo_pictures/Screenshot 2024-01-26 at 21.48.08.jpg)
 The implemented functionality here allows you to explore the entry of the id you've supplied in the URL. You can also edit or delete the entry here if you like.
 
 ### Update routes
 
 #### Description: Edit an article
 #### route: `GET /articles/:id/edit`
-***INSERT SCREENSHOT HERE***
+![Screenshot](./repo_pictures/Screenshot 2024-01-26 at 21.48.32.jpg)
 The implemented functionality here allows you to update an article. This route uses another route in the controller to create the entry in the database by calling the `PUT /articles/:id`.
 
 #### Description: Update an article
