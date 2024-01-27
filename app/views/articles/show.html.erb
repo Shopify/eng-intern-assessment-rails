@@ -1,0 +1,13 @@
+<h1><%= @article.title %></h1>
+<p><i><%= @article.author %></i></p>
+<p><i><%= @article.date %></i></p>
+<p><%= @article.content %></p>
+
+<%= render "layouts/navigation", locals: { title: "Edit", path: edit_article_path(@article) } %>
+
+<%= render "layouts/navigation", locals: { title: "Delete", path: article_path(@article), link_data: {
+  turbo_method: :delete,
+  turbo_confirm: "Are you sure?"
+} } %>
+
+<%= render "layouts/navigation", locals: { title: "Home", path: root_path } %>

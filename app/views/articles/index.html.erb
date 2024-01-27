@@ -1,0 +1,23 @@
+<h1>Encyclopedia</h1>
+
+<%= render "layouts/alert" %>
+
+<%= form_tag "/articles", method: "get" do %>
+  <%= label_tag "Search by article title or content" %>
+  <div>
+    <%= text_field_tag :article_search, params[:article_search] %>
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <div>
+        <%= link_to article.title, article %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<%= render "layouts/navigation", locals: { title: "Create Article", path: new_article_path } %>
