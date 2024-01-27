@@ -1,4 +1,7 @@
 <h1>Home page</h1>
 <%= render "article_list", article: @article %>
-<%= link_to "New Article", new_article_path %>
-<%= link_to "Search", articles_search_path %>
+<p>
+  <%= link_to "New Article", new_article_path %>
+  |
+  <%= link_to "Search", articles_search_path %>
+</p>
