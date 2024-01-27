@@ -1,0 +1,14 @@
+<h1>Shopedia</h1>
+
+<!-- Styled list of articles -->
+<div class="articles-list">
+  <% @articles.each do |article| %>
+    <div class="article-item">
+      <%= link_to article.title, article, class: "article-title" %>
+      <p class="article-snippet"><%= truncate(article.content, length: 100) %></p>
+      <div class="article-metadata">
+        <span>By <%= article.author %></span>
+      </div>
+    </div>
+  <% end %>
+</div>

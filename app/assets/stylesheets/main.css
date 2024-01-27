@@ -1,0 +1,30 @@
+.articles-list {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .article-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  .article-title {
+    font-size: 1.5em;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .article-title:hover {
+    text-decoration: underline;
+  }
+  
+  .article-snippet {
+    font-size: 1em;
+    color: #666;
+  }
+  
+  .article-metadata {
+    font-size: 0.8em;
+    color: #999;
+    margin-top: 5px;
+  }  
