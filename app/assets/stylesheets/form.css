@@ -1,0 +1,64 @@
+/* Form Styles */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Error Explanation Styles */
+#error_explanation {
+    color: #d9534f;
+    background-color: #f2dede;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#error_explanation h2 {
+    margin-top: 0;
+}
+
+/* Form Field Styles */
+div {
+    margin-bottom: 15px;
+}
+
+/* Label Styles */
+label {
+    display: block;
+    font-weight: bold;
+}
+
+/* Input and Textarea Styles */
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+/* Submit Button Styles */
+input[type="submit"] {
+    background-color: #5bc0de;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #4cae4c;
+}
+
+/* Error Message Styles */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#error_explanation li {
+    margin-bottom: 5px;
+}
