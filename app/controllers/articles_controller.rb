@@ -4,8 +4,13 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    id = params.extract_value(:id)
-    @article = Article.find(params[:id])
+    @article = Article.find_by(id: params[:id])
+
+    if @article.nil?
+      @articles = Article.all
+      flash.now[:alert] = "Your article was not found"
+      render "index"
+    end
   end
 
   def new
@@ -38,7 +43,14 @@ class ArticlesController < ApplicationController
 
   def search
     key = "%#{params[:key]}%"
-    @article = Article.where("content LIKE ?", key)
+    @articles = Article.where("lower(content) LIKE ?", key)
+    
+    if @articles.nil?
+      @articles = Article.all
+      flash.now[:alert] = "No article found"
+      render "index"
+    end
+    render "index"
   end
 
   def destroy
