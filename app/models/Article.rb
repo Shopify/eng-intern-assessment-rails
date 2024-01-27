@@ -9,88 +9,68 @@ class Article
     @author = author
     @date = date
     @id = @@id
+
     @@id += 1
   end
+
+  # Section for class's methods
 
   def self.clear!()
     @@articles = []
     @@id = 0
   end
 
-  def self.all()
-    return @@articles
-  end
-
   def self.count()
     return @@articles.length
   end
-
+ 
   def self.search(query)
-    returner = []
-  
-    for article in @@articles do
-      if article.content.include?(query) || article.title.include?(query)
-        returner.append(article)
-      end 
-    end 
-  
-    return returner
+    result = []
+
+    @@articles.each { |article| result.append(article) if article.content.include?(query) || article.title.include?(query) }
+
+    return result
   end
 
-  def self.create(options = {})
-    title = options[:title] || ""
-    content = options[:content] || ""
-    author = options[:author] || ""
-    date = options[:date] || ""
+  def self.create(args = {})
+    # Set attributes to respective arguments if they are passed in, else set them to an empty string
+    title = args[:title] || ""
+    content = args[:content] || ""
+    author = args[:author] || ""
+    date = args[:date] || ""
   
     article = Article.new(title, content, author, date)
     @@articles.append(article)
+
     return article
   end
 
-  def self.find(target)
-
-    for article in @@articles do 
-      if article.id() == target
-        return article
-      end
-    end
+  def self.find(target_id)
+    @@articles.each { |article| return article if article.id() == target_id }
 
     raise ActiveRecord::RecordNotFound
-
   end 
 
+  # Section for class instances' methods
+
   def valid?()
-    @@articles.include?(self)
+    return @@articles.include?(self)
   end
 
-  def title()
-    return @title
-  end
-
-  def content()
-    return @content
-  end
-
-  def update(options = {})
-    @title = options[:title] || @title
-    @content = options[:content] || @content
-    @author = options[:author] || @author
-    @date = options[:date] || @date
-  end
-
-  def id()
-    return @id
+  def update(args = {})
+    # Only update attributes if they are passed through the argument
+    @title = args[:title] || @title
+    @content = args[:content] || @content
+    @author = args[:author] || @author
+    @date = args[:date] || @date
   end
 
   def destroy()
     target_id = @id
-  
-    for article in @@articles do 
-      if article.id() == target_id
-        @@articles.delete(article)
-      end
-    end
+
+    @@articles.each { |article| @@articles.delete(article) if article.id() == target_id }
+    
+    @title, @content, @author, @date, @id = nil
   end 
   
 end
