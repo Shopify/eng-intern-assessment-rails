@@ -11,6 +11,8 @@
       <th>Content</th>
       <th>Author</th>
       <th>Date</th>
+      <th>Update</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +22,13 @@
         <td><%= article.content %></td>
         <td><%= article.author %></td>
         <td><%= article.date %></td>
+        <td><%= link_to 'Edit', edit_article_path(article) %></td>
+        <td>
+        <%= link_to 'Delete', article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?" } %>
+      </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<br>
+<%= link_to 'Create new Article', new_article_path %>

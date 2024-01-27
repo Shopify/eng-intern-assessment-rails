@@ -1,0 +1,30 @@
+<h1>Create a New Article</h1>
+
+<%= form_with(model: @article, url: articles_path, method: :post) do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+  <br> 
+  <div>
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+  <br>
+  <div>
+    <%= form.submit "Create Article" %>
+  </div>
+<% end %>
+<br>
+
+<%= link_to 'Back to Encyclopedia', articles_path %>
