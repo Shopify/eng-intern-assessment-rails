@@ -32,7 +32,7 @@ Route in the controller which creates the entry into the database. Called in the
 #### Description: Get all articles
 #### route: `GET /`
 ***INSERT SCREENSHOT HERE***
-The implemented functionality here allows you to explore each entry into the database along with searching and filtering using the search bar near the top. You can click the title to get more info on the article, along with writing or deleting the entry.
+The implemented functionality here allows you to explore each entry into the database along with searching and filtering using the search bar near the top. You can click the title to get more info on the article, along with editing or deleting the entry.
 
 #### Description: Get an article by id
 #### route: `GET /articles/:id`
