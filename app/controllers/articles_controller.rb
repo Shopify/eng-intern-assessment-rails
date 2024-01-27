@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
     def index
-        @articles = Article.order("updated_at DESC")
+        if params[:search].present?
+            @articles = Article.search(params[:search])
+        else
+            @articles = Article.order("updated_at DESC")
+        end
     end
 
     def new 
@@ -16,13 +20,9 @@ class ArticlesController < ApplicationController
         if @article.save
             redirect_to articles_path
         else
-        # empty for now.            
+        # empty for now if I have time I will add validation.            
         end
     end  
-
-    def self.search(term)
-        where('title LIKE ? OR content LIKE ?', "%#{term}%", "%#{term}%")
-      end
 
     def edit
         @article = Article.where(id: params[:id]).first
