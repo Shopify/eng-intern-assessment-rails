@@ -65,4 +65,22 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test "should not create article without title" do
+    assert_no_difference('Article.count') do
+      Article.create(title: "Some title")
+    end
+  end
+
+  test "should not create article without content" do
+    assert_no_difference('Article.count') do
+      Article.create(content: "Some content")
+    end
+  end
+
+  test "search is case insensitive" do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('sample article')
+    assert_includes results, article
+  end
 end
