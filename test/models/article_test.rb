@@ -1,3 +1,5 @@
+$LOAD_PATH << 'test'
+
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
@@ -43,7 +45,7 @@ class ArticleTest < ActiveSupport::TestCase
     article.destroy
     assert_equal 0, Article.count
   end
-
+  
   test 'prevents access to deleted articles' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
@@ -65,4 +67,62 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # Extra tests
+
+  test "update search result correctly after article update" do
+    article1 = Article.create(title: 'First', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Second', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+
+    results = Article.search('Lorem ipsum')
+    assert_includes results, article1
+    assert_includes results, article2
+
+    article1.update(content: "First content.")
+    results = Article.search('Lorem ipsum')
+    assert_includes results, article2
+    assert_not_includes results, article1
+  end
+
+  test 'update search result correctly after article deletion' do
+    article1 = Article.create(title: 'First', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Second', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+
+    results = Article.search('Lorem ipsum')
+    assert_includes results, article1
+    assert_includes results, article2
+
+    article1.destroy()
+    results = Article.search('Lorem ipsum')
+    assert_includes results, article2
+    assert_not_includes results, article1
+  end
+
+  test "returns search result in either title or content" do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Sample text.')
+    article3 = Article.create(title: 'Sample Article', content: 'Sample Lorem ipsum dolor sit amet.')
+
+    results = Article.search('Sample')
+    assert_includes results, article1
+    assert_includes results, article2
+    assert_includes results, article3
+  end
+
+  test 'returns empty array for empty search query' do
+    results = Article.search('')
+    assert_empty results
+  end
+
+  test "nullifies article's data after deletion" do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+
+    article.destroy
+    assert_nil article.title
+    assert_nil article.content
+    assert_nil article.author
+    assert_nil article.date
+    assert_nil article.id
+  end
+
 end
