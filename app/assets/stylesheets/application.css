@@ -1,15 +1,145 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #006400;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Headings */
+h1 {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  margin-top: 0;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #fff;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  max-width: 400px;
+}
+
+th {
+  background-color: #444;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Form styles */
+form {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  width: 95%;
+  margin: 5px 0;
+}
+
+#search-form {
+  margin-top: 20px;
+}
+
+.edit-form,
+.edit-container {
+  max-width: 400px;
+  margin: auto;
+  box-shadow: none;
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+input[type="text"],
+textarea {
+  max-width: 300px;
+}
+
+input[type="date"],
+select {
+  max-width: 110px;
+}
+
+/* Button styles */
+input[type="submit"],
+.search-btn,
+.clear-btn {
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  background-color: #006400;
+}
+
+input[type="submit"]:hover {
+  background-color: #004d00;
+}
+
+.search-btn,
+.clear-btn {
+  background-color: #007bff;
+  margin-left: 5px;
+}
+
+.search-btn:hover,
+.clear-btn:hover {
+  opacity: 0.9;
+}
+
+.clear-btn {
+  background-color: #6c757d;
+}
+
+/* Additional styles */
+.link-button-container {
+  cursor: pointer;
+  margin-right: 5px;
+  max-width: 50px;
+  display: inline-block;
+}
+
+#new-article-toggle {
+  background-color: #fff;
+  padding: 5px 20px;
+  margin-bottom: 0px;
+}

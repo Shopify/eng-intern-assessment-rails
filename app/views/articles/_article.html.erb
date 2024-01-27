@@ -1,0 +1,16 @@
+<tr id="<%= dom_id(article) %>">
+  <td><%= article.title %></td>
+  <td><%= article.content %></td>
+  <td><%= article.author %></td>
+  <td><%= article.date %></td>
+  <td>
+    <turbo-frame id="<%= dom_id(article) %>">
+      <div class="link-button-container">
+        <%= link_to 'Edit', edit_article_path(article), data: { turbo_frame: dom_id(article) } %>
+      </div>
+      <div class="link-button-container">
+        <%= link_to 'Delete', article, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this article?' } %>
+      </div>
+    </turbo-frame>
+  </td>
+</tr>
