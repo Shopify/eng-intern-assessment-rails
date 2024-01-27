@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.search(params[:search])
   end
 
   def show
@@ -44,6 +44,6 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :author, :content, :date)
+      params.require(:article).permit(:title, :author, :content, :date, :search)
     end
 end
