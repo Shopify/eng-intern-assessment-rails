@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%= csrf_meta_tags %>
+
+    <title>Index</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .articles {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+
+        }
+        .articles h2 {
+            margin: 0;
+        }
+
+        .actions a, .new-article-link a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        .new-article-link {
+            margin-bottom: 20px;
+        }
+        .button-container {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    margin: 20px; /* Optional: Add some space below the button */
+}
+    </style>
+
+</head>
+<body>
+<h1 style="text-align: center; margin-bottom: 0;">Shopify Intern Encyclopedia</h1>
+
+<div class="button-container">
+    <%= form_tag(new_article_path, method: :get, style: 'display: inline-block;') do %>
+        <%= submit_tag 'Create New Article', style: 'background-color:#00ed64; color: black; border: none;' %>
+    <% end %>
+</div>
+
+<% @articles.each do |article| %>
+<div class="container">
+    <div class="articles">
+        <h2><%= article.title %></h2>
+        <p><%= article.content %></p>
+        <div class="actions">
+        <%= link_to 'Read', article %>
+        <% if current_user == article.user %>
+            <%= link_to 'Edit', edit_article_path(article) %>
+            <%= form_tag(article, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                <%= submit_tag 'Delete',  style: 'background-color: red; color: white;' %>
+            <% end %>
+        <% end %>
+        </div>
+    </div>
+</div>
+<% end %>
+
+</body>
+</html>
