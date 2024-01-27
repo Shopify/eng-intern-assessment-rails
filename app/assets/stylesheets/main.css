@@ -1,0 +1,131 @@
+.articles-list {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .article-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  .article-title {
+    font-size: 1.5em;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .article-title:hover {
+    text-decoration: underline;
+  }
+  
+  .article-snippet {
+    font-size: 1em;
+    color: #666;
+  }
+  
+  .article-metadata {
+    font-size: 0.8em;
+    color: #999;
+    margin-top: 5px;
+  }
+  
+  .create-article-button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    background-color: #0c963a;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .create-article-button:hover {
+    background-color: #037f28;
+    text-decoration: none;
+  }
+
+  /* Common button style */
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 5px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.edit-link {
+  background-color: #ffc107; /* Yellow color for the edit button */
+}
+
+.edit-link:hover {
+  background-color: #e0a800;
+}
+
+.destroy-link {
+  background-color: #dc3545; /* Red color for the destroy button */
+}
+
+.destroy-link:hover {
+  background-color: #c82333;
+}
+
+.home-button {
+  background-color: #6c757d; /* Grey color for the home button */
+}
+
+.home-button:hover {
+  background-color: #5a6268;
+}
+
+/* Search Form Style */
+.search-form {
+  margin-bottom: 20px;
+}
+
+.search-form input[type="text"] {
+  padding: 10px;
+  margin-right: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search-form input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+/* Clear Button Style */
+.clear-button {
+  background-color: #6c757d;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.clear-button:hover {
+  background-color: #5a6268;
+  color: white;
+  text-decoration: none;
+}
