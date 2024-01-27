@@ -1,10 +1,16 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # Add a setup block to clear the articles before each test
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
 
+ 
   test 'has search functionality' do
     assert_respond_to Article, :search
   end
