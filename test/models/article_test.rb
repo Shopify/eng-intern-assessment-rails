@@ -65,4 +65,75 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'sorts articles by title in ascending order' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.order(title: :asc)
+    assert_equal results, [article2, article1] 
+  end
+
+  test 'sorts articles by title in descending order' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.order(title: :desc)
+    assert_equal results, [article1, article2] 
+  end
+
+  test 'sorts articles by content in ascending order' do
+    article1 = Article.create(title: 'Sample Article', content: 'A dog was here')
+    article2 = Article.create(title: 'Another Article', content: 'Boat was here')
+    results = Article.order(content: :asc)
+    assert_equal results, [article1, article2] 
+  end
+
+  test 'sorts articles by content in descending order' do
+    article1 = Article.create(title: 'Sample Article', content: 'A dog was here')
+    article2 = Article.create(title: 'Another Article', content: 'Boat was here')
+    results = Article.order(content: :desc)
+    assert_equal results, [article2, article1] 
+  end
+
+  test 'sorts articles by author in ascending order' do
+    article1 = Article.create(title: 'Another Article', content: 'Boat was here', author: 'Cartland')
+    article2 = Article.create(title: 'Sample Article', content: 'A dog was here', author: 'Shakespeare')
+    results = Article.order(author: :asc)
+    assert_equal results, [article1, article2] 
+  end
+
+  test 'sorts articles by author in ascending order with missing author' do
+    article1 = Article.create(title: 'Another Article', content: 'Boat was here')
+    article2 = Article.create(title: 'Sample Article', content: 'A dog was here', author: 'Shakespeare')
+    results = Article.order(author: :asc)
+    assert_equal results, [article1, article2] 
+  end
+
+  test 'sorts articles by author in descending order' do
+    article1 = Article.create(title: 'Another Article', content: 'Boat was here', author: 'Cartland')
+    article2 = Article.create(title: 'Sample Article', content: 'A dog was here', author: 'Shakespeare')
+    results = Article.order(author: :desc)
+    assert_equal results, [article2, article1] 
+  end
+
+  test 'sorts articles by date in ascending order' do
+    article1 = Article.create(title: 'Another Article', content: 'Boat was here', date: DateTime.new(2022, 1, 1))
+    article2 = Article.create(title: 'Sample Article', content: 'A dog was here', date: DateTime.new(2022, 1, 2))
+    articles = Article.order(date: :asc)
+    assert_equal [article1, article2], articles
+  end
+
+  test 'sorts articles by date in ascending order with missing date' do
+    article1 = Article.create(title: 'Another Article', content: 'Boat was here')
+    article2 = Article.create(title: 'Sample Article', content: 'A dog was here', date: DateTime.new(2022, 1, 2))
+    articles = Article.order(date: :asc)
+    assert_equal [article1, article2], articles
+  end
+
+  test 'sorts articles by date in descending order' do
+    article1 = Article.create(title: 'Another Article', content: 'Boat was here', date: DateTime.new(2022, 1, 1))
+    article2 = Article.create(title: 'Sample Article', content: 'A dog was here', date: DateTime.new(2022, 1, 2))
+    articles = Article.order(date: :desc)
+    assert_equal [article2, article1], articles
+  end
+
 end
