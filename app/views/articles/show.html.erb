@@ -2,7 +2,7 @@
 
 <p>Content - <%= @article.content %></p>
 
-<p>Wrtitten by - <%= @article.author %></p>
+<p>Updated by: <%= @article.author %> , on <%= @article.date %></p>
 
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
