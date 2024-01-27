@@ -1,6 +1,11 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    # If the user has searched for something, use the search scope
+    if params[:search_params]
+      @articles = Article.search(params[:search_params])
+    else
+      @articles = Article.all
+    end
   end
 
   #------------------------------------------------CRUD functionalities------------------------------------------------
@@ -50,6 +55,6 @@ class ArticlesController < ApplicationController
   #strong params
   private
     def article_params
-      params.require(:article).permit(:title, :content, :author, :date)
+      params.require(:article).permit(:title, :content, :author, :date, :search_params)
     end
 end
