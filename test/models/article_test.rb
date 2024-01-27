@@ -65,4 +65,14 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'handles empty search query gracefully' do
+    results = Article.search('')
+    assert_equal [], results
+  end
+
+  test 'handles nil search query gracefully' do
+    results = Article.search(nil)
+    assert_equal [], results
+  end
 end
