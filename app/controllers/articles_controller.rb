@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
   # Index action to list all articles
   def index
-    @articles = Article.all
+    # @articles = Article.all
+    @articles = Article.search(params[:query])
   end
 
   # Show action to display a specific article
@@ -53,7 +54,7 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     # Redirects to the root path after successful deletion
-    redirect_to root_path, status: :see_other
+    redirect_to articles_path, status: :see_other
   end
 
   private
