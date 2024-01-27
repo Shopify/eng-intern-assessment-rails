@@ -1,0 +1,32 @@
+<h1>EncyCRUDpedia</h1>
+
+<%# search form %>
+<%= form_with(url: root_path, method: :get, local: true) do |form| %>
+  <%= form.text_field :search, value: params[:search] %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<h2>READ Articles</h2>
+
+<%# fallback if search has no results %>
+<% if @articles.empty? %>
+  <p>No articles found. <%= link_to 'Create one!', new_article_path%></p>
+<% else %>
+
+<%# links for each article, by title %>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
+<% end %>
+
+<%# prompt to clear search %>
+<% if params[:search].present? %>
+  <%= link_to 'CLEAR SEARCH', root_path %>
+<% end %>
+
+<%# prompt to create an article %>
+<h3><%= link_to 'New Article', new_article_path%></h3>
