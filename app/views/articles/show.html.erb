@@ -3,3 +3,9 @@
 <p>Author: <%= @article.author %></p>
 <p>Content: <%= @article.content %></p>
 <p>Date: <%= @article.date %></p>
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Home", root_path %></li>
+</ul>
+
+
