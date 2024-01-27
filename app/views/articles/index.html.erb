@@ -3,12 +3,36 @@
 <h1>Articles</h1>
 
 <div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
+  <%= render "search" %>
+
+  <%= link_to "New article", new_article_path %>
+
+  <% if @articles.any? %>
+    <table class="articles-table">
+      <thead>
+        <tr>
+          <th><%= sortable_column("title", "Title") %></th>
+          <th><%= sortable_column("content", "Content") %></th>
+          <th><%= sortable_column("author", "Author") %></th>
+          <th><%= sortable_column("date", "Date") %></th>
+          <th>Show</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @articles.each do |article| %>
+          <tr>
+            <td><%= article.title %></td>
+            <td><%= article.content %></td>
+            <td><%= article.author.present? ? article.author : 'N/A' %></td>
+            <td><%= article.date.present? ? article.date.strftime('%Y-%m-%d') : 'N/A' %></td>
+            <td><%= link_to "Show", article %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No articles found.</p>
   <% end %>
 </div>
 
-<%= link_to "New article", new_article_path %>
+

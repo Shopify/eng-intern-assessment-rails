@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_action :set_article, only: %i[ show edit update destroy ]
 
   def index
-    @articles = Article.all
+    @articles = Article.order("#{sort_column} #{sort_direction}")
   end
 
   def show
@@ -40,15 +41,27 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @results = Article.search(params[:query])
+    @articles = params[:query].present? ? Article.search(params[:query]) : []
+    @articles = @articles.order("#{sort_column} #{sort_direction}")
+  
+    render :index
   end
 
   private
+
   def set_article
     @article = Article.find(params[:id])
   end
 
   def article_params
     params.require(:article).permit(:title, :content, :author, :date)
+  end
+
+  def sort_column
+    Article.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
