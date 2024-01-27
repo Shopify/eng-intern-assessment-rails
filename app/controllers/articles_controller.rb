@@ -2,7 +2,7 @@
 class ArticlesController < ApplicationController
 
     def index
-      # retrieves all records from the Article model's corresponding database table
+      # retrieves all records from the Article model's corresponding to search
       @articles = if params[:search]
         Article.search(params[:search])
       else
@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
         @article = Article.new
     end
 
+    # creates new articles
     def create
         @article = Article.new(article_params)
         if @article.save
@@ -27,6 +28,7 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
     end
 
+    # updates articles
     def update
         @article = Article.find(params[:id])
         if @article.update(article_params)
@@ -36,6 +38,7 @@ class ArticlesController < ApplicationController
         end
     end
 
+    # deletes articles
     def destroy
         @article = Article.find(params[:id])
         @article.destroy
