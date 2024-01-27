@@ -10,7 +10,11 @@
 <hr>
 
 <ul>
-  <% @articles.each do |article| %>
-    <li><%= link_to article.title, article_path(article) %></li>
+  <% if @articles.present? %>
+    <% @articles.each do |article| %>
+      <li><%= link_to article.title, article_path(article) %></li>
+    <% end %>
+  <% else %>
+    <li>No articles found</li>
   <% end %>
 </ul>
