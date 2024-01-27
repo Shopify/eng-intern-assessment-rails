@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
             redirect_to @article
         else
             render :new, status: :unprocessable_entity
-      end
+        end
     end
 
     def destroy
@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
         redirect_to @article
       end
     end
-
+    
     private
         def find_by_id
             @article = Article.find(params[:id])
