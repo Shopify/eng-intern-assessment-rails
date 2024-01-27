@@ -2,8 +2,7 @@ class Article < ApplicationRecord
 before_save :set_timestamp
  
  def self.search(query)
-    sanitized_query = sanitize_sql_like(query)
-    where("title LIKE :query OR content LIKE :query", query: "%#{sanitized_query}%")
+    where("title LIKE ? OR content LIKE ? OR author LIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
  end
 
  validates :title, :content, presence: true, if: :should_validate?
