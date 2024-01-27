@@ -20,5 +20,12 @@
     <div><%= message %></div>
 <% end %>
 
+<br>
+<%= form.label :date%>
+<%= form.date_select :date%>
+<% article.errors.full_messages_for(:date).each do |message| %>
+    <div><%= message %></div>
+<% end %>
+
 <%= form.submit "Submit" %>
 <% end %>

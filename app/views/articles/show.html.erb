@@ -18,6 +18,6 @@
  <%= @article.date %>
 </p>
 
-<%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Delete', article_path(@article), method: :destroy, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Edit', edit_article_path(@article) %>
 <%= link_to 'All Articles', articles_path %>

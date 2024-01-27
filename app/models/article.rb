@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
- before_validation :set_date, on: create
+before_validation :set_date, on: create
 
  # We want to validate that articles have all fields completed before saving them to ensure the traceability of articles within our Encyclopedia
  validates :title, presence: true
