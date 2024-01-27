@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="text-2xl font-bold mb-4">Articles</h1>
+
+<% if @articles.any? %>
+<table id="articles" class="table-auto w-full text-left">
+  <thead class="border font-medium border-neutral-300">
+    <tr>
+      <th class="px-6 py-4">Title</th>
+      <th>Content</th>
+      <th>Author</th>
+      <th>Creation Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @articles.each do |article| %>
+    <tr class="border border-neutral-300 transition duration-300 ease-in-out hover:bg-neutral-100">
+      <td class="whitespace-nowrap px-6 py-4"><%= article.title %></td>
+      <td><%= article.content %></td>
+      <td><%= article.author.present? ? article.author : 'N/A' %></td>
+      <td><%= article.date.present? ? article.date.to_formatted_s(:long) : 'N/A' %></td>
+      <td><%= link_to "View", article_path(article), class: "link" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% elsif params[:search].present? %>
+  <p>There are no articles that match your search results. Try something else!</p>
+<% else %>
+  <p>It seems you have no articles yet. Click below to create one!</p>
+<% end %>
+
+<div class="mt-5">
+  <%= link_to "New article", new_article_path, class: "link" %>
+</div>
