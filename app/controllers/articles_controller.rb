@@ -3,7 +3,12 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = Article.all
+    # Fetch search results when search parameter is not blank
+    unless params[:search].blank?
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/<id>
@@ -48,6 +53,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through
     def article_params
-      params.require(:article).permit(:title, :content, :author, :date)
+      params.require(:article).permit(:title, :content, :author, :date, :search)
     end
 end
