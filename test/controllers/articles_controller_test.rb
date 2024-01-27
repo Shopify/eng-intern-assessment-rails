@@ -15,4 +15,12 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get article_url(@article)
     assert_response :success
   end
+
+  test "should create article" do
+    assert_difference("Article.count") do
+      post articles_url, params: { article: { content: "Rails is awesome!", title: "Hello Shopify" } }
+    end
+
+    assert_redirected_to article_path(Article.last)
+  end
 end
