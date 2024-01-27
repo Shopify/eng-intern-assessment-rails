@@ -73,4 +73,14 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article1
     assert_includes results, article2
   end
+
+  test 'validates if article is missing title' do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.save
+  end
+
+  test 'validates if article is missing content' do
+    article = Article.create(title: 'Article title')
+    assert_not article.save
+  end
 end
