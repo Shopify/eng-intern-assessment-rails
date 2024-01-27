@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   root "articles#index"
 
   Rails.application.routes.draw do
-    resources :articles, except: [:show]
+    resources :articles
   end
-
 end

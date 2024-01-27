@@ -5,25 +5,25 @@
     <%= form.label :title %>
     <%= form.text_field :title, class: 'form-control' %>
   </div>
-
+  <br>
   <div class="form-group">
     <%= form.label :content %>
     <%= form.text_area :content, class: 'form-control' %>
   </div>
-
+  <br>
   <div class="form-group">
     <%= form.label :author %>
     <%= form.text_field :author, class: 'form-control' %>
   </div>
-
+  <br>
   <div class="form-group">
     <%= form.label :date %>
     <%= form.date_field :date, class: 'form-control' %>
   </div>
-
+  <br>
   <div class="form-group">
     <%= form.submit "Update Article", class: 'btn btn-primary' %>
   </div>
 <% end %>
-
+<br>
 <%= link_to 'Back to Articles', articles_path, class: 'back-link' %>

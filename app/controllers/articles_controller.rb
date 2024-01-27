@@ -2,8 +2,12 @@
 class ArticlesController < ApplicationController
 
     def index
-      #retrieves all records from the Article model's corresponding database table
-      @articles = Article.all
+      # retrieves all records from the Article model's corresponding database table
+      @articles = if params[:search]
+        Article.search(params[:search])
+      else
+        Article.all
+      end
     end
 
     def new
@@ -37,7 +41,6 @@ class ArticlesController < ApplicationController
         @article.destroy
         redirect_to articles_path, notice: 'Article was successfully deleted.'
     end
-
 
     private
 

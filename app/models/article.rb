@@ -4,5 +4,7 @@ class Article < ApplicationRecord
     validates :content, presence: true
 
     # search functionality
-    scope :search, ->(query) { where('title LIKE ? OR content LIKE ?', "%#{query}%", "%#{query}%") }
+    scope :search, ->(query) {
+        where('title LIKE :query OR content LIKE :query OR author LIKE :query OR date LIKE :query', query: "%#{query}%")
+    }
 end

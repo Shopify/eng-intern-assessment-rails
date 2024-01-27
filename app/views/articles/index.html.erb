@@ -31,4 +31,12 @@
   </tbody>
 </table>
 <br>
+<%= form_with(url: articles_path, method: :get, class: 'search-form') do |form| %>
+  <div class="field">
+    <%= form.label :search, 'Search by Title, Content,	Author, Date:' %>
+    <%= form.text_field :search, placeholder: 'Enter keywords' %>
+  </div>
+  <%= form.submit 'Search', class: 'btn' %>
+<% end %>
+<br>
 <%= link_to 'Create new Article', new_article_path %>
