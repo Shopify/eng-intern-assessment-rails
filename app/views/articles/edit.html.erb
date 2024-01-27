@@ -1,0 +1,7 @@
+<h1>Edit Article</h1>
+<%= link_to "Go Back", articles_path %>
+<%= render "form", article: @article %>
+
+<div style="margin-top: 1rem">
+<%= button_to "Destroy", @article, method: :delete, onclick: "return confirm('Are you sure you want to permanently delete this article?');" %>
+</div>
