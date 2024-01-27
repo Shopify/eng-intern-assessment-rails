@@ -1,5 +1,8 @@
 # Shopify Intern Encyclopedia
 
+## Project Overview
+The Rails application serves as an Encyclopedia, designed to be an informative and interactive platform. Users have the ability to create, view, edit, and delete articles. The application also includes a search functionality to help users find relevant articles based on their search queries.
+
 ## Demo
 Unlisted Video: https://www.youtube.com/watch?v=4Y8WtTw-dZI
 
@@ -23,5 +26,3 @@ Unlisted Video: https://www.youtube.com/watch?v=4Y8WtTw-dZI
    - Incorporated a search feature that filters articles based on user input.
    - Optimized query handling to fetch relevant articles by matching keywords against article titles and content.
 
-## Project Overview
-The Rails application serves as an Encyclopedia, designed to be an informative and interactive platform. Users have the ability to create, view, edit, and delete articles. The application also includes a search functionality to help users find relevant articles based on their search queries.
