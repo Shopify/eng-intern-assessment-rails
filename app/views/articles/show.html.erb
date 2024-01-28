@@ -1,0 +1,13 @@
+# show details about the article
+<h1><%= @articles.title %></h1>
+<p><%= @articles.content %></p>
+<h2><%= @articles.author %></h2>
+<h2><%= @articles.date %></h2>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@articles) %></li>
+  <li><%= link_to "Destroy", article_path(@articles), data: {
+    turbo_method: :delete
+  } %></li>
+</ul>
+
