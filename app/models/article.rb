@@ -17,7 +17,7 @@ class Article < ApplicationRecord
         if search_term
         # Coverts title, content and search_term to lower case to make the search case insensitive
         # Any partial match of search_term to the title or content returns the article 
-        where('title LIKE ? OR content LIKE ?', "%#{search_term}%", "%#{search_term}%")
+        where("lower(title) LIKE ? OR lower(content) LIKE ?", "%#{search_term.downcase}%", "%#{search_term.downcase}%")
         else
         # If no search term is provided, return all articles
         all
