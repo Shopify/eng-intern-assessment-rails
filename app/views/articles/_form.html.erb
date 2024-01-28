@@ -11,7 +11,23 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.submit %>
+  <div class="d-flex flex-column gap-3">
+    <%= form.label :title, "Title:" %>
+    <%= form.text_field :title, required: true %>
+
+    <%= form.label :author, "Author:" %>
+    <%= form.text_field :author %>
+
+    <%= form.label :date, "Date:" %>
+    <div>
+      <%= form.date_select :date %>
+    </div>
+
+    <%= form.label :content, "Content:" %>
+    <%= form.text_area :content, required: true, rows: 10 %>
+
+    <div>
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>
