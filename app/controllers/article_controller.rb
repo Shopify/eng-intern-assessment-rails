@@ -90,6 +90,7 @@ class ArticleController < ApplicationController
     end
 
     # DELETE /articles/:id
+    # Deletes the article with the specified ID parameter
     def destroy
         @article.destroy
         Rails.cache.delete('articles')
