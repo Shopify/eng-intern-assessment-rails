@@ -16,7 +16,7 @@ class ArticleController < ApplicationController
     # Fetches a paginated subset of articles based on a search query, if provided.
     # If no query, all articles are fetched. Results are cached for efficiency.
     # Chaching strategy: 1. articles are cached for `caching_time` minutes 
-    #                    2. only `articles_per_page` articles are caches at a time
+    #                    2. only `articles_per_page` articles are cached at a time
     def index
         @articles = Rails.cache.fetch(['articles', articles_cache_key], expires_in: caching_time.minutes) do
           if params[:search].present?
@@ -27,7 +27,7 @@ class ArticleController < ApplicationController
         end
     end
 
-    # Get /articles/:id
+    # GET /articles/:id
     # Fetches a single article based on the ID parameter from the cache or the database
     def show
         @articles = Rails.cache.fetch(['articles', articles_cache_key], expires_in: caching_time.minutes) do
@@ -38,8 +38,63 @@ class ArticleController < ApplicationController
         redirect_to articles_url, alert: 'Article not found'
     end
 
+    # GET /articles/new
+    # Initializes a new article
     def new
         @article = Article.new
+    end
+
+    # GET /articles/:id/edit
+    # Fetches the article specific by the ID parameter to be editted
+    def edit
+    end
+
+    # POST /articles
+    # Creates a new article with the provided parameters.
+    def create
+        @article = Article.new(article_params)
+        # Sets the date to today's date
+        @article.date = Date.today
+
+        # Sets the author to "Anonymous" if no author is provided
+        if @article.author.blank?
+            @article.author = "Anonymous"
+        end
+
+        if @article.save
+            Rails.cache.delete('articles')
+            redirect_to @article, notice: 'Article created successfully'
+        else
+            render :new, status: :unprocessable_entity
+        end
+    end
+
+    # PUT /articles/:id
+    # Updates the article with the specified ID parameter
+    def update
+        if @article.update(article_params)
+            # Sets the date to today's date
+            @article.date = Date.today
+
+            # Sets the author to "Anonymous" if no author is provided
+            if @article.author.blank?
+                @article.author = "Anonymous"
+            end
+
+            Rails.cache.delete('articles')
+            Rails.cache.delete(["article", @article.id])
+            redirect_to @article, notice: 'Article updated successfully'
+        else
+            render :edit
+        end
+    end
+
+    # DELETE /articles/:id
+    def destroy
+        @article.destroy
+        Rails.cache.delete('articles')
+        Rails.cache.delete(["article", @article.id])
+        redirect_to articles_url, notice: 'Article deleted successfully'
     end
 
     private
