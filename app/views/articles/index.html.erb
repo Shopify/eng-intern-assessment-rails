@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%= csrf_meta_tags %>
+        <title>Index</title>
+    </head>
+    <body>
+        <h1 style="text-align: center; margin-bottom: 0;">Shopify Intern Encyclopedia</h1>
+        <div class="search-container">
+        <%= form_tag(articles_path, method: :get) do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search by keyword", class: "search-input" %>
+            <%= submit_tag "Search", class: "search-button" %>
+        <% end %>
+        </div>
+        <div class="button-container">
+            <%= form_tag(new_article_path, method: :get, style: 'display: inline-block;') do %>
+                <%= submit_tag 'Create New Article', style: 'background-color:#00ed64; color: black; border: none;' %>
+                
+            <% end %>
+        </div>
+        <div class="container">
+            <% @articles.each do |article| %>
+                <div class="articles">
+                    <h2><%= article.title %></h2>
+                    <div class="article-content">
+                        <p><%= article.content %></p>
+                    </div>
+                    <div class="actions">
+                    <%= link_to 'Read', article %>
+                    <% if current_user == article.user %>
+                        <%= link_to 'Edit', edit_article_path(article), style: 'background-color: #ffe01b; color: black;' %>
+                        <%= form_tag(article, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                            <%= submit_tag 'Delete',  style: 'background-color: red; color: white;' %>
+                        <% end %>
+                    <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </body>
+</html>

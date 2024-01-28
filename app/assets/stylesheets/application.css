@@ -1,15 +1,421 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+body {
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text */
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: #bb86fc; /* Light purple for links */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.articles {
+  margin: 20px;
+  padding: 20px;
+  background-color: #1e1e1e; /* Slightly lighter dark background for posts */
+  border: 1px solid #373737; /* Border color for posts */
+}
+
+.notice,
+.alert {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #121212; /* Dark text for contrast */
+}
+
+.notice {
+  background-color: #00ed64; /* Light teal for success messages */
+  border-color: #00ed64;
+}
+
+.alert {
+  background-color: #cf6679; /* Light red for alert messages */
+  border-color: #cf6679;
+}
+
+nav {
+  display: flex;
+  align-items: center; /* Vertically centers the nav items */
+  justify-content: space-between;
+  background-color: #1f1f1f;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+.nav-left a:hover {
+  text-decoration: none; /* Prevent underline on hover */
+  background-color: transparent; /* Keep background transparent on hover */
+}
+
+.nav-left {
+  display: flex;
+  align-items: center; /* Vertically centers the logo and the text */
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-left span {
+  font-size: 24px; /* Adjust size as needed */
+  font-weight: bold; /* Makes the text bold */
+  color: #e0e0e0; /* Light text color */
+  text-decoration: none;
+}
+
+nav a {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.actions,
+.new-article-link {
+  margin-top: 10px;
+}
+
+.actions a,
+.actions form {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  color: white;
+}
+
+.actions a {
+  background-color: #4caf50; /* Green background for links */
+}
+
+.actions a:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+input[type="submit"],
+button {
+  background-color: #bb86fc; /* Light purple for buttons */
+  color: #121212; /* Dark text for buttons */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  background-color: #9a67ea; /* Slightly darker purple on hover */
+}
+.notice,
+.alert {
+  margin: 10px auto; /* Auto margins for horizontal centering */
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #121212; /* Dark text for contrast */
+  min-width: 300px; /* Minimum width, adjust as needed */
+  text-align: center; /* Center text */
+  display: block; /* Use block to work with width and margin auto */
+}
+
+.nav-right {
+  display: flex;
+  gap: 10px; /* Adds space between the buttons */
+  color: white;
+}
+
+.nav-right form {
+  display: inline; /* Makes the forms appear in line */
+}
+.nav-right input:hover {
+  background-color: #9a67ea; /* Adjusted hover background color */
+}
+
+.message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px; /* Adjust as needed */
+}
+.user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-color: #1f1f1f; /* Light grey background */
+  border-radius: 15px; /* Rounded corners */
+  width: 100%; /* Full width */
+  max-width: 300px; /* Maximum width of the form */
+  margin: auto; /* Centering the form container */
+}
+.field {
+  margin-bottom: 5px;
+}
+
+.actions2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px; /* Adds margin around the button to create space */
+  padding: 10px 20px; /* Adds padding inside the button */
+  border: none; /* Removes the border */
+
+  color: white; /* Text color */
+  cursor: pointer; /* Changes cursor to a pointer on hover */
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+.articles {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+.articles h2 {
+  margin: 0;
+}
+
+.actions a,
+.new-article-link a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: black;
+}
+.new-article-link {
+  margin-bottom: 20px;
+}
+.button-container {
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  margin: 20px; /* Optional: Add some space below the button */
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* Space between articles */
+  margin: 20px; /* Margin around the whole grid */
+}
+.article-content {
+  max-height: 100px; /* Fixed max height for the content */
+  overflow-y: auto; /* Auto scrollbar when content overflows vertically */
+  margin: 20px 0; /* Space between content and actions */
+}
+@media (max-width: 1085px) {
+  .container {
+    grid-template-columns: 1fr; /* 1 column on small screens */
+  }
+}
+.actions form {
+  padding: 0;
+}
+.search-container {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 600px; /* Adjust based on your preference */
+}
+
+.search-input {
+  padding: 10px;
+  width: 75%; /* Adjust based on your preference */
+  border: 2px solid #007bff;
+  outline: none;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  box-sizing: border-box;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: 2px solid #007bff;
+  border-left: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.search-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.article-container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-container h2 {
+  color: #e0e0e0;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.article-details p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.article-body {
+  margin-top: 20px;
+  padding: 20px;
+  background: #1f1f1f;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.article-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.btn-edit {
+  background-color: #4caf50;
+}
+
+.btn-back {
+  background-color: #555;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.article-container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-container h2 {
+  color: #e0e0e0;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.article-details p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.article-body {
+  margin-top: 20px;
+  padding: 20px;
+  background: #1f1f1f;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.article-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.btn-edit {
+  background-color: #4caf50;
+}
+
+.btn-back {
+  background-color: #555;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+.article-name {
+  margin: 10px 0;
+}
+
+.read-only-input {
+  padding: 8px;
+  margin-bottom: 10px; /* Space below the field */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f5f5f5; /* Light gray background to indicate non-editability */
+  color: #666; /* Dimmed text color */
+}
+
+.read-only-input[readonly] {
+  cursor: not-allowed;
+}
+
+.read-only-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+  font-weight: bold;
+}
+
+#error_explanation {
+  color: red;
+  border: 1px solid red;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+textarea {
+  width: 70%;
+}
+
+.form-container {
+  background-color: #1f1f1f; /* Light gray background */
+  padding: 20px;
+  border-radius: 8px;
+  width: 40%; /* Or your preferred width */
+  margin: auto; /* Center the form container */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+.field label {
+  display: block; /* Make labels block-level for better control */
+  font-weight: bold; /* Optional: Make labels bold */
+}
+
+textarea {
+  resize: vertical; /* Allow only vertical resizing */
+}

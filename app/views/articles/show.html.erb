@@ -1,0 +1,18 @@
+<div class="article-container">
+  <h2><%= @article.title %></h2>
+  
+  <div class="article-details">
+    <p><strong>Author:</strong> <%= @article.user.name %></p>
+    <p><strong>Author Email:</strong> <%= @article.user.email %></p>
+    <p><strong>Published on:</strong> <%= @article.created_at.strftime("%B %d, %Y at %I:%M%p") %></p>
+  </div>
+  
+  <div class="article-body">
+    <p><%= @article.content %></p>
+  </div>
+  
+  <div class="article-actions">
+    <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-edit' %>
+    <%= link_to 'Back', articles_path, class: 'btn btn-back' %>
+  </div>
+</div>

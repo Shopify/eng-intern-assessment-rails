@@ -1,0 +1,27 @@
+<%= form_for @article do |f| %>
+<div class="article-container">
+  <h2><%= @article.title %></h2>
+  
+  <div class="article-details">
+    <p><strong>Author:</strong> <%= @article.user.name %></p>
+    <p><strong>Author Email:</strong> <%= @article.user.email %></p>
+    <p><strong>Published on:</strong> <%= @article.created_at.strftime("%B %d, %Y at %I:%M%p") %></p>
+  </div>
+  
+   <div class="field" style="margin-bottom: 10px;">
+  <label class="read-only-label" for="content">Content</label>
+  <%= f.text_area :content, style: "width: 70%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical;" %>
+</div>
+   <div class="article-name">
+      <label class="read-only-label" for="user_name">Author</label>
+      <%= f.text_field :user_name, value: @article.user.name, readonly: true, id: "user_name", class: "read-only-input" %>
+    </div>
+  
+   <div class="actions">
+      <%= f.submit 'Update', style: "background-color: green; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;" %>
+    </div>
+</div>
+<% end %>
+
+
+   

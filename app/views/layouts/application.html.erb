@@ -1,16 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EngInternAssessmentRails</title>
+    <title>Shopify Intern Encyclopedia</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    
   </head>
 
   <body>
+    <nav >
+      <div>
+        <%= link_to root_path do%>
+          <div class="nav-left">
+            <%= image_tag('logo.svg', alt: 'Logo', style: 'height: 35px;') %>
+            <span>Shopipedia</span>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="nav-right">
+        <% if user_signed_in? %>
+          <%= form_tag(destroy_user_session_path, method: :delete) do %>
+            <%= submit_tag('Logout') %>
+          <% end %>
+        <% else %>
+          <%= form_tag(new_user_session_path, method: :get) do %>
+            <%= submit_tag 'Login' %>
+          <% end %>
+          <%= form_tag(new_user_registration_path, method: :get) do %>
+            <%= submit_tag 'Register'%>
+          <% end %>
+        <% end %>
+      </div>
+    </nav>
+    <div class="message-container">
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
