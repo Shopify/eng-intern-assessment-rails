@@ -7,7 +7,7 @@
 
   <%= link_to "New article", new_article_path %>
 
-  <% if @articles.any? %>
+  <% if @articles.present? %>
     <table class="articles-table">
       <thead>
         <tr>

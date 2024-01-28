@@ -3,11 +3,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
   def index
-    cache_key = "articles/#{sort_column}/#{sort_direction}"
-
-    @articles = Rails.cache.fetch(cache_key, expires_in: 5.minutes) do
-      Article.order("#{sort_column} #{sort_direction}")
-    end
+    @articles = ArticleService.fetch_sorted_articles(sort_column, sort_direction)
   end
 
   def show
@@ -45,8 +41,7 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = params[:query].present? ? Article.search(params[:query]) : []
-    @articles = @articles.order("#{sort_column} #{sort_direction}")
+    @articles = ArticleService.search( params[:query], sort_column, sort_direction)
   
     render :index
   end
