@@ -70,7 +70,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
   end
 
-  test 'returns accurate search results' do
+  test 'search returns articles with matching content' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article',
                               content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
@@ -79,7 +79,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
   end
 
-  test 'displays relevant articles in search results' do
+  test 'search returns articles with matching title' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article',
                               content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
