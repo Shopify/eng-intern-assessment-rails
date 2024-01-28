@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<h1><%= @article.title %></h1>
 
-<%= render @article %>
+<% if !@article.author.blank? and !@article.date.blank? %>
+  <h3><%= "#{@article.author}\t|\t#{@article.date}" %></h3>
+<% elsif !@article.author.blank? or !@article.date.blank? %>
+  <h3><%= "#{@article.author}#{@article.date}" %></h3>
+<% end %>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
+<p><%= @article.content %></p>
 
-  <%= button_to "Destroy this article", @article, method: :delete %>
-</div>
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %></li>
+  <li><%= link_to "Home", articles_path %></li>
+</ul>
