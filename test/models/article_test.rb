@@ -65,4 +65,23 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # ensure that article authors are properly queried using the search function.
+  test 'returns accurate author search results' do
+    article1 = Article.create(title:'Sample Article', content: 'Lorem ipsum dolor sit amet', author: 'John Doe')
+    article2 = Article.create(title:'Another Article', content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Jane doe')
+    results = Article.search('Jane')
+    assert_includes results, article2
+    assert_not_includes  results, article1
+  end
+
+
+  # I was going to use this for a feature, but ultimately decided against it.
+  # test 'returns accurate author scope query results' do
+  #   article1 = Article.create(title:'Sample Article', content: 'Lorem ipsum dolor sit amet', author: 'John Doe')
+  #   article2 = Article.create(title:'Another Article', content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Jane Doe')
+  #   results = Article.author('Jane Doe')
+  #   assert_includes results, article2
+  #   assert_not_includes  results, article1
+  #   end
 end

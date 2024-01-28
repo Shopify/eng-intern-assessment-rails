@@ -7,5 +7,5 @@
 <p> <%=@article.content%> </p>
 
 <%= link_to "Edit article", edit_article_path(@article)%>
-<%# turbo allows us to delete without  %>
+<%# turbo allows us to send a request to one route while going to a different route. In other words, turbo allows us to go to %>
 <%= link_to "Delete article", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete your article?"}%>

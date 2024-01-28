@@ -11,6 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_01_25_144327) do
+
+  #create table of articles, with all four columns mentioned in the tests.
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "content"
