@@ -53,8 +53,10 @@ class ArticleController < ApplicationController
     # Creates a new article with the provided parameters.
     def create
         @article = Article.new(article_params)
-        # Sets the date to today's date
-        @article.date = Date.today
+        # Sets the date to today's date if no date is provided
+        if @article.date.blank?
+            @article.date = Date.today
+        end
 
         # Sets the author to "Anonymous" if no author is provided
         if @article.author.blank?
@@ -73,8 +75,10 @@ class ArticleController < ApplicationController
     # Updates the article with the specified ID parameter
     def update
         if @article.update(article_params)
-            # Sets the date to today's date
-            @article.date = Date.today
+            # Sets the date to today's date if no date is provided
+            if @article.date.blank?
+                @article.date = Date.today
+            end
 
             # Sets the author to "Anonymous" if no author is provided
             if @article.author.blank?
