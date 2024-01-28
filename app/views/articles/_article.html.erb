@@ -1,7 +1,10 @@
 <div id="<%= dom_id article %>" class="card m-2 p-2">
   <div class="d-flex justify-content-between">
     <h5><%= article.title.truncate(100) %></h5>
-    <%= link_to "Show", article %>
+    <div>
+      <%= link_to "Show", article %>
+      <%= link_to "Delete", article_path(article), class: "text-danger", data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
+    </div>
   </div>
 
   <p class="m-0"><%= article.content.truncate(300) %></p>

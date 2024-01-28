@@ -59,7 +59,10 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy!
 
-    redirect_to articles_url, notice: "Article was successfully destroyed."
+    respond_to do |format|
+      format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
+      format.turbo_stream
+    end
   end
 
   private
