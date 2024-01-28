@@ -1,7 +1,6 @@
 class Article < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true, length: {minimum: 5}
-  validates :author, presence: true
   # scopes allow us to query for artists easily, minimizing and simplifying the code on the controller side if we would like to search per author. (as is best practice)
   # I was going to use it for a feature, but ultimately decided against it.
   # scope :author, -> (query){where(author: query)}

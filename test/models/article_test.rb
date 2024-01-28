@@ -75,6 +75,19 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not_includes  results, article1
   end
 
+  # Multiple assertions combined since the reason for both assertions is essentially the same. If we had this test failing, then it might be worth while splitting the test into multiple tests to accurately diagnose the issue.
+  test 'displays error when trying to initialize invalid articles' do
+    article1=Article.new(content: 'Lorem ipsum dolor sit amet')
+    article2=Article.new(title: 'Sample Article')
+    assert_not article1.save
+    assert_not article2.save
+  end
+
+  test 'cannot initialize content less than 5 characters long' do
+    article=Article.new(title:'Sample Article', content:'Text')
+    assert_not article.save
+  end
+
 
   # I was going to use this for a feature, but ultimately decided against it.
   # test 'returns accurate author scope query results' do
