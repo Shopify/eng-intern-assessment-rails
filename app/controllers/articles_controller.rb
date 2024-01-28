@@ -27,14 +27,14 @@ class ArticlesController < ApplicationController
   # POST /articles
   def create
     @article = Article.new(article_params)
-    return render :new unless @article.save
+    return render :new, status: :unprocessable_entity unless @article.save
 
     redirect_to @article, notice: "Article successfully created!"
   end
 
   # PATCH/PUT /articles/<id>
   def update
-    return render :edit unless @article.update(article_params)
+    return render :edit, status: :unprocessable_entity unless @article.update(article_params)
 
     redirect_to @article, notice: "Article successfully updated!"
   end
