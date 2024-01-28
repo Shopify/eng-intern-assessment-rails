@@ -58,9 +58,9 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/search
-  # Searching by title ONLY
+  # Searching by title, then content, author date. 
   def search 
-    @articles = Article.where("title LIKE ?", "%#{params[:query]}%")
+    @articles = Article.where("title LIKE :query OR content LIKE :query OR author LIKE :query OR date LIKE :query", query: "%#{params[:query]}%")
 
     respond_to do |format|
       format.html { render :index } # Render the index view with search results

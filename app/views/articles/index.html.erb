@@ -18,10 +18,15 @@
 <h1>All Articles:</h1>
 
 <%= form_tag(search_articles_path, method: :get) do %>
-<%= text_field_tag(:query, params[:query], placeholder: "Search by title") %>
-<%= submit_tag("Search") %>
+  <%= text_field_tag(:query, params[:query], placeholder: "Search articles") %>
+  <%= submit_tag("Search") %>
 <% end %>
-  
+
+<br/>
+
+<%= link_to "New article", new_article_path %> 
+
+<br/>
 
 <ul>
     <% @articles.each do |article| %>
