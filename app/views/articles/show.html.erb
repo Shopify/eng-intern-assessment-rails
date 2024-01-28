@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @article %>
+<h1><%= @article.title %></h1>
+<p class="mb-0">By: <%= @article.author.presence || "Unknown author" %></p>
+<p><%= @article.date.strftime("%Y-%m-%d") %></p>
+
+<p><%= @article.content %></p>
 
 <div>
   <%= link_to "Edit this article", edit_article_path(@article) %> |
