@@ -1,0 +1,29 @@
+<h1>Update Article</h1>
+
+<%= form_for @article, html: { onsubmit: "return validateArticleForm()" } do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Update Article' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', articles_path %>
