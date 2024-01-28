@@ -88,6 +88,12 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not article.save
   end
 
+  test 'date is properly intialized' do
+    article=Article.create(title:'Sample Article', content: 'Lorem ipsum dolor sit amet')
+    assert_equal Date.today, article.date
+  end
+
+
 
   # I was going to use this for a feature, but ultimately decided against it.
   # test 'returns accurate author scope query results' do
