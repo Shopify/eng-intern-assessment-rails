@@ -1,0 +1,37 @@
+<%= form_with model: article do |form| %>
+    <div style="margin-bottom: 0.8rem">
+        <strong><%= form.label :title %></strong><br>
+        <%= form.text_field :title %>
+        <% article.errors.full_messages_for(:title).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div style="margin-bottom: 0.8rem">
+        <strong><%= form.label :author %></strong><br>
+        <%= form.text_field :author %>
+        <% article.errors.full_messages_for(:author).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div style="margin-bottom: 0.8rem">
+        <strong><%= form.label :date %></strong><br>
+        <%= form.date_select :date %>
+        <% article.errors.full_messages_for(:date).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div style="margin-bottom: 1rem">
+        <strong><%= form.label :content %></strong><br>
+        <%= form.text_area :content %>
+        <% article.errors.full_messages_for(:content).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
