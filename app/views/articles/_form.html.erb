@@ -11,13 +11,23 @@
     <% end %>
   
     <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
+      <%= form.label :title, 'Title' %>
+      <%= form.text_field :title, required: @article.new_record? %>
     </div>
   
     <div class="field">
-      <%= form.label :content %>
-      <%= form.text_area :content %>
+      <%= form.label :content, 'Content' %>
+      <%= form.text_area :content, required: @article.new_record? %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :author, 'Author' %>
+      <%= form.text_field :author %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :date, 'Date' %>
+      <%= form.date_field :date %>
     </div>
   
     <div class="actions">
