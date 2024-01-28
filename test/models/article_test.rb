@@ -5,7 +5,6 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 0, Article.count
   end
 
-  # failing
   test 'has search functionality' do
     assert_respond_to Article, :search
   end
@@ -51,7 +50,6 @@ class ArticleTest < ActiveSupport::TestCase
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
   end
 
-  # failing
   test 'returns accurate search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
@@ -60,7 +58,6 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
   end
 
-  # failing
   test 'displays relevant articles in search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')

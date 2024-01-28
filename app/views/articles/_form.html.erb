@@ -1,3 +1,7 @@
+<%# Form Partial for edit.html.erb and new.html.erb %>
+<%# Generates a form that has a title, content, author, and date field %>
+<%# Displays a message and prevents from creating/updating if title/content field is not filled %>
+
 <%= form_with model: article do |form| %>
   <div>
     <%= form.label :title %><br>
