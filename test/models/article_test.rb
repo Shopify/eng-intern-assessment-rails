@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # Ensures database is clean before testing
   setup do
     Article.delete_all
   end
