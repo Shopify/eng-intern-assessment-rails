@@ -7,7 +7,7 @@
     <li>
       <%= link_to article.title, post_path(article) %>
       | <%= link_to 'Edit', edit_post_path(article) %>
-      | <%= link_to 'Delete', post_post(article), 
+      | <%= link_to 'Delete', post_path(article), 
           method: :delete, 
           data: { confirm: 'Are you sure?' } %>
     </li>
