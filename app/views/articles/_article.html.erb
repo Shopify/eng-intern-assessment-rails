@@ -13,8 +13,8 @@
       </div>
     </div>
     <footer class="card-footer">
+      <%= link_to "Show", article, method: :show, data: { confirm: 'Are you sure?' },  class: "card-footer-item" %>
       <%= link_to "Edit", edit_article_path(article), class: "card-footer-item" %>
-      <%= link_to "Delete", article, method: :delete, data: { confirm: 'Are you sure?' },  class: "card-footer-item" %>
     </footer>
   </div>
 </div>

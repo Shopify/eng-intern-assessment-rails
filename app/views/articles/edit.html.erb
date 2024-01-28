@@ -5,5 +5,7 @@
 <div class="columns is-centered mt-6">
   <div class="column is-one-third">
     <%= render "form", article: @article %>
+    <br>
+    <%= button_to "Delete Article", @article, method: :delete,  class: "button is-danger" %>
   </div>
 </div>

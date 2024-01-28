@@ -1,5 +1,11 @@
+<% content_for :title do %>
+  Showing Article: <%= @article.title %>
+<% end %>
 <p style="color: green"><%= notice %></p>
 
 <div class="columns mt-6 is-centered" id="articles">
   <%= render @article %>
+</div>
+<div class="columns mt-6 is-centered" id="delete">
+  <%= button_to "Delete Article", @article, method: :delete,  class: "button is-danger" %>
 </div>
