@@ -1,0 +1,4 @@
+<%= form_tag articles_path, method: :get do %>
+  <%= text_field_tag :keyword, params[:keyword] %>
+  <%= submit_tag "Search" %>
+<% end %>
