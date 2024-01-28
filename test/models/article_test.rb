@@ -38,6 +38,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal Date.yesterday, article.date
   end
 
+  test "assigns today's date by default" do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_equal Date.today, article.date
+  end
+
+  test 'default date can be overwritten' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.yesterday)
+    assert_equal Date.yesterday, article.date
+  end
+
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy

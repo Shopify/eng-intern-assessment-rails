@@ -10,6 +10,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <!-- Navbar -->
+  <nav class = "navbar">
+    <ul>
+      <li><%= link_to "Articles", articles_path %></li>
+      <li><%= link_to "New Article", new_article_path %></li>
+    </ul>
+  </nav>
+
   <body>
     <%= yield %>
   </body>

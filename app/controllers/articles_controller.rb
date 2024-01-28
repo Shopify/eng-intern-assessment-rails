@@ -1,10 +1,25 @@
 class ArticlesController < ApplicationController
+
   def index
-    if params[:search]
-      @articles = Article.search(params[:search])
+    @articles = Article.all
+  end
+
+  def create
+    @article = Article.new(article_params)
+
+    if @article.save
+      redirect_to @article
     else
-      redirect_to root_path, notice: "Please enter a search query."
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def new
+    @article = Article.new
+  end
+
+  def edit
+    @article = Article.find(params[:id])
   end
 
   def update
@@ -22,6 +37,16 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     redirect_to root_path, status: :see_other
+  end
+
+  def show
+    # show a single article
+    @article = Article.find(params[:id])
+  end
+
+  private
+  def article_params
+    params.require(:article).permit(:title, :content, :author, :date)
   end
 
 end
