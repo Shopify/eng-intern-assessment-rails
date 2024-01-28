@@ -1,6 +1,7 @@
 Article.delete_all
 User.delete_all
 
+# Create user
 user = User.find_or_create_by!(email: 'user@example.com') do |u|
   u.password = 'password'
   u.password_confirmation = 'password'
@@ -12,4 +13,4 @@ Article.create(title: 'A Shopify interns insight to mentorship', content: 'I com
 Article.create(title: 'How Shopify Writes Scalable Go Services', content: 'Let’s set the scene a bit. Go is one of the fastest growing programming languages...', user: user)
 Article.create(title: 'Ruby’s Top 100 Packages Dependencies', content: 'In June of this year, RubyGems, the main repository for Ruby packages (gems)...', user: user)
 
-puts 'Articles have been seeded.'
+puts 'DB has been seeded.'

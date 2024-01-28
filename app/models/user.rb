@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  # Devise modules for authentication:
+  # Devise authentication
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
-  # Association with Articles:
   
+  # relationship
   has_many :articles
 end

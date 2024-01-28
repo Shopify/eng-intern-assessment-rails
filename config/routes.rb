@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  
   root 'articles#index'
   resources :articles
 

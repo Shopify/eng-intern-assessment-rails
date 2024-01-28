@@ -1,129 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <%= csrf_meta_tags %>
-
-    <title>Index</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .articles {
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            
-        }
-        .articles h2 {
-            margin: 0;
-        }
-
-        .actions a, .new-article-link a {
-            margin-right: 10px;
-            text-decoration: none;
-            color: black;
-        }
-        .new-article-link {
-            margin-bottom: 20px;
-        }
-        .button-container {
-    display: flex; /* Use flexbox */
-    justify-content: center; /* Center horizontally */
-    margin: 20px; /* Optional: Add some space below the button */
-}
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px; /* Space between articles */
-    margin: 20px; /* Margin around the whole grid */
-}
-.article-content {
-    max-height: 100px; /* Fixed max height for the content */
-    overflow-y: auto; /* Auto scrollbar when content overflows vertically */
-    margin: 20px 0; /* Space between content and actions */
-}
-@media (max-width: 1085px) {
-    .container {
-        grid-template-columns: 1fr; /* 1 column on small screens */
-    }
-}
-.actions form {
-    padding: 0;
-    
-}
-.search-container {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 600px; /* Adjust based on your preference */
-}
-
-/* Search Input Field */
-.search-input {
-  padding: 10px;
-  width: 75%; /* Adjust based on your preference */
-  border: 2px solid #007bff;
-  outline: none;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  box-sizing: border-box;
-}
-
-/* Search Button */
-.search-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: 2px solid #007bff;
-  border-left: none;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  cursor: pointer;
-  box-sizing: border-box;
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.search-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-}
-
-    </style>
-
-</head>
-<body>
-<h1 style="text-align: center; margin-bottom: 0;">Shopify Intern Encyclopedia</h1>
-<div class="search-container">
-  <%= form_tag(articles_path, method: :get) do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search by keyword", class: "search-input" %>
-    <%= submit_tag "Search", class: "search-button" %>
-  <% end %>
-</div>
-<div class="button-container">
-    <%= form_tag(new_article_path, method: :get, style: 'display: inline-block;') do %>
-        <%= submit_tag 'Create New Article', style: 'background-color:#00ed64; color: black; border: none;' %>
-        
-    <% end %>
-</div>
-<div class="container">
-    <% @articles.each do |article| %>
-
-    <div class="articles">
-        <h2><%= article.title %></h2>
-        <div class="article-content">
-            <p><%= article.content %></p>
-        </div>
-        <div class="actions">
-        <%= link_to 'Read', article %>
-        <% if current_user == article.user %>
-            <%= link_to 'Edit', edit_article_path(article), style: 'background-color: #ffe01b; color: black;' %>
-            <%= form_tag(article, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-                <%= submit_tag 'Delete',  style: 'background-color: red; color: white;' %>
-            <% end %>
+    <head>
+        <%= csrf_meta_tags %>
+        <title>Index</title>
+    </head>
+    <body>
+        <h1 style="text-align: center; margin-bottom: 0;">Shopify Intern Encyclopedia</h1>
+        <div class="search-container">
+        <%= form_tag(articles_path, method: :get) do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search by keyword", class: "search-input" %>
+            <%= submit_tag "Search", class: "search-button" %>
         <% end %>
         </div>
-    </div>
-    <% end %>
-</div>
-
-</body>
+        <div class="button-container">
+            <%= form_tag(new_article_path, method: :get, style: 'display: inline-block;') do %>
+                <%= submit_tag 'Create New Article', style: 'background-color:#00ed64; color: black; border: none;' %>
+                
+            <% end %>
+        </div>
+        <div class="container">
+            <% @articles.each do |article| %>
+                <div class="articles">
+                    <h2><%= article.title %></h2>
+                    <div class="article-content">
+                        <p><%= article.content %></p>
+                    </div>
+                    <div class="actions">
+                    <%= link_to 'Read', article %>
+                    <% if current_user == article.user %>
+                        <%= link_to 'Edit', edit_article_path(article), style: 'background-color: #ffe01b; color: black;' %>
+                        <%= form_tag(article, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                            <%= submit_tag 'Delete',  style: 'background-color: red; color: white;' %>
+                        <% end %>
+                    <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </body>
 </html>

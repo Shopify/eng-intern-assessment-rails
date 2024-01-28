@@ -19,6 +19,8 @@ Unlisted Video: https://www.youtube.com/watch?v=4Y8WtTw-dZI
 2. **Article CRUD Behavior**: Developed the Create, Read, Update, and Delete (CRUD) functionalities for articles, allowing users to interact with article records effectively.
 3. **Search Functionality**: Integrated a search bar that queries article titles and content, enabling users to find relevant articles based on keywords.
 4. **User/Auth Tests**: Implemented comprehensive tests for the User model to ensure data integrity and validation.
+5. **Added Article Tests**: Implemented additional article and article controller tests for completeness.
+
 
 ### Detailed Overview:
 - **Authentication/Sessions**: Leveraged Devise, a flexible authentication solution for Rails, ensuring secure and efficient handling of user sessions and authentication processes. Validations maintain data integrity for registrations.
