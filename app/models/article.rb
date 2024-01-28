@@ -7,7 +7,7 @@
 class Article < ApplicationRecord
     # Validation checks on title and content attributes
     # title must be present and unique
-    validates :title, presence: true, uniquness: true
+    validates :title, presence: true, uniqueness: true
 
     # content must be present and have a minimum character length of 10
     validates :content, presence: true, length: { minimum: 10 }
