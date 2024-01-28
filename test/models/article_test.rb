@@ -93,6 +93,12 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not_includes results, article1
   end
 
+  test 'search is case-insensitive' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('LOREM IPSUM')
+    assert_includes results, article
+  end
+
   test 'empty query returns all articles' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article',
