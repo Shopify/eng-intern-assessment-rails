@@ -1,7 +1,7 @@
 <h1> Create New Article</h1>
 
 <%# Rendering from _form.html.erb %>
-<%= render 'form', article: @article %>
+<%= render 'shared/form', article: @article %>
 
 <%# Add a link to navigate back to the list of articles %>
 <%= link_to 'Back to Articles', articles_path %>
