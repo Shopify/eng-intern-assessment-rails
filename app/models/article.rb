@@ -6,11 +6,11 @@
 
 class Article < ApplicationRecord
     # Validation checks on title and content attributes
-    # title must be present and unique
-    validates :title, presence: true, uniqueness: true
+    # title must be present and unique and have a maximum character length of 50
+    validates :title, presence: true, uniqueness: true, length: { maximum: 50 }
 
-    # content must be present and have a minimum character length of 10
-    validates :content, presence: true, length: { minimum: 10 }
+    # content must be present and have a maximum character length of 500
+    validates :content, presence: true, length: { maximum: 500 }
 
     # Searches for articles based on given search term
     def self.search(search_term)
