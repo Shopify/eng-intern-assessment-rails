@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# Ignore IDE settings
+.vscode
+
 # Ignore bundler config.
 /.bundle
 
@@ -33,3 +36,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Personal notes
+notes.txt

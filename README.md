@@ -1,55 +1,63 @@
-# Technical Instructions
-1. Fork this repo to your local Github account.
-2. Create a new branch to complete all your work in.
-3. Test your work using the provided tests
-4. Create a Pull Request against the Shopify Main branch when you're done and all tests are passing
+# Shopify Backend Engineering Internship - Technical Challenge
 
-# Project Overview
-The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. Be sure to implement basic CRUD actions on articles. Your task is to implement these features as well as write the code that makes the tests pass.
+My name is Christopher Fong, and this is my submission for Shopify's 2024 summer backend engineering internship
 
-# Project Goals
-The main goal of this internship project is to implement the functionality required to make the existing tests pass. The provided tests cover various aspects of the application, including creating and viewing articles, editing and updating articles, deleting articles, and searching for articles. Along with completing the tests, be sure to implement all basic CRUD actions on your articles on a controller and create views to see your work in the app.
+# Project Description
 
-## Your specific goals for this project are as follows:
+This project was built using Ruby on Rails (Ruby 2.7.6), and contains a backend service for an encyclopedia application. The project follows the MVC architecture.
 
-1. Review Existing Tests: Start by reviewing the existing tests provided in the article_test.rb file located in the test/models directory. Understand the requirements and expectations of each test.
+# How to install and run
 
-2. Implement Functionality: Write the code necessary to make the existing tests pass. This involves implementing the required actions and logic in the models, controllers, and views to fulfill the specified requirements. Also be sure to implement basic CRUD actions and demonstrate proper MVC principals.
+1. Clone the repo into a local folder
+2. Run `bundle install` (Ensure that you have the necessary dependencies installed: [Ruby](https://www.ruby-lang.org/en/documentation/installation/), [Rails](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails))
+   I recommend using a version manager such as [rbenv](https://github.com/rbenv/rbenv)
 
-3. Ensure Code Quality: Write clean, well-structured, and maintainable code. Follow best practices and adhere to the Ruby on Rails conventions. Pay attention to code readability, modularity, and performance.
+3. Run `rails db:migrate`
+4. Run `rails server`, the application's interface should now be visible on http://localhost:3000
 
-4. Test Your Code: After implementing the functionality, run the tests to ensure that they pass successfully. Fix any failures or errors that occur and retest until all tests pass.
+# Feature Overview & Pirmary Changes
 
-5. Code Documentation: Document your code by adding comments and explanatory notes where necessary. This will help other developers understand your implementation and make future maintenance easier.
+The application implements CRUD and search endpoints for various articles. Below is a table of the endpoints and examples for their usage
 
-6. Version Control: Use Git for version control. Commit your changes regularly and push them to a branch in your forked repository.
+| HTTP Verb | Path                 | Controller#Action  | Used for                                                                                                                 |
+| --------- | -------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| GET       | `/articles`          | `articles#index`   | Display a list of all articles                                                                                           |
+| GET       | `/articles/new`      | `articles#new`     | Return an HTML form for creating a new article                                                                           |
+| POST      | `/articles`          | `articles#create`  | Create a new article                                                                                                     |
+| GET       | `/articles/:id`      | `articles#show`    | Display a specific article                                                                                               |
+| GET       | `/articles/:id/edit` | `articles#edit`    | Return an HTML form for editing an article                                                                               |
+| PATCH/PUT | `/articles/:id`      | `articles#update`  | Update a specific article                                                                                                |
+| DELETE    | `/articles/:id`      | `articles#destroy` | Delete a specific article                                                                                                |
+| GET       | `/search/params`     | `articles#search`  | Search the encyclopedia for related articles. Results are matched based on likeness to the title, author, and/or content |
 
-7. Create a Pull Request: Once you have completed the project goals, create a pull request to merge your changes into the main repository. Provide a clear description of the changes made and any relevant information for the code review.
+### Additional Changes
 
-## Getting Started
-To get started with this project, follow these steps:
+Beyond passing the origina test cases, I also extended the amount of unit tests to cover different cases such as search entries with leading/trailing whitespace, and creational tests for invalid inputs.
 
-1. Clone the repository to your local development environment.
+I also created a test suite for the `article_controller.rb`, in which I ensured that most of the endpoints executed the correct behaviour, and returned the correct response codes.
 
-2. Install the necessary dependencies by running bundle install in the project directory.
+### Code style
 
-3. Familiarize yourself with the existing codebase, including the models, controllers, and views.
+I primarily followed the style used in the different tutorials at https://guides.rubyonrails.org/. I did not add excessive documentation because I prefer that code is self-documenting, such that the logical flow/structure and naming conventions are sufficient to inform readers/reviewers. I added a few comments to document certain design choices.
 
-4. Review the existing tests in the article_test.rb file and understand their purpose and functionality.
-
-5. Run the tests locally to ensure they are passing.
-
-6. Start working on the goals outlined above, making improvements to the existing tests and adding new tests as needed.
-
-7. Commit your changes regularly and push them to a branch in your forked repository.
-
-8. Once you have completed the project goals, create a pull request to merge your changes into the main repository.
-
-## Resources
 Here are some resources that may be helpful during your internship project:
 
-- [Ruby on Rails Guides](https://guides.rubyonrails.org/) - Comprehensive guides on Ruby on Rails, covering various aspects of web application development.
+# What I would improve/change for the future
 
-- [Ruby Style Guide](https://rubystyle.guide/) - A community-driven Ruby coding style guide to ensure consistent and readable code.
+Currently, the project is relatively barebones in that it merely implements basic CRUD operations and a straightforward search query. How I would improve/extend this project for the future is to:
 
-- [Git Documentation](https://git-scm.com/doc) - Official documentation for Git, the version control system used in this project.
+- **Extend the search functionality**: The search endpoint could be improved by searching each keyword in the entry. For example, a search parameter "Article Bob" would search Bob and Article individually, and return all distinct results.
+
+- **Flesh out the client**: The view layer leaves certain things to be desired. Adding some styling or implementing a separate client-side would improve the user experience and enforce decoupling.
+
+- **Extend Testing Suite**: The project could certainly use additional integration tests to cover more complex behaviours and patterns that unit tests may not catch.
+
+- **Upgrade Language Version**: Unfortunately, Ruby 2.7.6 is an older version of the language and has reached end of support for many tools such as the official Shopify LSP. There are a number of breaking changes according to the [Release Notes](https://www.ruby-lang.org/en/news/2020/12/25/ruby-3-0-0-released/), but none that seem to affect the project significantly in its current state.
+
+# Final Notes
+
+It was fun developing this project using a language and framework that I had no experience in prior. I enjoyed using Ruby, it was much more straightforward and intuitive than I expected, and had a smooth experience similar to python.
+
+To whoever views this, I would greatly appreciate any feedback/suggestions!
+
+Best, Christopher Fong

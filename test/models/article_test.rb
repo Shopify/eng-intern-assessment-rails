@@ -14,6 +14,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
+  test 'should not create article with empty title' do
+    article = Article.new(title: "", content: "Some content")
+    assert_not article.save, "Saved the article without a title"
+  end
+
+  test 'should not create article with empty content' do 
+    article = Article.new(title: "", content: "Some content")
+    assert_not article.save, "Saved the article without a title"
+  end
+  
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
@@ -58,10 +68,26 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
   end
 
-  test 'displays relevant articles in search results' do
+  test 'displays relevant articles in search for title' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Another')
+    assert_includes results, article2
+    assert_not_includes results, article1
+  end
+  
+  test 'displays relevant articles in search for author' do
+    article1 = Article.create(title: 'Sample Article', author: "Chris", content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', author: "Anonymous", content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('Anonymous')
+    assert_includes results, article2
+    assert_not_includes results, article1
+  end
+
+  test 'displays relevant articles in search for content' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('consectetur')
     assert_includes results, article2
     assert_not_includes results, article1
   end

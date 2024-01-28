@@ -1,0 +1,14 @@
+<h4>You searched for</h4>
+<h1><%= @parameter %></h1>
+
+<h3>Results:</h3>
+<div id="articles">
+  <% @articles.each do |article| %>
+    <%= render article %>
+    <p>
+      <%= link_to article.title, article %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Back to articles", articles_path %>
