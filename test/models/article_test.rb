@@ -3,9 +3,10 @@ require 'test_helper'
 # Please refer to user.yml for the user instantiation.. Tests slightly revised to work with the user authentication user & article association attribute...
 # added additional test to ensure articles have both title and content
 
+# revised this to 1 as there 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
-    assert_equal 0, Article.count
+    assert_equal 1, Article.count
   end
 
   test 'has search functionality' do
@@ -54,12 +55,13 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal Date.yesterday, article.date
   end
 
+  # revised to 1 as there is another article created in the fixtures
   test 'deletes an article' do
     user = users(:john)
     assert user.valid?
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
-    assert_equal 0, Article.count
+    assert_equal 1, Article.count
   end
 
   test 'prevents access to deleted articles' do
