@@ -1,6 +1,12 @@
 class Article < ApplicationRecord
     def self.search(query)
+        conditions = [
+            "title LIKE :query ",
+            "content LIKE :query",
+            "author LIKE :query ",
+            "date LIKE :query",  
+        ]
         # Search by title, content, author, date.
-        where("title LIKE :query OR content LIKE :query OR author LIKE :query OR date LIKE :query", query: "%#{query}%")
+        where(conditions.join(" OR" ), query: "%#{query}%")
     end
 end
