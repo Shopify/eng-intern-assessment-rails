@@ -1,2 +1,33 @@
-<h1>Articles#new</h1>
+<h1>Articles#edit</h1>
 <p>Find me in app/views/articles/new.html.erb</p>
+
+<%= form_with model: @article do |form| %>
+    <div>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+
+    </div>
+  
+    <div>
+      <%= form.label :content %><br>
+      <%= form.text_area :content %>
+
+    </div>
+  
+    <div>
+      <%= form.label :author %><br>
+      <%= form.text_field :author %>
+
+    </div>
+  
+    <div>
+      <%= form.label :date %><br>
+      <%= form.date_field :date %>
+
+    </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+  <p><%= link_to "Home", root_path %><p>

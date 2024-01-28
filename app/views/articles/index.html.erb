@@ -1,2 +1,31 @@
 <h1>Articles#index</h1>
 <p>Find me in app/views/articles/index.html.erb</p>
+<!-- List all Articles -->
+<div>
+    <table>
+      <ol>
+        <thead>
+          <td> Id </td>
+          <td> Title </td>
+          <td> Content </td>
+          <td colspan=3> Author </td>
+        </thead>
+        <% @articles.each do |a| %>
+          <tr>
+            <td> <%= a.id %> </td>
+            <td> <%= link_to a.title, article_path(a) %> </td>
+            <td> <%= a.content %> </td>
+            <td> <%= a.author %> </td>
+            <td> <%= a.date %> </td>
+            <td><%= button_to "Show",article_path(a),method: :get %></td>
+            <td><%= button_to "Edit",edit_article_path(a),method: :get %></td>
+            <td><%= button_to "Delete",article_path(a),method: :delete %></td>
+          </tr>
+        <% end %>
+      </ol>
+    </table>
+  </div>
+  <div class="d-flex">
+    <%= button_to "Add New Article", new_article_path, method: :get %>
+  </div>
+</div>
