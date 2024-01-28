@@ -65,4 +65,13 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'article title length validations' do
+    article1 = Article.create(title: '', content: 'this article is not valid')
+    assert_not article1.valid?
+    article2 = Article.create(title: 'article title length validations article title length validations article title length validations article title length validations article title length validations article title length validations article title length validations article title length validations article title length validations', content: 'this article\'s name is too long')
+    assert_not article2.valid?
+    article3 = Article.create(content: 'articles must have titles')
+    assert_not article3.valid?
+  end
 end
