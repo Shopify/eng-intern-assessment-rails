@@ -1,6 +1,11 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.all
+    if params[:query].present?
+      @articles = Article.search(params[:query])
+    else
+      @articles = Article.all
+    end
   end
 
   def show
@@ -13,7 +18,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
+    @article.author ||= "user123"
+    @article.date ||= Date.today
     if @article.save
       redirect_to @article
     else
@@ -44,6 +50,6 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :body)
+      params.require(:article).permit(:title, :content, :author, :date)
     end
 end
