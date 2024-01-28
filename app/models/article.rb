@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  validates :title, presence: true, length: { minimum: 1 }
+  validates :title, presence: true, length: { within: 1..300 }
   validates :content, presence: true, length: { minimum: 1 }
 
   def self.search(search_keyword)
