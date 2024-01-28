@@ -1,0 +1,10 @@
+<h1> Current Article:</h1>
+<p><strong>Title: </strong><%= @article.title %></p>
+<p><strong>Content: </strong><%= @article.content %></p>
+<p><strong>Author: </strong><%= @article.author%></p>
+<p><strong>Date: </strong><%= @article.date%></p>
+
+<%= button_to 'Edit', edit_article_path(@article), method: :get %>
+<%= button_to 'Delete', article_path(@article), method: :delete, 
+form: { data: { turbo_confirm: 'Are you sure you want to delete this article?' }}  %>
+<%= button_to 'Return to articles listing', articles_path, method: :get %>
