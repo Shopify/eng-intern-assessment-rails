@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.search(params[:search]) # Use model's search by default (search gives filtered results if params is passed, otherwise it returns all articles.)
   end
 
   # GET /articles/1 or /articles/1.json
@@ -65,6 +65,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content, :author, :date)
+      params.require(:article).permit(:title, :content, :author, :date, :search) #Add search as a parameter
     end
 end
