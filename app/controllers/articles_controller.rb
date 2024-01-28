@@ -28,10 +28,11 @@ class ArticlesController < ApplicationController
     # Creates a new article
     def create
       @article = Article.new(article_params)
+    
       if @article.save
-        redirect_to @article
+        redirect_to @article, notice: 'Article was successfully created.'
       else
-        render 'new'
+        render :new, status: :unprocessable_entity
       end
     end
   
@@ -39,10 +40,11 @@ class ArticlesController < ApplicationController
     # Updates an existing article
     def update
       @article = Article.find(params[:id])
+    
       if @article.update(article_params)
-        redirect_to @article
+        redirect_to @article, notice: 'Article was successfully updated.'
       else
-        render 'edit'
+        render :edit, status: :unprocessable_entity
       end
     end
   

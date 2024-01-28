@@ -1,16 +1,16 @@
 <%= form_with(model: article, local: false, data: { turbo_confirm: article.new_record? ? "Are you sure you want to create this article?" : "Are you sure you want to update this article?" }) do |form| %>
   
-  <turbo-frame id="error_frame">
-    <% if article.errors.any? %>
-      <div id="error_explanation">
-        <ul>
-          <% article.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  </turbo-frame>
+  <% if @article.errors.any? %>
+  
+  <div id="error_explanation">
+    <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+    <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <div class="field">
     <%= form.label :title %>
