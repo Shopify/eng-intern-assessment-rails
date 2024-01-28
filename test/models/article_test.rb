@@ -65,4 +65,9 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test '!saves article without valid title' do
+    article = Article.new
+    assert_not article.save, "Saved an article without a valid title"
+  end
 end
