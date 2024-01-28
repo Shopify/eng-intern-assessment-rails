@@ -1,5 +1,25 @@
+<%= stylesheet_link_tag 'homepage.css' %>
+
 <h1>Encyclopedia</h1>
 
 <h2>Articles</h2>
 
+<%= render "search" %>
 
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Date</th>
+    </tr>
+    <% @articles.each do |article| %>
+        <tr>
+            <td><%= link_to article.title, article %></td>
+            <td><%= article.author %></td>
+            <td><%= article.date %></td>
+        </tr>
+    <% end %>
+</table>
+<hr>
+
+<%= link_to "Post a new article", new_article_path %>
