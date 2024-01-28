@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "articles#index"
 
+  #create seven different restful routes in application
   resources :articles
 
+  #create search route in application that maps to search action in controller
   get '/search', to: "articles#search"
 end
