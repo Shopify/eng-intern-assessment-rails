@@ -1,3 +1,4 @@
+# Controller for encyclopedia articles.
 class ArticlesController < ApplicationController
   def index
     @articles = if params[:query]
@@ -49,6 +50,8 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
+    # By default, each article's date field will be set to the current date,
+    # both on update and creation.
     params.require(:article).permit(:title, :content, :author, :date).with_defaults(date: Date.today)
   end
 end
