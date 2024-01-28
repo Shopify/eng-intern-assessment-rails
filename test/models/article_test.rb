@@ -2,21 +2,21 @@ require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
-    assert_equal 0, Article.count
+    assert_equal 0, Article.count # Article.count == 0
   end
 
   test 'has search functionality' do
-    assert_respond_to Article, :search
+    assert_respond_to Article, :search # has a 'search' function?
   end
 
   test 'creates a new article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    assert article.valid?
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.') # has a 'create' function
+    assert article.valid? # create 'Sample Article' and check if valid
   end
 
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    assert_equal 'Lorem ipsum dolor sit amet.', article.content
+    assert_equal 'Lorem ipsum dolor sit amet.', article.content # assert the content is the same
   end
 
   test 'displays the article metadata correctly' do
