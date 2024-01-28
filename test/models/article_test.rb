@@ -1,5 +1,4 @@
 require 'test_helper'
-
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
     assert_equal 0, Article.count
@@ -64,5 +63,35 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'search does not return articles without matching title' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_not_includes Article.search('Nonexistent'), article
+  end
+
+  test 'rejects article without title' do
+    article = Article.new(content: 'Sample Content')
+    assert_not article.save, "Saved the article without a title"
+  end
+
+  test 'rejects article without content' do
+    article = Article.new(title: 'Sample Title')
+    assert_not article.save, "Saved the article without content"
+  end
+
+  test 'rejects article without title and content' do
+    article = Article.new()
+    assert_not article.save, "Saved the article without title and content"
+  end
+
+  test 'accepts article with title of 299 characters' do
+    article = Article.new(title: 'a' * 299, content: 'Valid Content')
+    assert article.valid?, 'Article with 299 character title should be valid'
+  end
+
+  test 'rejects article with title too long' do
+    article = Article.new(title: 'a' * 301, content: 'Valid Content')
+    assert_not article.valid?, 'Article with too long title should not be valid'
   end
 end
