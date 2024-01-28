@@ -61,6 +61,7 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -70,6 +71,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content, :author, :string, :date)
+      params.require(:article).permit(:title, :content, :author, :date)
     end
 end

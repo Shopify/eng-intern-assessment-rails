@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  self.use_transactional_tests = true
+  
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -40,6 +42,7 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    puts "Number of articles before deletion: #{Article.count}"
     article.destroy
     assert_equal 0, Article.count
   end
