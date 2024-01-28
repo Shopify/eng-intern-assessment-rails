@@ -2,6 +2,8 @@ class ArticlesController < ApplicationController
 
     # GET /articles
     # Shows a list of all articles
+    # If a search query is provided in the params, it filters articles whose titles
+    # contain the specified search term. Otherwise, it displays all articles.
     def index
       @articles = if params[:search]
         Article.where('title LIKE ?', "%#{params[:search]}%")
