@@ -37,7 +37,7 @@ To get started with this project, follow these steps:
 
 4. Review the existing tests in the article_test.rb file and understand their purpose and functionality.
 
-5. Run the tests locally using the rspec command to ensure they are passing.
+5. Run the tests locally to ensure they are passing.
 
 6. Start working on the goals outlined above, making improvements to the existing tests and adding new tests as needed.
 
