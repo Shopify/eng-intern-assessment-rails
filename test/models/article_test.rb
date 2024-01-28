@@ -1,15 +1,16 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # clean up the test environment
   def setup
-    Article.destroy_all
+    if Rails.env.test?
+      Article.destroy_all
+    end
   end
 
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
-
-
 
   # Create (CRUD) tests
   test 'creates a new article' do
