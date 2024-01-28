@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     # Initializes a new article instance
     def new 
         @article = Article.new
+        render 'articles/new'
     end
 
     # Handles the creation of a new article
@@ -29,6 +30,7 @@ class PostsController < ApplicationController
     # Loads an existing article for editing
     def edit
         @article = Article.find(params[:id])
+        render 'articles/edit'
     end
 
     # Handles the update of an existing article
