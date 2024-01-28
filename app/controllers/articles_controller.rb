@@ -1,6 +1,6 @@
 # there is much, much more that could be implemented: Authentication, a seperate MVC for authors, pagination for the list of articles, etc. However, I believe in not spreading oneself out tooo thin, but rather that if one is given a task, to do that task to the best of their abilities before moving on to the next one.
 
-# It would be careless of me not to cite the sources I used to ensure that this project was following best practice. Namely, the ruby on rails getting started guide was essential. Furthermore, their api page was useful for certain modules and methods.
+# It would be careless of me not to cite the sources I used to ensure that this project was following best practice. Namely, the ruby on rails getting started guide was essential. Furthermore, their api page was useful for certain modules and methods. There are some links sprinkled throughout the project, both for ethical reasons and maintainability.
 
 class ArticlesController < ApplicationController
   def index
@@ -21,6 +21,7 @@ class ArticlesController < ApplicationController
 
     # was going to make this mistake, but as per rails convention, it is most definitely better to shift this logic to the model rather than the controller, so as to keep the controller as light as possible for readability and maintainability.
 
+    # if save was successful, redirect to the articles page. Otherwise, stay on current page, but output unprocessable entity.
     if @article.save
       redirect_to @article
 
