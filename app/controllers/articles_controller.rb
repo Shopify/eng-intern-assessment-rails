@@ -7,13 +7,13 @@ class ArticlesController < ApplicationController
     @articles = Article.search(params[:q]) if params[:q].present?
 
     # clamp order to either :desc or :asc to avoid injection
-    order_direction = if params[:order] == "desc"
+    order_direction = if params[:order] == "Descending"
       :desc
     else
       :asc
     end
 
-    if params[:sort_by] == "Title"
+    @articles = if params[:sort_by] == "Title"
       @articles.order(title: order_direction)
     elsif params[:sort_by] == "Author"
       @articles.order(author: order_direction)
