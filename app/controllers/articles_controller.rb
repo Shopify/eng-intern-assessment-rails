@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-    before_action :set_article_by_id, only: [:show, :edit, :update, :destroy]
+    before_action :set_article, only: [:show, :edit, :update, :destroy]
     before_action :verify_user, only: [:edit, :update, :destroy]
     before_action :authenticate_user!, except: [:index, :show]
 
@@ -55,9 +55,9 @@ def index
 
 
   private
-  
+
     # Get article by ID
-    def set_article_by_id
+    def set_article
       @article = Article.includes(:user).find(params[:id])
     end
 
