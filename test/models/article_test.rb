@@ -56,12 +56,14 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_equal 1, Article.count
     article.destroy
     assert_equal 0, Article.count
   end
 
   test 'prevents access to deleted articles' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_nothing_raised { Article.find(article.id) }
     article.destroy
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
   end
