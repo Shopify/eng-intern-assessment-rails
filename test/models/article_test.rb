@@ -1,6 +1,7 @@
 require 'test_helper'
 
 # Please refer to user.yml for the user instantiation.. Tests slightly revised to work with the user authentication user & article association attribute...
+# added additional test to ensure articles have both title and content
 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
@@ -85,5 +86,21 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'article title required' do
+    user = users(:john)
+    assert user.valid?
+    article = Article.new(content: 'Valid Content', user: user)
+    assert_not article.save, 'Saved the article without a title'
+    assert_not_nil article.errors[:title], 'Validation error for title not present'
+  end
+
+  test 'article content required' do
+    user = users(:john)
+    assert user.valid?
+    article = Article.new(title:"Tester", user: user)
+    assert_not article.save, 'Saved the article without the content'
+    assert_not_nil article.errors[:title], 'Validation error for content not present'
   end
 end
