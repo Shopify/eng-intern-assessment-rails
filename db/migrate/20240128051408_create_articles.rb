@@ -4,7 +4,7 @@ class CreateArticles < ActiveRecord::Migration[7.1]
       t.text :title, null: false
       t.text :content, null: false
       t.text :author
-      t.datetime :date
+      t.date :date, null: false
 
       t.timestamps
     end
