@@ -14,6 +14,13 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
+  test 'does not create an invalid article' do
+    article1 = Article.create(title: '', content: 'Lorem ipsum dolor sit amet.')
+    assert !article1.valid?
+    article2 = Article.create(title: 'Sample Article', content: '<10 chars')
+    assert !article2.valid?
+  end
+
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
@@ -38,6 +45,13 @@ class ArticleTest < ActiveSupport::TestCase
     article.update(author: 'Jane Smith', date: Date.yesterday)
     assert_equal 'Jane Smith', article.author
     assert_equal Date.yesterday, article.date
+  end
+
+  test 'does not update with invalid data' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe',
+                             date: Date.today)
+    assert !article.update(title: '')
+    assert !article.update(content: '<10 chars')
   end
 
   test 'deletes an article' do
@@ -68,5 +82,14 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'empty query returns all articles' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article',
+                              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('')
+    assert_includes results, article2
+    assert_includes results, article1
   end
 end
