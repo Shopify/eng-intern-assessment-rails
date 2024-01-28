@@ -1,7 +1,5 @@
 # Goal
 - Tests are written. Implement functionality to make them pass. 
-# Distilled To-Dos
-- 
 
 # Notes
 - docker build -t shopify_project .
@@ -25,13 +23,26 @@
         - search
             - should search the title AND the content
 - Implement basic CRUD actions on articles in a controller
+    - Done
 - Create view to see work in the app
+    - Done
 
 # Probs
 - the route to add a new article doesn't seem to work for some reason. 
     - routes shows POST /articles(.:format)     articles#create
         - seems like it exists in the controller and is registered okay through routes
         - found some stuff the tutorial was missing and added in on the view. (scope, url, local)
+
+
+# Nice to have
+- write some extra tests.
+    - returns accurate search results for non-match
+    - create articles with some missing required params (title/content)
+    - create article with content < min length
+    - updates the article content to an invalid content size
+    - empty search query returns all results
+    - returns accurate search results for non-match
+    - returns match with any case results
 
 # References
 ## Ruby

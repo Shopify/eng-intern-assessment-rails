@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  # saves a new article. Show an error if save was unsuccessful.
   def create
     @article = Article.new(article_params)
 
@@ -25,6 +26,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  # edits an article. Show an error if update was unsuccessful.
   def update
     @article = Article.find(params[:id])
 

@@ -9,12 +9,35 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 0, Article.count
   end
 
-  test 'has search functionality' do
-    assert_respond_to Article, :search
-  end
 
+
+  # Create (CRUD) tests
   test 'creates a new article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert article.valid?
+  end
+
+  # extra test
+  test 'creates a new article with missing content' do
+    article = Article.create(title: 'Sample Article')
+    assert article.invalid?
+  end
+
+  # extra test
+  test 'creates a new article with missing title' do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert article.invalid?
+  end
+
+  # extra test
+  test 'creates a new article with content field just below minimum' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ips')
+    assert article.invalid?
+  end
+
+  # extra test
+  test 'creates a new article with content field at minimum' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsu')
     assert article.valid?
   end
 
@@ -29,6 +52,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal Date.today, article.date
   end
 
+  # Update (CRUD) tests
   test 'edits an existing article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.update(content: 'Updated content')
@@ -42,6 +66,13 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal Date.yesterday, article.date
   end
 
+  test 'updates the article content to an invalid content size' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article.update(content: 'lorem ips')
+    assert article.invalid?
+  end
+
+  # Delete (CRUD) tests
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
@@ -52,6 +83,11 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
+  end
+
+  # Search tests
+  test 'has search functionality' do
+    assert_respond_to Article, :search
   end
 
   test 'returns accurate search results' do
@@ -68,5 +104,23 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'returns accurate search results for non-match' do
+    results = Article.search('this DOES not 3X@ST')
+    assert_equal 0, results.count
+  end
+
+  test 'returns match with any case results' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('sample')
+    assert_includes results, article
+  end
+
+  test 'empty search query returns all results' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('')
+    assert_equal 2, results.count
   end
 end
