@@ -1,8 +1,8 @@
 class Article < ApplicationRecord
 
     # validations to the model
-    validates :title, presence: true
-    validates :content, presence: true
+    validates :title, presence: true, uniqueness: true
+    validates :content, presence: true, uniqueness: true
 
     # search function 
     def self.search(search_term)
