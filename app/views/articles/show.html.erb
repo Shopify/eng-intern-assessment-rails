@@ -1,0 +1,21 @@
+<%# Renders the specified article's title, content, author, and date published %>
+
+<h1><%= @article.title %></h1>
+
+<p><strong>Content:</strong> <%= @article.content %></p>
+
+<p><strong>Author:</strong> <%= @article.author %></p>
+
+<p><strong>Date Published:</strong> <%= @article.date %></p>
+
+<%# Buttons to edit and delete the article %>
+
+<div class="actions">
+  <%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
+  <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete this article?" }, class: "btn btn-danger" %>
+</div>
+
+<%# Link to navigate back to the list of articles %>
+<div class="back-link">
+  <%= link_to "Back to Articles", articles_path %>
+</div>
