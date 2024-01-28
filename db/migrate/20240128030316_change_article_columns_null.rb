@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 # database level restriction on the columns.
 class ChangeArticleColumnsNull < ActiveRecord::Migration[7.1]

@@ -1,10 +1,12 @@
-# there is much, much more that could be implemented: Authentication, a seperate MVC for authors, pagination for the list of articles, etc. However, I believe in not spreading oneself out tooo thin, but rather that if one is given a task, to do that task to the best of their abilities before moving on to the next one.
+# frozen_string_literal: true
+
+# there is much, much more that could be implemented: Authentication, a separate MVC for authors, pagination for the list of articles, etc. However, I believe in not spreading oneself out tooo thin, but rather that if one is given a task, to do that task to the best of their abilities before moving on to the next one.
 
 # It would be careless of me not to cite the sources I used to ensure that this project was following best practice. Namely, the ruby on rails getting started guide was essential. Furthermore, their api page was useful for certain modules and methods. There are some links sprinkled throughout the project, both for ethical reasons and maintainability.
 
 class ArticlesController < ApplicationController
   def index
-    #this is to ensure that the articles are ordered from most recent to least recent.
+    # this is to ensure that the articles are ordered from most recent to least recent.
     @articles = Article.order(created_at: :desc)
   end
 
@@ -28,12 +30,12 @@ class ArticlesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit
     @article = Article.find(params[:id])
   end
+
   def update
     @article = Article.find(params[:id])
 
@@ -44,6 +46,7 @@ class ArticlesController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
   def destroy
     # rails automatically protects us from sql injection, so no worry about that.
     @article = Article.find(params[:id])
@@ -53,13 +56,13 @@ class ArticlesController < ApplicationController
     # status: :see_other "indicates that the redirects don't link to the requested resource itself, but to another page (such as a confirmation page"
     # source: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/303
     redirect_to root_path, status: :see_other
-
   end
 
   # we don't want this to be callable except from this controller!
   private
+
   # params.require.permit allows us to require certain params on routes, and permit only certain ones. Extremely important for security.
-    def article_params
-      params.require(:article).permit(:title, :content, :author)
-    end
+  def article_params
+    params.require(:article).permit(:title, :content, :author)
+  end
 end
