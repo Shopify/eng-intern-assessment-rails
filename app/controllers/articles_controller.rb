@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   def index
-    if params[:query]
-      @articles = Article.search(params[:query])
+    if params[:search]
+      @articles = Article.search(params[:search])
     else
     @articles = Article.all
     end
@@ -54,7 +54,6 @@ def destroy
 
   redirect_to root_path, status: :see_other
 end
-
 
   private
   def article_params 
