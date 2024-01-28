@@ -65,4 +65,33 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # BEGIN ADDED TESTS
+
+  test 'can create valid articles' do
+    article = Article.create(title: 'Sample title', content: 'Lorem ipsum dolor sit amet.', author: "Anon", date: Date.today)
+    assert_equal article.valid?, true
+  end
+
+  test 'prevents article creations with no title' do
+    article = Article.create(title: '', content: 'Lorem ipsum dolor sit amet.')
+    assert_equal article.valid?, false
+  end
+
+  test 'prevents article creations with no content' do
+    article = Article.create(title: 'Sample title', content: '')
+    assert_equal article.valid?, false
+  end
+
+  test 'prevents article creations with short content' do
+    article = Article.create(title: 'Sample title', content: 'too short')
+    assert_equal article.valid?, false
+  end
+
+  test 'prevents article creations with future dates' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.tomorrow)
+    assert_equal article.valid?, false
+  end
+
+  # END ADDED TESTS
 end
