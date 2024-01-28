@@ -2,6 +2,11 @@
 
 <h1>Articles</h1>
 
+<%= form_with url: articles_path, method: :get do |form| %>
+  <%= form.text_field :q, value: params[:q], placeholder: "Search query" %>
+  <%= form.submit "Search" %>
+<% end %>
+
 <div id="articles">
   <% @articles.each do |article| %>
     <%= render article %>
