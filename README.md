@@ -20,11 +20,10 @@ Created necessary routes for the CRUD actions to be accessible.
 Created a simple frontend.
 Created a model for the articles, including validations.
 Added additional unit tests.
-Added integration tests.
-Added system tests.
+Added integration tests, testing routes and the general workflow.
+Added system tests, ensuring that routes are rendering the right elements given certain parameters and conditions.
 All tests pass on my system.
 Added comments for maintenance and readability
-Committed regularly.
 
 
 Before launching or testing:
@@ -45,4 +44,4 @@ How to launch:
 How to test:
     $ rails test
 
-NOTE: One might have issues with the ruby/rails/bundle version. I personally used rbenv to solve these issues without changing any code; rbenv allowed me to change to the necessary version of ruby used in this project.
+NOTE: One might have issues with the ruby/rails/bundle version. I personally used rbenv to solve these issues without changing any code; rbenv allowed me to change to the local version of ruby used in this project.
