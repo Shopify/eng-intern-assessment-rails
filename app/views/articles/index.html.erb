@@ -9,10 +9,14 @@
   <%= form.submit "Search" %>
 <% end %>
 
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article %>
-    </li>
-  <% end %>
-</ul>
+<% if @articles.length() > 0 %>
+  <ul>
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No articles found.</p>
+<% end %>
