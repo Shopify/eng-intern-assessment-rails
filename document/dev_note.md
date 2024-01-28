@@ -74,6 +74,9 @@ To execute the test suite for the Ruby on Rails application, follow these steps:
 
 3. rails test test/models/article_test.rb
 
+![Test Result](image-2.png)
+
+
 ## References:
 
 1. **GoRails - Setting Up Ruby on Rails on Windows 10:**
