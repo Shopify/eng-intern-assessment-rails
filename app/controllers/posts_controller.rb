@@ -1,12 +1,14 @@
-class ArticlesController < ApplicationController
+class PostsController < ApplicationController
     # Displays a list of all articles
     def index
         @articles = Article.all
+        render 'articles/index'
     end
 
     # Displays a single article
     def show
         @article = Article.find(params[:id])
+        render 'articles/show'
     end
 
     # Initializes a new article instance
