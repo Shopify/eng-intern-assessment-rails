@@ -1,4 +1,4 @@
-What was requested: 
+## What was requested: 
 
 Review Existing Tests: Start by reviewing the existing tests provided in the article_test.rb file located in the test/models directory. Understand the requirements and expectations of each test.
 
@@ -14,34 +14,48 @@ Version Control: Use Git for version control. Commit your changes regularly and 
 
 Create a Pull Request: Once you have completed the project goals, create a pull request to merge your changes into the main repository. Provide a clear description of the changes made and any relevant information for the code review.
 
-What was completed
+## What was completed
 Basic CRUD actions were implemented.
+
 Created necessary routes for the CRUD actions to be accessible.
+
 Created a simple frontend.
+
 Created a model for the articles, including validations.
+
 Added additional unit tests.
+
 Added integration tests, testing routes and the general workflow.
+
 Added system tests, ensuring that routes are rendering the right elements given certain parameters and conditions.
+
 All tests pass on my system.
+
 Added comments for maintenance and readability
 
 
-Before launching or testing:
-    $ bundle install
-    $ rake db:create
-    $ rake db:migrate
+## Before launching or testing:
 
-    or
+```
+$ bundle install
+$ rake db:create
+$ rake db:migrate
+```
+or
+```
+$ bundle install
+$ rails db:create
+$ rails db:migrate
+```
+#### How to launch:
 
-    $ bundle install
-    $ rails db:create
-    $ rails db:migrate
+```
+$ rails server
+```
+Then visit localhost:3000
 
-How to launch:
-
-    $ rails server
-    https://localhost:3000/
-How to test:
-    $ rails test
-
-NOTE: One might have issues with the ruby/rails/bundle version. I personally used rbenv to solve these issues without changing any code; rbenv allowed me to change to the local version of ruby used in this project.
+#### How to test:
+```
+$ rails test
+```
+NOTE: One might have issues with the ruby/rails/bundle version. I personally used rbenv to solve these issues without changing any code. More info here: https://github.com/rbenv/rbenv
