@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article = Article.new(date: Date.today)
   end
 
   # creates and saves a new article to the database
@@ -47,6 +47,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :author, :date)
+    params.require(:article).permit(:title, :content, :author, :date).with_defaults(date: Date.today)
   end
 end

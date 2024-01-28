@@ -1,2 +1,12 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<!-- app/views/articles/show.html.erb -->
+<h1><%= @article.title %></h1>
+<p>content: <%= @article.content %></p>
+<p>author: <%= @article.author %></p>
+<p>date: <%= @article.date %></p>
+
+<%= link_to 'Edit', edit_article_path(@article) , class: 'new-article-link' %> |
+<%= link_to 'Delete', article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  }, class: 'new-article-link' %> | 
+<%= link_to 'Back', articles_path , class: 'new-article-link' %>
