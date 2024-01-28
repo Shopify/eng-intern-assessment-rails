@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_25_144327) do
-
-  #create table of articles, with all four columns mentioned in the tests.
+ActiveRecord::Schema[7.1].define(version: 2024_01_28_030316) do
   create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.string "author"
-    t.date "date"
+    t.string "title", null: false
+    t.text "content", null: false
+    t.string "author", null: false
+    t.date "date", default: -> { "CURRENT_DATE" }, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
