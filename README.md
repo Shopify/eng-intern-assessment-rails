@@ -7,7 +7,7 @@ The Rails application serves as an Encyclopedia, designed to be an informative a
 Unlisted Video: https://www.youtube.com/watch?v=4Y8WtTw-dZI
 
 ## Test Results
-![Main Tests](/public/test.png)
+![Main Tests](/public/tests.png)
 
 ![User Tests](/public/user_tests.png)
 
