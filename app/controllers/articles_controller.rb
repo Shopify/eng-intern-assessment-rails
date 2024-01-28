@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
   def index
-    @articles = Article.order("#{sort_column} #{sort_direction}")
+    cache_key = "articles/#{sort_column}/#{sort_direction}"
+
+    @articles = Rails.cache.fetch(cache_key, expires_in: 5.minutes) do
+      Article.order("#{sort_column} #{sort_direction}")
+    end
   end
 
   def show
