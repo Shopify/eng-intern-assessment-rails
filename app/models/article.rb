@@ -3,7 +3,7 @@ class Article < ApplicationRecord
     if search
         # partial match: as long as the title(s) or content(s) include the given param, it will be retrieved
         @articles = Article.where("title like ?", "%" + search + "%").or(Article.where("content like ?", "%" + search + "%"))
-    elsif
+    else
         @articles = Article.all
     end
   end
