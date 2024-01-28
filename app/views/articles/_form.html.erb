@@ -1,7 +1,6 @@
 <div class="form-container">
-<%= form_with(model: article,url: articles_path, local: true) do |form| %>
-
-   <% if article.errors.any? %>
+  <%= form_with(model: article,url: articles_path, local: true) do |form| %>
+    <% if article.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
@@ -25,5 +24,5 @@
     <div class="actions">
       <%= form.submit "Submit" %>
     </div>
-<% end %>
+  <% end %>
 </div>

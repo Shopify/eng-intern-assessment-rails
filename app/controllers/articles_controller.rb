@@ -1,10 +1,9 @@
 class ArticlesController < ApplicationController
-    before_action :set_article, only: [:show, :edit, :update, :destroy]
-    before_action :check_user, only: [:edit, :update, :destroy]
-    before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_article_by_id, only: [:show, :edit, :update, :destroy]
+  before_action :verify_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
-
-def index
+  def index
     # Check if the 'search' parameter is present in the request.
     if params[:search]
       @articles = Article.joins(:user).where('articles.title LIKE :search OR articles.content LIKE :search OR users.name LIKE :search OR users.email LIKE :search', search: "%#{params[:search]}%")
@@ -39,7 +38,6 @@ def index
 
     # Update article with provided params.
     if @article.update(article_params) && @article.user.update(name: params[:article][:user_name])
-
       redirect_to @article, notice: 'Article was successfully updated.'
     else
       render :edit
@@ -56,21 +54,20 @@ def index
 
 
   private
-
-    def set_article
-      # Get article
+    # Get article by ID
+    def set_article_by_id
       @article = Article.includes(:user).find(params[:id])
     end
 
-    def article_params
-      # Handles the params for an article.
-      params.require(:article).permit(:title, :content, user_attributes: [:name])
+    # Verify user is the creator of the article.
+    def verify_user
+      unless current_user == @article.user
+      redirect_to articles_path, alert: "You are not authorized to perform this action."
     end
 
-    def check_user
-      # Verify current_user is the creator of the article.
-      unless current_user == @article.user
-        redirect_to articles_path, alert: "You are not authorized to perform this action."
-      end
+    # Handles the params for an article.
+    def article_params
+      params.require(:article).permit(:title, :content, user_attributes: [:name])
+    end
   end
 end
