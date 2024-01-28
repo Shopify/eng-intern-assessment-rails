@@ -1,5 +1,10 @@
 class ArticlesController < ApplicationController
   def index
+    if params[:search]
+      @articles = Article.search(params[:search])
+    else
+      redirect_to root_path, notice: "Please enter a search query."
+    end
   end
 
   def update
