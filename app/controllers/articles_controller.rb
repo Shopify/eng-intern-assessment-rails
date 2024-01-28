@@ -57,6 +57,17 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # GET /articles/search
+  # Searching by title ONLY
+  def search 
+    @articles = Article.where("title LIKE ?", "%#{params[:query]}%")
+
+    respond_to do |format|
+      format.html { render :index } # Render the index view with search results
+      format.json { render json: @articles }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
