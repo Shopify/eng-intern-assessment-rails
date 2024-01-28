@@ -8,9 +8,6 @@ a {
   color: #bb86fc; /* Light purple for links */
   text-decoration: none;
 }
-.field {
-  margin-top: 8px;
-}
 
 a:hover {
   text-decoration: underline;
@@ -400,15 +397,9 @@ body {
   margin-bottom: 20px;
 }
 
-.field {
-  margin-bottom: 20px;
-}
-
 input[type="text"],
 textarea {
   width: 70%;
-  padding: 8px;
-  margin-top: 5px;
 }
 
 .form-container {
@@ -422,7 +413,6 @@ textarea {
 
 .field label {
   display: block; /* Make labels block-level for better control */
-  margin-bottom: 5px; /* Space between label and input field */
   font-weight: bold; /* Optional: Make labels bold */
 }
 

@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
-  before_action :set_article_by_id, only: [:show, :edit, :update, :destroy]
-  before_action :verify_user, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+    before_action :set_article_by_id, only: [:show, :edit, :update, :destroy]
+    before_action :verify_user, only: [:edit, :update, :destroy]
+    before_action :authenticate_user!, except: [:index, :show]
 
-  def index
-    # Check if the 'search' parameter is present in the request.
+def index
+    # check for search param
     if params[:search]
       @articles = Article.joins(:user).where('articles.title LIKE :search OR articles.content LIKE :search OR users.name LIKE :search OR users.email LIKE :search', search: "%#{params[:search]}%")
     else
@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # Initializes a new article with the current looged in user.
+    # Instantiate new article with the logged in user.
     @article = current_user.articles.build(article_params)
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
@@ -38,6 +38,7 @@ class ArticlesController < ApplicationController
 
     # Update article with provided params.
     if @article.update(article_params) && @article.user.update(name: params[:article][:user_name])
+
       redirect_to @article, notice: 'Article was successfully updated.'
     else
       render :edit
@@ -54,20 +55,21 @@ class ArticlesController < ApplicationController
 
 
   private
+  
     # Get article by ID
     def set_article_by_id
       @article = Article.includes(:user).find(params[:id])
-    end
-
-    # Verify user is the creator of the article.
-    def verify_user
-      unless current_user == @article.user
-      redirect_to articles_path, alert: "You are not authorized to perform this action."
     end
 
     # Handles the params for an article.
     def article_params
       params.require(:article).permit(:title, :content, user_attributes: [:name])
     end
+
+    # Verify user is the creator of the article.
+    def verify_user
+      unless current_user == @article.user
+        redirect_to articles_path, alert: "You are not authorized to perform this action."
+      end
   end
 end
