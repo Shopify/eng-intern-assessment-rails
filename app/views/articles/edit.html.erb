@@ -1,52 +1,43 @@
-
-<div style="    display: flex;
-  /*overflow-y: scroll;*/
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-">
- <%= form_with(model: @article, url: article_path(@article), method: :patch) do |form| %>
-  <h1>Edit Article</h1>
-
-   <% if @article.errors.any? %>
- <div style="color: red" id="error_explanation">
-    <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
-    <ul>
-      <% @article.errors.each do |error| %>
+<div class ="Form">
+  <%= form_with(model: @article, url: article_path(@article), method: :patch) do |form| %>
+    <h1>Edit Article</h1>
+    <% if @article.errors.any? %>
+    <div style="color: red" id="error_explanation">
+      <h2>There are <%= pluralize(@article.errors.count, "error") %> Errors Present</h2>
+      <ul>
+        <% @article.errors.each do |error| %>
         <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+  <div class="position">
+  <div class="form-container">
+    <div class="field">
+        <%= form.label :title, class:"form-label"%>
+        <%= form.text_field :title, class: "form-input" %>
+    </div>
+    <div class="field">
+        <%= form.label :author, class: "form-label" %>
+        <%= form.text_field :author, class: "form-input" %>
+    </div>
+    <div class="field">
+        <%= form.label :content, class: "form-label" %>
+        <%= form.text_area :content, class: "form-textarea", rows: 8%>
+    </div>
+    <div class="field">
+        <%= form.label :date, class: "form-label" %>
+        <%= form.date_field :date%>
+    </div>
+    <div style="margin-top: 20px;">
+        <%= form.submit 'Update Article',class:"form-button"%>
+    </div>
   </div>
-<% end %>
-<div class="form-container">
- 
-  <div class="field">
-      <%= form.label :title, class:"form-label"%>
-      <%= form.text_field :title, class: "form-input" %>
-    </div>
-
-     <div class="field">
-      <%= form.label :author, class: "form-label" %>
-      <%= form.text_field :author, class: "form-input" %>
-    </div>
-
-    <div class="field">
-      <%= form.label :content, class: "form-label" %>
-      <%= form.text_area :content, class: "form-textarea", rows: 8%>
-    </div>
-
-    <div class="field">
-      <%= form.label :date, class: "form-label" %>
-      <%= form.date_field :date%>
-    </div>
-
-    
-   <div class="actions">
-      <%= form.submit 'Update Article'%>
-    </div>
-    </div>
   <% end %>
-  <p>
-    <%= link_to 'Back', articles_path, style: 'padding: 10px 15px; text-decoration: none; background-color: #007bff; color: white; border-radius: 5px;' %>
+
+  <p class="form-button" style=" background-color: #6c757d;">
+    <%= link_to 'Back to Articles', articles_path,class:"form-button",
+    style:"text-decoration:none;background-color: #6c757d;"%>
   </p>
+  </div>
 </div>

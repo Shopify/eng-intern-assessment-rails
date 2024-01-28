@@ -3,13 +3,14 @@ class ArticlesController < ApplicationController
   # Displays all articles or performs a search
   def index
         if params[:search]
-            @articles = Article.search(params[:search])
+        
+              @articles = Article.search(params[:search])   
         else
             @articles = Article.all
         end
   end
   
-    # GET /articles/:id
+  
     # This returns a single article.
   def show
         @article = Article.find_by(id: params[:id])
@@ -18,7 +19,7 @@ class ArticlesController < ApplicationController
         end
   end
   
-   # GET /articles/new
+   
    # This action will show a form to create a new article.
   def new
     @article = Article.new

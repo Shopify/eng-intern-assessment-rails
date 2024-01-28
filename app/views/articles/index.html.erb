@@ -1,46 +1,51 @@
 <div id="articles" class="main-container">
-<h1 style="text-align: center;">Encyclopedia</h1>
-
-
-<div class="article-header">
-    <div class="actions" style="item-align: center; left margin:10px">
-      <%= link_to 'Create New Article', new_article_path, class: "form-submit-btn" %>
-
-      <div class="search-bar">
-        <%= form_tag( articles_path, method: :get)  do %>
-         <%= text_field_tag( :search, params[:search], class: "search-term", placeholder: "Search...") %>
-         <%= submit_tag "Search", name: nil%>
-        <% end %>
-      </div>
+  <h1>Encyclopedia</h1>
+  <div class="search-div">
+    <%= form_tag articles_path, method: :get,id:"search-tag" do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Titles, Content, or Author", id:"search-bar"%>
+      <%= submit_tag "Search", name: nil, id:"search-btn"%>
+    <% end %>
     </div>
-  </div>
-
-<table style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
-<thead>
-  <tr>
-    <th>Date</th>
-    <th>Author</th>
-    <th>Title</th>
-    <th>Content</th>
-    <th>Actions</th>
-  </tr>
-</thead>
+    <p>
+      <%= link_to 'Create New Article', new_article_path, id:"create-btn"%>
+    </p>
+ 
+<%if @articles.size!=0%>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
 
   <tbody>
     <% @articles.each do |article| %>
-      <tr>
-      <td style="border: 1px solid black; padding: 8px;"><%= article.date %></td>
-      <td style="border: 1px solid black; padding: 8px;"><%= article.author %></td>
-      <td style="border: 1px solid black; padding: 8px;"><%= article.title %></td>
-      <td style="border: 1px solid black; padding: 8px;"><%= article.content %></td>
-        <td style="border: 1px solid black; padding: 8px;">
-          <%= link_to "Read more", article_path(article), style: "padding: 5px 10px; text-decoration: none; background-color: #007bff; color: white; border-radius: 5px;" %> |
-          <%= link_to "Edit", edit_article_path(article), style: "padding: 5px 10px; text-decoration: none; background-color: #28a745; color: white; border-radius: 5px;" %> |
-          <%= button_to "Delete", article_path(article), method: :delete, data: { confirm: "Are you sure?" }, form: { style: "display: inline" }, style: "padding: 5px 10px; background-color: #dc3545; color: white; border: none; border-radius: 5px;" %>
-        </td>
+    <tr>
+      <td><%= article.date %></td>
+      <td><%= article.author %></td>
+      <td><%= article.title %></td> 
+      <td class="select">
+          <a class="button"><%= link_to "View", article_path(article),
+            class:"select-btn" ,style: "background-color: #007bff" %>
+          </a>
+          <a class="button"> <%= link_to "Edit", edit_article_path(article),
+            class:"select-btn" ,style: "background-color: #28a745" %>
+          </a>
+          <a class="button"><%= button_to "Delete", article_path(article),
+            class:"select-btn", method: :delete, data: { confirm: "Are you sure?" }, 
+            form: { style: "display: inline" }, style: "background-color: #dc3545" %>
+          </a>
+      </td>
       </tr>
+    
     <% end %>
   </tbody>
  
 </table>
+<%else%>
+<div style="color: red; font-size:40px" id="error_explanation">Article not found.</div>
+<%end%>
 </div>

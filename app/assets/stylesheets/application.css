@@ -1,32 +1,184 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
- .form-container {
+:root {
+    --base: #5BB9B8;
+    --subtle: #54a1a0;
+    --rain: #2C3845;
+    --poppy: #BD2A4E;
+    --mobile-small: 460px;
+    --mobile: 720px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    padding: 40px;
+    font-size: 62.5%;
+}
+  
+body {
+    color: #ffffff;
+    padding: 20px;
+    background-color: rgb(30,30,40); 
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1.6rem;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Main Body */
+.main-container h1{
+    margin-right: 10px;
+    text-align: center;font-size:10vw;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.search-div{
+    width: 100%; 
+    box-sizing: border-box; /* Include padding and border in the width */
+    position: relative;
+    justify-content: flex-end;
+    overflow: visible;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+#search-tag{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#search-bar{
+    height: 34px;
+    margin-right: 10px; width: 300px;
+}
+#search-btn{
+    padding: 5px 10px; background-color: #007bff; color: white; 
+    border: none; border-radius: 5px
+}
+.main-container p{text-align: center; 
+    margin-bottom: 20px;
+}
+#create-btn{
+    padding: 10px 15px;
+    text-decoration: none; 
+    background-color: #28a745; color: white; border-radius: 5px;
+  
+    
+}
+/* Table */
+table { 
+    border-spacing: 5; 
+    border-collapse: collapse; 
+    border-radius:10px;
+    overflow:hidden;
+    max-width:800px; 
+    width:100%;
+    margin:0 auto;    
+    position:relative;   
+}
+
+td,th{ padding-left:8px;
+    text-align:center;
+    border: 1px solid black;
+}
+  
+thead tr{ 
+    height:60px;
+    font-size:16px;
+    background-color: #009879;
+    color: #ffffff;
+}
+.select-btn{
+   
+    width: auto;
+    margin: 4px;
+    padding: 5px 10px; text-decoration: none; color: white;
+    border-radius: 5px;display: inline;
+    border:none;
+}
+
+.search-term{
+    width: 100%;
+    border: 2px solid #00B4CC;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 5px 5px 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+
+
+/* View */
+.view{
+    margin-right: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+}
+  .view h1 {
+    display: inline-block;
+    text-align: center;
+    margin-right: 3px;
+    font-size: 8vw; 
+
+  }
+  
+  .view div {
+    font-size: 4vw; /* Adjust the font size as needed */
+    margin-top: 10px; /* Add spacing between date and buttons */
+  }
+  
+  .view p {
+    margin-top: 20px; /* Adjust the margin as needed */
+  }
+  
+#view-edit{
+    padding: 10px 15px; text-decoration: none; background-color: #28a745; 
+    color: white; border-radius: 5px; margin-right: 10px
+}
+#view-back{
+    padding: 10px 15px; text-decoration: none; background-color: #007bff; 
+    color: white; border-radius: 5px;
+}
+/* Form.html */
+.Form{
+    text-align:center;
+    justify-content: center;
+}
+.Form h1{
+    font-size:10vw;
+}
+.form-container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
 }
 
+.position{
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    
+   
+    
+}
 .field {
     margin-bottom: 20px;
 }
-
 .form-label {
     display: block;
     font-weight: bold;
@@ -40,96 +192,26 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    resize:vertical;
 }
-
-.form-textarea {
-    resize: vertical; /* Allow vertical resizing of textarea */
-}
-
-.form-submit-btn {
-    text-decoration: none;
-    background-color: #4caf50;
-    color: white;
-    padding: 8px 15px ;
-    border: none;
-    border-radius: 4px;
+  
+.form-button {
     cursor: pointer;
-    font-size: 16px;
-    margin: 10px;
-}
-
-.form-submit-btn:hover {
-    background-color: #45a049;
-}
-
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #e9f5fe;
-    color: #333;
-}
-
-.article-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     width: 100%;
-    max-width: 800px;
-    padding-bottom: 1rem;
-    margin-bottom: 20px;
-}
-
-.header{
-    position: relative;
-    justify-content: flex-start;
-}
-.actions {
-    display: flex;
-    align-items: center;
-}
-
-.search-bar{
-    width: 100%; /* Set to 'auto' or adjust as needed */
-    box-sizing: border-box; /* Include padding and border in the width */
-    position: relative;
-    justify-content: flex-end;
-    overflow: visible;
-    display: flex;
-}
-
-.search-term{
-    width: 100%;
-    border: 2px solid #00B4CC;
-    padding: 5px;
-    height: 20px;
-    border-radius: 5px 5px 5px 5px;
-    outline: none;
-    color: #9DBFAF;
-}
-
-.main-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.inner-container {
-    text-decoration: none; /* Remove default underline */
-    color: #606060; /* Set link color */
-    background-color: #e6e6ff;
-    display: flex;
-    padding: 1rem;
-    width: 100%;
-    max-width: 800px;
-    box-shadow: inherit;
-    border-radius: 8px;
-    border: 1px solid #8dc6ff;
-    margin-bottom: 10px;
-}
-
-.article-view {
     max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+    border-radius:5px;
+    border:0;
+    cursor:pointer;
+    color:white;
+    font-size:24px;
+    padding-top:10px;
+    padding-bottom:10px;
+    transition: all 0.3s;
+    font-weight:700;
+    text-decoration: none;
+    margin-top: 20px;
+    background-color: #007bff;
+    margin-left: 19x;
 }
+  

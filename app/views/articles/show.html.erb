@@ -1,24 +1,21 @@
-<div style="text-align: center;">
+<div class="main-container view" style="text-align: center;">
+
 
 <h1><%= @article.title %></h1>
 
-  <table style="margin-left: auto; margin-right: auto; border-collapse: collapse; width: 60%; max-width: 800px; min-width: 300px;">
-    <tr>
-      <th style="border: 1px solid black; padding: 8px; text-align: left;">Author</th>
-      <td style="border: 1px solid black; padding: 8px;"><%= @article.author || 'Not specified' %></td>
-    </tr>
-    <tr>
-      <th style="border: 1px solid black; padding: 8px; text-align: left;">Date</th>
-      <td style="border: 1px solid black; padding: 8px;"><%= @article.date || 'Not specified' %></td>
-    </tr>
-    <tr>
-      <th style="border: 1px solid black; padding: 8px; text-align: left;">Content</th>
-      <td style="border: 1px solid black; padding: 8px;"><%= @article.content %></td>
-    </tr>
-  </table>
+    <div class="content">
+      <%= @article.content %></td>
+    </div>
 
-  <p style="margin-top: 20px;">
-    <%= link_to 'Edit', edit_article_path(@article), style: 'padding: 10px 15px; text-decoration: none; background-color: #28a745; color: white; border-radius: 5px; margin-right: 10px;' %> |
-    <%= link_to 'Back', articles_path, style: 'padding: 10px 15px; text-decoration: none; background-color: #007bff; color: white; border-radius: 5px;' %>
+    <div>      
+      <%= @article.author || 'Not specified' %>
+    </div>
+    <div>  
+      <%= @article.date || 'Not specified' %>
+    </div>
+
+  <p style="margin-top: 15px;">
+    <%= link_to 'Edit',edit_article_path(@article),id:"view-edit"%>
+    <%= link_to 'Return to Articles', articles_path, id:"view-back"%>
   </p>
 </div>
