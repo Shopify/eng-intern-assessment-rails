@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :articles
+  # Make the page which lists all articles the root path ("/")
+  root "articles#index"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

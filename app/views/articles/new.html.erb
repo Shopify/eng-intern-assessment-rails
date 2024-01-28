@@ -1,0 +1,9 @@
+<div class="container mt-4">
+  <h1 class="mb-4">New Article</h1>
+
+ <%= render "form", article: @article %>
+
+  <div class="mt-4 text-center">
+    <%= link_to "Back to Articles", articles_path, class: 'btn btn-secondary' %>
+  </div>
+</div>
