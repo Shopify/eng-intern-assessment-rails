@@ -9,9 +9,17 @@ class ArticleTest < ActiveSupport::TestCase
     assert_respond_to Article, :search
   end
 
-  test 'creates a new article' do
+  test 'creates a new article and defaults date to today' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert article.valid?
+    assert_equal article.date, Date.today
+  end
+
+  test 'does not create invalid articles' do
+    article1 = Article.create(title: "No content")
+    article2 = Article.create(content: "No title")
+    assert article1.invalid?
+    assert article2.invalid?
   end
 
   test 'displays the article content accurately' do
@@ -64,5 +72,13 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'searches author field' do
+    article1 = Article.create(title: 'Sample Article', content: 'Content', author: 'Jane Doe')
+    article2 = Article.create(title: 'Another Article', content: 'Content', author: 'Jack Doe')
+    results = Article.search('Jane')
+    assert_includes results, article1
+    assert_not_includes results, article2
   end
 end
