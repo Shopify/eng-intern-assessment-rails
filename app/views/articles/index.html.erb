@@ -1,9 +1,14 @@
 <h1>Articles</h1>
 
-<%# Check if there are any articles to display %>
+<%= form_tag(articles_path, method: :get, class: "form-inline mb-3") do %>
+  <div class="form-group">
+    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search articles" %>
+  </div>
+  <%= submit_tag "Search", class: "btn btn-primary ml-2" %>
+<% end %>
+
 <% if @articles.any? %>
   <ul class="article-list">
-    <%# Loop through each article and display its title and a link to view details %>
     <% @articles.each do |article| %>
       <li>
         <h2><%= link_to article.title, article %></h2>
@@ -16,5 +21,4 @@
   <p>No articles found.</p>
 <% end %>
 
-<%# Link to create a new article %>
 <%= link_to "New Article", new_article_path, class: "btn btn-primary" %>

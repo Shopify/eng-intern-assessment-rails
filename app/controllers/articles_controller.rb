@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
     # GET /articles
     # Shows a list of all articles
     def index
-      @articles = Article.all
+      @articles = if params[:search]
+        Article.where('title LIKE ?', "%#{params[:search]}%")
+      else
+        Article.all
+      end
     end
   
     # GET /articles/:id
