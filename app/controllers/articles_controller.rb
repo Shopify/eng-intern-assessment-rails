@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    if params[:search]
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
 
   def show
@@ -13,6 +17,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+
+    @article.author = "Somebody" if @article.author.blank?
 
     if @article.save
       redirect_to @article
@@ -27,6 +33,8 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
+
+    @article.author = "Somebody" if @article.author.blank?
 
     if @article.update(article_params)
       redirect_to @article
@@ -44,7 +52,7 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :author, :content, :date)
+      params.require(:article).permit(:title, :author, :content, :date, :search)
     end
 
 end

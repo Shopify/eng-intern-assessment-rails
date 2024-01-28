@@ -1,6 +1,13 @@
 <h1>The Encyclopedia</h1>
 <br> 
+<%= link_to "New Article", new_article_path %>
 <h2>Articles</h1>
+
+<%= form_tag articles_path, method: :get do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search by name or content" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -26,5 +33,3 @@
   </tbody>
 </table>
 <br>
-
-<%= link_to "New Article", new_article_path %>
