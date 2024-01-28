@@ -65,4 +65,17 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'requires title presence' do
+    article = Article.new(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+    assert_includes article.errors.full_messages, "Title can't be blank"
+  end
+  
+  test 'requires content presence' do
+    article = Article.new(title: 'Sample Article')
+    assert_not article.valid?
+    assert_includes article.errors.full_messages, "Content can't be blank"
+  end
+
 end
