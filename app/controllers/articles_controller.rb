@@ -13,7 +13,9 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    # Set the "date" field in the article creation form to today by default.
+    # The user can omit the date by deleting the contents of the field.
+    @article = Article.new(date: Date.today)
   end
 
   def create
@@ -50,8 +52,10 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    # By default, each article's date field will be set to the current date,
-    # both on update and creation.
+    # If the form data doesn't explicity contain a field for date, set the
+    # default date to today. Note that if an empty string is given for the
+    # date field in the form, the default will not be applied, and instead
+    # date will set to be empty.
     params.require(:article).permit(:title, :content, :author, :date).with_defaults(date: Date.today)
   end
 end
