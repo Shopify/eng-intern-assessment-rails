@@ -1,0 +1,24 @@
+<h1>Articles</h1>
+
+<%= form_with url: articles_path, method: :get, local: true do |form| %>
+  <%= form.label :search, 'Search Articles' %>
+  <%= form.text_field :search %>
+  <%= form.submit 'Search' %>
+  <%= link_to 'Clear', articles_path, class: 'clear-button-class' %>
+<% end %>
+
+<%= link_to 'New Article', new_article_path %>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+      <%= link_to 'Edit', edit_article_path(article) %>
+      <%= link_to 'Destroy', article_path(article), 
+            data: { 
+              controller: 'confirmation', 
+              action: 'click->confirmation#confirm',
+              turbo_method: :delete 
+            } %>
+    </li>
+  <% end %>
+</ul>
