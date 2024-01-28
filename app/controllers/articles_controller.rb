@@ -2,7 +2,11 @@ class ArticlesController < ApplicationController
   
   # GET /articles
   def index
-    @articles = Article.all
+    if params[:search].present?
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/:id
@@ -53,6 +57,6 @@ class ArticlesController < ApplicationController
   private
   
     def article_params
-      params.require(:article).permit(:title, :content, :author, :date)
+      params.require(:article).permit(:title, :content, :author, :date, :search)
     end
 end
