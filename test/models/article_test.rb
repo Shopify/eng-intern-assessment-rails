@@ -24,6 +24,7 @@ class ArticleTest < ActiveSupport::TestCase
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
+    assert_equal 'Sample Article', article.title
   end
 
   test 'displays the article metadata correctly' do
@@ -35,8 +36,12 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'edits an existing article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.update(title: 'New Title')
     article.update(content: 'Updated content')
+    article.update(author: 'New Author')
+    assert_equal 'New Title', article.title
     assert_equal 'Updated content', article.content
+    assert_equal 'New Author', article.author
   end
 
   test 'updates the article metadata' do
