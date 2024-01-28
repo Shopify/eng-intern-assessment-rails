@@ -1,6 +1,10 @@
 <h1><%= @article.title %></h1>
 
-<p><%= @article.body %></p>
+<p>by <%= @article.author %></p>
+
+<p><%= @article.date %></p>
+
+<p><%= @article.content %></p>
 
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
@@ -8,4 +12,5 @@
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>
+  <li><%= link_to "Back to Home Page", "/" %></li>
 </ul>
