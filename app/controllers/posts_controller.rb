@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     def create
         @article = Article.new(article_params)
         if @article.save
-            redirect_to @article, notice: 'Article was successfully created.'
+            redirect_to post_path(@article), notice: 'Article was successfully created.'
         else
             render :new
         end
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     def update
         @article = Article.find(params[:id])
         if @article.update(article_params)
-            redirect_to @article, notice: 'Article was updated.'
+            redirect_to post_path(@article), notice: 'Article was updated.'
         else
             render :edit
         end
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
     def destroy
         @article = Article.find(params[:id])
         @article.destroy
-        redirect_to articles_url, notice: 'Article was successfully deleted.'
+        redirect_to posts_path, notice: 'Article was successfully deleted.'
     end
 
     private 
