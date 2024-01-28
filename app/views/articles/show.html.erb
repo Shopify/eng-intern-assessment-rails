@@ -1,10 +1,11 @@
-<p style="color: green"><%= notice %></p>
+<div >
+  <h1 class="display-4"><%= @article.title %></h1>
+  <p class="lead"><%= @article.author %></p>
+  <p class="lead"><%= @article.date %></p>
+  <%= link_to "Edit this article", edit_article_path(@article), class: 'btn btn-warning' %>
+  <%= button_to "Destroy this article", @article, method: :delete, class: 'btn btn-danger' %>
+  <hr class="my-4">
+  <p class="lead"><%= @article.content %></p>
 
-<%= render @article %>
-
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
-
-  <%= button_to "Destroy this article", @article, method: :delete %>
+  <%= link_to "Back to articles", articles_path, class: 'btn btn-success' %>
 </div>
