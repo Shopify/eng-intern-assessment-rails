@@ -34,3 +34,14 @@ Unlisted Video: https://www.youtube.com/watch?v=4Y8WtTw-dZI
    - These tests check for the presence of essential fields such as email, and password. 
    - They also enforce business rules such as unique emails and minimum password length. The tests help maintain the integrity of the user-related functionalities
 
+### Getting Started:
+- Clone the repository to your local development environment.
+
+- Install the necessary dependencies by running bundle install in the project directory.
+
+- Seed the DB with some articles by running: bin/rails db:create, bin/rails db:migrate, bin/rails db:seed
+
+- Start the server up by using: rails server
+
+- Open a web browser and navigate to http://localhost:3000 to view the application.
+
