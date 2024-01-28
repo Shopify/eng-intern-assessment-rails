@@ -1,6 +1,6 @@
 require 'test_helper'
 
-# Please refer to user.yml for the user instantiation.. Tests slightly revised to work with the authentication user/article relationship...
+# Please refer to user.yml for the user instantiation.. Tests slightly revised to work with the user authentication user & article association attribute...
 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
