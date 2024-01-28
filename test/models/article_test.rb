@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # Used to start with an empty database
+  # self.use_transactional_fixtures = false
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
