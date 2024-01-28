@@ -68,4 +68,19 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'performs case-insensitive search' do
+  article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+  results = Article.search('sample')
+  assert_includes results, article
+end
+
+  test 'returns all articles when search is blank' do
+  article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+  article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+  results = Article.search('')
+  assert_includes results, article1
+  assert_includes results, article2
+end
+
 end
