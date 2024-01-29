@@ -18,7 +18,7 @@
 
   <div>
     <%= form.label :author %><br>
-    <%= form.text_area :author %><br>
+    <%= form.text_field :author %><br>
     <% article.errors.full_messages_for(:author).each do |message| %>
       <div><%= message %></div>
     <% end %>
