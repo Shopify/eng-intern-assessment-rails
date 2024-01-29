@@ -1,0 +1,15 @@
+<%= render "search_bar"%>
+
+<% if @articles.present? %>
+    <h1>Search Results</h1>
+    <% @articles.each do |article| %>
+        <div>
+            <h2><%= link_to article.title, article %></h2>
+            <p><%= article.content %></p>
+        </div>
+    <% end %>
+<% else %>
+    <p>No results found</p>
+<% end %>
+
+<%= link_to "Back to articles", articles_path %>

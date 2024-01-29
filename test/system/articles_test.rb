@@ -52,6 +52,23 @@ class ArticlesTest < ApplicationSystemTestCase
     click_on 'Back'
   end
 
+  test 'should find articles' do
+
+    visit articles_url
+    fill_in 'query', with: 'First'
+    click_on 'Search'
+
+    assert_text 'First Article'
+  end
+
+  test 'should not find articles' do
+    visit articles_url
+    fill_in 'query', with: 'no match'
+    click_on 'Search'
+
+    assert_text 'No results found'
+  end
+
   test 'should destroy Article' do
     visit article_url(@article)
     click_on 'Destroy this article', match: :first

@@ -46,4 +46,9 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to articles_url
   end
+
+  test 'should search articles' do
+    get search_articles_url, params: { query: 'test' }
+    assert_response :success
+  end
 end

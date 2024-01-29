@@ -5,6 +5,13 @@
 # and deleting articles.
 class ArticlesController < ApplicationController
 
+  # GET /article/search
+  def search
+    @articles = Article.search(params[:query])
+    logger.debug "Search results: #{@articles}"
+    render :search_results
+  end
+
   # GET /article
   def index
     @articles = Article.all
