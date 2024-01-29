@@ -56,3 +56,7 @@ Here are some resources that may be helpful during your internship project:
 
 
 ## Developer Documentation
+
+### Getting Started
+
+1. Clone Repository(https://github.com/JDVM/eng-intern-assessment-rails) 
