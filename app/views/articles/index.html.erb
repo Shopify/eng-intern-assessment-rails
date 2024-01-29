@@ -2,12 +2,19 @@
 <nav>
   <%= link_to "New Article", new_article_path %>
 </nav>
-<h2>All Articles</h2>
+
+<br><br>
+
+<%= form_tag articles_path, method: :get do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Enter a query" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<h2>Articles</h2>
 <ul>
   <% @articles.each do |article| %>
     <li>
-      <strong><%= article.title %></strong>
-      <p><%= article.content %></p>
+        <%= link_to article.title, article %>
     </li>
   <% end %>
 </ul>

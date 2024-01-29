@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   root "articles#index"
 
-  # get "articles", to: "articles#index"
-  # get "/articles/:id", to: "articles#show"
-  # replacing get functionality with resources
-  # Added search route as collection as it acts on the entire object and not a specific instance
   resources :articles do
     collection do
       get "search"
