@@ -1,0 +1,7 @@
+<!-- app/views/articles/_search.html.erb -->
+
+<%= form_tag(search_articles_path, method: :get) do %>
+  <%= text_field_tag :query, params[:query], placeholder: 'Enter your search query' %>
+  <%= submit_tag 'Search' %>
+  <%= link_to 'Clear Search', articles_path, class: 'clear-search' %>
+<% end %>
