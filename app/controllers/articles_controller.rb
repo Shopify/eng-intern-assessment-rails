@@ -4,14 +4,26 @@
 # This controller is responsible for creating new articles, displaying existing articles, searching for articles,
 # and deleting articles.
 class ArticlesController < ApplicationController
-  def search; end
-
   def index
     @articles = Article.all
   end
 
   def show
     @article = Article.find_by(id: params[:id])
+  end
+
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find_by(id: params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   # GET /article/new
@@ -30,7 +42,15 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    @article = Article.find_by(id: params[:id])
+    @article.destroy
+
+    redirect_to articles_path, notice: :see_other
+  end
+
   private
+
   def article_params
     params.require(:article).permit(:title, :content, :author, :date)
   end
