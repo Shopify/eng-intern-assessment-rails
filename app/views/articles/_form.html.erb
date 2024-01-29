@@ -1,0 +1,38 @@
+<%= form_with(model: article, local: true, html: { class: 'container mt-4' }) do |form| %>
+  <% if article.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger" role="alert">
+      <h2><%= pluralize(article.errors.count, "error") %> prevented the article from being saved.</h2>
+      <ul>
+        <% article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="mb-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :content, class: 'form-label' %>
+    <%= form.text_area :content, rows: 5, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :author, class: 'form-label' %>
+    <%= form.text_field :author, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+        <%= form.submit article.new_record? ? 'Create' : 'Update', class: 'btn btn-success' %>
+      </div>
+      <div class="col-6 text-end">
+        <%= link_to 'Back', articles_path, class: "btn btn-secondary mt-3" %>
+      </div>
+    </div>
+  </div>
+<% end %>

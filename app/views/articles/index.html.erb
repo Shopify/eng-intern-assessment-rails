@@ -1,0 +1,35 @@
+<!-- Navigation Bar -->
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand mb-0 h1" href="<%= articles_path %>">Articles</a>
+    <form class="d-flex" action="<%= articles_path %>" method="get">
+      <input class="form-control me-2" type="search" placeholder="Search articles" aria-label="Search" name="search" value="<%= params[:search] %>">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <%= link_to 'New Article', new_article_path, class: 'btn btn-primary' %>
+  </div>
+</nav>
+
+<!-- Articles List -->
+<div class="mt-4">
+  <% @articles.each do |article| %>
+    <div class="card mb-3">
+      <%= link_to article_path(article), class: 'text-decoration-none text-dark' do %>
+        <div class="card-body">
+          <h5 class="card-title"><%= article.title %></h5>
+          <p class="card-text"><%= truncate(article.content, length: 1000) %></p>
+        </div>
+        <div class="card-footer bg-light"> <!-- Here the bg-light class is added -->
+          <div class="row">
+            <div class="col-6 text-start">
+              <small class="text-muted">Date: <%= article.created_at.strftime("%Y-%m-%d") %></small>
+            </div>
+            <div class="col-6 text-end">
+              <small class="text-muted">Author: <%= article.author %></small>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

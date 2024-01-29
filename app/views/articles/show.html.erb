@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title"><%= @article.title %></h1>
+      <p class="card-text"><%= @article.content %></p>
+    </div>
+    
+    <div class="card-footer bg-light">
+      <div class="row">
+        <div class="col-6 text-start">
+          <small class="text-muted">Date: <%= @article.created_at.strftime("%Y-%m-%d") %></small>
+        </div>
+        <div class="col-6 text-end">
+          <small class="text-muted">Author: <%= @article.author %></small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer bg-light">
+      <div class="row">
+        <div class="col-6 text-start">
+          <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary' %>
+          <%= link_to "Delete", article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?" }, class: 'btn btn-danger' %>
+        </div>
+        <div class="col-6 text-end">
+          <%= link_to 'Back', articles_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
