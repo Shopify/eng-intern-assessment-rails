@@ -6,9 +6,9 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 0, Article.count
   end
 
-  # test 'has search functionality' do
-  #   assert_respond_to Article, :search
-  # end
+  test 'has search functionality' do
+    assert_respond_to Article, :search
+  end
 
   test 'creates a new article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
@@ -51,19 +51,19 @@ class ArticleTest < ActiveSupport::TestCase
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
   end
 
-  # test 'returns accurate search results' do
-  #   article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-  #   article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
-  #   results = Article.search('Lorem ipsum')
-  #   assert_includes results, article1
-  #   assert_includes results, article2
-  # end
+  test 'returns accurate search results' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('Lorem ipsum')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
 
-  # test 'displays relevant articles in search results' do
-  #   article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-  #   article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
-  #   results = Article.search('Another')
-  #   assert_includes results, article2
-  #   assert_not_includes results, article1
-  # end
+  test 'displays relevant articles in search results' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('Another')
+    assert_includes results, article2
+    assert_not_includes results, article1
+  end
 end

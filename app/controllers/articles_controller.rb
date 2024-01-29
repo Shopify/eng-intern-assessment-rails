@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   def index
     # Fetch all articles from the database
-    @articles = Article.all
+    @articles = Article.search(params[:search])
   end
 
   def show
@@ -41,6 +41,10 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     redirect_to root_path, status: :see_other
+  end
+
+  def search
+
   end
 
   private
