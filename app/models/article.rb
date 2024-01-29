@@ -1,11 +1,6 @@
 class Article < ApplicationRecord
   validates :title, presence: true
-  @count = 0
-
-  def self.count
-    @count
-  end
-
+  
   def self.search(search_string)
     return Article.all if search_string.blank?
 
