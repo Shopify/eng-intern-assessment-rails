@@ -65,4 +65,68 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'handles empty and nil search queries' do
+    results1 = Article.search('')
+    assert_equal [], results1
+    results2 = Article.search(nil)
+    assert_equal [], results2
+  end
+
+  test 'returns search results based on content' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('Lorem')
+    assert_includes results, article1
+    assert_not_includes results, article2
+  end
+
+  test 'returns search results based on author' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Jane Smith')
+    results = Article.search('John Doe')
+    assert_includes results, article1
+    assert_not_includes results, article2
+  end
+
+  test 'returns search results based on date' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today)
+    results = Article.search(Date.today)
+    assert_includes results, article
+  end
+
+  test 'returns search results regardless of case' do
+    article1 = Article.create(title: 'Sample Article', content: 'LOREM IPSUM dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article3 = Article.create(title: 'Yet Another Article', content: 'empty content')
+    results1 = Article.search('lorem ipsum')
+    results2 = Article.search('LOREM IPSUM')
+    assert_includes results1, article1
+    assert_includes results2, article2
+    assert_not_includes results1, article3
+    assert_not_includes results2, article3
+  end
+
+  
+  test 'blocks article creation with no title' do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+  end
+
+  test 'blocks article creation with no content' do
+    article = Article.create(title: 'Sample Article')
+    assert_not article.valid?
+  end
+
+  test 'blocks article update with no title' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.update(title: nil)
+    assert_not article.valid?
+  end
+
+  test 'blocks article update with no content' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.update(content: nil)
+    assert_not article.valid?
+  end
 end
