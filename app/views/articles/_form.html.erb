@@ -1,0 +1,23 @@
+<%= form_with(model: @article, local: true, html: { id: 'article-form' }) do |form| %>
+
+  <div class="form-group">
+    <%= form.label :title, class: "control-label" %>
+    <%= form.text_field :title, class: "form-control", required: true, maxlength: 100, minlength: 3 %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :content, class: "control-label" %>
+    <%= form.text_area :content, class: "form-control", rows: 5, required: true, maxlength: 1000, minlength: 10 %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :author, class: "control-label" %>
+    <%= form.text_field :author, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit 'Save Article', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+
