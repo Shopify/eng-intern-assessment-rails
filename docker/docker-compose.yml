@@ -1,0 +1,35 @@
+volumes:
+  postgres_data:
+  bundle:
+  rails_cache:
+
+services:
+  shopify_intern_app:
+    image: shopify_intern_app
+    container_name: shopify_intern_app
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    working_dir: /app
+    depends_on:
+      - shopify_intern_db
+    links:
+      - shopify_intern_db
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
+    volumes:
+      - ..:/app:cached
+      - rails_cache:/app/tmp/cache
+      - bundle:/usr/local/bundle
+    tmpfs:
+      - /tmp
+  shopify_intern_db:
+    image: postgres:15.1
+    container_name: shopify_intern_db
+    volumes:
+      - postgres_data:/var/lib/bandleglass_postgresql/data
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=password

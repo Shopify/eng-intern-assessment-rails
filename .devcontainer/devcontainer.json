@@ -1,0 +1,25 @@
+{
+  "name": "eng-intern-assessment-rails",
+  "dockerComposeFile": [
+    "../docker/docker-compose.yml",
+    "docker-compose.yml"
+  ],
+  "service": "shopify_intern_app",
+  "workspaceFolder": "/app",
+  "forwardPorts": [3000],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": false,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "files.eol": "\n"
+      },
+      "extensions": [
+        "shopify.ruby-lsp",
+        "kaiwood.endwise",
+        "eamodio.gitlens"
+      ]
+    }
+  }
+}
