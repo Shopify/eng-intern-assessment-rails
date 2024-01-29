@@ -1,0 +1,15 @@
+<%=link_to('Back to Home Page', {controller: 'main', action: 'index' }) %><br />
+
+<h1>Tasks#index</h1>
+<p>Find me in app/views/tasks/index.html.erb</p>
+<% if @page==1 %>
+  <h2>  Tasks List  </h2>
+<%end%>
+
+<ul>
+<% @tasks.each do |task| %>
+    <li><%= task %></li>
+<% end %>
+</ul>
+
+<%= link_to('First task',task_path(1)) %>

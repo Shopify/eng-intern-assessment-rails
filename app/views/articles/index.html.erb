@@ -1,0 +1,36 @@
+
+
+
+
+
+<%= link_to('Back to Homepage', {controller: 'main', action: 'index'}) %><br />
+
+<div class="articles index">
+  <h2>Tasks</h2>
+
+  <%= link_to("Add New Article", '#', class: 'action new') %>
+
+  <table class="listing" summary="Article list" style="width: 100%;">
+    <tr class="header">
+       <th>Article</th>
+      <th>Text</th>
+      <th>Author</th>
+      <th>Date</th>
+    </tr>
+    <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.content %></td>
+      <td><%= article.author%></td>
+      <td><%= article.date%></td>
+      <td class="actions">
+        <%= link_to("Show",article_path(article), class: 'action show') %>
+        <%= link_to("Edit", '#', class: 'action edit') %>
+        <%= link_to("Delete", '#', class: 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+

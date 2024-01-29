@@ -1,0 +1,34 @@
+#<%= link_to('Edit article',edit_article_path(1)) %>
+
+<%= link_to("Back to List", 'articles_path', class: 'back-link') %>
+
+<div class="articles show">
+  <h2>Show Articles</h2>
+
+  <div class="actions">
+    <%= link_to('Edit', '#') %>
+    <%= link_to('Delete', '#') %>
+  </div>
+
+  <table summary="article detail view">
+    <tr>
+      <th>Title</th>
+      <td><%= @article.title %></td>
+    </tr>
+    <tr>
+      <th>Content</th>
+      <td><%= @article.content %></td>
+    </tr>
+    <tr>
+      <th>Author</th>
+      <td><%= @article.author %></td>
+    </tr>
+      <th>Date</th>
+      <td><%=@article.date %></td>
+    </tr>
+    
+  </table>
+
+</div>
+
+
