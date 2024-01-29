@@ -1,14 +1,17 @@
 <h1><%= @article.title %></h1>
-<p><%= @article.author %></p>
-<p><%= @article.date %></p>
-
+<p>Author: <%= @article.author %></p>
+<p>Date: <%= @article.date %></p>
+<hr>
 <p><%= @article.content %></p>
+<hr>
+<table>
+    <tr>
+        <td><%= link_to "Back", root_path %></td>
+        <td><%= link_to "Edit", edit_article_path(@article) %></td>
+        <td><%= link_to "Delete", article_path(@article), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure you want to delete this article?"
+        } %></td>
+    </tr>
+</table>
 
-<ul>
-  <li><%= link_to "Back", root_path %></li>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Delete", article_path(@article), data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure you want to delete this article?"
-  } %></li>
-</ul>

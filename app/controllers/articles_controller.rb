@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: %i[show edit update destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.search(params[:query])
   end
 
   def new
@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to @article, notice: "Article updatedd"
+      redirect_to @article, notice: "Article updated"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,6 +41,6 @@ class ArticlesController < ApplicationController
 
   # Allows for selective permission of parameter assignment, allowing all for now
   def article_params
-    params.require(:article).permit(:title, :content, :author, :date)
+    params.require(:article).permit(:title, :content, :author, :date, :query)
   end
 end
