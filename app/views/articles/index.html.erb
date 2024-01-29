@@ -9,6 +9,10 @@
         </h5>
         <%= link_to 'Read More', article_path(article), class: 'btn btn-primary mr-2' %>
         <%= link_to 'Update', edit_article_path(article), class: 'btn btn-info' %>
+        <%= link_to "Delete", article_path(article), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Confirm Deletion?"
+        }, class: 'btn btn-danger' %>
       </div>
     </div>
   <% end %>

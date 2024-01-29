@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   # Before performing the show, edit, and update actions, set the article
-  before_action :find_article, only: [:show, :edit, :update]
+  before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   # Display a list of all articles
   def index
@@ -45,7 +45,14 @@ class ArticlesController < ApplicationController
         # If there are errors, re-render the edit article form
         render :edit
     end
-end
+  end
+
+  # Delete action for articles. Destroys the specified article and redirects to the articles index page.
+  def destroy
+    # Destroys the article record from the database
+    @article.destroy
+    redirect_to articles_url, notice: 'Article was successfully destroyed.'
+  end
 
 
   private
