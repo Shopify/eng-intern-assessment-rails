@@ -1,0 +1,28 @@
+<h1>Encyclopedia of Articles</h1>
+
+<h1></h1>
+<hr></hr>
+<h1></h1>
+
+<%= link_to "Create a New Article", new_article_path %>
+
+<h3>Search</h3>
+
+<%= form_tag articles_path, :method => "get" do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search for an article..." %>
+<% end %>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+        <%= link_to article.title, article %> by <%= article.author %>
+    </li>
+  <% end %>
+</ul>
+
+<h1></h1>
+<hr></hr>
+<h1></h1>
+
+<%= link_to "Refresh", "/" %>

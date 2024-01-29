@@ -1,4 +1,4 @@
-require 'test_helper'
+require_relative '../test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
@@ -58,11 +58,29 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
   end
 
+  test 'returns accurate search results case-insensitive' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article3 = Article.create(title: 'Another Other Article', content: 'ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('lorem ipsum')
+    assert_includes results, article1
+    assert_includes results, article2
+    assert_not_includes results, article3
+  end
+
   test 'displays relevant articles in search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'returns accurate search results when searching by author' do
+    article1 = Article.create(title: 'Sample Article', author: 'Mary', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', author: 'James', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('mary')
+    assert_includes results, article1
+    assert_not_includes results, article2
   end
 end
