@@ -6,5 +6,11 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "articles#index"
+
+  # Add route for search function - need to add because even though resources added, it won't work without this route specified
+  get "/search", to: "articles#search"
+
+  # Resources route method to map conventional routes
+  resources :articles
 end

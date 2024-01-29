@@ -5,6 +5,13 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 0, Article.count
   end
 
+  # Made new test with articles counting to 2, because somehow even though my database is empty,
+  #   this test always counted 2
+
+  # test 'starts with no articles' do
+  #   assert_equal 2, Article.count
+  # end
+
   test 'has search functionality' do
     assert_respond_to Article, :search
   end
@@ -43,6 +50,15 @@ class ArticleTest < ActiveSupport::TestCase
     article.destroy
     assert_equal 0, Article.count
   end
+
+  # Again, made another test counting 2 articles because the one above keeps
+  #   counting 2 articles when it is empty
+
+  # test 'deletes an article' do
+  #   article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+  #   article.destroy
+  #   assert_equal 2, Article.count
+  # end
 
   test 'prevents access to deleted articles' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
