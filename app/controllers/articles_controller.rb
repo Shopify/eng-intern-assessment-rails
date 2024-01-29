@@ -1,6 +1,11 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    #Display search results if query exists, otherwise display all
+    if params[:search]
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
 
   def show
@@ -44,6 +49,6 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :body)
+      params.require(:article).permit(:title, :author, :content, :date)
     end
 end
