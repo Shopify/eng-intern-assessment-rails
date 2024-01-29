@@ -1,0 +1,22 @@
+<%# Renders form for use when adding, editing, and searching articles #%>
+<%= form_for @article do |f| %>
+    <div>
+        <%= f.label :title%>    
+        <%= f.text_field :title%>
+    </div>
+    <div>
+        <%= f.label :author%>    
+        <%= f.text_field :author%>
+    </div>
+    <div>
+        <%= f.label :content%>    
+        <%= f.text_field :content%>
+    </div>
+    <div>
+        <%= f.label :date%>    
+        <%= f.date_field :date%>
+    </div>
+    <div>
+        <%= f.submit %>
+    </div>
+<% end %>
