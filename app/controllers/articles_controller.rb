@@ -1,17 +1,26 @@
 class ArticlesController < ApplicationController
+  
+  # Fetch articles from the database
+  # based on the search provided, if any
   def index
-    # Fetch all articles from the database
     @articles = Article.search(params[:search])
   end
 
+  # Fetch the article from the database
+  # that matches the id provided
+  # Assign the @article variable to the retrieved article
   def show
     @article = Article.find(params[:id])
   end
 
+  # Create new instance of Article and
+  # Assign it to @article
   def new
     @article = Article.new
   end
 
+  # Make a new article with the given params
+  # Attempt to save it to the database
   def create
     @article = Article.new(article_params)
 
@@ -22,10 +31,13 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Fetch the matching article from the database
+  # and assign it to @article for editing uses
   def edit
     @article = Article.find(params[:id])
   end
 
+  # Attempt to update the article with the given data
   def update
     @article = Article.find(params[:id])
 
@@ -36,6 +48,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Destroy the article with the given ID
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
@@ -47,7 +60,10 @@ class ArticlesController < ApplicationController
 
   end
 
+
   private
+    # Private method for strong params
+    # Only permits specified parameters from the request
     def article_params
       params.require(:article).permit(:title, :content)
     end
