@@ -12,7 +12,9 @@ class Article < ApplicationRecord
 
   # Search database for titles and content with query
   def self.search(query)
+    # Sanitize and parameterize query to prevent SQL injection attacks
     sanitized_query = sanitize_sql_like(query)
+    # Wildcard matching will return entries that contain the search term anywhere in the title or content
     where('title LIKE :query OR content LIKE :query', query: "%#{sanitized_query}%")
   end
 end
