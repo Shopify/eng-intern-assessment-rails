@@ -1,0 +1,19 @@
+<div>
+  <form action="/search", method="GET" class="mt-2 flex flex-col">
+    <input type="search" name="query" placeholder="Search articles" class="rounded-md">
+    <button type="submit" class="bg-blue-500 hover:bg-blue-600 p-2 rounded-md text-white w-auto mt-2">Search</button>
+  </form>
+  <h1 class="text-2xl">Encyclopedia</h1>
+  <p>This are the available articles: </p>
+  <ul>
+  <% @articles.each do |article| %>
+    <li>
+      - <%= link_to article.title, article, class: "font-bold" %>
+    </li>
+  <% end %>
+</ul>
+  <div class="flex flex-col">
+    <p>Want to create an article?</p>
+    <%= link_to "Create", new_article_path, class: "bg-gray-200 hover:bg-gray-300 p-2 rounded-md mt-2 w-1/4 text-center" %>
+  </div>
+</div>
