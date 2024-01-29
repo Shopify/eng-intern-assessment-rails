@@ -34,9 +34,10 @@
 
 Some additional functions were implemented in this app. However, they are open to adjustments if the behaviors are not desired.
 
-1. When creating an article, only <b>title</b> and <b>content</b> fields are required. The <b>author</b> and <b>date</b> fields could be left blank.
-2. When deleting an article, a pop up window would show and asks the user to confirm the behavior. If users cancels the current delete, nothing would happen.
-3. Once an article is deleted, users would be redirected to the main page, which presents a lists of all articles.
+1. Initially, there are no articles and "No articles found." is showing on the main page.
+2. When creating an article, only <b>title</b> and <b>content</b> fields are required. The <b>author</b> and <b>date</b> fields could be left blank.
+3. When deleting an article, a pop up window would show and asks the user to confirm the behavior. If users cancels the current delete, nothing would happen.
+4. Once an article is deleted, users would be redirected to the main page, which presents a lists of all articles.
 
 # Technical Instructions
 
