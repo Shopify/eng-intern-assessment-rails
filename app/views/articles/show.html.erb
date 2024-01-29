@@ -3,12 +3,11 @@
 <%= render @article %>
 
 <div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
   <div>
-    <p>:title: <%= @article.title %></p>
-    <p>:content: <%= @article.content %></p>
-    <p>:author: <%= @article.author %></p>
+    <p><b>Title: </b><%= @article.title %></p>
+    <p><b>content: </b><%= @article.content %></p>
+    <p><b>author: </b><%= @article.author %></p>
   </div>
-  <%= button_to "Destroy this article", @article, method: :delete %>
+  <%= link_to "Edit this article", edit_article_path(@article) %> |
+  <%= render "article_nav", article: @article%>
 </div>

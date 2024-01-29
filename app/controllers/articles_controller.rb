@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
   # GET /article/:id
   def show
-    @article = Article.find_by(id: params[:id])
+    @article = Article.find(params[:id])
   end
 
   # GET /article/:id/edit
