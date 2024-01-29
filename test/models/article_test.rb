@@ -65,4 +65,24 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # additional tests added below
+  test 'requires title' do
+    # checks if title is required
+    article = Article.new(content: 'Hello World.')
+    assert_not article.valid?
+  end
+
+  test 'requires content' do
+    # checks if content is required
+    article = Article.new(title: 'New Day')
+    assert_not article.valid?
+  end
+
+  test 'returns no results for empty search' do
+    # ensures empty search does not return results
+    results = Article.search('')
+    assert_empty results
+  end
+
 end

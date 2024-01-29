@@ -1,0 +1,22 @@
+<!-- Displays article title -->
+<div class = "article h2">
+  <h1><%= @article.title %></h1>
+</div>
+
+<!-- Displays article details and content -->
+<div class="container">
+  <div class="article">
+    <p><strong>Author:</strong> <%= @article.author %></p>
+    <p><strong>Date:</strong> <%= @article.date %></p>
+      <%= @article.content %>
+  </div>
+</div>
+
+<!-- Displays buttons to edit, go back, and delete -->
+<div class="centered-link">
+  <div class="button-container">
+  <%= button_to 'Edit', edit_article_path(@article), method: :get, class: "button-style" %>
+  <%= button_to 'Back to Articles', articles_path, method: :get, class: "button-style" %>
+  <%= button_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }, class: "button-style" %>
+  </div>
+</div>
