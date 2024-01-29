@@ -1,13 +1,18 @@
 <body>
+  <!-- Navigation Bar with links to Home and Search pages -->
   <nav>
     <ul>
+      <!-- Link to Home page -->
       <li><%= link_to 'Home', root_path %></li>
+      <!-- Link to Search page -->
       <li><%= link_to 'Search', search_articles_path %></li>
     </ul>
   </nav>
+
   <div>
-  <!-- Display of the title of the article in h1 and the data in p -->
+    <!-- Display the title of the article as a link to the article's page -->
     <h1><%= link_to article.title, article %></h1>
+    <!-- Display the content of the article -->
     <p><%= article.content %></p>
   </div>
 </body>

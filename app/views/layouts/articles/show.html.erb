@@ -1,16 +1,27 @@
 <body>
+  <!-- Navigation Bar with links to Home and Search pages -->
   <nav>
     <ul>
+      <!-- Link to Home page -->
       <li><%= link_to 'Home', root_path %></li>
+      <!-- Link to Search page -->
       <li><%= link_to 'Search', search_articles_path %></li>
     </ul>
   </nav>
+
+  <!-- Display the title of the article -->
   <h1><%= @article.title %></h1>
+
+  <!-- Display the content of the article -->
   <p><%= @article.content %></p>
+
+  <!-- Display the author of the article -->
   <p><%= @article.author %></p>
+
+  <!-- Display the date of the article -->
   <p><%= @article.date %></p>
 
-  <!-- links to go back -->
+  <!-- Links to edit the current article and to go back to the list of articles -->
   <%= link_to 'Edit', edit_article_path(@article), class: 'btnIndex submit' %> | 
   <%= link_to 'Back', articles_path, class: 'btnIndex submit' %>
 </body>

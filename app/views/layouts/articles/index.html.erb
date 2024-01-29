@@ -1,19 +1,25 @@
 <body>
-  <!-- Navigation Bar -->
+  <!-- Navigation Bar with links to Home and Search pages -->
   <nav>
     <ul>
+      <!-- Link to Home page -->
       <li><%= link_to 'Home', root_path %></li>
+      <!-- Link to Search page -->
       <li><%= link_to 'Search', search_articles_path %></li>
     </ul>
   </nav>
-  <h1>Articles</h1>
-  <!-- Button to create a new article-->
-  <%= link_to 'New Article', new_article_path, class: 'btnForm' %>
-  <br><br>
 
+  <!-- Heading for the Articles page -->
+  <h1>Articles</h1>
+
+  <!-- Button to create a new article -->
+  <%= link_to 'New Article', new_article_path, class: 'btnForm' %>
+
+  <!-- Table to display the list of articles -->
   <table class="table">
     <thead>
       <tr>
+        <!-- Column headers for the table -->
         <th>Title</th>
         <th>Content</th>
         <th>Author</th>
@@ -21,24 +27,23 @@
         <th colspan="3">Actions</th>
       </tr>
     </thead>
-  <!-- Loop Through each article and display its contents along with actions buttons -->
+
+    <!-- Loop through each article and display its details in a table row -->
     <tbody>
     <% @articles.each do |article| %>
       <tr>
+        <!-- Display the title of the article as a link to the article's page -->
         <td><%= link_to article.title, article %></td>
+        <!-- Display the content, author, and date of the article -->
         <td><%= article.content %></td>
         <td><%= article.author %></td>
         <td><%= article.date %></td>
-        <!-- Button to display an article's data-->
+
+        <!-- Buttons to show, edit, and delete the article -->
         <td><%= link_to 'Show', article_path(article), class: 'btnIndex info' %></td>
-        <!-- Button to edit an article-->
         <td><%= link_to 'Edit', edit_article_path(article), class: 'btnIndex submit' %></td>
         <td>
-          <!-- 
-              Send a delete request for an article
-              to the server if the button Destroy and the confirmation 
-              has been clicked 
-              -->
+          <!-- Form to delete the article. The form sends a DELETE request to the 'article_path'. -->
           <%= form_with url: article_path(article), method: :delete, local: true do |form| %>
             <%= form.submit 'Destroy', data: { confirm: 'Are you sure?' }, class: 'btnIndex danger' %>
           <% end %>

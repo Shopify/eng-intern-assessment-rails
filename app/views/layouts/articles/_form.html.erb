@@ -1,37 +1,48 @@
+<!-- Start of the form. The form is associated with the 'article' model and will make a synchronous request. -->
 <%= form_with(model: article, local: true) do |form| %>
+
+  <!-- If there are any validation errors on the 'article' model, they will be displayed here. -->
   <% if article.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(article.errors.count, "error") %> stopped this article from being saved:</h2>
-
+      <!-- The number of errors is displayed here. The 'pluralize' helper is used to ensure correct grammar. -->
+      <h1><%= pluralize(article.errors.count, "error") %> stopped this article from being saved:</h2>
       <ul>
-      <% article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <!-- Each individual error message is displayed in a list item. -->
+        <% article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
+  <!-- Field for entering the title of the article. -->
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
+  <!-- Field for entering the content of the article. -->
   <div>
     <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
 
+  <!-- Field for entering the author of the article. -->
   <div>
     <%= form.label :author %>
     <%= form.text_field :author %>
   </div>
 
+  <!-- Field for entering the date of the article. -->
   <div>
     <%= form.label :date %>
     <%= form.date_select :date %>
   </div>
 
+  <!-- Submit button for the form. The button is styled with the 'btnForm' CSS class. -->
   <div>
-    <%= form.submit "Submit", class: "button-54" %>
+    <%= form.submit "Submit", class: "btnForm" %>
   </div>
+
+<!-- End of the form. -->
 <% end %>

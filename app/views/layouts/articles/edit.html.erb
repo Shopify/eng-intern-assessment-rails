@@ -1,13 +1,23 @@
 <body>
+  <!-- Navigation Bar with links to Home and Search pages -->
   <nav>
     <ul>
+      <!-- Link to Home page -->
       <li><%= link_to 'Home', root_path %></li>
+      <!-- Link to Search page -->
       <li><%= link_to 'Search', search_articles_path %></li>
     </ul>
   </nav>
-    <h1>Articles</h1>
-    <h1>Edit Article</h1>
-  <!-- Form partial view render  -->
+
+  <!-- Heading for the Articles page -->
+  <h1>Articles</h1>
+
+  <!-- Heading for the Edit Article section -->
+  <h1>Edit Article</h1>
+
+  <!-- Render the form partial for editing an article. The 'article' local variable in the partial is set to '@article'. -->
   <%= render 'form', article: @article %>
+
+  <!-- Link to go back to the list of articles -->
   <%= link_to 'Back', articles_path, class: 'btnIndex submit'%>
 </body>

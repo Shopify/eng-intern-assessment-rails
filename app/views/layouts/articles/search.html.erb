@@ -1,33 +1,42 @@
 <body>
-  <nav> <!-- Navigation Bar-->
+  <!-- Navigation Bar with links to Home and Search pages -->
+  <nav>
     <ul>
+      <!-- Link to Home page -->
       <li><%= link_to 'Home', root_path %></li>
+      <!-- Link to Search page -->
       <li><%= link_to 'Search', search_articles_path %></li>
     </ul>
   </nav>
+
+  <!-- Heading for the Search page -->
   <h1>Search Articles</h1>
 
-  <!-- Search form to look for an article -->
+  <!-- Form for searching articles. The form sends a GET request to the 'search_articles_path'. -->
   <%= form_with(url: search_articles_path, method: :get, local: true) do |form| %>
     <div class="field">
+      <!-- Label and text field for entering the search query -->
       <%= form.label :query, "Search for:" %>
       <%= form.text_field :query %>
     </div>
 
     <div class="actions">
-    <%= form.submit "Submit", class: "btnForm" %>
+      <!-- Submit button for the search form -->
+      <%= form.submit "Submit", class: "btnForm" %>
     </div>
   <% end %>
 
-  <!-- Show the articles returned from the search -->
+  <!-- Section for displaying the search results -->
   <% if @articles.present? %>
     <h2>Search Results:</h2>
     <ul>
+      <!-- Each search result is displayed as a link to the article -->
       <% @articles.each do |article| %>
         <li><%= link_to article.title, article %></li>
       <% end %>
     </ul>
   <% else %>
+    <!-- Message displayed when no search results are found -->
     <p>No articles found</p>
   <% end %>
 </body>
