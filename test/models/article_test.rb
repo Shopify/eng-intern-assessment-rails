@@ -90,9 +90,19 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'returns search results based on date' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today)
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today)
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', date: Date.yesterday)
     results = Article.search(Date.today)
-    assert_includes results, article
+    assert_includes results, article1
+    assert_not_includes results, article2
+  end
+
+  test 'returns search results based on partial date' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.today)
+    article2 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.yesterday)
+    results = Article.search(Date.today.year)
+    assert_includes results, article1
+    assert_includes results, article2
   end
 
   test 'returns search results regardless of case' do
@@ -106,7 +116,6 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not_includes results1, article3
     assert_not_includes results2, article3
   end
-
   
   test 'blocks article creation with no title' do
     article = Article.create(content: 'Lorem ipsum dolor sit amet.')
