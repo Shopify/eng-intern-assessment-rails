@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   
-    # GET /Articles or /Articles.json
+    # list all articles or the ones that match the search
     def index
       if (params[:text] != nil)
         @articles = Article.search(params[:text])
@@ -10,22 +10,22 @@ class ArticlesController < ApplicationController
       end
     end
   
-    # GET /Articles/1 or /Articles/1.json
+    # shows articles
     def show
       @article = Article.find(params[:id])
     end
   
-    # GET /Articles/new
+    # goes to form for creawtion
     def new
       @article = Article.new
     end
   
-    # GET /Articles/1/edit
+    #  edits aritcles
     def edit
       @article = Article.find(params[:id])
     end
   
-    # POST /Articles or /Articles.json
+    # creates new article with post
     def create
       @article = Article.new(article_params)
   
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
       end
     end
   
-    # PATCH/PUT /Articles/1 or /Articles/1.json
+    # updates articles 
     def update
       @article = Article.find(params[:id])
       respond_to do |format|
@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
       end
     end
   
-    # DELETE /Articles/1 or /Articles/1.json
+    # DELETE article
     def destroy
       @article = Article.find(params[:id])
       @article.destroy
@@ -73,7 +73,7 @@ class ArticlesController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def article_params
-        params.require(:article).permit(:title, :content)
+        params.require(:article).permit(:title, :content, :author)
       end
 
 
