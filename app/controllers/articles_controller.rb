@@ -1,5 +1,6 @@
-class ArticlesController < ApplicationController
+# frozen_string_literal: true
 
+class ArticlesController < ApplicationController
   def index
     @articles = Article.all
   end
@@ -8,9 +9,9 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @article
+      redirect_to(@article)
     else
-      render :new, status: :unprocessable_entity
+      render(:new, status: :unprocessable_entity)
     end
   end
 
@@ -26,9 +27,9 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
-      redirect_to @article
+      redirect_to(@article)
     else
-      render :edit, status: :unprocessable_entity
+      render(:edit, status: :unprocessable_entity)
     end
   end
 
@@ -36,7 +37,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
 
-    redirect_to root_path, status: :see_other
+    redirect_to(root_path, status: :see_other)
   end
 
   def show
@@ -45,17 +46,16 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    if params[:query]
-      @articles = Article.search(params[:query])
+    @articles = if params[:query]
+      Article.search(params[:query])
     else
-      @articles = Article.all
+      Article.all
     end
   end
 
-
   private
+
   def article_params
     params.require(:article).permit(:title, :content, :author, :date, :query)
   end
-
 end
