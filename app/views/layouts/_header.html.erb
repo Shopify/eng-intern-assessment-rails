@@ -14,9 +14,10 @@
         </li>
       </ul>
     </div>
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search Articles" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+    <%= form_with(url: articles_path, method: "get") do |form| %>
+      <%= form.label :query, "Search Articles:" %>
+      <%= form.text_field :query %>
+      <%= form.submit "Search" %>
+    <% end %>
   </div>
 </nav>
