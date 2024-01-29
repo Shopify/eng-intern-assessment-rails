@@ -1,0 +1,4 @@
+<%= form_with url: "/articles", method: :get do |form| %>
+  <%= form.text_field :text, required: true%>
+  <%= form.submit "Search" %>
+<% end %>
