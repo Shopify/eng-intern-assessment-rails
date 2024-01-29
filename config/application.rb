@@ -16,12 +16,24 @@ module EngInternAssessmentRails
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    # Set the time zone.
+    config.time_zone = "Central Time (US & Canada)"
+
+    # Add additional load paths.
+    config.eager_load_paths << Rails.root.join("extras")
+
+    # Enable the asset pipeline.
+    config.assets.enabled = true
+
+    # Configure the default encoding used in templates for Ruby 1.9.
+    config.encoding = "utf-8"
+
+    # Configure sensitive parameters which will be filtered from the log file.
+    config.filter_parameters += [:password]
+
+    # Use SQL instead of Active Record's schema dumper when creating the database.
+    # This is necessary if your schema can't be completely dumped by the schema dumper,
+    # like if you have constraints or database-specific column types.
+    config.active_record.schema_format = :sql
   end
 end
