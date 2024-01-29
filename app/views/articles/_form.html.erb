@@ -1,0 +1,37 @@
+<%= form_with(model: @article, url: @article.new_record? ? articles_path : article_path(@article), local: true) do |form| %>
+    <% if @article.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+        <ul>
+          <% @article.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :title, 'Title' %>
+      <%= form.text_field :title, required: @article.new_record? %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :content, 'Content' %>
+      <%= form.text_area :content, required: @article.new_record? %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :author, 'Author' %>
+      <%= form.text_field :author %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :date, 'Date' %>
+      <%= form.date_field :date %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
