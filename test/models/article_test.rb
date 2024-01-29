@@ -65,4 +65,48 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # Additional Test Cases
+
+  test 'search with empty query returns all articles' do
+  Article.create(title: 'First Article', content: 'Content of the first article.')
+  Article.create(title: 'Second Article', content: 'Content of the second article.')
+
+  results = Article.search('')
+
+  assert_equal 2, results.count
+  results.each do |article|
+    assert_includes [ 'First Article', 'Second Article' ], article.title
+  end
+end
+  test 'search is case-insensitive' do
+  Article.create(title: 'Capitalized Title', content: 'Content with Mixed Case.')
+  Article.create(title: 'lowercase title', content: 'content in lowercase.')
+
+  uppercase_res = Article.search('CAPITALIZED')
+  lowercase_res = Article.search('lowercase')
+
+  assert_equal 1, uppercase_res.count
+  assert_equal 'Capitalized Title', uppercase_res.first.title
+
+  assert_equal 1, lowercase_res.count
+  assert_equal 'lowercase title', lowercase_res.first.title
+  end
+
+  test 'search handles special characters correctly' do
+  special_char_article = Article.create(title: 'Special & Unique! @Title', content: 'Contains special characters: %, $, #, and &.')
+
+  results_with_special_char = Article.search('& Unique!')
+  results_with_common_char = Article.search('Contains special')
+
+  assert_includes results_with_special_char, special_char_article, 'Article with special characters in title should be found'
+  assert_includes results_with_common_char, special_char_article, 'Article with common characters in content should be found'
+  end
+  test 'should not save article without title' do
+  article = Article.new(content: 'Valid Content')
+  assert_not article.save, 'Saved the article without a title'
+  end
+
+
+
 end
