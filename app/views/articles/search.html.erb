@@ -1,0 +1,13 @@
+<%= link_to "< Back", articles_path %>
+
+<h1> Search Results: </h1>
+
+<% if @results.empty? %>
+  <p> No articles found </p>
+<% else %>
+  <% @results.each do |result| %>
+    <li>
+      <%= link_to result.title, result %>
+    </li>
+  <% end %>
+<% end %>

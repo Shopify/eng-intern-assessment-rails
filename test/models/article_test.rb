@@ -65,4 +65,22 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'returns all articles when query is empty' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+
+  test 'validates if article is missing title' do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.save
+  end
+
+  test 'validates if article is missing content' do
+    article = Article.create(title: 'Article title')
+    assert_not article.save
+  end
 end
