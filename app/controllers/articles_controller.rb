@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
   # GET /articles or /articles.json
+  # display all articles or search results
   def index
     if params[:query]
       @articles = Article.search(params[:query])
@@ -24,6 +25,7 @@ class ArticlesController < ApplicationController
   end
 
   # POST /articles or /articles.json
+  # create a new article and redirect to the article's show page or return an error if the article is invalid
   def create
     @article = Article.new(article_params)
 
@@ -39,6 +41,7 @@ class ArticlesController < ApplicationController
   end
 
   # PATCH/PUT /articles/1 or /articles/1.json
+  # update an existing article and redirect to the article's show page or return an error if the article is invalid
   def update
     respond_to do |format|
       if @article.update(article_params)
@@ -52,6 +55,7 @@ class ArticlesController < ApplicationController
   end
 
   # DELETE /articles/1 or /articles/1.json
+  # delete an existing article and redirect to the articles index page
   def destroy
     @article.destroy!
 

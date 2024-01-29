@@ -1,19 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
+    <--! Link to Home Page -->
     <%= link_to "Encyclopedia", root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
+      <--! Link to Home Page / Articles List -->
         <li class="nav-item">
           <%= link_to "Articles", root_path, class:"nav-link" %>
         </li>
+        <--! Link to Article Creation -->
         <li class="nav-item">
           <%= link_to "Create", new_article_path, class:"nav-link" %>
         </li>
       </ul>
     </div>
+    <--! Search Bar -->
     <%= form_with(url: articles_path, method: "get") do |form| %>
       <%= form.label :query, "Search Articles:" %>
       <%= form.text_field :query %>
