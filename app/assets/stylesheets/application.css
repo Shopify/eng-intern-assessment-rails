@@ -30,12 +30,14 @@
   
   h1 {
     text-align: center;
-    color: #007bff;
+    color: #5d6bc4;
   }
 
   .centered-link {
     text-align: center;
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
   }
   
   /* search form style */
@@ -55,7 +57,7 @@
   .button-style {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #5d6bc4;
     color: #fff;
     text-decoration: none;
     border: none;
@@ -109,4 +111,10 @@
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  float: center;
 }
