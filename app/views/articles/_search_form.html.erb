@@ -1,0 +1,7 @@
+<%= form_with model: @article, method: :get do |form| %>
+
+  <%= form.label "Search:" %>
+  <%= form.text_field :search %>
+  <%= form.submit "Search" %>
+
+<% end %>

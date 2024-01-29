@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    # Show all articles at all times
+    # @articles = Article.all
+
+    # Show articles that are searched for
+    @articles = Article.search(params[:search])
   end
 
   # GET /articles/1 or /articles/1.json
@@ -65,7 +69,7 @@ class ArticlesController < ApplicationController
 
     # Restrict the parameters to the title, content, author and date of the Article
     def article_params
-      params.require(:article).permit(:title, :content, :author, :date)
+      params.require(:article).permit(:title, :content, :author, :date, :search)
     end
     
 end
