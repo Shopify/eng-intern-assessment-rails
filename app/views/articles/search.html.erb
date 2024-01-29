@@ -1,0 +1,22 @@
+<h1>Articles matching title</h1>
+
+  <% @articles.each do |article| %>
+    <li>
+      <%= article.title %>
+      <%= article.author %>
+      <%= article.content%>
+      <%= article.date%>
+    </li>
+  <% end %>
+  <h1><%= @article.title %></h1>
+
+<p><%= @article.content %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+</ul>
