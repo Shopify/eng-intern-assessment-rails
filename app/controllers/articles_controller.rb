@@ -3,7 +3,17 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+     @articles = Article.all
+
+    # Sorting logic based on params[:sort]
+    case params[:sort]
+    when 'title'
+      @articles = @articles.order(title: :asc)
+    when 'author'
+      @articles = @articles.order(author: :asc)
+    when 'date'
+      @articles = @articles.order(date: :asc)
+    end
   end
 
   # GET /articles/1 or /articles/1.json

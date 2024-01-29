@@ -11,27 +11,24 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="field form-group">
+    <%= form.text_field :title, class:"form-control", placeholder:"Title" %>
   </div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+  <div class="field form-group">
+    <%= form.text_area :content, class:"form-control", placeholder:"Fill with your content" %>
   </div>
 
-  <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_field :author %>
+  <div class="field form-group">
+    <%= form.date_field :date, id: :article_date, class:"form-control", value:Date.today, type: :hidden %>
   </div>
 
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
-  </div>
+  <%# <div class="field form-group"> %>
+    <%# <%= form.text_field :user_id, id: :article_user_id, class:"form-control", value:current_user.id, type: :hidden %> 
+    <%# %>
+  <%# </div> %>
 
-  <div>
-    <%= form.submit %>
+  <div class="actions">
+    <%= form.submit "Save", class:"btn btn-primary" %>
   </div>
 <% end %>

@@ -1,22 +1,16 @@
 <div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
 
-  <p>
-    <strong>Content:</strong>
-    <%= article.content %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= article.author %>
-  </p>
-
-  <p>
-    <strong>Date:</strong>
-    <%= article.date %>
-  </p>
+  <div class="card text-center">
+    <div class="card-header">
+      By <%= article.author %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= article.title %></h5>
+      <p class="card-text"><%= article.content %></p>
+    </div>
+    <div class="card-footer text-body-secondary">
+      <%= article.date %>
+    </div>
+  </div>
 
 </div>

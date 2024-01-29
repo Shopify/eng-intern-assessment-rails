@@ -1,14 +1,34 @@
 <p style="color: green"><%= notice %></p>
-
 <h1>Articles</h1>
 
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
-</div>
+<form class="d-flex" role="search">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
 
-<%= link_to "New article", new_article_path %>
+<table id="articles" class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th><%= link_to "Title", articles_path(sort: 'title') %></th>
+      <th><%= link_to "Author", articles_path(sort: 'author') %></th>
+      <th><%= link_to "Date", articles_path(sort: 'date') %></th>
+    </tr>
+  </thead>
+
+  <% if @articles.present? %>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= link_to "#{article.title}", article %></td>
+        <td><%=article.author %></td>
+        <td><%=article.date %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="2">No articles found.</td>
+    </tr>
+  <% end %>
+
+</table>
+
+<%= link_to "New article", new_article_path, class:"btn btn-secondary" %>
