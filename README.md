@@ -1,4 +1,4 @@
-# Author: Rowan Kerwin
+## Author: Rowan Kerwin
 
 # References
 References used while working on the project:
@@ -8,6 +8,7 @@ References used while working on the project:
 - To better understand the database: [Active Record Migrations](https://guides.rubyonrails.org/active_record_migrations.html)
 
 - To implement search functionality: [Adding a Basic Search Form in Rails](https://womenwhocode.medium.com/adding-a-basic-search-form-in-rails-91782996c3f0), [Searching in Rails](https://medium.com/@mattbartl/searching-in-rails-725a1bee3314), [Searching through all location, description and title Ruby On Rails](https://stackoverflow.com/questions/25814290/searching-through-all-location-description-and-title-ruby-on-rails)
+
 
 # Technical Instructions
 1. Fork this repo to your local Github account.
