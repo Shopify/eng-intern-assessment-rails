@@ -1,15 +1,190 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.articles-list {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.article-item {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.article-link {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.article-link:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+.search-form {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-form input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.search-form input[type="submit"] {
+  padding: 10px 15px;
+  background-color: #3498db;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out;
+}
+
+.search-form input[type="submit"]:hover {
+  background-color: #2979ff;
+}
+
+h1 {
+  text-align: center;
+}
+
+.new-article-button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease-out;
+}
+
+.new-article-button:hover {
+  background-color: #2979ff;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-field input[type="text"],
+.form-field textarea,
+.form-field select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.field select {
+  padding: 8px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.actions input[type="submit"] {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.actions {
+  text-align: center;
+}
+
+.field input[type="date"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.actions input[type="submit"]:hover {
+  background-color: #2979ff;
+}
+
+#error_explanation {
+  background-color: #f2dede;
+  border: 1px solid #e8c1c1;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+#error_explanation h2 {
+  color: #d9534f;
+  margin: 0 0 10px 0;
+}
+
+#error_explanation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#error_explanation li {
+  color: #a94442;
+  padding: 5px;
+}
+
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
