@@ -3,8 +3,15 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   # Display a list of all articles
+# Display a list of all articles, sorted in ascending order of title
   def index
-    @articles = Article.all
+    if params[:query].present?
+      # Search for articles if a query is provided
+      @articles = Article.search(params[:query])
+    else
+      # Fetch all articles and order them by title in ascending order
+      @articles = Article.order(title: :asc)
+    end
   end
 
   # Display a single article
