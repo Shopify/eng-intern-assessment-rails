@@ -1,0 +1,22 @@
+<li><%= link_to 'Home', root_path %></li>
+<%= form_with(url: search_articles_path, method: :get, local: true) do |form| %>
+  <div>
+    <%= form.label :query, "Search for:" %>
+    <%= form.text_field :query %>
+  </div>
+
+  <div>
+    <%= form.submit "Search" %>
+  </div>
+<% end %>
+
+<% if @articles.present? %>
+  <h2>Search Results:</h2>
+  <ul>
+    <% @articles.each do |article| %>
+      <li><%= link_to article.title, article %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No articles found</p>
+<% end %>
