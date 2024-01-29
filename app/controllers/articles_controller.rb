@@ -23,15 +23,6 @@ class ArticlesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-    # # check for validity
-    # if @article.valid?
-    #   flash[:errors] = 'Article Created Successfully'
-    #   redirect_to articles_path
-    # else
-    #   flash[:errors] = @article.errors.full_messages
-    #   render :new
-    # end
-
   end
 
 def edit

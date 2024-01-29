@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-    #clear fixtures
+    # Clear fixtures for testing, Article.count needs to start at 0 and this resets the article count
     def setup
       Article.delete_all
     end
