@@ -7,11 +7,15 @@ class Article < ApplicationRecord
                      length: { maximum: 80, message: 'must be less than 80 characters' }
   validates :date, presence: true
 
-  def self.search(query)
-    return all unless query.present?
+  def self.search(query, page = 1)
+    relation = if query.present?
+                 where('title LIKE ? OR content LIKE ? OR author LIKE ? OR date LIKE ?',
+                       "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%")
+               else
+                 all
+               end
 
-    where('title LIKE ? OR content LIKE ? OR author LIKE ? OR date LIKE ?',
-          "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%")
+    relation.page(page).per(10)
   end
 
   private

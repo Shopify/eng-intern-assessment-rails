@@ -3,6 +3,16 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     @article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
     @article2 = Article.create(title: 'Another Article', content: 'This is another article.', author: 'Jane Smith', date: Date.yesterday)
     @article3 = Article.create(title: 'To Be Destroyed Article', content: 'This is to be destroyed article.', author: 'Alice Johnson', date: Date.tomorrow)
+
+    # Pagination tests only
+    15.times do |i|
+      Article.create(
+        title: "Pagination #{i + 1}",
+        content: 'These are for pagination tests.',
+        author: 'Pagination Only',
+        date: Date.today
+      )
+    end
   end
 
   # create action tests
@@ -75,6 +85,12 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # new action test
+  test 'should get new' do
+    get new_article_url
+    assert_response :success
+  end
+
   # destroy action test
   test 'should destroy article' do
     assert_difference('Article.count', -1) do
@@ -97,10 +113,9 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test 'should get index' do
     get articles_url
     assert_response :success
-    assert_select 'li', 3
+    assert_select 'li', 10
   end
 
-  # search action tests
   test 'should get index with search and display author and date' do
     get articles_url, params: { q: 'Sample' }
     assert_response :success
@@ -112,12 +127,12 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test 'clear search shows all articles with author and date' do
     get articles_url, params: { q: '' }
     assert_response :success
-    assert_select 'li', 3
+    assert_select 'li', 10
     assert_select 'p', 'Author: John Doe'
     assert_select 'p', "Date: #{Date.today.strftime('%Y-%m-%d')}"
   end
 
-  # search action tests on each category
+  # index action tests on each category
   test 'should get index with search by title' do
     get articles_url, params: { q: 'Sample' }
     assert_response :success
@@ -134,5 +149,24 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get articles_url, params: { q: 'destroy' }
     assert_response :success
     assert_select 'li', 1
+  end
+
+  # pagination tests
+  test 'should get first page of articles' do
+    get articles_url
+    assert_response :success
+    assert_select 'li', 10
+  end
+
+  test 'should get second page of articles' do
+    get articles_url, params: { page: 2 }
+    assert_response :success
+    assert_select 'li', 8
+  end
+
+  test 'should display pagination links' do
+    get articles_url
+    assert_response :success
+    assert_select '.pagination', count: 1
   end
 end

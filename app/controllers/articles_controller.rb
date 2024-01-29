@@ -5,9 +5,10 @@ class ArticlesController < ActionController::Base
   def index
     if params[:q].present?
       @query = params[:q]
-      @articles = Article.search(@query)
+      @page = params[:page]
+      @articles = Article.search(@query, @page)
     else
-      @articles = Article.all
+      @articles = Article.page(params[:page]).per(10)
     end
   end
 
@@ -40,11 +41,6 @@ class ArticlesController < ActionController::Base
   def destroy
     @article.destroy
     redirect_to articles_url, notice: 'Article was successfully deleted.'
-  end
-
-  def search
-    @query = params[:q]
-    @articles = Article.search(@query)
   end
 
   private
