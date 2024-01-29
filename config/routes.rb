@@ -8,4 +8,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # Specifies default route to index action of the ArticlesController
+  root "articles#index"
 end
