@@ -17,7 +17,7 @@
       <%= link_to article_path(article), class: 'text-decoration-none text-dark' do %>
         <div class="card-body">
           <h5 class="card-title"><%= article.title %></h5>
-          <p class="card-text"><%= truncate(article.content, length: 100) %></p>
+          <p class="card-text"><%= truncate(article.content, length: 1000) %></p>
         </div>
         <div class="card-footer bg-light"> <!-- Here the bg-light class is added -->
           <div class="row">
