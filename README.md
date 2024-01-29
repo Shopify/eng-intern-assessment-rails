@@ -1,50 +1,56 @@
 # Projects Setup
+
 1. `git clone` this repo to your local environment
-2. Install dependencies with `bundle install`. 
-    2.1. Ruby version until January 29, 2024.
-    2.2. version until January 29, 2024.
+2. Install dependencies with `bundle install`.
+   2.1. Ruby version until January 29, 2024.
+   2.2. version until January 29, 2024.
 3. (Optional) Generate migrations (new tables) by running `bin/rails generate migration CreateArticles`.
 4. Run the migration by `bin/rails db:migrate`.
 5. Run rails server by `rails server`.
-6. Run tests by `rails test test/models/article_test.rb`. All tests should passed with the below message: 
-> 11 runs, 19 assertions, 0 failures, 0 errors, 0 skips
+6. Run tests by `rails test test/models/article_test.rb`. All tests should passed with the below message:
+   > 11 runs, 19 assertions, 0 failures, 0 errors, 0 skips
 
 # Routes included
+
 1. Index and root: Lists all articles.
-    GET /
-    GET /articles
+   GET /
+   GET /articles
 2. Show: Displays a specific article.
-    GET /articles/:id
+   GET /articles/:id
 3. New: Shows the form to create a new article.
-    GET /articles/new
+   GET /articles/new
 4. Create: Handles the submission of the form to create a new article.
-    POST /articles
+   POST /articles
 5. Edit: Shows the form to edit an existing article.
-    GET /articles/:id/edit
+   GET /articles/:id/edit
 6. Update: Handles the submission of the form to update an existing article.
-    PUT /articles/:id
+   PUT /articles/:id
 7. Destroy: Deletes an existing article.
-    DELETE /articles/:id
+   DELETE /articles/:id
 8. Custom Search:
-    GET /articles?search=query
+   GET /articles?search=query
 
 # Additional Implementations
-Some additional functions were implemented in this app. However, they are open to adjustments if the behaviors are not desired.
-1. When creating an article, only <b>title</b> and <b>content</b> fields are required. The <b>author</b> and <b>date</b> fields could be left blank. 
-2. When deleting an article, a pop up window would show and asks the user to confirm the behavior. If users cancels the current delete, nothing would happen. 
-3. Once an article is deleted, users would be redirected to the main page, which presents a lists of all articles. 
 
+Some additional functions were implemented in this app. However, they are open to adjustments if the behaviors are not desired.
+
+1. When creating an article, only <b>title</b> and <b>content</b> fields are required. The <b>author</b> and <b>date</b> fields could be left blank.
+2. When deleting an article, a pop up window would show and asks the user to confirm the behavior. If users cancels the current delete, nothing would happen.
+3. Once an article is deleted, users would be redirected to the main page, which presents a lists of all articles.
 
 # Technical Instructions
+
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.
 3. Test your work using the provided tests
 4. Create a Pull Request against the Shopify Main branch when you're done and all tests are passing
 
 # Project Overview
+
 The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. Be sure to implement basic CRUD actions on articles. Your task is to implement these features as well as write the code that makes the tests pass.
 
 # Project Goals
+
 The main goal of this internship project is to implement the functionality required to make the existing tests pass. The provided tests cover various aspects of the application, including creating and viewing articles, editing and updating articles, deleting articles, and searching for articles. Along with completing the tests, be sure to implement all basic CRUD actions on your articles on a controller and create views to see your work in the app.
 
 ## Your specific goals for this project are as follows:
@@ -64,6 +70,7 @@ The main goal of this internship project is to implement the functionality requi
 7. Create a Pull Request: Once you have completed the project goals, create a pull request to merge your changes into the main repository. Provide a clear description of the changes made and any relevant information for the code review.
 
 ## Getting Started
+
 To get started with this project, follow these steps:
 
 1. Clone the repository to your local development environment.
@@ -83,6 +90,7 @@ To get started with this project, follow these steps:
 8. Once you have completed the project goals, create a pull request to merge your changes into the main repository.
 
 ## Resources
+
 Here are some resources that may be helpful during your internship project:
 
 - [Ruby on Rails Guides](https://guides.rubyonrails.org/) - Comprehensive guides on Ruby on Rails, covering various aspects of web application development.
