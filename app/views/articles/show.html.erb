@@ -1,0 +1,11 @@
+
+<%# I seem to recall a helper tag being available for headers, but couldn't find anything on it %>
+<h1 style="text-align:center; font-weight:bold;"> <%= @article.title %> </h1>
+<%= link_to "Home", root_path %>
+<p style="text-align:center;"> By <%= @article.author %> on <%= @article.date %></p>
+<br>
+<p> <%= @article.content %> </p>
+
+<%= link_to "Edit article", edit_article_path(@article) %>
+<%# turbo allows us to send a delete request (without necessarily leaving the page) using jquery under the hood %>
+<%= link_to "Delete article", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete your article?"} %>

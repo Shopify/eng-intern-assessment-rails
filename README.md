@@ -1,55 +1,61 @@
-# Technical Instructions
-1. Fork this repo to your local Github account.
-2. Create a new branch to complete all your work in.
-3. Test your work using the provided tests
-4. Create a Pull Request against the Shopify Main branch when you're done and all tests are passing
+## What was requested: 
 
-# Project Overview
-The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. Be sure to implement basic CRUD actions on articles. Your task is to implement these features as well as write the code that makes the tests pass.
+Review Existing Tests: Start by reviewing the existing tests provided in the article_test.rb file located in the test/models directory. Understand the requirements and expectations of each test.
 
-# Project Goals
-The main goal of this internship project is to implement the functionality required to make the existing tests pass. The provided tests cover various aspects of the application, including creating and viewing articles, editing and updating articles, deleting articles, and searching for articles. Along with completing the tests, be sure to implement all basic CRUD actions on your articles on a controller and create views to see your work in the app.
+Implement Functionality: Write the code necessary to make the existing tests pass. This involves implementing the required actions and logic in the models, controllers, and views to fulfill the specified requirements. Also be sure to implement basic CRUD actions and demonstrate proper MVC principals.
 
-## Your specific goals for this project are as follows:
+Ensure Code Quality: Write clean, well-structured, and maintainable code. Follow best practices and adhere to the Ruby on Rails conventions. Pay attention to code readability, modularity, and performance.
 
-1. Review Existing Tests: Start by reviewing the existing tests provided in the article_test.rb file located in the test/models directory. Understand the requirements and expectations of each test.
+Test Your Code: After implementing the functionality, run the tests to ensure that they pass successfully. Fix any failures or errors that occur and retest until all tests pass.
 
-2. Implement Functionality: Write the code necessary to make the existing tests pass. This involves implementing the required actions and logic in the models, controllers, and views to fulfill the specified requirements. Also be sure to implement basic CRUD actions and demonstrate proper MVC principals.
+Code Documentation: Document your code by adding comments and explanatory notes where necessary. This will help other developers understand your implementation and make future maintenance easier.
 
-3. Ensure Code Quality: Write clean, well-structured, and maintainable code. Follow best practices and adhere to the Ruby on Rails conventions. Pay attention to code readability, modularity, and performance.
+Version Control: Use Git for version control. Commit your changes regularly and push them to a branch in your forked repository.
 
-4. Test Your Code: After implementing the functionality, run the tests to ensure that they pass successfully. Fix any failures or errors that occur and retest until all tests pass.
+Create a Pull Request: Once you have completed the project goals, create a pull request to merge your changes into the main repository. Provide a clear description of the changes made and any relevant information for the code review.
 
-5. Code Documentation: Document your code by adding comments and explanatory notes where necessary. This will help other developers understand your implementation and make future maintenance easier.
+## What was completed
+Basic CRUD actions were implemented.
 
-6. Version Control: Use Git for version control. Commit your changes regularly and push them to a branch in your forked repository.
+Created necessary routes for the CRUD actions to be accessible.
 
-7. Create a Pull Request: Once you have completed the project goals, create a pull request to merge your changes into the main repository. Provide a clear description of the changes made and any relevant information for the code review.
+Created a simple frontend.
 
-## Getting Started
-To get started with this project, follow these steps:
+Created a model for the articles, including validations.
 
-1. Clone the repository to your local development environment.
+Added additional unit tests.
 
-2. Install the necessary dependencies by running bundle install in the project directory.
+Added integration tests, testing routes and the general workflow.
 
-3. Familiarize yourself with the existing codebase, including the models, controllers, and views.
+Added system tests, ensuring that routes are rendering the right elements given certain parameters and conditions.
 
-4. Review the existing tests in the article_test.rb file and understand their purpose and functionality.
+All tests pass on my system.
 
-5. Run the tests locally to ensure they are passing.
+Added comments for maintenance and readability
 
-6. Start working on the goals outlined above, making improvements to the existing tests and adding new tests as needed.
 
-7. Commit your changes regularly and push them to a branch in your forked repository.
+## Before launching or testing:
 
-8. Once you have completed the project goals, create a pull request to merge your changes into the main repository.
+```
+$ bundle install
+$ rake db:create
+$ rake db:migrate
+```
+or
+```
+$ bundle install
+$ rails db:create
+$ rails db:migrate
+```
+#### How to launch:
 
-## Resources
-Here are some resources that may be helpful during your internship project:
+```
+$ rails server
+```
+Then visit localhost:3000
 
-- [Ruby on Rails Guides](https://guides.rubyonrails.org/) - Comprehensive guides on Ruby on Rails, covering various aspects of web application development.
-
-- [Ruby Style Guide](https://rubystyle.guide/) - A community-driven Ruby coding style guide to ensure consistent and readable code.
-
-- [Git Documentation](https://git-scm.com/doc) - Official documentation for Git, the version control system used in this project.
+#### How to test:
+```
+$ rails test
+```
+NOTE: One might have issues with the ruby/rails/bundle version. I personally used rbenv to solve these issues without changing any code. More info here: https://github.com/rbenv/rbenv

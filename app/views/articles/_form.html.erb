@@ -1,0 +1,46 @@
+<%# since both the new and edit routes use this form, it is consistent with DRY to put it into a partial.  %>
+
+<%= form_with model: article do |form| %>
+
+    <div>
+        <div class="error-prone">
+        <%= form.label :author %>
+        </div>
+        <br>
+        <%= form.text_field :author %>
+        <% @article.errors.full_messages_for(:author).each do |error| %>
+            <div style="color:red;"><%= error %></div>
+        <% end %>
+    </div>
+    <div>
+        <div class="error-prone">
+            <%= form.label :title %>
+        </div>
+        <br>
+        <%= form.text_field :title %>
+        <% @article.errors.full_messages_for(:title).each do |error| %>
+            <div style="color:red;"><%= error %></div>
+        <% end %>
+    </div>
+    <div>
+        <div class="error-prone">
+            <%= form.label :content %>
+        </div>
+        <br>
+        <%= form.text_area :content %>
+        <% @article.errors.full_messages_for(:content).each do |error| %>
+            <div style="color:red;"><%= error %></div>
+        <% end %>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
+
+<%= link_to "Home", root_path %>
+
+<style>
+    div.error-prone {
+        display: inline-block;
+}
+</style>
