@@ -1,11 +1,10 @@
 <h1>Articles</h1>
 
+<%# Creates a list of article titles that contain hyper links to view the full article %>
 <ul>
   <% @articles.each do |article| %>
     <li>
-      <a href="/articles/<%=article.id%>">
-        <%= article.title %>
-      </a>
+        <%= link_to article.title, article %>
     </li>
   <% end %>
 </ul>
