@@ -1,8 +1,11 @@
 <!--The view for showing encyclopedia articles-->
 <h1><%= @article.title %></h1>
+<!-- Render out the author name if it is present -->
+<% if @article.author? %>
+  <span style="display:block">By: <%= @article.author %></span>
+<% end %>
 <p><%= @article.content %></p>
-<span>By: <%= @article.author %></span>
-<span>Created At: <%= @article.date %></span>
+<span style="display:block">Last updated: <%= @article.date %></span>
 
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>

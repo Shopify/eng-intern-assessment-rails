@@ -11,14 +11,16 @@
     <% end %>
   </div>
 </form>
-<!-- Render out each article title stored in the instance variable -->
-<ul>
-  <% @articles.each do |article| %>
-  <li>
-    <a href="<%= article_path(article) %>">
-      <%= article.title %>
-    </a>
-  </li>
-  <% end %>
-</ul>
+<!-- Render out each article title stored in the instance variable if it is not nil -->
+<% if @articles %>
+  <ul>
+    <% @articles.each do |article| %>
+    <li>
+      <a href="<%= article_path(article) %>">
+        <%= article.title %>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
 <%= link_to "Create New Article", new_article_path %>
