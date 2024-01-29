@@ -1,5 +1,7 @@
 class Article < ApplicationRecord
     def self.search(query)
+        # Conditions for an article to be considered relevant.
+        # Can be expanded for future use.
         conditions = [
             "title LIKE :query ",
             "content LIKE :query",

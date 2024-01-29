@@ -60,6 +60,9 @@ class ArticlesController < ApplicationController
   # GET /articles/search
   # Searching by title, then content, author date. 
   def search 
+    # Similar to models/article.rb
+    # A set of conditions for an article to be considered relevant.
+    # Can be expanded in the future.
     conditions = [
       "title LIKE :query ",
       "content LIKE :query",
@@ -67,11 +70,13 @@ class ArticlesController < ApplicationController
       "date LIKE :query",  
     ]
 
+    # Grab all relevant articles.
     @articles = Article.where(
       conditions.join(" OR "), 
       query: "%#{params[:query]}%"
     )
 
+    # Return a response
     respond_to do |format|
       format.html { render :index } # Render the index view with search results
       format.json { render json: @articles }
