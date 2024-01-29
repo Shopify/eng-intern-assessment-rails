@@ -1,5 +1,10 @@
 <h1>Articles</h1>
 
+<%= form_with(url: articles_path, method: :get, local: true) do |form| %>
+  <%= form.text_field :search, placeholder: "Search articles" %>
+  <%= form.submit "Search" %>
+<% end %>
+
 <%= link_to 'New Article', new_article_path %>
 
 <ul>
