@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
-  # GET /articles or /articles.json
+  # GET /articles 
   def index
     if params[:search]
       @articles = Article.search(params[:search])
@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
     @article_count = Article.count
   end
 
-  # GET /articles/1 or /articles/1.json
+  # GET /articles/1 
   def show
   end
 
@@ -24,7 +24,9 @@ class ArticlesController < ApplicationController
   def edit
   end
 
-  # POST /articles or /articles.json
+  # POST /articles 
+  # Saves the article to the database and redirects to the show page if successful
+  # Re-renders the new form if there are errors
   def create
     @article = Article.new(article_params)
 
@@ -39,7 +41,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /articles/1 or /articles/1.json
+  # PATCH/PUT /articles/1
   def update
     respond_to do |format|
       if @article.update(article_params)
@@ -52,7 +54,8 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # DELETE /articles/1 or /articles/1.json
+  # DELETE /articles/1
+  # Re-directs to the home page with success message
   def destroy
     @article.destroy
 
@@ -62,13 +65,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Private methods - aren't accessible outside of this controller
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:title, :content, :author, :date)
     end

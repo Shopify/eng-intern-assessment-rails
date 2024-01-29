@@ -48,4 +48,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to articles_url
   end
+
+  # My test cases
+  test "should show error for non-existent article" do
+    get article_url(-1) # -1 is not a valid ID
+    assert_response :not_found
+  end
+  
 end
