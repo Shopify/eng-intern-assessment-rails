@@ -2,19 +2,21 @@ require 'test_helper'
 
 # The ArticleTest class contains unit tests for the Article model.
 class ArticleTest < ActiveSupport::TestCase
-  #creates 2 articles that can resued for testing
+  # creates 2 articles that can resued for testing
   def create_article_1
     @article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
   end
+
   def create_article_2
-    @article = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    @article = Article.create(title: 'Another Article',
+                              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
   end
 
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
 
-    # Test that the Article model responds to the search method.
+  # Test that the Article model responds to the search method.
   test 'has search functionality' do
     assert_respond_to Article, :search
   end
@@ -33,7 +35,8 @@ class ArticleTest < ActiveSupport::TestCase
 
   # Test that the metadata of an article is displayed correctly.
   test 'displays the article m etadata correctly' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe',
+                            date: Date.today)
     assert_equal 'John Doe', article.author
     assert_equal Date.today, article.date
   end
@@ -47,7 +50,8 @@ class ArticleTest < ActiveSupport::TestCase
 
   # Test that the metadata of an article can be updated.
   test 'updates the article metadata' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe',
+                            date: Date.today)
     article.update(author: 'Jane Smith', date: Date.yesterday)
     assert_equal 'Jane Smith', article.author
     assert_equal Date.yesterday, article.date
@@ -70,7 +74,8 @@ class ArticleTest < ActiveSupport::TestCase
   # Test that the search method returns accurate results.
   test 'returns accurate search results' do
     article1 = create_article_1
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article2 = Article.create(title: 'Another Article',
+                              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Lorem ipsum')
     assert_includes results, article1
     assert_includes results, article2
