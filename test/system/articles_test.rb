@@ -24,6 +24,20 @@ class ArticlesTest < ApplicationSystemTestCase
     click_on 'Back'
   end
 
+  test 'should create anonymous article' do
+    visit articles_url
+    click_on 'New article'
+
+    fill_in 'Title', with: 'Test Article'
+    fill_in 'Content', with: 'This is a test'
+
+    click_on 'Create Article'
+
+    assert_text 'Article was successfully created'
+    assert_text 'Anonymous'
+    click_on 'Back'
+  end
+
   test 'should update Article' do
     visit article_url(@article)
     click_on 'Edit this article', match: :first

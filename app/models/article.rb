@@ -2,16 +2,14 @@
 
 # Article model that represents an article in the database.
 class Article < ApplicationRecord
-  before_create :set_default_date
-  before_update :set_default_date
+  # Set the default date and author before validation if they haven't been explicitly defined.
+  before_validation :set_default_date
+  before_validation :set_default_author
 
   validates :title, presence: true
   validates :content, presence: true
-
-  # an author is not required for an article as it will be set to 'Anonymous' by default
-  validates :author, presence: false
-  # a date is not required for an article as it will be set to the current date by default
-  validates :date, presence: false
+  validates :author, presence: true
+  validates :date, presence: true
 
   # Returns all articles that match the search term.
   def self.search(search_term)
@@ -27,6 +25,8 @@ class Article < ApplicationRecord
 
   # Sets the default author to 'Anonymous'.
   def set_default_author
-    self.author ||= 'Anonymous'
+    return unless author.nil? || author.empty?
+
+    self.author = 'Anonymous'
   end
 end
