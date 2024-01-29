@@ -4,8 +4,8 @@ class Article < ApplicationRecord
   def self.search(search_string)
     return Article.all if search_string.blank?
 
-    # Searches for partial matches in EITHER the title or the content
-    where('title LIKE ? OR content LIKE ?',
-          "%#{search_string}%", "%#{search_string}%")
+    # Searches for partial matches in title, content, date, or author
+    where('title LIKE ? OR content LIKE ? OR author LIKE ? OR CAST(date AS TEXT) LIKE ?',
+          "%#{search_string}%", "%#{search_string}%", "%#{search_string}%", "%#{search_string}%")
   end
 end
