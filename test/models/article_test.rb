@@ -1,6 +1,10 @@
-require 'test_helper'
+require "test_helper"
 
 class ArticleTest < ActiveSupport::TestCase
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -65,4 +69,96 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # New Tests For Search Functionality
+
+  test "Search by title should return matching articles" do
+    article1 = Article.create(title: "Hello World", content: "🚀🚀🚀🚀🚀", author: "MyString", date: Date.today, categories: "MyText")
+    search_result = Article.search("Hello World")
+    assert_includes search_result, article1
+  end
+
+  test "Search by content should return matching articles" do
+    article1 = Article.create(title: "Hello World", content: "Bob the Builder", author: "MyString", date: Date.today, categories: "MyText")
+    search_result = Article.search("Bob the Builder")
+    assert_includes search_result, article1
+  end
+
+  test "Search by author should return matching articles" do
+    article1 = Article.create(title: "Hello World", content: "🚀🚀🚀🚀🚀", author: "Jeffrey Chan", date: Date.today, categories: "MyText")
+    search_result = Article.search("Jeffrey Chan")
+    assert_includes search_result, article1
+  end
+
+  test "Search should successfully handle partial words" do
+    article2 = Article.create(title: "ShopifyIsTheBestCompanyEver", content: "MyText", author: "MyString", date: Date.today, categories: "MyText")
+    search_result = Article.search("Shopify")
+    assert_includes search_result, article2
+  end
+
+  test "Search for non-existing articles should return nothing" do
+    assert_empty Article.search("This article does not exist")
+  end
+
+  test "Search for an empty query should return nothing" do
+    assert_empty Article.search("")
+  end
+
+  test "Search for only whitespaces should return nothing" do
+    assert_empty Article.search("   ")
+  end
+
+  test "Search with double spaces should return existing articles" do
+    article3 = Article.create(title: "Hello World", content: "🚀🚀🚀🚀🚀", author: "MyString", date: Date.today, categories: "MyText")
+    search_result = Article.search("Hello     World")
+    assert_includes search_result, article3
+  end
+
+  test "Search should be case-insensitive" do
+    article2 = Article.create(title: "ShopifyIsTheBestCompanyEver", content: "MyText", author: "MyString", date: Date.today, categories: "MyText")
+    search_result = Article.search("ShoPiFyIsTheBESTCompanyEVER")
+    assert_includes search_result, article2
+  end
+
+  test "Search for articles with special characters or emojis should succeed" do
+    article3 = Article.create(title: "Hello World", content: "🚀!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~", author: "MyString", date: Date.today, categories: "MyText")
+    search_result = Article.search("🚀!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~")
+    assert_includes search_result, article3
+  end
+
+  # Tests For Article CRUD validations
+
+  test "Article title must be unique" do 
+    Article.create(title: "Hello World", content: "🚀🚀🚀🚀🚀", author: "MyString", date: Date.today, categories: "MyText")
+    article2 = Article.new(title: "Hello World", content: "🚀🚀🚀🚀🚀", author: "MyString", date: Date.today, categories: "MyText")
+    assert_not article2.valid?
+  end
+
+  test "Article must have title" do
+    article = Article.new(title: "", content: "🚀🚀🚀🚀🚀", author: "MyString", date: Date.today, categories: "MyText")
+    assert_not article.valid?
+  end
+
+  test "Article must have content" do
+    article = Article.new(title: "Hello World", content: "", author: "MyString", date: Date.today, categories: "MyText")
+    assert_not article.valid?
+  end
+
+  test "Editing an article to remove title should fail" do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.update(title: '')
+    assert_not article.valid?
+  end
+
+  test "Editing an article to remove content or not meet character count should fail" do 
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.update(content: '')
+    assert_not article.valid?
+  end
+
+  test "Adding a date in the future should fail" do
+    article = Article.new(title: "Hello World", content: "🚀🚀🚀🚀🚀", author: "MyString", date: Date.tomorrow, categories: "MyText")
+    assert_not article.valid?
+  end
+
 end
