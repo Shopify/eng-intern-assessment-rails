@@ -1,7 +1,14 @@
 class PostsController < ApplicationController
     # Displays a list of all articles
     def index
-        @articles = Article.all
+        # If search parameters are present, only show relevant articles
+        if params[:search].present?
+            @articles = Article.search(params[:search])
+            logger.debug "Search results: #{@articles.inspect}"
+          else
+        # Otherwise, show all articles
+            @articles = Article.all
+          end
         render 'articles/index'
     end
 
@@ -11,7 +18,7 @@ class PostsController < ApplicationController
         render 'articles/show'
     end
 
-    # Initializes a new article instance
+    # Initializes a new article instance and view
     def new 
         @article = Article.new
         render 'articles/new'
@@ -43,7 +50,7 @@ class PostsController < ApplicationController
         end
     end
 
-    # Destroys an article
+    # Deletes an article
     def destroy
         @article = Article.find(params[:id])
         @article.destroy
