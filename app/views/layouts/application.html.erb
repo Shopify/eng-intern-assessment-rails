@@ -11,6 +11,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="header">
+      <h1><%= link_to "Encyclopedia", root_path %></h1>
+    </div>
+    <div class="main">
+      <%= yield %>
+    </div>
   </body>
 </html>
