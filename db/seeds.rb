@@ -8,9 +8,3 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
-
-Article.create([
-  { title: 'station 11', content: 'Content of the first article' },
-  { title: 'Yes or no', content: 'Content of the second article' }
-])
