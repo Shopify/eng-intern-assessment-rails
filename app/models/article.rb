@@ -1,3 +1,4 @@
+# Article class inherits from ApplicationRecord and implements its own functionality (search).
 class Article < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true

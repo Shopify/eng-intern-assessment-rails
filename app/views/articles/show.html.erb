@@ -1,3 +1,4 @@
+<!--Displays the title, id, author, content, created_at, and updated_at dates for the article-->
 <h1><%= @article.title %></h1>
 
 <p><%= @article.id %></p>
@@ -9,3 +10,11 @@
 <p><%= @article.created_at %></p>
 
 <p><%= @article.updated_at %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "This cannot be undone. Press to confirm."
+  } %></li>
+</ul>

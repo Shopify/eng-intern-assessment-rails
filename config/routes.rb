@@ -4,7 +4,14 @@ Rails.application.routes.draw do
   # get "articles", to: "articles#index"
   # get "/articles/:id", to: "articles#show"
   # replacing get functionality with resources
-  resources :articles
+  # Added search route as collection as it acts on the entire object and not a specific instance
+  resources :articles do
+    collection do
+      get "search"
+    end
+  end
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
