@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  validates :title, presence: true
+  validates :content, presence: true
   # Search articles by title or content.
   #
   # This method provides a simple search functionality within the Article model.
