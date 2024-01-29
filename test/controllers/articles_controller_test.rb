@@ -1,8 +1,11 @@
+# Newly generated test cases - does not rely on database seeding
+
 require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @article = articles(:one)
+    @article = Article.new(author: 'Test Author', content: 'Test Content', date: Date.today, title: 'Test Title')
+    @article.save
   end
 
   test "should get index" do
@@ -17,7 +20,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create article" do
     assert_difference("Article.count") do
-      post articles_url, params: { article: { author: @article.author, content: @article.content, date: @article.date, title: @article.title } }
+      post articles_url, params: { article: { author: 'New Author', content: 'New Content', date: Date.today, title: 'New Title' } }
     end
 
     assert_redirected_to article_url(Article.last)
@@ -34,7 +37,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update article" do
-    patch article_url(@article), params: { article: { author: @article.author, content: @article.content, date: @article.date, title: @article.title } }
+    patch article_url(@article), params: { article: { author: 'Updated Author', content: 'Updated Content', date: Date.today, title: 'Updated Title' } }
     assert_redirected_to article_url(@article)
   end
 
