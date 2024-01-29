@@ -1,2 +1,16 @@
-<h1>Articles#new</h1>
-<p>Find me in app/views/articles/new.html.erb</p>
+
+
+<%= link_to("Back to List", articles_path, :class => 'back-link') %>
+
+<div class="article new">
+  <h2>Create Article</h2>
+
+  <%= form_for(@article) do |f| %>
+    <% # url: articles_path, method: 'post' %>
+    <%= render(partial: 'form', locals: {f: f}) %>
+    <div class="form-buttons">
+      <%= f.submit("Create Article") %>
+    </div>
+
+  <% end %>
+</div>

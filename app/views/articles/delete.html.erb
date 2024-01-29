@@ -1,0 +1,17 @@
+<%= link_to("Back to List", article_path, class: 'back-link') %>
+
+<div class="article delete">
+  <h2>Delete Article</h2>
+
+  <%= form_for(@article, method: 'delete') do |f| %>
+    <% # url: article_path(@article), method: 'delete' %>
+
+    <p>Are you sure you want to permanently delete this task?</p>
+    <p><%= @article.title%></p>
+
+    <div class="form-buttons">
+      <%= f.submit("Delete Article") %>
+    </div>
+
+  <% end %>
+</div>

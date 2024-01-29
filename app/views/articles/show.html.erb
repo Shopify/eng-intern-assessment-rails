@@ -1,13 +1,13 @@
 #<%= link_to('Edit article',edit_article_path(1)) %>
 
-<%= link_to("Back to List", 'articles_path', class: 'back-link') %>
+<%= link_to("Back to List",  articles_path, class: 'back-link') %>
 
 <div class="articles show">
   <h2>Show Articles</h2>
 
   <div class="actions">
-    <%= link_to('Edit', '#') %>
-    <%= link_to('Delete', '#') %>
+    <%= link_to('Edit', edit_article_path(@article)) %>
+    <%= link_to('Delete', delete_article_path(@article)) %>
   </div>
 
   <table summary="article detail view">

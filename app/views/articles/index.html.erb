@@ -6,14 +6,14 @@
 <%= link_to('Back to Homepage', {controller: 'main', action: 'index'}) %><br />
 
 <div class="articles index">
-  <h2>Tasks</h2>
+  <h2>Articles</h2>
 
-  <%= link_to("Add New Article", '#', class: 'action new') %>
+  <%= link_to("Add New Article", new_article_path, class: 'action new') %>
 
   <table class="listing" summary="Article list" style="width: 100%;">
     <tr class="header">
        <th>Article</th>
-      <th>Text</th>
+      <th>Content</th>
       <th>Author</th>
       <th>Date</th>
     </tr>
@@ -25,8 +25,8 @@
       <td><%= article.date%></td>
       <td class="actions">
         <%= link_to("Show",article_path(article), class: 'action show') %>
-        <%= link_to("Edit", '#', class: 'action edit') %>
-        <%= link_to("Delete", '#', class: 'action delete') %>
+        <%= link_to("Edit", edit_article_path(article), class: 'action edit') %>
+        <%= link_to("Delete", delete_article_path(article), class: 'action delete') %>
       </td>
     </tr>
     <% end %>
