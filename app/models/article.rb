@@ -7,6 +7,6 @@ class Article < ApplicationRecord
             "date LIKE :query",  
         ]
         # Search by title, content, author, date.
-        where(conditions.join(" OR" ), query: "%#{query}%")
+        where(conditions.join(" OR "), query: "%#{query}%")
     end
 end

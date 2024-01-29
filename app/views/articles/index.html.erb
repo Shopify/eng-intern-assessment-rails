@@ -1,31 +1,18 @@
-<!--
-<p style="color: green"><%= notice %></p>
+<h1>Welcome to the Encyclopedia</h1>
+<h2>All Articles:</h2>
 
-<h1>All Articles</h1>
+<div style="display: flex">
+  <div style="margin: 10px">
+    <%= form_tag(search_articles_path, method: :get) do %>
+      <%= text_field_tag(:query, params[:query], placeholder: "Search articles") %>
+      <%= submit_tag("Search") %>
+    <% end %>
+  </div>
 
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
+  <div style="margin: 10px">
+    <%= link_to "Create New Article", new_article_path %> 
+  </div>
 </div>
-
-<%= link_to "New article", new_article_path %> 
--->
-
-<h1>All Articles:</h1>
-
-<%= form_tag(search_articles_path, method: :get) do %>
-  <%= text_field_tag(:query, params[:query], placeholder: "Search articles") %>
-  <%= submit_tag("Search") %>
-<% end %>
-
-<br/>
-
-<%= link_to "New article", new_article_path %> 
-
 <br/>
 
 <ul>
@@ -33,4 +20,3 @@
         <li><%= link_to article.title, article %></li>
     <% end %>
 </ul>
-  
