@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   
   def index
     # lists all articles, ordered by date
-    @articles = Article.all
+    @articles = Article.search(params[:search])
   end
   
   def show
@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
   
   def article_params
     # enforces acceptable parameters for articles
-    params.require(:article).permit(:title, :content, :author, :date)
+    params.require(:article).permit(:title, :content, :author, :date, :search)
   end
 
 end

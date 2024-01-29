@@ -15,7 +15,7 @@
 
     <!-- Search form -->
     <%= form_tag(articles_path, method: "get", class: "search-form") do %>
-      <%= text_field_tag(:query, params[:query], placeholder: "Search article keywords") %>
+      <%= text_field_tag(:search, params[:search], placeholder: "Search article keywords") %>
       <%= submit_tag("Search", class: "button-style") %>
     <% end %>
 
