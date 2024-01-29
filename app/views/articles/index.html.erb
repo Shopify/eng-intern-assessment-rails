@@ -1,23 +1,25 @@
-
-
-
-
-
 <%= link_to('Back to Homepage', {controller: 'main', action: 'index'}) %><br />
+<!-- Link to navigate back to the homepage using the 'main' controller and 'index' action. -->
 
 <div class="articles index">
   <h2>Articles</h2>
 
   <%= link_to("Add New Article", new_article_path, class: 'action new') %>
+  <!-- Link to add a new article. Styled as a new action. -->
 
   <%= form_tag(articles_path, method: :get) do %>
+    <!-- Form for searching articles using the 'get' HTTP method. -->
+    
     <%= text_field_tag :search, params[:search], placeholder: "Search Articles" %>
+    <!-- Text field for entering a search term with a placeholder. -->
+    
     <%= submit_tag "Search" %>
+    <!-- Submit button to initiate the search. -->
   <% end %>
   
   <table class="listing" summary="Article list" style="width: 100%;">
     <tr class="header">
-       <th>Article</th>
+      <th>Article</th>
       <th>Content</th>
       <th>Author</th>
       <th>Date</th>
@@ -26,15 +28,19 @@
     <tr>
       <td><%= article.title %></td>
       <td><%= article.content %></td>
-      <td><%= article.author%></td>
-      <td><%= article.date%></td>
+      <td><%= article.author %></td>
+      <td><%= article.date %></td>
       <td class="actions">
-        <%= link_to("Show",article_path(article), class: 'action show') %>
+        <%= link_to("Show", article_path(article), class: 'action show') %>
+        <!-- Link to view details of the article. Styled as a show action. -->
+        
         <%= link_to("Edit", edit_article_path(article), class: 'action edit') %>
+        <!-- Link to edit the article. Styled as an edit action. -->
+        
         <%= link_to("Delete", delete_article_path(article), class: 'action delete') %>
+        <!-- Link to delete the article. Styled as a delete action. -->
       </td>
     </tr>
     <% end %>
   </table>
 </div>
-
