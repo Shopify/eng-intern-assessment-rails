@@ -1,0 +1,18 @@
+<h1><%= @article.title %></h1>
+
+<% if !@article.author.blank? and !@article.date.blank? %>
+  <h3><%= "#{@article.author}\t|\t#{@article.date}" %></h3>
+<% elsif !@article.author.blank? or !@article.date.blank? %>
+  <h3><%= "#{@article.author}#{@article.date}" %></h3>
+<% end %>
+
+<p><%= @article.content %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %></li>
+  <li><%= link_to "Home", articles_path %></li>
+</ul>
