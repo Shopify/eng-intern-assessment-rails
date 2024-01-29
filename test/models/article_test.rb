@@ -73,4 +73,12 @@ class ArticleTest < ActiveSupport::TestCase
     article2 = Article.new('title': '')
     assert_not article2.save, "Article title is empty"
   end
+
+  test 'search with empty string returns all articles' do
+    Article.create(title: 'First Article', content: 'Lorem ipsum dolor sit amet.')
+    Article.create(title: 'Second Article', content: 'Lorem ipsum dolor sit amet.')
+    
+    results = Article.search('')
+    assert_equal Article.count, results.count, "Search with empty string should return all articles"
+  end
 end
