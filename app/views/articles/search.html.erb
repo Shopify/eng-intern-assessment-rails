@@ -1,0 +1,8 @@
+<!--Displays an input box to search for an article.-->
+<h1>Search Articles</h1>
+
+<%= form_with model: @article do |form| %>
+  <%= form.label :query, "Enter your search:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
