@@ -7,8 +7,6 @@
 
 <br>
 
-<h2 id="articles_title" >Articles</h2>
-
 <div class="text-center mt-8">
   <%= form_tag articles_path, method: :get, class: "mx-auto max-w-md" do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search by name or content", class: "p-2 border rounded w-full", id: "search_bar" %>
@@ -16,29 +14,28 @@
   <% end %>
 </div>
 
+<br>
 
-<table>
-  <thead>
+<table id="articles_table">
+  <tbody>
     <tr>
       <th scope="col">Title</th>
       <th scope="col">Content</th>
       <th scope="col">Author</th>
       <th scope="col">Date Created</th>
     </tr>
-  </thead>
-  <tbody>
-  <% @articles.each do |article| %>
-    <tr>
-      <th scope="row">
-        <a href="<%= article_path(article) %>">
-          <%= link_to article.title, article %>
-        </a>
-      </th>
-      <td><%= article.content %></td>
-      <td><%= article.author %></td>
-      <td><%= article.date %></td>
-    </tr>
-  <% end %>
+    <% @articles.each do |article| %>
+      <tr>
+        <th scope="row">
+          <a href="<%= article_path(article) %>">
+            <%= link_to article.title, article %>
+          </a>
+        </th>
+        <td><%= article.content %></td>
+        <td><%= article.author %></td>
+        <td><%= article.date %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 <br>

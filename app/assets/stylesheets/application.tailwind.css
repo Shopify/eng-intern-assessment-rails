@@ -12,24 +12,40 @@
 
 */
 #main_title {
-  @apply text-3xl;
-  text-align:center;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  text-align: center;
 }
-#article_title {
-  @apply text-2x1;
-}
+
 h1 {
-  @apply text-3x1;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
+
 h2 {
-  @apply text-2xl;
+  font-size: 1.5rem; 
+  line-height: 2rem; 
 }
+
 h3 {
-  @apply text-xl;
+  font-size: 1.25rem; 
+  line-height: 1.75rem; 
 }
+
+#articles_table{
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  
+}
+
+thead {
+  display:table-header-group
+}
+
 a {
   @apply text-blue-600 underline;
-  display:block
+  display: block
 }
 
 table {
