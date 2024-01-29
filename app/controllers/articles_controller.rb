@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
   # If successful, redirects to the article's detail view. If unsuccessful, re-renders the edit view.
   def update
     if @article.update(article_params)
-      redirect_to article_path, notice: 'Article was successfully updated.'
+      redirect_to articles_path, notice: 'Article was successfully updated.'
     else
       render :edit
     end
