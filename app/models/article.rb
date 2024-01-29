@@ -9,6 +9,10 @@ class Article < ApplicationRecord
   # a date is not required for an article as it will be set to the current date by default
   validates :date, presence: false
 
+  def self.search(search_term)
+    where('title LIKE ? OR content LIKE ?', "%#{search_term}%", "%#{search_term}%")
+  end
+
   private
 
   # Sets the default date to the current time.
@@ -20,4 +24,5 @@ class Article < ApplicationRecord
   def set_default_author
     self.author ||= 'Anonymous'
   end
+  
 end
