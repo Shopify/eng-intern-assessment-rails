@@ -53,9 +53,9 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     
     if @article.destroy
-      redirect_to articles_url, status: :see_other
+      redirect_to articles_url, notice: 'Deleted your article!'
     else
-      redirect_to @article, notice: 'Deletion unsuccessful.'
+      redirect_to @article, alert: 'Deletion unsuccessful.'
     end
   end
 
