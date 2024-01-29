@@ -1,18 +1,21 @@
 class ArticleService
-  def self.search(query, sort_column, sort_direction)
-    cache_key = "search/#{query}/#{sort_column}/#{sort_direction}"
+  class << self
+    def search(query, sort_column, sort_direction)
+      return [] unless query.present?
 
-    Rails.cache.fetch(cache_key, expires_in: 5.minutes) do
-      articles_found = query.present? ? Article.search(query) : []
-      articles_found.order("#{sort_column} #{sort_direction}") if articles_found.present?
+      cache_key = "search/#{query}/#{sort_column}/#{sort_direction}"
+      
+      Rails.cache.fetch(cache_key, expires_in: 5.minutes) do
+        Article.search(query)&.order("#{sort_column} #{sort_direction}")
+      end
     end
-  end
-
-  def self.fetch_sorted_articles(sort_column, sort_direction)
-    cache_key = "articles/#{sort_column}/#{sort_direction}"
-
-    Rails.cache.fetch(cache_key, expires_in: 5.minutes) do
-      Article.order("#{sort_column} #{sort_direction}")
+  
+    def find_sorted_articles(sort_column, sort_direction)
+      cache_key = "articles/#{sort_column}/#{sort_direction}"
+  
+      Rails.cache.fetch(cache_key, expires_in: 5.minutes) do
+        Article.order("#{sort_column} #{sort_direction}")
+      end
     end
   end
 end
