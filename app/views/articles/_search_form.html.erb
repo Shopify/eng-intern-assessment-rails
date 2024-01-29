@@ -1,0 +1,8 @@
+<%= form_with(url: articles_path, method: :get, local: true) do |form| %>
+  <div class="relative w-full">
+    <%= form.text_field :search, placeholder: "Search...", class: "w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" %>
+    <button type="submit" class="absolute right-0 top-0 mt-2 mr-4">
+      🔍
+    </button>
+  </div>
+<% end %>

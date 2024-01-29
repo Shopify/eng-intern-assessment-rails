@@ -1,0 +1,12 @@
+<!-- Header and Search Bar -->
+<div class="flex flex-col md:flex-row justify-between items-center mb-6">
+  <h1 class="text-4xl font-bold mb-4 md:mb-0">Encyclopedia</h1>
+  <%= render 'search_form' %>
+</div>
+
+<!-- Articles List with Boxes -->
+<div class="space-y-4">
+  <% @articles.each do |article| %>
+    <%= render partial: 'article', locals: { article: article } %>
+  <% end %>
+</div>
