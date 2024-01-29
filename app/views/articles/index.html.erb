@@ -1,0 +1,11 @@
+<h1>Hi Shopify's recruiting team !</h1>
+<h2>Welcome to my Article manager</h2>
+
+<h3> Articles </h3>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= article.title %>
+    </li>
+  <% end %>
+</ul>
