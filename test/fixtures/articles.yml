@@ -1,1 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: "Article_title"
+  content: "There is text in here"
+  author: "Dr. Author"
+  date: "1970-01-02"

@@ -63,8 +63,9 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Restrict the parameters to the title, content, author and date of the Article
     def article_params
       params.require(:article).permit(:title, :content, :author, :date)
     end
+    
 end
