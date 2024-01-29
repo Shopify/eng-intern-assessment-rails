@@ -4,6 +4,9 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @articles = Article.search(params[:search]) # Use model's search by default (search gives filtered results if params is passed, otherwise it returns all articles.)
+    if @articles.length() == 0 && params.has_key?(:search) ## if there is search params (user is doing search) but model returns 0 articles, this means no result found, and we show a notice to the user
+      redirect_to articles_path, notice: "No article found."
+    end
   end
 
   # GET /articles/1 or /articles/1.json
@@ -38,7 +41,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
+        format.html { redirect_to new(@article), notice: "Article was successfully updated." }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_entity }
