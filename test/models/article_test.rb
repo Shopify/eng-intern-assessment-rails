@@ -65,4 +65,22 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'does not return articles that do not match the search query' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('Nonexistent')
+    assert_not_includes results, article
+  end
+
+  test 'returns an empty array when there are no search results' do
+    results = Article.search('Nonexistent')
+    assert_empty results
+  end
+
+  test 'does not include deleted articles in search results' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.destroy
+    results = Article.search('Sample')
+    assert_not_includes results, article
+  end
 end
