@@ -1,1 +1,7 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Read about fixtures at https://api.rubyonrails.org/classwes/ActiveRecord/FixtureSet.html
+one:
+  title: "First Article"
+  content: "This is the content of the first article."
+  author: "John Doe"
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
