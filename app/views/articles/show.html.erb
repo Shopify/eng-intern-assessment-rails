@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag 'homepage.css' %>
+
+
+<h1><%= @article.title %></h1>
+
+<p><strong>Author:</strong> <%= @article.author%></p>
+<p style="margin-bottom: 1.2rem"><strong>Date:</strong> <%= @article.date %></p>
+<p><%= @article.content %></p>
+<hr>
+
+<div class="flex">
+    <%= link_to "Home", root_path %>
+    <%= link_to "Edit Article", edit_article_path(@article) %>
+    <%= link_to "Delete Article", article_path(@article),
+            data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+            }
+    %>
+</div>
