@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  validates :title, presence: true
   @count = 0
 
   def self.count

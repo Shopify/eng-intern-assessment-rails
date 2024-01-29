@@ -65,4 +65,12 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'title must be passed and cannot be empty' do
+    article1 = Article.new
+    assert_not article1.save, "Article was not given a title"
+
+    article2 = Article.new('title': '')
+    assert_not article2.save, "Article title is empty"
+  end
 end
