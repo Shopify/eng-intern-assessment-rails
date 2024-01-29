@@ -1,9 +1,12 @@
 <h1>Articles</h1>
 
 <ul>
+  <!-- Iterate over each article and display the title -->
   <% @articles.each do |article| %>
     <li>
-      <%= article.title %>
+      <a href="/articles/<%= article.id %>" >
+        <%= article.title %>
+      </a>
     </li>
   <% end %>
 </ul>
