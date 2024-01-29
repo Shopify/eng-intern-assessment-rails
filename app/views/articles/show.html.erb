@@ -2,10 +2,12 @@
   <h1 class="display-4"><%= @article.title %></h1>
   <p class="lead"><%= @article.author %></p>
   <p class="lead"><%= @article.date %></p>
+  <hr class="my-4">
   <%= link_to "Edit this article", edit_article_path(@article), class: 'btn btn-warning' %>
+  <hr class="my-4">
   <%= button_to "Destroy this article", @article, method: :delete, class: 'btn btn-danger' %>
   <hr class="my-4">
   <p class="lead"><%= @article.content %></p>
-
+  <hr class="my-4">
   <%= link_to "Back to articles", articles_path, class: 'btn btn-success' %>
 </div>
