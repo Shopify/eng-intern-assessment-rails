@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resources :posts
 
   # Defines the root path route ("/")
+  # Root path of the application, directs to the articles list
   root "posts#index"
 end

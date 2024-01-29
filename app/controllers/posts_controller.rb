@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
-    # Displays a list of all articles
+    # Displays all articles or filtered articles based on the search term
     def index
-        # If search parameters are present, only show relevant articles
         if params[:search].present?
+            # Filters articles by search term using the Article model's search method
             @articles = Article.search(params[:search])
             logger.debug "Search results: #{@articles.inspect}"
           else
-        # Otherwise, show all articles
+            # Displays all articles if no search term is provided
             @articles = Article.all
           end
         render 'articles/index'
