@@ -1,0 +1,8 @@
+<div class=encyclopedia>
+  <h1>Edit Article 📝</h1>
+  <%= render "form", article: @article %>
+  <div class=nav>
+    <%= link_to link_to 'Home', root_path, class: "button" %>
+    <%= link_to 'Search', search_articles_path, class: "button" %>
+  </div>
+</div>

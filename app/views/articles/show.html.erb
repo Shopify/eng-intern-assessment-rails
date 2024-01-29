@@ -1,0 +1,21 @@
+<div class=encyclopedia>
+  <h3>👀 Now Viewing Article:</h3>
+  <h1><%= @article.title %></h1>
+
+  <p>Author: <%= @article.author %></p>
+  <p>Date: <%= @article.date %></p>
+  <div class=content>
+    <p><%= @article.content %></p>
+  </div>
+
+  <ul>
+    <li class=edit><%= link_to "Edit 📝", edit_article_path(@article) %></li>
+    <li class=destroy><%= link_to "Destroy 🗑️", article_path(@article), data: {
+                      turbo_method: :delete,
+                    } %></li>
+  </ul>
+  <div class=nav>
+    <%= link_to link_to 'Home', root_path, class: "button" %>
+    <%= link_to 'Search', search_articles_path, class: "button" %>
+  </div>
+</div>
