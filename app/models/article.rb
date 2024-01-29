@@ -6,7 +6,8 @@ class Article < ApplicationRecord
   end
 
   def self.search(search_string)
-    where('title LIKE ? OR content LIKE ?', "%#{search_string}%", "%#{search_string}%")
+    # Searches for partial matches in EITHER the title or the content
+    where('title LIKE ? OR content LIKE ?',
+          "%#{search_string}%", "%#{search_string}%")
   end
-
 end
