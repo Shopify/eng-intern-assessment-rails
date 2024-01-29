@@ -18,11 +18,17 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    if @article.save
-      redirect_to @article
-    else
-      render :new, status: :unprocessable_entity
-    end
+
+    #if @article.save
+      #redirect_to @article
+    #else
+      #render :new, status: :unprocessable_entity
+    #end
+
+  end
+
+  def search
+    @articles = Article.find(params[:q])
   end
 
   def edit
@@ -40,10 +46,10 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
+    #@article = Article.find(params[:id])
     @article.destroy
 
-    redirect_to root_path, status: :see_other
+    #redirect_to root_path, status: :see_other
   end
 
   private
