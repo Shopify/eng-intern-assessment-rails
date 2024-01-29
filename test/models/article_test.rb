@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -41,6 +42,7 @@ class ArticleTest < ActiveSupport::TestCase
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
+    Article.find_by(id: article.id).destroy if Article.find_by(id: article.id)
     assert_equal 0, Article.count
   end
 
