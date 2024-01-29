@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
     if @article.save
       render json: @article, status: :created
     else
-      render :new, status: :unprocessable_entity
+      render json: @articles.errors, status: :unprocessable_entity
     end
   end
 
@@ -23,8 +23,17 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       render json: @article, status: :ok
     else
-      render :edit, status: :unprocessable_entity
+      render json: @articles.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    if @article.destroy
+      head: :no_content
+    else
+      render json: @articles.errors, status: :unprocessable_entity
+
   end
 
   private
