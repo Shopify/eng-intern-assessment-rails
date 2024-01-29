@@ -2,6 +2,10 @@
 
 <p><%= @article.content %></p>
 
-<p><%= @article.author %></p>
+<p>Author: <%= @article.author %></p>
 
-<p><%= @article.date %></p>
+<p>Date Created: <%= @article.date %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+</ul>
