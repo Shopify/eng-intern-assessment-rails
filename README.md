@@ -1,3 +1,40 @@
+# Projects Setup
+1. `git clone` this repo to your local environment
+2. Install dependencies with `bundle install`. 
+    2.1. Ruby version until January 29, 2024.
+    2.2. version until January 29, 2024.
+3. (Optional) Generate migrations (new tables) by running `bin/rails generate migration CreateArticles`.
+4. Run the migration by `bin/rails db:migrate`.
+5. Run rails server by `rails server`.
+6. Run tests by `rails test test/models/article_test.rb`. All tests should passed with the below message: 
+> 11 runs, 19 assertions, 0 failures, 0 errors, 0 skips
+
+# Routes included
+1. Index and root: Lists all articles.
+    GET /
+    GET /articles
+2. Show: Displays a specific article.
+    GET /articles/:id
+3. New: Shows the form to create a new article.
+    GET /articles/new
+4. Create: Handles the submission of the form to create a new article.
+    POST /articles
+5. Edit: Shows the form to edit an existing article.
+    GET /articles/:id/edit
+6. Update: Handles the submission of the form to update an existing article.
+    PUT /articles/:id
+7. Destroy: Deletes an existing article.
+    DELETE /articles/:id
+8. Custom Search:
+    GET /articles?search=query
+
+# Additional Implementations
+Some additional functions were implemented in this app. However, they are open to adjustments if the behaviors are not desired.
+1. When creating an article, only <b>title</b> and <b>content</b> fields are required. The <b>author</b> and <b>date</b> fields could be left blank. 
+2. When deleting an article, a pop up window would show and asks the user to confirm the behavior. If users cancels the current delete, nothing would happen. 
+3. Once an article is deleted, users would be redirected to the main page, which presents a lists of all articles. 
+
+
 # Technical Instructions
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.
