@@ -7,4 +7,12 @@ class Article < ApplicationRecord
     validates :author, presence: false
     validates :date, presence: false
 
+    # Define 'search' method to provide search functionality
+    def self.search(search)
+        # Use the 'where' ActiveRecord query method to construct a SQL query.
+        # The query searches for records where the title, content, or author
+        # column contains the specified search term.
+        where(["title LIKE ? OR content LIKE ? or author LIKE ?","%#{search}%", "%#{search}%", "%#{search}%"])
+    end
+
 end
