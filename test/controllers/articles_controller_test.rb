@@ -1,38 +1,48 @@
-require "test_helper"
+require 'test_helper'
 
-class ArticleControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get article_index_url
-    assert_response :success
+class ArticlesControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @article = articles(:one)
   end
 
-  test "should get show" do
-    get article_show_url
+  test "should get index" do
+    get articles_url
     assert_response :success
   end
 
   test "should get new" do
-    get article_new_url
+    get new_article_url
     assert_response :success
   end
 
-  test "should get create" do
-    get article_create_url
+  test "should create article" do
+    assert_difference('Article.count') do
+      post articles_url, params: { article: { title: 'Test Title', content: 'Test Content', author: 'Test Author', date: '2022-01-01' } }
+    end
+
+    assert_redirected_to article_url(Article.last)
+  end
+
+  test "should show article" do
+    get article_url(@article)
     assert_response :success
   end
 
   test "should get edit" do
-    get article_edit_url
+    get edit_article_url(@article)
     assert_response :success
   end
 
-  test "should get update" do
-    get article_update_url
-    assert_response :success
+  test "should update article" do
+    patch article_url(@article), params: { article: { title: 'Updated Title', content: 'Updated Content', author: 'Updated Author', date: '2022-01-02' } }
+    assert_redirected_to article_url(@article)
   end
 
-  test "should get destroy" do
-    get article_destroy_url
-    assert_response :success
+  test "should destroy article" do
+    assert_difference('Article.count', -1) do
+      delete article_url(@article)
+    end
+
+    assert_redirected_to articles_url
   end
 end
