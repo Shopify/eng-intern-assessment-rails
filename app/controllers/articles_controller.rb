@@ -1,10 +1,12 @@
 class ArticlesController < ApplicationController
   ##
   # Controller for the index route.
-  # Sets the instance variable articles to all articles found in database
+  # Sets the instance variable articles to all articles found in database matching the query provided
+  # and orders them by date created
   # GET: /
   def index
-    @articles = Article.all
+    @articles = Article.all.order('created_at DESC')
+    @articles = @articles.search(params[:search]) if params[:search].present?
   end
 
   ##

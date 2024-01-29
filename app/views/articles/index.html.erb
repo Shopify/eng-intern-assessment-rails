@@ -1,9 +1,17 @@
 <!-- View for the index, shows all articles in an unordered list and provides a input for searching articles -->
 <h1>Encyclopedia Lofus</h1>
-<label>
-  Search
-  <input >
-</label>
+<!-- Create the form for searching -->
+<form>
+  <div>
+    <%= form_tag(articles_path, :method => "get") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Articles" %>
+      <span>
+        <%= submit_tag "Search" %>
+      </span>
+    <% end %>
+  </div>
+</form>
+<!-- Render out each article title stored in the instance variable -->
 <ul>
   <% @articles.each do |article| %>
   <li>
@@ -13,3 +21,4 @@
   </li>
   <% end %>
 </ul>
+<%= link_to "Create New Article", new_article_path %>
