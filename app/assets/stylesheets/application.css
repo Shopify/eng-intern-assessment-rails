@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700&display=swap');
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -14,51 +16,334 @@
  *= require_self
  */
 
-/* Sets the background color along with the layout for the page*/
+/* Sets the background color along with the layout for the page */
 body {
     background-color : #f8f9fa;
     display: flex;
     flex-direction: column;
 }
 
-/* Styles the header container and spaces/aligns content*/
+/* Styles the header container and spaces/aligns content */
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    width: 100%;
 }
 
-/* Centers the main header text and allows it to grow within the flex container*/
+/* Centers the main header text and allows it to grow within the flex container */
 .Header {
     text-align: center;
     flex-grow: 1;
+    margin-left: 20%;
+    font-family: 'Playfair Display SC', serif;
+    font-weight: bold;
 }
 
-/* Limits the maximum width of the search bar*/
-.search-form {
-    max-width: 500px;
+/* Centers the header of the edit page and allows for it to grow within the flex container */
+.Header-edit {
+    font-family: 'Playfair Display SC', serif;
+    text-align: center;
+    flex-grow: 1;
+    width: 100%;
     margin: 0;
+    padding: 20px 0;
 }
 
-/* Sets the width of the articles section and allows it to grow in the flex container*/
-.articles {
+/* Centers the header of the new article page and allows for it to grow within the flex container */
+.Header-new {
+    font-family: 'Playfair Display SC', serif;
+    text-align: center;
     width: 100%;
     flex-grow: 1;
+    margin: 0;
+    padding: 20px 0;
 }
 
-/* Changes the background color of table rows when hovered over*/
-.table-hover tbody tr:hover {
-    background-color: #f1f1f1;
+/* Controls the design of the search section */
+.search {
+    margin-right: 5%;
+}
+
+/* Limits the maximum width of the search bar */
+.search-form {
+    width: 100%;
+    right: 20%;
 }
 
 /* Styles the links in the articles */
 .article-link {
-    color: #007bff;
+    color: black;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    word-break: break-all;
+    max-width: 100%;
+    display: inline-block;
+    overflow-wrap: break-word;
+}
+
+/* Gives a 3d design to the action buttons */
+.action-btn{
+    background-color: #9f9fad;
+    border: none;
+    color: #fffefe;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-bottom: 4px solid #5d5b5b;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Playfair Display SC', serif;
+    font-weight: bold;
     text-decoration: none;
 }
 
-/* Adds an underline to the article link when hovered over */
-.article-link:hover {
-    text-decoration: underline;
+/* Gives a 3d look to the search button */
+.search-btn {
+    background-color: #9f9fad;
+    border: none;
+    color: #fffefe;
+    padding: 2px 10px;
+    font-size: 1rem;
+    border-bottom: 4px solid #5d5b5b;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Playfair Display SC', serif;
+    font-weight: bold;
 }
+
+
+/* Gives a 3d look to the "Go back to main page" button */
+.main-page-btn {
+    background-color: #9f9fad;
+    border: none;
+    color: #fffefe;
+    padding: 5px 15px;
+    font-size: 1rem;
+    border-bottom: 4px solid #5d5b5b;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    text-align: center;
+    font-family: 'Playfair Display SC', serif;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Gives a 3d look to the new article button */
+.New-btn {
+    background-color: #9f9fad;
+    border: none;
+    color: #fffefe;
+    padding: 5px 15px;
+    font-size: 1rem;
+    border-bottom: 4px solid #5d5b5b;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    text-align: center;
+    font-family: 'Playfair Display SC', serif;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* allows for the animation of the button clicking to occur for the "Go back to main page" button */
+.main-page-btn:active {
+    border-bottom: 1px solid #5d5b5b;
+    transform: translateY(3px);
+}
+
+/* allows for the animation of the button clicking to occur for the search button */
+.search-btn:active {
+    border-bottom: 1px solid #5d5b5b;
+    transform: translateY(3px);
+}
+
+/* allows for the animation of the button clicking to occur for the new article button */
+.New-btn:active {
+    border-bottom: 1px solid #5d5b5b;
+    transform: translateY(3px);
+}
+
+/* allows for the animation of the button clicking to occur for the action buttons */
+.action-btn:active {
+    border-bottom: 1px solid #5d5b5b;
+    transform: translateY(3px);
+}
+
+/* Gives the articles section on the index page spacing and styling */
+.article-container {
+    display: flex;
+    align-items: center;
+    background-color: lightgrey;
+    border-bottom: 3px solid black;
+    margin-bottom: 15px;
+}
+
+/* Gives the articles image section on the index page spacing and styling */
+.article-image-container {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+
+/* Styling for the image within the article */
+.article-img {
+    object-fit: contain;
+    object-position: center;
+    height: auto;
+    width: auto;
+    padding: 10px;
+    max-height: 400px;
+    max-width: 400px;
+}
+
+/* Styling the container for the article details */
+.article-details {
+    flex-grow: 1;
+    padding: 15px;
+}
+
+/* Styles the date display within the article details */
+.article-date {
+    font-size: 1rem;
+    padding-left: 25px;
+    font-family: 'Roboto Light', serif;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*Styling the container for the actions associated with an article */
+.article-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+    gap: 15px;
+}
+
+/* Styling the container for the actions associated with an article in the show.html.erb page */
+.article-action-show {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+    gap: 15px;
+    align-self: center;
+}
+
+/* Styling for the title display on the show.html.erb page */
+.title-show {
+    text-align: left;
+    flex-grow: 1;
+    margin-left: 35px;
+}
+
+/* Styling for the container holding the date and recency information */
+.date-recency-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+/* Styling for the paragraphs inside the date-recency container */
+.date-recency-container p {
+    margin: 0;
+    padding: 10px;
+    font-family: 'Roboto Light', serif;
+    font-size: 15px;
+}
+
+/* Flexbox container aligning the title and date-recency */
+.title-date-recency-flex {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    gap: 30px;
+}
+
+/* Horizontal line styling */
+.line {
+    border: none;
+    height: 2px;
+    background-color: black;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Styling for the main form container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 10px;
+    margin: auto;
+    max-width: 500px;
+}
+
+/* Styling for each field in the form */
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Styling for the label of each field */
+.field label {
+    text-align: center;
+    margin-bottom: 5px;
+    font-family: 'Playfair Display SC', serif;
+
+}
+
+/* Styling for the the input types in the form */
+.field input[type="text"],
+.field input[type="file"],
+.field input[type="date"],
+.field textarea {
+    width: 700px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    resize: none;
+    overflow: hidden;
+}
+
+/* Custom file input styling */
+.custom-file {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* Styling teh actual file input */
+.file-input {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+/* Styling for the label of the custom file input */
+.file-field label {
+    cursor: pointer;
+}
+

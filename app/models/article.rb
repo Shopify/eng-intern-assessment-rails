@@ -25,9 +25,9 @@ class Article < ApplicationRecord
     # Obtain Arel table from articles
     articles_table = self.arel_table
     # First condition to check if any title matches the query string
-    title_matches = articles_table[:title].matches("%#{query}%")
+    title_matches = articles_table[:title].matches("%#{sanitize_sql_like(query)}%")
     # Second condition to check if any content matches the query string
-    content_matches = articles_table[:content].matches("%#{query}%")
+    content_matches = articles_table[:content].matches("%#{sanitize_sql_like(query)}%")
 
     # Query for getting the articles that match the search query in the title or content
     matching_articles = where(title_matches.or(content_matches))
@@ -53,5 +53,8 @@ class Article < ApplicationRecord
   def default_values
     self.date ||= Date.today
   end
+
+  # Add an association to the Article model for an attached image using Active Storage
+  has_one_attached :image
 
 end

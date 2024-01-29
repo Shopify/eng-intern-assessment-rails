@@ -1,8 +1,9 @@
 <!-- Stylesheet link tag to include CSS -->
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<!-- Form for creating or editing an article -->
-<%= form_with model: article, local: true do |form| %>
+<div class="form-container">
+  <!-- Form for creating or editing an article -->
+  <%= form_with model: article, local: true do |form| %>
 
   <!-- Display errors if there are any form validation failures -->
   <% if article.errors.any? %>
@@ -16,28 +17,81 @@
         <% end %>
       </ul>
     </div>
+    <% end %>
+
+    <!-- Field for article title -->
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_area :title, id: :article_title, rows: 1 %>
+    </div>
+
+    <!-- Field for article content -->
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.text_area :content, id: :article_content, rows: 1 %>
+    </div>
+
+    <!-- Field for article date -->
+    <div class="field">
+      <%= form.label :date %>
+      <%= form.text_area :date, id: :article_date, rows: 1 %>
+    </div>
+
+    <!-- Add a file field to the form for image upload -->
+    <div class="field">
+      <%= form.label :image %>
+      <div class="custom-file">
+      <%= form.file_field :image, id: :article_image, class: 'file-input' %>
+        <label for="article_image" class="btn btn-sm action-btn">Choose File</label>
+      </div>
+    </div>
+
+    <!-- Submit button for the form -->
+    <div class="form-actions">
+      <%= form.submit 'Create Article', class: 'btn btn-sm main-page-btn'%>
+      <!-- Button allowing to go back to main page -->
+      <%= link_to 'Back to Main Page', root_path, class: 'btn btn-sm main-page-btn' %>
+    </div>
   <% end %>
+</div>
 
-  <!-- Field for article title -->
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :article_title %>
-  </div>
+<script>
+  // Function that handles the keydown events on text areas
+  function handleKeyDown(event) {
+      var textarea = event.currentTarget; // Obtain the text area where the event occurred
 
-  <!-- Field for article content -->
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content, id: :article_title %>
-  </div>
+      // Check if the enter key is pressed without the shift key
+      if (event.key === "Enter" && !event.shiftKey) {
+          event.preventDefault(); // prevent the form from submitting when the enter key is clicked without the shift key
+          textarea.rows += 1; // Increase the number of rows in the text area
+          adjustTextHeight(textarea); // Adjust the height of the textarea to fit the inputted content
+      }
 
-  <!-- Field for article date -->
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.text_field :date, id: :article_title %>
-  </div>
+      // Check if the backspace key or the delete key is pressed along with if the textarea has more than one row
+      if ((event.key === "Backspace" || event.key === "Delete") && textarea.rows > 1) {
+          setTimeout(function () {
+              // Check if the number of lines in the text area is less than the number of rows
+              if (textarea.value.split("\n").length < textarea.rows) {
+                  textarea.rows -= 1; // Decrease the number of rows
+              }
+              adjustTextHeight(textarea); // Adjust the height of the text area to fit the inputted content
+          }, 0);
+      }
+  }
 
-  <!-- Submit button for the form -->
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  // Function that adjusts the height of the text area to fit the inputted content
+  function adjustTextHeight(textarea) {
+      textarea.style.height = 'auto'; // Resets the height
+      textarea.style.height = textarea.scrollHeight + 'px'; // Sets the height of the text area to the scroll height
+  }
+
+  // Function to attach the keydown event handler to all text areas
+  function attachEventHandlers() {
+      var textAreas = document.querySelectorAll('textarea'); // Select all textarea elements
+      textAreas.forEach(function (textarea) {
+          textarea.addEventListener('keydown', handleKeyDown); // Attach the event handlers to said elements
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', attachEventHandlers)
+</script>

@@ -1,25 +1,43 @@
 <!-- Stylesheet link tag to include CSS -->
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<!-- Display the article's title in the heading-->
-<h1><%= @article.title %></h1>
+<div class="title-date-recency-flex">
+  <!-- Display the article's title in the heading-->
+  <h1 class="title-show"><%= @article.title %></h1>
+
+  <div class="date-recency-container">
+    <!-- Display the date when the article was published -->
+    <p><b>Date:</b> <%= @article.date %></p>
+
+    <!-- Indicate whether the article is recent -->
+    <p><b>Recent:</b> <%= @article.recent? ? 'Yes' : 'No' %></p>
+  </div>
+</div>
+
+<hr class="line">
 
 <!-- Display the content of the article -->
 <p><%= @article.content %></p>
 
-<!-- Display the date when the article was published -->
-<p><b>Date:</b> <%= @article.date %></p>
+<hr class="line">
 
-<!-- Indicate whether the article is recent -->
-<p><b>Recent:</b> <%= @article.recent? ? 'Yes' : 'No' %></p>
-
-<!-- Link to edit the current article -->
-<%= link_to 'Edit', edit_article_path(@article) %> |
-
-<!-- Delete form -->
-<%= form_with url: article_path(@article), method: :delete do %>
-  <%= submit_tag 'Delete', data: {confirm: 'Are you sure?'} %>
+<!-- Check if the article has an attached image before attempting to display it -->
+<% if @article.image.attached? %>
+  <!-- Display the attached image using the imag_tag helper -->
+  <%= image_tag @article.image %>
 <% end %>
 
-<!-- Link to go back to the list of articles -->
-<%= link_to 'Back to Articles', articles_path %>
+<hr class="line">
+
+<div class="article-action-show">
+  <!-- Link to edit the current article -->
+  <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-sm action-btn'%> |
+
+  <!-- Delete form -->
+  <%= form_with url: article_path(@article), method: :delete do %>
+  <%= submit_tag 'Delete', class: 'btn btn-sm action-btn',data: {confirm: 'Are you sure?'} %>
+  <% end %>
+
+  <!-- Link to go back to the list of articles -->
+  <%= link_to 'Back to Articles', articles_path, class: 'btn btn-sm action-btn'%>
+</div>

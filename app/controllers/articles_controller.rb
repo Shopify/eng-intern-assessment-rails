@@ -73,7 +73,7 @@ class ArticlesController < ApplicationController
   private
   # Defines strong parameters to prevent mass-assignment vulnerabilities
   def article_params
-    # Requires an article object in the parameters and permits only title, content and date for mass assignment
-    params.require(:article).permit(:title, :content, :date)
+    # Requires an article object in the parameters and permits only title, content, date and image for mass assignment
+    params.require(:article).permit(:title, :content, :date, :image)
   end
 end

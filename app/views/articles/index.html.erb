@@ -2,58 +2,57 @@
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 <!-- Main container for the article sections -->
-<div class="container mt-5">
-  <!-- Header for the site and article section -->
-  <h1 class="Header">Articles</h1>
-
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <!-- Form for searching articles -->
+<div class="container-fluid mt-5">
+  <div class="header-container d-flex justify-content-between align-items-center">
+    <!-- Header for the site and article section -->
+    <div class="col-lg-8 col-mg-7 col-sm-6">
+    <h1 class="Header">Articles</h1>
+    </div>
+  <!-- Form for searching articles -->
+    <div class="search">
       <%= form_with url: search_articles_path, method: :get, class: 'input-group mb-4' do |form| %>
         <!-- Text field for entering the search query -->
         <%= form.text_field :query, class: 'form-control', placeholder: 'Search Articles', aria: { label: 'Search'} %>
-        <div class="input-group-append">
-          <!-- Submit button for the search form -->
-          <%= form.submit 'Search', class: 'btn btn-outline-primary' %>
-        </div>
+        <!-- Submit button for the search form -->
+        <%= form.submit 'Search', class: 'btn btn-outline-primary search-btn' %>
       <% end %>
-
-    <!-- Table for displaying the articles -->
-    <table class="table table-striped">
-      <thead class="thead-dark">
-      <tr>
-        <th>Title</th>
-        <th>Date</th>
-        <th class="text-center">Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <!-- Looping through each article to display its details -->
-      <% @articles.each do |article| %>
-        <tr>
-          <td>
-            <!-- Link to individual article -->
-            <%= link_to article.title, article, class: 'article-link' %>
-          </td>
-          <td>
-            <!-- Displaying the formatted date of the article -->
-            <%= article.date.strftime("%B %e, %Y") %>
-          </td>
-          <td class="text-center">
-            <!-- Link to edit the article -->
-            <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-sm btn-warning' %>
-            <!-- Delete form -->
-            <%= form_with url: article_path(article), method: :delete do %>
-              <%= submit_tag 'Delete', data: {confirm: 'Are you sure?'} %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-
-      <!-- Link to create a new article -->
-      <%= link_to 'New Article', new_article_path, class: 'btn btn-success' %>
     </div>
   </div>
+
+  <!-- Looping through each article to display its details -->
+  <% @articles.each do |article| %>
+    <div class="article-container">
+      <div class="article-details">
+        <div class="article-title">
+        <h2>
+        <!-- Link to individual article -->
+        <%= link_to article.title, article, class: 'article-link' %>
+        </h2>
+        </div>
+        <div class="article-actions">
+        <!-- Link to edit the article -->
+        <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-sm action-btn' %>
+        <!-- Delete form -->
+        <%= form_with url: article_path(article), method: :delete do %>
+          <%= submit_tag 'Delete', class: 'btn btn-sm action-btn', data: {confirm: 'Are you sure?'} %>
+        <% end %>
+        <div class="article-date">
+          <p>
+            <!-- Displaying the formatted date of the article -->
+            <%= article.date.strftime("%B %e, %Y") %>
+          </p>
+        </div>
+        </div>
+      </div>
+        <!-- Conditionally display the article image if it exists -->
+        <% if article.image.attached? %>
+          <div class="article-image-container">
+            <%= image_tag article.image, class: 'article-img' %>
+          </div>
+        <% end %>
+    </div>
+  <% end %>
 </div>
+
+<!-- Link to create a new article -->
+<%= link_to 'New Article', new_article_path, class: 'btn btn-success New-btn' %>

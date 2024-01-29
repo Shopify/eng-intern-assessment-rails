@@ -1,0 +1,36 @@
+Project Name : ENGINEERING INTERN ASSESSMENT RAILS
+Author : Kshithij Malebennur
+Date : January 28st, 2024
+
+OVERVIEW
+
+This document outlines the implementation of new files and features added
+since the last update. This recent update focuses on the enhanced view model
+for a responsive webpage in the article section, improving user experience
+and interaction.
+
+COMPONENTS
+
+1. Aesthetic Redesign
+    - The objective was to enhance the visual appeal of the webpage for the
+      betterment of the user experience.
+    - The redesign is done using the application.css file.
+    - The layout is more aesthetically pleasing than before and it is easier to
+      interact with.
+    - The color scheme is also more visually pleasing
+
+2. Search Functionality Enhancement
+    - The objective was to improve the accuracy and efficiency of the search function.
+
+3. _form.html.erb (new page, edit page)
+    - This page controls the interactive parts of the new page and the edit page. In this
+      update, this page allows for the user to upload an image that will directly connect
+      to the article.
+    - Additional javascript code is added into this page so that if the user wants to break
+      the line in their text by hitting enter, the article will not submit itself. By hitting
+      enter without the shift key, the cursor will go to the next line. With the shift key, the
+      article will submit.
+
+FUTURE IMPLEMENTATION STEPS
+
+1. Look for any bugs and and make sure the tests work before submission.
