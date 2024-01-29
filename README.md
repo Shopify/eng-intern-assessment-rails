@@ -53,3 +53,6 @@ Here are some resources that may be helpful during your internship project:
 - [Ruby Style Guide](https://rubystyle.guide/) - A community-driven Ruby coding style guide to ensure consistent and readable code.
 
 - [Git Documentation](https://git-scm.com/doc) - Official documentation for Git, the version control system used in this project.
+
+
+## Developer Documentation

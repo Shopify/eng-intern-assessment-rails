@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-    before_action :set_article, only: %i[:show, :edit, :update, :destroy]
+    before_action :set_article, only: [:show, :edit, :update, :destroy]
     
     # GET /articles
     # GET /articles?search=:term
@@ -15,7 +15,8 @@ class ArticlesController < ApplicationController
     
     # GET /articles/:id
     # Returns a single article identified by the id parameter.
-    def show, end
+    def show
+    end
 
     # GET /articles/new
     # Initializes a new, unsaved article.
@@ -37,7 +38,8 @@ class ArticlesController < ApplicationController
 
     # GET /articles/:id/edit
     # Finds an article identified by the id parameter and prepares it for editing.
-    def edit, end
+    def edit
+    end
     
     # PATCH/PUT /articles/:id
     # Attempts to update an article identified by the id parameter with the provided parameters.
@@ -59,7 +61,7 @@ class ArticlesController < ApplicationController
     end
 
     private
-    
+
     # Use callbacks to share common setup or constraints between actions
     def set_article
         @article = Article.find(params[:id])

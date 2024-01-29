@@ -1,6 +1,9 @@
-<h2> <% article.title %></h2>
-<p> <% article.author %></p>
-<p> <% article.content %></p>
-<p> <% article.date %></p>
-<p><%= link_to "Edit", edit_article_path(article) %></p>
-<p><%= link_to "Destroy", article_path(article), data:{"turbo-method": :delete}%></p>
+
+<div>
+    <h2> <%= article.title %></h2>
+    <p> <%= article.author %></p>
+    <p> <%= article.content %></p>
+    <p> <%= article.date %></p>
+    <p><%= link_to "Edit", edit_article_path(article) %></p>
+    <p><%= link_to "Destroy", article_path(article), data:{"turbo-method": :delete}%></p>
+</div>
