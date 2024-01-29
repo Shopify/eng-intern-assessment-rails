@@ -65,4 +65,20 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+    #Additional tests to check if the related fields are filled during new article creation
+    test 'is not valid without all required fields' do
+      article = Article.create()
+      assert_not article.valid?
+      assert_includes article.errors[:title], "can't be blank"
+      assert_includes article.errors[:content], "can't be blank"
+    end
+  
+    test 'is valid with all required fields filled in' do
+      article = Article.create(
+        title: 'Sample Title',
+        content: 'Lorem ipsum content'
+      )
+      assert article.valid?
+    end
 end
