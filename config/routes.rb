@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "articles#index"
+  
   # Defines RESTful routes for the articles resource
   resources :articles
 
