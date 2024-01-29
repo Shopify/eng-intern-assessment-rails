@@ -1,6 +1,7 @@
 require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
+  # Create a sample article for testing
   setup do
     @article = Article.create(title: "Article_title", content: "There is text here", author: "Dr. Author", date: "1970-01-02")
   end

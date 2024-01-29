@@ -67,7 +67,7 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
-    # Restrict the parameters to the title, content, author and date of the Article
+    # Restrict the parameters to the title, content, author, date and search query of the article
     def article_params
       params.require(:article).permit(:title, :content, :author, :date, :search)
     end
