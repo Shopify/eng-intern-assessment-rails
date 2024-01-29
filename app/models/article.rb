@@ -3,9 +3,9 @@ class Article < ApplicationRecord
   validates :content, presence: true
 
   def self.search(query)
-    sanitized_query = "%#{sanitize_sql_like(query)}%"
+    like_query = "%#{query}%"
     Article
-      .where("title LIKE ?", sanitized_query)
-      .or(where("content LIKE ?", sanitized_query))
+      .where("title LIKE ?", like_query)
+      .or(where("content LIKE ?", like_query))
   end
 end
