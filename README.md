@@ -2,8 +2,8 @@
 
 1. `git clone` this repo to your local environment
 2. Install dependencies with `bundle install`.
-   2.1. Ruby version until January 29, 2024.
-   2.2. version until January 29, 2024.
+   <b> Ruby</b> version "3.2.3" as per Gemfile.
+   <b> Bunder</b> version "2.3.3" as per Gemfile.lock.
 3. (Optional) Generate migrations (new tables) by running `bin/rails generate migration CreateArticles`.
 4. Run the migration by `bin/rails db:migrate`.
 5. Run rails server by `rails server`.
