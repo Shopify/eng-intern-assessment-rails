@@ -44,9 +44,18 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  def search
+    if params[:query]
+      @articles = Article.search(params[:query])
+    else
+      @articles = Article.all
+    end
+  end
+
+
   private
   def article_params
-    params.require(:article).permit(:title, :content, :author, :date)
+    params.require(:article).permit(:title, :content, :author, :date, :query)
   end
 
 end
