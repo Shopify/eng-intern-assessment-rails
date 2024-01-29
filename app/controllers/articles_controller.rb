@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   def index
-    @articles= Article.order(:title)
+    if params[:search].present?
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.order(:title)
+    end
   end
 
   def show

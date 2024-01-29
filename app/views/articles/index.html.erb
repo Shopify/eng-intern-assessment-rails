@@ -10,6 +10,11 @@
 
   <%= link_to("Add New Article", new_article_path, class: 'action new') %>
 
+  <%= form_tag(articles_path, method: :get) do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Articles" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+  
   <table class="listing" summary="Article list" style="width: 100%;">
     <tr class="header">
        <th>Article</th>
@@ -32,5 +37,4 @@
     <% end %>
   </table>
 </div>
-
 
