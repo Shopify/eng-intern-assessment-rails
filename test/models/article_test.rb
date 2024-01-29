@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
+    p Article.all
     assert_equal 0, Article.count
   end
 

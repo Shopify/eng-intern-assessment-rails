@@ -38,7 +38,18 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
+    redirect_to articles_path
   end
+
+  def search
+    if params[:query].empty? 
+      redirect_to articles_path
+      return
+    end
+
+    @articles = Article.search(params[:query])
+    render :index
+  end 
 
   private
     def article_params

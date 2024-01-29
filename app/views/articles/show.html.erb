@@ -4,5 +4,8 @@
 <p><%= @article.content %></p>
 
 <%= link_to "Edit", edit_article_path(@article) %>
+<br />
 <%= link_to "Destroy", article_path(@article), 
     data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+<br />
+<%= link_to 'Browse Articles', articles_path %>
