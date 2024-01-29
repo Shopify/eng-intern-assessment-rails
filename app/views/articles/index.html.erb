@@ -1,5 +1,8 @@
 <h1>Articles</h1>
 
+
+<%= link_to "<button>Create a new entry</button>".html_safe, new_article_path%>
+
 <%# Creates a list of article titles that contain hyper links to view the full article %>
 <ul>
   <% @articles.each do |article| %>
