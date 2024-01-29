@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @article %>
+
+<div>
+  <div>
+    <p><b>Title: </b><%= @article.title %></p>
+    <p><b>content: </b><%= @article.content %></p>
+    <p><b>author: </b><%= @article.author %></p>
+  </div>
+  <%= link_to "Edit this article", edit_article_path(@article) %> |
+  <%= render "article_nav", article: @article%>
+</div>

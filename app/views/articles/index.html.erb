@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Articles</h1>
+
+<%= render "search_bar"%>
+
+<%= render "article_set", articles: @articles%>
+
+<%= link_to "New article", new_article_path %>
