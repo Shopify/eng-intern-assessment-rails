@@ -65,4 +65,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'should not save article without title' do
+    article = Article.new(content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    assert_not article.save, "Saved the article without a title"
+  end
+
+  test 'should not save article with future date' do
+    future_date = Date.today + 1.day
+    article = Article.new(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: future_date)
+    assert_not article.save, "Saved the article with a future date"
+  end
+  
 end
