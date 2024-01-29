@@ -1,2 +1,19 @@
-<h1><%= @article.title %></h1>
-<p><%= @article.content %></p>
+<div class="container">
+  <h1><%= @article.title %></h1>
+
+  <div class="article-metadata">
+    <p class="author"><strong>Author:</strong> <%= @article.author %></p>
+    <p class="date"><strong>Date:</strong> <%= @article.date.strftime("%B %d, %Y") %></p>
+  </div>
+
+  <p class="article-content"><%= @article.content %></p>
+
+  <div class="article-actions">
+    <%= link_to 'Edit', edit_article_path(@article), class: 'button edit-button' %>
+    <%= form_with(url: article_path(@article), method: :delete, local: true, html: { class: "delete-form" }) do %>
+      <%= submit_tag 'Delete', class: 'delete-button' %>
+    <% end %>
+  </div>
+
+  <%= link_to 'Back', articles_path, class: 'button back-button' %>
+</div>

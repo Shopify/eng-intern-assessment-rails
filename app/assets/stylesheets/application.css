@@ -188,3 +188,171 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.edit-button,
+.delete-button,
+.back-button {
+  display: inline-block;
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.edit-button:hover,
+.delete-button:hover,
+.back-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.edit-article-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.edit-article-container .field {
+  margin-bottom: 20px;
+}
+
+.edit-article-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.edit-article-container input[type="text"],
+.edit-article-container textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.edit-article-container input[type="submit"] {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.edit-article-container input[type="submit"]:hover {
+  background-color: #2979ff;
+}
+
+.edit-article-container a {
+  display: inline-block;
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.edit-article-container a:hover {
+  background-color: #e6e6e6;
+}
+
+.edit-article-container .actions,
+.edit-article-container .back-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.edit-article-container .back-link {
+  margin-right: 10px;
+}
+
+.edit-article-container .back-link a {
+  display: inline-block;
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease-out;
+}
+
+.edit-article-container .back-link a:hover {
+  background-color: #e6e6e6;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.delete-form {
+  display: inline-block;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  display: inline-block;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #e6e6e6;
+}
+
+.article-metadata {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.article-metadata .author,
+.article-metadata .date {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+.article-content {
+  margin-bottom: 20px;
+  text-align: justify;
+}

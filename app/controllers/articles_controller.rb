@@ -1,9 +1,5 @@
 class ArticlesController < ApplicationController
 
-  def index
-    @articles = Article.all
-  end
-
   def show
     @article = Article.find(params[:id])
   end
@@ -21,17 +17,14 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
-    @article = Article.find(params[:id])
-  end
-
   # search
   def index
-    if params[:query].present?
-        @articles = Article.where("title LIKE ?", "%#{params[:query]}%")
-    else
-        @articles = Article.all
-    end
+    @articles = Article.search(params[:query])
+  end
+
+  # edit/update an article
+  def edit
+    @article = Article.find(params[:id])
   end
 
   def update

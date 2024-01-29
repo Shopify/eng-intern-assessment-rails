@@ -1,0 +1,29 @@
+<div class="edit-article-container">
+  <h1>Edit Article</h1>
+
+  <%= form_with(model: @article, local: true) do |form| %>
+    <% if @article.errors.any? %>
+      <div id="error_explanation">
+        <!-- ... error messages ... -->
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.text_area :content %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Update Article", class: 'button' %>
+    </div>
+  <% end %>
+
+  <div class="back-link">
+    <%= link_to 'Back', articles_path, class: 'button' %>
+  </div>
+</div>
