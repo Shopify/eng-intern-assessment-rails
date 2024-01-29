@@ -1,17 +1,12 @@
-<h1>Articles</h1>
+<!-- Header and Search Bar -->
+<div class="flex flex-col md:flex-row justify-between items-center mb-6">
+  <h1 class="text-4xl font-bold mb-4 md:mb-0">Encyclopedia</h1>
+  <%= render 'search_form' %>
+</div>
 
-<%= form_with(url: articles_path, method: :get, local: true) do |form| %>
-  <%= form.text_field :search, placeholder: "Search articles" %>
-  <%= form.submit "Search" %>
-<% end %>
-
-<%= link_to 'New Article', new_article_path %>
-
-<ul>
+<!-- Articles List with Boxes -->
+<div class="space-y-4">
   <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article) %>
-      <p><%= article.content %></p>
-    </li>
+    <%= render partial: 'article', locals: { article: article } %>
   <% end %>
-</ul>
+</div>
