@@ -97,7 +97,8 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'date is properly intialized' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet')
-    assert_equal Date.today, article.date
+    # Date.current vs. Date.today comparison here: https://stackoverflow.com/questions/6635363/what-is-the-difference-between-date-current-and-date-today
+    assert_equal Date.current, article.date
   end
 
   # I was going to use this for a feature, but ultimately decided against it.
