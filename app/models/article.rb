@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-    #finds substring in title or content fields or author   
+    #finds substring in title or content or author fields   
     def self.search(word)
         article_list = []
         Article.find_each do |article|
