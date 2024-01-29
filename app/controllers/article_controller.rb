@@ -36,6 +36,11 @@ class ArticlesController < ApplicationController
 
   end
 
+  def search
+    @articles = Article.search(params[:query])
+    render json: @articles
+  end
+
   private
     def article_params
       params.require(:article).permit(:title, :content, :author, :date)
