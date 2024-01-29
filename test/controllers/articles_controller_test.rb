@@ -1,10 +1,10 @@
-# Newly generated test cases - does not rely on database seeding
+# New test cases - does not rely on database seeding
 
 require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @article = Article.new(author: 'Test Author', content: 'Test Content', date: Date.today, title: 'Test Title')
+    @article = Article.new(author: 'Test1', content: 'Testcontent', date: Date.today, title: 'Testtitle')
     @article.save
   end
 
@@ -13,17 +13,17 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_article_url
-    assert_response :success
-  end
-
   test "should create article" do
     assert_difference("Article.count") do
-      post articles_url, params: { article: { author: 'New Author', content: 'New Content', date: Date.today, title: 'New Title' } }
+      post articles_url, params: { article: { author: 'Newtest', content: 'Newcontent', date: Date.today, title: 'Newtitle' } }
     end
 
     assert_redirected_to article_url(Article.last)
+  end
+
+  test "should get new" do
+    get new_article_url
+    assert_response :success
   end
 
   test "should show article" do
@@ -37,7 +37,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update article" do
-    patch article_url(@article), params: { article: { author: 'Updated Author', content: 'Updated Content', date: Date.today, title: 'Updated Title' } }
+    patch article_url(@article), params: { article: { author: 'update1', content: 'updatecont', date: Date.today, title: 'updatetitle' } }
     assert_redirected_to article_url(@article)
   end
 
@@ -49,7 +49,6 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to articles_url
   end
 
-  # My test cases
   test "should show error for non-existent article" do
     get article_url(-1) # -1 is not a valid ID
     assert_response :not_found
