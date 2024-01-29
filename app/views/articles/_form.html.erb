@@ -1,0 +1,12 @@
+<%= form_with model: @article, builder: LabelledFormBuilder do |form| %>
+  <% ArticlesHelper::CREATE_NEW_ARTICLE_FIELDS.each do |field| %>
+    <div>
+      <%= form.send(field[:input_field], field[:attribute]) %>
+      <%= form.render_field_with_errors(field[:attribute]) %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
