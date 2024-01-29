@@ -1,14 +1,16 @@
-<nav>
-  <ul>
-    <li><%= link_to 'Home', root_path %></li>
-    <li><%= link_to 'Search', search_articles_path %></li>
-  </ul>
-</nav>
-<h1><%= @article.title %></h1>
-<p><%= @article.content %></p>
-<p><%= @article.author %></p>
-<p><%= @article.date %></p>
+<body>
+  <nav>
+    <ul>
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Search', search_articles_path %></li>
+    </ul>
+  </nav>
+  <h1><%= @article.title %></h1>
+  <p><%= @article.content %></p>
+  <p><%= @article.author %></p>
+  <p><%= @article.date %></p>
 
-<!-- display links to edit, and go back -->
-<%= link_to 'Edit', edit_article_path(@article) %> | 
-<%= link_to 'Back', articles_path %>
+  <!-- links to go back -->
+  <%= link_to 'Edit', edit_article_path(@article), class: 'btnIndex submit' %> | 
+  <%= link_to 'Back', articles_path, class: 'btnIndex submit' %>
+</body>

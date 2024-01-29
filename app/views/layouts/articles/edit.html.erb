@@ -1,11 +1,13 @@
-<nav>
-  <ul>
-    <li><%= link_to 'Home', root_path %></li>
-    <li><%= link_to 'Search', search_articles_path %></li>
-  </ul>
-</nav>
-<h1>Articles</h1>
-<h1>Edit Article</h1>
-
-<%= render 'form', article: @article %>
-<%= link_to 'Back', articles_path %>
+<body>
+  <nav>
+    <ul>
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Search', search_articles_path %></li>
+    </ul>
+  </nav>
+    <h1>Articles</h1>
+    <h1>Edit Article</h1>
+  <!-- Form partial view render  -->
+  <%= render 'form', article: @article %>
+  <%= link_to 'Back', articles_path, class: 'btnIndex submit'%>
+</body>

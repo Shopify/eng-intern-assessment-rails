@@ -14,80 +14,154 @@
  *= require_self
  */
  body {
-    font-family: 'Arial', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  color: #232625;
+  background-color:#BFBFB8 ;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  overflow: hidden;
+  background-color:#35403A;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li a {
+  display: block;
+  color: #BFBFB8;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border: #000;
+}
+
+nav ul li a:hover {
+  background-color: #1c1d1c;
+}
+
+h1 {
+  color: #35403A;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.table {
+  width: 100%;
+  background-color:#A4A69C;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: left;
+  color:#35403A;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+/* 
+Those buttons were inspired from button 54 & 55 on 
+https://getcssscan.com/css-buttons-examples
+*/
+/* The .btnForm class is applied to a button element. It styles the button with a specific font, color, border, padding, and other properties. */
+.btnForm {
+  /* Sets the font of the text inside the button */
+  font-family: Georgia, 'Times New Roman', Times, serif; 
+  font-size: 16px; /* Sets the size of the font */
+  letter-spacing: 2px; /* Increases the space between letters */
+  text-decoration: none; /* Removes any text decoration */
+  text-transform: uppercase; /* Transforms the text to uppercase */
+  color:#35403A; /* Sets the color of the text inside the button */
+  cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
+  border: 3px solid; /* Sets the border of the button to a solid 3px border */
+  padding: 0.25em 0.5em; /* Adds padding inside the button */
+  /* Applies a box shadow to the button */
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px; 
+  position: relative; /* Sets the position of the button to relative */
+  user-select: none; /* Prevents the user from selecting the text inside the button */
+  /* Prevents the user from selecting the text inside the button in WebKit browsers */
+  -webkit-user-select: none; 
+  touch-action: manipulation; /* Controls how touch events are handled */
+}
+
+/* The .btnForm:active class is applied when a button with the .btnForm class is clicked. 
+  It changes the box shadow and position of the button. */
+.btnForm:active {
+  box-shadow: 0px 0px 0px 0px; /* Removes the box shadow */
+  top: 5px; /* Moves the button 5px down */
+  left: 5px; /* Moves the button 5px to the right */
+}
+
+/* The @media (min-width: 768px) rule applies when the viewport is 768px or wider. 
+  It changes the padding of the .btnForm class. */
+@media (min-width: 768px) {
+  .btnForm {
+    padding: 0.25em 0.75em; /* Increases the horizontal padding inside the button */
   }
-  
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  nav ul li {
-    float: left;
-  }
-  
-  nav ul li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  nav ul li a:hover {
-    background-color: #111;
-  }
-  
-  h1 {
-    color: #333;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .table th,
-  .table td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    vertical-align: middle;
-  }
-  
-  .btn {
-    text-decoration: none;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .btn-action {
-    margin: 5px;
-    min-width: 80px;
-  }
-  
-  .btn-info {
-    background-color: #17a2b8;
-  }
-  
-  .btn-warning {
-    background-color: #ffc107;
-  }
-  
-  .btn-danger {
-    background-color: #dc3545;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-  }
-  
-  .btn-action:hover {
-    opacity: 0.8;
-  }
+}
+
+
+.btnIndex {
+  align-self: center; /* Centers the button within its container */
+  background-color: #fff; /* Sets the background color of the button to white */
+  background-image: none; /* Ensures that no background image is applied */
+  background-position: 0 90%; /* Positions the background image, if any */
+  background-repeat: repeat no-repeat; /* Sets how the background image should repeat */
+  background-size: 4px 3px; /* Sets the size of the background image */
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px; /* Gives the button a unique border radius */
+  border-style: solid; /* Sets the style of the border to solid */
+  border-width: 2px; /* Sets the width of the border to 2 pixels */
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px; /* Applies a box shadow to the button */
+  /* Includes the padding and border in the element's total width and height */
+  box-sizing: border-box; 
+  color: #41403e; /* Sets the color of the text inside the button */
+  cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
+  display: inline-block; /* Allows the button to sit inline with other elements */
+  font-family: Neucha, sans-serif; /* Sets the font of the text inside the button */
+  font-size: 1rem; /* Sets the size of the font */
+  line-height: 23px; /* Sets the height of a line of text */
+  outline: none; /* Removes the outline that appears when the button is focused */
+  padding: .75rem; /* Adds padding inside the button */
+  text-decoration: none; /* Removes any text decoration */
+  transition: all 235ms ease-in-out; /* Adds a transition effect to all properties */
+  border-bottom-left-radius: 15px 255px; /* Sets the bottom left border radius */
+  border-bottom-right-radius: 225px 15px; /* Sets the bottom right border radius */
+  border-top-left-radius: 255px 15px; /* Sets the top left border radius */
+  border-top-right-radius: 15px 225px; /* Sets the top right border radius */
+  user-select: none; /* Prevents the user from selecting the text inside the button */
+  /* Prevents the user from selecting the text inside the button in WebKit browsers */
+  -webkit-user-select: none; 
+  touch-action: manipulation; /* Controls how touch events are handled */
+}
+
+/* 
+  The .btnIndex:hover class is applied when the user hovers over a button with the .btnIndex class.
+   It changes the box shadow and applies a transform. 
+*/
+.btnIndex:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px; /* Changes the box shadow */
+  transform: translate3d(0, 2px, 0); /* Moves the button slightly on hover */
+}
+
+/* The .btnIndex:focus class is applied when a button with the .btnIndex class is focused. It changes the box shadow. */
+.btnIndex:focus {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px; /* Changes the box shadow */
+}
+
+.danger {
+  background-color: #ff0000; /* Red */
+}
+
+.submit {
+  background-color: #35403A; /* Green */
+}
+
+.info {
+  background-color: #6262c5; /* Blue */
+}
