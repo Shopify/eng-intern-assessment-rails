@@ -1,5 +1,15 @@
 <h1>Articles</h1>
 
+<%= link_to "New Article", new_article_path %>
+
+<h3>Search</h3>
+
+<%= form_tag articles_path, :method => "get" do %>
+  <%= label_tag(:search, "Search for an article...") %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <ul>
   <% @articles.each do |article| %>
     <li>
@@ -7,5 +17,3 @@
     </li>
   <% end %>
 </ul>
-
-<%= link_to "New Article", new_article_path %>
