@@ -11,19 +11,16 @@ class Article < ApplicationRecord
   validates :author, presence: true
   validates :date, presence: true
 
-  # Returns all articles that match the search term.
   def self.search(search_term)
     where('title LIKE ? OR content LIKE ?', "%#{search_term}%", "%#{search_term}%")
   end
 
   private
 
-  # Sets the default date to the current time.
   def set_default_date
     self.date ||= Time.now
   end
 
-  # Sets the default author to 'Anonymous'.
   def set_default_author
     return unless author.nil? || author.empty?
 
