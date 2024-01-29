@@ -1,0 +1,16 @@
+<!--The view for showing encyclopedia articles-->
+<h1><%= @article.title %></h1>
+<!-- Render out the author name if it is present -->
+<% if @article.author? %>
+  <span style="display:block">By: <%= @article.author %></span>
+<% end %>
+<p><%= @article.content %></p>
+<span style="display:block">Last updated: <%= @article.date %></span>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Delete", article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Confirm Deletion?"
+  } %></li>
+</ul>
