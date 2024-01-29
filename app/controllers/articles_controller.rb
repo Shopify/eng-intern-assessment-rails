@@ -14,6 +14,11 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    if not @article.date
+      @article.date = Date.today
+    if @article.author == ""
+      @article.author = "Anonymous"
+    end
 
     if @article.save
       redirect_to @article

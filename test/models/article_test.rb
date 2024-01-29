@@ -21,6 +21,8 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'displays the article metadata correctly' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    print(Date.yesterday)
+    print(article.date)
     assert_equal 'John Doe', article.author
     assert_equal Date.today, article.date
   end
