@@ -1,4 +1,7 @@
 class Article < ApplicationRecord
+    validates :title, presence: true
+    validates :content, presence: true
+    
     #finds substring in title or content or author fields   
     def self.search(word)
         article_list = []
