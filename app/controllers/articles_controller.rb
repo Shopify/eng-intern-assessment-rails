@@ -1,17 +1,17 @@
 class ArticlesController < ApplicationController
-  def index
+  def index # get all articles
     @articles = Article.all
   end
 
-  def show
+  def show # show a single article
     @article = Article.find(params[:id])
   end
 
-  def new
+  def new # initialize a new article
     @article = Article.new
   end
 
-  def create
+  def create # post a new article to the DB
     @article = Article.new(article_params)
 
     if @article.save
@@ -21,11 +21,11 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
+  def edit # find an article in the DB
     @article = Article.find(params[:id])
   end
 
-  def update
+  def update # update an existing article
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
@@ -35,14 +35,14 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy # delete an existing article
     @article = Article.find(params[:id])
     @article.destroy
 
     redirect_to root_path, status: :see_other
   end
 
-  def search # GET /articles/search
+  def search # search for articles
     if params[:query].present?
       @articles = Article.search(params[:query])
     else
