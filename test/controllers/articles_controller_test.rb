@@ -2,7 +2,7 @@ require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @article = articles(:one)
+    @article = Article.create(title: "Article One", content: "Lorem ipsum dolor sit amet")
   end
 
   teardown do
