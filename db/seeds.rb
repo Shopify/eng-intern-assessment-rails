@@ -59,7 +59,7 @@ Article.create!(
 
 Article.create!(
   title: 'Agrees to disagree',
-  content: content: 'Don\'t you agree? Yeah, I don\t agree',
+  content: 'Don\'t you agree? Yeah, I don\'t agree',
   author: 'Magnus Carlsen',
   date: Date.today - 10.days
 )

@@ -53,3 +53,26 @@ Here are some resources that may be helpful during your internship project:
 - [Ruby Style Guide](https://rubystyle.guide/) - A community-driven Ruby coding style guide to ensure consistent and readable code.
 
 - [Git Documentation](https://git-scm.com/doc) - Official documentation for Git, the version control system used in this project.
+
+## Scope of the Technical Assessment
+* Create an encyclopedia with the capabilities to allow endusers to create, read, edit, and delete articles
+* Assist endusers to search for relevant articles within the database
+* Pass tests, implementing CRUD actions on a controller and creating views to render a graphical user interface
+
+## Implementation
+* A homepage that lists all the articles
+* Basic CRUD functionality following MVC principles and Ruby on Rails standards
+* A search bar that searched for relevant articles by title and the article content
+
+## Testing
+* Unit testing via /test/models/article_test.rb
+* Testing functionality through the graphical user interface
+
+## Getting Started
+1. `bundle install` install necessary dependencies
+2. `bin/rails db:migrate` create the database
+3. `bin/rails test` enter the test environment to view all the tests that passed
+4. `bin/rails server` start the web server to interact with the GUI @ http://localhost:3000
+
+## Additional Comments
+Thank you for taking the time to read my application. This is my first time working with Ruby, but I had a lot of fun doing so! Looking forward to speaking with the team. Cheers!

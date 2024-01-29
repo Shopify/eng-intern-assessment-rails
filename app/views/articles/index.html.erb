@@ -1,13 +1,21 @@
 <%# Homepage for the encyclopedia. Articles are stored within a table, with each column being the Article fields %>
-<h1>The Encyclopedia</h1>
-<br> 
-<%= link_to "New Article", new_article_path %>
-<h2>Articles</h1>
+<h1 id="main_title">The Encyclopedia</h1>
 
-<%= form_tag articles_path, method: :get do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search by name or content" %>
-  <%= submit_tag "Search" %>
-<% end %>
+<br> 
+
+<%= link_to "New Article", new_article_path %>
+
+<br>
+
+<h2 id="articles_title" >Articles</h2>
+
+<div class="text-center mt-8">
+  <%= form_tag articles_path, method: :get, class: "mx-auto max-w-md" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search by name or content", class: "p-2 border rounded w-full", id: "search_bar" %>
+    <%= submit_tag "Search", class: "bg-blue-500 text-white px-4 py-2 rounded-md mt-2 w-full", id: "search_submit" %>
+  <% end %>
+</div>
+
 
 <table>
   <thead>

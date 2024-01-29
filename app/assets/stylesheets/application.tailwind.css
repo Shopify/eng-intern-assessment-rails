@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
+#main_title {
+  @apply text-3xl;
+  text-align:center;
+}
+#article_title {
+  @apply text-2x1;
+}
+h1 {
+  @apply text-3x1;
+}
+h2 {
+  @apply text-2xl;
+}
+h3 {
+  @apply text-xl;
+}
+a {
+  @apply text-blue-600 underline;
+  display:block
+}
+
+table {
+  border-spacing: 20px 0;
+  border-collapse: separate;
+}
+
+#search_submit {
+  color: blue;
+}
+
+.button {
+  color: blue;
+}
