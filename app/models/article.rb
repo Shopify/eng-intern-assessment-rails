@@ -4,9 +4,9 @@
 class Article < ApplicationRecord
   # Defined search method, simple include search trying to match by title or content, I would change the name
   # for a less generic name (WIP)
-  def self.search(this_thing)
+  def self.search(substring)
     @selected_articles = Article.all.select do |article|
-      article['title'].include?(this_thing) || article['content'].include?(this_thing)
+      article['title'].include?(substring) || article['content'].include?(substring)
     end
   end
 end
