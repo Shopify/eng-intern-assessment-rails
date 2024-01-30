@@ -21,6 +21,10 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def article_params
+    params.require(:article).permit(:title, :content, :author, :date)
+  end
+
   def edit
     @article = Article.find(params[:id])
   end
@@ -36,7 +40,14 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
-    redirect_to articles_url, notice: 'Article was successfully destroyed.'
+
+    begin
+      @article.destroy!
+      flash[:notice] = 'Article was successfully destroyed.'
+      redirect_to articles_path
+    rescue ActiveRecord::RecordNotDestroyed
+      flash[:alert] = 'Article could not be destroyed.'
+      redirect_to article_path(@article)
+    end
   end
 end
