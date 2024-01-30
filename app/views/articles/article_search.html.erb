@@ -5,7 +5,6 @@
   <%= form.submit 'Search' %>
 <% end %>
 
-<br>
 <%= form_with(url: article_search_path, method: :get) do |form| %>
     <%= form.submit 'Clear Search', name: 'clear_search' %>
 <% end %>

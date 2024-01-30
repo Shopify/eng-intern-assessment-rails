@@ -1,0 +1,59 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8; /* Set background color */
+    color: #333; /* Set text color */
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  input[type="submit"] {
+    background-color: #007bff; /* Set button background color */
+    color: #fff; /* Set button text color */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3; /* Change button color on hover */
+  }
+  
+  #search-results {
+    margin-top: 20px;
+  }
+  
+  #search-results p {
+    margin-bottom: 10px;
+  }
+  
+  #search-results a {
+    color: #007bff; /* Set link color */
+    text-decoration: none;
+  }
+  
+  #search-results a:hover {
+    text-decoration: underline;
+  }
+  
+  #no-articles-found {
+    color: #888; /* Set color for the message when no articles are found */
+  }
+  

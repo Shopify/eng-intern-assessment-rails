@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+ nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1in;
+    padding: 0 20px; /* Add padding for better spacing, adjust as needed */
+  
+    /* Optional: If you want a background color for the nav bar */
+    background-color: #f0f0f0; /* Adjust color as needed */
+  }
+  
+  #hiddenLink {
+    /* Styling for the Article Encyclopedia link */
+    text-decoration: none;
+  }
+  
+  .nav-button {
+    /* Styling for all other nav buttons */
+    margin: 0 10px; /* Add margin for better spacing, adjust as needed */
+    text-decoration: none;
+  }
+  
+  .larger-button {
+    /* Styling for the larger Article Encyclopedia link */
+    font-size: 1.2em; /* Adjust font size as needed */
+    text-decoration: none;
+  }
