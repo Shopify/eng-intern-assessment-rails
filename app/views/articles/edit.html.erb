@@ -1,2 +1,7 @@
-<h1>Articles#edit</h1>
-<p>Find me in app/views/articles/edit.html.erb</p>
+<div class="navbar">
+    <%= render 'layouts/navbar' %>
+</div>
+
+<h1 style="margin:2rem 2rem">Edit Article</h1>
+
+<%= render 'form', article: @article %>
