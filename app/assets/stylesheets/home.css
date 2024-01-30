@@ -1,0 +1,29 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8; /* Set background color */
+    color: #333; /* Set text color */
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    color: #007bff; /* Set heading color */
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  a {
+    color: #007bff; /* Set link color */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

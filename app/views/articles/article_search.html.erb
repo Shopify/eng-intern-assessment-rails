@@ -1,0 +1,25 @@
+<h1>Article Search</h1>
+
+<%= form_with(url: article_search_path, method: :get) do |form| %>
+  <%= form.text_field :query, placeholder: 'Search articles...' %>
+  <%= form.submit 'Search' %>
+<% end %>
+
+<%= form_with(url: article_search_path, method: :get) do |form| %>
+    <%= form.submit 'Clear Search', name: 'clear_search' %>
+<% end %>
+
+<% if params[:query].present? %>
+  <div id="search-results">
+    <% if @search_results.any? %>
+      <% @search_results.each do |article| %>
+        <%= render article %>
+        <p>
+          <%= link_to "Show this article", article %>
+        </p>
+      <% end %>
+    <% else %>
+      <p>No articles found.</p>
+    <% end %>
+  </div>
+<% end %>

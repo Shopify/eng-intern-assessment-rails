@@ -1,6 +1,11 @@
 source "https://rubygems.org"
 
-ruby "3.2.3"
+# Temporary fix: Could not instal ruby 3.2.3
+# Using ruby 3.3.0
+ruby ">=3.2.3"
+
+# Added devise for User model and authentication
+gem 'devise'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
