@@ -78,11 +78,16 @@ GEM
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    autoprefixer-rails (10.4.16.0)
+      execjs (~> 2)
     base64 (0.2.0)
     bigdecimal (3.1.6)
     bindex (0.8.1)
     bootsnap (1.17.1)
       msgpack (~> 1.2)
+    bootstrap (5.3.2)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 2.11.8, < 3)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -103,6 +108,7 @@ GEM
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
+    execjs (2.9.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -160,6 +166,7 @@ GEM
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
+    popper_js (2.11.8)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -285,6 +292,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  bootstrap (~> 5.0)
   capybara
   debug
   importmap-rails

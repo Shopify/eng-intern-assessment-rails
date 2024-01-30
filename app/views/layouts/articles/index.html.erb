@@ -1,0 +1,16 @@
+<div class="container">
+    <h1 class="my-4">Articles</h1>
+
+    <% @articles.each do |article| %>
+        <article class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= link_to article.title, article_path(article), class: 'text-decoration-none' %>
+                </h5>
+                <%= link_to 'Read More', article_path(article), class: 'btn btn-primary mt-2' %>
+            </div>
+        </article>
+    <% end %>
+
+    <%= link_to 'New Article', new_article_path, class: 'btn btn-success mt-4' %>
+</div>
