@@ -1,0 +1,10 @@
+<!-- HTML page for editing the current Article -->
+<h1> Edit Article</h1>
+
+<!-- Form from _form.html.erb to edit the contents of the Article -->
+<%= render partial: "form", locals: {article: @article}  %>
+
+<!-- Button to delete the current Article -->
+<%= button_to "Delete", @article, method: :delete, data: {turbo_confirm: "Do you want to delete the article?"} %>
+<!-- Button to go back the current Article -->
+<%= button_to 'Back to Article', @article, method: :get, class: 'btn btn-secondary' %>
