@@ -14,4 +14,7 @@ class ArticlesController < ApplicationController
     print "SEARCH: " + @@query_string
     @articles = Article.search(@@query_string)
   end
+  def show
+    @article = Article.find(params[":id"])
+  end
 end
