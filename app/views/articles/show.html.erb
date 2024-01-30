@@ -3,3 +3,5 @@
 <h2>Title: <%= @article.title%></h2>
 <p><%= @article.content%></h2>
 <p><i>Time Created: <%= @article.created_at%></i></h2>
+<p><i>Time Last Updated: <%= @article.updated_at%></i></h2>
+<%= link_to "<button>Edit this article</button>".html_safe, edit_article_path(@article)%>
