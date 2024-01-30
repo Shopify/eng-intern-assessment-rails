@@ -1,5 +1,4 @@
 module ApplicationHelper
-
     # Frontend helper for compiling author and/or date values if present
     def format_value(author_value, date_value)
         if !author_value.nil? && !author_value.empty? && !date_value.nil?
