@@ -1,10 +1,14 @@
 <%# A page that displays the important information about a single article %>
 <h1>article number <%=@article.id%></h1>
-<h2>Title: <%= @article.title%></h2>
+<h2><%= @article.title%></h2>
 <p><%= @article.content%></h2>
 <p><i>Time Created: <%= @article.created_at%></i></h2>
 <p><i>Time Last Updated: <%= @article.updated_at%></i></h2>
 <ul>
+    <li>
+        <%= link_to "<button>Return home</button>".html_safe, '/'%>
+    </li>
+
     <li>
         <%= link_to "<button>Edit this article</button>".html_safe, edit_article_path(@article)%>
     </li>
