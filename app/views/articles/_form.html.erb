@@ -9,7 +9,7 @@
 
   <div>
     <%= form.label :author %><br>
-    <%= form.text_area :author %><br>
+    <%= form.text_field :author %><br>
     <% article.errors.full_messages_for(:author).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -32,10 +32,9 @@
   </div>
 
   <div style="padding-top:10px;">
-    <%= form.submit %>
-  </div>
-  
-  <div style="padding-top:10px;">
-    <li><%= link_to "Return", root_path %></li>
+    <table>
+        <td> <%= form.submit %> </td>
+        <td> <button type="button"><%= link_to "Back", :back, style: "text-decoration:none;color:#000"%></button> </td>
+    </table>
   </div>
 <% end %>

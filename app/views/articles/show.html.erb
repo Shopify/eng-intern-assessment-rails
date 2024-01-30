@@ -5,11 +5,13 @@
 
 <p><%= @article.content %></p>
 
-<ul>
-  <li><%= link_to "Home", root_path %></li>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
+<table>
+<tr>
+  <td><button type="button"><%= link_to "Home", root_path, style: "text-decoration:none;color:#000" %></button></td>
+  <td><button type="button"><%= link_to "Edit", edit_article_path(@article), style: "text-decoration:none;color:#000" %></button></td>
+  <td><button type="button"><%= link_to "Destroy", article_path(@article), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+                  }, style: "text-decoration:none;color:#000" %></button></td>
+</tr>
+</table>

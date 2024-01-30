@@ -1,10 +1,11 @@
 <h1>Encyclopedia</h1>
 
 <%= form_tag "/articles", method: "GET" do %>
-    <%= text_field_tag :search, params[:search] %>  <%= submit_tag "Search" %>
+    <%= text_field_tag :search, params[:search] %>  <%= submit_tag "Search" %> <button type="button"><%= link_to "Clear", root_path, style: "text-decoration:none;color:#000" %></button>
 <% end %>
 
-<ul>
+<h4 style="margin-bottom:0px;">Articles</h4>
+<ul style="list-style-type: none;margin-top:2px;">
   <% @articles.each do |article| %>
     <li>
       <%= link_to article.title, article %>
@@ -12,4 +13,4 @@
   <% end %>
 </ul>
 
-<%= link_to "Add Entry", new_article_path %>
+<button type="button"> <%= link_to "Add Entry", new_article_path, style: "text-decoration:none;color:#000" %> </button>
