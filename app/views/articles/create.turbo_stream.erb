@@ -1,0 +1,5 @@
+<%= turbo_stream.append "articles" do%>
+  <%= render 'articles/article', article: @article%>
+<% end %>
+
+<%= turbo_stream.update Article.new, '' %>
