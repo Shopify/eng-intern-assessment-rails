@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/articles", to: "articles#index"
   root "articles#index"
   get "/search", to: "articles#search"
+  post "/submit_query", to: "articles#submit_query"
 
   # Defines the root path route ("/")
   # root "posts#index"

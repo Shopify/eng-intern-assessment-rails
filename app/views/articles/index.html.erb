@@ -1,4 +1,10 @@
-<h1>HELLO RAILS</h1>
+<h1>Shopify Internship assessment - Encyclopedia!!</h1>
+
+<h2>Search for articles: </h2>
+<form action="/submit_query" method="post">
+    <input type="text" value="" name="query_string" />
+    <button type="submit">Submit</button>
+</form>
 
 <ul>
     <% @articles.each do |article| %>
