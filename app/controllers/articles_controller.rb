@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  
+
   # gathers all articles for use in index.html.erb
   def index
     @articles = Article.all
