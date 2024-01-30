@@ -7,9 +7,9 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create article" do
-    assert_difference('Article.count') do
-      post articles_url, params: { article: {title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe'}}
-    end
+    assert_equal 0, Article.count
+    post articles_url, params: { article: {title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe'}}
+    assert_equal 1, Article.count
     assert_redirected_to article_path(Article.last)
   end
 
