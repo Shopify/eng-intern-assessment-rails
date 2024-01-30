@@ -2,7 +2,12 @@ class ArticlesController < ApplicationController
   
   # GET method to get all articles 
   def index
-    @articles = Article.all
+    # search an article by using the search method in the Article model
+    if params[:search].present?
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
 
   # GET method for a new article
