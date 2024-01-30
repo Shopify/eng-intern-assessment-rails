@@ -1,0 +1,50 @@
+<link rel="stylesheet"   href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<div class="container">
+  <div class="row justify-content-center">
+    <h4 class="mt-4 display-4">Articles Home</h4>
+  </div>
+  <%= link_to 'Create Article', new_article_path %>
+  <body>
+  <form action="/search">
+    <input placeholder="Search" name="key" type="text">
+    <button type="submit">Search</button>
+  </form>
+  <%= yield %>
+</body>
+
+  <% if @articles.present? %>
+    <div class="row justify-content-center">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Author</th>
+            <th scope="col">Date</th>
+            <th scope="col" colspan="3">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @articles.each do |article| %>
+            <tr>
+              <td><%= article.title %></td>
+              <td><%= article.content %></td>
+              <td><%= article.author %></td>
+              <td><%= article.date %></td>
+              <td><%= link_to 'Show', article_path(article.id) %></td>  
+              <td><%= link_to 'Edit', edit_article_path(article.id) %></td>  
+              <td><%= link_to 'Delete',
+              article_path(article.id),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete this article?" } %></td>          
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="p-3 mb-2 bg-light text-dark">
+      <span class="text-info font-weight-bold">Welcome! </span>
+      <span class="text-info">No articles available. Please create one.</span>
+    </div>
+  <% end %>
+</div>

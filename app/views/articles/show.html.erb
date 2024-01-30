@@ -1,0 +1,28 @@
+<link rel="stylesheet"   href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<div class="container">
+  <div class="row justify-content-center">
+    <h4 class="mt-4 mb-4 display-4">Show details of article <%= @article.id %></h4>
+  </div>
+  <div class="row justify-content-center">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Title:</th>
+          <td><%= @article.title %></td>
+        </tr>
+        <tr>
+          <th>Content:</th>
+          <td><%= @article.content %></td>
+        </tr>
+        <tr>
+          <th>Author:</th>
+          <td><%= @article.author %></td>
+        </tr>
+        <tr>
+          <th>Date:</th>
+          <td><%= @article.date %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
