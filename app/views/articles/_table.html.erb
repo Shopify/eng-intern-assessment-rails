@@ -1,0 +1,24 @@
+<table id="articles" class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th><%= link_to "Title", articles_path(sort: 'title') %></th>
+      <th><%= link_to "Author", articles_path(sort: 'author') %></th>
+      <th><%= link_to "Date Posted", articles_path(sort: 'date') %></th>
+    </tr>
+  </thead>
+
+  <% if @articles.present? %>  
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= link_to "#{article.title}", article %></td>
+        <td><%=article.author %></td>
+        <td><%=article.date %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="2">No articles found.</td>
+    </tr>
+  <% end %>
+
+</table>
