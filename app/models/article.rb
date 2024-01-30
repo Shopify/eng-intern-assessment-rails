@@ -4,10 +4,10 @@ class Article < ApplicationRecord
 
   #
   # return articles where title, content, or author contains the search term
-  # or return all articles if the search term is empty
+  # or return all articles if the search term is blank
   #
   def self.search(term)
-    if term.empty?
+    if term.blank?
       all
     else
       # use sanitized search term for query
