@@ -65,4 +65,48 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'fails to create article without title' do
+    article = Article.new(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+    assert_equal ["Title can't be blank"], article.errors.full_messages
+  end
+  
+  test 'fails to create article without content' do
+    article = Article.new(title: 'Sample Article')
+    assert_not article.valid?
+    assert_equal ["Content can't be blank"], article.errors.full_messages
+  end
+
+  test 'search is case-insensitive' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'lOrem IPSUM dOLOR SIT amet.')
+    results = Article.search('lorem ipsum')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+  
+  test 'search supports special characters' do
+    article = Article.create(title: 'S@mple Ärticl£', content: 'Lorem, ipsum. &%$#')
+    results = Article.search('S@mple Ärticl£')
+    assert_includes results, article
+  end
+  
+  test 'empty search returns no results' do
+    results = Article.search('')
+    assert_equal 0, results.count
+  end
+  
+  test 'search with non-string term raises error' do
+    assert_raises(ArgumentError) { Article.search(123) }
+  end
+  
+  test 'cannot create articles with duplicate titles' do
+    article1 = Article.create(title: 'Unique Title', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.new(title: 'Unique Title', content: 'Different content.')
+    assert_not article2.valid?
+    assert_equal ["Title has already been taken"], article2.errors.full_messages
+  end
+  
+  
 end
