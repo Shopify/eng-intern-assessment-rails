@@ -4,4 +4,16 @@
 <p><%= @article.content%></h2>
 <p><i>Time Created: <%= @article.created_at%></i></h2>
 <p><i>Time Last Updated: <%= @article.updated_at%></i></h2>
-<%= link_to "<button>Edit this article</button>".html_safe, edit_article_path(@article)%>
+<ul>
+    <li>
+        <%= link_to "<button>Edit this article</button>".html_safe, edit_article_path(@article)%>
+    </li>
+
+    <li>
+        <%= link_to "<button>Delete</button>".html_safe, article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure you want to delete this article??"
+                  }%>
+    </li>
+
+</ul>

@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
 
   # updates an article based on the user given parameters
   def update
-    @article = Article.new(params[:id])
+    @article = Article.find(params[:id])
 
     # If the article cannot be updated (i.e. edits are invalid), alert the user
     if @article.update(article_params)
@@ -44,6 +44,14 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # This method destroys the chosen article
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    # sends the user to the home page
+    redirect_to root_path status: :see_other
+  end
   # This method filters parameters pushed when a new article is created
   # This saves our app from some rudementary sql attacks
   private
