@@ -1,0 +1,10 @@
+<div class="container">
+  <h1><%= @article.title %></h1>
+
+  <p><%= @article.content %></p>
+
+  <p>Author: <%= @article.author %></p>
+  <p>Date: <%= @article.date %></p>
+
+  <%= link_to 'Back', articles_path, class: 'btn btn-outline-primary' %>
+</div>
