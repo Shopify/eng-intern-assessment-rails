@@ -1,0 +1,24 @@
+<!-- Display the title of the article -->
+<h1><%= @article.title %></h1>
+
+<!-- Display the author of the article -->
+<p>
+  <strong>Author:</strong>
+  <%= @article.author %>
+</p>
+
+<!-- Display the publication date of the article -->
+<p>
+  <strong>Date:</strong>
+  <%= @article.date %>
+</p>
+
+<!-- Display the content of the article -->
+<p>
+  <strong>Content:</strong>
+  <%= @article.content %>
+</p>
+
+<!-- Links for editing the article and returning to the articles list -->
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
