@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'articles/index'
+  get 'articles', to:"articles#index"
   get 'articles/create'
   get 'articles/display'
   get 'articles/edit'
