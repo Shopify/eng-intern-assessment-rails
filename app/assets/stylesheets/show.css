@@ -1,0 +1,26 @@
+/* Style the show page */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style article details */
+p {
+  margin-bottom: 10px;
+}
+
+/* Style the "Back" link */
+a.back-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4285f4;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+a.back-link:hover {
+  background-color: #1a73e8;
+}

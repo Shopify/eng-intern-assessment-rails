@@ -1,0 +1,9 @@
+<%= stylesheet_link_tag "show" %>
+
+<h1><%= @article.title %></h1>
+
+<p><strong>Author:</strong> <%= @article.author %></p>
+<p><strong>Date:</strong> <%= @article.date %></p>
+<p><strong>Content:</strong> <%= @article.content %></p>
+
+<%= link_to 'Back', articles_path, class: 'back-link' %>

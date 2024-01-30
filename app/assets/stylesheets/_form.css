@@ -1,0 +1,69 @@
+/* Form Styling */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#error_explanation {
+  color: red;
+}
+
+#error_explanation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Heading Styling */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Field Styling */
+.field {
+  margin-bottom: 15px;
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  textarea,
+  input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+}
+
+/* Actions Styling (submit button and "Back" link) */
+.actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+
+  .back-link {
+    padding: 10px 20px;
+    background-color: #4285f4;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+
+  input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+}
