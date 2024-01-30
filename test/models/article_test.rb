@@ -4,7 +4,7 @@ class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
-
+  
   test 'has search functionality' do
     assert_respond_to Article, :search
   end
