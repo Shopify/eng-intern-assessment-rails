@@ -1,0 +1,20 @@
+<h1>New Article</h1>
+
+<div>
+  <%= form_with(model: @article, local: true) do |form| %>
+    <div>
+      <%= form.label :title %>
+      <%= form.text_field :title, id: :article_title %>
+      <%= form.label :content %>
+      <%= form.text_area :content, id: :article_content %>
+      <%= form.label :author %>
+      <%= form.text_field :author, id: :article_author %>
+      <%= form.label :date %>
+      <%= form.date_field :date, id: :article_date %>
+
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'Back', articles_path, class: 'back-link' %>
