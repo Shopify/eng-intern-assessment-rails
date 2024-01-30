@@ -1,0 +1,36 @@
+<!-- creates a form to be used in creating and editing an article -->
+
+<%= form_with model: @article do |form| %>
+  <!-- check if there are any validation errors and display if they exist -->
+  <% if form.object.errors.any? %>
+    <div>
+      <% form.object.errors.full_messages.each do |message| %>
+        <div> <%= message %></div>
+      <%end %>
+    </div>
+  <% end %>
+
+  <!-- creating different fields for the article like title, author, date and content -->
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div>
+    <%= form.label :date_field %>
+    <%= form.text_field :date_field %>
+  </div>
+
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <!-- Button to submit the form -->
+  <%= form.button %>
+<% end %>

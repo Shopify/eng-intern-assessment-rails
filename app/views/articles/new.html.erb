@@ -1,0 +1,7 @@
+<!-- HTML page for creating a new Article -->
+<h1>Create an Article</h1>
+
+<!-- Form from _form.html.erb to create a new Article -->
+<%= render partial: "form", locals: {article: @article}  %>
+<!-- Button to go back the Articles (home page) -->
+<%= button_to 'Back to Articles', root_path, method: :get, class: 'btn btn-secondary' %>

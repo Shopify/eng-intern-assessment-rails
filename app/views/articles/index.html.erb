@@ -1,0 +1,19 @@
+<!-- Home Page for the Articles -->
+<h1> Encyclopedia </h1>
+
+<!-- Search form to filter articles based on a query -->
+<%= form_tag('articles/search', method: :get) do %>
+  <%= text_field_tag :query, params[:query], placeholder: 'Search articles...' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<!-- Displaying a list of articles -->
+<% @articles.each do |article|%>
+  <div>
+    <h2><%= link_to article.title, article %></h2>
+    <%= article.content %>
+  </div>
+<% end %>
+
+<!-- Button to navigate to the page for creating a new article -->
+<%= button_to 'Create Article', "/articles/new", method: :get, class: 'btn btn-secondary' %>

@@ -1,0 +1,20 @@
+<!-- Page to display the filtered Articles from the query search -->
+<h1>Search Results</h1>
+
+<!-- Check if there are any search results -->
+<% if @results.any? %>
+  <!-- Display the attributes of each article found -->
+  <% @results.each do |article| %>
+    <div>
+      <h2><%= link_to article.title, article %></h2>
+      <%= article.content %>
+    </div>
+  <% end %>
+
+  <!-- If no results, print the 'No results found' message -->
+<% else %>
+  <p>No results found.</p>
+<% end %>
+
+<!-- Button to navigate back to the articles(home page) -->
+<%= button_to 'Back to Articles', root_path, method: :get, class: 'btn btn-secondary' %>

@@ -1,0 +1,10 @@
+<!-- HTML page to display the selected article -->
+<!-- Display the attributes of the Article -->
+<h1><%= @article.title %> </h1>
+<%= @article.author %>
+<br><%= @article.date %>
+<br><%= @article.content %>
+
+<!-- Buttons for editing/deleting the article and navigating back to the articles list -->
+<%= button_to 'Edit/Delete', edit_article_path(@article), method: :get, class: 'btn btn-primary' %>
+<%= button_to 'Back to Articles', root_path, method: :get, class: 'btn btn-secondary' %>
