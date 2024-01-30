@@ -1,0 +1,37 @@
+<%= form_with model: @article do |form| %>
+  <div>
+    <%= form.label :title, "Article Title" %><br>
+    <%= form.text_field :title %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :content, "Article Content" %><br>
+    <%= form.text_area :content %><br>
+    <% @article.errors.full_messages_for(:content).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :author "Author" %><br>
+    <%= form.text_area :author %><br>
+    <% @article.errors.full_messages_for(:author).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :date "Date Authored"%><br>
+    <%= form.date_select :date, include_blank: true, start_year:1990, end_year: 2024 %><br>
+    <% @article.errors.full_messages_for(:date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

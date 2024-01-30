@@ -1,0 +1,14 @@
+<%= flash[:notice] %>
+<h1><%= @article.title %></h1>
+<h3><%= @article.author %></h3>
+<h4><%= @article.date %></h4>
+<p><%= @article.content %></p>
+
+<ul>
+    <li><%= link_to "Edit this article", edit_article_path(@article) %></li>
+    <li><%= link_to "Delete this article", article_path(@article), data: {
+        turbo_method: :delete, 
+        turbo_confirm: "Are you sure? Once deleted, this article cannot be recovered."
+    } %> </li>
+</ul>
+

@@ -1,0 +1,15 @@
+<%= flash[:notice] %>
+<h1>Encyclopedia</h1>
+<%= form_tag "/articles", method: "GET" do %>
+    <%= label_tag "Filter articles" %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search" %>
+<% end %>
+List of articles:
+<ul>
+    <% @articles.each do |article| %> 
+        <li>
+            <%= link_to article.title, article %>
+        </li>
+    <% end %>
+</ul>
