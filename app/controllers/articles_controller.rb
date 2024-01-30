@@ -3,6 +3,12 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  # searches for an article
+  def search
+    @articles = Article.where("title LIKE ? OR content LIKE ? OR author LIKE ?",
+     "%" + params[:q] + "%", "%" + params[:q] + "%", "%" + params[:q] + "%")
+  end
+
   # show a single article
   def show
     @article = Article.find(params[:id])

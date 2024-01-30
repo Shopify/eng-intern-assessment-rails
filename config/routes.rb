@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "articles#index"
 
+  # route for search
+  get "search", to:"articles#search"
+
   # resourceful routing - maps all conventional routes for Articles
   resources :articles
 end
