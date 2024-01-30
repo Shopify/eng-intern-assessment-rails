@@ -1,4 +1,7 @@
 <h1> <%= @article.title %> </h1>
+<% if @article.author.present? %>
+  <h3>by <%= @article.author %></h3>
+<% end %>
 <p> <%= @article.body %></p>
 
 <ul>

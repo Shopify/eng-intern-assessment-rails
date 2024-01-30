@@ -2,6 +2,12 @@
 <h2>Welcome to my Article manager</h2>
 
 <h3> Articles </h3>
+
+<%= form_tag(search_articles_path, method: "get", class: "form-inline my-2 my-lg-0") do %>
+  <%= text_field_tag(:query, params[:query], placeholder: "Search", class: "form-control mr-sm-2") %>
+  <%= submit_tag("Search", class: "btn btn-outline-success my-2 my-sm-0") %>
+<% end %>
+
 <ul>
   <% @articles.each do |article| %>
     <li>
