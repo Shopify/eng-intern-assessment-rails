@@ -13,3 +13,110 @@
  *= require_tree .
  *= require_self
  */
+
+.container {
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.new-article-button {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    padding: 10px 15px;
+    color: white;
+    background-color: #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.new-article-button:hover {
+    background-color: #0056b3;
+}
+
+
+.action-buttons a {
+    margin-right: 10px;
+    text-decoration: none;
+    padding: 5px 10px;
+    color: white;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.action-buttons a:hover {
+    background-color: #45a049;
+}
+
+.action-buttons a, .action-buttons form button {
+    margin-right: 10px;
+    text-decoration: none;
+    padding: 5px 10px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.action-buttons form {
+    display: inline;
+}
+
+.action-buttons a:hover, .action-buttons form button:hover {
+    background-color: #45a049;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.action-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    padding: 10px 15px;
+    color: white;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #45a049;
+}
+
+.actions {
+    margin-top: 20px;
+}
+

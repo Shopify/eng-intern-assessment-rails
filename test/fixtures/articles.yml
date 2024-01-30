@@ -1,0 +1,11 @@
+one:
+  title: "Test Article 1"
+  content: 'Lorem ipsum dolor sit amet.'
+  author: "John Doe"
+  date: 2024-01-29
+
+two:
+  title: "Test Article 2"
+  content: 'Lorem ipsum dolor sit amet.'
+  author: "kaizenjpeg"
+  date: 2024-02-01
