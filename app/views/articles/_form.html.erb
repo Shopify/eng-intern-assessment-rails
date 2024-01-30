@@ -1,6 +1,7 @@
 <!-- Form used by both new.html.erb, edit.html.erb -->
 <%= form_with(model: article, local: true) do |form| %>
 
+  <!-- Display errors in case any occur -->
   <% if article.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -10,6 +11,8 @@
       </ul>
     </div>
   <% end %>
+
+  <!-- Article fields (title, author, content, date) below-->
 
   <div class="field">
     <%= form.label :title %>
