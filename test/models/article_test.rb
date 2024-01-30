@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # Clean database before each run to enable fixtures for other tests
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
