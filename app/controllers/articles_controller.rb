@@ -6,7 +6,8 @@ class ArticlesController < ApplicationController
   def create
   end
 
-  def display
+  def view
+    @article = Article.find(params[:id])
   end
 
   def edit

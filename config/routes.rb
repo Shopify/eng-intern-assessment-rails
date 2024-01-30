@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   get 'articles', to:"articles#index"
-  get 'articles/create'
-  get 'articles/display'
-  get 'articles/edit'
-  get 'articles/update'
-  get 'articles/destroy'
+  # get 'articles/new', to:"articles#create"
+  get 'articles/:id', to:"articles#view"
+  # get 'articles/edit', to:"articles#edit"
+  # get 'articles/update', to:"articles#update"
+  # get 'articles/destroy', to:"articles#destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
