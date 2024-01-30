@@ -1,0 +1,40 @@
+<%= form_with(model: article, local: true) do |form| %>  
+    <div style="margin:3rem 3rem">
+        <div class="field">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+        <% article.errors.full_messages_for(:title).each do |message| %>
+        <div class="error"><%= message %></div>
+        <% end %>
+        </div>
+
+        <div class="field">
+            <%= form.label :author %>
+            <%= form.text_field :author %>
+            <% article.errors.full_messages_for(:author).each do |message| %>
+            <div class="error"><%= message %></div>
+            <% end %>
+        </div>
+
+        <div class="field">
+            <%= form.label :content %>
+            <%= form.text_area :content %>
+            <% article.errors.full_messages_for(:content).each do |message| %>
+            <div class="error"><%= message %></div>
+            <% end %>
+        </div>
+
+        <div>
+            <%= form.label :date %><br>
+            <%= form.date_select :date %><br>
+            <% @article.errors.full_messages_for(:date).each do |message| %>
+            <div class="error"><%= message %></div>
+            <% end %>
+        </div>
+
+        <div class="actions" style="padding-top: 20px;">
+            <%= form.submit class: "btn-submit" %>
+        </div>
+    </div>
+  <% end %>
+  

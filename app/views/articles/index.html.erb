@@ -1,0 +1,41 @@
+<div class="navbar">
+    <%= render 'layouts/navbar' %>
+    <%= form_tag(articles_path, method: "get", class: "search-form") do %>
+      <%= search_field_tag :key, params[:key], placeholder: "Search Articles", class: "search-input" %>
+      <%= submit_tag "Search", class: "search-button" %>
+    <% end %>
+</div>
+
+<div style="margin: 2rem 5rem">
+    <% if @articles.any? %> 
+    <div class="container">
+    <table class="articles-table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @articles.each do |article| %>
+            <tr>
+            <td><%= link_to article.title, article_path(article) %></td>
+            <td><%= article.author %></td>
+            <td><%= article.date %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+    </div>
+    <% else %>
+    <div class="container">
+        <h3 class="no-articles-message">No articles found</h3>
+    </div>
+    <% end %>
+
+    <div class="new-article-link">
+    <%= link_to "New Article", new_article_path, class: "btn-new-article" %>
+    </div>
+</div>
+
