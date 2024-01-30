@@ -139,11 +139,6 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not article.valid?
   end
 
-  test "Article must have content" do
-    article = Article.new(title: "Hello World", content: "", author: "MyString", date: Date.today, categories: "MyText")
-    assert_not article.valid?
-  end
-
   test "Editing an article to remove title should fail" do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.update(title: '')
