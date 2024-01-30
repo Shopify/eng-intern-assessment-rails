@@ -2,6 +2,7 @@
 <% if @article.author.present? %>
   <h3>by <%= @article.author %></h3>
 <% end %>
+<h6>- <%= @article.date %></h6>
 <p> <%= @article.content %></p>
 
 <ul>
