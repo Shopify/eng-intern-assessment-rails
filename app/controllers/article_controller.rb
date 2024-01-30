@@ -47,7 +47,7 @@ class ArticleController < ApplicationController
     # Delete an existing article
     def destroy
         @article.destroy
-        redirect_to articles_path, notice: 'Article was deleted successfully'  # Redirect to the articles page
+        redirect_to root_path, notice: 'Article was deleted successfully'  # Redirect to the articles page
     end
 
     private
