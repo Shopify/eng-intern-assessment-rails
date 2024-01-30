@@ -1,7 +1,8 @@
-<h1>Articles</h1>
-<p><i>There are <%=Article.count%></i></p>
+<h1>The Encyclopedia</h1>
+<p><i>There are (is) <%=Article.count%> article(s) in this fantastic Encyclopedia</i></p>
 
 <%= link_to "<button>Create a new entry</button>".html_safe, new_article_path%>
+<%= link_to "<button>Search</button>".html_safe, "articles/search/"%>
 
 <%# Creates a list of article titles that contain hyper links to view the full article %>
 <ul>

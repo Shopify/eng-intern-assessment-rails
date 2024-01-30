@@ -1,0 +1,25 @@
+<h1>Welcome to the search page!</h1>
+
+
+<%= link_to "<button>Return home</button>".html_safe, '/'%>
+
+
+<p><i>To search the Encyclopedia, type in the box and press enter!<i><p>
+<p><i>p.s. this search box is case sensitive<i><p>
+
+<%# This sends a get request to the Articles controller at the search url %>
+<%# This reloads the page with the results on it! %>
+<%= form_tag("/articles/search/", method: :get) do %>
+  <%= text_field_tag(:search_term, params[:search_term])%>
+  <% submit_tag ("Search")%>
+<% end %>
+
+<%# This renders the list of results %>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+        <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
+

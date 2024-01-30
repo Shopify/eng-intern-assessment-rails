@@ -52,10 +52,16 @@ class ArticlesController < ApplicationController
     # sends the user to the home page
     redirect_to root_path status: :see_other
   end
+
+  # This method searches for the given search term
+  def search
+    @articles = Article.search(params[:search_term])
+  end
   # This method filters parameters pushed when a new article is created
   # This saves our app from some rudementary sql attacks
+  # aka strong parameters
   private
   def article_params
-    params.require(:article).permit(:title,:content)
+    params.require(:article).permit(:title,:content,:search_term,:author,:date)
   end
 end
