@@ -1,0 +1,30 @@
+<h1>Articles</h1>
+
+<%= link_to 'New Article', new_article_path %>
+
+<!-- Search form section -->
+<%= form_with(url: articles_path, method: :get, local: true) do |form| %>
+  <div class="search-form">
+    <%= form.label :search, "Search Articles" %>
+    <%= form.text_field :search, placeholder: "Enter search term..." %>
+    <%= form.submit "Search" %>
+  </div>
+<% end %>
+<% if params[:search].present? %>
+  <%= link_to 'Clear Search', articles_path, class: 'clear-search' %>
+<% end %>
+
+<!-- Articles list section -->
+<% if @articles.empty? %>
+  <p>No articles found.</p>
+<% else %>
+  <ul>
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article_path(article) %>
+        | <%= link_to 'Edit', edit_article_path(article) %>
+        | <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

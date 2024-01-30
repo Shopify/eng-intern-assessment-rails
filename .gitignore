@@ -33,3 +33,10 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore build artifacts and generated files.
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+# Ignore project-specific gems.
+/vendor/bundle

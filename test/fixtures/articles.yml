@@ -1,0 +1,13 @@
+one:
+  title: MyString
+  content: MyText
+  author: MyString
+  date: <%= Date.current %>
+
+two:
+  title: "Second Article"
+  content: "This is the content of the second article."
+  author: "Jane Smith"
+  date: <%= Date.current %>
+
+# Add more articles as needed
