@@ -1,0 +1,33 @@
+<div class="articles">
+  <div class="container">
+
+    <!--Have post count as first thing on page-->
+    <p>Post count: <%= @article_count %></p>
+
+    <!--If there are any articles, show each of them (title & content) + edit option + delete option-->
+    <% if @articles.present? %>
+      <% @articles.each do |article| %>
+        <div class="article">
+          <p class="title"><%= article.title %></p>
+          <p class="content"><%= article.content %></p>
+        </div>
+        <%= link_to 'Edit Article', edit_article_path(article) %>
+        <%= link_to 'Delete Article', article_path(article) %>
+      <% end %>
+    <% else %>
+      <p>No matching articles found.</p>
+    <% end %>
+    <br>
+    <br>
+
+    <!--Create a new article!-->
+    <%= link_to 'New Article', "articles/new" %>
+
+    <!--Search for an article; get request + SQL search using search parameter (whatever the user enters)-->
+    <%= form_tag(articles_path, method: :get) do %>
+      <%= text_field_tag :search, params[:search], placeholder: 'Search articles...' %>
+      <%= submit_tag 'Search' %>
+    <% end %>
+
+  </div>
+</div>

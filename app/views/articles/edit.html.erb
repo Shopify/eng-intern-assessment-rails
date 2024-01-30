@@ -1,0 +1,26 @@
+<div class="articles">
+  <div class="containers">
+    <%= form_for(@article) do |f| %>
+      <div class="field">
+        <%= f.label :title %><br>
+        <%= f.text_area :title, placeholder: 'Enter title' %>
+      </div>
+      <div class="field">
+        <%= f.label :content %><br>
+        <%= f.text_area :content, placeholder: 'Enter content' %>
+      </div>
+      <div class="field">
+        <%= f.label :author %><br>
+        <%= f.text_area :author, placeholder: 'Enter author' %>
+      </div>
+      <div class="field">
+        <%= f.label :date %><br>
+        <%= f.date_field :date, value: @article.date || Date.today %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Update" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
