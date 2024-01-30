@@ -42,6 +42,10 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def search
+    @article = Article.search(params[:search_query])
+  end
+
   private
     def article_params
       params.require(:article).permit(:title, :content, :author, :date)
