@@ -3,13 +3,13 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.all.order(:date).page(params[:page]).per(1)
+    # display articles sorted by date
+    # @articles = Article.search(params[:term]).order(:date).page(params[:page])
   end
 
   # GET /articles/1 or /articles/1.json
   def show; end
-
-  def search; end
 
   # GET /articles/new
   def new
