@@ -1,0 +1,18 @@
+<div>
+  <h1><%= @article.title %></h1>
+
+  <div>
+    <p>Author: <%= @article.author %></p>
+    <p>Date: <%= @article.date.strftime("%B %d, %Y") %></p>
+    <p><%= @article.content %></p>
+  </div>
+
+  <div>
+    <%= link_to 'Edit', edit_article_path(@article) %>
+    <%= form_with(url: article_path(@article), method: :delete, local: true) do %>
+      <%= submit_tag 'Delete' %>
+    <% end %>
+  </div>
+
+  <%= link_to 'Back', articles_path %>
+</div>
