@@ -2,6 +2,13 @@
 
 <h1>Articles</h1>
 
+
+<%# Search Bar %>
+<%= form_tag(articles_path, method: :get) do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+
 <div id="articles">
   <% @articles.each do |article| %>
     <%= render article %>
