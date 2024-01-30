@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @article = Article.search(params[:search_query])
+    @articles = Article.search(params[:search_query])
   end
 
   private
