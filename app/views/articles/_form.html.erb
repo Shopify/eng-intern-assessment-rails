@@ -1,0 +1,30 @@
+<%= form_with model: article do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= render "articles/form_errors", messages: @article.errors.full_messages_for(:title) %>
+    <%= form.text_field :title, placeholder: "My New Article" %>
+  </div>
+
+  <div>
+    <%= form.label :author %>
+    <%= render "articles/form_errors", messages: @article.errors.full_messages_for(:author) %>
+    <%= form.text_field :author, placeholder: "John Doe" %>
+  </div>
+
+  <div>
+    <%= form.label :date %>
+    <%= render "articles/form_errors", messages: @article.errors.full_messages_for(:date) %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :content %>
+    <%= render "articles/form_errors", messages: @article.errors.full_messages_for(:content) %>
+    <%= form.text_area :content, rows: 10, placeholder: "Once upon a time…" %><br>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+

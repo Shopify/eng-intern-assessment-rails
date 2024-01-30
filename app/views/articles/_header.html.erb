@@ -1,0 +1,6 @@
+<div>
+  <% if back_button == true %>
+    <%= link_to "Home", articles_path, id: "home-link" %>
+  <% end %>
+  <%= yield %>
+</div>
