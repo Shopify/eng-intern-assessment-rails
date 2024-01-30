@@ -1,6 +1,6 @@
 # Encyclopedia 
 
-This is a functional encyclopedia build with ruby on rails!
+This is a functional encyclopedia built with Ruby on Rails!
 You can create, delete, and update articles by navigating around the website,
 and you can even search through articles from the search page!
 
@@ -12,13 +12,13 @@ run ```bundle install``` in the project directory
 
 once complete run ```rails s```
 
-this will start a rails server, open up the website (possibly at localhost:3000)
+This will start a rails server. Now open up the website (possibly at localhost:3000)
+This will be the home page, now go exploring!
+Enjoy the amazing encyclopedia!
 
-enjoy the amazing encyclopedia
+# Thank you very much for this opportunity!
 
-# Thank you very much for this oppourtunity!
-
-I had a lot of fun learning all about ruby and ruby on rails! Thank you for this oppourtunity
+I had a lot of fun learning all about Ruby and Ruby on Rails! Thank you for this learning opportunity.
 
 ## Functionality
 
@@ -35,9 +35,9 @@ You can access these features by navigating from the root page.
 
 Search:
 
-You can search through all articles titles and content.
+You can search through all article titles and content.
 you can access this from the root page or at /articles/search
-WARNING: the search is case sensitive!
+WARNING: the search is case-sensitive!
 
 
 ## Resources
