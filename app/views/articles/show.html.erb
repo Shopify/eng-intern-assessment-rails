@@ -1,0 +1,16 @@
+<div class="article">
+  <h2><%= @article.title %></h2>
+  <p><%= format_value(@article.author, @article.date) %></p>
+  <hr class="dashed">
+  <p><%= @article.content %></p>
+
+  <div class="button">
+  <%= link_to "Edit", edit_article_path(@article) %>
+  </div>
+  <div class="button">
+    <%= link_to "Delete", article_path(@article), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure you'd like to delete this article?"
+    } %>
+  </div>
+</div>
