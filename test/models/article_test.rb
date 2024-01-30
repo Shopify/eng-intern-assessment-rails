@@ -1,22 +1,27 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+    #add the setup method ensures that the Article table is cleared before each test is executed
+  def setup
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
-    assert_equal 0, Article.count # Article.count == 0
+    assert_equal 0, Article.count
   end
 
   test 'has search functionality' do
-    assert_respond_to Article, :search # has a 'search' function?
+    assert_respond_to Article, :search
   end
 
   test 'creates a new article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.') # has a 'create' function
-    assert article.valid? # create 'Sample Article' and check if valid
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert article.valid?
   end
 
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    assert_equal 'Lorem ipsum dolor sit amet.', article.content # assert the content is the same
+    assert_equal 'Lorem ipsum dolor sit amet.', article.content
   end
 
   test 'displays the article metadata correctly' do
