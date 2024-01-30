@@ -4,11 +4,18 @@ class ArticlesController < ApplicationController
     # GET /articles
     # Responds to: HTML, JSON
     def index
-      @articles = Article.search(params[:search])
-      respond_to do |format|
-        format.html
-        format.json { render json: @articles }
-      end
+        # Create a unique cache key based on the search term
+        cache_key = params[:search].present? ? "articles_search_#{params[:search]}" : "articles_all"
+      
+        # Fetch from cache or perform the search query
+        @articles = Rails.cache.fetch(cache_key, expires_in: 12.hours) do
+          Article.search(params[:search]).to_a
+        end
+      
+        respond_to do |format|
+          format.html
+          format.json { render json: @articles }
+        end
     end
   
     # GET /articles/:id
@@ -64,6 +71,9 @@ class ArticlesController < ApplicationController
     # Responds to: HTML, JSON
     def destroy
         begin
+          # Clear cache related to articles before destroying the article
+          Rails.cache.delete_matched("articles_*")
+      
           @article.destroy
           respond_to do |format|
             format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
