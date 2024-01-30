@@ -1,0 +1,25 @@
+<%= form_with model: Article.new, url: 'articles/edit_article' ,local: true do |form| %>
+    <div>
+      <%= form.label :title %>
+      <%= form.text_field :title, required: true %>
+    </div>
+  
+    <div>
+      <%= form.label :author %>
+      <%= form.text_field :author, required: true %>
+    </div>
+
+    <div>
+      <%= form.label :date %>
+      <%= form.date_field :date, required: true %>
+    </div>
+  
+    <div>
+      <%= form.label :content %>
+      <%= form.text_area :content, required: true %>
+    </div>
+
+    <div>
+      <%= form.submit "Update" %>
+    </div>
+<% end %>
