@@ -1,3 +1,23 @@
+## What I did
+
+- **MVC Architecture:** Follows the standard Model-View-Controller (MVC) pattern.
+- **Search Functionality:** Users can search for articles using keywords.
+- **Frontend:** Implemented using jQuery and Bootstrap for a responsive and interactive user interface.
+- **Caching:** Utilizes file-based caching to improve performance and reduce database load.
+- **Rate Limiting:** Protects the application from excessive use of the create article endpoint.
+- **Concurrency:** Handles write operations using a multithreading approach.
+
+## What I could do more
+
+- Add Redis to handle cache more efficiently
+- Add message queue to better handle more write requests
+
+# Instruction on how to run
+1. Clone this repo
+2. Navitage to the repo and perform `bundle install` then `rails server` to start the server
+3. Go to http://127.0.0.1:3000/articles, the default link, and open it to access the UI
+
+
 # Technical Instructions
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.
