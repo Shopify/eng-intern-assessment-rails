@@ -36,7 +36,7 @@ You can access these features by navigating from the root page.
 Search:
 
 You can search through all article titles and content.
-you can access this from the root page or at /articles/search
+You can access this from the root page or at /articles/search.
 WARNING: the search is case-sensitive!
 
 
