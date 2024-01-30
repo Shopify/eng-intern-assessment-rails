@@ -23,13 +23,13 @@ class ArticlesController < ApplicationController
   
     private
       def article_params
-        params.require(:article).permit(:title, :body)
+        params.require(:article).permit(:title, :content)
       end
   end
 
 class Article < ApplicationRecord
     validates :title, presence: true
-    validates :body, presence: true, length: { minimum: 10 }
+    validates :content, presence: true, length: { minimum: 10 }
 end
   
   
