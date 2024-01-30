@@ -4,6 +4,8 @@
 
 <p><%= @article.author %></p>
 
+<p><%= @article.date.strftime("%d/%m/%Y") %></p>
+
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <li><%= link_to "Delete", article_path(@article), data: {
