@@ -1,0 +1,34 @@
+<%= form_with model: article do |form| %>
+    <div class="field form-group">
+      <%= form.label :title %><br>
+      <%= form.text_field :title, class:"form-control" %>
+      <% article.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    </br>
+    <div class="field form-group">
+      <%= form.label :content %><br>
+      <%= form.text_area :content, class:"form-control" %><br>
+      <% article.errors.full_messages_for(:content).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  
+    <div class="field form-group">
+      <%= form.label :author %><br>
+      <%= form.text_field :author, class:"form-control" %>
+    </div>
+    
+    </br>
+    <div class="field form-group">
+      <%= form.label :date %><br>
+      <%= form.date_field :date, class:"form-control" %>
+    </div>
+    
+    </br>
+    <div>
+      <%= form.submit class:'btn btn-primary'%>
+    </div>
+  <% end %>

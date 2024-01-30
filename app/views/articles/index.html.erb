@@ -1,0 +1,29 @@
+<h1>Articles</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+          <th scope="row"><%= article.id %></th>
+          <td><%= link_to article.title, article_path(article)%></td>
+          <td><%= article.author %></td>
+          <td><%= article.date %></td>
+      </tr>
+    <% end %>
+   
+  </tbody>
+</table>
+
+<ul>
+
+</ul>
+
+<%= link_to "New Article", new_article_path, class:'btn btn-primary' %>
