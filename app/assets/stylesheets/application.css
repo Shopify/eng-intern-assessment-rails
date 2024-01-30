@@ -1,4 +1,4 @@
-/*
+ /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -13,3 +13,130 @@
  *= require_tree .
  *= require_self
  */
+
+
+ /* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  /* Container for the main content */
+  .container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  /* Style for the main heading */
+  h1 {
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  /* Style for article list items */
+  ul.articles-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul.articles-list li {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  
+  ul.articles-list li h2 {
+    margin: 0;
+    padding-bottom: 10px;
+    color: #0275d8; /* Bootstrap primary color */
+  }
+  
+  /* Links styling */
+  a {
+    color: #0275d8;
+    text-decoration: none;
+  }
+  
+  /* Form styling */
+  form {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .field, .actions {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  input[type="submit"] {
+    padding: 10px 20px;
+    background: #0275d8;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background: #025aa5;
+  }
+  
+  /* Flash message styling */
+  .notice, .alert {
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .notice {
+    background: #5cb85c; /* Bootstrap success color */
+  }
+  
+  .alert {
+    background: #d9534f; /* Bootstrap danger color */
+  }
+
+/* Button styles */
+.btn {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+  }
+  
+  .btn-info {
+    background-color: #17a2b8;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+  }
+  
+  .btn-primary:hover,
+  .btn-info:hover,
+  .btn-danger:hover {
+    opacity: 0.8;
+  }
