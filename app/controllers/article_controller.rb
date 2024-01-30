@@ -2,9 +2,14 @@ class ArticleController < ApplicationController
     # Find the article to display for the show, edit, update and destroy actions
     before_action :find_article, only: [:show, :edit, :update, :destroy]
     
-    # Display all articles
+    # Display all articles in ascending order
     def index
         @articles = Article.all
+        if params[:query].present?
+            @articles = Article.search(params[:query])  # Search for articles based on the query
+        else
+            @articles = Article.order(title: :asc)  # Display all articles in ascending order
+        end
     end
 
     # Display a single article
