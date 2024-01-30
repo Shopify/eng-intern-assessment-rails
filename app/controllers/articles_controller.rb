@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  # Creates article with at least a title and a content body.
   def create
     @article = Article.new(article_params)
 
