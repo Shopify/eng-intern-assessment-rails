@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-
   # Displays a list of all articles or a subset of articles specified by search
   def index
     if params[:search].present?
