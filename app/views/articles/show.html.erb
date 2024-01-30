@@ -2,7 +2,7 @@
 <% if @article.author.present? %>
   <h3>by <%= @article.author %></h3>
 <% end %>
-<p> <%= @article.body %></p>
+<p> <%= @article.content %></p>
 
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
