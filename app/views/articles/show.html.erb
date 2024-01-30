@@ -1,0 +1,17 @@
+<h1>Divine Entitlement: <%= @article.title %></h1>
+
+<p>Highly Insightful and Deep Excerpt: </p>
+<p><%= @article.content %></p>
+<p>Beautifully and Wonderously crafted by:</p>
+<p><%= @article.author %></p>
+<p>Fantastically Enunciated on: </p>
+<p><%= @article.date %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+  <li><%= link_to "Back", root_path %></li>
+</ul>
