@@ -1,7 +1,10 @@
+<%# This is the index view for the articles. It displays a list of all articles. %>
+
 <header class="py-3 bg-dark text-white text-center">
   <h1>Shopify Encyclopedia</h1>
 </header>
 
+<%# Creates a div class for a container for a search bar%>
 <div class="containe mt-4">
   <div class="row justify-content-center">
     <div class="col-lg-6">
@@ -16,18 +19,28 @@
 </div>
 
 <div class="d-flex justify-content-center mb-4">
+  <%# Display a link to the new article form %>
   <%= link_to 'New Article', new_article_path, class: 'btn btn-success' %>
 </div>
 
 <div class="row mt-4">
+    <%# Loop over each article in the @articles array %>
   <% @articles.each do |article| %>
+  <%# Creates a bootstrap card class that displays each article in the view separately %>
     <div class="col-md-4 mb-4">
       <div class="card">
         <div class="card-body">
           <h2 class="card-title"><%= article.title %></h2>
           <h3 class="card-subtitle mb-2 text-muted">Author: <%= article.author %></h3>
           <p class="card-text"> <%= article.content  %> </p>
+          <%# Link to the article's show page with a 'Read' button %>
           <%= link_to 'Read', article, class: 'btn btn-primary' %>
+          <%# Link to the article's edit page with an 'Edit' button %>
+          <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-primary' %>
+          <%# Link to delete the article with a 'Delete' button. 
+          This will trigger a DELETE HTTP request to /articles/:id. 
+          A confirmation dialog will be displayed before the article is deleted. %>
+    <%= link_to 'Delete', article_path(article), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
         </div>
       </div>
     </div>
