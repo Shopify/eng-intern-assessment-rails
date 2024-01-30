@@ -1,15 +1,5 @@
 <h1>Encyclopedia</h1>
 
-<h2>Article Search</h2>
-
-<%= form_with model: @article do |form| %>
-  <div>
-    <%= form.label :Keyword %><br>
-    <%= form.text_field :keyword %>
-    <%= form.submit %>
-  </div>
-<% end %>
-
 <ul>
   <% @articles.each do |article| %>
     <li>
