@@ -8,9 +8,27 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'application' %>
+
   </head>
 
   <body>
+    <nav>
+      <%= link_to("Article Encyclopedia", root_path, id: "hiddenLink", class: "larger-button") %>
+
+      <% unless user_signed_in? %>
+        <%= link_to("Search", article_search_path, class: "nav-button") %>
+        <%= link_to("Sign Up", new_user_registration_path, class: "nav-button") %>
+        <%= link_to("Login", signin_path, class: "nav-button") %>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <%= link_to("Search", article_search_path, class: "nav-button") %>
+        <%= link_to("Create Article", create_article_path, class: "nav-button") %>
+        <%= link_to("My Articles", article_repository_path, class: "nav-button")%>
+        <%= link_to("Sign Out", destroy_user_session_path, :method => :delete, class: "nav-button")%>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
