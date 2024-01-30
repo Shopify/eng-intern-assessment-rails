@@ -2,6 +2,12 @@
 
 <h1>Articles</h1>
 
+<%= form_with url: "/articles", method: :get do |form| %>
+  <%= form.label :term, "Search For Article:" %>
+  <%= form.text_field :term %>
+  <%= form.submit "Search" %>
+<% end %>
+
 <div id="articles">
   <% @articles.each do |article| %>
     <%= render article %>
