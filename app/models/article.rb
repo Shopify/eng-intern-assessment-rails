@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true, length: { minimum: 1 }
-  # Need to add author and date fields
+  # Need to add date field
 
   def self.search(query)
     unless query.strip.empty?
