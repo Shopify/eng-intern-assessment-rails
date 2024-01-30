@@ -1,0 +1,24 @@
+<h1 class="text-dark fw-bold">Encyclopedia</h1>
+<p class="text-muted">CRUD with Rails</p>
+<hr>
+
+<%= form_with(url: articles_path, method: :get, data: { turbo_frame: "article", turbo_action: 'advance' }) do |form| %>
+  <div class="d-flex gap-1">
+    <%= form.text_field :query, class: 'form-control' %>
+    <%= form.submit class: 'btn btn-success' %>
+    <% if params[:query].present? %>
+      <%= link_to 'Clear', articles_path, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+<% end %>
+
+<hr>
+
+<%= link_to 'Add Article', new_article_path, data: { turbo_frame: dom_id(Article.new) }, class: 'btn btn-dark' %>
+<%= turbo_frame_tag Article.new %>
+
+<div id="articles" class="d-flex gap-3">
+  <% @articles.each do |article| %>
+    <%= render article %>
+  <% end %>
+</div>
