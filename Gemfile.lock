@@ -181,6 +181,10 @@ GEM
       activesupport (= 7.1.3)
       bundler (>= 1.15.0)
       railties (= 7.1.3)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -266,6 +270,7 @@ DEPENDENCIES
   jbuilder
   puma (>= 5.0)
   rails (~> 7.1.2)
+  rails-controller-testing
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)

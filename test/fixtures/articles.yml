@@ -1,0 +1,21 @@
+article1: 
+  title: "ShopifyPlsHireMe"
+  content: "This is the first article."
+  author: "John Doe"
+  date: Date.new(2015, 1, 1)
+  categories: "cat1, cat2, cat3"  
+
+article2: 
+  title: "ILoveShopify"
+  content: "This is the second article."
+  author: "Billy Jean"
+  date: Date.new(2015, 1, 1)
+  categories: "cat1, cat2, cat3"  
+
+article3: 
+  title: "ShopifyMVP"
+  content: "This is the third article."
+  author: "Yukihiro Matsumoto"
+  date: Date.new(2015, 1, 1)
+  categories: "cat1, cat2, cat3"  
+

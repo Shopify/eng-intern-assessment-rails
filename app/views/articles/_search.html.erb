@@ -1,0 +1,17 @@
+<%= form_tag(search_articles_path, method: :get, class: "flex justify-center items-center mb-4") do %>
+  <%= text_field_tag :query, params[:query], class: "w-5/6 px-4 py-2 border border-slate-400", placeholder: "Search articles..." %>
+  <%= submit_tag "Search", class: "w-1/6 px-4 py-2 border border-slate-400 hover:bg-slate-100" %>
+<% end %>
+
+<div id="articles" class="mt-8">
+  <% if @results.present? %>
+    <% @results.order(date: :desc).each do |article| %>
+      <%= render article %>
+      <div class="flex justify-center items-center border border-slate-400 py-1 px-2 h-10 mt-2 mb-5 w-36 hover:bg-slate-100">
+        <%= link_to "Show this article", article %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No matching articles found.</p>
+  <% end %>
+</div>
