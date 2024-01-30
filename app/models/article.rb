@@ -1,7 +1,5 @@
 class Article < ApplicationRecord
-validates :author, presence: true
-validates :title, presence: true
-validates :content, presence: true
+validates :title, :content, presence: true
 
 def self.search(term)
   if term
