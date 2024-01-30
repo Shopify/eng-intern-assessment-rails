@@ -1,14 +1,14 @@
-class ArticleController < ApplicationController
+class ArticlesController < ApplicationController
     # Find the article to display for the show, edit, update and destroy actions
     before_action :find_article, only: [:show, :edit, :update, :destroy]
     
     # Display all articles in ascending order
     def index
-        @articles = Article.all
+        @articles = Articles.all
         if params[:query].present?
-            @articles = Article.search(params[:query])  # Search for articles based on the query
+            @articles = Articles.search(params[:query])  # Search for articles based on the query
         else
-            @articles = Article.order(title: :asc)  # Display all articles in ascending order
+            @articles = Articles.order(title: :asc)  # Display all articles in ascending order
         end
     end
 
@@ -19,12 +19,12 @@ class ArticleController < ApplicationController
 
     # Create a new article
     def new
-        @article = Article.new
+        @article = Articles.new
     end
 
     # Create a new article based on the form data
     def create
-        @article = Article.new(article_params)
+        @article = Articles.new(article_params)
         
         # Try to save the article
         if @article.save
@@ -64,6 +64,6 @@ class ArticleController < ApplicationController
 
     # Find the article to display
     def find_article
-        @article = Article.find(params[:id])
+        @article = Articles.find(params[:id])
     end
 end
