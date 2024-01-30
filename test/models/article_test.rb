@@ -5,12 +5,12 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 0, Article.count
   end
 
-  test 'has search functionality' do
+  test 'has search functionality' do  
     assert_respond_to Article, :search
   end
 
-  test 'creates a new article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+  test 'creates a new article' do  
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.') #error
     assert article.valid?
   end
 
