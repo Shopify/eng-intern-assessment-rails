@@ -42,5 +42,5 @@ WARNING: the search is case-sensitive!
 
 ## Resources
 
-- [Ruby on Rails Guides](https://guides.rubyonrails.org/getting_started.html) - I used this guide as a basis to learn ruby and rails for this assessment
+- [Ruby on Rails Guides](https://guides.rubyonrails.org/getting_started.html) - I used this guide as a basis to learn Ruby and Ruby on Rails for this assessment
 
