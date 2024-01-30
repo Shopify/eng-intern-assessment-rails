@@ -27,6 +27,23 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # GETS an article to be used as a template for the user to update
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  # updates an article based on the user given parameters
+  def update
+    @article = Article.new(params[:id])
+
+    # If the article cannot be updated (i.e. edits are invalid), alert the user
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   # This method filters parameters pushed when a new article is created
   # This saves our app from some rudementary sql attacks
   private
