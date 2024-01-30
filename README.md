@@ -41,7 +41,6 @@ WARNING: the search is case-sensitive!
 
 
 ## Resources
-Here are some resources that may be helpful during your internship project:
 
 - [Ruby on Rails Guides](https://guides.rubyonrails.org/getting_started.html) - I used this guide as a basis to learn ruby and rails for this assessment
 
