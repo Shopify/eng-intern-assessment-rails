@@ -77,3 +77,7 @@ h2 a {
     margin-top: -47px;
     float: right;
 }
+
+.form_error {
+    color: #e31b1b;
+}
