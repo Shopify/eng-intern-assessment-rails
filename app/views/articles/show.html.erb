@@ -1,8 +1,9 @@
 <h1><%= @article.title %></h1>
 
-<p><%= @article.body %></p>
+<p><%= @article.content %></p>
 
 <ul>
+  <li><%= link_to "Home", root_path %></li>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <li><%= link_to "Destroy", article_path(@article), data: {
                     turbo_method: :delete,
