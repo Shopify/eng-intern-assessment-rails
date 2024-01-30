@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # Route for adding articles to the db
   post 'articles/create', to: 'articles#create'
 
+  get '/articles/:id/edit', to: 'articles#edit', as: :edit_article, defaults: { format: :json }
+
   resources :articles, except: [:show]
 
 end
