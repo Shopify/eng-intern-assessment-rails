@@ -1,0 +1,24 @@
+<h1><%= @article.title %></h1>
+
+<p>
+  <strong>Author:</strong>
+  <%= @article.author %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @article.date.strftime("%d/%m/%Y") %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @article.content %>
+</p>
+
+<%= link_to 'Edit Article', edit_article_path(@article), class: 'btn btn-primary' %>
+<%= link_to 'Back to Articles', articles_path, class: 'btn btn-secondary' %>
+
+<%= link_to 'Delete Article', article_path(@article),
+            method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: 'btn btn-danger' %>
