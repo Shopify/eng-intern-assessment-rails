@@ -66,3 +66,12 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not_includes results, article1
   end
 end
+
+test 'search returns articles where the title or content matches the query' do
+  Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+  Article.create(title: 'Another Article', content: 'This is another article.')
+  results = Article.search('Sample')
+  assert_equal 1, results.count
+  assert_equal 'Sample Article', results.first.title
+end
+end

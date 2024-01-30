@@ -1,0 +1,18 @@
+<!-- Display a heading -->
+<h1>All Articles</h1>
+
+<!-- Create a link to the new article path, which will lead to the form for creating a new article -->
+<%= link_to 'New Article', new_article_path %>
+
+<!-- Iterate over each article in the @articles instance variable -->
+<% @articles.each do |article| %>
+  <!-- For each article, create a link to the article's show page with the article's title as the link text -->
+  <h2><%= link_to article.title, article %></h2>
+  
+  <!-- Display the author of the article -->
+  <p>Author: <%= article.author %></p>
+  
+  <!-- Display the date of the article -->
+  <p>Date: <%= article.date %></p>
+<% end %>
+<!-- End of the iteration over the articles -->
