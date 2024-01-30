@@ -1,4 +1,6 @@
 <p style="color: green"><%= notice %></p>
+<h1>Create an Article</h1>
+<%= link_to "New article", new_article_path %>
 
 <h1>Articles</h1>
 
@@ -18,6 +20,3 @@
 </div>
 
 <%= paginate @articles %>
-
-
-<%= link_to "New article", new_article_path %>
