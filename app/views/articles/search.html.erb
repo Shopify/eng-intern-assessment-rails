@@ -1,0 +1,11 @@
+<h1>Search Results</h1>
+
+<% if @articles.present? %>
+  <ul>
+    <% @articles.each do |article| %>
+      <li><%= link_to article.title, article_path(article) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No articles found. Please try another search.</p>
+<% end %>
