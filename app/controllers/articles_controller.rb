@@ -2,8 +2,14 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
   # GET /articles or /articles.json
+  # Search query is of form /articles/?search=foo
+  # Searches through an article's titles, authors, and content
   def index
-    @articles = Article.all
+    if params[:search]
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/1 or /articles/1.json
