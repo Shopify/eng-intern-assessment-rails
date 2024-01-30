@@ -9,4 +9,8 @@ class Article < ApplicationRecord
     self.date ||= Date.today
   end
 
+  def self.search(search)
+    where("title LIKE ? or content LIKE ?", "%#{search}%", "%#{search}")
+  end
+
 end
