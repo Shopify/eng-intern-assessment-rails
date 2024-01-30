@@ -1,0 +1,9 @@
+Metrics:
+  Exclude:
+    - bin/bundle
+Layout/LineLength:
+  Exclude:
+    - bin/bundle
+Metrics/BlockLength:
+  Exclude:
+    - config/environments/development.rb

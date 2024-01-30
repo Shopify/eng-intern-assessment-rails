@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+# main migration for creating article model, created via scaffold
+class CreateArticles < ActiveRecord::Migration[7.1]
+  def change
+    create_table :articles do |t|
+      t.string :title
+      t.text :content
+      t.string :author
+      t.timestamp :date
+
+      t.timestamps
+    end
+  end
+end
