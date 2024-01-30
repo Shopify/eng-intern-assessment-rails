@@ -65,4 +65,23 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'prevents duplicate article titles' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_equal 1, Article.count
+  end
+
+  test 'displays correct error message on duplicate' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_equal article2.errors.to_a[0], "Title has already been taken"
+  end
+
+  test 'displays correct search results after delete' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.destroy
+    results = Article.search('Sample')
+    assert_not_includes results, article
+  end
 end

@@ -1,0 +1,19 @@
+<h1>Search Results</h1>
+
+<%= form_with url: "/search", method: :get do |form|%>
+    <%= form.label :query, "Search:" %>
+    <%= form.text_field :query %>
+    <%= form.submit "Search" %>
+<%end%>
+
+<ul>
+    <% @article.each do |article| %>
+        <li>
+            <a href="/articles/<%= article.id %>">
+                <%= link_to article.title, article %>
+            </a>
+        </li>
+    <% end %>
+</ul>
+
+<%= link_to "All Articles", root_path %>
