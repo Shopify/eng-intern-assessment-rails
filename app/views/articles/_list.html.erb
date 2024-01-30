@@ -1,0 +1,10 @@
+<!-- Template view to list many articles, used by root and search-->
+<ul>
+  <% articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Article", new_article_path %>
