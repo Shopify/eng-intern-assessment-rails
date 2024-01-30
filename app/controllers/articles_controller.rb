@@ -3,9 +3,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all.order(:date).page(params[:page]).per(1)
     # display articles sorted by date
-    # @articles = Article.search(params[:term]).order(:date).page(params[:page])
+    # (5 per page)
+    @articles = Article.search(params[:term]).order(:date).page(params[:page]).per(5)
   end
 
   # GET /articles/1 or /articles/1.json

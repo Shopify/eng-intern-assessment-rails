@@ -47,6 +47,9 @@ gem 'bootsnap', require: false
 # ⚡ A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Ruby webapps [https://github.com/kaminari/kaminari]
 gem 'kaminari'
 
+# bootstrap 4
+gem 'bootstrap', '~> 4.0'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
