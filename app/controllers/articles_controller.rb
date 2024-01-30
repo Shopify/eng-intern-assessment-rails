@@ -3,16 +3,39 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-     @articles = Article.all
+    @articles = Article.all
 
-    # Sorting logic based on params[:sort]
-    case params[:sort]
+    # Default values
+    sort_column = params[:sort] || 'title'
+    sort_order = params[:order] || 'asc'
+
+    # Toggle the order if sorting on the same column
+    sort_order = toggle_order(sort_order) if sort_column == params[:sort]
+
+    # Sorting logic based on sort_column and sort_order
+    case sort_column
     when 'title'
-      @articles = @articles.order(title: :asc)
+      @articles = @articles.order(title: sort_order)
     when 'author'
-      @articles = @articles.order(author: :asc)
+      @articles = @articles.order(author: sort_order)
     when 'date'
-      @articles = @articles.order(date: :asc)
+      @articles = @articles.order(date: sort_order)
+    end
+  end
+
+  # GET /articles/search
+  def search
+    @query = params[:query]
+    @results = Article.search(@query)
+
+    if @query.present?
+      if @results&.any?
+        @articles = @results
+      else
+        @articles = []
+      end
+    else
+      @articles = Article.all
     end
   end
 
@@ -71,6 +94,11 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
+    end
+
+    # Tggle between ascending order and descending order
+    def toggle_order(order)
+      order == 'asc' ? 'desc' : 'asc'
     end
 
     # Only allow a list of trusted parameters through.
