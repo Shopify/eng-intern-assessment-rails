@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "articles#index"
 
+  # Defines the routes for the articles controller
 resources :articles
 end

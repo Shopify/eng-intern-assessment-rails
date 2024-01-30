@@ -1,21 +1,36 @@
-<h1>Encyclopedia</h1>
+<header class="py-3 bg-dark text-white text-center">
+  <h1>Shopify Encyclopedia</h1>
+</header>
 
+<div class="containe mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <%= form_with(url: articles_path, method: "get", local: true, class: "mb-3") do %>
+        <div class="input-group">
+          <%= text_field_tag(:term, params[:term], class: "form-control", placeholder: "Search", style: "margin-right: 20px;") %>
+          <%= submit_tag("Search", class: "btn btn-primary") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<%= form_with(url: articles_path, method: "get", local: true) do %>
-<%= label_tag(:term, "Search for: ")%>
-<%= text_field_tag(:term, params[:term])%>
-<%= submit_tag("Search")%>
-<% end %>
+<div class="d-flex justify-content-center mb-4">
+  <%= link_to 'New Article', new_article_path, class: 'btn btn-success' %>
+</div>
 
-
-<ul>
+<div class="row mt-4">
   <% @articles.each do |article| %>
-    <h2>
-      <%= link_to article.title, article %>
-    </h2>
-    <h3><%= article.author %></h3>
-    <p> <%= article.content  %> </p>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title"><%= article.title %></h2>
+          <h3 class="card-subtitle mb-2 text-muted">Author: <%= article.author %></h3>
+          <p class="card-text"> <%= article.content  %> </p>
+          <%= link_to 'Read', article, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
 
-<%= link_to "New Article", new_article_path %>

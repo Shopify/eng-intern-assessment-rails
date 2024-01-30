@@ -1,14 +1,13 @@
-<h1><%= @article.title %></h1>
-<p><strong>Author:</strong> <%= @article.author %></p>
-<p><strong>Date:</strong> <%= @article.date %></p>
-
-<p><%= @article.content  %></p>
-
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-  <li><%= link_to "Back to Index", articles_path %></li>
-</ul>
+<div class="d-flex justify-content-center mt-4">
+  <div class="card" style="width: 30rem;">
+    <div class="card-body">
+      <h2 class="card-title"><%= @article.title %></h2>
+      <h3 class="card-subtitle mb-2 text-muted">Author: <%= @article.author %></h3>
+      <p class="card-text"><strong>Publishing Date:</strong> <%= @article.date %></p>
+      <p class="card-text"> <%= @article.content  %> </p>
+      <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary' %>
+      <%= link_to 'Delete', article_path(@article), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <%= link_to 'Back', articles_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>
