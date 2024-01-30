@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Article.destroy_all
+
+# Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+# Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Jane Smith')
+# Article.create(title: 'Third Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'John Doe')
+# Article.create(title: 'Fourth Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
