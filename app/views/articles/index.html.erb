@@ -1,0 +1,17 @@
+
+<h1>Articles</h1>
+
+<!-- Link to new article -->
+<%= link_to 'New Article', new_article_path %>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <h2><%= link_to article.title, article_path(article) %></h2>
+      <p><%= truncate(article.content, length: 100) %></p>
+      <p>By: <%= article.author %> | Published on: <%= article.date %></p>
+      <%= link_to 'Edit', edit_article_path(article) %> |
+      <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
