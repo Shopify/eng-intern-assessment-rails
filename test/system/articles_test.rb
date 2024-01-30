@@ -2,7 +2,12 @@ require "application_system_test_case"
 
 class ArticlesTest < ApplicationSystemTestCase
   setup do
-    @article = articles(:one)
+    @article = Article.create(
+      title: 'First Post',
+      content: 'My first article for Shopify',
+      author: 'Maria Stringy',
+      date: Date.today
+    )
   end
 
   test "visiting the index" do
