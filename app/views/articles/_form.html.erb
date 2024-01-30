@@ -1,7 +1,7 @@
 <!-- Form used by both new.html.erb, edit.html.erb -->
 <%= form_with(model: article, local: true) do |form| %>
 
-  <!-- Display errors in case any occur -->
+  <!-- Display errors if any occur -->
   <% if article.errors.any? %>
     <div id="error_explanation">
       <ul>
