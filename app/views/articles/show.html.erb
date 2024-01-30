@@ -1,0 +1,12 @@
+<div class="articles">
+  <div class="containers">
+    <!--For selected article (to delete), show them + have option at end to delete-->
+    <%= form_for(@article) do |f|  %>
+      <div class="field"> <%= f.label :title %><br>
+        <%= f.text_area :title %> </div>
+      <div class="actions">
+        <%= f.submit "Delete" %>
+      </div>
+    <% end %>
+  </div>
+</div>
