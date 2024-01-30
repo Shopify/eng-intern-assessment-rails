@@ -96,7 +96,7 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
-    # Tggle between ascending order and descending order
+    # Toggle between ascending order and descending order
     def toggle_order(order)
       order == 'asc' ? 'desc' : 'asc'
     end
