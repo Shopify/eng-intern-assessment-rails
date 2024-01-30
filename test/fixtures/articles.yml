@@ -1,13 +1,18 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  content: MyText
-  author: MyString
-  date: 2024-01-28 14:39:27
+    # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+# note: disabled fixtures as they would conflict with
+# 'starts with no articles' in article_test
+# by adding articles
 
-two:
-  title: MyString
-  content: MyText
-  author: MyString
-  date: 2024-01-28 14:39:27
+# one:
+#   title: MyString
+#   content: MyText
+#   author: MyString
+#   date: 2024-01-28 14:39:27
+
+# two:
+#   title: MyString
+#   content: MyText
+#   author: MyString
+#   date: 2024-01-28 14:39:27
