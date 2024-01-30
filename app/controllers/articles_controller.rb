@@ -15,6 +15,14 @@ class ArticlesController < ApplicationController
     @articles = Article.search(@@query_string)
   end
   def show
-    @article = Article.find(params[":id"])
+    @article = Article.find(params[:id])
+  end
+  def update
+    @article = Article.find(params[:id])
+    @article.update(
+      title: params["new_article_title"],
+      content: params["new_article_contents"]
+    )
+    redirect_to "/articles/" + params[:id]
   end
 end

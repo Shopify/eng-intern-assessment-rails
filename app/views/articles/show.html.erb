@@ -1,3 +1,10 @@
 <h1><%= @article.title %></h1>
 
-<p><%= @article.body %></p>
+<p><%= @article.content %></p>
+
+<h4>Submit this form to update article:</h4>
+<form action="/update" method="post">
+    <input type="text" value="" placeholder="New title" name="new_article_title" />
+    <input type="text" value="" placeholder="New contents" name="new_article_contents" />
+    <button type="submit">Submit</button>
+</form>
