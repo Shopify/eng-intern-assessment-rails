@@ -13,3 +13,63 @@
  *= require_tree .
  *= require_self
  */
+
+
+/* Miniature CSS reset */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: system-ui, sans-serif;
+}
+
+#wrapper {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	max-width: 500px;
+	margin-top: 20px;
+	gap: 10px;
+	padding: 10px;
+}
+
+/* Site-wide HTML element and class styles */
+a {
+	text-decoration: none;
+}
+
+input, textarea {
+	padding: 3px;
+	font-size: 16px;
+	margin-bottom: 10px;
+	margin-top: 4px;
+	width: 100%;
+}
+
+input[type="submit"] {
+	padding: 5px;
+}
+
+textarea {
+	max-width: 100%;
+}
+
+li {
+	list-style-type: none;
+	margin-bottom: 15px;
+}
+
+.form-error {
+	background: rgba(255, 0, 0, 0.5);
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+}
+
+.center {
+	text-align: center;
+}
