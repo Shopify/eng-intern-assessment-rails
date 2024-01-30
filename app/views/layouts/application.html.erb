@@ -6,11 +6,58 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- Linking Application Stylesheet And JavaScript -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <!-- Main Content Yield -->
     <%= yield %>
+
+    <!-- Article Form Section -->
+    <%= form_with(model: article, local: true, class: 'article-form') do |form| %>
+
+      <!-- Displaying Errors If Any -->
+      <% if article.errors.any? %>
+        <div id="error_explanation" class="error-messages">
+          <h2><%= pluralize(article.errors.count, "error") %> Prohibited This Article From Being Saved:</h2>
+          <ul>
+            <% article.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <!-- Article Title Field -->
+      <div class="field">
+        <%= form.label :title, class: 'form-label' %>
+        <%= form.text_field :title, class: 'form-input' %>
+      </div>
+
+      <!-- Article Content Field -->
+      <div class="field">
+        <%= form.label :content, class: 'form-label' %>
+        <%= form.text_area :content, class: 'form-textarea' %>
+      </div>
+
+      <!-- Article Author Field -->
+      <div class="field">
+        <%= form.label :author, class: 'form-label' %>
+        <%= form.text_field :author, class: 'form-input' %>
+      </div>
+
+      <!-- Article Date Field -->
+      <div class="field">
+        <%= form.label :date, class: 'form-label' %>
+        <%= form.date_select :date, class: 'form-date-select' %>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="actions">
+        <%= form.submit class: 'form-submit' %>
+      </div>
+    <% end %>
   </body>
 </html>
