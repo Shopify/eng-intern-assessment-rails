@@ -1,0 +1,22 @@
+<%# This is the show view for the articles. It displays the details of a single article. %>
+
+<div class="d-flex justify-content-center mt-4">
+  <div class="card" style="width: 30rem;">
+    <div class="card-body">
+      <%# Display the title of the article %>
+      <h2 class="card-title"><%= @article.title %></h2>
+      <%# Display the author of the article %>
+      <h3 class="card-subtitle mb-2 text-muted">Author: <%= @article.author %></h3>
+      <%# Display the date the article was published %> 
+      <p class="card-text"><strong>Publishing Date:</strong> <%= @article.date %></p>
+      <%# Display the content of the article %>
+      <p class="card-text"> <%= @article.content  %> </p>
+      <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary' %>
+      <%# Display a link to delete the article. This will trigger a DELETE HTTP request to /articles/:id. 
+    A confirmation dialog will be displayed before the article is deleted. %>
+      <%= link_to 'Delete', article_path(@article), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <%# Display a link to the articles index page %>
+      <%= link_to 'Back', articles_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>

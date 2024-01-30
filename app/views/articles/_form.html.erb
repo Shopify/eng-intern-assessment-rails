@@ -1,0 +1,45 @@
+<%# This is a form partial for articles. It's used in the new and edit views. %>
+
+<div class="d-flex justify-content-center mt-4">
+  <div class="card" style="width: 30rem;">
+    <div class="card-body">
+
+      <h2 class="card-title text-center"> <%= @article.persisted? ? 'Edit Article' : 'New Article' %> </h2>
+      <%# Use the form_with helper to start the form. If @article is a new record, this will post to the create action. 
+      If @article is an existing record, this will patch to the update action. %>
+      <%= form_with model: article, class: 'needs-validation', novalidate: true do |form| %>
+
+      <%# A form group for the author %>
+       <div class="form-group mb-3">
+          <%= form.label :author, class: 'form-label' %>
+          <%= form.text_field :author, value: @article.author, class: 'form-control', style: 'color: black;' %>
+        </div>
+
+      <%# A form group for the article title %>
+        <div class="form-group mb-3">
+          <%= form.label :title, class: 'form-label' %>
+          <%= form.text_field :title, value: @article.title, class: 'form-control', style: 'color: black;' %>
+          <% article.errors.full_messages_for(:title).each do |message| %>
+            <div class="invalid-feedback"><%= message %></div>
+          <% end %>
+        </div>
+
+      <%# A form group for the article content %>
+        <div class="form-group mb-3 ">
+          <%= form.label :content, class: 'form-label' %>
+          <%= form.text_area :content, value: @article.content, class: 'form-control', style: 'color: black;' %>
+          <% article.errors.full_messages_for(:content).each do |message| %>
+            <div class="invalid-feedback"><%= message %></div>
+          <% end %>
+        </div>
+
+
+        <%# The form submit button. The button text will be "Create Article" or "Update Article" based on
+          whether @article is a new record or an existing record. %>
+        <div class="form-group mt-3">
+          <%= form.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
