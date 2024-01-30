@@ -24,6 +24,18 @@
   </div>
 
   <div>
+    <%= form.label :date %><br>
+    <%= form.date_field :date %><br>
+    <% article.errors.full_messages_for(:date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div style="padding-top:10px;">
     <%= form.submit %>
+  </div>
+  
+  <div style="padding-top:10px;">
+    <li><%= link_to "Return", root_path %></li>
   </div>
 <% end %>
