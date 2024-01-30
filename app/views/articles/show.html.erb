@@ -1,0 +1,32 @@
+<h1>Article Details</h1>
+
+<div>
+  <div>
+    <h4>Article details for #<%= @article.id %></h4>
+  </div>
+  <div>
+    <table>
+      <tbody>
+        <tr>
+          <th>Title:</th>
+          <td><%= @article.title %></td>
+        </tr>
+        <tr>
+          <th>Content:</th>
+          <td><%= @article.content %></td>
+        </tr>
+        <tr>
+        <th>Author:</th>
+        <td><%= @article.author %></td>
+      </tr>
+      <tr>
+      <th>Date:</th>
+      <td><%= @article.date %></td>
+    </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%# Link to navigate back to the home page %>
+<p><%= link_to "Home", root_path %><p>
