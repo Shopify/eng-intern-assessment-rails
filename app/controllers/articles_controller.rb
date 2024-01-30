@@ -4,8 +4,12 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @articles = if params[:search]
+
+      # list articles based on search params
       Article.search(params[:search])
+
     else
+      # return all articles if no search is made
       Article.all
     end
   end
