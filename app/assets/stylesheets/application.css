@@ -71,3 +71,9 @@ h2 a {
     height: 200px;
     margin: 0 0 20px 0;
 }
+
+.form-style {
+    position: relative;
+    margin-top: -47px;
+    float: right;
+}

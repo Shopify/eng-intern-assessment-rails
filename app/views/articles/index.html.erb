@@ -1,5 +1,10 @@
 <h1>Articles</h1>
 
+<%= form_tag(articles_path, method: :get, class: "form-style") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search by title or content" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <% @articles.each do |article| %>
   <div class="article">
     <h2><%= link_to article.title, article %></h2>
