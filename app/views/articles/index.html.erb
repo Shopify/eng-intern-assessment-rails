@@ -1,5 +1,9 @@
 <h1>Articles</h1>
 
+<%= form_tag "/articles", method: "GET" do %>
+    <%= text_field_tag :search, params[:search] %>  <%= submit_tag "Search" %>
+<% end %>
+
 <ul>
   <% @articles.each do |article| %>
     <li>
