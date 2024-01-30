@@ -44,6 +44,14 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 0, Article.count
   end
 
+  test 'deletes specified articles in a table containing > 1 article' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Hello Article', content: 'Lorem ipsum dolor sit amet.')
+    article3 = Article.create(title: 'Bye Article', content: 'ipsum dolor sit amet.')
+    article1.destroy
+    assert_equal 2, Article.count
+  end
+
   test 'prevents access to deleted articles' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
@@ -65,4 +73,12 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'article not created if title and/or content are null' do
+    article1 = Article.create()
+    article2 = Article.create(title: "Sample Article")
+    article3 = Article.create(content: "Hello World! This is amazing!")
+    assert_equal 0, Article.count
+  end
+
 end

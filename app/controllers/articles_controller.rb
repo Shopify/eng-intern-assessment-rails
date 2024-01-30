@@ -1,12 +1,14 @@
 class ArticlesController < ApplicationController
+
   def index
     @articles = Article.all
   end
 
   # searches for an article
   def search
-    @articles = Article.where("title LIKE ? OR content LIKE ? OR author LIKE ?",
-     "%" + params[:q] + "%", "%" + params[:q] + "%", "%" + params[:q] + "%")
+    @articles = if params[:q]
+      Article.search(params[:q])
+    end
   end
 
   # show a single article
