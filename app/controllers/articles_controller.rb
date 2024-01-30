@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
   def search
-    @articles = Article.search
+    @mock_query = "BR"
+    @articles = Article.search(@mock_query)
   end
 end
