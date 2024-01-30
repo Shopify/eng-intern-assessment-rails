@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
 
+    # run the search function if the search parameter exists
     if params[:search]
       @articles = Article.search(params[:search])
     end

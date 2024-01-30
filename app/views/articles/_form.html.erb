@@ -1,4 +1,5 @@
 <%= form_with model: article do |form| %>
+  <!-- Title -->
   <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
@@ -6,7 +7,8 @@
       <div><%= message %></div>
     <% end %>
   </div>
-
+  
+  <!-- Author -->
   <div>
     <%= form.label :author %><br>
     <%= form.text_field :author %><br>
@@ -15,6 +17,7 @@
     <% end %>
   </div>
 
+  <!-- Content -->
   <div>
     <%= form.label :content %><br>
     <%= form.text_area :content %><br>
@@ -23,6 +26,7 @@
     <% end %>
   </div>
 
+  <!-- Date -->
   <div>
     <%= form.label :date %><br>
     <%= form.date_field :date %><br>
@@ -31,6 +35,7 @@
     <% end %>
   </div>
 
+  <!-- Buttons -->
   <div style="padding-top:10px;">
     <table>
         <td> <%= form.submit %> </td>
