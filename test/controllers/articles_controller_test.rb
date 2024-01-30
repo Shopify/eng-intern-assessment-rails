@@ -1,8 +1,8 @@
 require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get articles_index_url
-    assert_response :success
+  test "should get articles" do
+    get "/articles"
+    assert_equal 200, status
   end
 end

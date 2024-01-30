@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  # Changed the index method to always use custom search method defined in article model (app/models/article.rb)
   def index
     @articles = Article.search(params[:search])
   end
@@ -44,6 +45,6 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title, :content, :search)
     end
 end
