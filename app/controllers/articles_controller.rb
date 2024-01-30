@@ -1,5 +1,5 @@
 ##########################################################################
-# Purpose:  Class to handle HTTP requests related to the article class   #
+# Purpose:  Class to handle requests related to the article class        #
 # Author:   Aditya Goel (January 27, 2024)                               #
 # Updated:  Aditya Goel (January 27, 2024)                               #
 ##########################################################################
