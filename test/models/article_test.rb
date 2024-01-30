@@ -65,4 +65,30 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'ensures valid article creation' do
+    article1 = Article.create(title: 'Sample Article')
+    article2 = Article.create(content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    assert_equal 0, Article.count
+  end
+
+  test 'search should not return results for an unrelated query' do
+    Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('unrelated query')
+    assert_empty results, 'Search returned results for an unrelated query'
+  end
+
+  test 'search should be case insensitive' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('sample article')
+    assert_includes results, article, 'Search did not include the correct article for a case-insensitive query'
+  end
+
+  test 'serach should return results match word in both the title and content' do
+    article1 = Article.create(title: 'Sample Article', content: 'Test')
+    article2 = Article.create(title: 'Another Article', content: 'Sample')
+    results = Article.search('Sample')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
 end
