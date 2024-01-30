@@ -1,0 +1,18 @@
+<!-- Display the title of the article in a heading -->
+<h1><%= @article.title %></h1>
+
+<!-- Display the content of the article in a paragraph -->
+<p><%= @article.content %></p>
+
+<!-- Display the author of the article in a paragraph -->
+<p>Author: <%= @article.author %></p>
+
+<!-- Display the date of the article in a paragraph -->
+<p>Date: <%= @article.date %></p>
+
+<!-- Create a link to the edit page of the article -->
+<%= link_to 'Edit', edit_article_path(@article) %>
+
+<!-- Create a link to delete the article. This will send a DELETE HTTP request to the article's path. -->
+<!-- The 'data: { confirm: 'Are you sure?' }' part will make the browser display a confirmation dialog before proceeding. -->
+<%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>

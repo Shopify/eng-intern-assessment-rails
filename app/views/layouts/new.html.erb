@@ -1,0 +1,22 @@
+<!-- Start a form associated with the @article model instance -->
+<%= form_with model: @article do |form| %>
+  <!-- Create a label for the title field -->
+  <%= form.label :title %>
+  <!-- Create a text field for the title attribute -->
+  <%= form.text_field :title %>
+  <!-- Create a label for the content field -->
+  <%= form.label :content %>
+  <!-- Create a text area for the content attribute -->
+  <%= form.text_area :content %>
+  <!-- Create a label for the author field -->
+  <%= form.label :author %>
+  <!-- Create a text field for the author attribute -->
+  <%= form.text_field :author %>
+  <!-- Create a label for the date field -->
+  <%= form.label :date %>
+  <!-- Create a date field for the date attribute -->
+  <%= form.date_field :date %>
+  <!-- Create a submit button for the form -->
+  <%= form.submit %>
+<% end %>
+<!-- End of the form -->
