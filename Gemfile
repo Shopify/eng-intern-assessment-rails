@@ -30,7 +30,7 @@ gem "jbuilder"
 gem "rubocop-shopify", require: false
 
 # Bundle bootstrap for styling
-gem 'bootstrap', '~> 5.0'
+#gem 'bootstrap', '~> 5.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
