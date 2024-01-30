@@ -11,6 +11,13 @@
   </head>
 
   <body>
+    <% flash.each do |type, message| %>
+      <% alert_class = type.to_sym == :alert ? 'alert-danger' : 'alert-success' %>
+      <div class="alert <%= alert_class %> alert-dismissible fade show" role="alert">
+        <%= message %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

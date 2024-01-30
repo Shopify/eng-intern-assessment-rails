@@ -276,6 +276,7 @@ DEPENDENCIES
   bootsnap
   bootstrap (~> 5.1.3)
   capybara
+  concurrent-ruby
   debug
   importmap-rails
   jbuilder

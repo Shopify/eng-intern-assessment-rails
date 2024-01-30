@@ -1,4 +1,16 @@
+require 'concurrent'
 class ArticlesController < ApplicationController
+    RATE_LIMIT = 20 # Maximum requests for creating per minute
+    RATE_LIMIT_PERIOD = 60 # Period in seconds
+
+    THREAD_POOL = Concurrent::ThreadPoolExecutor.new(
+        min_threads: 1,
+        max_threads: 5,
+        max_queue: 10,
+        fallback_policy: :caller_runs
+    )
+
+
     before_action :set_article, only: [:show, :edit, :update, :destroy]
   
     # GET /articles
@@ -36,9 +48,30 @@ class ArticlesController < ApplicationController
     # POST /articles
     # Responds to: HTML, JSON
     def create
+      # in case someone maliciously call our api
+      if rate_limit_exceeded?(request.remote_ip)
+        respond_to do |format|
+            format.html do
+                flash[:alert] = 'Rate limit exceeded. Please try again later.'
+                redirect_to articles_path
+            end
+            format.json { render json: { error: 'Rate limit exceeded' }, status: :too_many_requests }
+        end
+          return
+      end
+
       @article = Article.new(article_params)
+      # use multi-threading to handle more requests
+      future = Concurrent::Future.execute(executor: THREAD_POOL) do
+        ActiveRecord::Base.connection_pool.with_connection do
+          @article.save
+        end
+      end    
+      future.wait # Wait for the thread to complete
+
       respond_to do |format|
-        if @article.save
+        if future.value
+          clear_articles_cache
           format.html { redirect_to @article, notice: 'Article was successfully created.' }
           format.json { render json: @article, status: :created, location: @article }
         else
@@ -58,6 +91,7 @@ class ArticlesController < ApplicationController
     def update
       respond_to do |format|
         if @article.update(article_params)
+          clear_articles_cache
           format.html { redirect_to @article, notice: 'Article was successfully updated.' }
           format.json { render json: @article }
         else
@@ -104,5 +138,25 @@ class ArticlesController < ApplicationController
       def article_params
         params.require(:article).permit(:title, :content, :author, :date)
       end
+
+      def clear_articles_cache
+        # Clear general articles cache
+        Rails.cache.delete("articles_all")
+      
+        # Clear caches for specific search terms
+        Rails.cache.delete_matched("articles_search_*")
+      end
+
+      def rate_limit_exceeded?(ip)
+        key = "rate_limit:#{ip}"
+        count = Rails.cache.read(key) || 0
+    
+        if count >= RATE_LIMIT
+          true
+        else
+          Rails.cache.write(key, count + 1, expires_in: RATE_LIMIT_PERIOD)
+          false
+        end
+       end
   end
   
