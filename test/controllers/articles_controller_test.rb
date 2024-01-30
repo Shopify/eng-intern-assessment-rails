@@ -2,6 +2,7 @@ require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    Article.destroy_all
     @article = Article.create!(author: "Author", content: "Content", date: Date.today, title: "Title")
   end
 
@@ -15,11 +16,22 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create article" do
-    assert_difference("Article.count") do
-      post articles_url, params: { article: { author: @article.author, content: @article.content, date: @article.date, title: @article.title } }
+  test "should not create article with duplicate title" do
+    assert_no_difference("Article.count") do
+      post articles_url, params: { article: { author: @article.author, title: @article.title , content: "blah"} }
     end
+  end
 
+  test "should not create article with duplicate content" do
+    assert_no_difference("Article.count") do
+      post articles_url, params: { article: { author: @article.author, title: "blah" , content: @article.content} }
+    end
+  end
+
+  test "should create new article" do
+    assert_difference("Article.count") do
+      post articles_url, params: { article: {title: "blah" , content: "blah"} }
+    end
     assert_redirected_to article_url(Article.last)
   end
 
@@ -42,7 +54,6 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Article.count", -1) do
       delete article_url(@article)
     end
-
     assert_redirected_to articles_url
   end
 end
