@@ -14,7 +14,6 @@
  *= require_self
  */
 
-
 /* Miniature CSS reset */
 * {
 	box-sizing: border-box;
@@ -68,8 +67,4 @@ li {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	border-radius: 4px;
-}
-
-.center {
-	text-align: center;
 }

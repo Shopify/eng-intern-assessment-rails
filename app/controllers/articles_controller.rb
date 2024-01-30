@@ -1,23 +1,25 @@
 class ArticlesController < ApplicationController
+  # GET /articles
   def index
-    @query = params[:query]
-
     # Filter by the search query, if present
-    if (params.has_key?(:query))
-      @articles = Article.search(params[:query])
-    else
-      @articles = Article.all
-    end
+    @articles = if params.key?(:query)
+                  Article.search(params[:query])
+                else
+                  Article.all
+                end
   end
 
+  # GET /articles/:id
   def show
     @article = Article.find(params[:id])
   end
 
+  # GET /articles/new
   def new
     @article = Article.new(date: Date.today)
   end
 
+  # POST /articles
   def create
     @article = Article.new(article_parameters)
 
@@ -28,10 +30,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # GET /articles/:id/edit
   def edit
     @article = Article.find(params[:id])
   end
 
+  # POST /articles/:id
   def update
     @article = Article.find(params[:id])
 
@@ -42,6 +46,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # DELETE /articles/:id
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
@@ -50,10 +55,11 @@ class ArticlesController < ApplicationController
     redirect_to articles_path, status: :see_other
   end
 
+  # Ensure the hash passed to `create` or `edit`contains only the valid fields
+  # for the Article model.
   private
-    # Ensure the hash passed to `Article.new` contains only the valid fields for
-    # the Article model.
-    def article_parameters
-      params.require(:article).permit(:title, :content, :author, :date)
-    end
+
+  def article_parameters
+    params.require(:article).permit(:title, :content, :author, :date)
+  end
 end

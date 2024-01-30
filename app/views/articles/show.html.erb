@@ -1,14 +1,13 @@
 <%= render "articles/header", back_button: true do %>
   <h1><%= @article.title %></h1>
-
   <p>
-  <% if @article.author? %>
-    <%= @article.author %> •
-  <% end %>
+    <% if @article.author? %>
+      <%= @article.author %> •
+    <% end %>
 
-  <% if @article.date? %>
-    <%= @article.date %>
-  <% end %>
+    <% if @article.date? %>
+      <%= @article.date %>
+    <% end %>
   </p>
 <% end %>
 

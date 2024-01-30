@@ -13,7 +13,7 @@
   <p>
     <%= @articles.count %>
     <%= 'article'.pluralize(@articles.count) %> found for query
-    &lsquo;<%= params[:query] %>&rsquo;
+    ‘<%= params[:query] %>’
   </p>
 <% end %>
 
