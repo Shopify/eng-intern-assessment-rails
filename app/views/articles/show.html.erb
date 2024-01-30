@@ -1,0 +1,18 @@
+<!-- Display properties of article -->
+<h1><%= @article.title %></h1>
+<h3><%= @article.author %></h3>
+<h4><%= @article.date %></h4>
+
+<p><%= @article.content %></p>
+
+<!-- Organized action buttons in a table for horizontal placement -->
+<table>
+    <tr>
+        <td><button type="button"><%= link_to "Home", root_path, style: "text-decoration:none;color:#000" %></button></td>
+        <td><button type="button"><%= link_to "Edit", edit_article_path(@article), style: "text-decoration:none;color:#000" %></button></td>
+        <td><button type="button"><%= link_to "Destroy", article_path(@article), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                    }, style: "text-decoration:none;color:#000" %></button></td>
+    </tr>
+</table>
