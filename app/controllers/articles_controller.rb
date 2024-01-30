@@ -3,16 +3,18 @@ class ArticlesController < ActionController::Base
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:q].present?
-      @query = params[:q]
-      @page = params[:page]
-      @articles = Article.search(@query, @page)
-    else
-      @articles = Article.page(params[:page]).per(10)
+    @query = params[:q]
+    @page = params[:page]
+    @articles = Rails.cache.fetch("articles_#{@query}_#{@page}", expires_in: 1.hour) do
+      Article.search(@query, @page)
     end
   end
 
-  def show; end
+  def show
+    @article = Rails.cache.fetch("article_#{params[:id]}", expires_in: 1.hour) do
+      Article.find(params[:id])
+    end
+  end
 
   def new
     @article = Article.new
@@ -32,6 +34,7 @@ class ArticlesController < ActionController::Base
 
   def update
     if @article.update(permitted_article_params)
+      Rails.cache.write("article_#{params[:id]}", @article, expires_in: 1.hour)
       redirect_to @article, notice: 'Article was successfully updated.'
     else
       render :edit
@@ -39,6 +42,7 @@ class ArticlesController < ActionController::Base
   end
 
   def destroy
+    Rails.cache.delete("article_#{params[:id]}")
     @article.destroy
     redirect_to articles_url, notice: 'Article was successfully deleted.'
   end

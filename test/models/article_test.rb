@@ -133,9 +133,11 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 10, results_page2.size
     assert_equal 'Pagination Article 11', results_page2.first.title
 
+    # 3rd page should only have 5 articles
     results_page3 = Article.search('Pagination Article', 3)
-    assert_equal 5, results_page3.size
     assert_equal 'Pagination Article 21', results_page3.first.title
+    assert_nil results_page3[5]
+    assert_not_nil results_page3[4]
 
     # Search for articles written by 'Author'
     results_author_page1 = Article.search('Pagination Author', 1)
@@ -146,9 +148,11 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 10, results_author_page2.size
     assert_equal 'Pagination Article 11', results_author_page2.first.title
 
+    # 3rd page should only have 5 articles
     results_author_page3 = Article.search('Pagination Author', 3)
-    assert_equal 5, results_author_page3.size
     assert_equal 'Pagination Article 21', results_author_page3.first.title
+    assert_nil results_author_page3[5]
+    assert_not_nil results_author_page3[4]
 
     # Search for a non-existent query
     results_nonexistent = Article.search('Nonexistent Query', 1)

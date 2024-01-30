@@ -8,7 +8,7 @@ first_article = Article.create(
   date: Date.today
 )
 
-25.times do
+(rand(30..40)).times do
   Article.create(
     title: Faker::Lorem.sentence(word_count: 3),
     content: Faker::Lorem.paragraph,

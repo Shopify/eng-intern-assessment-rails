@@ -15,7 +15,7 @@ class Article < ApplicationRecord
                  all
                end
 
-    relation.page(page).per(10)
+    relation.paginate(page: page, per_page: 10)
   end
 
   private
