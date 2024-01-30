@@ -3,8 +3,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    # display articles sorted by date
-    # (5 per page)
+    # display articles relevant to search term
+    # note: if search term is empty, all articles are returned.
+    # sort articles by date, and paginate at 5 per page
     @articles = Article.search(params[:term]).order(:date).page(params[:page]).per(5)
   end
 
