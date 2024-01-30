@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Article CRUD routes
   resources :articles
+  root 'articles#index'
 
   # Defines the root path route ("/")
   # root "posts#index"

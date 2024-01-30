@@ -1,10 +1,42 @@
-<h1>Articles</h1>
+<!-- Display the heading for the articles listing page -->
+<h1>Listing Articles</h1>
+
+<!-- Link to the page for creating a new article -->
 <%= link_to 'New Article', new_article_path %>
 
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article) %>
-    </li>
-  <% end %>
-</ul>
+<!-- Start of the table for listing articles -->
+<table>
+  <!-- Table header -->
+  <thead>
+    <tr>
+      <th>Title</th> <!-- Column heading for article titles -->
+      <th>Author</th> <!-- Column heading for article authors -->
+      <th>Date</th> <!-- Column heading for article publication dates -->
+      <th colspan="3">Actions</th> <!-- Column heading for actions (show, edit, destroy) -->
+    </tr>
+  </thead>
+
+  <!-- Table body -->
+  <tbody>
+    <!-- Loop through each article and display its information in a table row -->
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td> <!-- Display the article's title -->
+        <td><%= article.author %></td> <!-- Display the article's author -->
+        <td><%= article.date.strftime('%b %d, %Y') if article.date %></td> <!-- Format and display the article's date -->
+        <td><%= link_to 'Show', article_path(article) %></td> <!-- Link to view the article's details -->
+        <td><%= link_to 'Edit', edit_article_path(article) %></td> <!-- Link to edit the article -->
+        <td>
+          <!-- Form for deleting an article -->
+          <%= form_with url: article_path(article), method: :delete, local: true do %>
+            <!-- Submit button for the form with a data-confirm attribute to prompt for confirmation before deletion -->
+            <%= submit_tag 'Destroy', data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- Link to go back to the root path of the application -->
+<%= link_to 'Back', root_path %>
