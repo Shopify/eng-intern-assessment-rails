@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  # CRUD operations
   def show
     @article = Article.find(params[:id])
   end
@@ -42,6 +43,7 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  # Additional methods
   def search
     @articles = Article.search(params[:search_query])
   end
