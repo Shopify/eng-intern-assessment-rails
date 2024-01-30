@@ -38,6 +38,13 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal Date.yesterday, article.date
   end
 
+  test 'updates the article metadata with no author and date initially' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article.update(author: 'Jane Smith', date: Date.yesterday)
+    assert_equal 'Jane Smith', article.author
+    assert_equal Date.yesterday, article.date
+  end
+
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
