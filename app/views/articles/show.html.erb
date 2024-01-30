@@ -1,9 +1,11 @@
-<p style="color: green"><%= notice %></p>
+<div class="font-serif m-8">
+  <p class="mb-2" style="color: green"><%= notice %></p>
 
-<%= render @article %>
+  <%= render @article %>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
-  <%= button_to "Destroy this article", @article, method: :delete %>
+  <div class="flex items-center space-x-4 mt-3">
+    <%= link_to "Edit this article", edit_article_path(@article), class: "bg-blue-300 text-white px-4 py-2 hover:bg-blue-600" %>
+    <%= link_to "Back to articles", articles_path, class: "bg-gray-300 text-white px-4 py-2 hover:bg-gray-600" %>
+    <%= button_to "Destroy this article", @article, method: :delete, class: "bg-red-300 text-white px-4 py-2 hover:bg-red-600" %>
+  </div>
 </div>

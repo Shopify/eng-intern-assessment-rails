@@ -1,7 +1,9 @@
-<h1>New article</h1>
-
-<%= render "form", article: @article %>
-
-<div>
-  <%= link_to "Back to articles", articles_path %>
+<div class="font-serif m-8">
+  <div class="flex justify-between items-center">
+    <h1 class="text-5xl my-4" >New Article</h1>
+    <div class="flex justify-between items-center border border-slate-400 py-1 px-2 h-10 hover:bg-slate-100">
+      <%= link_to "Back to articles", articles_path %>
+    </div>
+  </div>
+  <%= render "form", article: @article %>
 </div>

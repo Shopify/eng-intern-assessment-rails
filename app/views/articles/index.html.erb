@@ -1,16 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<div class="font-serif m-8">
+  <div class="flex justify-between items-center">
+    <h1 class="text-5xl my-4">Articles</h1>
+    <p style="color: green"><%= notice %></p>
+    <div class="flex gap-5">
+      <div class="flex justify-between items-center border border-slate-400 py-1 px-2 h-10 hover:bg-slate-100">
+        <%= link_to "New Article", new_article_path, style: "flex justify-between items-center border py-1 px-2 h-10"%>
+      </div>
+      <div class="flex justify-between items-center border border-slate-400 py-1 px-2 h-10 hover:bg-slate-100">
+        <%= link_to "Search Articles", search_articles_path %>
+      </div>
+    </div>
+  </div>
 
-<h1>Articles</h1>
-
-<%= link_to "Search Articles", search_articles_path %>
-
-<div id="articles">
-  <% @articles.order(date: :desc).each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
+  <div id="articles">
+    <% @articles.order(date: :desc).each do |article| %>
+      <%= render article %>
+      <div class="flex justify-center items-center border border-slate-400 py-1 px-2 h-10 mt-1 mb-5 w-36 hover:bg-slate-100">
+        <%= link_to "Show this article", article %>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New article", new_article_path %>

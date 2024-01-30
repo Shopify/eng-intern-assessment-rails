@@ -1,7 +1,7 @@
 <%= form_with(model: article) do |form| %>
   <% if article.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <h2><%= pluralize(article.errors.count, "error") %> prevented this article from being saved:</h2>
 
       <ul>
         <% article.errors.each do |error| %>
@@ -10,33 +10,25 @@
       </ul>
     </div>
   <% end %>
+  <div class="flex flex-col w-2/3 [&_*]:w-full">
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+      <%= form.label :title, class: "display: block"%>
+      <%= form.text_field :title, class: "border border-slate-400 p-2 mb-3" %>
+
+      <%= form.label :content, class: "display: block" %>
+      <%= form.text_area :content, class: "border border-slate-400 p-2 mb-3" %>
+
+      <%= form.label :author, style: "display: block" %>
+      <%= form.text_field :author, class: "border border-slate-400 p-2 mb-3" %>
+
+      <%= form.label :date, style: "display: block" %>
+      <%= form.date_field :date, class: "border border-slate-400 p-2 mb-3" %>
+
+      <%= form.label :categories, style: "display: block" %>
+      <%= form.text_area :categories, class: "border border-slate-400 p-2 mb-3" %>
+
   </div>
-
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_field :author %>
-  </div>
-
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
-  </div>
-
-  <div>
-    <%= form.label :categories, style: "display: block" %>
-    <%= form.text_area :categories %>
-  </div>
-
-  <div>
+  <div class="flex justify-center items-center border border-slate-400 py-1 px-2 h-10 w-32 hover:bg-slate-100">
     <%= form.submit %>
   </div>
 <% end %>
