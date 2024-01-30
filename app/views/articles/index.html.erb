@@ -1,0 +1,34 @@
+<%= render "articles/header", back_button: false do %>
+  <h1>Articles</h1>
+<% end %>
+
+<%# Search Form %>
+<%= form_with url: "/articles", method: :get do |form| %>
+  <%= form.text_field :query, value: params[:query], placeholder: "Search titles or content" %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<%# Results Count %>
+<% if params.has_key?(:query) && params[:query] != '' %>
+  <p>
+    <%= @articles.count %>
+    <%= 'article'.pluralize(@articles.count) %> found for query
+    &lsquo;<%= params[:query] %>&rsquo;
+  </p>
+<% end %>
+
+<%# Articles List %>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article do %>
+        <h3><%= article.title %></h3>
+        <%# Truncate the article's content to ~140 characters, at the nearest word space %>
+        <p><%= article.content.truncate(140, separator: " ") %></p>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%# Actions %>
+<p>You can <%= link_to "create a new article", new_article_path, class: "link-button" %>.</p>

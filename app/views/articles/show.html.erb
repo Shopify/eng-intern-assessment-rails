@@ -1,0 +1,22 @@
+<%= render "articles/header", back_button: true do %>
+  <h1><%= @article.title %></h1>
+
+  <p>
+  <% if @article.author? %>
+    <%= @article.author %> •
+  <% end %>
+
+  <% if @article.date? %>
+    <%= @article.date %>
+  <% end %>
+  </p>
+<% end %>
+
+<p style="white-space: pre-line"><%= @article.content %></p>
+
+<p>You can <%= link_to "edit", edit_article_path(@article) %> or 
+    <%= link_to "delete", article_path(@article), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure you want to delete ’#{@article.title}? This can't be undone."
+    } %> this article.
+</p>
