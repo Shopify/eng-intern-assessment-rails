@@ -1,0 +1,46 @@
+<h1>Create New Article</h1>
+
+<%= form_with(model: @article, local: true) do |form| %>
+  <% if @article.errors.any? %>
+    <div>
+      <h2>Error: <%= pluralize(@article.errors.count, "error") %></h2>
+
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %>
+    <br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :content %>
+    <br>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.label :author %>
+    <br>
+    <%= form.text_field :author %>
+  </div>
+
+  <div>
+    <%= form.label :date %>
+    <br>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%# Link to navigate back to the home page %>
+<%= link_to 'Home', articles_path %>

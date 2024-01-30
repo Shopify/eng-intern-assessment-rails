@@ -1,0 +1,34 @@
+<h1>Articles</h1>
+
+<%= form_tag "/articles", method: "GET" do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+<%= link_to "Reset Search", articles_path %>
+
+<div>
+    <table>
+      <ol>
+        <thead>
+          <td> Title </td>
+          <td> Content </td>
+          <td colspan=3> Author </td>
+        </thead>
+        <% @articles.each do |a| %>
+          <tr>
+            <td> <%= link_to a.title, article_path(a) %> </td>
+            <td> <%= a.content %> </td>
+            <td> <%= a.author %> </td>
+            <td> <%= a.date %> </td>
+            <td><%= button_to "Details",article_path(a),method: :get %></td>
+            <td><%= button_to "Edit",edit_article_path(a),method: :get %></td>
+            <td><%= button_to "Delete",article_path(a),method: :delete %></td>
+          </tr>
+        <% end %>
+      </ol>
+    </table>
+  </div>
+  <div>
+    <%= button_to "Add New Article", new_article_path, method: :get %>
+  </div>
+</div>
