@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
+    # Title and content are mandatory columns
     validates :title, presence: true
-    validates :content, presence: true, length: { minimum: 10 }
+    validates :content, presence: true
 
     # Queries Database For Keywords
     def self.search(keyword)
