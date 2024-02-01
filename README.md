@@ -1,55 +1,43 @@
-# Technical Instructions
-1. Fork this repo to your local Github account.
-2. Create a new branch to complete all your work in.
-3. Test your work using the provided tests
-4. Create a Pull Request against the Shopify Main branch when you're done and all tests are passing
+# Articles Feature Pull Request
 
-# Project Overview
-The Rails application you will be working on is an Encyclopedia, which allows users to create, view, edit, and delete articles. The application also provides search functionality to help users find relevant articles. Be sure to implement basic CRUD actions on articles. Your task is to implement these features as well as write the code that makes the tests pass.
+## Overview
+This pull request introduces significant enhancements to our application, focusing on the implementation of the Articles feature. The changes made are designed to establish a solid foundation for article management within the application, offering essential CRUD (Create, Read, Update, Delete) functionality, along with a search feature.
 
-# Project Goals
-The main goal of this internship project is to implement the functionality required to make the existing tests pass. The provided tests cover various aspects of the application, including creating and viewing articles, editing and updating articles, deleting articles, and searching for articles. Along with completing the tests, be sure to implement all basic CRUD actions on your articles on a controller and create views to see your work in the app.
+## Changes Made
+Here is a detailed breakdown of the key components and changes introduced by this pull request:
 
-## Your specific goals for this project are as follows:
+### ArticlesController
+- Created the `ArticlesController` with the following actions:
+  - `index`: Displays a list of articles.
+  - `show`: Displays the details of a single article.
+  - `new`: Renders the form to create a new article.
+  - `create`: Handles the creation of new articles.
+  - `edit`: Renders the form to edit an existing article.
+  - `update`: Updates an existing article.
+  - `destroy`: Deletes an article.
 
-1. Review Existing Tests: Start by reviewing the existing tests provided in the article_test.rb file located in the test/models directory. Understand the requirements and expectations of each test.
+### Article Model
+- Enhanced the `Article` model with validations for `title` and `content`, ensuring data integrity.
+- Implemented a `search` method within the model to facilitate article queries, improving user experience and content discoverability.
 
-2. Implement Functionality: Write the code necessary to make the existing tests pass. This involves implementing the required actions and logic in the models, controllers, and views to fulfill the specified requirements. Also be sure to implement basic CRUD actions and demonstrate proper MVC principals.
+### Database Migration
+- Executed a database migration to create the `articles` table, incorporating fields for `title`, `content`, `author`, and `date`. This ensures that articles are stored in an organized manner within the database.
 
-3. Ensure Code Quality: Write clean, well-structured, and maintainable code. Follow best practices and adhere to the Ruby on Rails conventions. Pay attention to code readability, modularity, and performance.
 
-4. Test Your Code: After implementing the functionality, run the tests to ensure that they pass successfully. Fix any failures or errors that occur and retest until all tests pass.
+### Fixture Removal
+- Removed fixtures for articles to align the testing and production environments, reducing potential inconsistencies.
 
-5. Code Documentation: Document your code by adding comments and explanatory notes where necessary. This will help other developers understand your implementation and make future maintenance easier.
 
-6. Version Control: Use Git for version control. Commit your changes regularly and push them to a branch in your forked repository.
+## Testing
+This pull request added more mini tests for the `articles_test` to ensure that the newly introduced functionality works as expected. Additionally, the changes have been thoroughly tested to prevent any potential issues in the application. 
 
-7. Create a Pull Request: Once you have completed the project goals, create a pull request to merge your changes into the main repository. Provide a clear description of the changes made and any relevant information for the code review.
+# Testing Command:
+-`rake db:migrate RAILS_ENV=test`
+-`ruby  bin/rails test test/models/article_test.rb`
 
-## Getting Started
-To get started with this project, follow these steps:
+# Test Passing Screenshot
+![Test Cases Passing](./public/Screenshot%202024-02-01%20013808.png)
 
-1. Clone the repository to your local development environment.
+Please review this pull request and provide your feedback. Your insights and suggestions are essential for the successful integration of these new features into our application.
 
-2. Install the necessary dependencies by running bundle install in the project directory.
-
-3. Familiarize yourself with the existing codebase, including the models, controllers, and views.
-
-4. Review the existing tests in the article_test.rb file and understand their purpose and functionality.
-
-5. Run the tests locally to ensure they are passing.
-
-6. Start working on the goals outlined above, making improvements to the existing tests and adding new tests as needed.
-
-7. Commit your changes regularly and push them to a branch in your forked repository.
-
-8. Once you have completed the project goals, create a pull request to merge your changes into the main repository.
-
-## Resources
-Here are some resources that may be helpful during your internship project:
-
-- [Ruby on Rails Guides](https://guides.rubyonrails.org/) - Comprehensive guides on Ruby on Rails, covering various aspects of web application development.
-
-- [Ruby Style Guide](https://rubystyle.guide/) - A community-driven Ruby coding style guide to ensure consistent and readable code.
-
-- [Git Documentation](https://git-scm.com/doc) - Official documentation for Git, the version control system used in this project.
+Thank you for your time and attention to this important enhancement.
