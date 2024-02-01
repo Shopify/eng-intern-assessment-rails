@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class ArticleController < ApplicationController
 
     # Retrieves and displays a list of all articles.
     def index
