@@ -31,6 +31,11 @@ Here is a detailed breakdown of the key components and changes introduced by thi
 ## Testing
 This pull request includes basic tests for the `ArticlesController` to ensure that the newly introduced functionality works as expected. Additionally, the changes have been thoroughly tested to prevent any potential issues in the application.
 
+# Testing Command:
+-`rake db:migrate RAILS_ENV=test`
+-`ruby  bin/rails test test/models/article_test.rb`
+
+
 Please review this pull request and provide your feedback. Your insights and suggestions are essential for the successful integration of these new features into our application.
 
 Thank you for your time and attention to this important enhancement.
