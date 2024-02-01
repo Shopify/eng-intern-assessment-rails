@@ -1,0 +1,24 @@
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+<p>
+  <strong>Author:</strong>
+  <%= @article.writer.name %>
+</p>
+<p>
+  <strong>Author Email:</strong>
+  <%= @article.writer.email %>
+</p>
+<p>
+  <strong>Published on:</strong>
+  <%= @article.created_at.strftime("%B %d, %Y at %I:%M%p") %>
+</p>
+<p>
+  <strong>Body:</strong>
+  <%= @article.content %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+
+<%= link_to 'Back', articles_path %>

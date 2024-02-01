@@ -1,0 +1,70 @@
+
+<style>
+  #error_explanation {
+    color: red;
+    border: 1px solid red;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .field {
+    margin-bottom: 20px;
+  }
+
+  .actions {
+    margin-top: 20px;
+  }
+
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+</style>
+
+<%= form_with(model: article, local: true) do |form| %>
+  <!-- content form -->
+<% end %>
+
+<%= form_with(model: article, local: true) do |form| %>
+
+    <% if article.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+  
+        <ul>
+          <% article.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :body %>
+      <%= form.text_area :content %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  

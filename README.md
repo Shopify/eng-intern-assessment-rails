@@ -1,3 +1,16 @@
+QUICK DEMO:
+Link : https://youtu.be/SFYj37dsuUY
+
+RAN ALL THE TESTS:
+![Alt text](tests.jpg)
+
+CHANGES MADE IN TESTS:
+- There are no major changes in tests, just a few minor ones to make them work the way I strucutred my code. It was my first time using Ruby on Rails.
+
+- I am not using fixtures and directly creating writers and articles in tests, as with fixtures it was not clearing up test_database automatically after the tests were done.
+
+- I've added authentication to create writers. So, in tests I am creating writers first then passing them under 'writer' when an article is created instead of pass the name (string) dirctly.
+
 # Technical Instructions
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.

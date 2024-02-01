@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <%= csrf_meta_tags %>
+
+    <title>Simple Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .blog-post {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        .blog-post h2 {
+            margin: 0;
+        }
+        .actions {
+            margin-top: 10px;
+        }
+        .actions a, .new-article-link a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: blue;
+        }
+        .new-article-link {
+            margin-bottom: 20px;
+        }
+    </style>
+    
+</head>
+<body>
+<h1 style="text-align: center; margin-bottom: 0;">Shopify Encyclopedia</h1>
+<%= form_tag(articles_path, method: :get, style: "text-align: center; margin-top: 20px; margin-bottom: 20px;") do %>
+    <%= text_field_tag :search, params[:search], style: "padding: 10px; width: 70%; border: 2px solid #007bff; border-right: none; border-top-left-radius: 20px; border-bottom-left-radius: 20px; outline: none; box-sizing: border-box;" %>
+    <%= submit_tag "Search", name: nil, style: "padding: 10px; background-color: #007bff; color: white; border: 2px solid #007bff; border-left: none; border-top-right-radius: 20px; border-bottom-right-radius: 20px; cursor: pointer; box-sizing: border-box;" %>
+<% end %>
+
+  
+  
+  
+<%= form_tag(new_article_path, method: :get, style: 'display: inline-block;') do %>
+    <%= submit_tag 'Create New Article', style: 'background-color: green; color: white; border: none;' %>
+<% end %>
+
+<% @articles.each do |article| %>
+    <div class="blog-post">
+        <h2><%= article.title %></h2>
+        <p><%= article.content %></p>
+        <div class="actions">
+        <%= link_to 'Read', article, style: 'display: inline-block; margin-right: 10px;' %>
+        <% if current_writer == article.writer %>
+            <%= link_to 'Edit', edit_article_path(article), style: 'display: inline-block; margin-right: 10px;' %>
+            <%= form_tag(article, method: :delete, data: { confirm: 'Are you sure?' }, style: 'display: inline-block;') do %>
+                <%= submit_tag 'Delete', class: 'btn btn-danger', style: 'background-color: red; color: white;' %>
+
+            <% end %>
+        <% end %>
+        </div>
+    </div>
+<% end %>
+
+</body>
+</html>
+
