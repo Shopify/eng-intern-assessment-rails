@@ -1,0 +1,8 @@
+<%= form_with model: article do |form| %>
+  <%# need to manually specify partial: when passing local arguments %>
+  <%= render partial: "text_input", locals: {attribute: :title, mandatory_field: true, form: form, model: article } %>
+  <%= render partial: "text_input", locals: {attribute: :content, form: form, model: article } %>
+  <%= render partial: "text_input", locals: {attribute: :author, form: form, model: article } %>
+
+  <%= form.submit %>
+<% end %>
