@@ -1,0 +1,20 @@
+<!-- Show Article View -->
+
+<% if @article %>
+  <!-- Display the Article's Title -->
+  <h1 class="article-title"><%= @article.title %></h1>
+
+  <!-- Display the Article's Content -->
+  <div class="article-content">
+    <%= simple_format(@article.content) %>
+  </div>
+
+  <!-- Action Links for the Article -->
+  <div class="article-actions">
+    <%= link_to "Edit", edit_article_path(@article), class: "btn edit-link" %>
+    <%= link_to "Destroy", article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn destroy-link" %>
+    <%= link_to 'Home', root_path, class: 'btn home-button' %>
+  </div>
+<% else %>
+  <p>Article not found.</p>
+<% end %>

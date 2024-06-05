@@ -1,0 +1,38 @@
+<%# Article form setup %>
+<%= form_with model: @article do |form| %>
+
+  <%# Author field %>
+  <div>
+    <%= form.label :author %><br>
+    <%= form.text_field :author %>
+    <%# Displaying author errors %>
+    <% @article.errors.full_messages_for(:author).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <%# Title field %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <%# Displaying title errors %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <%# Content field %>
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %><br>
+    <%# Displaying content errors %>
+    <% @article.errors.full_messages_for(:content).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <%# Submit button %>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

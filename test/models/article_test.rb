@@ -14,6 +14,24 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
+  test 'should not save article without title' do
+    article = Article.new(content: 'Valid content')
+    assert_not article.valid?, 'Article without a title should not be valid'
+  end
+
+  test 'should not save article with content too short' do
+    article = Article.new(title: 'Valid Title', content: 'Short')
+    assert_not article.valid?, 'Article with too short content should not be valid'
+  end
+
+  test 'article title should be unique' do
+    Article.create(title: 'Unique Title', content: 'Content for the first article')
+  
+    duplicate_article = Article.new(title: 'Unique Title', content: 'Content for the second article')
+    assert_not duplicate_article.valid?, 'Article with a duplicate title should not be valid'
+    assert_includes duplicate_article.errors[:title], 'has already been taken'
+  end
+
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
