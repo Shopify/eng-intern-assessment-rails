@@ -1,0 +1,11 @@
+article1:
+  title: "The C Programming Language"
+  content: "Segmentation fault (Core dumped)"
+  author: "Brian Kernighan"
+  date: "1978-02-22"
+
+article2:
+  title: "Operating Systems: Three Easy Pieces"
+  content: "RISC rules the world!"
+  author: "Remzi Arpaci-Dusseau"
+  date: "2023-11-01"
