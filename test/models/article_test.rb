@@ -14,6 +14,30 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
+  test 'failed to create a new article due to empty title' do
+    article = Article.create(title: '', content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.save
+    assert_equal ["can't be blank", "is too short (minimum is 3 characters)"], article.errors[:title]
+  end
+
+  test 'failed to create a new article due to empty content' do
+    article = Article.create(title: 'Valid Title', content: '')
+    assert_not article.save
+    assert_equal ["can't be blank", "is too short (minimum is 10 characters)"], article.errors[:content]
+  end
+
+  test 'failed to create a new article due to title too short' do
+    article = Article.create(title: 's', content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.save
+    assert_equal ["is too short (minimum is 3 characters)"], article.errors[:title]
+  end
+
+  test 'failed to create a new article due to content too short' do
+    article = Article.create(title: 'Long Title', content: 'short')
+    assert_not article.save
+    assert_equal ["is too short (minimum is 10 characters)"], article.errors[:content]
+  end
+
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
