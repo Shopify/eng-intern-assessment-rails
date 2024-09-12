@@ -1,0 +1,14 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: "First Article Title"
+  content: "This is the content of the first article. It's quite engaging, isn't it?"
+  author: "Author One"
+  date: 2024-01-25 13:24:54
+
+two:
+  title: "Second Article Title"
+  content: "The content of the second article can be different to test various cases."
+  author: "Author Two"
+  date: 2024-01-26 14:35:00
+
