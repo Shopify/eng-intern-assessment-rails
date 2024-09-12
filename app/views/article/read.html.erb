@@ -1,0 +1,5 @@
+<h2><%= @article.title %></h2>
+<h4>written by <%= @article.author == "" ? "Anonymous" : @article.author %> on <%= @article.date.strftime('%Y-%m-%d') || "Unknown" %> </h4>
+<p><%= @article.content %></p>
+<%= link_to "Edit", "/article/#{params[:id]}/edit" %>
+<%= button_to "Delete", @post, method: :delete, class:"btn btn-danger"%>
