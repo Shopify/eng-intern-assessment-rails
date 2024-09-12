@@ -1,6 +1,8 @@
 require 'test_helper'
 
-class ArticleTest < ActiveSupport::TestCase
+class ArticleTest < ActiveSupport::TestCase 
+  # Get the current database name
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end

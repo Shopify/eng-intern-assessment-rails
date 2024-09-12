@@ -1,0 +1,15 @@
+<h1>Encyclopedia</h1>
+<%= render "searchForm" %>
+
+<%# Grab list of articles in database and display them by their title %>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
+
+<%# Added link to create new article %>
+<%= link_to 'New Article', new_article_path %>
+
