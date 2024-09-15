@@ -13,3 +13,152 @@
  *= require_tree .
  *= require_self
  */
+
+   /* Style the search form  */
+ .search-form {
+    margin-bottom: 10px;
+
+  }
+  
+  /* Style the search input field */
+  .search-form input[type="text"] {
+    width: 100%;
+    max-width: 300px; /* Adjust the maximum width as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Style the search button */
+  .search-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    
+  }
+  
+  .search-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style the article list */
+.article-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .article-list li {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style the "No articles found" message */
+  .no-articles-message {
+    font-size: 18px;
+    color: #777;
+    margin-top: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+
+  /* Style the form container */
+.form-container {
+    max-width: 400px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style the error message container */
+  #error_explanation {
+    color: #ff0000; /* Red color for error messages */
+    margin-bottom: 20px;
+  }
+  
+  /* Style the form fields and labels */
+  .field {
+    margin-bottom: 15px;
+  }
+  
+  .field label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .field input[type="text"],
+  .field textarea {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  .field select {
+    width: 32%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+
+  }
+  
+  /* Style the form submit button */
+  .actions {
+    text-align: right;
+  }
+  
+  .actions input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .actions input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  .article-details {
+    max-width: 600px; /* Adjust the maximum width as needed */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  

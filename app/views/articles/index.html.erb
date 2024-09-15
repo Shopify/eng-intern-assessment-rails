@@ -1,0 +1,24 @@
+<h1>Articles</h1>
+
+<%= form_tag(articles_path, method: :get, class: "search-form") do %>
+  <div class="form-group">
+    <%= text_field_tag :search, params[:search], class: "form-control search-input", placeholder: "Search articles" %>
+  </div>
+  <%= submit_tag "Search", class: "btn btn-primary search-button" %>
+<% end %>
+
+<% if @articles.any? %>
+  <ul class="article-list">
+    <% @articles.each do |article| %>
+      <li>
+        <h2><%= link_to article.title, article %></h2>
+        <p><strong>Author:</strong> <%= article.author %></p>
+        <p><strong>Date Published:</strong> <%= article.date %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No articles found.</p>
+<% end %>
+
+<%= link_to "New Article", new_article_path, class: "btn btn-primary" %>
