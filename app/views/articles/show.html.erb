@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= @article.title %></h1>
+<p class="mb-0">By: <%= @article.author.presence || "Unknown author" %></p>
+<p><%= @article.date.strftime("%Y-%m-%d") %></p>
+
+<p><%= @article.content %></p>
+
+<div>
+  <%= link_to "Edit this article", edit_article_path(@article) %> |
+  <%= link_to "Back to articles", articles_path %>
+
+  <%= button_to "Destroy this article", @article, method: :delete, data: { turbo: false } %>
+</div>

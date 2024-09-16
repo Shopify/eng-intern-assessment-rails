@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Articles</h1>
+
+<div class="d-flex justify-content-between mb-3">
+  <%= form_with url: articles_path, method: :get do |form| %>
+    <%= form.hidden_field :sort_by, value: params[:sort_by] %>
+    <%= form.hidden_field :order, value: params[:order] %>
+
+    <%= form.text_field :q, value: params[:q], placeholder: "Search query" %>
+
+    <%= form.submit "Search" %>
+  <% end %>
+
+  <%= form_with url: articles_path, method: :get do |form| %>
+    <%= form.hidden_field :q, value: params[:q] %>
+
+    <%= form.label :sort_by, "Sort by:" %>
+    <%= form.select :sort_by, %w[Date Author Title], { selected: params[:sort_by], default: "Date", allow_blank: false }, onchange: "this.form.submit()" %>
+
+    <%= form.select :order, %w[Ascending Descending], { selected: params[:order], default: "Ascending", allow_blank: false }, onchange: "this.form.submit()" %>
+  <% end %>
+</div>
+
+<%= link_to "New article", new_article_path %>
+
+<div id="articles" class="mt-3">
+  <% @articles.each do |article| %>
+    <%= render article %>
+  <% end %>
+</div>
