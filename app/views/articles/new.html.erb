@@ -1,0 +1,36 @@
+<div style="padding: 10px; margin-right: 30px">
+
+  <h1>Create a New Article</h1>
+
+  <%= form_with model: @article, local: true do |form| %>
+
+    <div class="field">
+      <%= form.label :title, class: 'active' %>
+      <%= form.text_field :title, class: 'validate', style: 'border-radius: 5px; border: 1px solid #ccc; padding: 5px;' %>
+    </div>
+
+    <div class="field">
+      <%= form.label :author, class: 'active' %>
+      <%= form.text_field :author, class: 'validate', style: 'border-radius: 5px; border: 1px solid #ccc; padding: 5px;' %>
+    </div>
+
+    <div class="field">
+      <%= form.label :date, class: 'active' %>
+      <%= form.date_field :date, id: 'article_date', class: 'datepicker', style: 'border-radius: 5px; border: 1px solid #ccc; padding: 5px;' %>
+    </div>
+
+    <div class="field">
+      <%= form.label :content, class: 'active' %>
+      <%= form.text_area :content, class: 'materialize-textarea', style: 'border-radius: 5px; border: 1px solid #ccc; padding: 5px; min-height: 200px;' %>
+    </div>
+
+    <div class="button-container" style="margin-top: 20px;">
+      <div class="actions" style="margin-top: 20px;">
+        <%= form.submit class: 'btn waves-effect waves-light' %>
+        <%= link_to 'Cancel', articles_path, method: :get, class: "btn waves-effect waves-light" %>
+      </div>
+    </div>
+    
+  <% end %>
+
+</div>
