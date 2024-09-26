@@ -1,3 +1,16 @@
+-----
+
+**For setup and testing:**
+Remember to run **rails db:migrate**
+
+**In case of issues when testing:**
+
+- If testing is somehow failing after running any pending migrations then try **rails db:test:prepare** and re-run test.
+- If on windows machines you get a permission/access issue to the **tmp** folder after running the rails server then try deleting **tmp/cache** folder and reload the page.
+
+
+-------
+
 # Technical Instructions
 1. Fork this repo to your local Github account.
 2. Create a new branch to complete all your work in.
