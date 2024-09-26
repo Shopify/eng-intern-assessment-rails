@@ -1,0 +1,7 @@
+<%# Search bar form for search articles %>
+
+<%= form_tag root_path, method: :get do %>
+    <%= label_tag(:search, "Search for articles: ") %>
+    <%= text_field_tag :article_search_term, params[:article_search_term] %>
+    <%= submit_tag "Search" %>
+<% end %>

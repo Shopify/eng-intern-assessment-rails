@@ -1,19 +1,19 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # MISC TESTS
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
 
-  test 'has search functionality' do
-    assert_respond_to Article, :search
+  test 'set proper default values for article' do
+    article = Article.create(title: 'Sample Test', content: 'First post!!')
+    assert_equal 'Anonymous', article.author
+    assert_equal Date.today, article.date
   end
 
-  test 'creates a new article' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    assert article.valid?
-  end
 
+  # READ TESTS
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
@@ -25,6 +25,30 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal Date.today, article.date
   end
 
+
+  # CREATE TESTS
+  test 'creates a new article' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert article.valid?
+  end
+
+  test 'fails to create article with empty title' do
+    article = Article.create(title: '', content: 'Lorem ipsum dolor sit amet.')
+    assert_nil article.id
+  end
+
+  test 'fails to create article with empty content' do
+    article = Article.create(title: 'Sample Title', content: '')
+    assert_nil article.id
+  end
+
+  test 'fails to create article with empty content and title' do
+    article = Article.create(title: '', content: '')
+    assert_nil article.id
+  end
+
+
+  # UPDATE TESTS
   test 'edits an existing article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.update(content: 'Updated content')
@@ -38,6 +62,29 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal Date.yesterday, article.date
   end
 
+  test 'fails to update article with empty title' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.update(title: '', content: 'Lorem ipsum dolor sit amet.')
+    assert_equal 'Sample Article', article.reload.title
+    assert_equal 'Lorem ipsum dolor sit amet.', article.reload.content
+  end
+
+  test 'fails to update article with empty content' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.update(title: 'Sample Article', content: '')
+    assert_equal 'Sample Article', article.reload.title
+    assert_equal 'Lorem ipsum dolor sit amet.', article.reload.content
+  end
+
+  test 'failes to update article with empty content and title' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.update(title: '', content: '')
+    assert_equal 'Sample Article', article.reload.title
+    assert_equal 'Lorem ipsum dolor sit amet.', article.reload.content
+  end
+
+
+  # DELETE TESTS
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
@@ -49,6 +96,12 @@ class ArticleTest < ActiveSupport::TestCase
     article.destroy
     assert_raises(ActiveRecord::RecordNotFound) { Article.find(article.id) }
   end
+
+
+  # SEARCH TESTS
+  test 'has search functionality' do
+    assert_respond_to Article, :search
+  end  
 
   test 'returns accurate search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
@@ -63,6 +116,38 @@ class ArticleTest < ActiveSupport::TestCase
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Another')
     assert_includes results, article2
+    assert_not_includes results, article1
+  end
+
+  test 'search is case insensitive' do
+    article1 = Article.create(title: 'Dummy', content: 'CAPITALS')
+    article2 = Article.create(title: 'Dummy', content: 'capitals')
+    results = Article.search('cApItAlS')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+
+  test 'search returns all articles with empty search' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+
+  test 'search returns all articles with "space" search term' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('  ')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+
+  test 'search returns nothing with invalid keywrod' do 
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('this_is_not_in_there')
+    assert_not_includes results, article2
     assert_not_includes results, article1
   end
 end
