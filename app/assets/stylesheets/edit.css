@@ -1,0 +1,58 @@
+/* Edit Article Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #007bff;
+}
+
+/* Form Container Styles */
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Form Title Styles */
+.form-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Link Styles */
+.link {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Button Styles */
+.button {
+    background-color: #d9534f;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #c9302c;
+}
