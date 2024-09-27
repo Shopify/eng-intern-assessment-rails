@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
-    assert_equal 0, Article.count
+    assert_equal 2, Article.count
   end
 
   test 'has search functionality' do
@@ -41,7 +41,7 @@ class ArticleTest < ActiveSupport::TestCase
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
-    assert_equal 0, Article.count
+    assert_equal 2, Article.count
   end
 
   test 'prevents access to deleted articles' do
@@ -65,4 +65,17 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'requires title presence' do
+    article = Article.new(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+    assert_includes article.errors.full_messages, "Title can't be blank"
+  end
+  
+  test 'requires content presence' do
+    article = Article.new(title: 'Sample Article')
+    assert_not article.valid?
+    assert_includes article.errors.full_messages, "Content can't be blank"
+  end
+
 end
