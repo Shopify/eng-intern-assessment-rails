@@ -1,0 +1,9 @@
+<%= link_to "Back To All", articles_path %>
+<h1><%= @article.title %> </h1>
+<div><strong>author:</strong><%= @article.author %><div>
+<div><strong>date:</strong><%= @article.date %><div>
+<div><strong>last updated:</strong><%= @article.updated_at %><div>
+<p><%= @article.content %></p>
+
+<%= link_to "Edit", edit_article_path(@article) %>
+<%= link_to "Delete", article_path(@article), data: { turbo_method: :delete } %>
