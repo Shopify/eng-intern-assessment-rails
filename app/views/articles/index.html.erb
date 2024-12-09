@@ -1,0 +1,41 @@
+<h2>All Existing Articles</h2>
+
+<ul>
+  <%# Check if there are any articles present %>
+  <% if @articles.present? %>
+    <%# Iterate over each article and list them %>
+    <% @articles.each do |article| %>
+      <li>
+        <%# Link to the article's show page %>
+        <%= link_to article.title, article_path(article) %> |
+        <%# Link to the article's edit page %>
+        <%= link_to 'Edit', edit_article_path(article) %> |
+        <%# Form for deleting an article with a confirmation prompt %>
+        <%= form_with url: article_path(article), method: :delete, class: "inline-form" do %>
+          <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </li>
+    <% end %>
+  <% else %>
+    <%# Message displayed when no articles are found %>
+    <li>No articles found</li>
+  <% end %>
+</ul>
+
+<%# Display a flash message if there is an alert %>
+<% if flash[:alert] %>
+  <p style="color: red;"><%= flash[:alert] %></p>
+<% end %>
+
+<%# Form for searching articles by a query %>
+<%= form_with url: articles_search_path, method: :get, local: true do |form| %>
+  <%= form.label :query, "Search Articles" %>
+  <%= form.text_field :query, name: 'query' %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<%# Link to create a new article page and refresh search %>
+<%= link_to 'Create a New Article', new_article_path %>&nbsp;&nbsp;&nbsp;
+<%= link_to 'View all articles', articles_path %>
+
+
