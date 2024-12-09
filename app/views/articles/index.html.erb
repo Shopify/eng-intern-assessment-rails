@@ -1,0 +1,30 @@
+<h1>ENCYCLOPEDIA</h1>
+
+
+<%= link_to "New Article", new_article_path %><br>
+
+<br>
+
+<%= link_to 'Search Articles', search_articles_path %>
+
+<br>
+<br>
+
+<hr>
+
+<ul>
+<h2>Extra! Extra! Read all about it </h2>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+      <!-- Previews last time article was edited -->
+      <!-- Formatted In ET for your convenience :) -->
+      <p>Last updated: <%= article.updated_at.in_time_zone('Eastern Time (US & Canada)').to_formatted_s(:long) %></p>  
+    </li>
+  <% end %>
+</ul>
+
+
+
+
+

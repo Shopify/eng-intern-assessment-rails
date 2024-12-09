@@ -1,0 +1,49 @@
+  <%= form_with url: search_articles_path, method: :get do |form| %>
+    <%= form.label :search, 'Search by Author/Title/Content:' %>
+    <%= form.text_field :search %><br>
+
+    <br>
+    <%= form.label :date, 'Search by date' %>
+    <%= form.date_field :date %>
+  
+    <%= form.submit 'Search' %>
+  <% end %>
+
+
+
+
+  <% if @articles.present? %>
+
+  <h3>Results:</h3>
+
+  <% if @search_time %>
+  <!-- Adding the time it took to find results to the search view -->
+  <!-- number_with_precision is just used to format the time in a nice way -->
+  <p>Search completed in <%= number_with_precision(@search_time, precision: 2) %> milliseconds.</p>
+  <% end %>
+
+  <ul>
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article_path(article) %>
+        <br> 
+        <% if article.author.present? %>
+          Author: <%= article.author %><br>
+        <% end %>
+        <% if article.date.present? %>
+          Date: <%= article.date %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  
+<% else %>
+  <p>No articles found.</p>
+<% end %>
+  
+  
+ 
+
+
+<hr>
+  <%= link_to 'Back to Articles List', articles_path %>
