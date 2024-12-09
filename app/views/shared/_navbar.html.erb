@@ -1,0 +1,23 @@
+<nav class="bg-slate-800 p-4">
+  <div class="container mx-auto">
+    <div class="flex items-center justify-between">
+      <div class="text-white space-x-5">
+        <a href="/articles" class="hover:bg-gray-700 hover:text-white rounded-md px-3 py-2">
+            View Articles
+        </a>
+        <a href="/articles/new" class="hover:bg-gray-700 hover:text-white rounded-md px-3 py-2">
+            Create Article
+        </a>
+      </div>
+      <div class="flex items-center">
+        <%= form_with(url: articles_path, method: :get, class: "search-form") do |form| %>
+            <div class="field space-x-4">
+                <%= form.text_field :search, class: "rounded w-64", placeholder: "Search by Title/Content" %>
+                <%= form.submit "Search", class: "btn-primary" %>
+            </div>
+        <% end %>
+        <!-- Add more navigation links as needed -->
+      </div>
+    </div>
+  </div>
+</nav>
