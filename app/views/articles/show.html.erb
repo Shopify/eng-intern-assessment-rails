@@ -1,0 +1,19 @@
+<h1><%= @article.title %></h1>
+
+<div>
+    <h2>Content</h2>
+    <p><%= @article.content %></p>
+</div>
+
+<p><i>Author: <%= @article.author && @article.author != '' ? @article.author : 'N/A' %></i></p>
+
+<p><i>Date: <%= @article.date && @article.date != '' ? @article.date : 'N/A' %></i></p>
+
+<ul>
+    <li><%= link_to "Edit", edit_article_path(@article) %></li>
+    <li><%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+    <li><%= link_to "Show All Articles", articles_path(@article) %></li>
+</ul>

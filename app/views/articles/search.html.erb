@@ -1,0 +1,4 @@
+<h1>Found <%= @articles.count %> articles</h1>
+
+<%# Render a partial (_list) and pass the articles (@articles) to the partial as a local variable%>
+<%= render 'list', articles: @articles %>
