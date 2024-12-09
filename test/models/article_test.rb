@@ -65,4 +65,18 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'requires title and content' do
+    article = Article.new
+    assert_not article.valid?
+    assert_includes article.errors[:title], 'can\'t be blank'
+    assert_includes article.errors[:content], 'can\'t be blank'
+  end
+
+  test 'requires unique title' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.new(title: 'Sample Article', content: 'Different content.')
+    assert_not article2.valid?
+    assert_includes article2.errors[:title], 'has already been taken'
+  end
 end
