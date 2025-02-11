@@ -23,5 +23,9 @@ module EngInternAssessmentRails
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Ensure custom error pages are served 
+    config.exceptions_app = self.routes
+    config.action_dispatch.show_exceptions = true
   end
 end
