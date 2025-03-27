@@ -14,8 +14,13 @@ Rails.application.routes.draw do
   
   # Default route
   root "articles#index"
+  
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+  end
 
   # Serve not_found page for any unmatched routes
   get "*unmatched_route", to: "errors#not_found"
 
+  post "/graphql", to: "graphql#execute"
 end
