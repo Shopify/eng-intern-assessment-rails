@@ -1,0 +1,27 @@
+<div class="articles">
+  <div class="containers">
+    <!--For each article, have user-fillable title, content, author and date fields - then create form once user clicks create-->
+    <%= form_for(@article) do |f| %>
+      <div class="field">
+        <%= f.label :title %><br>
+        <%= f.text_area :title %>
+      </div>
+      <div class="field">
+        <%= f.label :content %><br>
+        <%= f.text_area :content %>
+      </div>
+      <div class="field">
+        <%= f.label :author %><br>
+        <%= f.text_area :author %>
+      </div>
+      <div class="field">
+        <%= f.label :date %><br>
+        <%= f.date_field :date, value: Date.today %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Create" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
