@@ -1,0 +1,45 @@
+<%= form_with model: article do |form| %>
+  <!-- Title -->
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  
+  <!-- Author -->
+  <div>
+    <%= form.label :author %><br>
+    <%= form.text_field :author %><br>
+    <% article.errors.full_messages_for(:author).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <!-- Content -->
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %><br>
+    <% article.errors.full_messages_for(:content).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <!-- Date -->
+  <div>
+    <%= form.label :date %><br>
+    <%= form.date_field :date %><br>
+    <% article.errors.full_messages_for(:date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <!-- Buttons -->
+  <div style="padding-top:10px;">
+    <table>
+        <td> <%= form.submit %> </td>
+        <td> <button type="button"><%= link_to "Back", :back, style: "text-decoration:none;color:#000"%></button> </td>
+    </table>
+  </div>
+<% end %>
