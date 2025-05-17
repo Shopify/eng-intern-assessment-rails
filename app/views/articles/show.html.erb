@@ -1,0 +1,16 @@
+<div class="container">
+  <h1 class="my-4"><%= @article.title %></h1>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Author: <%= @article.author %></h5>
+      <p class="card-text"><%= @article.content %></p>
+    </div>
+  </div>
+
+  <div>
+    <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary me-2' %>
+    <%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger me-2' %>
+    <%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

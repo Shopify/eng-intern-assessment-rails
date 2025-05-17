@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <%= link_to "EngInternAssessmentRails", root_path, class: "navbar-brand" %>
+        <!-- Other navigation links can go here -->
+      </div>
+    </nav>
+
+    <div class="container mt-3">
+      <%= yield %>
+    </div>
   </body>
 </html>
