@@ -1,0 +1,35 @@
+<%= link_to("Back to List", articles_path, class: 'back-link') %>
+<!-- Link to navigate back to the list of articles using the 'articles_path' route. Styled as a back-link. -->
+
+<div class="articles show">
+  <h2>Show Article</h2>
+
+  <div class="actions">
+    <%= link_to('Edit', edit_article_path(@article)) %>
+    <!-- Link to edit the current article. -->
+    
+    <%= link_to('Delete', delete_article_path(@article)) %>
+    <!-- Link to delete the current article. -->
+  </div>
+
+  <table summary="article detail view">
+    <!-- Table for displaying article details. -->
+    
+    <tr>
+      <th>Title</th>
+      <td><%= @article.title %></td>
+    </tr>
+    <tr>
+      <th>Content</th>
+      <td><%= @article.content %></td>
+    </tr>
+    <tr>
+      <th>Author</th>
+      <td><%= @article.author %></td>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <td><%= @article.date %></td>
+    </tr>
+  </table>
+</div>

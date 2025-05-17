@@ -1,0 +1,22 @@
+<%= link_to("Back to List", articles_path, :class => 'back-link') %>
+<!-- Link to navigate back to the list of articles using the 'articles_path' route. Styled as a back-link. -->
+
+<div class="article new">
+  <h2>Create Article</h2>
+
+  <%= form_for(@article) do |f| %>
+    <!-- Form for creating a new article using the 'post' HTTP method. -->
+    
+    <% # url: articles_path, method: 'post' %>
+    <!-- Commented out line indicating the URL and HTTP method for the form submission. -->
+    
+    <%= render(partial: 'form', locals: {f: f}) %>
+    <!-- Rendering a partial form template with local variable 'f' for form builder. -->
+    
+    <div class="form-buttons">
+      <%= f.submit("Create Article") %>
+      <!-- Submit button to create the article. -->
+    </div>
+
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+<%= link_to("Back to List", articles_path, :class => 'back-link') %>
+
+<div class="article new">
+  <h2>Edit Article</h2>
+
+  <%= form_for(@article) do |f| %>
+    <% # url: articles_path(@article), method: 'patch' %>   
+    <%= render(partial: 'form', locals: {f: f}) %>
+    <div class="form-buttons">
+      <%= f.submit("Edit Article") %>
+    </div>
+
+  <% end %>
+</div>
