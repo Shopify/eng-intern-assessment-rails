@@ -24,6 +24,12 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Use pignate function to help device large records into smaller ones [https://github.com/mislav/will_paginate]
+gem "will_paginate"
+
+# To test controllers [https://github.com/rails/rails-controller-testing]
+gem "rails-controller-testing"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
