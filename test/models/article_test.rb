@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -64,5 +68,21 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'title must be passed and cannot be empty' do
+    article1 = Article.new
+    assert_not article1.save, "Article was not given a title"
+
+    article2 = Article.new('title': '')
+    assert_not article2.save, "Article title is empty"
+  end
+
+  test 'search with empty string returns all articles' do
+    Article.new(title: 'First Article', content: 'Lorem ipsum dolor sit amet.')
+    Article.new(title: 'Second Article', content: 'Lorem ipsum dolor sit amet.')
+
+    results = Article.search('')
+    assert_equal Article.count, results.count, "Search with empty string should return all articles"
   end
 end
