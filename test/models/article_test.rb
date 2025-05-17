@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
+  # Clean database before each run to enable fixtures for other tests
+  setup do
+    Article.delete_all
+  end
+
   test 'starts with no articles' do
     assert_equal 0, Article.count
   end
@@ -64,5 +69,26 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'returns all articles on empty search' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Sample Article 2', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    results = Article.search('')
+    assert_includes results, article1
+    assert_includes results, article2
+  end
+
+  test 'searches in case-insensitive manner' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'ShOpIfY')
+    results = Article.search('shopiFy')
+    assert_includes results, article1
+  end
+
+  test 'returns empty page when search is invalid' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Sample Article 2', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    results = Article.search('nothing')
+    assert_empty results
   end
 end
