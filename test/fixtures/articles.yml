@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: 'Sample Article'
+  content: 'Lorem ipsum dolor sit amet.'
+  writer: :one
+
+two:
+  title: 'Another Article'
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+  writer: :two

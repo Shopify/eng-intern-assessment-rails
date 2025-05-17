@@ -1,0 +1,85 @@
+<!-- app/views/writers/registrations/new.html.erb -->
+<style>
+  .signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .signup-form {
+    width: 100%;
+    max-width: 320px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .signup-form h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .signup-form .field {
+    margin-bottom: 16px;
+  }
+  .signup-form .field label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .signup-form .field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; 
+  }
+  .signup-form .actions {
+    margin-top: 24px;
+  }
+  .signup-form .actions input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #5cb85c;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="signup-container">
+  <div class="signup-form">
+    <h2>Sign up</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+  
+  </div>
+</div>
+<% end %>
