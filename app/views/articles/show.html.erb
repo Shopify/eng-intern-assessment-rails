@@ -1,0 +1,21 @@
+<div class="flex flex-col justify-center rounded-md p-2 w-full h-auto">
+    <div class="bg-gray-100 p-2">
+        <h1 class="font-bold text-2xl text-center"><%= @article.title %></h1>
+
+        <p class="text-lg  text-justify"><%= @article.content %></p>
+        <p class="text-sm text-right">Written by: <span class="italic font-bold"><%= @article.author %></span></p>
+        <p class="text-sm text-right"><%= @article.date %></p>
+    </div>
+    <div class="w-1/4 mt-4">
+        <%= link_to "Back to home page", articles_path, class: "bg-blue-500 hover:bg-blue-600 rounded-md p-2 text-white" %>
+    </div>
+    <div class="w-1/4 mt-4">
+        <%= link_to "Edit", edit_article_path(@article), class: "bg-green-500 hover:bg-green-600 rounded-md p-2 text-white" %>
+    </div>
+    <div class="w-1/4 mt-4">
+        <%= link_to "Delete Article", article_path(@article), data: {
+                    turbo_method: :delete,
+                  }, class: "bg-red-500 hover:bg-red-600 rounded-md p-2 text-white" %>
+    </div>
+</div>
+
