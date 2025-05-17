@@ -1,0 +1,49 @@
+<h1>Edit Article</h1>
+
+<!-- Form for editing an existing article -->
+<%= form_with(model: @article, local: true) do |form| %>
+  <!-- Displaying validation errors if any exist when attempting to save the article -->
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <!-- List of error messages -->
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Input field for the article's title -->
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <!-- Text area for the article's content -->
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <!-- Input field for the article's author -->
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <!-- Date selector for the article's publication date -->
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <!-- Submit button for the form -->
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', articles_path %>
