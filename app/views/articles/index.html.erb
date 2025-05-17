@@ -1,0 +1,8 @@
+<h1 style="text-align: center; color: #333;">Articles</h1>
+
+<% @articles.each do |article| %>
+  <div style="margin: 20px auto; width: 50%; border: 1px solid #ddd; padding: 20px; border-radius: 5px;">
+    <h2 style="color: #666;"><%= link_to article.title, article_path(article), style: "text-decoration: none; color: #333;" %></h2>
+    <p style="font-size: 16px; color: #666;"><%= article.content %></p>
+  </div>
+<% end %>
