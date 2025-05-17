@@ -1,0 +1,49 @@
+<!-- Start the form for creating or editing an article -->
+<%= form_with(model: article, local: true) do |form| %>
+
+  <!-- Check if there are any validation errors for the article -->
+  <% if article.errors.any? %>
+    <!-- Display a block containing the error messages -->
+    <div id="error_explanation">
+      <!-- Display the number of errors -->
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <!-- List each error message -->
+      <ul>
+        <% article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Field for the article's title -->
+  <div class="field">
+    <%= form.label :title %> <!-- Label for the title field -->
+    <%= form.text_field :title %> <!-- Text input for the title -->
+  </div>
+
+  <!-- Field for the article's content -->
+  <div class="field">
+    <%= form.label :content %> <!-- Label for the content field -->
+    <%= form.text_area :content %> <!-- Textarea for the content -->
+  </div>
+
+  <!-- Field for the article's author -->
+  <div class="field">
+    <%= form.label :author %> <!-- Label for the author field -->
+    <%= form.text_field :author %> <!-- Text input for the author -->
+  </div>
+
+  <!-- Field for the article's publication date -->
+  <div class="field">
+    <%= form.label :date %> <!-- Label for the date field -->
+    <%= form.date_field :date %> <!-- Date picker for the date -->
+  </div>
+
+  <!-- Form submission button -->
+  <div class="actions">
+    <%= form.submit %> <!-- Submit button for the form -->
+  </div>
+
+<% end %> <!-- End of the form block -->
