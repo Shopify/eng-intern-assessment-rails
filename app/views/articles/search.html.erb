@@ -1,0 +1,9 @@
+<h2>Some results for: "<%= @query_string %>"</h2>
+<ul>
+    <% @articles.each do |article| %>
+        <li>
+            <p>Title: <%= article.title %></p>
+            <p>Content: <%= article.content %></p>
+        </li>
+    <% end %>
+</ul>
