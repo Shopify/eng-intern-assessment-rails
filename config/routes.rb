@@ -6,5 +6,13 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "application#index"
+  
+  # Route for adding articles to the db
+  post 'articles/create', to: 'articles#create'
+
+  get '/articles/:id/edit', to: 'articles#edit', as: :edit_article, defaults: { format: :json }
+
+  resources :articles, except: [:show]
+
 end
