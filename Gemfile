@@ -64,3 +64,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# importing a component library to make things pretty
+gem "tailwindcss-rails", "~> 2.3"

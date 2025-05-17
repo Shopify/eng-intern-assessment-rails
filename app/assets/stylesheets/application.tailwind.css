@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
+#main_title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+h2 {
+  font-size: 1.5rem; 
+  line-height: 2rem; 
+}
+
+h3 {
+  font-size: 1.25rem; 
+  line-height: 1.75rem; 
+}
+
+#articles_table{
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  
+}
+
+thead {
+  display:table-header-group
+}
+
+a {
+  @apply text-blue-600 underline;
+  display: block
+}
+
+table {
+  border-spacing: 20px 0;
+  border-collapse: separate;
+}
+
+#search_submit {
+  color: blue;
+}
+
+.button {
+  color: blue;
+}

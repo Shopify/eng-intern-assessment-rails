@@ -1,0 +1,20 @@
+<%# Displaying the article information based on user input, and interactive actions that can be used to manipulate said article %>
+<h1 id="article_title"><%= @article.title %></h1>
+
+<p>By <%= @article.author %>, Created on <%= @article.date %></p>
+
+<br>
+
+<p><%= @article.content %></p>
+
+<br>
+
+<h2> Actions </h2>
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %></li>
+  <li><%= link_to "Home", articles_path %></li>
+</ul>
