@@ -1,0 +1,19 @@
+<%# A page that displays the important information about a single article %>
+<h1>article number <%=@article.id%></h1>
+<h2><%= @article.title%></h2>
+<h2><%= @article.author%></h2>
+<h2><%= @article.date%></h2>
+<p><%= @article.content%></h2>
+<p><i>Time Article Created: <%= @article.created_at%></i></h2>
+<p><i>Time Last Updated: <%= @article.updated_at%></i></h2>
+<br><br>
+
+<%# helpful buttons for returning home, editing, and deleting %>
+<%= link_to "<button>Return home</button>".html_safe, '/'%>
+
+<%= link_to "<button>Edit this article</button>".html_safe, edit_article_path(@article)%>
+
+<%= link_to "<button>Delete</button>".html_safe, article_path(@article), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure you want to delete this article??"
+            }%>
