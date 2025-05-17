@@ -38,6 +38,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal Date.yesterday, article.date
   end
 
+  test "assigns today's date by default" do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    assert_equal Date.today, article.date
+  end
+
+  test 'default date can be overwritten' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', date: Date.yesterday)
+    assert_equal Date.yesterday, article.date
+  end
+
   test 'deletes an article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.destroy
@@ -64,5 +74,13 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'can search by author' do
+    article3 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe')
+    article4 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'James')
+    results = Article.search('John')
+    assert_includes results, article3
+    assert_not_includes results, article4
   end
 end
