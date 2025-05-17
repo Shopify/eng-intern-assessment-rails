@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag "index" %>
+
+<h1>Articles</h1>
+
+<div class="search-bar">
+  <%= form_tag(articles_path, method: :get) do %>
+    <%= text_field_tag :q, params[:q], placeholder: 'Search articles...' %>
+    <%= submit_tag 'Search', class: 'search-button' %>
+  <% end %>
+</div>
+
+<%= link_to 'New Article', new_article_path, class: 'new-article-link' %>
+
+<%= will_paginate @articles %>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article['title'], article_path(article['id']) %>
+      <p><strong>Author:</strong> <%= article['author'] %></p>
+      <p><strong>Date:</strong> <%= article['date'] %></p>
+
+      <div class="actions-holder">
+        <div class="article-actions <%= 'single-button' if article['author'] == 'Hung Nguyen' %>">
+          <% unless article['author'] == 'Hung Nguyen' %>
+            <%= button_to 'Delete', article_path(article['id']), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
+            <%= link_to 'Edit', edit_article_path(article['id']), class: 'edit-button' %>
+          <% end %>
+          <%= link_to 'Show', article_path(article['id']), class: 'show-button' %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
