@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag "articles"%>
+<div class=encyclopedia>
+  <h1>📚 Encyclopedia 📚</h1>
+  <h2>Our Database of Articles:</h2>
+  <ul>
+    <% @articles.each do |article| %>
+      <li>
+        <p class=title><%= link_to article.title, article %><p>
+        <p class=author>Author: <%= article.author %></p>
+      </li>
+    <% end %>
+  </ul>
+  <div class=nav>
+    <%= link_to "Search", search_articles_path, class: "button" %>
+    <%= link_to "New Article", new_article_path, class: "button" %>
+  </div>
+</div>
