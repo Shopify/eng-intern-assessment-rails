@@ -1,0 +1,24 @@
+<!-- Displays the article title -->
+<h1><%= @article.title %></h1>
+
+<!-- Displays the article author if present -->
+<% if @article.author.present? %>
+  <p>Author: <%= @article.author %></p>
+<% end %>
+
+<!-- Displays the article date if present -->
+<% if @article.date.present? %>
+  <p>Date: <%= @article.date.strftime("%B %d, %Y") %></p>
+<% end %>
+
+<!-- Displays the article contents -->
+<p><%= @article.content %></p>
+
+<!-- Displays the edit button -->
+<%= link_to 'Edit', edit_article_path(@article) %> |
+
+<!-- Displays the delete button -->
+<%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %> |
+
+<!-- Displays the back button -->
+<%= link_to 'Back', articles_path %>
