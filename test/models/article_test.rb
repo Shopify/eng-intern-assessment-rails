@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
@@ -20,7 +22,8 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'displays the article metadata correctly' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe',
+                             date: Date.today)
     assert_equal 'John Doe', article.author
     assert_equal Date.today, article.date
   end
@@ -32,7 +35,8 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'updates the article metadata' do
-    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe', date: Date.today)
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.', author: 'John Doe',
+                             date: Date.today)
     article.update(author: 'Jane Smith', date: Date.yesterday)
     assert_equal 'Jane Smith', article.author
     assert_equal Date.yesterday, article.date
@@ -52,7 +56,8 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'returns accurate search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article2 = Article.create(title: 'Another Article',
+                              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Lorem ipsum')
     assert_includes results, article1
     assert_includes results, article2
@@ -60,9 +65,48 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'displays relevant articles in search results' do
     article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
-    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article2 = Article.create(title: 'Another Article',
+                              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  # ensure that article authors are properly queried using the search function.
+  test 'returns accurate author search results' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet', author: 'John Doe')
+    article2 = Article.create(title: 'Another Article',
+                              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Jane doe')
+    results = Article.search('Jane')
+    assert_includes results, article2
+    assert_not_includes results, article1
+  end
+
+  # Multiple assertions combined since the reason for both assertions is essentially the same. If we had this test failing, then it might be worth while splitting the test into multiple tests to accurately diagnose the issue.
+  test 'displays error when trying to initialize invalid articles' do
+    article1 = Article.new(content: 'Lorem ipsum dolor sit amet')
+    article2 = Article.new(title: 'Sample Article')
+    assert_not article1.save
+    assert_not article2.save
+  end
+
+  test 'cannot initialize content less than 5 characters long' do
+    article = Article.new(title: 'Sample Article', content: 'Text')
+    assert_not article.save
+  end
+
+  test 'date is properly intialized' do
+    article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet')
+    # Date.current vs. Date.today comparison here: https://stackoverflow.com/questions/6635363/what-is-the-difference-between-date-current-and-date-today
+    assert_equal Date.current, article.date
+  end
+
+  # I was going to use this for a feature, but ultimately decided against it.
+  # test 'returns accurate author scope query results' do
+  #   article1 = Article.create(title:'Sample Article', content: 'Lorem ipsum dolor sit amet', author: 'John Doe')
+  #   article2 = Article.create(title:'Another Article', content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Jane Doe')
+  #   results = Article.author('Jane Doe')
+  #   assert_includes results, article2
+  #   assert_not_includes  results, article1
+  #   end
 end
