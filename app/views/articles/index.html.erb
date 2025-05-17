@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encyclopedia</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <div class="container">
+    <!-- Encyclopedia heading -->
+    <h1 class="text-center">Welcome to the Encyclopedia</h1>
+
+    <!-- Search form -->
+    <%= form_tag(articles_path, method: "get", class: "search-form") do %>
+      <%= text_field_tag(:search, params[:search], placeholder: "Search article keywords") %>
+      <%= submit_tag("Search", class: "button-style") %>
+    <% end %>
+
+    <!-- Link to create new article -->
+ <div class="centered-link">
+    <%= button_to 'Create New Article', new_article_path, method: :get, class: "button-style" %>
+  </div>
+
+    <!-- Displays article information and link -->
+    <% @articles.each do |article| %>
+      <div class="article">
+        <h2><%= link_to article.title, article_path(article) %></h2>
+        <p><strong>Author:</strong> <%= article.author %></p>
+        <p><strong>Date:</strong> <%= article.date %></p>
+        <p><%= article.content %></p>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
