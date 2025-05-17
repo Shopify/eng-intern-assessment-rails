@@ -1,3 +1,5 @@
+puts "LOAD_PATH is:"
+puts $LOAD_PATH
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
