@@ -1,0 +1,13 @@
+<!-- File: edit.html.erb -->
+<!-- Programmer Name: Ali Rahbar -->
+<!-- Description: This code is in charge of the edit page for the article -->
+<!-- Date: 2024-01-18 -->
+
+<h1>Editing article</h1>
+
+
+<div class="container">
+  <%= render "form", article: @article %>
+  <br>
+  <%= link_to "Cancel Edit", @article, class:"btn btn-danger"%>
+</div>

@@ -1,0 +1,17 @@
+<!-- File: index.html.erb -->
+<!-- Programmer Name: Ali Rahbar -->
+<!-- Description: This code is in charge of content of the main page of the encyclopedia -->
+<!-- Date: 2024-01-18 -->
+
+<div class="container">
+  <%= render partial: 'layouts/search_form' %>
+
+  <div id="articles container">
+    <% @articles.each do |article| %>
+      <%= render article %>
+      <p class="container">
+        <%= link_to "View article", article, class:"btn btn-secondary" %>
+      </p>
+    <% end %>
+  </div>
+</div>
