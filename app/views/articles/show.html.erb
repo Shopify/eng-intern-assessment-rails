@@ -1,0 +1,6 @@
+<%= link_to 'Home', articles_path %>
+<h1><%= @article.title %></h1>
+<p>Written by <%= @article.author %></p>
+<p>Date: <%= @article.date %></p>
+<p><%= @article.content %></p>
+<%= button_to 'Delete', @article, method: :delete %>
