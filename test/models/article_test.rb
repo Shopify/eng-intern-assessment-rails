@@ -1,5 +1,6 @@
 require 'test_helper'
 
+
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
     assert_equal 0, Article.count

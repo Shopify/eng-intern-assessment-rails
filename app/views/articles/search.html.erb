@@ -1,0 +1,13 @@
+<h1>Search Results for <%= @query %></h1>
+<ul>
+  <% @results.each do |article| %>
+    <%= render article %>
+    <p>
+      <%= link_to "Show this article", article %>
+    </p>
+  <% end %>
+</ul>
+
+<div>
+  <%= link_to "Back to articles", articles_path %>
+</div>
