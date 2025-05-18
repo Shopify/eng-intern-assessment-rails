@@ -1,0 +1,22 @@
+
+<h1>Articles</h1>
+<%= link_to "New Article", new_article_path %>
+
+
+<%= form_tag articles_path, method: :get do %>
+  <div>
+    <%= text_field_tag :search, params[:search], placeholder: "Search articles..." %>
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>
+<ul style="list-style-type: none">
+    <% @articles.each do |article| %>
+    <li style="border-bottom: 2px solid black;">
+        <h1><%= article.title %> by <%= article.author.present? ? article.author : "Anonymous" %></h1>
+        <h2><%= article.date %></h2>
+        <p style="font-size: 1.2rem"><%= article.content %></p>
+        <%= link_to "Edit", edit_article_path(article) %>
+    </li>
+  <% end %>
+</ul>
+
