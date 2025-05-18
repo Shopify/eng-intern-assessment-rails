@@ -1,0 +1,19 @@
+<!-- view to dynamically render the show page for the article model and display it's attributes -->
+
+<h1><%= @article.title %></h1>
+
+<%= link_to "Home", root_path %>
+
+<h2><%= @article.author %></h2>
+
+<h3><%= @article.date%></h3>
+
+<p><%= @article.content %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>

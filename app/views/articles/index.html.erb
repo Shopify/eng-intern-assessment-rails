@@ -1,0 +1,29 @@
+<!-- view to dynamically render the index page for the article model and render each entry or filter -->
+
+<h1>Encyclopedia</h1>
+<br/>
+<h2>Articles</h2>
+<%= link_to "New Article", new_article_path %>
+<%= form_tag articles_path, :method => "get" do %>
+  <%= label_tag(:search, "Search article information") %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag("Search", :name => nil)%>
+<% end %>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <a href="<%= article_path(article) %>">
+        <%= article.title %>
+      </a>
+      by <%= article.author %> created at:<%= article.date %>
+      <ul>
+        <li><%= link_to "Edit", edit_article_path(article) %></li>
+        <li><%= link_to "Destroy", article_path(article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+      </ul>
+    </li>
+    <% end %>
+</ul>
