@@ -1,0 +1,13 @@
+# These can be used to define article property in setup function in controller tests.
+
+# one:
+#   title: "article 1"
+#   author: "Saeid Alizadeh"
+#   date: 2024-01-16
+#   content: "This is my content here on M2 machine. This is for testing!"
+
+# two:
+#   title: "article 2"
+#   author: "Aragorn"
+#   date: 2024-01-16
+#   content: "Anduril is here! we shall fight Sauron!! Maybe..."

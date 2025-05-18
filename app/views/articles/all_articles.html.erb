@@ -1,0 +1,18 @@
+<h1>Encyclopedia</h1>
+
+<%= render "search_form" %>
+
+<div class="div-all-articles">
+  <h2>Your Articles</h2>  
+  <div class="flex-container">
+    <% if @articles.empty? %>
+      <h3>Nothing available!</h3>
+    <% else %>
+      <% @articles.each do |article| %>
+        <%= link_to article.title, article_path(article), class:"flex-item" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= render "back_home_btn" %>

@@ -1,15 +1,107 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+h1 {
+    text-align: center;
+    color: midnightblue;
+}
+
+a {
+    text-decoration: none;
+}
+
+.div-all-articles, .div-create-article, .div-show-article {
+    background-color: rgb(226, 229, 231);
+    border-radius: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px 1px #017dd0;
+    color: midnightblue;
+    font-size: 18px;
+    text-align: center;
+    margin: 0 40px;
+}
+
+
+.div-btn-index {
+    margin: 20px 0;
+    text-align: center;
+}
+
+
+.btn-index-page, input[type="submit"] {
+    background-color: #017dd0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 15px; 
+    transition-duration: 0.2s;
+}
+
+.btn-index-page:hover, input[type="submit"]:hover {
+    background-color: rgb(255, 255, 255); 
+    border-width: 1px;
+    border-style: solid;
+    border-color: #017dd0;
+    color: midnightblue;
+}
+
+.div-error {
+    color: firebrick;
+}
+
+.div-edit-delete-btn {
+    color: white;
+    margin: 20px 0;
+    text-align: center;
+}
+
+input {
+    padding: 8px;
+    margin: 3px 0;
+    border-radius: 10px;
+    border-width: 0px;
+    border-style: none;
+}
+
+textarea {
+    padding: 8px;
+    margin: 3px 0;
+    border-radius: 10px;
+    border-width: 0px;
+    border-style: none;
+}
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+.flex-item {
+    flex: 1;
+    min-width: 150px;
+    margin: 10px; 
+    padding: 20px 10px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 10px 1px rgb(174, 174, 174);
+    transition-duration: 0.2s;
+  }
+
+.flex-item:hover {
+    background-color: antiquewhite;
+  }
+
+.input-search {
+    border: #017dd0 2px solid;
+}
+
+.div-text-center {
+    text-align: center;
+}
