@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @article %>
+
+<div class="space-y-4 mt-4">
+  <%= link_to "Edit this article", edit_article_path(@article), class: "link mr-4" %>
+  <%= link_to "Back to articles", articles_path, class: "link" %>
+
+  <%= button_to "Delete Article", @article, method: :delete, class: "btn-primary bg-red-500 hover:bg-red-700" %>
+</div>
