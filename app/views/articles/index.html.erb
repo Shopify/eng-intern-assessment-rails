@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+
+<div id="articles" class="grid-container container">
+<h1>Articles</h1>
+<% @articles.each do |article|%>
+  <article class="grid-item card-p">
+    <p>
+      <%= render partial: "articles/article", locals: { article: article } %>
+    </p>
+    <p>
+      <%= link_to "Show article", article_path(article.id) %>
+    </p>
+    </article>
+  <% end %>
+</div>
+
+<%= link_to "New article", new_article_path %>
