@@ -1,0 +1,81 @@
+/* Header Styles */
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Search Form Styles */
+form {
+    margin-bottom: 20px;
+}
+
+/* Search Input Styles */
+input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+}
+
+/* Search Button Styles */
+input[type="submit"] {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+/* Article Styles */
+.article {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/* Article Title Styles */
+h2 {
+color: #007bff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Date Styles */
+.date {
+    color: #888;
+    font-size: 14px;
+}
+
+/* Content Styles */
+.content {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Author Styles */
+.author {
+    font-style: italic;
+    color: #555;
+}
+
+/* Edit Link Styles */
+.edit-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+/* New Article Link Styles */
+.new-article-link {
+    display: block;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #28a745;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+  
