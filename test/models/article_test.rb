@@ -1,4 +1,4 @@
-require 'test_helper'
+require './test/test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   test 'starts with no articles' do
@@ -64,5 +64,13 @@ class ArticleTest < ActiveSupport::TestCase
     results = Article.search('Another')
     assert_includes results, article2
     assert_not_includes results, article1
+  end
+
+  test 'returns search results that includes if the term is included in the title and content of articles' do
+    article1 = Article.create(title: 'Hello there!', content: 'Here is an article with content')
+    article2 = Article.create(title: 'Mary was here', content: 'Today was good.')
+    results = Article.search('here')
+    assert_includes results, article1
+    assert_includes results, article2
   end
 end
