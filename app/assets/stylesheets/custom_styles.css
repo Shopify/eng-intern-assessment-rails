@@ -1,0 +1,54 @@
+  /* Make the buttons and articles look nice :)  */
+  
+  .search-container {
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    width: 300px;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .search-button {
+    padding: 8px 12px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #45a049;
+  }
+
+  .article-container {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .article-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .article-content {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .new-article-link {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+  }
+  
+  .new-article-link:hover {
+    background-color: #0056b3;
+  }
