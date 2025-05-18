@@ -1,0 +1,22 @@
+<h1>Articles</h1>
+<%= link_to 'New Article', new_article_path, class: 'new-article-link' %>
+
+<%= form_with url: articles_path, method: :get, local: true, class: 'search-form' do |form| %>
+  <%= form.label :search, 'Search for Articles:', class: 'search-label' %>
+  <%= form.text_field :search, value: params[:search], class: 'search-input' %>
+  <%= form.submit 'Search', class: 'search-submit' %>
+<% end %>
+
+<div class="articles-container">
+  <% @articles.each do |article| %>
+    <%= link_to article_path(article), class: 'article-link' do %>
+      <div class="article">
+        <h2 class='article-title'><%= article.title %></h2>
+        <p class='article-content'><%= truncate(article.content, length: 200) %></p>
+        <p class="article-author">Author: <%= article.author %></p>
+        <p class="article-date">Date: <%= article.date.strftime('%B %d, %Y') %></p>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
