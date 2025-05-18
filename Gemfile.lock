@@ -99,6 +99,7 @@ GEM
     debug (1.9.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    diff-lcs (1.5.0)
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
@@ -203,6 +204,19 @@ GEM
     reline (0.4.2)
       io-console (~> 0.5)
     rexml (3.2.6)
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-support (3.12.1)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.10.0)
@@ -266,6 +280,7 @@ DEPENDENCIES
   jbuilder
   puma (>= 5.0)
   rails (~> 7.1.2)
+  rspec (~> 3.12)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
