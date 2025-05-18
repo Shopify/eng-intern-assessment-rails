@@ -1,0 +1,20 @@
+<%= form_for @article do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Submit', class: "btn btn-primary"%>
+  </div>
+<% end %>
