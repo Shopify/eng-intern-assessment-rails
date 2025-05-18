@@ -1,0 +1,16 @@
+<div class="col-sm-6" style="margin-top:2rem;">
+  <%#Displays articles in card format%>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= article.title%></h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+      <i>Author: <%= article.author%> | Date: <%= article.date%></i>
+      </h6>
+      <%#Displays content of the article upto 300 characters. This is implemented to make articles page clean%>
+      <p class="card-text"><%= truncate(article.content,length: 300)%></p>
+      <%#Link leads to the specific page of the article%>
+      <%= link_to "View More", article , class:'btn btn-primary'%>
+    </div>
+  </div>
+</div>
+

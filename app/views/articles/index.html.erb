@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+<div style="display:flex; flex-direction:row; justify-content:space-between;">
+  <h2>Articles</h2>
+  <%= link_to "New", new_article_path, class:"btn btn-info" %>
+</div>
+<hr>
+<div id="articles">
+  <div class="row">
+    <%# Renders each article%>
+    <% @articles.each do |article| %>
+    <%= render article %>
+    <% end %>
+  </div>
+</div>
+
