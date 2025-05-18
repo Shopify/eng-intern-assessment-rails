@@ -1,0 +1,17 @@
+<h1><%= @article.title %></h1>
+<h2>Written by: <%= @article.author %> on <%= @article.date %></h2>
+<p>
+  <%= @article.content %>
+</p>
+
+<ul>
+  <li>
+    <%= link_to "Edit This Article", edit_article_path(@article) %>
+  </li>
+  <li>
+    <%= link_to "Delete This Article", article_path(@article), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure you want to delete this article?"
+    } %>
+  </li>
+</ul>
