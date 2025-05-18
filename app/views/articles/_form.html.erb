@@ -1,0 +1,42 @@
+<%
+=begin%>
+ common form for new and edit actions on articles 
+<%
+=end%>
+<%= form_with model: article do |form| %>
+    <div>
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
+        <% article.errors.full_messages_for(:title).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <br/>
+    <div>
+        <%= form.label :content %><br>
+        <%= form.text_area :content %><br>
+        <% article.errors.full_messages_for(:content).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <br/>
+    <div>
+        <%= form.label :author %><br>
+        <%= form.text_field :author %>
+        <% article.errors.full_messages_for(:author).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <br/>
+    <div>
+        <%= form.label :date %><br>
+        <%= form.date_field :date %>
+        <% article.errors.full_messages_for(:date).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <br/>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

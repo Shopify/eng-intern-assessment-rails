@@ -1,0 +1,11 @@
+<h1>Showing results for "<%= params[:keyword] %>" keyword</h1>
+
+<ul>
+    <% @results.each do |results| %>
+        <li>
+            <%= link_to results.title, results %>
+        </li>
+    <% end %>
+</ul>
+
+<p>Showing <%= @results.length %> articles matching your criteria</p>
