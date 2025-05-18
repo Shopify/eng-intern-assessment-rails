@@ -1,0 +1,30 @@
+<h2>Update <%= @article.title %></h2>
+<%= form_with model: @articles do |form| %>
+	<div class="field">
+		<%= form.label :title %>
+		<%= form.text_field :title, :value => @article.title %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div>
+
+	<div class="field">
+		<%= form.label :content %>
+		<%= form.text_area :content, :value => @article.content %>
+    <% @article.errors.full_messages_for(:content).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div>
+
+  <div class="field">
+		<%= form.label :author %>
+		<%= form.text_field :author, :value => @article.author %>
+    <% @article.errors.full_messages_for(:author).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div>
+
+	<div class="actions">
+		<%= form.submit %>
+	</div>
+<% end %>
