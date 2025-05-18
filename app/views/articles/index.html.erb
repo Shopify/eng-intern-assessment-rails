@@ -1,0 +1,21 @@
+# landing page
+
+# search bar
+<%= form_with url: search_articles_path, method: :get do |form| %>
+    <%= form.text_field :search_term %>
+    <%= form.submit "Search" %>
+<% end %>
+
+# result of search, display all articles by default
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+    <%= link_to article.title, article%>
+        <div>
+            <%= article.content %>
+        </div>
+    </li>
+  <% end %>
+</ul>
+  
+<%= link_to "New Article", new_article_path %>
