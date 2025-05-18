@@ -65,4 +65,26 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'creating article with no title' do
+    article = Article.create(content: "abc abc abc")
+    assert_not article.valid?
+  end
+
+  test 'cannot edit articles to have no title' do
+    article = Article.create(title: 'title 1', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    assert article.valid?
+    article.update(title: '')
+    assert_not article.valid?
+  end
+
+  test 'non specified author becomes Anonymous' do
+    article = Article.create(title: 'title 1', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    assert_equal 'Anonymous', article.author
+  end
+
+  test 'non specified date becomes today' do
+    article = Article.create(title: 'title 1', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    assert_equal Date.today, article.date
+  end
 end
