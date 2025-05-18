@@ -1,0 +1,50 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="article__container">
+  <div class="article__header">
+    <div class="article__title">
+      <%= @article.title %>
+    </div>
+
+    <div class="article__actions">
+      <%= link_to edit_article_path(@article) do %>
+        <div class="article__edit">
+          Edit
+          <%= image_tag(
+            'icons/edit-icon.svg', 
+            alt: 'edit icon', 
+            class: "article__edit-icon"
+          ) %>
+        </div>
+      <% end %>
+      <%= button_to @article, method: :delete, class: "article__delete" do %>
+        <div class="article__delete">
+          Delete
+          <%= image_tag(
+            'icons/delete-icon.svg', 
+            alt: 'delete icon', 
+            class: "article__delete-icon"
+          ) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="article__sub-header">
+    <div class="article__author">
+      <% if @article.author.present? %>
+        <%= @article.author %>,
+      <% end %>
+    </div>
+
+    <div class="article__date">
+      <% if @article.date.present? %>
+        <%= @formatted_publish_date %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="article__content">
+    <%= @article.content %>
+  </div>
+</div>

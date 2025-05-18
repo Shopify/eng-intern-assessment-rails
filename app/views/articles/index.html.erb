@@ -1,0 +1,43 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="articles__header">
+  <h1>Articles</h1>
+  <div class="articles__search-container">
+    <%= form_tag(articles_path, method: :get) do %>
+      <%= text_field_tag(
+        :search_string, 
+        params[:search_string], 
+        placeholder: 'Search for articles'
+    ) %>
+      <button type="submit" class="articles__search-button">
+        <%= image_tag(
+          'icons/search-icon.svg', 
+          alt: 'search icon', 
+          class: "articles__search-icon"
+        ) %>
+      </button>
+    <% end %>
+  </div>
+</div>
+
+
+<div id="articles">
+  <% if @articles.any? %>
+    <table class="article-table__table">
+      <tr>
+        <th class="article-table__header-cell">Title</th>
+        <th class="article-table__header-cell">Content</th>
+        <th class="article-table__header-cell">Author</th>
+        <th class="article-table__header-cell">Date</th>
+      </tr>
+
+      <% @articles.each do |article| %>
+        <%= render article %>
+      <% end %>
+    </table>
+  <% else %>
+    <div class="articles__empty-message">
+      The Encyclopedia looks a little empty...
+    </div>
+  <% end %>
+</div>
