@@ -1,0 +1,20 @@
+<h1>Articles</h1>
+
+<%# Search bar %>
+<%= form_with url: articles_path, method: :get do |form| %>
+  <%= form.label :search, 'Search for an Article:' %>
+  <%= form.text_field :search, value: params[:search] %>
+  <%= form.submit "Search"%>
+<% end %>
+
+<%# Lists each article by title %>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
+
+
+<li><%= link_to "New Article", new_article_path %></li>

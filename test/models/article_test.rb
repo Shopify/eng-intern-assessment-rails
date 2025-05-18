@@ -11,7 +11,23 @@ class ArticleTest < ActiveSupport::TestCase
 
   test 'creates a new article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    unless article.valid?
+      puts article.errors.full_messages
+    end
+
     assert article.valid?
+  end
+
+  test 'invalidates without a title' do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+
+  end
+
+  test 'validates if has content' do
+    article = Article.create(title: 'Sample Article')
+    assert_not article.valid?
+    
   end
 
   test 'displays the article content accurately' do
@@ -24,7 +40,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal 'John Doe', article.author
     assert_equal Date.today, article.date
   end
-
+ 
   test 'edits an existing article' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     article.update(content: 'Updated content')
@@ -65,4 +81,38 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes results, article2
     assert_not_includes results, article1
   end
+
+  test 'displays all articles when search has no text' do
+    Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('')
+    assert_equal 2, results.size
+  end
+
+  test 'displays all articles with the same name' do
+    Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    results = Article.search('Sample Article')
+    assert_equal 2, results.size
+  end
+
+  test 'displays no articles when there are no matches' do
+    Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('I LOVE CHEESE AND BACON ALSO STAN GIDLE')
+    assert_empty results
+  end
+
+  test 'displays articles with emojis' do
+    Article.create(title: '🦍😁🦍💕❤️😍👌🤣', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('🦍😁🦍💕❤️😍👌🤣')
+    assert_not_empty results
+  end
+
+  test 'displays articles with special characters' do
+    Article.create(title: '⅋', content: 'Lorem ipsum dolor sit amet.')
+    results = Article.search('⅋')
+    assert_not_empty results
+  end
+  
+
 end
