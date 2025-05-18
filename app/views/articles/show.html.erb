@@ -1,0 +1,9 @@
+<%= render @article %>
+
+<div>
+  <%= link_to "Edit this article", edit_article_path(@article) %> |
+  <%= link_to "Back to articles", articles_path %> |
+  
+  <%= link_to "Delete this article", article_path(@article),
+                                       data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+</div>
