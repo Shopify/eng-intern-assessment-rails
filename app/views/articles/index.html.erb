@@ -1,0 +1,26 @@
+<h1>Articles</h1>
+
+<%# Search bar %>
+<%= form_with url: "/", method: :get do |form| %>
+  <%= form.label :search_params, "Search for:" %>
+  <%= form.text_field :search_params %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<%# Lists all articles %>
+<ul>
+    <% @articles.each do |article| %>
+        <li>
+        <p><%= link_to article.title, article %> |
+        <%= link_to "Edit", edit_article_path(article) %> |
+        <%= link_to "Delete", article_path(article), data:{
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+            }%>
+        </p>
+        </li>
+    <% end %>
+</ul>
+
+<%= link_to 'New Article', new_article_path%>
+<%= link_to 'All Articles', articles_path%>
