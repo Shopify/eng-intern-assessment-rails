@@ -14,6 +14,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
+  test 'requires a title' do
+    article = Article.create(content: 'Lorem ipsum dolor sit amet.')
+    assert_not article.valid?
+  end
+
+  test 'requires content' do
+    article = Article.create(title: 'Sample Article')
+    assert_not article.valid?
+  end
+
   test 'displays the article content accurately' do
     article = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
     assert_equal 'Lorem ipsum dolor sit amet.', article.content
@@ -63,6 +73,16 @@ class ArticleTest < ActiveSupport::TestCase
     article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
     results = Article.search('Another')
     assert_includes results, article2
+    assert_not_includes results, article1
+  end
+
+  test 'displays relevant articles with search keywords in different fields' do
+    article1 = Article.create(title: 'Sample Article', content: 'Lorem ipsum dolor sit amet.')
+    article2 = Article.create(title: 'Another Article', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
+    article3 = Article.create(title: 'other Article', content: 'Another content.')
+    results = Article.search('Another')
+    assert_includes results, article2
+    assert_includes results, article3
     assert_not_includes results, article1
   end
 end
