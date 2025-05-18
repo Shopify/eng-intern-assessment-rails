@@ -1,0 +1,24 @@
+<%= link_to "Home", articles_index_url %>
+
+
+<h1><%= @article.title %></h1>
+
+<%= link_to "Edit", edit_article_path(@article) %>
+<%= link_to "Delete", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+} 
+%>
+
+<p> 
+  <% if @article.author.present? %>
+    By <%= @article.author %> <br> <br>
+  <% end %> 
+  <i> Published on <%= @article.date %>,
+    Last modified on <%= @article.updated_at %>
+  </i>
+<p>
+
+<p><%= @article.content %></p>
+<%= link_to "Home", articles_index_url %>
+
