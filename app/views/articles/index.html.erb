@@ -1,0 +1,36 @@
+<h1>Articles</h1>
+
+<%= link_to 'New Article', articles_new_path, class: 'btn btn-primary' %>
+
+<% if @articles.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Date</th>
+        <th>Created</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.author || 'N/A' %></td>
+          <td><%= article.date || 'N/A' %></td>
+          <td><%= article.created_at.strftime('%Y-%m-%d') %></td>
+          <td>
+            <%= link_to 'Show', article_show_path(article) %> |
+            <%= link_to 'Edit', article_edit_path(article) %> |
+            <%= link_to 'Delete', articles_destroy_path(article), 
+                        method: :delete, 
+                        data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No articles found. <%= link_to 'Create your first article', articles_new_path %>!</p>
+<% end %>

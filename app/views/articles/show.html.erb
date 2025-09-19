@@ -1,0 +1,22 @@
+<h1><%= @article.title %></h1>
+
+<div class="article-meta">
+  <p><strong>Author:</strong> <%= @article.author || 'Not specified' %></p>
+  <p><strong>Date:</strong> <%= @article.date || 'Not specified' %></p>
+  <p><strong>Created:</strong> <%= @article.created_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+  <p><strong>Updated:</strong> <%= @article.updated_at.strftime('%B %d, %Y at %I:%M %p') %></p>
+</div>
+
+<div class="article-content">
+  <h3>Content:</h3>
+  <p><%= simple_format(@article.content) %></p>
+</div>
+
+<div class="article-actions">
+  <%= link_to 'Edit', article_edit_path(@article), class: 'btn btn-secondary' %>
+  <%= link_to 'Delete', articles_destroy_path(@article), 
+              method: :delete, 
+              data: { confirm: 'Are you sure?' },
+              class: 'btn btn-danger' %>
+  <%= link_to 'Back to Articles', articles_index_path, class: 'btn btn-primary' %>
+</div>
